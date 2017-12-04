@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.AniosContratosPersonalQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.AniosContratosPersonalQuery" parameterType="sernanp.app.dao.query.domain.AniosContratosPersonalQueryCriteria"> 
+
+<![CDATA[
+
+	      
+	      
+				select 
+				
+					DISTINCT  EXTRACT (YEAR FROM pc.dte_fec_termino) 	as anio_contrato				
+				
+				from sernanp.t_personal_contrato pc
+				
+				where 
+				
+				pc.dte_fec_termino  NOTNULL		
+				AND EXTRACT (YEAR FROM pc.dte_fec_termino) = COALESCE(#{anio_contrato},EXTRACT (YEAR FROM pc.dte_fec_termino))				
+				order by 1 DESC;
+
+		  
+	      
+]]>
+</select> 
+</mapper> 

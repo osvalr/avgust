@@ -1,0 +1,8 @@
+C:\git\mapfre\Proyectos\GeneracionArchivoReporteFatcaSUNAT\Fuentes\FatcaDesktopApp\FatcaDesktopApp\bin\x86\Release\FatcaDesktopApp.exe.config
+C:\git\mapfre\Proyectos\GeneracionArchivoReporteFatcaSUNAT\Fuentes\FatcaDesktopApp\FatcaDesktopApp\bin\x86\Release\FatcaDesktopApp.exe
+C:\git\mapfre\Proyectos\GeneracionArchivoReporteFatcaSUNAT\Fuentes\FatcaDesktopApp\FatcaDesktopApp\bin\x86\Release\FatcaDesktopApp.pdb
+C:\git\mapfre\Proyectos\GeneracionArchivoReporteFatcaSUNAT\Fuentes\FatcaDesktopApp\FatcaDesktopApp\obj\x86\Release\WindowsFormsApplication1.MainForm.resources
+C:\git\mapfre\Proyectos\GeneracionArchivoReporteFatcaSUNAT\Fuentes\FatcaDesktopApp\FatcaDesktopApp\obj\x86\Release\FatcaDesktopApp.Properties.Resources.resources
+C:\git\mapfre\Proyectos\GeneracionArchivoReporteFatcaSUNAT\Fuentes\FatcaDesktopApp\FatcaDesktopApp\obj\x86\Release\FatcaDesktopApp.csproj.GenerateResource.Cache
+C:\git\mapfre\Proyectos\GeneracionArchivoReporteFatcaSUNAT\Fuentes\FatcaDesktopApp\FatcaDesktopApp\obj\x86\Release\FatcaDesktopApp.exe
+C:\git\mapfre\Proyectos\GeneracionArchivoReporteFatcaSUNAT\Fuentes\FatcaDesktopApp\FatcaDesktopApp\obj\x86\Release\FatcaDesktopApp.pdb

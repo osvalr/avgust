@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.InfoResponsableSernanpMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.InfoResponsableSernanp" parameterType="sernanp.app.dao.query.domain.InfoResponsableSernanpCriteria"> 
+<![CDATA[
+
+	      
+	      
+select 
+
+	rs.srl_id_resp_sernanp ,
+	pn.idtipodocumento ,
+	td.abrtablatipo as "des_tipo_documento",
+	pn.numerodoc,
+	pn.nombre || ' ' || pn.apepat || ' ' || pn.apemat as "nombres",
+	tr.destablatipo as "des_tipo_responsable",
+	tt.abrtablatipo as "des_tipo_trato"
+	
+
+from sernanp.t_responsable_sernanp rs
+inner join sernanp.personal ppp 
+on rs.idpersonal = ppp.idpersonal
+inner join sernanp.personanatural pn
+on ppp.idpersonanatural = pn.idpersonanatural
+inner join 
+(select tt.codinttablatipo,tt.destablatipo from sernanp.tablatipo tt where tt.idtabla = (select t.idtabla from sernanp.tabla t where t.destabla = 'Tipo Responsable')) tr
+on rs.int_id_tipo_responsable = tr.codinttablatipo
+inner join
+(select tt.ordtablatipo,tt.abrtablatipo from sernanp.tablatipo tt where tt.idtabla = (select t.idtabla from sernanp.tabla t where t.destabla = 'Tipo de Documento')) td
+on pn.idtipodocumento = td.ordtablatipo
+inner join
+(select tt.ordtablatipo,tt.abrtablatipo from sernanp.tablatipo tt where tt.idtabla = (select t.idtabla from sernanp.tabla t where t.destabla = 'Tipo Trato Persona')) tt
+on rs.int_tipo_trato = tt.ordtablatipo
+	
+where 
+
+rs.tsp_fecha_inicio_ejercicio = (select rs.tsp_fecha_inicio_ejercicio from sernanp.t_responsable_sernanp rs 
+					where rs.tsp_fecha_inicio_ejercicio <= #{tsp_fecha_inicio_ejercicio})
+
+		  
+	      
+]]>
+</select> 
+</mapper> 

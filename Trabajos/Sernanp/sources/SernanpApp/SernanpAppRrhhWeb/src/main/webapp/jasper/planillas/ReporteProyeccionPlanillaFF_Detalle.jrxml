@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteProyeccionPlanillaFF_Detalle" language="groovy" pageWidth="2000" pageHeight="595" orientation="Landscape" columnWidth="2000" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isIgnorePagination="true" uuid="74e04a49-c975-4d1b-8655-98fa7f147fac">
+	<property name="ireport.zoom" value="1.7715610000000017"/>
+	<property name="ireport.x" value="1372"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.export.xls.ignore.cell.background" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.white.page.background" value="false"/>
+	<property name="net.sf.jasperreports.export.xls.detect.cell.type" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.wrap.text" value="false"/>
+	<property name="net.sf.jasperreports.export.xls.auto.fit.row" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.auto.fit.column" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.remove.empty.space.between.columns" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.remove.empty.space.between.rows" value="true"/>
+	<subDataset name="listMapDetalle_DS" uuid="e8cce9b3-42c5-4b36-bef1-44fbd5dbea61">
+		<field name="strValor" class="java.lang.Double"/>
+	</subDataset>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["C:\\GITHUB\\sernanp\\Consultoria_planillas_seleccion_personal\\Desarrollo\\SernanpApp\\SernanpAppRrhhWeb\\src\\main\\webapp\\jasper\\planillas\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="parametros.strMes" class="java.lang.String"/>
+	<parameter name="parametros.strAnio" class="java.lang.String"/>
+	<parameter name="parametros.SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["/Datos/DesarrolloSW/Proyectos/SernanpApp/SernanpAppRrhhWeb/src/main/webapp/jasper/planillas/"]]></defaultValueExpression>
+	</parameter>
+	<field name="numerodoc" class="java.lang.String"/>
+	<field name="ubicacion" class="java.lang.String"/>
+	<field name="var_nom_cargo" class="java.lang.String"/>
+	<field name="apepat" class="java.lang.String"/>
+	<field name="apemat" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="listMapDetalle_DS" class="java.lang.Object"/>
+	<field name="c_meta" class="java.lang.String"/>
+	<field name="var_descripcion_fuente_financiamiento" class="java.lang.String"/>
+	<variable name="subtotal" class="java.lang.Double">
+		<variableExpression><![CDATA[]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="16" splitType="Immediate">
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="58" height="16" uuid="d6244fd0-0a38-4db4-8788-06c28aea9e03"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<subreport isUsingCache="false">
+				<reportElement x="779" y="0" width="1181" height="16" uuid="f9e9785a-d181-4d37-bb29-364ee6e7d1f8"/>
+				<dataSourceExpression><![CDATA[$F{listMapDetalle_DS}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{parametros.SUBREPORT_DIR} + "ReporteProyeccionPlanillaFF_ValoresDetalle.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="58" y="0" width="100" height="16" uuid="5ab38049-ebd0-45a1-ab31-4e9d09344cee"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{apepat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="158" y="0" width="111" height="16" uuid="9716d52f-428c-4cde-82be-3ead26826549"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{apemat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="269" y="0" width="100" height="16" uuid="0d4f13d8-a01e-4e08-b3e0-ea5d4e36b3f0"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="369" y="0" width="194" height="16" uuid="28e718ac-4aaa-4c4c-8d54-67bfbed40344"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{var_nom_cargo}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="563" y="0" width="216" height="16" uuid="79f9dd72-7ee5-4964-88d5-d5199dcd4bd9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ubicacion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

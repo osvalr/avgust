@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.BuscarPostulanteQueryMapper">
+
+<sql id="outs"> 
+<![CDATA[
+
+p.idpersonanatural,
+p.idtipodocumento,
+p.numerodoc ,
+p.fechanacimiento
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+sernanp.personanatural p
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+p.idtipodocumento = #{idtipodocumento}
+and p.numerodoc = #{numerodoc}
+and p.fechanacimiento = to_date(#{fechanacimiento},'dd/mm/yyyy')
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.BuscarPostulanteQuery" parameterType="sernanp.app.dao.query.domain.BuscarPostulanteQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.BuscarPostulanteQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.BuscarPostulanteQuery" parameterType="sernanp.app.dao.query.domain.BuscarPostulanteQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.BuscarPostulanteQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.BuscarPostulanteQueryCriteria">
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.ReporteResumenNominaPagoFFMP_728Query_LiquidacionMapper"> 
+
+<sql id="outs">
+<![CDATA[
+	
+	var_nombre_afp, var_descrip_concepto, dec_monto_calculado, liquido_pagar, a19990, c_meta, c_fte_fto, descrip_periodo
+	
+]]>
+</sql>
+
+<sql id="from">
+<![CDATA[
+(
+SELECT 	
+	af.var_nombre_afp,
+	cp.var_descrip_concepto,
+	SUM(nc.dec_monto_calculado) as dec_monto_calculado,
+	ms.destablatipo as descrip_periodo,
+	(
+	 
+	 (
+	 COALESCE
+         (
+         (
+		   COALESCE(	
+		   (select 
+		      SUM(xnc.dec_monto_calculado)
+		   from personal.t_nomina_concepto xnc
+			INNER JOIN personal.t_concepto_planilla xcp ON xnc.srl_id_concepto_planilla = xcp.srl_id_concepto_planilla
+			INNER JOIN personal.t_nomina_anio_periodo_personal xnapp ON xnc.srl_id_nomina_anio_periodo_personal = xnapp.srl_id_nomina_anio_periodo_personal
+			INNER JOIN personal.t_anio_periodo_planilla xapp ON xapp.srl_id_anio_periodo_planilla = xnapp.srl_id_anio_periodo_planilla
+			INNER JOIN personal.t_anio_planilla xap ON xap.srl_id_anio_planilla = xapp.srl_id_anio_planilla
+		   where 
+			 xapp.int_id_periodo_mes = app.int_id_periodo_mes and
+			 xap.int_anio = ap.int_anio and
+			 xnapp.srl_id_regimen_contractual = napp.srl_id_regimen_contractual and
+			 xnapp.c_meta = napp.c_meta and
+			 xnapp.c_fte_fto = napp.c_fte_fto and
+			 xcp.int_id_tipo_concepto IN (1)
+          
+		   ),0)
+		   +
+		   COALESCE(
+		   (select 
+		      SUM(xnc.dec_monto_calculado)
+		   from personal.t_nomina_concepto xnc
+			INNER JOIN personal.t_concepto_planilla xcp ON xnc.srl_id_concepto_planilla = xcp.srl_id_concepto_planilla
+			INNER JOIN personal.t_nomina_anio_periodo_personal xnapp ON xnc.srl_id_nomina_anio_periodo_personal = xnapp.srl_id_nomina_anio_periodo_personal
+			INNER JOIN personal.t_anio_periodo_planilla xapp ON xapp.srl_id_anio_periodo_planilla = xnapp.srl_id_anio_periodo_planilla
+			INNER JOIN personal.t_anio_planilla xap ON xap.srl_id_anio_planilla = xapp.srl_id_anio_planilla
+		   where xcp.var_descrip_concepto = 'OBLIGACIONES DEL EMPLEADOR' and
+			 xapp.int_id_periodo_mes = app.int_id_periodo_mes and
+			 xap.int_anio = ap.int_anio and
+			 xnapp.srl_id_regimen_contractual = napp.srl_id_regimen_contractual and
+			 xnapp.c_meta = napp.c_meta and
+			 xnapp.c_fte_fto = napp.c_fte_fto
+		   ),0)
+	  
+	  ),0)
+          )
+          -
+	  (
+          COALESCE
+          (
+          (
+		   COALESCE(
+		   (select 
+		      SUM(xnc.dec_monto_calculado)
+		   from personal.t_nomina_concepto xnc
+			INNER JOIN personal.t_concepto_planilla xcp ON xnc.srl_id_concepto_planilla = xcp.srl_id_concepto_planilla
+			INNER JOIN personal.t_nomina_anio_periodo_personal xnapp ON xnc.srl_id_nomina_anio_periodo_personal = xnapp.srl_id_nomina_anio_periodo_personal
+			INNER JOIN personal.t_anio_periodo_planilla xapp ON xapp.srl_id_anio_periodo_planilla = xnapp.srl_id_anio_periodo_planilla
+			INNER JOIN personal.t_anio_planilla xap ON xap.srl_id_anio_planilla = xapp.srl_id_anio_planilla
+		   where 
+			 xapp.int_id_periodo_mes = app.int_id_periodo_mes and
+			 xap.int_anio = ap.int_anio and
+			 xnapp.srl_id_regimen_contractual = napp.srl_id_regimen_contractual and
+			 xnapp.c_meta = napp.c_meta and
+			 xnapp.c_fte_fto = napp.c_fte_fto and
+			 (xcp.var_descrip_concepto = 'APORTE OBLIGATORIO'
+			  OR xcp.var_descrip_concepto = 'SEGURO INVALIDEZ'
+			  OR xcp.var_descrip_concepto = 'COMISION PORCENTUAL')
+		  
+		   ),0)
+		   +
+		   COALESCE(
+		   (select 
+		      SUM(xnc.dec_monto_calculado)
+		   from personal.t_nomina_concepto xnc
+			INNER JOIN personal.t_concepto_planilla xcp ON xnc.srl_id_concepto_planilla = xcp.srl_id_concepto_planilla
+			INNER JOIN personal.t_nomina_anio_periodo_personal xnapp ON xnc.srl_id_nomina_anio_periodo_personal = xnapp.srl_id_nomina_anio_periodo_personal
+			INNER JOIN personal.t_anio_periodo_planilla xapp ON xapp.srl_id_anio_periodo_planilla = xnapp.srl_id_anio_periodo_planilla
+			INNER JOIN personal.t_anio_planilla xap ON xap.srl_id_anio_planilla = xapp.srl_id_anio_planilla
+		   where 
+			 xapp.int_id_periodo_mes = app.int_id_periodo_mes and
+			 xap.int_anio = ap.int_anio and
+			 xnapp.srl_id_regimen_contractual = napp.srl_id_regimen_contractual and
+			 xnapp.c_meta = napp.c_meta and
+			 xnapp.c_fte_fto = napp.c_fte_fto and
+			 (xcp.var_descrip_concepto != 'APORTE OBLIGATORIO'
+			 AND xcp.var_descrip_concepto != 'SEGURO INVALIDEZ'
+			 and xcp.var_descrip_concepto != 'COMISION PORCENTUAL'
+			)AND
+			 xcp.int_id_tipo_concepto IN (2,3)
+		  
+		   ),0)
+	  ),0)
+	  )
+          
+          
+	  ) as liquido_pagar,
+	  COALESCE(
+	   (select 
+	      SUM(xnc.dec_monto_calculado)
+	   from personal.t_nomina_concepto xnc
+		INNER JOIN personal.t_concepto_planilla xcp ON xnc.srl_id_concepto_planilla = xcp.srl_id_concepto_planilla
+		INNER JOIN personal.t_nomina_anio_periodo_personal xnapp ON xnc.srl_id_nomina_anio_periodo_personal = xnapp.srl_id_nomina_anio_periodo_personal
+		INNER JOIN personal.t_anio_periodo_planilla xapp ON xapp.srl_id_anio_periodo_planilla = xnapp.srl_id_anio_periodo_planilla
+		INNER JOIN personal.t_anio_planilla xap ON xap.srl_id_anio_planilla = xapp.srl_id_anio_planilla
+	   where xcp.var_descrip_concepto = '19990' and
+	         xapp.int_id_periodo_mes = app.int_id_periodo_mes and
+	         xap.int_anio = ap.int_anio and
+	         xnapp.srl_id_regimen_contractual = napp.srl_id_regimen_contractual and
+	         xnapp.c_meta = napp.c_meta and
+	         xnapp.c_fte_fto = napp.c_fte_fto
+          ),0)as a19990,
+	  napp.c_meta,
+	  napp.c_fte_fto
+	
+  FROM personal.t_nomina_concepto nc 
+	  INNER JOIN personal.t_concepto_planilla cp ON nc.srl_id_concepto_planilla = cp.srl_id_concepto_planilla
+	  INNER JOIN personal.t_nomina_anio_periodo_personal napp ON nc.srl_id_nomina_anio_periodo_personal = napp.srl_id_nomina_anio_periodo_personal
+	  INNER JOIN personal.t_anio_periodo_planilla app ON app.srl_id_anio_periodo_planilla = napp.srl_id_anio_periodo_planilla
+	  INNER JOIN personal.t_anio_planilla ap ON ap.srl_id_anio_planilla = app.srl_id_anio_planilla
+	  INNER JOIN sernanp.personal ps ON napp.idpersonal = ps.idpersonal
+	  INNER JOIN personal.t_afp af ON napp.srl_id_afp = af.srl_id_afp
+	  inner join sernanp.vw_meses ms on ms.codinttablatipo = app.int_id_periodo_mes	
+	   
+  WHERE 
+	app.int_id_periodo_mes = COALESCE(#{int_id_periodo_mes},app.int_id_periodo_mes) AND 
+	ap.int_anio = COALESCE(#{int_anio},ap.int_anio) AND 
+	napp.srl_id_regimen_contractual= COALESCE(#{srl_id_regimen_contractual},napp.srl_id_regimen_contractual) AND
+	(cp.var_descrip_concepto = 'APORTE OBLIGATORIO'
+	OR cp.var_descrip_concepto = 'SEGURO INVALIDEZ'
+	OR cp.var_descrip_concepto = 'COMISION PORCENTUAL') AND
+	napp.c_meta IN (${c_meta}) AND
+	COALESCE(napp.c_fte_fto,'') = COALESCE(#{c_fte_fto}, COALESCE(napp.c_fte_fto,'')) AND
+	cp.int_id_tipo_concepto IN (2)		
+	
+GROUP BY 
+	af.var_nombre_afp,
+	cp.var_descrip_concepto,
+	app.int_id_periodo_mes,
+	ap.int_anio,
+	napp.srl_id_regimen_contractual,
+	napp.c_meta,
+	napp.c_fte_fto,
+	ms.destablatipo
+	
+UNION ALL
+
+SELECT 	
+	 NULL,
+     cp.var_descrip_concepto,
+	 SUM(nc.dec_monto_calculado) as dec_monto_calculado,
+	 ms.destablatipo as descrip_periodo,
+	 (
+	 
+	 (
+	 COALESCE
+         (
+         (
+		   COALESCE(	
+		   (select 
+		      SUM(xnc.dec_monto_calculado)
+		   from personal.t_nomina_concepto xnc
+			INNER JOIN personal.t_concepto_planilla xcp ON xnc.srl_id_concepto_planilla = xcp.srl_id_concepto_planilla
+			INNER JOIN personal.t_nomina_anio_periodo_personal xnapp ON xnc.srl_id_nomina_anio_periodo_personal = xnapp.srl_id_nomina_anio_periodo_personal
+			INNER JOIN personal.t_anio_periodo_planilla xapp ON xapp.srl_id_anio_periodo_planilla = xnapp.srl_id_anio_periodo_planilla
+			INNER JOIN personal.t_anio_planilla xap ON xap.srl_id_anio_planilla = xapp.srl_id_anio_planilla
+		   where 
+			 xapp.int_id_periodo_mes = app.int_id_periodo_mes and
+			 xap.int_anio = ap.int_anio and
+			 xnapp.srl_id_regimen_contractual = napp.srl_id_regimen_contractual and
+			 xnapp.c_meta = napp.c_meta and
+			 xnapp.c_fte_fto = napp.c_fte_fto and
+			 xcp.int_id_tipo_concepto IN (1)
+          
+		   ),0)
+		   +
+		   COALESCE(
+		   (select 
+		      SUM(xnc.dec_monto_calculado)
+		   from personal.t_nomina_concepto xnc
+			INNER JOIN personal.t_concepto_planilla xcp ON xnc.srl_id_concepto_planilla = xcp.srl_id_concepto_planilla
+			INNER JOIN personal.t_nomina_anio_periodo_personal xnapp ON xnc.srl_id_nomina_anio_periodo_personal = xnapp.srl_id_nomina_anio_periodo_personal
+			INNER JOIN personal.t_anio_periodo_planilla xapp ON xapp.srl_id_anio_periodo_planilla = xnapp.srl_id_anio_periodo_planilla
+			INNER JOIN personal.t_anio_planilla xap ON xap.srl_id_anio_planilla = xapp.srl_id_anio_planilla
+		   where xcp.var_descrip_concepto = 'OBLIGACIONES DEL EMPLEADOR' and
+			 xapp.int_id_periodo_mes = app.int_id_periodo_mes and
+			 xap.int_anio = ap.int_anio and
+			 xnapp.srl_id_regimen_contractual = napp.srl_id_regimen_contractual and
+			 xnapp.c_meta = napp.c_meta and
+			 xnapp.c_fte_fto = napp.c_fte_fto
+		   ),0)
+	  
+	  ),0)
+          )
+          -
+	  (
+          COALESCE
+          (
+          (
+		   COALESCE(
+		   (select 
+		      SUM(xnc.dec_monto_calculado)
+		   from personal.t_nomina_concepto xnc
+			INNER JOIN personal.t_concepto_planilla xcp ON xnc.srl_id_concepto_planilla = xcp.srl_id_concepto_planilla
+			INNER JOIN personal.t_nomina_anio_periodo_personal xnapp ON xnc.srl_id_nomina_anio_periodo_personal = xnapp.srl_id_nomina_anio_periodo_personal
+			INNER JOIN personal.t_anio_periodo_planilla xapp ON xapp.srl_id_anio_periodo_planilla = xnapp.srl_id_anio_periodo_planilla
+			INNER JOIN personal.t_anio_planilla xap ON xap.srl_id_anio_planilla = xapp.srl_id_anio_planilla
+		   where 
+			 xapp.int_id_periodo_mes = app.int_id_periodo_mes and
+			 xap.int_anio = ap.int_anio and
+			 xnapp.srl_id_regimen_contractual = napp.srl_id_regimen_contractual and
+			 xnapp.c_meta = napp.c_meta and
+			 xnapp.c_fte_fto = napp.c_fte_fto and
+			 (xcp.var_descrip_concepto = 'APORTE OBLIGATORIO'
+			  OR xcp.var_descrip_concepto = 'SEGURO INVALIDEZ'
+			  OR xcp.var_descrip_concepto = 'COMISION PORCENTUAL')
+		  
+		   ),0)
+		   +
+		   COALESCE(
+		   (select 
+		      SUM(xnc.dec_monto_calculado)
+		   from personal.t_nomina_concepto xnc
+			INNER JOIN personal.t_concepto_planilla xcp ON xnc.srl_id_concepto_planilla = xcp.srl_id_concepto_planilla
+			INNER JOIN personal.t_nomina_anio_periodo_personal xnapp ON xnc.srl_id_nomina_anio_periodo_personal = xnapp.srl_id_nomina_anio_periodo_personal
+			INNER JOIN personal.t_anio_periodo_planilla xapp ON xapp.srl_id_anio_periodo_planilla = xnapp.srl_id_anio_periodo_planilla
+			INNER JOIN personal.t_anio_planilla xap ON xap.srl_id_anio_planilla = xapp.srl_id_anio_planilla
+		   where 
+			 xapp.int_id_periodo_mes = app.int_id_periodo_mes and
+			 xap.int_anio = ap.int_anio and
+			 xnapp.srl_id_regimen_contractual = napp.srl_id_regimen_contractual and
+			 xnapp.c_meta = napp.c_meta and
+			 xnapp.c_fte_fto = napp.c_fte_fto and
+			 (xcp.var_descrip_concepto != 'APORTE OBLIGATORIO'
+			 AND xcp.var_descrip_concepto != 'SEGURO INVALIDEZ'
+			 and xcp.var_descrip_concepto != 'COMISION PORCENTUAL'
+			)AND
+			 xcp.int_id_tipo_concepto IN (2,3)
+		  
+		   ),0)
+	  ),0)
+	  )
+          
+          
+	  ) as liquido_pagar,
+	 COALESCE(
+	   (select 
+	      SUM(xnc.dec_monto_calculado)
+	   from personal.t_nomina_concepto xnc
+		INNER JOIN personal.t_concepto_planilla xcp ON xnc.srl_id_concepto_planilla = xcp.srl_id_concepto_planilla
+		INNER JOIN personal.t_nomina_anio_periodo_personal xnapp ON xnc.srl_id_nomina_anio_periodo_personal = xnapp.srl_id_nomina_anio_periodo_personal
+		INNER JOIN personal.t_anio_periodo_planilla xapp ON xapp.srl_id_anio_periodo_planilla = xnapp.srl_id_anio_periodo_planilla
+		INNER JOIN personal.t_anio_planilla xap ON xap.srl_id_anio_planilla = xapp.srl_id_anio_planilla
+	   where xcp.var_descrip_concepto = '19990' and
+	         xapp.int_id_periodo_mes = app.int_id_periodo_mes and
+	         xap.int_anio = ap.int_anio and
+	         xnapp.srl_id_regimen_contractual = napp.srl_id_regimen_contractual and
+	         xnapp.c_meta = napp.c_meta and
+	         xnapp.c_fte_fto = napp.c_fte_fto
+          ),0)as a19990,
+	 napp.c_meta,
+	 napp.c_fte_fto
+	
+  FROM personal.t_nomina_concepto nc 
+	  INNER JOIN personal.t_concepto_planilla cp ON nc.srl_id_concepto_planilla = cp.srl_id_concepto_planilla
+	  INNER JOIN personal.t_nomina_anio_periodo_personal napp ON nc.srl_id_nomina_anio_periodo_personal = napp.srl_id_nomina_anio_periodo_personal
+	  INNER JOIN personal.t_anio_periodo_planilla app ON app.srl_id_anio_periodo_planilla = napp.srl_id_anio_periodo_planilla
+	  INNER JOIN personal.t_anio_planilla ap ON ap.srl_id_anio_planilla = app.srl_id_anio_planilla
+	  inner join sernanp.vw_meses ms on ms.codinttablatipo = app.int_id_periodo_mes
+	   
+  WHERE 
+	app.int_id_periodo_mes = COALESCE(#{int_id_periodo_mes},app.int_id_periodo_mes) AND 
+	ap.int_anio = COALESCE(#{int_anio},ap.int_anio) AND 
+	napp.srl_id_regimen_contractual= COALESCE(#{srl_id_regimen_contractual},napp.srl_id_regimen_contractual) AND
+	(cp.var_descrip_concepto != 'APORTE OBLIGATORIO'
+	and cp.var_descrip_concepto != 'SEGURO INVALIDEZ'
+	and cp.var_descrip_concepto != 'COMISION PORCENTUAL'
+	and cp.var_descrip_concepto != '19990'
+	) AND
+	napp.c_meta IN (${c_meta}) AND
+	COALESCE(napp.c_fte_fto,'') = COALESCE(#{c_fte_fto}, COALESCE(napp.c_fte_fto,'')) AND
+	cp.int_id_tipo_concepto IN (2,3)	
+
+GROUP BY 
+    cp.var_descrip_concepto,
+	app.int_id_periodo_mes,
+	ap.int_anio,
+	napp.srl_id_regimen_contractual,
+	napp.c_meta,
+	napp.c_fte_fto,
+	ms.destablatipo
+
+
+) as x	   
+]]>
+</sql>
+
+<sql id="inputs"> 
+<![CDATA[
+	1=1
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+
+GROUP BY 
+c_fte_fto,
+c_meta,
+var_nombre_afp,
+var_descrip_concepto,
+dec_monto_calculado,
+liquido_pagar,
+a19990,
+descrip_periodo
+
+ORDER BY 
+c_fte_fto,
+c_meta,
+x.var_nombre_afp
+
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.ReporteResumenNominaPagoFFMP_728Query_Liquidacion" parameterType="sernanp.app.dao.query.domain.ReporteResumenNominaPagoFFMP_728Query_LiquidacionCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.ReporteResumenNominaPagoFFMP_728Query_Liquidacion" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.ReporteResumenNominaPagoFFMP_728Query_Liquidacion" parameterType="sernanp.app.dao.query.domain.ReporteResumenNominaPagoFFMP_728Query_LiquidacionCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.ReporteResumenNominaPagoFFMP_728Query_Liquidacion" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.ReporteResumenNominaPagoFFMP_728Query_LiquidacionCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

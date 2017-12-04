@@ -1,0 +1,1019 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>    
+   
+<package name="seleccion-personal-extjs" namespace="/" extends="principal-extjs">
+
+
+	
+	
+	
+	<!-- END ACTION REPORTES -->
+	<action name="gestionar-requerimiento-personal" >
+ 		<result type="tiles">gestionar_requerimiento_personal</result>
+ 			<interceptor-ref name="basicStack" /> 
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />	
+			<interceptor-ref name="defaultStack" />	  	 		 
+	</action>
+	
+	<action name="gestionar-requerimiento-por-area" >
+ 		<result type="tiles">gestionar_requerimiento_personal_alterno</result>
+ 		<!-- 			<interceptor-ref name="basicStack" />  -->
+<!-- 			<interceptor-ref name="general" />  -->
+<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+	</action>
+
+	<!-- Start Actions GestionarReqPersonal -->
+	<action name="GestionarReqPersonalView" class="sernanp.rrhh.web.action.seleccion.GestionarReqPersonalAction" method="view">
+			<result type="json" />
+	</action>
+	
+	<action name="GestionarReqPersonalCreate" class="sernanp.rrhh.web.action.seleccion.GestionarReqPersonalAction" method="create">
+			<result type="json" />
+	</action>
+	
+	<action name="GestionarReqPersonalSave" class="sernanp.rrhh.web.action.seleccion.GestionarReqPersonalAction" method="save">
+			<result type="json" />
+	</action>
+	
+	<action name="GestionarReqPersonalRemove" class="sernanp.rrhh.web.action.seleccion.GestionarReqPersonalAction" method="remove">
+			<result type="json" />
+	</action>
+	
+	<!-- Start Sub Model ArchivoRequerimientoQuery Actions -->
+	<action name="ArchivoRequerimientoQueryList" class="sernanp.rrhh.web.action.seleccion.GestionarReqPersonalAction" method="ArchivoRequerimientoQueryList">
+			<result type="json" />
+	</action>
+	
+	<action name="ArchivoRequerimientoQueryAdd" class="sernanp.rrhh.web.action.seleccion.GestionarReqPersonalAction" method="ArchivoRequerimientoQueryAdd">
+			<result type="json" />
+	</action>
+	
+	<action name="ArchivoRequerimientoQueryUpdate" class="sernanp.rrhh.web.action.seleccion.GestionarReqPersonalAction" method="ArchivoRequerimientoQueryUpdate">
+			<result type="json" />
+	</action>
+	
+	<action name="ArchivoRequerimientoQueryDelete" class="sernanp.rrhh.web.action.seleccion.GestionarReqPersonalAction" method="ArchivoRequerimientoQueryDelete">
+			<result type="json" />
+	</action>
+	
+	<action name="download-file-requerimiento" class="sernanp.rrhh.web.action.seleccion.GestionarReqPersonalAction" method="downloadFile">
+        <result name="success" type="stream">
+                <param name="contentDisposition">attachment;filename=${fileName}</param>
+                <param name="contentType">${contentType}</param>
+                <param name="inputName">fileInputStream</param>
+                <param name="bufferSize">102400</param>
+        </result>
+    </action>
+    
+	<!-- End Sub Model ArchivoRequerimientoQuery Actions -->
+	
+	<!-- End Actions GestionarReqPersonal -->
+
+	<action name="gestionar-convocatoria-personal" >
+	 		<result type="tiles">gestionar_convocatoria_personal</result>
+<!-- 			<interceptor-ref name="basicStack" />  -->
+<!-- 			<interceptor-ref name="general" />  -->
+<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+<!-- 			<interceptor-ref name="defaultStack" />	  	 -->
+	</action>
+
+	<!-- Start Actions ConvocatoriaPlaza -->
+	<action name="ConvocatoriaPlazaView" class="sernanp.rrhh.web.action.seleccion.ConvocatoriaPlazaAction" method="view">
+			<result type="json" />
+	</action>
+	
+	<action name="ConvocatoriaPlazaCreate" class="sernanp.rrhh.web.action.seleccion.ConvocatoriaPlazaAction" method="create">
+			<result type="json" />
+	</action>
+	
+	<action name="relanzar-convocatoria" class="sernanp.rrhh.web.action.seleccion.ConvocatoriaPlazaAction" method="relanzar">
+			<result type="json" />
+	</action>
+	
+	<action name="ConvocatoriaPlazaSave" class="sernanp.rrhh.web.action.seleccion.ConvocatoriaPlazaAction" method="save">
+			<result type="json" />
+	</action>
+	
+	<action name="ConvocatoriaPlazaRemove" class="sernanp.rrhh.web.action.seleccion.ConvocatoriaPlazaAction" method="remove">
+			<result type="json" />
+	</action>
+	
+	<!-- Start Sub Model ConvocatoriaPlazaQuery Actions -->
+	<action name="ConvocatoriaPlazaQueryList" class="sernanp.rrhh.web.action.seleccion.ConvocatoriaPlazaAction" method="ConvocatoriaPlazaQueryList">
+			<result type="json" />
+	</action>
+	
+	<action name="ConvocatoriaPlazaQueryAdd" class="sernanp.rrhh.web.action.seleccion.ConvocatoriaPlazaAction" method="ConvocatoriaPlazaQueryAdd">
+			<result type="json" />
+	</action>
+	
+	<action name="ConvocatoriaPlazaQueryUpdate" class="sernanp.rrhh.web.action.seleccion.ConvocatoriaPlazaAction" method="ConvocatoriaPlazaQueryUpdate">
+			<result type="json" />
+	</action>
+	
+	<action name="ConvocatoriaPlazaQueryDelete" class="sernanp.rrhh.web.action.seleccion.ConvocatoriaPlazaAction" method="ConvocatoriaPlazaQueryDelete">
+			<result type="json" />
+	</action>
+	<!-- End Sub Model ConvocatoriaPlazaQuery Actions -->
+	<!-- Start Sub Model ConvocatoriaEtapaQuery Actions -->
+	<action name="ConvocatoriaEtapaQueryList" class="sernanp.rrhh.web.action.seleccion.ConvocatoriaPlazaAction" method="ConvocatoriaEtapaQueryList">
+			<result type="json" />
+	</action>
+	
+	<action name="ConvocatoriaEtapaQueryAdd" class="sernanp.rrhh.web.action.seleccion.ConvocatoriaPlazaAction" method="ConvocatoriaEtapaQueryAdd">
+			<result type="json" />
+	</action>
+	
+	<action name="ConvocatoriaEtapaQueryUpdate" class="sernanp.rrhh.web.action.seleccion.ConvocatoriaPlazaAction" method="ConvocatoriaEtapaQueryUpdate">
+			<result type="json" />
+	</action>
+	
+	<action name="ConvocatoriaEtapaQueryDelete" class="sernanp.rrhh.web.action.seleccion.ConvocatoriaPlazaAction" method="ConvocatoriaEtapaQueryDelete">
+			<result type="json" />
+	</action>
+	<!-- End Sub Model ConvocatoriaEtapaQuery Actions -->
+	<!-- Start Sub Model ConvocatoriaPlazaFactorQuery Actions -->
+	<action name="ConvocatoriaPlazaFactorQueryList" class="sernanp.rrhh.web.action.seleccion.ConvocatoriaPlazaAction" method="ConvocatoriaPlazaFactorQueryList">
+			<result type="json" />
+	</action>
+	
+	<action name="ConvocatoriaPlazaFactorQueryAdd" class="sernanp.rrhh.web.action.seleccion.ConvocatoriaPlazaAction" method="ConvocatoriaPlazaFactorQueryAdd">
+			<result type="json" />
+	</action>
+	
+	<action name="ConvocatoriaPlazaFactorQueryUpdate" class="sernanp.rrhh.web.action.seleccion.ConvocatoriaPlazaAction" method="ConvocatoriaPlazaFactorQueryUpdate">
+			<result type="json" />
+	</action>
+	
+	<action name="ConvocatoriaPlazaFactorQueryDelete" class="sernanp.rrhh.web.action.seleccion.ConvocatoriaPlazaAction" method="ConvocatoriaPlazaFactorQueryDelete">
+			<result type="json" />
+	</action>
+	<!-- End Sub Model ConvocatoriaPlazaFactorQuery Actions -->
+	
+	<!-- End Actions ConvocatoriaPlaza -->
+	
+	<action name="gestionar-postulante">
+			<result name="success" type="tiles">gestionar_postulante</result>
+<!-- 			<interceptor-ref name="basicStack" />  -->
+<!-- 			<interceptor-ref name="general" />  -->
+<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+<!-- 			<interceptor-ref name="defaultStack" />	 -->
+	</action>
+	
+	<action name="editar-info-postulante">
+			<result name="success" type="tiles">gestionar_postulante_alterno</result>
+<!-- 			<interceptor-ref name="basicStack" />  -->
+<!-- 			<interceptor-ref name="general" />  -->
+<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+<!-- 			<interceptor-ref name="defaultStack" />	 -->
+	</action>
+	
+	<!-- Start Actions GestionarPostulante -->
+	<action name="GestionarPostulanteView" class="sernanp.rrhh.web.action.seleccion.GestionarPostulanteAction" method="view">
+			<result type="json" />
+	</action>
+	
+	<action name="GestionarPostulanteCreate" class="sernanp.rrhh.web.action.seleccion.GestionarPostulanteAction" method="create">
+			<result type="json" />
+	</action>
+	
+	<action name="GestionarPostulanteSave" class="sernanp.rrhh.web.action.seleccion.GestionarPostulanteAction" method="save">
+			<result type="json" />
+	</action>
+	
+	<action name="GestionarPostulanteRemove" class="sernanp.rrhh.web.action.seleccion.GestionarPostulanteAction" method="remove">
+			<result type="json" />
+	</action>
+	
+	<!-- Start Sub Model PostulanteNumeroTelefonoQuery Actions -->
+	<action name="PostulanteNumeroTelefonoQueryList" class="sernanp.rrhh.web.action.seleccion.GestionarPostulanteAction" method="PostulanteNumeroTelefonoQueryList">
+			<result type="json" />
+	</action>
+	
+	<action name="PostulanteNumeroTelefonoQueryAdd" class="sernanp.rrhh.web.action.seleccion.GestionarPostulanteAction" method="PostulanteNumeroTelefonoQueryAdd">
+			<result type="json" />
+	</action>
+	
+	<action name="PostulanteNumeroTelefonoQueryUpdate" class="sernanp.rrhh.web.action.seleccion.GestionarPostulanteAction" method="PostulanteNumeroTelefonoQueryUpdate">
+			<result type="json" />
+	</action>
+	
+	<action name="PostulanteNumeroTelefonoQueryDelete" class="sernanp.rrhh.web.action.seleccion.GestionarPostulanteAction" method="PostulanteNumeroTelefonoQueryDelete">
+			<result type="json" />
+	</action>
+	<!-- End Sub Model PostulanteNumeroTelefonoQuery Actions -->
+	<!-- Start Sub Model ArchivoPostulanteQuery Actions -->
+	<action name="ArchivoPostulanteQueryList" class="sernanp.rrhh.web.action.seleccion.GestionarPostulanteAction" method="ArchivoPostulanteQueryList">
+			<result type="json" />
+	</action>
+	
+	<action name="ArchivoPostulanteQueryAdd" class="sernanp.rrhh.web.action.seleccion.GestionarPostulanteAction" method="ArchivoPostulanteQueryAdd">
+			<result type="json" />
+	</action>
+	
+	<action name="ArchivoPostulanteQueryUpdate" class="sernanp.rrhh.web.action.seleccion.GestionarPostulanteAction" method="ArchivoPostulanteQueryUpdate">
+			<result type="json" />
+	</action>
+	
+	<action name="ArchivoPostulanteQueryDelete" class="sernanp.rrhh.web.action.seleccion.GestionarPostulanteAction" method="ArchivoPostulanteQueryDelete">
+			<result type="json" />
+	</action>
+	<!-- End Sub Model ArchivoPostulanteQuery Actions -->
+	<!-- Start Sub Model PostulacionPersonaQuery Actions -->
+	<action name="PostulacionPersonaQueryList" class="sernanp.rrhh.web.action.seleccion.GestionarPostulanteAction" method="PostulacionPersonaQueryList">
+			<result type="json" />
+	</action>
+	
+	<action name="PostulacionPersonaQueryAdd" class="sernanp.rrhh.web.action.seleccion.GestionarPostulanteAction" method="PostulacionPersonaQueryAdd">
+			<result type="json" />
+	</action>
+	
+	<action name="PostulacionPersonaQueryUpdate" class="sernanp.rrhh.web.action.seleccion.GestionarPostulanteAction" method="PostulacionPersonaQueryUpdate">
+			<result type="json" />
+	</action>
+	
+	<action name="PostulacionPersonaQueryDelete" class="sernanp.rrhh.web.action.seleccion.GestionarPostulanteAction" method="PostulacionPersonaQueryDelete">
+			<result type="json" />
+	</action>
+	
+	<action name="download-file-postulante" class="sernanp.rrhh.web.action.seleccion.GestionarPostulanteAction" method="downaloadFile">
+        <result name="success" type="stream">
+                <param name="contentDisposition">attachment;filename=${fileName}</param>
+                <param name="contentType">${contentType}</param>
+                <param name="inputName">fileInputStream</param>
+                <param name="bufferSize">102400</param>
+        </result>
+    </action>
+    
+    <action name="download-file-postulacion" class="sernanp.rrhh.web.action.seleccion.GestionarPostulanteAction" method="downaloadFilePostulacion">
+        <result name="success" type="stream">
+                <param name="contentDisposition">attachment;filename=${fileName}</param>
+                <param name="contentType">${contentType}</param>
+                <param name="inputName">fileInputStream</param>
+                <param name="bufferSize">102400</param>
+        </result>
+    </action>
+    
+	<!-- End Sub Model PostulacionPersonaQuery Actions -->
+	
+	<!-- End Actions GestionarPostulante -->
+	
+	
+	<action name="gestionar-responsables-plazas">
+			<result name="success" type="tiles">gestionar_reponsables_plazas</result>
+			<!-- 			<interceptor-ref name="basicStack" />  -->
+<!-- 			<interceptor-ref name="general" />  -->
+<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+	</action>
+	
+	<!-- Start Actions GestionarResponsablePlaza -->
+	<action name="GestionarResponsablePlazaView" class="sernanp.rrhh.web.action.seleccion.GestionarResponsablePlazaAction" method="view">
+			<result type="json" />
+	</action>
+	
+	<action name="GestionarResponsablePlazaCreate" class="sernanp.rrhh.web.action.seleccion.GestionarResponsablePlazaAction" method="create">
+			<result type="json" />
+	</action>
+	
+	<action name="GestionarResponsablePlazaSave" class="sernanp.rrhh.web.action.seleccion.GestionarResponsablePlazaAction" method="save">
+			<result type="json" />
+	</action>
+	
+	<action name="GestionarResponsablePlazaRemove" class="sernanp.rrhh.web.action.seleccion.GestionarResponsablePlazaAction" method="remove">
+			<result type="json" />
+	</action>
+	
+	<!-- Start Sub Model ResponsablePlazaQuery Actions -->
+	<action name="ResponsablePlazaQueryList" class="sernanp.rrhh.web.action.seleccion.GestionarResponsablePlazaAction" method="ResponsablePlazaQueryList">
+			<result type="json" />
+	</action>
+	
+	<action name="ResponsablePlazaQueryAdd" class="sernanp.rrhh.web.action.seleccion.GestionarResponsablePlazaAction" method="ResponsablePlazaQueryAdd">
+			<result type="json" />
+	</action>
+	
+	<action name="ResponsablePlazaQueryUpdate" class="sernanp.rrhh.web.action.seleccion.GestionarResponsablePlazaAction" method="ResponsablePlazaQueryUpdate">
+			<result type="json" />
+	</action>
+	
+	<action name="ResponsablePlazaQueryDelete" class="sernanp.rrhh.web.action.seleccion.GestionarResponsablePlazaAction" method="ResponsablePlazaQueryDelete">
+			<result type="json" />
+	</action>
+	<!-- End Sub Model ResponsablePlazaQuery Actions -->
+	
+	<!-- End Actions GestionarResponsablePlaza -->
+	
+	<action name="gestionar-configuracion-etapa">
+			<result name="success" type="tiles">gestionar_configuracion_etapa</result>
+			<!-- 			<interceptor-ref name="basicStack" />  -->
+<!-- 			<interceptor-ref name="general" />  -->
+<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+	</action>
+	
+	<!-- Start Actions GestionarConfiguracionEtapa -->
+	<action name="GestionarConfiguracionEtapaView" class="sernanp.rrhh.web.action.seleccion.GestionarConfiguracionEtapaAction" method="view">
+			<result type="json" />
+	</action>
+	
+	<action name="GestionarConfiguracionEtapaCreate" class="sernanp.rrhh.web.action.seleccion.GestionarConfiguracionEtapaAction" method="create">
+			<result type="json" />
+	</action>
+	
+	<action name="GestionarConfiguracionEtapaSave" class="sernanp.rrhh.web.action.seleccion.GestionarConfiguracionEtapaAction" method="save">
+			<result type="json" />
+	</action>
+	
+	<action name="GestionarConfiguracionEtapaRemove" class="sernanp.rrhh.web.action.seleccion.GestionarConfiguracionEtapaAction" method="remove">
+			<result type="json" />
+	</action>
+	
+	<!-- Start Sub Model ConfiguracionEtapaQuery Actions -->
+	<action name="ConfiguracionEtapaQueryList" class="sernanp.rrhh.web.action.seleccion.GestionarConfiguracionEtapaAction" method="ConfiguracionEtapaQueryList">
+			<result type="json" />
+	</action>
+	
+	<action name="ConfiguracionEtapaQueryAdd" class="sernanp.rrhh.web.action.seleccion.GestionarConfiguracionEtapaAction" method="ConfiguracionEtapaQueryAdd">
+			<result type="json" />
+	</action>
+	
+	<action name="ConfiguracionEtapaQueryUpdate" class="sernanp.rrhh.web.action.seleccion.GestionarConfiguracionEtapaAction" method="ConfiguracionEtapaQueryUpdate">
+			<result type="json" />
+	</action>
+	
+	<action name="ConfiguracionEtapaQueryDelete" class="sernanp.rrhh.web.action.seleccion.GestionarConfiguracionEtapaAction" method="ConfiguracionEtapaQueryDelete">
+			<result type="json" />
+	</action>
+	<!-- End Sub Model ConfiguracionEtapaQuery Actions -->
+	
+	<!-- End Actions GestionarConfiguracionEtapa -->
+	
+	<action name="gestionar-etapa">
+			<result name="success" type="tiles">gestionar_etapa</result>
+			<!-- 			<interceptor-ref name="basicStack" />  -->
+<!-- 			<interceptor-ref name="general" />  -->
+<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+	</action>
+	
+	<!-- Start Actions GestionarEtapaProcesoSeleccion -->
+	<action name="GestionarEtapaProcesoSeleccionView" class="sernanp.rrhh.web.action.seleccion.GestionarEtapaProcesoSeleccionAction" method="view">
+			<result type="json" />
+	</action>
+	
+	<action name="GestionarEtapaProcesoSeleccionCreate" class="sernanp.rrhh.web.action.seleccion.GestionarEtapaProcesoSeleccionAction" method="create">
+			<result type="json" />
+	</action>
+	
+	<action name="GestionarEtapaProcesoSeleccionSave" class="sernanp.rrhh.web.action.seleccion.GestionarEtapaProcesoSeleccionAction" method="save">
+			<result type="json" />
+	</action>
+	
+	<action name="GestionarEtapaProcesoSeleccionRemove" class="sernanp.rrhh.web.action.seleccion.GestionarEtapaProcesoSeleccionAction" method="remove">
+			<result type="json" />
+	</action>
+	
+	<!-- Start Sub Model SubEtapaProcesoSelecionQuery Actions -->
+	<action name="SubEtapaProcesoSelecionQueryList" class="sernanp.rrhh.web.action.seleccion.GestionarEtapaProcesoSeleccionAction" method="SubEtapaProcesoSelecionQueryList">
+			<result type="json" />
+	</action>
+	
+	<action name="SubEtapaProcesoSelecionQueryAdd" class="sernanp.rrhh.web.action.seleccion.GestionarEtapaProcesoSeleccionAction" method="SubEtapaProcesoSelecionQueryAdd">
+			<result type="json" />
+	</action>
+	
+	<action name="SubEtapaProcesoSelecionQueryUpdate" class="sernanp.rrhh.web.action.seleccion.GestionarEtapaProcesoSeleccionAction" method="SubEtapaProcesoSelecionQueryUpdate">
+			<result type="json" />
+	</action>
+	
+	<action name="SubEtapaProcesoSelecionQueryDelete" class="sernanp.rrhh.web.action.seleccion.GestionarEtapaProcesoSeleccionAction" method="SubEtapaProcesoSelecionQueryDelete">
+			<result type="json" />
+	</action>
+	<!-- End Sub Model SubEtapaProcesoSelecionQuery Actions -->
+	
+	<!-- End Actions GestionarEtapaProcesoSeleccion -->
+	
+	<action name="gestionar-factor-evaluacion">
+			<result name="success" type="tiles">gestionar_factor_evaluacion</result>
+			<!-- 			<interceptor-ref name="basicStack" />  -->
+<!-- 			<interceptor-ref name="general" />  -->
+<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+	</action>
+	
+	<!-- Start Actions GestionarFactorEvaluacion -->
+	<action name="GestionarFactorEvaluacionView" class="sernanp.rrhh.web.action.seleccion.GestionarFactorEvaluacionAction" method="view">
+			<result type="json" />
+	</action>
+	
+	<action name="GestionarFactorEvaluacionCreate" class="sernanp.rrhh.web.action.seleccion.GestionarFactorEvaluacionAction" method="create">
+			<result type="json" />
+	</action>
+	
+	<action name="GestionarFactorEvaluacionSave" class="sernanp.rrhh.web.action.seleccion.GestionarFactorEvaluacionAction" method="save">
+			<result type="json" />
+	</action>
+	
+	<action name="GestionarFactorEvaluacionRemove" class="sernanp.rrhh.web.action.seleccion.GestionarFactorEvaluacionAction" method="remove">
+			<result type="json" />
+	</action>
+	
+	<!-- Start Sub Model FactorEvaluacionQuery Actions -->
+	<action name="FactorEvaluacionQueryList" class="sernanp.rrhh.web.action.seleccion.GestionarFactorEvaluacionAction" method="FactorEvaluacionQueryList">
+			<result type="json" />
+	</action>
+	
+	<action name="FactorEvaluacionQueryAdd" class="sernanp.rrhh.web.action.seleccion.GestionarFactorEvaluacionAction" method="FactorEvaluacionQueryAdd">
+			<result type="json" />
+	</action>
+	
+	<action name="FactorEvaluacionQueryUpdate" class="sernanp.rrhh.web.action.seleccion.GestionarFactorEvaluacionAction" method="FactorEvaluacionQueryUpdate">
+			<result type="json" />
+	</action>
+	
+	<action name="FactorEvaluacionQueryDelete" class="sernanp.rrhh.web.action.seleccion.GestionarFactorEvaluacionAction" method="FactorEvaluacionQueryDelete">
+			<result type="json" />
+	</action>
+	<!-- End Sub Model FactorEvaluacionQuery Actions -->
+	
+	<!-- End Actions GestionarFactorEvaluacion -->
+	
+	<action name="gestionar-plazas">
+			<result name="success" type="tiles">gestionar_plazas</result>
+			<!-- 			<interceptor-ref name="basicStack" />  -->
+<!-- 			<interceptor-ref name="general" />  -->
+<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+	</action>
+	
+		<action name="gestionar-plazas-personal">
+			<result name="success" type="tiles">gestionar_plazas_alterno</result>
+			<!-- 			<interceptor-ref name="basicStack" />  -->
+<!-- 			<interceptor-ref name="general" />  -->
+<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+		</action>
+	
+	<!-- Start Actions GestionarPlaza -->
+<action name="GestionarPlazaView" class="sernanp.rrhh.web.action.seleccion.GestionarPlazaAction" method="view">
+		<result type="json" />
+</action>
+
+<action name="GestionarPlazaCreate" class="sernanp.rrhh.web.action.seleccion.GestionarPlazaAction" method="create">
+		<result type="json" />
+</action>
+
+<action name="GestionarPlazaSave" class="sernanp.rrhh.web.action.seleccion.GestionarPlazaAction" method="save">
+		<result type="json" />
+</action>
+
+<action name="GestionarPlazaRemove" class="sernanp.rrhh.web.action.seleccion.GestionarPlazaAction" method="remove">
+		<result type="json" />
+</action>
+
+<!-- Start Sub Model SubEtapaPlazaQuery Actions -->
+<action name="SubEtapaPlazaQueryList" class="sernanp.rrhh.web.action.seleccion.GestionarPlazaAction" method="SubEtapaPlazaQueryList">
+		<result type="json" />
+</action>
+
+<action name="SubEtapaPlazaQueryAdd" class="sernanp.rrhh.web.action.seleccion.GestionarPlazaAction" method="SubEtapaPlazaQueryAdd">
+		<result type="json" />
+</action>
+
+<action name="SubEtapaPlazaQueryUpdate" class="sernanp.rrhh.web.action.seleccion.GestionarPlazaAction" method="SubEtapaPlazaQueryUpdate">
+		<result type="json" />
+</action>
+
+<action name="SubEtapaPlazaQueryDelete" class="sernanp.rrhh.web.action.seleccion.GestionarPlazaAction" method="SubEtapaPlazaQueryDelete">
+		<result type="json" />
+</action>
+<!-- End Sub Model SubEtapaPlazaQuery Actions -->
+<!-- Start Sub Model PostulantePlazaQuery Actions -->
+<action name="PostulantePlazaQueryList" class="sernanp.rrhh.web.action.seleccion.GestionarPlazaAction" method="PostulantePlazaQueryList">
+		<result type="json" />
+</action>
+
+<action name="PostulantePlazaQueryAdd" class="sernanp.rrhh.web.action.seleccion.GestionarPlazaAction" method="PostulantePlazaQueryAdd">
+		<result type="json" />
+</action>
+
+<action name="PostulantePlazaQueryUpdate" class="sernanp.rrhh.web.action.seleccion.GestionarPlazaAction" method="PostulantePlazaQueryUpdate">
+		<result type="json" />
+</action>
+
+<action name="PostulantePlazaQueryDelete" class="sernanp.rrhh.web.action.seleccion.GestionarPlazaAction" method="PostulantePlazaQueryDelete">
+		<result type="json" />
+</action>
+<!-- End Sub Model PostulantePlazaQuery Actions -->
+<!-- Start Sub Model ArchivoPlazaQuery Actions -->
+<action name="ArchivoPlazaQueryList" class="sernanp.rrhh.web.action.seleccion.GestionarPlazaAction" method="ArchivoPlazaQueryList">
+		<result type="json" />
+</action>
+
+<action name="ArchivoPlazaQueryAdd" class="sernanp.rrhh.web.action.seleccion.GestionarPlazaAction" method="ArchivoPlazaQueryAdd">
+		<result type="json" />
+</action>
+
+<action name="ArchivoPlazaQueryUpdate" class="sernanp.rrhh.web.action.seleccion.GestionarPlazaAction" method="ArchivoPlazaQueryUpdate">
+		<result type="json" />
+</action>
+
+<action name="ArchivoPlazaQueryDelete" class="sernanp.rrhh.web.action.seleccion.GestionarPlazaAction" method="ArchivoPlazaQueryDelete">
+		<result type="json" />
+</action>
+
+<action name="download-file-plaza" class="sernanp.rrhh.web.action.seleccion.GestionarPlazaAction" method="downaloadFile">
+       <result name="success" type="stream">
+                <param name="contentDisposition">attachment;filename=${fileName}</param>
+                <param name="contentType">${contentType}</param>
+                <param name="inputName">fileInputStream</param>
+                <param name="bufferSize">102400</param>
+       </result>
+</action>
+<!-- End Sub Model ArchivoPlazaQuery Actions -->
+
+<!-- End Actions GestionarPlaza -->
+
+
+	<action name="gestionar-notas-postulante">
+			<result name="success" type="tiles">gestionar_notas_postulante</result>
+			<!-- 			<interceptor-ref name="basicStack" />  -->
+<!-- 			<interceptor-ref name="general" />  -->
+<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+	</action>
+
+<!-- Start Actions GestionarNotasPostulante -->
+<action name="GestionarNotasPostulanteView" class="sernanp.rrhh.web.action.seleccion.GestionarNotasPostulanteAction" method="view">
+		<result type="json" />
+</action>
+
+<action name="GestionarNotasPostulanteCreate" class="sernanp.rrhh.web.action.seleccion.GestionarNotasPostulanteAction" method="create">
+		<result type="json" />
+</action>
+
+<action name="GestionarNotasPostulanteSave" class="sernanp.rrhh.web.action.seleccion.GestionarNotasPostulanteAction" method="save">
+		<result type="json" />
+</action>
+
+<action name="GestionarNotasPostulanteRemove" class="sernanp.rrhh.web.action.seleccion.GestionarNotasPostulanteAction" method="remove">
+		<result type="json" />
+</action>
+<!-- End Actions GestionarNotasPostulante -->
+
+	<action name="grabar-estado-postulacion" class="sernanp.rrhh.web.action.seleccion.GrabarEstadoPostulacionAction" method="grabarEstado">
+			<result type="json" />
+	</action>
+	
+	<action name="seleccionar-ganadores" class="sernanp.rrhh.web.action.seleccion.GrabarEstadoPostulacionAction" method="seleccionarGanadores">
+			<result type="json" />
+	</action>
+
+	
+	<!-- END ACTION REPORTES -->
+		
+		<!-- BEGIN ACTION REPORTE DOCUMENTO CONSOLIDADO CONVOCATORIA -->
+				
+	 	<action name="documento-consolidado-convocatoria" class="sernanp.rrhh.web.action.seleccion.ReporteDocumentoConsolidadoConvocatoriaAction" method="reporteDocumentoConsolidadoConvocatoria">
+		<result name="pdf" type="jasper">
+			<param name="location">/jasper/seleccion/ReporteDocumentoConsolidadoConvocatoria.jasper</param>
+			<param name="dataSource">listResult</param>
+			<param name="format">PDF</param>
+			     
+		</result>
+	</action>
+	
+	<!-- END ACTION REPORTES -->	
+	
+	
+<!-- *****************************   REPORTE OFICIO REQUERIMIENTO PERSONAL MINTRA******************************-->
+
+		<action name="reporte-requerimiento-personal-mintra">
+		<result name="success" type="tiles">reporte_requerimiento_personal_mintra</result>
+		<!-- 			<interceptor-ref name="basicStack" />  -->
+<!-- 			<interceptor-ref name="general" />  -->
+<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+	</action>
+	
+	<!-- BEGIN ACTION REPORTE OFICIO MINTRA -->
+				
+	<action name="oficio-requerimientos-mintra-pdf" class="sernanp.rrhh.web.action.seleccion.ReporteRequerimientoPersonalMINTRAAction" method="reporteOficioMintra">
+		<result name="pdf" type="jasper">
+			<param name="location">/jasper/seleccion/ReporteRequerimientoMintra.jasper</param>
+			<param name="dataSource">listResult</param>
+			<param name="documentName">oficio_mintra</param>
+			<param name="format">PDF</param>
+			     
+		</result>
+	</action>
+
+ 
+ 	<action name="oficio-requerimientos-mintra-doc" class="sernanp.rrhh.web.action.seleccion.ReporteRequerimientoPersonalMINTRAAction" method="reporteOficioMintra">
+		<result name="pdf" type="jasper">
+			<param name="location">/jasper/seleccion/ReporteRequerimientoMintra.jasper</param>
+			<param name="dataSource">listResult</param>
+			<param name="format">RTF</param>
+			<param name="documentName">oficio_mintra</param>
+			<param name="contentDisposition">attachment; filename="oficio_mintra.doc"</param>    
+			     
+		</result>
+	</action>
+ 
+	
+	<!-- Start Actions ReporteRequerimientoPersonalMINTRA -->
+	<action name="ReporteRequerimientoPersonalMINTRAView" class="sernanp.rrhh.web.action.seleccion.ReporteRequerimientoPersonalMINTRAAction" method="view">
+			<result type="json" />
+	</action>
+
+	<action name="ReporteRequerimientoPersonalMINTRACreate" class="sernanp.rrhh.web.action.seleccion.ReporteRequerimientoPersonalMINTRAAction" method="create">
+			<result type="json" />
+	</action>
+
+	<action name="ReporteRequerimientoPersonalMINTRASave" class="sernanp.rrhh.web.action.seleccion.ReporteRequerimientoPersonalMINTRAAction" method="save">
+			<result type="json" />
+	</action>
+
+	<action name="ReporteRequerimientoPersonalMINTRARemove" class="sernanp.rrhh.web.action.seleccion.ReporteRequerimientoPersonalMINTRAAction" method="remove">
+			<result type="json" />
+	</action>
+	<!-- End Actions ReporteRequerimientoPersonalMINTRA -->
+
+
+
+	<!-- *****************************   REPORTE DOCUMENTO CONSOLIDADO CONVOCATORIA******************************-->
+
+			<action name="reporte-documento-consolidado-convocatoria">
+			<result name="success" type="tiles">reporte_documento_consolidado_convocatoria</result>
+			<!-- 			<interceptor-ref name="basicStack" />  -->
+	<!-- 			<interceptor-ref name="general" />  -->
+	<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+	<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+		</action>
+	
+
+
+	<!-- Start Actions ReporteDocumentoConsolidadoConvocatoria -->
+	<action name="ReporteDocumentoConsolidadoConvocatoriaView" class="sernanp.rrhh.web.action.seleccion.ReporteDocumentoConsolidadoConvocatoriaAction" method="view">
+			<result type="json" />
+	</action>
+
+	<action name="ReporteDocumentoConsolidadoConvocatoriaCreate" class="sernanp.rrhh.web.action.seleccion.ReporteDocumentoConsolidadoConvocatoriaAction" method="create">
+			<result type="json" />
+	</action>
+
+	<action name="ReporteDocumentoConsolidadoConvocatoriaSave" class="sernanp.rrhh.web.action.seleccion.ReporteDocumentoConsolidadoConvocatoriaAction" method="save">
+			<result type="json" />
+	</action>
+
+	<action name="ReporteDocumentoConsolidadoConvocatoriaRemove" class="sernanp.rrhh.web.action.seleccion.ReporteDocumentoConsolidadoConvocatoriaAction" method="remove">
+			<result type="json" />
+	</action>
+	<!-- End Actions ReporteDocumentoConsolidadoConvocatoria -->
+
+
+
+<!-- *****************************   REPORTE POSTULANTES INSCRITOS******************************-->
+
+		<action name="reporte-postulantes-inscritos">
+		<result name="success" type="tiles">reporte_postulantes_inscritos</result>
+		<!-- 			<interceptor-ref name="basicStack" />  -->
+<!-- 			<interceptor-ref name="general" />  -->
+<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+	</action>
+
+		<!-- BEGIN ACTION REPORTE POSTULANTES INSCRITOS -->
+				
+	 	<action name="postulantes-inscritos-pdf" class="sernanp.rrhh.web.action.seleccion.ReportePostulantesInscritosAction" method="reportePostulantesInscritos">
+		<result name="success" type="jasper">
+			<param name="location">/jasper/seleccion/ReportePostulantesInscritos.jasper</param>
+			<param name="dataSource">listResult</param>
+			<param name="reportParameters">reportParams</param>
+			<param name="format">PDF</param>
+			     
+		</result>
+	</action>
+
+
+	 	<action name="postulantes-inscritos-xls" class="sernanp.rrhh.web.action.seleccion.ReportePostulantesInscritosAction" method="reportePostulantesInscritos">
+		<result name="success" type="jasper">
+			<param name="location">/jasper/seleccion/ReportePostulantesInscritos_XLS.jasper</param>
+			<param name="dataSource">listResult</param>
+			<param name="reportParameters">reportParams</param>
+			<param name="format">XLS</param>
+			<param name="contentDisposition">attachment; filename="Postulantes_Inscritos.xls"</param>
+<!-- 			<param name="contentDisposition">attachment; filename="reporte_banco.xls"</param> -->
+			     
+		</result>
+	</action>
+
+<!-- Start Actions ReportePostulantesInscritos -->
+<action name="ReportePostulantesInscritosView" class="sernanp.rrhh.web.action.seleccion.ReportePostulantesInscritosAction" method="view">
+		<result type="json" />
+</action>
+
+<action name="ReportePostulantesInscritosCreate" class="sernanp.rrhh.web.action.seleccion.ReportePostulantesInscritosAction" method="create">
+		<result type="json" />
+</action>
+
+<action name="ReportePostulantesInscritosSave" class="sernanp.rrhh.web.action.seleccion.ReportePostulantesInscritosAction" method="save">
+		<result type="json" />
+</action>
+
+<action name="ReportePostulantesInscritosRemove" class="sernanp.rrhh.web.action.seleccion.ReportePostulantesInscritosAction" method="remove">
+		<result type="json" />
+</action>
+<!-- End Actions ReportePostulantesInscritos -->
+
+	
+
+	
+<!-- ::::::::  REPORTE CONTRATOS SUSCRITOS Y NO SUSCRITOS ::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+
+		<action name="reporte-postulantes-contratos">
+		<result name="success" type="tiles">reporte_postulantes_contratos</result>
+		<!-- 			<interceptor-ref name="basicStack" />  -->
+<!-- 			<interceptor-ref name="general" />  -->
+<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+	</action>
+	
+	
+	<action name="postulantes-contratos-pdf" class="sernanp.rrhh.web.action.seleccion.ReporteContratoSuscritosYNoSuscritosAction" method="reporteContratosSuscritosNoSuscritos">
+		<result name="success" type="jasper">
+			<param name="location">/jasper/seleccion/ReportePostulantesContratos.jasper</param>
+			<param name="dataSource">listResult</param>
+			<param name="format">PDF</param>
+			     
+		</result>
+	</action>
+	
+		<action name="postulantes-contratos-xls" class="sernanp.rrhh.web.action.seleccion.ReporteContratoSuscritosYNoSuscritosAction" method="reporteContratosSuscritosNoSuscritos">
+		<result name="success" type="jasper">
+			<param name="location">/jasper/seleccion/ReportePostulantesContratos_XLS.jasper</param>
+			<param name="dataSource">listResult</param>
+			<param name="format">XLS</param>
+			<param name="contentDisposition">attachment; filename="Reporte_Postulantes_Contratos.xls"</param>
+<!-- 			<param name="contentDisposition">attachment; filename="reporte_banco.xls"</param> -->			
+			     
+		</result>
+	</action>
+	
+	<!-- Start Actions ReporteContratoSuscritosYNoSuscritos -->
+<action name="ReporteContratoSuscritosYNoSuscritosView" class="sernanp.rrhh.web.action.seleccion.ReporteContratoSuscritosYNoSuscritosAction" method="view">
+		<result type="json" />
+</action>
+
+<action name="ReporteContratoSuscritosYNoSuscritosCreate" class="sernanp.rrhh.web.action.seleccion.ReporteContratoSuscritosYNoSuscritosAction" method="create">
+		<result type="json" />
+</action>
+
+<action name="ReporteContratoSuscritosYNoSuscritosSave" class="sernanp.rrhh.web.action.seleccion.ReporteContratoSuscritosYNoSuscritosAction" method="save">
+		<result type="json" />
+</action>
+
+<action name="ReporteContratoSuscritosYNoSuscritosRemove" class="sernanp.rrhh.web.action.seleccion.ReporteContratoSuscritosYNoSuscritosAction" method="remove">
+		<result type="json" />
+</action>
+<!-- End Actions ReporteContratoSuscritosYNoSuscritos -->
+	
+		
+	
+		
+	<!-- ::::::::::::::::::::::::::::::::::  REPORTE POSTULANTES FICHA INSCRIPCION ::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+	
+	<action name="reporte-postulantes-ficha-postulacion">
+		<result name="success" type="tiles">reporte_postulantes_ficha_postulacion</result>
+		<!-- 			<interceptor-ref name="basicStack" />  -->
+<!-- 			<interceptor-ref name="general" />  -->
+<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+	</action>
+	
+	<action name="postulantes-ficha-postulacion" class="sernanp.rrhh.web.action.seleccion.ReporteSeleccionPostulantesFichaPostulacionAction" method="reporteFichaPostulacion">
+		<result name="pdf" type="jasper">
+			<param name="location">/jasper/seleccion/ReportePostulantesFichaPostulacion.jasper</param>
+			<param name="dataSource">listResult</param>
+			<param name="format">PDF</param>
+			     
+		</result>
+	</action>
+	
+	
+
+<!-- Start Actions ReporteSeleccionPostulantesFichaPostulacion -->
+<action name="ReporteSeleccionPostulantesFichaPostulacionView" class="sernanp.rrhh.web.action.seleccion.ReporteSeleccionPostulantesFichaPostulacionAction" method="view">
+		<result type="json" />
+</action>
+
+<action name="ReporteSeleccionPostulantesFichaPostulacionCreate" class="sernanp.rrhh.web.action.seleccion.ReporteSeleccionPostulantesFichaPostulacionAction" method="create">
+		<result type="json" />
+</action>
+
+<action name="ReporteSeleccionPostulantesFichaPostulacionSave" class="sernanp.rrhh.web.action.seleccion.ReporteSeleccionPostulantesFichaPostulacionAction" method="save">
+		<result type="json" />
+</action>
+
+<action name="ReporteSeleccionPostulantesFichaPostulacionRemove" class="sernanp.rrhh.web.action.seleccion.ReporteSeleccionPostulantesFichaPostulacionAction" method="remove">
+		<result type="json" />
+</action>
+<!-- End Actions ReporteSeleccionPostulantesFichaPostulacion -->
+
+
+	<!-- ::::::::::::::::::::::::::::::::::  REPORTE POSTULANTES EVALUACION ESCRITA::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+
+
+	<action name="reporte-postulantes-evaluacion-escrita">
+		<result name="success" type="tiles">reporte_postulantes_evaluacion_escrita</result>
+		<!-- 			<interceptor-ref name="basicStack" />  -->
+<!-- 			<interceptor-ref name="general" />  -->
+<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+	</action>
+	
+		<action name="postulantes-evaluacion-escrita" class="sernanp.rrhh.web.action.seleccion.ReporteSeleccionPostulantesEvaluacionEscritaAction" method="reportePostulantesEvaluacionEscrita">
+		<result name="pdf" type="jasper">
+			<param name="location">/jasper/seleccion/ReportePostulantesEvaluacionEscrita.jasper</param>
+			<param name="dataSource">listResult</param>
+			<param name="format">PDF</param>
+			     
+		</result>
+	</action>
+	
+	
+
+<!-- Start Actions ReporteSeleccionPostulantesEvaluacionEscrita -->
+<action name="ReporteSeleccionPostulantesEvaluacionEscritaView" class="sernanp.rrhh.web.action.seleccion.ReporteSeleccionPostulantesEvaluacionEscritaAction" method="view">
+		<result type="json" />
+</action>
+
+<action name="ReporteSeleccionPostulantesEvaluacionEscritaCreate" class="sernanp.rrhh.web.action.seleccion.ReporteSeleccionPostulantesEvaluacionEscritaAction" method="create">
+		<result type="json" />
+</action>
+
+<action name="ReporteSeleccionPostulantesEvaluacionEscritaSave" class="sernanp.rrhh.web.action.seleccion.ReporteSeleccionPostulantesEvaluacionEscritaAction" method="save">
+		<result type="json" />
+</action>
+
+<action name="ReporteSeleccionPostulantesEvaluacionEscritaRemove" class="sernanp.rrhh.web.action.seleccion.ReporteSeleccionPostulantesEvaluacionEscritaAction" method="remove">
+		<result type="json" />
+</action>
+<!-- End Actions ReporteSeleccionPostulantesEvaluacionEscrita -->
+
+
+	<!-- ::::::::::::::::::::::::::::::::::  REPORTE POSTULANTES ENTREVISTA PERSONAL::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+	
+	
+	
+	<action name="reporte-postulantes-entrevista-personal">
+		<result name="success" type="tiles">reporte_postulantes_entrevista_personal</result>
+		<!-- 			<interceptor-ref name="basicStack" />  -->
+<!-- 			<interceptor-ref name="general" />  -->
+<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+	</action>
+
+		<action name="postulantes-entrevista-personal" class="sernanp.rrhh.web.action.seleccion.ReporteSeleccionPostulantesEntrevistaPersonalAction" method="reportePostulantesEntrevistaPersonal">
+		<result name="pdf" type="jasper">
+			<param name="location">/jasper/seleccion/ReportePostulantesEvaluacionEscrita.jasper</param>
+			<param name="dataSource">listResult</param>
+			<param name="format">PDF</param>
+			     
+		</result>
+	</action>
+
+<!-- Start Actions ReporteSeleccionPostulantesEntrevistaPersonal -->
+<action name="ReporteSeleccionPostulantesEntrevistaPersonalView" class="sernanp.rrhh.web.action.seleccion.ReporteSeleccionPostulantesEntrevistaPersonalAction" method="view">
+		<result type="json" />
+</action>
+
+<action name="ReporteSeleccionPostulantesEntrevistaPersonalCreate" class="sernanp.rrhh.web.action.seleccion.ReporteSeleccionPostulantesEntrevistaPersonalAction" method="create">
+		<result type="json" />
+</action>
+
+<action name="ReporteSeleccionPostulantesEntrevistaPersonalSave" class="sernanp.rrhh.web.action.seleccion.ReporteSeleccionPostulantesEntrevistaPersonalAction" method="save">
+		<result type="json" />
+</action>
+
+<action name="ReporteSeleccionPostulantesEntrevistaPersonalRemove" class="sernanp.rrhh.web.action.seleccion.ReporteSeleccionPostulantesEntrevistaPersonalAction" method="remove">
+		<result type="json" />
+</action>
+<!-- End Actions ReporteSeleccionPostulantesEntrevistaPersonal -->
+
+
+<!-- ::::::::::::::::::::::::::::::::::  REPORTE POSTULANTES EVALUACION ::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+	
+	<action name="reporte-postulantes-evaluacion">
+		<result name="success" type="tiles">reporte_postulantes_evaluacion</result>
+		<!-- 			<interceptor-ref name="basicStack" />  -->
+<!-- 			<interceptor-ref name="general" />  -->
+<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+	</action>
+	
+	
+	<action name="postulantes-ficha-postulacion-pdf" class="sernanp.rrhh.web.action.seleccion.ReporteSeleccionPostulantesFichaPostulacionAction" method="reporteFichaPostulacion">
+		<result name="success" type="jasper">
+			<param name="location">/jasper/seleccion/ReporteResultadosEvaluacion.jasper</param>
+			<param name="dataSource">listResult</param>
+			<param name="reportParameters">reportParams</param>
+			<param name="format">PDF</param>
+			     
+		</result>
+	</action>
+	
+	<action name="postulantes-ficha-postulacion-xls" class="sernanp.rrhh.web.action.seleccion.ReporteSeleccionPostulantesFichaPostulacionAction" method="reporteFichaPostulacion">
+		<result name="success" type="jasper">
+			<param name="location">/jasper/seleccion/ReporteResultadosEvaluacion_XLS.jasper</param>
+			<param name="dataSource">listResult</param>
+			<param name="reportParameters">reportParams</param>
+			<param name="format">XLS</param>
+			<param name="contentDisposition">attachment; filename="Reporte_Postulantes_Etapas.xls"</param>
+			     
+		</result>
+	</action>
+
+<!-- Start Actions ReporteSeleccionPostulantesFichaPostulacion -->
+<action name="ReporteSeleccionPostulantesFichaPostulacionView" class="sernanp.rrhh.web.action.seleccion.ReporteSeleccionPostulantesFichaPostulacionAction" method="view">
+		<result type="json" />
+</action>
+
+<action name="ReporteSeleccionPostulantesFichaPostulacionCreate" class="sernanp.rrhh.web.action.seleccion.ReporteSeleccionPostulantesFichaPostulacionAction" method="create">
+		<result type="json" />
+</action>
+
+<action name="ReporteSeleccionPostulantesFichaPostulacionSave" class="sernanp.rrhh.web.action.seleccion.ReporteSeleccionPostulantesFichaPostulacionAction" method="save">
+		<result type="json" />
+</action>
+
+<action name="ReporteSeleccionPostulantesFichaPostulacionRemove" class="sernanp.rrhh.web.action.seleccion.ReporteSeleccionPostulantesFichaPostulacionAction" method="remove">
+		<result type="json" />
+</action>
+<!-- End Actions ReporteSeleccionPostulantesFichaPostulacion -->	
+
+
+	<action name="reporte-convocatoria-mintra-doc" class="sernanp.rrhh.web.action.seleccion.ConvocatoriaPlazaAction" method="reporteConvocatoriaMintra">
+		<result name="success" type="jasper">
+			<param name="location">/jasper/seleccion/ReporteConvocatoriaMintra.jasper</param>
+			<param name="dataSource">listResult</param>
+			<param name="reportParameters">parametros</param>
+			<param name="format">RTF</param>
+			<param name="documentName">reporte_convocatoria_mintra</param>
+			<param name="contentDisposition">attachment; filename="reporte_convocatoria_mintra.doc"</param>     
+		</result>
+	</action>
+	
+	
+	<action name="reporte-convocatoria-mintra-pdf" class="sernanp.rrhh.web.action.seleccion.ConvocatoriaPlazaAction" method="reporteConvocatoriaMintra">
+		<result name="success" type="jasper">
+			<param name="location">/jasper/seleccion/ReporteConvocatoriaMintra.jasper</param>
+			<param name="dataSource">listResult</param>
+			<param name="reportParameters">parametros</param>
+			<param name="format">PDF</param>
+			<param name="documentName">reporte_convocatoria_mintra</param>
+<!-- 			<param name="contentDisposition">attachment; filename="reporte_convocatoria_mintra.docx"</param>      -->
+		</result>
+	</action>
+	
+	<action name="reporte-vacantes-publicas" class="sernanp.rrhh.web.action.seleccion.ConvocatoriaPlazaAction" method="reporteVacantesPublicas">
+		<result name="success" type="jasper">
+			<param name="location">/jasper/seleccion/ReporteVacantesPublicas.jasper</param>
+			<param name="dataSource">listResult</param>
+			<param name="format">RTF</param>
+			<param name="documentName">reporte_vacantes_publicas</param>
+			<param name="contentDisposition">attachment; filename="reporte_vacantes_publicas.doc"</param>     
+		</result>
+	</action>
+	
+	<action name="reporte-vacantes-plazas-doc" class="sernanp.rrhh.web.action.seleccion.ConvocatoriaPlazaAction" method="reporteVacantesPlazas">
+		<result name="success" type="jasper">
+			<param name="location">/jasper/seleccion/ReporteVacantesPlazas.jasper</param>
+			<param name="dataSource">listResult</param>
+			<param name="format">RTF</param>
+			<param name="documentName">reporte_vacantes_plazas</param>
+			<param name="contentDisposition">attachment; filename="reporte_vacantes_plazas.doc"</param>     
+		</result>
+	</action>
+	
+	
+	<action name="reporte-vacantes-plazas-pdf" class="sernanp.rrhh.web.action.seleccion.ConvocatoriaPlazaAction" method="reporteVacantesPlazas">
+		<result name="success" type="jasper">
+			<param name="location">/jasper/seleccion/ReporteVacantesPlazas.jasper</param>
+			<param name="dataSource">listResult</param>
+			<param name="format">PDF</param>
+			<param name="documentName">reporte_vacantes_plazas</param>
+<!-- 			<param name="contentDisposition">attachment; filename="reporte_vacantes_plazas.doc"</param>      -->
+		</result>
+	</action>
+		
+</package>
+  
+</struts>

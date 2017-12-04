@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.ResumenPostulacionPersonaQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.ResumenPostulacionPersonaQuery" parameterType="sernanp.app.dao.query.domain.ResumenPostulacionPersonaQueryCriteria"> 
+<![CDATA[
+
+	      
+select
+
+	p.idpersona ,
+	pn.idpersonanatural ,
+	(pn.nombre || ' ' || pn.apepat || ' ' || pn.apemat) as "nombre_completo",
+	td.abrtablatipo as "tipoDoc",
+	pn.numerodoc,
+	pn.ruc,
+	g.destablatipo as "genero",
+	pais.nompais as "nacionalidad",
+	pp.int_id_postulante ,
+	pp.srl_id_convocatoria,
+	pp.int_num_activacion,
+	(select a[2] || '-' || a[3] from (select regexp_split_to_array(pp.var_num_convocatoria, '-')) as dt(a)) as "var_num_convocatoria",
+	pp.srl_id_conv_area_org,
+	pp.var_codigo_postulacion,
+	pp.int_id_estado,
+	pp.srl_id_postulante_conv_area_org,
+	pp.estado_descrip,
+	pp.idarea,
+	pp.desarea,
+	uo.idunidad,
+	uo.nomunidad,
+	to_char(pp.tsp_fecha_registro, 'DD/MM/YYYY') as "tsp_fecha_registro"
+
+from
+	sernanp.persona p 
+	inner join sernanp.personanatural pn on p.idpersona = pn.idpersona
+	left join 
+	(
+		select
+			pp.int_id_postulante ,
+			cnv.srl_id_convocatoria,
+			cnv.var_num_convocatoria,
+			cao.srl_id_conv_area_org,
+			cao.idunidad,
+			pcao.int_num_activacion,
+			cao.var_codigo_postulacion,
+			detx.var_nombre_estado as "estado_descrip",
+			ao.idarea,
+			ao.desarea,
+			pcao.int_id_estado,
+			pcao.srl_id_postulante_conv_area_org,
+			pcao.tsp_fecha_registro
+		from
+			sernanp.t_postulante_personal pp  
+			left join sernanp.t_postulante_cnv_area_org pcao on pcao.int_id_postulante = pp.int_id_postulante and COALESCE(pcao.int_id_estado,0) IN (${int_id_estado} )
+			left join sernanp.t_convocatoria_area_org cao on pcao.srl_id_conv_area_org = cao.srl_id_conv_area_org
+			left join sernanp.t_convocatoria cnv on cao.srl_id_convocatoria = cnv.srl_id_convocatoria
+			left join sernanp.areaorganica ao on cao.idarea = ao.idarea and cao.int_id_estado = 1
+			left join 
+			(
+			select det.var_cod_estado,det.var_nombre_estado from sernanp.t_detalle_estado_tabla det
+			where det.srl_id_estado_tabla = 4
+			) detx on detx.var_cod_estado = cast(pcao.int_id_estado as char)
+	) 
+	pp on pn.idpersonanatural = pp.int_id_postulante left join 
+	(SELECT idtablatipo,destablatipo,abrtablatipo FROM sernanp.tablatipo WHERE idtabla=1) td
+	on pn.idtipodocumento = td.idtablatipo left join
+	(SELECT idtablatipo,destablatipo,abrtablatipo FROM sernanp.tablatipo WHERE idtabla=2) g
+	on pn.idsexo = g.idtablatipo left join
+	sernanp.pais pais on p.idpais = pais.idpais left join
+	sernanp.unidadoperativa uo on uo.idunidad = pp.idunidad									
+where
+	COALESCE((pn.nombre || ' ' || pn.apepat || ' ' || pn.apemat),'') like COALESCE('%'|| #{nombres} ||'%', COALESCE((pn.nombre || ' ' || pn.apepat || ' ' || pn.apemat),''))   and 
+	COALESCE(pn.idtipodocumento,0) = COALESCE(#{tipoDoc},COALESCE(pn.idtipodocumento,0))   and 
+	COALESCE(pn.numerodoc,'') like COALESCE('%'|| #{numerodoc} ||'%', COALESCE(pn.numerodoc,''))   and 
+	COALESCE(pn.ruc,'') like COALESCE('%'|| #{numeroRuc} ||'%', COALESCE(pn.ruc,'')) and 
+	COALESCE(pp.srl_id_convocatoria,0) = COALESCE(#{srl_id_convocatoria}, COALESCE(pp.srl_id_convocatoria,0)) and 
+	COALESCE(pp.srl_id_conv_area_org,0) = COALESCE(#{srl_id_conv_area_org}, COALESCE(pp.srl_id_conv_area_org,0)) and 
+	COALESCE(pp.idarea,0) = COALESCE(#{idarea}, COALESCE(pp.idarea,0)) and
+	COALESCE(uo.idunidad,0) = COALESCE(#{idunidad}, COALESCE(uo.idunidad,0)) and
+	COALESCE(pp.int_id_estado,0) IN ( ${int_id_estado} )
+	order by COALESCE((pn.nombre || ' ' || pn.apepat || ' ' || pn.apemat),'');
+ 
+	       
+]]>
+</select> 
+</mapper> 

@@ -1,0 +1,200 @@
+/**
+* Copyright «©» ${anho}, FOCUS CONSULTORES ASOCIADOS SAC. All rights reserved.
+*
+* This file is part of ${nameApp}.
+*
+* ${nameApp} is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* ${nameApp} is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with ${nameApp}.  If not, see <http://www.gnu.org/licenses/>.
+*/	 
+
+/**
+* GENERATOR CRUD EXT JS 5            
+* BY FOCUS CONSULTORES ASOCIADOS SAC  
+* DATE CREATE : ${datetimeCreate}
+* VERSION : 1.0 
+*/
+
+package ${packageServiceImpl};
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import pe.com.focus.util.BeanUtil;
+import pe.com.focus.repository.mybatis.util.BusinessException;
+import pe.com.focus.repository.mybatis.util.HelperServiceImpl;
+
+import ${packageService}.${nameService}Service;
+import ${classModel};
+
+
+#foreach( $e in $entity )
+import ${e.classEntity};
+import ${e.classMapperEntity};
+#foreach( $se in $e.subBeans )
+import ${se.classEntity};
+import ${se.classMapperEntity};
+#end
+#end
+
+#foreach( $e in $subModels )
+import ${e.classModel};
+import ${e.classEntity};
+import ${e.classMapperEntity};
+import ${e.classEntity}Example;
+#end
+
+@Service
+public class ${nameServiceImpl}ServiceImpl extends HelperServiceImpl implements ${nameService}Service {
+
+	@Autowired
+	private BeanUtil beanUtil;
+	
+	@Transactional
+	@Override
+	public Integer create(${nameModel} model, ${listsParam}) throws BusinessException {
+		
+		Integer lastId = null;
+#foreach( $e in $entity )
+
+		${e.nameEntity} ${e.nameVarEntity} = beanUtil.copyBean(model, ${e.nameEntity}.class);
+		this.insertSelective(${e.nameMapperEntity}.class, ${e.nameVarEntity});
+#set($nameVarEntityMain = ${e.nameVarEntity})
+#set($primaryKeyGetMethodMain = ${e.primaryKeyGetMethod})
+#foreach( $se in $e.subBeans )
+
+		${se.nameEntity} ${se.nameVarEntity} = beanUtil.copyBean(model, ${se.nameEntity}.class);
+		${se.nameVarEntity}.${se.primaryKeySetMethod}($nameVarEntityMain.$primaryKeyGetMethodMain());${se.otherProperties}
+		this.insertSelective(${se.nameMapperEntity}.class, ${se.nameVarEntity});
+#set($nameVarEntityMain = ${se.nameVarEntity})
+#set($primaryKeyGetMethodMain = ${se.primaryKeyGetMethod})
+#end
+#end
+		
+#foreach( $e in $subModels )
+#if($e.empty == "true")
+		/*
+		if(list${e.nameModel} == null){
+			throw new BusinessException("Error, no existen registros en ${e.nameEntity}.");
+		}else if(list${e.nameModel}.isEmpty()){
+			throw new BusinessException("Error, no existen registros en ${e.nameEntity}.");
+		}
+		*/
+#else
+		if(list${e.nameModel} == null){
+			throw new BusinessException("Error, no existen registros en ${e.nameEntity}.");
+		}else if(list${e.nameModel}.isEmpty()){
+			throw new BusinessException("Error, no existen registros en ${e.nameEntity}.");
+		}
+#end
+
+		for (${e.nameModel} ${e.nameVarModel} : list${e.nameModel}) {
+			${e.nameVarModel}.${e.propertySetMethod}(null);
+			${e.nameVarModel}.${e.joinPropertySetMethod}(${e.nameVarModelProperty}.${e.joinPropertyGetMethod}());
+			${e.nameEntity} ${e.nameVarEntity} = beanUtil.copyBean(${e.nameVarModel}, ${e.nameEntity}.class);
+			this.insertSelective(${e.nameMapperEntity}.class, ${e.nameVarEntity});
+		}
+#end
+		lastId = ${returnProperty}
+		return lastId;
+	}
+	
+	@Transactional
+	@Override
+	public void save(${nameModel} model, ${listsParam}) throws BusinessException {
+	
+#foreach( $e in $entity )
+		${e.nameEntity} ${e.nameVarEntity} = beanUtil.copyBean(model, ${e.nameEntity}.class);
+		this.updateByPrimaryKeySelective(${e.nameMapperEntity}.class, ${e.nameVarEntity});
+		
+#foreach( $se in $e.subBeans )
+		${se.nameEntity} ${se.nameVarEntity} = beanUtil.copyBean(model, ${se.nameEntity}.class);
+		this.updateByPrimaryKeySelective(${se.nameMapperEntity}.class, ${se.nameVarEntity});
+		
+#end
+#end
+#foreach( $e in $subModels )
+		/* Start ${e.nameEntity} */
+#if($e.empty == "true")
+		/*
+		if(list${e.nameModel} == null){
+			throw new BusinessException("Error, no existen registros en ${e.nameEntity}.");
+		}else if(list${e.nameModel}.isEmpty()){
+			throw new BusinessException("Error, no existen registros en ${e.nameEntity}.");
+		}
+		*/
+#else
+		if(list${e.nameModel} == null){
+			throw new BusinessException("Error, no existen registros en ${e.nameEntity}.");
+		}else if(list${e.nameModel}.isEmpty()){
+			throw new BusinessException("Error, no existen registros en ${e.nameEntity}.");
+		}
+#end
+
+		${e.nameEntity}Example ${e.nameVarEntity}Example = new ${e.nameEntity}Example();
+		${e.nameVarEntity}Example.createCriteria().and${e.joinProperty}EqualTo(${e.nameVarModelProperty}.${e.joinPropertyGetMethod}());
+		List<${e.nameEntity}> list${e.nameEntity}Current = this.selectByExample(${e.nameMapperEntity}.class, ${e.nameVarEntity}Example);
+		List<${e.nameEntity}> list${e.nameEntity}Deleted = new ArrayList<${e.nameEntity}>();
+		
+		for (${e.nameEntity} ${e.nameVarEntity} : list${e.nameEntity}Current) {
+			boolean noExists = true;
+			for (${e.nameModel} ${e.nameVarModel} : list${e.nameModel}) {
+				if(${e.nameVarModel}.${e.propertyGetMethod}().equals(${e.nameVarEntity}.${e.propertyGetMethod}())){
+					noExists = false;
+					break;
+				}
+			}
+			if(noExists){
+				list${e.nameEntity}Deleted.add(${e.nameVarEntity});
+			}
+		}
+		
+		this.deleteByPrimaryKey(${e.nameMapperEntity}.class, list${e.nameEntity}Deleted);
+		
+		for (${e.nameModel} ${e.nameVarModel} : list${e.nameModel}) {
+			if(${e.nameVarModel}.${e.propertyGetMethod}() < 1){
+				${e.nameVarModel}.${e.propertySetMethod}(null);
+				${e.nameVarModel}.${e.joinPropertySetMethod}(${e.nameVarModelProperty}.${e.joinPropertyGetMethod}());
+				${e.nameEntity} ${e.nameVarEntity} = beanUtil.copyBean(${e.nameVarModel}, ${e.nameEntity}.class);
+				this.insertSelective(${e.nameMapperEntity}.class, ${e.nameVarEntity});
+			}else{
+				${e.nameEntity} ${e.nameVarEntity} = beanUtil.copyBean(${e.nameVarModel}, ${e.nameEntity}.class);
+				this.updateByPrimaryKeySelective(${e.nameMapperEntity}.class, ${e.nameVarEntity});
+			}
+		}
+		/* End ${e.nameEntity} */	
+#end
+		
+	}
+
+	@Transactional
+	@Override
+	public void remove(${nameModel} model, ${listsParam}) throws BusinessException {
+	
+#foreach( $e in $subModels )
+		for (${e.nameModel} ${e.nameVarModel} : list${e.nameModel}) {
+			${e.nameEntity} ${e.nameVarEntity} = beanUtil.copyBean(${e.nameVarModel}, ${e.nameEntity}.class);
+			this.deleteByPrimaryKey(${e.nameMapperEntity}.class, ${e.nameVarEntity});
+		}
+#end
+#foreach( $e in $entityDelete )
+
+		${e.nameEntity} ${e.nameVarEntity} = beanUtil.copyBean(model, ${e.nameEntity}.class);
+		this.deleteByPrimaryKey(${e.nameMapperEntity}.class, ${e.nameVarEntity});
+#end
+	}
+
+}

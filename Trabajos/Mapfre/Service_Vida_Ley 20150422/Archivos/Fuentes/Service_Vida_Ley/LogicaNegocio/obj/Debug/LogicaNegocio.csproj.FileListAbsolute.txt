@@ -1,0 +1,172 @@
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\LogicaNegocio\bin\Debug\LogicaNegocio.dll
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\LogicaNegocio\bin\Debug\LogicaNegocio.pdb
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\LogicaNegocio\bin\Debug\AccesoDatos.dll
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\LogicaNegocio\bin\Debug\Entidades.dll
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\LogicaNegocio\bin\Debug\Utilitarios.dll
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\LogicaNegocio\bin\Debug\UtilitarioJO.dll
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\LogicaNegocio\bin\Debug\AccesoDatos.pdb
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\LogicaNegocio\bin\Debug\Entidades.pdb
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\LogicaNegocio\bin\Debug\Utilitarios.pdb
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\LogicaNegocio\obj\Debug\LogicaNegocio.csprojResolveAssemblyReference.cache
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\LogicaNegocio\obj\Debug\LogicaNegocio.dll
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\LogicaNegocio\obj\Debug\LogicaNegocio.pdb
+C:\MGUZMAN\AGRICOLA\SolFormatos\LogicaNegocio\bin\Debug\LogicaNegocio.dll
+C:\MGUZMAN\AGRICOLA\SolFormatos\LogicaNegocio\bin\Debug\LogicaNegocio.pdb
+C:\MGUZMAN\AGRICOLA\SolFormatos\LogicaNegocio\bin\Debug\AccesoDatos.dll
+C:\MGUZMAN\AGRICOLA\SolFormatos\LogicaNegocio\bin\Debug\Entidades.dll
+C:\MGUZMAN\AGRICOLA\SolFormatos\LogicaNegocio\bin\Debug\Utilitarios.dll
+C:\MGUZMAN\AGRICOLA\SolFormatos\LogicaNegocio\bin\Debug\UtilitarioJO.dll
+C:\MGUZMAN\AGRICOLA\SolFormatos\LogicaNegocio\bin\Debug\AccesoDatos.pdb
+C:\MGUZMAN\AGRICOLA\SolFormatos\LogicaNegocio\bin\Debug\Entidades.pdb
+C:\MGUZMAN\AGRICOLA\SolFormatos\LogicaNegocio\bin\Debug\Utilitarios.pdb
+C:\MGUZMAN\AGRICOLA\SolFormatos\LogicaNegocio\obj\Debug\LogicaNegocio.csprojResolveAssemblyReference.cache
+C:\MGUZMAN\AGRICOLA\SolFormatos\LogicaNegocio\obj\Debug\LogicaNegocio.dll
+C:\MGUZMAN\AGRICOLA\SolFormatos\LogicaNegocio\obj\Debug\LogicaNegocio.pdb
+C:\Proyectos\SolAgricola\LogicaNegocio\bin\Debug\LogicaNegocio.dll
+C:\Proyectos\SolAgricola\LogicaNegocio\bin\Debug\LogicaNegocio.pdb
+C:\Proyectos\SolAgricola\LogicaNegocio\bin\Debug\AccesoDatos.dll
+C:\Proyectos\SolAgricola\LogicaNegocio\bin\Debug\Entidades.dll
+C:\Proyectos\SolAgricola\LogicaNegocio\bin\Debug\Utilitarios.dll
+C:\Proyectos\SolAgricola\LogicaNegocio\bin\Debug\UtilitarioJO.dll
+C:\Proyectos\SolAgricola\LogicaNegocio\bin\Debug\AccesoDatos.pdb
+C:\Proyectos\SolAgricola\LogicaNegocio\bin\Debug\Entidades.pdb
+C:\Proyectos\SolAgricola\LogicaNegocio\bin\Debug\Utilitarios.pdb
+C:\Proyectos\SolAgricola\LogicaNegocio\obj\Debug\LogicaNegocio.csprojResolveAssemblyReference.cache
+C:\Proyectos\SolAgricola\LogicaNegocio\obj\Debug\LogicaNegocio.dll
+C:\Proyectos\SolAgricola\LogicaNegocio\obj\Debug\LogicaNegocio.pdb
+C:\Users\nfire\Desktop\SolAgricola\LogicaNegocio\obj\Debug\LogicaNegocio.csprojResolveAssemblyReference.cache
+C:\Users\nfire\Desktop\SolAgricola\LogicaNegocio\obj\Debug\LogicaNegocio.dll
+C:\Users\nfire\Desktop\SolAgricola\LogicaNegocio\bin\Debug\LogicaNegocio.dll
+C:\Users\nfire\Desktop\SolAgricola\LogicaNegocio\bin\Debug\LogicaNegocio.pdb
+C:\Users\nfire\Desktop\SolAgricola\LogicaNegocio\bin\Debug\AccesoDatos.dll
+C:\Users\nfire\Desktop\SolAgricola\LogicaNegocio\bin\Debug\Entidades.dll
+C:\Users\nfire\Desktop\SolAgricola\LogicaNegocio\bin\Debug\Utilitarios.dll
+C:\Users\nfire\Desktop\SolAgricola\LogicaNegocio\bin\Debug\UtilitarioJO.dll
+C:\Users\nfire\Desktop\SolAgricola\LogicaNegocio\bin\Debug\AccesoDatos.pdb
+C:\Users\nfire\Desktop\SolAgricola\LogicaNegocio\bin\Debug\Entidades.pdb
+C:\Users\nfire\Desktop\SolAgricola\LogicaNegocio\bin\Debug\Utilitarios.pdb
+C:\Users\nfire\Desktop\SolAgricola\LogicaNegocio\obj\Debug\LogicaNegocio.pdb
+C:\MGUZMAN\AGRICOLA\SolAgricola______\LogicaNegocio\bin\Debug\LogicaNegocio.dll
+C:\MGUZMAN\AGRICOLA\SolAgricola______\LogicaNegocio\bin\Debug\LogicaNegocio.pdb
+C:\MGUZMAN\AGRICOLA\SolAgricola______\LogicaNegocio\bin\Debug\AccesoDatos.dll
+C:\MGUZMAN\AGRICOLA\SolAgricola______\LogicaNegocio\bin\Debug\Entidades.dll
+C:\MGUZMAN\AGRICOLA\SolAgricola______\LogicaNegocio\bin\Debug\Utilitarios.dll
+C:\MGUZMAN\AGRICOLA\SolAgricola______\LogicaNegocio\bin\Debug\UtilitarioJO.dll
+C:\MGUZMAN\AGRICOLA\SolAgricola______\LogicaNegocio\bin\Debug\AccesoDatos.pdb
+C:\MGUZMAN\AGRICOLA\SolAgricola______\LogicaNegocio\bin\Debug\Entidades.pdb
+C:\MGUZMAN\AGRICOLA\SolAgricola______\LogicaNegocio\bin\Debug\Utilitarios.pdb
+C:\MGUZMAN\AGRICOLA\SolAgricola______\LogicaNegocio\obj\Debug\LogicaNegocio.csprojResolveAssemblyReference.cache
+C:\MGUZMAN\AGRICOLA\SolAgricola______\LogicaNegocio\obj\Debug\LogicaNegocio.dll
+C:\MGUZMAN\AGRICOLA\SolAgricola______\LogicaNegocio\obj\Debug\LogicaNegocio.pdb
+C:\MGUZMAN\AGRICOLA\SolAgricola\LogicaNegocio\obj\Debug\LogicaNegocio.csprojResolveAssemblyReference.cache
+C:\MGUZMAN\AGRICOLA\SolAgricola\LogicaNegocio\bin\Debug\LogicaNegocio.dll
+C:\MGUZMAN\AGRICOLA\SolAgricola\LogicaNegocio\bin\Debug\LogicaNegocio.pdb
+C:\MGUZMAN\AGRICOLA\SolAgricola\LogicaNegocio\bin\Debug\AccesoDatos.dll
+C:\MGUZMAN\AGRICOLA\SolAgricola\LogicaNegocio\bin\Debug\Entidades.dll
+C:\MGUZMAN\AGRICOLA\SolAgricola\LogicaNegocio\bin\Debug\Utilitarios.dll
+C:\MGUZMAN\AGRICOLA\SolAgricola\LogicaNegocio\bin\Debug\UtilitarioJO.dll
+C:\MGUZMAN\AGRICOLA\SolAgricola\LogicaNegocio\bin\Debug\AccesoDatos.pdb
+C:\MGUZMAN\AGRICOLA\SolAgricola\LogicaNegocio\bin\Debug\Entidades.pdb
+C:\MGUZMAN\AGRICOLA\SolAgricola\LogicaNegocio\bin\Debug\Utilitarios.pdb
+C:\MGUZMAN\AGRICOLA\SolAgricola\LogicaNegocio\obj\Debug\LogicaNegocio.dll
+C:\MGUZMAN\AGRICOLA\SolAgricola\LogicaNegocio\obj\Debug\LogicaNegocio.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\SolAgricola\LogicaNegocio\bin\Debug\LogicaNegocio.dll
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\SolAgricola\LogicaNegocio\bin\Debug\LogicaNegocio.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\SolAgricola\LogicaNegocio\bin\Debug\AccesoDatos.dll
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\SolAgricola\LogicaNegocio\bin\Debug\Entidades.dll
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\SolAgricola\LogicaNegocio\bin\Debug\Utilitarios.dll
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\SolAgricola\LogicaNegocio\bin\Debug\UtilitarioJO.dll
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\SolAgricola\LogicaNegocio\bin\Debug\AccesoDatos.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\SolAgricola\LogicaNegocio\bin\Debug\Entidades.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\SolAgricola\LogicaNegocio\bin\Debug\Utilitarios.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\SolAgricola\LogicaNegocio\obj\Debug\LogicaNegocio.csprojResolveAssemblyReference.cache
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\SolAgricola\LogicaNegocio\obj\Debug\LogicaNegocio.dll
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\SolAgricola\LogicaNegocio\obj\Debug\LogicaNegocio.pdb
+C:\Infoparque\Web_GOT\LogicaNegocio\bin\Debug\LogicaNegocio.dll
+C:\Infoparque\Web_GOT\LogicaNegocio\bin\Debug\LogicaNegocio.pdb
+C:\Infoparque\Web_GOT\LogicaNegocio\bin\Debug\AccesoDatos.dll
+C:\Infoparque\Web_GOT\LogicaNegocio\bin\Debug\Entidades.dll
+C:\Infoparque\Web_GOT\LogicaNegocio\bin\Debug\Utilitarios.dll
+C:\Infoparque\Web_GOT\LogicaNegocio\bin\Debug\UtilitarioJO.dll
+C:\Infoparque\Web_GOT\LogicaNegocio\bin\Debug\AccesoDatos.pdb
+C:\Infoparque\Web_GOT\LogicaNegocio\bin\Debug\Entidades.pdb
+C:\Infoparque\Web_GOT\LogicaNegocio\bin\Debug\Utilitarios.pdb
+C:\Infoparque\Web_GOT\LogicaNegocio\obj\Debug\LogicaNegocio.csprojResolveAssemblyReference.cache
+C:\Infoparque\Web_GOT\LogicaNegocio\obj\Debug\LogicaNegocio.dll
+C:\Infoparque\Web_GOT\LogicaNegocio\obj\Debug\LogicaNegocio.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\LogicaNegocio\bin\Debug\LogicaNegocio.dll
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\LogicaNegocio\bin\Debug\LogicaNegocio.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\LogicaNegocio\bin\Debug\AccesoDatos.dll
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\LogicaNegocio\bin\Debug\Entidades.dll
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\LogicaNegocio\bin\Debug\Utilitarios.dll
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\LogicaNegocio\bin\Debug\UtilitarioJO.dll
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\LogicaNegocio\bin\Debug\AccesoDatos.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\LogicaNegocio\bin\Debug\Entidades.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\LogicaNegocio\bin\Debug\Utilitarios.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\LogicaNegocio\obj\Debug\LogicaNegocio.csprojResolveAssemblyReference.cache
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\LogicaNegocio\obj\Debug\LogicaNegocio.dll
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\LogicaNegocio\obj\Debug\LogicaNegocio.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\LogicaNegocio\bin\Debug\LogicaNegocio.dll
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\LogicaNegocio\bin\Debug\LogicaNegocio.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\LogicaNegocio\bin\Debug\AccesoDatos.dll
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\LogicaNegocio\bin\Debug\Entidades.dll
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\LogicaNegocio\bin\Debug\Utilitarios.dll
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\LogicaNegocio\bin\Debug\UtilitarioJO.dll
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\LogicaNegocio\bin\Debug\AccesoDatos.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\LogicaNegocio\bin\Debug\Entidades.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\LogicaNegocio\bin\Debug\Utilitarios.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\LogicaNegocio\obj\Debug\LogicaNegocio.csprojResolveAssemblyReference.cache
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\LogicaNegocio\obj\Debug\LogicaNegocio.dll
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\LogicaNegocio\obj\Debug\LogicaNegocio.pdb
+C:\Users\nfire\Desktop\Aplicaiones\Service_Vida_Ley\LogicaNegocio\bin\Debug\LogicaNegocio.dll
+C:\Users\nfire\Desktop\Aplicaiones\Service_Vida_Ley\LogicaNegocio\bin\Debug\LogicaNegocio.pdb
+C:\Users\nfire\Desktop\Aplicaiones\Service_Vida_Ley\LogicaNegocio\bin\Debug\AccesoDatos.dll
+C:\Users\nfire\Desktop\Aplicaiones\Service_Vida_Ley\LogicaNegocio\bin\Debug\Entidades.dll
+C:\Users\nfire\Desktop\Aplicaiones\Service_Vida_Ley\LogicaNegocio\bin\Debug\Utilitarios.dll
+C:\Users\nfire\Desktop\Aplicaiones\Service_Vida_Ley\LogicaNegocio\bin\Debug\UtilitarioJO.dll
+C:\Users\nfire\Desktop\Aplicaiones\Service_Vida_Ley\LogicaNegocio\bin\Debug\AccesoDatos.pdb
+C:\Users\nfire\Desktop\Aplicaiones\Service_Vida_Ley\LogicaNegocio\bin\Debug\Entidades.pdb
+C:\Users\nfire\Desktop\Aplicaiones\Service_Vida_Ley\LogicaNegocio\bin\Debug\Utilitarios.pdb
+C:\Users\nfire\Desktop\Aplicaiones\Service_Vida_Ley\LogicaNegocio\obj\Debug\LogicaNegocio.csprojResolveAssemblyReference.cache
+C:\Users\nfire\Desktop\Aplicaiones\Service_Vida_Ley\LogicaNegocio\obj\Debug\LogicaNegocio.dll
+C:\Users\nfire\Desktop\Aplicaiones\Service_Vida_Ley\LogicaNegocio\obj\Debug\LogicaNegocio.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\LogicaNegocio\bin\Debug\PdfSharp.dll
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\LogicaNegocio\bin\Debug\LogicaNegocio.dll
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\LogicaNegocio\bin\Debug\LogicaNegocio.pdb
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\LogicaNegocio\bin\Debug\AccesoDatos.dll
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\LogicaNegocio\bin\Debug\Entidades.dll
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\LogicaNegocio\bin\Debug\PdfSharp.dll
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\LogicaNegocio\bin\Debug\Utilitarios.dll
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\LogicaNegocio\bin\Debug\UtilitarioJO.dll
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\LogicaNegocio\bin\Debug\AccesoDatos.pdb
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\LogicaNegocio\bin\Debug\Entidades.pdb
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\LogicaNegocio\bin\Debug\Utilitarios.pdb
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\LogicaNegocio\obj\Debug\LogicaNegocio.csprojResolveAssemblyReference.cache
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\LogicaNegocio\obj\Debug\LogicaNegocio.dll
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\LogicaNegocio\obj\Debug\LogicaNegocio.pdb
+C:\Users\nfire\Desktop\APLICACIONES\Service_Vida_Ley\LogicaNegocio\bin\Debug\LogicaNegocio.dll
+C:\Users\nfire\Desktop\APLICACIONES\Service_Vida_Ley\LogicaNegocio\bin\Debug\LogicaNegocio.pdb
+C:\Users\nfire\Desktop\APLICACIONES\Service_Vida_Ley\LogicaNegocio\bin\Debug\AccesoDatos.dll
+C:\Users\nfire\Desktop\APLICACIONES\Service_Vida_Ley\LogicaNegocio\bin\Debug\Entidades.dll
+C:\Users\nfire\Desktop\APLICACIONES\Service_Vida_Ley\LogicaNegocio\bin\Debug\PdfSharp.dll
+C:\Users\nfire\Desktop\APLICACIONES\Service_Vida_Ley\LogicaNegocio\bin\Debug\Utilitarios.dll
+C:\Users\nfire\Desktop\APLICACIONES\Service_Vida_Ley\LogicaNegocio\bin\Debug\UtilitarioJO.dll
+C:\Users\nfire\Desktop\APLICACIONES\Service_Vida_Ley\LogicaNegocio\bin\Debug\AccesoDatos.pdb
+C:\Users\nfire\Desktop\APLICACIONES\Service_Vida_Ley\LogicaNegocio\bin\Debug\Entidades.pdb
+C:\Users\nfire\Desktop\APLICACIONES\Service_Vida_Ley\LogicaNegocio\bin\Debug\Utilitarios.pdb
+C:\Users\nfire\Desktop\APLICACIONES\Service_Vida_Ley\LogicaNegocio\obj\Debug\LogicaNegocio.csprojResolveAssemblyReference.cache
+C:\Users\nfire\Desktop\APLICACIONES\Service_Vida_Ley\LogicaNegocio\obj\Debug\LogicaNegocio.dll
+C:\Users\nfire\Desktop\APLICACIONES\Service_Vida_Ley\LogicaNegocio\obj\Debug\LogicaNegocio.pdb
+D:\JRaffo\Service_Vida_Ley 20150422\Service_Vida_Ley\LogicaNegocio\obj\Debug\LogicaNegocio.csprojResolveAssemblyReference.cache
+D:\JRaffo\Service_Vida_Ley 20150422\Service_Vida_Ley\LogicaNegocio\obj\Debug\LogicaNegocio.dll
+D:\JRaffo\Service_Vida_Ley 20150422\Service_Vida_Ley\LogicaNegocio\obj\Debug\LogicaNegocio.pdb
+D:\JRaffo\Service_Vida_Ley 20150422\Service_Vida_Ley\LogicaNegocio\bin\Debug\LogicaNegocio.dll
+D:\JRaffo\Service_Vida_Ley 20150422\Service_Vida_Ley\LogicaNegocio\bin\Debug\LogicaNegocio.pdb
+D:\JRaffo\Service_Vida_Ley 20150422\Service_Vida_Ley\LogicaNegocio\bin\Debug\AccesoDatos.dll
+D:\JRaffo\Service_Vida_Ley 20150422\Service_Vida_Ley\LogicaNegocio\bin\Debug\Entidades.dll
+D:\JRaffo\Service_Vida_Ley 20150422\Service_Vida_Ley\LogicaNegocio\bin\Debug\PdfSharp.dll
+D:\JRaffo\Service_Vida_Ley 20150422\Service_Vida_Ley\LogicaNegocio\bin\Debug\Utilitarios.dll
+D:\JRaffo\Service_Vida_Ley 20150422\Service_Vida_Ley\LogicaNegocio\bin\Debug\UtilitarioJO.dll
+D:\JRaffo\Service_Vida_Ley 20150422\Service_Vida_Ley\LogicaNegocio\bin\Debug\AccesoDatos.pdb
+D:\JRaffo\Service_Vida_Ley 20150422\Service_Vida_Ley\LogicaNegocio\bin\Debug\Entidades.pdb
+D:\JRaffo\Service_Vida_Ley 20150422\Service_Vida_Ley\LogicaNegocio\bin\Debug\Utilitarios.pdb

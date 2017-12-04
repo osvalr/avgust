@@ -1,0 +1,74 @@
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\LogicaNegocio\bin\Release\LogicaNegocio.dll
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\LogicaNegocio\bin\Release\LogicaNegocio.pdb
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\LogicaNegocio\bin\Release\AccesoDatos.dll
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\LogicaNegocio\bin\Release\Entidades.dll
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\LogicaNegocio\bin\Release\Utilitarios.dll
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\LogicaNegocio\bin\Release\UtilitarioJO.dll
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\LogicaNegocio\bin\Release\AccesoDatos.pdb
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\LogicaNegocio\bin\Release\Entidades.pdb
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\LogicaNegocio\bin\Release\Utilitarios.pdb
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\LogicaNegocio\obj\Release\LogicaNegocio.csprojResolveAssemblyReference.cache
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\LogicaNegocio\obj\Release\LogicaNegocio.dll
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\LogicaNegocio\obj\Release\LogicaNegocio.pdb
+C:\MGUZMAN\AGRICOLA\SolAgricola\LogicaNegocio\bin\Release\LogicaNegocio.dll
+C:\MGUZMAN\AGRICOLA\SolAgricola\LogicaNegocio\bin\Release\LogicaNegocio.pdb
+C:\MGUZMAN\AGRICOLA\SolAgricola\LogicaNegocio\bin\Release\AccesoDatos.dll
+C:\MGUZMAN\AGRICOLA\SolAgricola\LogicaNegocio\bin\Release\Entidades.dll
+C:\MGUZMAN\AGRICOLA\SolAgricola\LogicaNegocio\bin\Release\Utilitarios.dll
+C:\MGUZMAN\AGRICOLA\SolAgricola\LogicaNegocio\bin\Release\UtilitarioJO.dll
+C:\MGUZMAN\AGRICOLA\SolAgricola\LogicaNegocio\bin\Release\AccesoDatos.pdb
+C:\MGUZMAN\AGRICOLA\SolAgricola\LogicaNegocio\bin\Release\Entidades.pdb
+C:\MGUZMAN\AGRICOLA\SolAgricola\LogicaNegocio\bin\Release\Utilitarios.pdb
+C:\MGUZMAN\AGRICOLA\SolAgricola\LogicaNegocio\obj\Release\LogicaNegocio.csprojResolveAssemblyReference.cache
+C:\MGUZMAN\AGRICOLA\SolAgricola\LogicaNegocio\obj\Release\LogicaNegocio.dll
+C:\MGUZMAN\AGRICOLA\SolAgricola\LogicaNegocio\obj\Release\LogicaNegocio.pdb
+C:\HROMAN\SolAgricola\LogicaNegocio\bin\Release\LogicaNegocio.dll
+C:\HROMAN\SolAgricola\LogicaNegocio\bin\Release\LogicaNegocio.pdb
+C:\HROMAN\SolAgricola\LogicaNegocio\bin\Release\AccesoDatos.dll
+C:\HROMAN\SolAgricola\LogicaNegocio\bin\Release\Entidades.dll
+C:\HROMAN\SolAgricola\LogicaNegocio\bin\Release\Utilitarios.dll
+C:\HROMAN\SolAgricola\LogicaNegocio\bin\Release\UtilitarioJO.dll
+C:\HROMAN\SolAgricola\LogicaNegocio\bin\Release\AccesoDatos.pdb
+C:\HROMAN\SolAgricola\LogicaNegocio\bin\Release\Entidades.pdb
+C:\HROMAN\SolAgricola\LogicaNegocio\bin\Release\Utilitarios.pdb
+C:\HROMAN\SolAgricola\LogicaNegocio\obj\Release\LogicaNegocio.csprojResolveAssemblyReference.cache
+C:\HROMAN\SolAgricola\LogicaNegocio\obj\Release\LogicaNegocio.dll
+C:\HROMAN\SolAgricola\LogicaNegocio\obj\Release\LogicaNegocio.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\LogicaNegocio\bin\Release\LogicaNegocio.dll
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\LogicaNegocio\bin\Release\LogicaNegocio.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\LogicaNegocio\bin\Release\AccesoDatos.dll
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\LogicaNegocio\bin\Release\Entidades.dll
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\LogicaNegocio\bin\Release\Utilitarios.dll
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\LogicaNegocio\bin\Release\UtilitarioJO.dll
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\LogicaNegocio\bin\Release\AccesoDatos.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\LogicaNegocio\bin\Release\Entidades.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\LogicaNegocio\bin\Release\Utilitarios.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\LogicaNegocio\obj\Release\LogicaNegocio.csprojResolveAssemblyReference.cache
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\LogicaNegocio\obj\Release\LogicaNegocio.dll
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\LogicaNegocio\obj\Release\LogicaNegocio.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\LogicaNegocio\bin\Release\LogicaNegocio.dll
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\LogicaNegocio\bin\Release\LogicaNegocio.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\LogicaNegocio\bin\Release\AccesoDatos.dll
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\LogicaNegocio\bin\Release\Entidades.dll
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\LogicaNegocio\bin\Release\Utilitarios.dll
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\LogicaNegocio\bin\Release\UtilitarioJO.dll
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\LogicaNegocio\bin\Release\AccesoDatos.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\LogicaNegocio\bin\Release\Entidades.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\LogicaNegocio\bin\Release\Utilitarios.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\LogicaNegocio\obj\Release\LogicaNegocio.csprojResolveAssemblyReference.cache
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\LogicaNegocio\obj\Release\LogicaNegocio.dll
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\LogicaNegocio\obj\Release\LogicaNegocio.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\LogicaNegocio\bin\Release\PdfSharp.dll
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\LogicaNegocio\obj\Release\LogicaNegocio.csprojResolveAssemblyReference.cache
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\LogicaNegocio\obj\Release\LogicaNegocio.dll
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\LogicaNegocio\obj\Release\LogicaNegocio.pdb
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\LogicaNegocio\bin\Release\LogicaNegocio.dll
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\LogicaNegocio\bin\Release\LogicaNegocio.pdb
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\LogicaNegocio\bin\Release\AccesoDatos.dll
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\LogicaNegocio\bin\Release\Entidades.dll
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\LogicaNegocio\bin\Release\PdfSharp.dll
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\LogicaNegocio\bin\Release\Utilitarios.dll
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\LogicaNegocio\bin\Release\UtilitarioJO.dll
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\LogicaNegocio\bin\Release\AccesoDatos.pdb
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\LogicaNegocio\bin\Release\Entidades.pdb
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\LogicaNegocio\bin\Release\Utilitarios.pdb

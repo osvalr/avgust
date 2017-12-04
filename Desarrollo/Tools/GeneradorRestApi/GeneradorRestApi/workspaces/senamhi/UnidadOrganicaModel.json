@@ -1,0 +1,6 @@
+{
+	"nameCrud": "UnidadOrganica",
+	"path": "unidades-organicas",
+	"nameRepository": "TAreaOrganicaRepository",
+	"nameModelXml": "UnidadOrganicaModel.xml"
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context  crossContext="true" 
+    debug="5" docBase="sisplanep11" path="/sisplanep11">
+
+<!-- 
+<Resource name="jdbc/ds_proyecto" auth="Container" type="javax.sql.DataSource"
+               maxActive="500" maxIdle="30" maxWait="10000" removeAbandoned="true" removeAbandonedTimeout="1800"
+               username="diana" password="artemisa" driverClassName="com.mysql.jdbc.Driver"
+               url="jdbc:mysql://10.10.11.12:3306/dde?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf8"
+               validationQuery="Select 1" />     
+
+-->   
+<!--  
+<Resource name="jdbc/ds_proyecto" auth="Container" type="javax.sql.DataSource"
+               maxActive="500" maxIdle="30" maxWait="10000" removeAbandoned="true" removeAbandonedTimeout="1800"
+               username="diana" password="artemisa" driverClassName="com.mysql.jdbc.Driver"
+               url="jdbc:mysql://10.10.11.12:3306/diana_d?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf8"
+               validationQuery="Select 1" />     
+  -->
+  
+  <Resource name="jdbc/ds_proyecto" auth="Container" type="javax.sql.DataSource"
+               maxActive="500" maxIdle="30" maxWait="10000" removeAbandoned="true" removeAbandonedTimeout="1800"
+               username="diana" password="artemisa" driverClassName="org.postgresql.Driver"
+               url="jdbc:postgresql://10.10.11.12:5432/sernanp"
+               validationQuery="Select 1" />  
+  
+</Context>

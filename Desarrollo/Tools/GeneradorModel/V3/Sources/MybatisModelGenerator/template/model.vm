@@ -1,0 +1,24 @@
+${copy}
+
+/**
+* The ${modelDto.nameModel} class is the resultset equivalent of an SQL query
+* for Java and will be managed by Mybatis.
+*
+* @author  Javier Raffo
+* @version 1.0
+* @since   ${datetimeCreate}
+*/
+
+package ${modelDto.packageModel}; 
+
+import pe.com.kapcom.util.AbstractModel;
+
+public class ${modelDto.nameModel} extends AbstractModel implements java.io.Serializable { 
+
+	private static final long serialVersionUID = 1L;
+	
+${modelDto.attributesOut}
+${modelDto.attributesSubModels}
+${modelDto.methodsOut}
+${modelDto.methodsSubModels}
+} 

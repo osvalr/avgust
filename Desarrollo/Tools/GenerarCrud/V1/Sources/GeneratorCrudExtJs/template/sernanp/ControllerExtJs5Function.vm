@@ -1,0 +1,86 @@
+/**
+* Copyright «©» ${anho}, FOCUS CONSULTORES ASOCIADOS SAC. All rights reserved.
+*
+* This file is part of ${nameApp}.
+*
+* ${nameApp} is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* ${nameApp} is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with ${nameApp}.  If not, see <http://www.gnu.org/licenses/>.
+*/	 
+
+/**
+* GENERATOR CRUD EXT JS 5            
+* BY FOCUS CONSULTORES ASOCIADOS SAC  
+* DATE CREATE : ${datetimeCreate}
+* VERSION : 1.0 
+*/
+
+Ext.define('MyApp.controller.${name}.MainController', {
+    extend: 'Ext.app.Controller',
+
+    stores: ['${name}.MainStore'],
+
+    models: ['${name}.MainModel'],
+
+    views: ['${name}.Edit'],
+
+    refs: [
+        {
+            ref: '${name}List',
+            selector: '${name}List'
+        }
+    ],
+
+    init: function() {
+        this.control({
+            '${name}Edit button[action=save]': {
+                click: this.saveRecord
+            }
+        });
+    },
+
+    editRecord: function(grid, record) {
+        var edit = Ext.create('MyApp.view.${name}.Edit').show();
+        edit.setTitle('Agregar');
+    },
+    
+    saveRecord: function(button) {
+    	
+        var win = button.up('window');
+        var form = win.down('form');
+        var record = form.getRecord();
+        var values = form.getValues();
+        var store = Ext.getStore('${name}.MainStore');
+        
+        if (form.isValid()) {
+	        Ext.Msg.confirm('Confirmar','¿Estás seguro de GRABAR el registro?',function (btn) {
+	            
+	            if (btn == 'yes') {
+
+	        		record = Ext.create('MyApp.model.${name}.MainModel');
+	        		record.set(values);
+	        		store.add(record);
+
+	        		store.sync({
+	        	        success: function (batch, eOpts) {
+
+	        	        },
+	        	        failure: function (batch, eOpts) {
+
+	        	        }
+	        	    });
+	            }
+	        });
+		}
+    }
+          
+});

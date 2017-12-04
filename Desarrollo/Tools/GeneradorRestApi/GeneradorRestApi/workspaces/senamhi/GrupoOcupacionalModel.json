@@ -1,0 +1,6 @@
+{
+	"nameCrud": "GrupoOcupacional",
+	"path": "grupo-ocupacional",
+	"nameRepository": "TGrupoOcupacionalRepository",
+	"nameModelXml": "GrupoOcupacionalModel.xml"
+}

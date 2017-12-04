@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.InfoResponsableUnidadOperativaQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.InfoResponsableUnidadOperativaQuery" parameterType="sernanp.app.dao.query.domain.InfoResponsableUnidadOperativaQueryCriteria"> 
+<![CDATA[
+
+	      
+	      
+select 
+
+	ruo.srl_id_resp_unid_oper ,
+	uo.nomunidad,
+	pn.idtipodocumento ,
+	td.abrtablatipo as "des_tipo_documento",
+	pn.numerodoc,
+	pn.nombre || ' ' || pn.apepat || ' ' || pn.apemat as "nombres",
+	tr.destablatipo as "des_tipo_responsable",
+	tt.abrtablatipo as "des_tipo_trato"
+	
+
+from sernanp.t_responsable_unidad_operativa ruo inner join sernanp.unidadoperativa uo
+on ruo.idunidad = uo.idunidad
+inner join sernanp.personal ppp 
+on ruo.idpersonal = ppp.idpersonal
+inner join sernanp.personanatural pn
+on ppp.idpersonanatural = pn.idpersonanatural
+inner join 
+(select tt.codinttablatipo,tt.destablatipo from sernanp.tablatipo tt where tt.idtabla = (select t.idtabla from sernanp.tabla t where t.destabla = 'Tipo Responsable')) tr
+on ruo.int_id_tipo_responsable = tr.codinttablatipo
+inner join
+(select tt.ordtablatipo,tt.abrtablatipo from sernanp.tablatipo tt where tt.idtabla = (select t.idtabla from sernanp.tabla t where t.destabla = 'Tipo de Documento')) td
+on pn.idtipodocumento = td.ordtablatipo
+inner join
+(select tt.ordtablatipo,tt.abrtablatipo from sernanp.tablatipo tt where tt.idtabla = (select t.idtabla from sernanp.tabla t where t.destabla = 'Tipo Trato Persona')) tt
+on ruo.int_tipo_trato = tt.ordtablatipo
+where 
+
+ruo.srl_id_resp_unid_oper = #{srl_id_resp_unid_oper}  
+
+		  
+	      
+]]>
+</select> 
+</mapper> 

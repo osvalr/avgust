@@ -1,0 +1,7 @@
+{
+	"titleCrud": "Purchase Conditions",
+	"nameCrud": "PurchaseConditions",
+	"constUrlApi": "PURCHASE_CONDITIONS_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "PurchaseConditionModel.xml"
+}

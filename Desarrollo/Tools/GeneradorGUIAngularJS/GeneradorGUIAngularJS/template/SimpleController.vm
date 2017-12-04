@@ -1,0 +1,381 @@
+${copy}
+
+/**
+* @author  Javier Raffo
+* @version 1.0
+* @since   ${datetimeCreate}
+*/
+
+'use strict';
+
+app.controller('${configBean.nameCrud}.controllers.MainController',
+[
+  '${configBean.nameCrud}.services.MainService',
+  'Common.services.MainService',
+  '$scope',
+  '$compile',
+  'DTOptionsBuilder',
+  'DTColumnBuilder',
+  'urls',
+  '$uibModal',
+
+  function( MainService, CommonService, $scope, $compile, DTOptionsBuilder, DTColumnBuilder, urls,$uibModal) {
+
+    var self = this;
+
+    //flags
+    self.formEdit = false;
+    self.grid = true;
+
+    //Models
+    self.model = {};
+    self.criteria = {};
+
+    //Op
+    self.operation = null;
+
+    //messages
+    self.successMessage = '';
+    self.errorMessage = '';
+
+    //methods
+    self.submit = submit;
+    self.createModel = createModel;
+    self.updateModel = updateModel;
+    self.removeModel = removeModel;
+    self.editModel = editModel;
+    self.reset = reset;
+    self.reloadData = reloadData;
+    self.resetCriteria = resetCriteria;
+    self.cancel = cancel;
+    self.newModel = newModel;
+    self.openModalConfirmRemove = openModalConfirmRemove;
+    self.openModalConfirmSave = openModalConfirmSave;
+    self.openModalLoadAjax = openModalLoadAjax;
+    
+    //
+    self.estadoGenericoList = [];
+    obtenerItemsCatalogo("ESTADO_GENERICO",function (list) {
+    		self.estadoGenericoList = list;
+    });
+
+    //datatables instance
+    self.dtInstance = {};
+
+    function submit() {
+      console.log('Submitting');
+      if (self.operation === 'save') {
+        console.log('Saving New Model', self.model);
+        createModel(self.model);
+      } else {
+        updateModel(self.model, self.model.${propertyId});
+        console.log('Model updated with id ', self.model.${propertyId});
+      }
+    }
+
+    function createModel(model) {
+      console.log('About to create Model');
+
+      var modelInstance = self.openModalLoadAjax();
+
+      MainService.createModel(model)
+      .then(
+        function (response) {
+
+          modelInstance.close();
+
+          console.log('Model created successfully');
+          self.successMessage = 'Model created successfully';
+          self.errorMessage='';
+          self.model={};
+
+          self.formEdit = false;
+          self.grid = true;
+
+          reloadData();
+
+          $scope.myForm.$setPristine();
+        },
+        function (errResponse) {
+          modelInstance.close();
+          console.error('Error while creating Model');
+          self.errorMessage = 'Error while creating Model: ' + errResponse.data.message;
+          self.successMessage='';
+        }
+      );
+    }
+
+
+    function updateModel(model, id){
+      console.log('About to update Model');
+      var modelInstance = self.openModalLoadAjax();
+      MainService.updateModel(model, id)
+      .then(
+        function (response){
+
+          modelInstance.close();
+
+          console.log('Model updated successfully');
+          self.successMessage='Model updated successfully';
+          self.errorMessage='';
+
+          self.formEdit = false;
+          self.grid = true;
+
+          reloadData();
+
+          $scope.myForm.$setPristine();
+        },
+        function(errResponse){
+          modelInstance.close();
+          console.error('Error while updating Model');
+          self.errorMessage='Error while updating Model '+errResponse.data.message;
+          self.successMessage='';
+        }
+      );
+    }
+
+    function removeModel(id){
+      console.log('About to remove Model with id '+id);
+      MainService.removeModel(id)
+      .then(
+        function(){
+          reloadData();
+          console.log('Model '+id + ' removed successfully');
+        },
+        function(errResponse){
+          console.error('Error while removing Model '+id +', Error :'+errResponse.data);
+          self.errorMessage = 'Error while creating Model: ' + errResponse.data.message;
+          self.successMessage='';
+        }
+      );
+    }
+
+    function editModel(id) {
+      self.operation = 'update';
+      self.successMessage='';
+      self.errorMessage='';
+      self.formEdit = true;
+      self.grid = false;
+      MainService.getModel(id).then(
+        function (model) {
+          self.model = model;
+        },
+        function (errResponse) {
+          console.error('Error while get model ' + id + ', Error :' + errResponse.data.message);
+        }
+      );
+    }
+
+    function newModel() {
+      self.operation = 'save';
+      self.successMessage='';
+      self.errorMessage='';
+      self.formEdit = true;
+      self.grid = false;
+      self.model={};
+    }
+
+    function cancel(){
+      self.successMessage='';
+      self.errorMessage='';
+      self.model={};
+      self.formEdit = false;
+      self.grid = true;
+    }
+
+    function reset(){
+      self.successMessage='';
+      self.errorMessage='';
+      self.model={};
+      $scope.myForm.$setPristine(); //reset Form
+    }
+
+    function resetCriteria(){
+      self.criteria={};
+      reloadData();
+      $scope.myFormCriteria.$setPristine();
+    }
+
+    //Datatables
+    self.dtOptions = DTOptionsBuilder.newOptions()
+    .withOption('ajax', {
+      url: urls.${configBean.constUrlApi},
+      type: 'GET',
+      data: function (data) {
+
+        //pagination
+        data.limit = data.length;
+
+        //sort
+        var col = data.order[0].column + 1;
+        data.order_column = col;
+        data.order_direction = data.order[0].dir;
+
+        //criteria
+#foreach( $inputs in $inputProperties )
+        data.${inputs.name} = self.criteria.${inputs.name};
+#end
+
+      }
+    })
+    // or here
+    .withDataProp('records')
+    .withOption('processing', true)
+    .withOption('serverSide', true)
+    .withPaginationType('full_numbers')
+    .withOption('createdRow', createdRow)
+    .withBootstrap();
+
+    self.dtColumns = [
+
+#foreach( $outs in $outputProperties )
+      DTColumnBuilder.newColumn('${outs.name}').withTitle('${outs.name}'),
+#end
+
+      DTColumnBuilder.newColumn(null).withTitle('Acciones').notSortable().renderWith(actionsHtml)
+
+    ];
+
+    function createdRow(row, data, dataIndex) {
+      // Recompiling so we can bind Angular directive to the DT
+      $compile(angular.element(row).contents())($scope);
+    }
+
+    function reloadData() {
+      var resetPaging = false;
+      self.dtInstance.reloadData(function () {
+
+      }, resetPaging);
+    }
+
+    function actionsHtml(data, type, full, meta) {
+
+      return '<button class="btn btn-warning" ng-click="ctrl.editModel(' + data.${propertyId} + ')">' +
+      '   <i class="fa fa-edit"></i>&nbsp; Editar' +
+      '</button>&nbsp;' +
+      '<button class="btn btn-danger" ng-click="ctrl.openModalConfirmRemove(' + data.${propertyId} + ')">' +
+      '   <i class="fa fa-trash-o"></i>&nbsp; Eliminar' +
+      '</button>';
+    }
+#[[
+    function openModalConfirmRemove(id){
+
+      var modalInstance = $uibModal.open({
+        animation: true,
+        templateUrl: 'modalConfirmTemplate.html',
+        controller: function($uibModalInstance, items) {
+          var $ctrlModal = this;
+
+          $ctrlModal.ok = function () {
+            self.removeModel(id);
+            $uibModalInstance.close(true);
+          };
+
+          $ctrlModal.cancel = function () {
+            $uibModalInstance.dismiss('cancel');
+          };
+        },
+        controllerAs: '$ctrlModal',
+        size: 'sm',
+        resolve: {
+          items: function () {
+          }
+        }
+      });
+
+    }
+
+    function openModalConfirmSave(){
+
+      var modalInstance = $uibModal.open({
+        animation: true,
+        templateUrl: 'modalConfirmTemplate.html',
+        controller: function ($uibModalInstance, items) {
+          var $ctrlModal = this;
+
+          $ctrlModal.ok = function () {
+            self.submit();
+            $uibModalInstance.close(true);
+          };
+
+          $ctrlModal.cancel = function () {
+            $uibModalInstance.dismiss('cancel');
+          };
+        },
+        controllerAs: '$ctrlModal',
+        size: 'sm',
+        resolve: {
+          items: function () {
+          }
+        }
+      });
+
+    }
+
+    function openModalLoadAjax(){
+
+      var modalInstance = $uibModal.open({
+        backdrop  : 'static',
+        keyboard  : false,
+        animation: true,
+        templateUrl: 'modalLoadAjaxTemplate.html',
+        controller: function ($uibModalInstance, items) {
+
+        },
+        controllerAs: '$ctrlModal',
+        size: 'sm',
+        resolve: {
+          items: function () {
+          }
+        }
+      });
+
+      return modalInstance;
+
+    }
+]]#
+
+            function obtenerItemsCatalogo(nombre_catalogo, fnResponse) {
+
+                CommonService.obtenerItemsPorCatalogo(nombre_catalogo)
+                    .then(
+                        function (response) {
+                            fnResponse(response);
+                        },
+                        function (errResponse) {
+                            console.error('Error while get obtenerItemsCatalogo with '+nombre_catalogo);
+                        }
+                    );
+            }
+            
+            function commonGetRest(url,fnResponse) {
+
+                CommonService.commonGetRest(url)
+                    .then(
+                        function (response) {
+                            fnResponse(response);
+                        },
+                        function (errResponse) {
+                            console.error('Error while get commonGetRest with '+url);
+                        }
+                    );
+            }
+
+            function commonGetSubModelRest(url_rest, id, subModelName,fnResponse) {
+
+                CommonService.commonGetSubModelRest(url_rest, id, subModelName)
+                    .then(
+                        function (response) {
+                            fnResponse(response);
+                        },
+                        function (errResponse) {
+                            console.error('Error while get commonGetSubModelRest with '+ url_rest + '/' + id + '/' + subModelName);
+                        }
+                    );
+            }
+
+  }
+
+
+]);

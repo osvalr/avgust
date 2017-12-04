@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.PersonalQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.PersonalQuery" parameterType="sernanp.app.dao.query.domain.PersonalQueryCriteria"> 
+<![CDATA[
+
+				select
+
+					p.idpersona,
+					pn.idpersonanatural ,
+					pp.int_id_postulante,
+					pl.idpersonal,
+					pn.idtipodocumento ,
+					(select t.abrtablatipo from sernanp.tablatipo t where t.idtabla = 1 and t.idtablatipo = pn.idtipodocumento ) as "descrip_tipo_documento",
+					pn.numerodoc,
+					pn.ruc,
+					pn.nombre,
+					pn.apepat,
+					pn.apemat,
+					pn.idsexo ,
+					(select t.destablatipo from sernanp.tablatipo t where t.idtabla = 2 and t.idtablatipo = pn.idsexo ) as "descrip_sexo",
+					to_char(pn.fechanacimiento, 'DD/MM/YYYY') as "fechanacimiento",
+					ud.coddpto as "coddptoDir",
+					(select u.nombre from sernanp.ubigeo u where u.codprov = '00' and u.coddist = '00' and u.coddpto = ud.coddpto) as "descrip_departamento_dir",
+					ud.codprov as "codprovDir",
+					(select u.nombre from sernanp.ubigeo u where u.codprov = ud.codprov and u.coddist = '00' and u.coddpto = ud.coddpto) as "descrip_provincia_dir",
+					ud.idubigeo as "idubigeoDir" ,
+					(select u.nombre from sernanp.ubigeo u where u.codprov = ud.codprov and u.idubigeo = ud.idubigeo and u.coddpto = ud.coddpto) as "descrip_distrito_dir",
+					pn.direccion,
+					p.idpais ,
+					(select x.nompais from sernanp.pais x where x.idpais = p.idpais) as "descrip_pais",
+					(select x.nacpais from sernanp.pais x where x.idpais = p.idpais) as "nacpais",
+					un.coddpto as "coddptoNac",
+					(select u.nombre from sernanp.ubigeo u where u.codprov = '00' and u.coddist = '00' and u.coddpto = un.coddpto) as "descrip_departamento_nac",
+					un.codprov as "codprovNac",
+					(select u.nombre from sernanp.ubigeo u where u.codprov = un.codprov and u.coddist = '00' and u.coddpto = un.coddpto) as "descrip_provincia_nac",
+					un.idubigeo as "idubigeoNac" ,
+					(select u.nombre from sernanp.ubigeo u where u.codprov = un.codprov and u.idubigeo = un.idubigeo and u.coddpto = un.coddpto) as "descrip_distrito_nac",
+					pn.idestadocivil ,
+					(select t.destablatipo from sernanp.tablatipo t where t.idtabla = 3 and t.idtablatipo = pn.idestadocivil ) as "descrip_estado_civil" ,
+					pn.var_numero_pasaporte,
+					pn.var_numero_brevete,
+					pn.var_num_caja,
+					pn.var_num_file,
+					pp.var_codigo_ciudad_telefono,
+					pp.var_telefono,
+					pp.var_celular,
+					pp.var_codigo_ciudad_telefono2,
+					pp.var_telefono2,
+					pp.var_celular2,
+					pp.var_codigo_ciudad_telefono3,
+					pp.var_telefono3,
+					pp.var_celular3,
+					pp.var_email_principal,
+					pl.mailpersonal,
+					pl.var_tarjeta_proximidad,
+					pl.srl_id_regimen_contractual ,
+					rc.var_descripcion_regimen_contractual as "descrip_regimen_contractual",
+					pl.srl_id_regimen_pensionario ,
+					rp.var_descripcion_regimen_pensionario as "descrip_regimen_pensionario",
+					pl.var_nombre_afp as "descrip_nombre_afp",
+					pl.var_codigo_afiliacion,
+					to_char(pl.dte_fecha_afiliacion, 'DD/MM/YYYY') as "dte_fecha_afiliacion",
+					pl.var_numero_cuenta_bancaria,
+					pl.srl_id_entidad_bancaria,
+					eb.var_desc_entidad_bancaria as "descrip_entidad_bancaria",
+					to_char(pc.dte_fec_inicio, 'DD/MM/YYYY') as "dte_fec_inicio"
+				
+				from
+					sernanp.persona p inner join
+					sernanp.personanatural pn on p.idpersona = pn.idpersona inner join
+					sernanp.personal pl on pn.idpersonanatural = pl.idpersonanatural inner join
+					sernanp.t_personal_contrato pc on pl.idpersonal = pc.idpersonal left join
+					sernanp.t_entidad_bancaria eb on eb.srl_id_entidad_bancaria = pl.srl_id_entidad_bancaria left join
+					sernanp.t_regimen_contractual rc on pc.srl_id_regimen_contractual = rc.srl_id_regimen_contractual left join
+					sernanp.t_regimen_pensionario rp on rp.srl_id_regimen_pensionario = pl.srl_id_regimen_pensionario left join
+					sernanp.t_postulante_personal pp on pn.idpersonanatural = pp.int_id_postulante left join
+					
+					(select 
+						u.idubigeo,
+						u.coddpto,
+						u.codprov,
+						u.coddist,
+						u.nombre 
+					from sernanp.ubigeo u) un on un.idubigeo = pp.int_id_ubigeo_nacimiento left join
+					(select 
+						u.idubigeo,
+						u.coddpto,
+						u.codprov,
+						u.coddist,
+						u.nombre 
+					from sernanp.ubigeo u) ud on ud.idubigeo = pn.idubigeo
+				
+				where
+				 
+					p.idpersona = COALESCE(#{idpersona}, p.idpersona)     and 
+					pn.idpersonanatural =  COALESCE(#{idpersonanatural}, pn.idpersonanatural)   and 
+					COALESCE(pl.idpersonal,0) = COALESCE(#{idpersonal}, COALESCE(pl.idpersonal,0)) and
+					pc.dte_fec_inicio = (select MIN(dte_fec_inicio) from sernanp.t_personal_contrato where COALESCE(idpersonal,0) = COALESCE(pl.idpersonal, COALESCE(idpersonal,0)));
+				 
+]]>
+</select> 
+</mapper> 

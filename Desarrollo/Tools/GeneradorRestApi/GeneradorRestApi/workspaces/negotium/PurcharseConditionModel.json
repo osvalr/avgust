@@ -1,0 +1,6 @@
+{
+	"nameCrud": "PurchaseCondition",
+	"path": "purchase-conditions",
+	"nameRepository": "PurchaseConditionRepository",
+	"nameModelXml": "PurchaseConditionModel.xml"
+}

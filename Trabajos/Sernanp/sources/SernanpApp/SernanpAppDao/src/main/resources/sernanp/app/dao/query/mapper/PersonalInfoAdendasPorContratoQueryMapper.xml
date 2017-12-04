@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.PersonalInfoAdendasPorContratoQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+ 
+				
+					pc.srl_id_contrato ,
+					pc.srl_id_contrato_padre ,
+					(select a[2] || '-' || a[3] from (select regexp_split_to_array(pc.var_num_contrato, '-')) as dt(a)) as "var_num_contrato",
+					(select a[2] || '-' || a[3] from (select regexp_split_to_array((select pcx.var_num_contrato from sernanp.t_personal_contrato pcx where pcx.srl_id_contrato = pc.srl_id_contrato_padre), '-')) as dt(a)) as "var_num_contrato_padre",
+					to_char(pc.dte_fec_suscrip, 'DD/MM/YYYY') as "dte_fec_suscrip",
+					to_char(pc.dte_fec_inicio, 'DD/MM/YYYY') as "dte_fec_inicio",
+					to_char(pc.dte_fec_termino, 'DD/MM/YYYY') as "dte_fec_termino",
+					to_char(pc.dte_fec_cese, 'DD/MM/YYYY') as "dte_fec_cese",
+					detx.var_nombre_estado
+				
+				
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+ 
+					sernanp.t_personal_contrato pc
+					left join 
+					(
+					select det.var_cod_estado,det.var_nombre_estado from sernanp.t_detalle_estado_tabla det
+					where det.srl_id_estado_tabla = 2
+					) detx on detx.var_cod_estado = cast(pc.int_id_estado as char)
+				
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+ 
+				
+					
+					pc.int_id_estado <> 4 AND
+					pc.srl_id_contrato_padre is not null and
+					pc.srl_id_contrato_padre = COALESCE(#{srl_id_contrato_padre},pc.srl_id_contrato_padre)
+
+				
+		  
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+order by pc.dte_fec_inicio desc
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.PersonalInfoAdendasPorContratoQuery" parameterType="sernanp.app.dao.query.domain.PersonalInfoAdendasPorContratoQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.PersonalInfoAdendasPorContratoQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.PersonalInfoAdendasPorContratoQuery" parameterType="sernanp.app.dao.query.domain.PersonalInfoAdendasPorContratoQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.PersonalInfoAdendasPorContratoQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.PersonalInfoAdendasPorContratoQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

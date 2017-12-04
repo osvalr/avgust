@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sernanp.app.dao.mapper.TTipoProfesionMapper" >
+  <resultMap id="BaseResultMap" type="sernanp.app.dao.domain.TTipoProfesion" >
+    <id column="srl_id_tipo_profesion" property="srl_id_tipo_profesion" jdbcType="INTEGER" />
+    <result column="int_cod_tipo_profesion" property="int_cod_tipo_profesion" jdbcType="INTEGER" />
+    <result column="var_descripcion_tipo_profesion" property="var_descripcion_tipo_profesion" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    srl_id_tipo_profesion, int_cod_tipo_profesion, var_descripcion_tipo_profesion
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TTipoProfesionExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sernanp.t_tipo_profesion
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TTipoProfesionKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from sernanp.t_tipo_profesion
+    where srl_id_tipo_profesion = #{srl_id_tipo_profesion,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="sernanp.app.dao.domain.TTipoProfesionKey" >
+    delete from sernanp.t_tipo_profesion
+    where srl_id_tipo_profesion = #{srl_id_tipo_profesion,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sernanp.app.dao.domain.TTipoProfesionExample" >
+    delete from sernanp.t_tipo_profesion
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sernanp.app.dao.domain.TTipoProfesion" useGeneratedKeys="true" keyProperty="srl_id_tipo_profesion" >
+    insert into sernanp.t_tipo_profesion (int_cod_tipo_profesion, var_descripcion_tipo_profesion
+      )
+    values (#{int_cod_tipo_profesion,jdbcType=INTEGER}, #{var_descripcion_tipo_profesion,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="sernanp.app.dao.domain.TTipoProfesion" useGeneratedKeys="true" keyProperty="srl_id_tipo_profesion" >
+    insert into sernanp.t_tipo_profesion
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="int_cod_tipo_profesion != null" >
+        int_cod_tipo_profesion,
+      </if>
+      <if test="var_descripcion_tipo_profesion != null" >
+        var_descripcion_tipo_profesion,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="int_cod_tipo_profesion != null" >
+        #{int_cod_tipo_profesion,jdbcType=INTEGER},
+      </if>
+      <if test="var_descripcion_tipo_profesion != null" >
+        #{var_descripcion_tipo_profesion,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sernanp.app.dao.domain.TTipoProfesionExample" resultType="java.lang.Integer" >
+    select count(*) from sernanp.t_tipo_profesion
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sernanp.t_tipo_profesion
+    <set >
+      <if test="record.srl_id_tipo_profesion != null" >
+        srl_id_tipo_profesion = #{record.srl_id_tipo_profesion,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_cod_tipo_profesion != null" >
+        int_cod_tipo_profesion = #{record.int_cod_tipo_profesion,jdbcType=INTEGER},
+      </if>
+      <if test="record.var_descripcion_tipo_profesion != null" >
+        var_descripcion_tipo_profesion = #{record.var_descripcion_tipo_profesion,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sernanp.t_tipo_profesion
+    set srl_id_tipo_profesion = #{record.srl_id_tipo_profesion,jdbcType=INTEGER},
+      int_cod_tipo_profesion = #{record.int_cod_tipo_profesion,jdbcType=INTEGER},
+      var_descripcion_tipo_profesion = #{record.var_descripcion_tipo_profesion,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sernanp.app.dao.domain.TTipoProfesion" >
+    update sernanp.t_tipo_profesion
+    <set >
+      <if test="int_cod_tipo_profesion != null" >
+        int_cod_tipo_profesion = #{int_cod_tipo_profesion,jdbcType=INTEGER},
+      </if>
+      <if test="var_descripcion_tipo_profesion != null" >
+        var_descripcion_tipo_profesion = #{var_descripcion_tipo_profesion,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where srl_id_tipo_profesion = #{srl_id_tipo_profesion,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sernanp.app.dao.domain.TTipoProfesion" >
+    update sernanp.t_tipo_profesion
+    set int_cod_tipo_profesion = #{int_cod_tipo_profesion,jdbcType=INTEGER},
+      var_descripcion_tipo_profesion = #{var_descripcion_tipo_profesion,jdbcType=VARCHAR}
+    where srl_id_tipo_profesion = #{srl_id_tipo_profesion,jdbcType=INTEGER}
+  </update>
+</mapper>

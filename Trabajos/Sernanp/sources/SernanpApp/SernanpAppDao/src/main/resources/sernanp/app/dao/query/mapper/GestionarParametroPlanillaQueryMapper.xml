@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.GestionarParametroPlanillaQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+ 
+	pp.srl_id_parametro_planilla,
+	pp.var_descrip_parametro,
+	pp.int_tipo_parametro,
+	vtvp.destablatipo as descrip_tipo_parametro,
+	pp.int_id_estado,
+	ve.destablatipo as descrip_estado,
+	to_char(pp.tsp_fecha_registro,'DD/MM/YYYY') as tsp_fecha_registro
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+	personal.t_parametro_planilla pp inner join sernanp.vw_tipo_valor_parametro vtvp
+	on pp.int_tipo_parametro = vtvp.codinttablatipo inner join sernanp.vw_estado_generico ve
+	on pp.int_id_estado = ve.codinttablatipo
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+	pp.srl_id_parametro_planilla = coalesce(#{srl_id_parametro_planilla}, pp.srl_id_parametro_planilla)and
+	pp.var_descrip_parametro ilike coalesce ('%'||  #{var_descrip_parametro} ||'%', pp.var_descrip_parametro)and
+	pp.int_tipo_parametro = coalesce(#{int_tipo_parametro}, pp.int_tipo_parametro)and
+	pp.int_id_estado = coalesce(#{int_id_estado}, pp.int_id_estado)
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.GestionarParametroPlanillaQuery" parameterType="sernanp.app.dao.query.domain.GestionarParametroPlanillaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.GestionarParametroPlanillaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.GestionarParametroPlanillaQuery" parameterType="sernanp.app.dao.query.domain.GestionarParametroPlanillaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.GestionarParametroPlanillaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.GestionarParametroPlanillaQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

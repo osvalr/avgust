@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sernanp.app.dao.mapper.CategoriaanpMapper" >
+  <resultMap id="BaseResultMap" type="sernanp.app.dao.domain.Categoriaanp" >
+    <id column="idcategoriaanp" property="idcategoriaanp" jdbcType="INTEGER" />
+    <result column="codcategoriaanp" property="codcategoriaanp" jdbcType="CHAR" />
+    <result column="descategoriaanp" property="descategoriaanp" jdbcType="VARCHAR" />
+    <result column="estado" property="estado" jdbcType="INTEGER" />
+    <result column="siglascategoriaanp" property="siglascategoriaanp" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    idcategoriaanp, codcategoriaanp, descategoriaanp, estado, siglascategoriaanp
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.CategoriaanpExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sernanp.categoriaanp
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.CategoriaanpKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from sernanp.categoriaanp
+    where idcategoriaanp = #{idcategoriaanp,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="sernanp.app.dao.domain.CategoriaanpKey" >
+    delete from sernanp.categoriaanp
+    where idcategoriaanp = #{idcategoriaanp,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sernanp.app.dao.domain.CategoriaanpExample" >
+    delete from sernanp.categoriaanp
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sernanp.app.dao.domain.Categoriaanp" useGeneratedKeys="true" keyProperty="idcategoriaanp" >
+    insert into sernanp.categoriaanp (codcategoriaanp, descategoriaanp, estado, 
+      siglascategoriaanp)
+    values (#{codcategoriaanp,jdbcType=CHAR}, #{descategoriaanp,jdbcType=VARCHAR}, #{estado,jdbcType=INTEGER}, 
+      #{siglascategoriaanp,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="sernanp.app.dao.domain.Categoriaanp" useGeneratedKeys="true" keyProperty="idcategoriaanp" >
+    insert into sernanp.categoriaanp
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="codcategoriaanp != null" >
+        codcategoriaanp,
+      </if>
+      <if test="descategoriaanp != null" >
+        descategoriaanp,
+      </if>
+      <if test="estado != null" >
+        estado,
+      </if>
+      <if test="siglascategoriaanp != null" >
+        siglascategoriaanp,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="codcategoriaanp != null" >
+        #{codcategoriaanp,jdbcType=CHAR},
+      </if>
+      <if test="descategoriaanp != null" >
+        #{descategoriaanp,jdbcType=VARCHAR},
+      </if>
+      <if test="estado != null" >
+        #{estado,jdbcType=INTEGER},
+      </if>
+      <if test="siglascategoriaanp != null" >
+        #{siglascategoriaanp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sernanp.app.dao.domain.CategoriaanpExample" resultType="java.lang.Integer" >
+    select count(*) from sernanp.categoriaanp
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sernanp.categoriaanp
+    <set >
+      <if test="record.idcategoriaanp != null" >
+        idcategoriaanp = #{record.idcategoriaanp,jdbcType=INTEGER},
+      </if>
+      <if test="record.codcategoriaanp != null" >
+        codcategoriaanp = #{record.codcategoriaanp,jdbcType=CHAR},
+      </if>
+      <if test="record.descategoriaanp != null" >
+        descategoriaanp = #{record.descategoriaanp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.estado != null" >
+        estado = #{record.estado,jdbcType=INTEGER},
+      </if>
+      <if test="record.siglascategoriaanp != null" >
+        siglascategoriaanp = #{record.siglascategoriaanp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sernanp.categoriaanp
+    set idcategoriaanp = #{record.idcategoriaanp,jdbcType=INTEGER},
+      codcategoriaanp = #{record.codcategoriaanp,jdbcType=CHAR},
+      descategoriaanp = #{record.descategoriaanp,jdbcType=VARCHAR},
+      estado = #{record.estado,jdbcType=INTEGER},
+      siglascategoriaanp = #{record.siglascategoriaanp,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sernanp.app.dao.domain.Categoriaanp" >
+    update sernanp.categoriaanp
+    <set >
+      <if test="codcategoriaanp != null" >
+        codcategoriaanp = #{codcategoriaanp,jdbcType=CHAR},
+      </if>
+      <if test="descategoriaanp != null" >
+        descategoriaanp = #{descategoriaanp,jdbcType=VARCHAR},
+      </if>
+      <if test="estado != null" >
+        estado = #{estado,jdbcType=INTEGER},
+      </if>
+      <if test="siglascategoriaanp != null" >
+        siglascategoriaanp = #{siglascategoriaanp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where idcategoriaanp = #{idcategoriaanp,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sernanp.app.dao.domain.Categoriaanp" >
+    update sernanp.categoriaanp
+    set codcategoriaanp = #{codcategoriaanp,jdbcType=CHAR},
+      descategoriaanp = #{descategoriaanp,jdbcType=VARCHAR},
+      estado = #{estado,jdbcType=INTEGER},
+      siglascategoriaanp = #{siglascategoriaanp,jdbcType=VARCHAR}
+    where idcategoriaanp = #{idcategoriaanp,jdbcType=INTEGER}
+  </update>
+</mapper>

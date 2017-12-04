@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts> 
+	<package name="anp" namespace="/anp" extends="proyecto"> 
+	
+		<action name="index"  class="proyecto.action.AnpAction" >    
+			<result name="success" type="tiles">anp.index</result>
+			<interceptor-ref name="general" />  
+			<interceptor-ref name="usuario-logeado" />    
+		</action>  
+		
+		<action name="reporte-acumulado" class="proyecto.action.AnpAction"    
+			method="listar">    
+			<result name="success" type="tiles">anp.reporte.acumulado</result>
+			<interceptor-ref name="general" />  
+			<interceptor-ref name="usuario-logeado" /> 
+		</action>   
+		 
+		<action name="reporte-variacion" class="proyecto.action.AnpAction"    
+			method="listar">    
+			<result name="success" type="tiles">anp.reporte.variacion</result>
+			<interceptor-ref name="general" />  
+			<interceptor-ref name="usuario-logeado" /> 
+		</action>  
+				
+		<action name="listargis" class="proyecto.action.AnpAction" method="listar">
+			<result name="success" type="dispatcher">/anp/listar.gis.jsp</result>   
+			<interceptor-ref name="general" />   
+		</action>     
+		  
+	</package>
+</struts>
+

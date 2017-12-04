@@ -1,0 +1,54 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>pe.com.acme.seguridad.business</groupId>
+  <artifactId>SeguridadBusiness</artifactId>
+  <version>1.0</version>
+  <packaging>jar</packaging>
+
+  <name>SeguridadBusiness</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <spring.version>4.1.7.RELEASE</spring.version>
+    <jdk.version>1.7</jdk.version>
+    <log4j.version>1.2.16</log4j.version>
+  </properties>
+
+  <dependencies>
+  
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+
+	<dependency>
+		<groupId>pe.com.acme.postgresql.domain</groupId>
+		<artifactId>AcmePostgresqlDomain</artifactId>
+		<version>1.0</version>
+	</dependency>
+	<dependency>
+		<groupId>pe.com.acme.seguridad.query</groupId>
+		<artifactId>SeguridadModelsQuery</artifactId>
+		<version>1.0</version>
+	</dependency>
+  </dependencies>
+  
+	  <build>
+	    <plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+				</configuration>
+			</plugin>
+	    </plugins>
+	  </build>
+	
+</project>

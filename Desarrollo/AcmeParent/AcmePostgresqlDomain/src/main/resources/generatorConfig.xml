@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE generatorConfiguration  
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"  
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">  
+  
+<generatorConfiguration>  
+
+  <classPathEntry location="/Users/JRaffo/.m2/repository/org/postgresql/postgresql/9.3-1101-jdbc3/postgresql-9.3-1101-jdbc3.jar" />
+<!--   <classPathEntry location="C:\Users\Javier Raffo\.m2\repository\org\postgresql\postgresql\9.3-1101-jdbc3\postgresql-9.3-1101-jdbc3.jar" /> -->
+
+  <context id="DB1" targetRuntime="MyBatis3"> 
+  
+    <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>
+    <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+    <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+    <plugin type="org.mybatis.generator.plugins.VirtualPrimaryKeyPlugin"/> 
+       
+    <commentGenerator>  
+      <property name="suppressAllComments" value="true"/>  
+    </commentGenerator>  
+     	
+    <jdbcConnection 
+        driverClass="org.postgresql.Driver"  
+        connectionURL="jdbc:postgresql://localhost:5432/bd_acme_2"
+        userId="postgres"  
+        password="postgres">  
+    </jdbcConnection>	
+  
+    <javaModelGenerator targetPackage="pe.com.acme.domain.mybatis.model" targetProject="AcmePostgresqlDomain">  
+      <property name="enableSubPackages" value="false" />  
+    </javaModelGenerator>
+  
+    <sqlMapGenerator targetPackage="pe.com.acme.domain.mybatis.mapper"  targetProject="AcmePostgresqlDomain/src/main/resources">  
+      <property name="enableSubPackages" value="false" />  
+    </sqlMapGenerator>  
+      
+    <javaClientGenerator type="XMLMAPPER" targetPackage="pe.com.acme.domain.mybatis.mapper"  targetProject="AcmePostgresqlDomain">  
+      <property name="enableSubPackages" value="false" />  
+    </javaClientGenerator>  
+  
+
+<!-- 		<table tableName="catalogo" schema="general" modelType="hierarchical">   -->
+<!-- 	      <property name="useActualColumnNames" value="true"/>   -->
+<!-- 	      <generatedKey column="id_catalogo" sqlStatement="JDBC" /> -->
+<!-- 	    </table>   -->
+	    
+<!-- 	    <table tableName="catalogo_item" schema="general" modelType="hierarchical">   -->
+<!-- 	      <property name="useActualColumnNames" value="true"/>   -->
+<!-- 	      <generatedKey column="id_catalogo_item" sqlStatement="JDBC" /> -->
+<!-- 	    </table>   -->
+	    
+<!-- 	    <table tableName="aplicacion" schema="seguridad" modelType="hierarchical">   -->
+<!-- 	      <property name="useActualColumnNames" value="true"/>   -->
+<!-- 	      <generatedKey column="id_aplicacion" sqlStatement="JDBC" /> -->
+<!-- 	    </table> -->
+	    
+<!-- 	    <table tableName="log_in_historico" schema="seguridad" modelType="hierarchical">   -->
+<!-- 	      <property name="useActualColumnNames" value="true"/>   -->
+<!-- 	      <generatedKey column="id_log_in_historico" sqlStatement="JDBC" /> -->
+<!-- 	    </table> -->
+	    
+<!-- 	    <table tableName="perfil" schema="seguridad" modelType="hierarchical">   -->
+<!-- 	      <property name="useActualColumnNames" value="true"/>   -->
+<!-- 	      <generatedKey column="id_perfil" sqlStatement="JDBC" /> -->
+<!-- 	    </table> -->
+	    
+<!-- 	    <table tableName="perfil_aplicacion" schema="seguridad" modelType="hierarchical">   -->
+<!-- 	      <property name="useActualColumnNames" value="true"/> -->
+<!-- 	    </table> -->
+	    
+<!-- 	    <table tableName="rol_aplicacion" schema="seguridad" modelType="hierarchical">   -->
+<!-- 	      <property name="useActualColumnNames" value="true"/> -->
+<!-- 	      <generatedKey column="id_rol" sqlStatement="JDBC" /> -->
+<!-- 	    </table> -->
+	    
+<!-- 	    <table tableName="usuario" schema="seguridad" modelType="hierarchical">   -->
+<!-- 	      <property name="useActualColumnNames" value="true"/>   -->
+<!-- 	      <generatedKey column="id_usuario" sqlStatement="JDBC" /> -->
+<!-- 	    </table> -->
+	    
+<!-- 	    <table tableName="usuario_perfil" schema="seguridad" modelType="hierarchical">   -->
+<!-- 	      <property name="useActualColumnNames" value="true"/> -->
+<!-- 	    </table> -->
+	        
+<!-- 	    <table tableName="usuario_rol" schema="seguridad" modelType="hierarchical">   -->
+<!-- 	      <property name="useActualColumnNames" value="true"/> -->
+<!-- 	    </table> -->
+	    
+<!-- 	    <table tableName="funcionalidad_rol" schema="seguridad" modelType="hierarchical">   -->
+<!-- 	      <property name="useActualColumnNames" value="true"/> -->
+<!-- 	    </table> -->
+	    
+<!-- 	    <table tableName="funcionalidad" schema="seguridad" modelType="hierarchical">   -->
+<!-- 	      <property name="useActualColumnNames" value="true"/> -->
+<!-- 	      <generatedKey column="id_funcionalidad" sqlStatement="JDBC" /> -->
+<!-- 	    </table> -->
+	
+<!-- 	    <table tableName="jornada" schema="inavi" modelType="hierarchical">   -->
+<!-- 	      <property name="useActualColumnNames" value="true"/> -->
+<!-- 	    </table> -->
+	
+<!-- 	    <table tableName="persona" schema="general" modelType="hierarchical">   -->
+<!-- 	      <property name="useActualColumnNames" value="true"/> -->
+<!-- 	      <generatedKey column="id_persona" sqlStatement="JDBC" /> -->
+<!-- 	    </table> -->
+	    
+<!-- 	    <table tableName="persona_tipo" schema="general" modelType="hierarchical">   -->
+<!-- 	      <property name="useActualColumnNames" value="true"/> -->
+<!-- 	    </table> -->
+	
+<!-- 	    <table tableName="guia" schema="inavi" modelType="hierarchical">   -->
+<!-- 	      <property name="useActualColumnNames" value="true"/> -->
+<!-- 	      <generatedKey column="id_guia" sqlStatement="JDBC" /> -->
+<!-- 	    </table> -->
+	    
+<!-- 	    <table tableName="guia_peso" schema="inavi" modelType="hierarchical">   -->
+<!-- 	      <property name="useActualColumnNames" value="true"/> -->
+<!-- 	      <generatedKey column="id_guia_peso" sqlStatement="JDBC" /> -->
+<!-- 	    </table> -->
+	    
+<!-- 	    <table tableName="guia_saldo" schema="inavi" modelType="hierarchical">   -->
+<!-- 	      <property name="useActualColumnNames" value="true"/> -->
+<!-- 	      <generatedKey column="id_guia_saldo" sqlStatement="JDBC" /> -->
+<!-- 	    </table> -->
+
+ 	    <table tableName="cuenta_x_cobrar" schema="inavi" modelType="hierarchical">
+ 	      <property name="useActualColumnNames" value="true"/>
+ 	      <generatedKey column="id_cuenta_x_cobrar" sqlStatement="JDBC" />
+ 	    </table>
+
+<!-- 	    <table tableName="cuenta_amortizacion" schema="inavi" modelType="hierarchical">   -->
+<!-- 	      <property name="useActualColumnNames" value="true"/> -->
+<!-- 	      <generatedKey column="id_cuenta_amortizacion" sqlStatement="JDBC" /> -->
+<!-- 	    </table> -->
+
+
+
+		<!--<table tableName="serie_numero_doc" schema="general" modelType="hierarchical">  -->
+	      <!--<property name="useActualColumnNames" value="true"/>-->
+	      <!--<generatedKey column="id_serie_numero_doc" sqlStatement="JDBC" />-->
+	    <!--</table>-->
+
+      <!--<table tableName="comprobante_item" schema="facturacion" modelType="hierarchical">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--<generatedKey column="id_comprobante_item" sqlStatement="JDBC" />-->
+      <!--</table>-->
+
+    <!--<table tableName="comprobante_pago" schema="facturacion" modelType="hierarchical">-->
+      <!--<property name="useActualColumnNames" value="true"/>-->
+      <!--<generatedKey column="id_comprobante_pago" sqlStatement="JDBC" />-->
+    <!--</table>-->
+
+    <!--<table tableName="guia_remision" schema="facturacion" modelType="hierarchical">-->
+      <!--<property name="useActualColumnNames" value="true"/>-->
+      <!--<generatedKey column="id_guia_remision" sqlStatement="JDBC" />-->
+    <!--</table>-->
+
+    <!--<table tableName="guia_remision_item" schema="facturacion" modelType="hierarchical">-->
+      <!--<property name="useActualColumnNames" value="true"/>-->
+      <!--<generatedKey column="id_guia_remision_item" sqlStatement="JDBC" />-->
+    <!--</table>-->
+
+    <!--<table tableName="articulo" schema="facturacion" modelType="hierarchical">-->
+      <!--<property name="useActualColumnNames" value="true"/>-->
+      <!--<generatedKey column="id_articulo" sqlStatement="JDBC" />-->
+    <!--</table>-->
+
+
+  </context>  
+</generatorConfiguration>  

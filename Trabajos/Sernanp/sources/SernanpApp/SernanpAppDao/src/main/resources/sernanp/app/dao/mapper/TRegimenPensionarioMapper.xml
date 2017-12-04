@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sernanp.app.dao.mapper.TRegimenPensionarioMapper" >
+  <resultMap id="BaseResultMap" type="sernanp.app.dao.domain.TRegimenPensionario" >
+    <id column="srl_id_regimen_pensionario" property="srl_id_regimen_pensionario" jdbcType="INTEGER" />
+    <result column="srl_id_regimen_contractual" property="srl_id_regimen_contractual" jdbcType="INTEGER" />
+    <result column="int_cod_regimen_pensionario" property="int_cod_regimen_pensionario" jdbcType="INTEGER" />
+    <result column="var_descripcion_regimen_pensionario" property="var_descripcion_regimen_pensionario" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    srl_id_regimen_pensionario, srl_id_regimen_contractual, int_cod_regimen_pensionario, 
+    var_descripcion_regimen_pensionario
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TRegimenPensionarioExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sernanp.t_regimen_pensionario
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TRegimenPensionarioKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from sernanp.t_regimen_pensionario
+    where srl_id_regimen_pensionario = #{srl_id_regimen_pensionario,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="sernanp.app.dao.domain.TRegimenPensionarioKey" >
+    delete from sernanp.t_regimen_pensionario
+    where srl_id_regimen_pensionario = #{srl_id_regimen_pensionario,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sernanp.app.dao.domain.TRegimenPensionarioExample" >
+    delete from sernanp.t_regimen_pensionario
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sernanp.app.dao.domain.TRegimenPensionario" useGeneratedKeys="true" keyProperty="srl_id_regimen_pensionario" >
+    insert into sernanp.t_regimen_pensionario (srl_id_regimen_contractual, int_cod_regimen_pensionario, 
+      var_descripcion_regimen_pensionario)
+    values (#{srl_id_regimen_contractual,jdbcType=INTEGER}, #{int_cod_regimen_pensionario,jdbcType=INTEGER}, 
+      #{var_descripcion_regimen_pensionario,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="sernanp.app.dao.domain.TRegimenPensionario" useGeneratedKeys="true" keyProperty="srl_id_regimen_pensionario" >
+    insert into sernanp.t_regimen_pensionario
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="srl_id_regimen_contractual != null" >
+        srl_id_regimen_contractual,
+      </if>
+      <if test="int_cod_regimen_pensionario != null" >
+        int_cod_regimen_pensionario,
+      </if>
+      <if test="var_descripcion_regimen_pensionario != null" >
+        var_descripcion_regimen_pensionario,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="srl_id_regimen_contractual != null" >
+        #{srl_id_regimen_contractual,jdbcType=INTEGER},
+      </if>
+      <if test="int_cod_regimen_pensionario != null" >
+        #{int_cod_regimen_pensionario,jdbcType=INTEGER},
+      </if>
+      <if test="var_descripcion_regimen_pensionario != null" >
+        #{var_descripcion_regimen_pensionario,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sernanp.app.dao.domain.TRegimenPensionarioExample" resultType="java.lang.Integer" >
+    select count(*) from sernanp.t_regimen_pensionario
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sernanp.t_regimen_pensionario
+    <set >
+      <if test="record.srl_id_regimen_pensionario != null" >
+        srl_id_regimen_pensionario = #{record.srl_id_regimen_pensionario,jdbcType=INTEGER},
+      </if>
+      <if test="record.srl_id_regimen_contractual != null" >
+        srl_id_regimen_contractual = #{record.srl_id_regimen_contractual,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_cod_regimen_pensionario != null" >
+        int_cod_regimen_pensionario = #{record.int_cod_regimen_pensionario,jdbcType=INTEGER},
+      </if>
+      <if test="record.var_descripcion_regimen_pensionario != null" >
+        var_descripcion_regimen_pensionario = #{record.var_descripcion_regimen_pensionario,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sernanp.t_regimen_pensionario
+    set srl_id_regimen_pensionario = #{record.srl_id_regimen_pensionario,jdbcType=INTEGER},
+      srl_id_regimen_contractual = #{record.srl_id_regimen_contractual,jdbcType=INTEGER},
+      int_cod_regimen_pensionario = #{record.int_cod_regimen_pensionario,jdbcType=INTEGER},
+      var_descripcion_regimen_pensionario = #{record.var_descripcion_regimen_pensionario,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sernanp.app.dao.domain.TRegimenPensionario" >
+    update sernanp.t_regimen_pensionario
+    <set >
+      <if test="srl_id_regimen_contractual != null" >
+        srl_id_regimen_contractual = #{srl_id_regimen_contractual,jdbcType=INTEGER},
+      </if>
+      <if test="int_cod_regimen_pensionario != null" >
+        int_cod_regimen_pensionario = #{int_cod_regimen_pensionario,jdbcType=INTEGER},
+      </if>
+      <if test="var_descripcion_regimen_pensionario != null" >
+        var_descripcion_regimen_pensionario = #{var_descripcion_regimen_pensionario,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where srl_id_regimen_pensionario = #{srl_id_regimen_pensionario,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sernanp.app.dao.domain.TRegimenPensionario" >
+    update sernanp.t_regimen_pensionario
+    set srl_id_regimen_contractual = #{srl_id_regimen_contractual,jdbcType=INTEGER},
+      int_cod_regimen_pensionario = #{int_cod_regimen_pensionario,jdbcType=INTEGER},
+      var_descripcion_regimen_pensionario = #{var_descripcion_regimen_pensionario,jdbcType=VARCHAR}
+    where srl_id_regimen_pensionario = #{srl_id_regimen_pensionario,jdbcType=INTEGER}
+  </update>
+</mapper>

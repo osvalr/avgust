@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?><Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" /><Reference URI="#FATCA"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><DigestValue>MDxzg5Hyp+3VepbF0Msq/OuKPLtmHwkUUC2cbn+wYsQ=</DigestValue></Reference></SignedInfo><SignatureValue>I9B6VOMHuzaOOD0g+4xhmQn5K+jRn3l404HW4yW1PZsqCOShzjYvVlkijOYh6p5w1TyK1Rjb+PkD96jRQKIWzydWx2nLmab9F3PZfcZYicfpCCci9oxjFb9NpErL1imU0rSwD6Cp1Kb2cZkbsBNmgOOAtqtq9KvClije/+OaBczyeYj95E9EY6h9joAQmq6hPY2CtjtOYwr3s75wYcdIBYbmwhnK41mShO13449gcVZwDU+lZE7gKtzdwtwWje+4mi90D5LRmPSivQ+Vdf+giMzHPktlms1mY7qM6gWf4B2iBUfbtxtNV063G5a9aaCyeCKZnyE2VhUC214Hu5Zg4w==</SignatureValue><KeyInfo><X509Data><X509SubjectName>E=icornejo@mapfre.com.pe, CN=MAPFRE, OU=OFICIALIA DE CUMPLIMIENTO, O=MAPFRE PERU VIDA COMPANIA DE SEGUROS S.A, L=Lima, S=Lima, C=PE</X509SubjectName><X509Certificate>MIIESTCCAzGgAwIBAgIJAMUCSPCQvO+oMA0GCSqGSIb3DQEBCwUAMIG6MQswCQYDVQQGEwJQRTENMAsGA1UECAwETGltYTENMAsGA1UEBwwETGltYTExMC8GA1UECgwoTUFQRlJFIFBFUlUgVklEQSBDT01QQU5JQSBERSBTRUdVUk9TIFMuQTEiMCAGA1UECwwZT0ZJQ0lBTElBIERFIENVTVBMSU1JRU5UTzEPMA0GA1UEAwwGTUFQRlJFMSUwIwYJKoZIhvcNAQkBFhZpY29ybmVqb0BtYXBmcmUuY29tLnBlMB4XDTE1MDgwNTE1MzM0OVoXDTE4MDgwNDE1MzM0OVowgboxCzAJBgNVBAYTAlBFMQ0wCwYDVQQIDARMaW1hMQ0wCwYDVQQHDARMaW1hMTEwLwYDVQQKDChNQVBGUkUgUEVSVSBWSURBIENPTVBBTklBIERFIFNFR1VST1MgUy5BMSIwIAYDVQQLDBlPRklDSUFMSUEgREUgQ1VNUExJTUlFTlRPMQ8wDQYDVQQDDAZNQVBGUkUxJTAjBgkqhkiG9w0BCQEWFmljb3JuZWpvQG1hcGZyZS5jb20ucGUwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDMkODzJero85WMXQX77fvDoD0H1jcrfASCsATJwuj1pebSWh2kI2aeStCl4lYg2uDGyJKNAaLTBwh2zSj9sJlvfjBYUPBq6lntIoowD11FqyKOYFjJqxG2LjxSlGh+H8OQMb+9lSlzxmLlGS1Hu49pdeMVXXyyOA7bctFXaktrLrh9Gn88GP0x8DWfsyz7oeFo+cigKJK66+cTgH40I5CdWYdTcsoPZ28ZhoXxSzupgIE0cdF8JJzK8Fm6gorr+dFu2XRZbpGv+IyDR4yaSUjNWIj0yZKSayoYUkUAG0AGBE70xhVQsgxc6897DJ55cT8buQ2+dTKsR0XxC1j8YE/DAgMBAAGjUDBOMB0GA1UdDgQWBBQDIVEOhuTM4WQo0weUlLI+NOonszAfBgNVHSMEGDAWgBQDIVEOhuTM4WQo0weUlLI+NOonszAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQB1ForzVwafQaqOz98abSMaSdQoe5GFq09u+Ph00/U54E8uWHVtIfZAprJYbm31WG4J/ACZp+WWrlCL0ISr4rYGcBss1VxxFYMiE4kBWNI1lvKQJiCKkNsE0d+AZrSWnZrIPsvBezYmLe68/+7jBVW9GRqWCX6pYPMXvTj2HIwRvfJaSIjmRBqC7ZflC1UnzumAHfqsR2iFDZvaCZgDyaQey5v2Kzx18PXVkDZHF/cev750GuNWkDbgwiIoYio++mdnU4Ae6H7gWLA39oJRiFs4q7FOMkVPlp6OGTberi0zPQlVsUJptBIexQLh6v2j+gPtCKa8/2Rw3KsRkcGCTgtf</X509Certificate></X509Data></KeyInfo><Object Id="FATCA"><ftc:FATCA_OECD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oecd:ties:fatca:v1" xmlns:ftc="urn:oecd:ties:fatca:v1" xmlns:iso="urn:oecd:ties:isofatcatypes:v1" xmlns:sfa="urn:oecd:ties:stffatcatypes:v1" version="1.1">
+	<ftc:MessageSpec>
+		<sfa:SendingCompanyIN>T2JDLN.00039.ME.604</sfa:SendingCompanyIN>
+		<sfa:TransmittingCountry>PE</sfa:TransmittingCountry>
+		<sfa:ReceivingCountry>US</sfa:ReceivingCountry>
+		<sfa:MessageType>FATCA</sfa:MessageType>
+		<sfa:Warning />
+		<sfa:Contact />
+		<sfa:MessageRefId>a1aa421f-3820-4e09-8853-251465b6fe9a</sfa:MessageRefId>
+		<sfa:ReportingPeriod>2014-12-31</sfa:ReportingPeriod>
+		<sfa:Timestamp>2015-08-07T09:20:20</sfa:Timestamp>
+	</ftc:MessageSpec>
+	<ftc:FATCA>
+		<ftc:ReportingFI>
+			<sfa:ResCountryCode />
+			<sfa:TIN issuedBy="PE">000000000</sfa:TIN>
+			<sfa:Name />
+			<sfa:Address>
+				<sfa:CountryCode />
+				<sfa:AddressFix>
+					<sfa:Street />
+					<sfa:BuildingIdentifier />
+					<sfa:SuiteIdentifier />
+					<sfa:FloorIdentifier />
+					<sfa:DistrictName />
+					<sfa:POB />
+					<sfa:PostCode />
+					<sfa:City />
+					<sfa:CountrySubentity />
+				</sfa:AddressFix>
+				<sfa:AddressFree />
+			</sfa:Address>
+			<ftc:DocSpec>
+				<ftc:DocTypeIndic />
+				<ftc:DocRefId />
+				<ftc:CorrMessageRefId />
+				<ftc:CorrDocRefId />
+			</ftc:DocSpec>
+		</ftc:ReportingFI>
+		<ftc:ReportingGroup>
+			<ftc:Sponsor>
+				<sfa:ResCountryCode />
+				<sfa:TIN issuedBy="PE">000000000</sfa:TIN>
+				<sfa:Name />
+				<sfa:Address>
+					<sfa:CountryCode />
+					<sfa:AddressFix>
+						<sfa:Street />
+						<sfa:BuildingIdentifier />
+						<sfa:SuiteIdentifier />
+						<sfa:FloorIdentifier />
+						<sfa:DistrictName />
+						<sfa:POB />
+						<sfa:PostCode />
+						<sfa:City />
+						<sfa:CountrySubentity />
+					</sfa:AddressFix>
+					<sfa:AddressFree />
+				</sfa:Address>
+				<ftc:DocSpec>
+					<ftc:DocTypeIndic />
+					<ftc:DocRefId />
+					<ftc:CorrMessageRefId />
+					<ftc:CorrDocRefId />
+				</ftc:DocSpec>
+			</ftc:Sponsor>
+			<ftc:Intermediary>
+				<sfa:ResCountryCode />
+				<sfa:TIN issuedBy="PE">000000000</sfa:TIN>
+				<sfa:Name />
+				<sfa:Address>
+					<sfa:CountryCode />
+					<sfa:AddressFix>
+						<sfa:Street />
+						<sfa:BuildingIdentifier />
+						<sfa:SuiteIdentifier />
+						<sfa:FloorIdentifier />
+						<sfa:DistrictName />
+						<sfa:POB />
+						<sfa:PostCode />
+						<sfa:City />
+						<sfa:CountrySubentity />
+					</sfa:AddressFix>
+					<sfa:AddressFree />
+				</sfa:Address>
+				<ftc:DocSpec>
+					<ftc:DocTypeIndic />
+					<ftc:DocRefId />
+					<ftc:CorrMessageRefId />
+					<ftc:CorrDocRefId />
+				</ftc:DocSpec>
+			</ftc:Intermediary>
+			<ftc:AccountReport>
+				<ftc:DocSpec>
+					<ftc:DocTypeIndic />
+					<ftc:DocRefId />
+					<ftc:CorrMessageRefId />
+					<ftc:CorrDocRefId />
+				</ftc:DocSpec>
+				<ftc:AccountNumber />
+				<ftc:AccountHolder>
+					<ftc:Individual>
+						<sfa:ResCountryCode />
+						<sfa:TIN issuedBy="PE">000000000</sfa:TIN>
+						<sfa:Name>
+							<sfa:PrecedingTitle />
+							<sfa:Title />
+							<sfa:FirstName />
+							<sfa:MiddleName />
+							<sfa:NamePrefix />
+							<sfa:LastName />
+							<sfa:GenerationIdentifier />
+							<sfa:Suffix />
+							<sfa:GeneralSuffix />
+						</sfa:Name>
+						<sfa:Address>
+							<sfa:CountryCode />
+							<sfa:AddressFix>
+								<sfa:Street />
+								<sfa:BuildingIdentifier />
+								<sfa:SuiteIdentifier />
+								<sfa:FloorIdentifier />
+								<sfa:DistrictName />
+								<sfa:POB />
+								<sfa:PostCode />
+								<sfa:City />
+								<sfa:CountrySubentity />
+							</sfa:AddressFix>
+							<sfa:AddressFree />
+						</sfa:Address>
+						<sfa:BirthInfo>
+							<sfa:BirthDate />
+							<sfa:City />
+							<sfa:CitySubentity />
+						</sfa:BirthInfo>
+					</ftc:Individual>
+				</ftc:AccountHolder>
+				<ftc:SubstantialOwner>
+					<sfa:ResCountryCode />
+					<sfa:TIN issuedBy="PE">000000000</sfa:TIN>
+					<sfa:Name>
+						<sfa:PrecedingTitle />
+						<sfa:Title />
+						<sfa:FirstName />
+						<sfa:MiddleName />
+						<sfa:NamePrefix />
+						<sfa:LastName />
+						<sfa:GenerationIdentifier />
+						<sfa:Suffix />
+						<sfa:GeneralSuffix />
+					</sfa:Name>
+					<sfa:Address>
+						<sfa:CountryCode />
+						<sfa:AddressFix>
+							<sfa:Street />
+							<sfa:BuildingIdentifier />
+							<sfa:SuiteIdentifier />
+							<sfa:FloorIdentifier />
+							<sfa:DistrictName />
+							<sfa:POB />
+							<sfa:PostCode />
+							<sfa:City />
+							<sfa:CountrySubentity />
+						</sfa:AddressFix>
+						<sfa:AddressFree />
+					</sfa:Address>
+					<sfa:BirthInfo>
+						<sfa:BirthDate />
+						<sfa:City />
+						<sfa:CitySubentity />
+					</sfa:BirthInfo>
+				</ftc:SubstantialOwner>
+				<ftc:AccountBalance currCode="USD" />
+				<ftc:Payment>
+					<ftc:Type />
+					<ftc:PaymentAmnt currCode="USD" />
+				</ftc:Payment>
+			</ftc:AccountReport>
+      <ftc:PoolReport>
+        <ftc:DocSpec>
+          <ftc:DocTypeIndic />
+          <ftc:DocRefId />
+          <ftc:CorrMessageRefId />
+          <ftc:CorrDocRefId />
+        </ftc:DocSpec>
+        <ftc:AccountCount />
+        <ftc:AccountPoolReportType />
+        <ftc:PoolBalance currCode="USD" />
+      </ftc:PoolReport>
+		</ftc:ReportingGroup>	
+	</ftc:FATCA>
+</ftc:FATCA_OECD></Object></Signature>

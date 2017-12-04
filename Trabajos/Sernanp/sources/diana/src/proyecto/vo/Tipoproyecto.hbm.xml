@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 13/10/2010 11:46:12 AM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="proyecto.vo.Tipoproyecto" table="tipoproyecto" catalog="dde">
+        <id name="idtipoproyecto" type="java.lang.Integer">
+            <column name="idtipoproyecto" />
+            <generator class="identity" />
+        </id>
+        <property name="nombretipoproyecto" type="string">
+            <column name="nombretipoproyecto" length="45" />
+        </property>
+        <!--  
+        <set name="proyectos" table="proyecto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idtipoproyecto" not-null="true" />
+            </key>
+            <one-to-many class="proyecto.vo.Proyecto" />
+        </set>
+        -->
+    </class>
+</hibernate-mapping>

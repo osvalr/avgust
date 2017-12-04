@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.RpDetalleBoletaPersonalQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+ 
+ps.idpersonal,
+nc.srl_id_nomina_concepto,
+nc.srl_id_nomina_anio_periodo_personal,
+cp.int_id_tipo_concepto,
+vtiidp.destablatipo as descrip_tipo_concepto,
+cp.int_id_sub_tipo_concepto,
+vstiidp.destablatipo as descrip_sub_tipo_concepto,
+nc.srl_id_concepto_planilla,
+cp.var_descrip_corto_concepto,
+nc.dec_monto_calculado,
+app.int_id_periodo_mes,
+ap.int_anio
+
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+sernanp.persona p 
+INNER JOIN sernanp.personanatural pn ON p.idpersona = pn.idpersona
+INNER JOIN sernanp.personal ps ON ps.idpersonanatural = pn.idpersonanatural
+INNER JOIN personal.t_nomina_anio_periodo_personal napp ON napp.idpersonal = ps.idpersonal
+INNER JOIN personal.t_nomina_concepto nc on napp.srl_id_nomina_anio_periodo_personal = nc.srl_id_nomina_anio_periodo_personal
+INNER JOIN personal.t_concepto_planilla cp ON nc.srl_id_concepto_planilla = cp.srl_id_concepto_planilla 
+INNER JOIN personal.t_anio_periodo_planilla app ON napp.srl_id_anio_periodo_planilla = app.srl_id_anio_periodo_planilla
+INNER JOIN personal.t_anio_planilla ap ON app.srl_id_anio_planilla = ap.srl_id_anio_planilla
+LEFT JOIN sernanp.vw_meses ms ON ms.codinttablatipo = app.int_id_periodo_mes
+left JOIN sernanp.vw_concepto_planilla vtiidp ON (cp.int_id_tipo_concepto = vtiidp.codinttablatipo)
+left JOIN sernanp.vw_sub_tipo_concepto_planilla vstiidp ON (cp.int_id_sub_tipo_concepto = vstiidp.codinttablatipo)
+
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+ps.idpersonal = coalesce(#{idpersonal}, ps.idpersonal) and
+COALESCE(ap.int_anio,0) = COALESCE(#{int_anio},COALESCE(ap.int_anio,0)) and
+app.int_id_periodo_mes = COALESCE(#{int_id_periodo_mes},app.int_id_periodo_mes) and
+nc.srl_id_nomina_anio_periodo_personal = COALESCE(#{srl_id_nomina_anio_periodo_personal},nc.srl_id_nomina_anio_periodo_personal) and
+cp.int_id_tipo_concepto = COALESCE(#{int_id_tipo_concepto}, cp.int_id_tipo_concepto)
+
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.RpDetalleBoletaPersonalQuery" parameterType="sernanp.app.dao.query.domain.RpDetalleBoletaPersonalQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.RpDetalleBoletaPersonalQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.RpDetalleBoletaPersonalQuery" parameterType="sernanp.app.dao.query.domain.RpDetalleBoletaPersonalQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.RpDetalleBoletaPersonalQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.RpDetalleBoletaPersonalQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

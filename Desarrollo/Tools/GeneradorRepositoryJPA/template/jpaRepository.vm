@@ -1,0 +1,18 @@
+${copy}
+
+/**
+* @author  Javier Raffo
+* @version 1.0
+* @since   ${datetimeCreate}
+*/
+
+package ${packageRepository};
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import ${packageDomain}.${nameDomain};
+import ${importPk};
+
+@Repository
+public interface ${nameRepository} extends JpaRepository<${nameDomain},${namespaceDataTypePkDomain}> {
+}

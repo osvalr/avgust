@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.acme.mybatis.query.mapper.ClienteQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+
+p.id_persona,
+p.cod_persona,
+p.id_tipo_persona,
+tp.valor_a as descrip_tipo_persona,
+p.id_sub_tipo_persona,
+stp.valor_a as descrip_sub_tipo_persona,
+
+if(p.id_sub_tipo_persona = 2, concat(p.ape_pater,' ',p.ape_mater,', ',p.nombres_completos) , p.razon_social) nombre_razon,
+p.nombres_completos,
+p.ape_pater,
+p.ape_mater,
+p.id_tipo_docu_iden,
+td.valor_a as descrip_tipo_docu_iden,
+p.num_docu_iden,
+DATE_FORMAT(p.fecha_nacimiento, '%d/%m/%Y')  as fecha_nacimiento,
+p.correo,
+p.direccion,
+p.telefono,
+p.razon_social,
+
+p.id_user,
+concat(p1.ape_pater,' ',p1.ape_mater,', ',p1.nombres_completos) nom_user,
+DATE_FORMAT(p.fec_reg, '%d/%m/%Y') fec_reg,
+p.id_user_mod,
+concat(p2.ape_pater,' ',p2.ape_mater,', ',p2.nombres_completos) nom_user_mod,
+DATE_FORMAT(p.fec_mod, '%d/%m/%Y') fec_mod,
+
+p.id_estado,
+e.valor_a as descrip_estado
+
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+
+persona p
+inner join (select ci.valor_a,ci.valor_b from catalogo_item ci inner join catalogo c on ci.id_catalogo = c.id_catalogo where c.nombre_catalogo = 'Estado_Generico') e on cast(e.valor_b as SIGNED) = p.id_estado
+inner join (select ci.valor_a,ci.valor_b from catalogo_item ci inner join catalogo c on ci.id_catalogo = c.id_catalogo where c.nombre_catalogo = 'Doucmento_Identidad') td on cast(td.valor_b as SIGNED) = p.id_tipo_docu_iden
+inner join (select ci.valor_a,ci.valor_b from catalogo_item ci inner join catalogo c on ci.id_catalogo = c.id_catalogo where c.nombre_catalogo = 'Tipo_Persona') tp on cast(tp.valor_b as SIGNED) = p.id_tipo_persona
+inner join (select ci.valor_a,ci.valor_b from catalogo_item ci inner join catalogo c on ci.id_catalogo = c.id_catalogo where c.nombre_catalogo = 'Sub_Tipo_Persona') stp on cast(stp.valor_b as SIGNED) = p.id_sub_tipo_persona
+inner join persona p1 on p1.id_persona = p.id_user
+inner join persona p2 on p2.id_persona = p.id_user_mod
+
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+
+p.id_persona = ifnull(#{id_persona},p.id_persona) AND
+(concat(p.ape_pater,' ',p.ape_mater,', ',p.nombres_completos) like ifnull(concat('%',#{nombres_completos},'%'),concat(p.ape_pater,' ',p.ape_mater,', ',p.nombres_completos)) or p.razon_social like ifnull(concat('%',#{nombres_completos},'%'),p.razon_social)) and
+p.id_tipo_docu_iden = ifnull(#{id_tipo_docu_iden},p.id_tipo_docu_iden) and
+p.num_docu_iden = ifnull(#{num_docu_iden},p.num_docu_iden) and
+p.id_sub_tipo_persona <> 1 AND
+p.id_estado = ifnull(#{id_estado},p.id_estado) and
+p.id_sub_tipo_persona = ifnull(#{id_sub_tipo_persona},p.id_sub_tipo_persona)
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${order_column} ${order_direction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="com.acme.mybatis.query.model.ClienteQuery" parameterType="com.acme.mybatis.query.model.ClienteQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="com.acme.mybatis.query.model.ClienteQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="com.acme.mybatis.query.model.ClienteQuery" parameterType="com.acme.mybatis.query.model.ClienteQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="com.acme.mybatis.query.model.ClienteQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="com.acme.mybatis.query.model.ClienteQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

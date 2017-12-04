@@ -1,0 +1,14 @@
+{
+	"titleCrud": "Anios de ejercicio",
+	"nameCrud": "AnioEjercicio",
+	"constUrlApi": "ANIOS_EJERCICIOS_SERVICE_API",
+	"autoIdentityPrimaryKey": false,
+	"nameModelXml": "AnioEjercicioModel.xml",
+	"subModels": [
+		{
+			"nameModel": "MesEjercicioModel",
+			"nameCrud": "MesEjercicio",
+			"autoIdentityPrimaryKey": false
+		}
+	]
+}

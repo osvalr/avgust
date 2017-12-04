@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sernanp.app.dao.mapper.THistorialDetalleMapper" >
+  <resultMap id="BaseResultMap" type="sernanp.app.dao.domain.THistorialDetalle" >
+    <id column="srl_id_historial_detalle" property="srl_id_historial_detalle" jdbcType="INTEGER" />
+    <id column="var_codigo_registro" property="var_codigo_registro" jdbcType="VARCHAR" />
+    <result column="var_valor_json" property="var_valor_json" jdbcType="VARCHAR" />
+    <result column="var_id_responsable" property="var_id_responsable" jdbcType="VARCHAR" />
+    <result column="var_id_tipo_operacion" property="var_id_tipo_operacion" jdbcType="VARCHAR" />
+    <result column="tsp_fecha_registro" property="tsp_fecha_registro" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    srl_id_historial_detalle, var_codigo_registro, var_valor_json, var_id_responsable, 
+    var_id_tipo_operacion, tsp_fecha_registro
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.THistorialDetalleExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sernanp.t_historial_detalle
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.THistorialDetalleKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from sernanp.t_historial_detalle
+    where srl_id_historial_detalle = #{srl_id_historial_detalle,jdbcType=INTEGER}
+      and var_codigo_registro = #{var_codigo_registro,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="sernanp.app.dao.domain.THistorialDetalleKey" >
+    delete from sernanp.t_historial_detalle
+    where srl_id_historial_detalle = #{srl_id_historial_detalle,jdbcType=INTEGER}
+      and var_codigo_registro = #{var_codigo_registro,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="sernanp.app.dao.domain.THistorialDetalleExample" >
+    delete from sernanp.t_historial_detalle
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sernanp.app.dao.domain.THistorialDetalle" useGeneratedKeys="true" keyProperty="srl_id_historial_detalle" >
+    insert into sernanp.t_historial_detalle (var_codigo_registro, var_valor_json, 
+      var_id_responsable, var_id_tipo_operacion, 
+      tsp_fecha_registro)
+    values (#{var_codigo_registro,jdbcType=VARCHAR}, #{var_valor_json,jdbcType=VARCHAR}, 
+      #{var_id_responsable,jdbcType=VARCHAR}, #{var_id_tipo_operacion,jdbcType=VARCHAR}, 
+      #{tsp_fecha_registro,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="sernanp.app.dao.domain.THistorialDetalle" useGeneratedKeys="true" keyProperty="srl_id_historial_detalle" >
+    insert into sernanp.t_historial_detalle
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="var_codigo_registro != null" >
+        var_codigo_registro,
+      </if>
+      <if test="var_valor_json != null" >
+        var_valor_json,
+      </if>
+      <if test="var_id_responsable != null" >
+        var_id_responsable,
+      </if>
+      <if test="var_id_tipo_operacion != null" >
+        var_id_tipo_operacion,
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        tsp_fecha_registro,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="var_codigo_registro != null" >
+        #{var_codigo_registro,jdbcType=VARCHAR},
+      </if>
+      <if test="var_valor_json != null" >
+        #{var_valor_json,jdbcType=VARCHAR},
+      </if>
+      <if test="var_id_responsable != null" >
+        #{var_id_responsable,jdbcType=VARCHAR},
+      </if>
+      <if test="var_id_tipo_operacion != null" >
+        #{var_id_tipo_operacion,jdbcType=VARCHAR},
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sernanp.app.dao.domain.THistorialDetalleExample" resultType="java.lang.Integer" >
+    select count(*) from sernanp.t_historial_detalle
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sernanp.t_historial_detalle
+    <set >
+      <if test="record.srl_id_historial_detalle != null" >
+        srl_id_historial_detalle = #{record.srl_id_historial_detalle,jdbcType=INTEGER},
+      </if>
+      <if test="record.var_codigo_registro != null" >
+        var_codigo_registro = #{record.var_codigo_registro,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_valor_json != null" >
+        var_valor_json = #{record.var_valor_json,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_id_responsable != null" >
+        var_id_responsable = #{record.var_id_responsable,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_id_tipo_operacion != null" >
+        var_id_tipo_operacion = #{record.var_id_tipo_operacion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsp_fecha_registro != null" >
+        tsp_fecha_registro = #{record.tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sernanp.t_historial_detalle
+    set srl_id_historial_detalle = #{record.srl_id_historial_detalle,jdbcType=INTEGER},
+      var_codigo_registro = #{record.var_codigo_registro,jdbcType=VARCHAR},
+      var_valor_json = #{record.var_valor_json,jdbcType=VARCHAR},
+      var_id_responsable = #{record.var_id_responsable,jdbcType=VARCHAR},
+      var_id_tipo_operacion = #{record.var_id_tipo_operacion,jdbcType=VARCHAR},
+      tsp_fecha_registro = #{record.tsp_fecha_registro,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sernanp.app.dao.domain.THistorialDetalle" >
+    update sernanp.t_historial_detalle
+    <set >
+      <if test="var_valor_json != null" >
+        var_valor_json = #{var_valor_json,jdbcType=VARCHAR},
+      </if>
+      <if test="var_id_responsable != null" >
+        var_id_responsable = #{var_id_responsable,jdbcType=VARCHAR},
+      </if>
+      <if test="var_id_tipo_operacion != null" >
+        var_id_tipo_operacion = #{var_id_tipo_operacion,jdbcType=VARCHAR},
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        tsp_fecha_registro = #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where srl_id_historial_detalle = #{srl_id_historial_detalle,jdbcType=INTEGER}
+      and var_codigo_registro = #{var_codigo_registro,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sernanp.app.dao.domain.THistorialDetalle" >
+    update sernanp.t_historial_detalle
+    set var_valor_json = #{var_valor_json,jdbcType=VARCHAR},
+      var_id_responsable = #{var_id_responsable,jdbcType=VARCHAR},
+      var_id_tipo_operacion = #{var_id_tipo_operacion,jdbcType=VARCHAR},
+      tsp_fecha_registro = #{tsp_fecha_registro,jdbcType=TIMESTAMP}
+    where srl_id_historial_detalle = #{srl_id_historial_detalle,jdbcType=INTEGER}
+      and var_codigo_registro = #{var_codigo_registro,jdbcType=VARCHAR}
+  </update>
+</mapper>

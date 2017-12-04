@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteInasistenciasRangoFechas_xls_v2" language="groovy" pageWidth="900" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="860" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="3d217295-e6eb-4841-b7e6-79e642ce00f0">
+	<property name="ireport.zoom" value="1.6105100000000105"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="reportParams" class="java.util.HashMap"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[]]>
+	</queryString>
+	<field name="personal.apepat" class="java.lang.String"/>
+	<field name="personal.apemat" class="java.lang.String"/>
+	<field name="personal.nombre" class="java.lang.String"/>
+	<field name="personal.numerodocumento" class="java.lang.String"/>
+	<field name="dte_fecha" class="java.util.Date"/>
+	<field name="hor_hor_ingreso" class="java.lang.String"/>
+	<field name="hor_hor_salida" class="java.lang.String"/>
+	<field name="personal.idpersonal" class="java.lang.String"/>
+	<field name="hor_despues_horario_tardanza" class="java.lang.String"/>
+	<field name="minutosExcedentes" class="java.lang.Integer"/>
+	<field name="hor_fuera_horario" class="java.lang.String"/>
+	<field name="hor_despues_horario" class="java.lang.String"/>
+	<field name="hor_antes_horario" class="java.lang.String"/>
+	<field name="hor_fuera_horario_total" class="java.lang.String"/>
+	<field name="hor_antes_horario_total" class="java.lang.String"/>
+	<field name="hor_despues_horario_tardanza_total" class="java.lang.String"/>
+	<field name="hor_despues_horario_total" class="java.lang.String"/>
+	<variable name="countGroup" class="java.lang.Integer" incrementType="Group" incrementGroup="numerodocumento" calculation="Count">
+		<variableExpression><![CDATA[$V{numerodocumento_COUNT}==1]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<variable name="SumaTime" class="java.sql.Time" resetType="Column" incrementType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{hor_fuera_horario}]]></variableExpression>
+	</variable>
+	<group name="numerodocumento" keepTogether="true">
+		<groupExpression><![CDATA[$F{personal.idpersonal}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField isBlankWhenNull="true">
+					<reportElement x="30" y="4" width="70" height="16" uuid="bcb56e54-df27-4346-b282-f77814c1761d">
+						<printWhenExpression><![CDATA[!$F{personal.numerodocumento}.isEmpty()]]></printWhenExpression>
+					</reportElement>
+					<box>
+						<topPen lineWidth="0.0" lineColor="#090404"/>
+						<leftPen lineWidth="0.0" lineColor="#090404"/>
+						<bottomPen lineWidth="0.0" lineColor="#090404"/>
+						<rightPen lineWidth="0.0" lineColor="#090404"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{personal.numerodocumento}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="100" y="4" width="238" height="16" uuid="301c5b9e-4d44-4d44-ad0b-83761f7a848b">
+						<printWhenExpression><![CDATA[!$F{personal.numerodocumento}.isEmpty()]]></printWhenExpression>
+					</reportElement>
+					<box>
+						<topPen lineWidth="0.0" lineColor="#090404"/>
+						<leftPen lineWidth="0.0" lineColor="#090404"/>
+						<bottomPen lineWidth="0.0" lineColor="#090404"/>
+						<rightPen lineWidth="0.0" lineColor="#090404"/>
+					</box>
+					<textElement>
+						<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{personal.apepat}+" "+$F{personal.apemat}+", "+$F{personal.nombre}]]></textFieldExpression>
+				</textField>
+				<textField pattern="" isBlankWhenNull="true">
+					<reportElement x="0" y="4" width="30" height="16" uuid="8fa697e1-1e5e-4c2e-a9c5-70f351be8963">
+						<printWhenExpression><![CDATA[!$F{personal.numerodocumento}.isEmpty()]]></printWhenExpression>
+					</reportElement>
+					<box>
+						<topPen lineWidth="0.0" lineColor="#090404"/>
+						<leftPen lineWidth="0.0" lineColor="#090404"/>
+						<bottomPen lineWidth="0.0" lineColor="#090404"/>
+						<rightPen lineWidth="0.0" lineColor="#090404"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$V{countGroup}+1]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="21">
+				<textField isBlankWhenNull="true">
+					<reportElement x="791" y="-1" width="65" height="16" uuid="c126115b-5249-4020-be67-6f0ebae8578f">
+						<printWhenExpression><![CDATA[!$F{personal.numerodocumento}.isEmpty()]]></printWhenExpression>
+					</reportElement>
+					<box>
+						<topPen lineWidth="0.0" lineColor="#090404"/>
+						<leftPen lineWidth="0.0" lineColor="#090404"/>
+						<bottomPen lineWidth="0.0" lineColor="#090404"/>
+						<rightPen lineWidth="0.0" lineColor="#090404"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font fontName="DejaVu Sans Mono" size="8" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{hor_fuera_horario_total}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="403" y="-1" width="81" height="16" uuid="10a2bde0-deed-4cda-ba93-813ed5fa6466">
+						<printWhenExpression><![CDATA[!$F{personal.numerodocumento}.isEmpty()]]></printWhenExpression>
+					</reportElement>
+					<box>
+						<topPen lineWidth="0.0" lineColor="#090404"/>
+						<leftPen lineWidth="0.0" lineColor="#090404"/>
+						<bottomPen lineWidth="0.0" lineColor="#090404"/>
+						<rightPen lineWidth="0.0" lineColor="#090404"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font fontName="DejaVu Sans Mono" size="8" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{hor_antes_horario_total}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="714" y="-1" width="76" height="16" uuid="ce15730e-d1fb-4334-9100-fa2747267685">
+						<printWhenExpression><![CDATA[!$F{personal.numerodocumento}.isEmpty()]]></printWhenExpression>
+					</reportElement>
+					<box>
+						<topPen lineWidth="0.0" lineColor="#090404"/>
+						<leftPen lineWidth="0.0" lineColor="#090404"/>
+						<bottomPen lineWidth="0.0" lineColor="#090404"/>
+						<rightPen lineWidth="0.0" lineColor="#090404"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font fontName="DejaVu Sans Mono" size="8" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{hor_despues_horario_total}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="569" y="-1" width="70" height="16" uuid="c418b968-a432-4fcc-8c14-5d7d794c5d25">
+						<printWhenExpression><![CDATA[!$F{personal.numerodocumento}.isEmpty()]]></printWhenExpression>
+					</reportElement>
+					<box>
+						<topPen lineWidth="0.0" lineColor="#090404"/>
+						<leftPen lineWidth="0.0" lineColor="#090404"/>
+						<bottomPen lineWidth="0.0" lineColor="#090404"/>
+						<rightPen lineWidth="0.0" lineColor="#090404"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font fontName="DejaVu Sans Mono" size="8" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{hor_despues_horario_tardanza_total}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="88">
+			<textField>
+				<reportElement x="0" y="67" width="493" height="20" uuid="69248c7e-c6ff-487a-bfdf-109097bde9aa"/>
+				<textElement>
+					<font fontName="DejaVu Sans Mono" size="14" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{reportParams}.get("tipoReporte")]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="39" width="831" height="22" uuid="cf0b583a-0003-4506-9b60-57a216f0eb86"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="DejaVu Sans Mono" size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{reportParams}.get("Ubicacion")]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="743" y="3" width="83" height="14" uuid="badd9c5d-643f-4953-808e-56c276b1c17a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH.mm.ss">
+				<reportElement x="743" y="20" width="80" height="14" uuid="89fee651-426a-4dbb-afbf-e34d6b3bab20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="695" y="20" width="48" height="14" uuid="6636c346-e560-4cb8-854c-1f4632eddd07"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hora:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="695" y="3" width="48" height="14" uuid="7d3397a6-e776-4979-a3d5-7ef75541a949"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<image scaleImage="RealSize">
+				<reportElement x="0" y="0" width="100" height="34" uuid="a74a00d8-c0d2-4010-af7b-aa7a02946177"/>
+				<imageExpression><![CDATA[$P{SUBREPORT_DIR}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="32">
+			<staticText>
+				<reportElement x="100" y="6" width="238" height="23" uuid="e1f576d7-20c4-423e-b5dc-1f8cef059876"/>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#090404"/>
+					<leftPen lineWidth="0.0" lineColor="#090404"/>
+					<bottomPen lineWidth="0.0" lineColor="#090404"/>
+					<rightPen lineWidth="0.0" lineColor="#090404"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Apellidos y Nombres]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="484" y="6" width="85" height="23" uuid="747b9e4c-912c-4104-9989-f951ffdb1afd"/>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#090404"/>
+					<leftPen lineWidth="0.0" lineColor="#090404"/>
+					<bottomPen lineWidth="0.0" lineColor="#090404"/>
+					<rightPen lineWidth="0.0" lineColor="#090404"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hora Ingreso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="569" y="6" width="70" height="23" uuid="97ea7769-f4e2-4165-a559-02b6f4537486"/>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#090404"/>
+					<leftPen lineWidth="0.0" lineColor="#090404"/>
+					<bottomPen lineWidth="0.0" lineColor="#090404"/>
+					<rightPen lineWidth="0.0" lineColor="#090404"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tardanza]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="338" y="6" width="64" height="23" uuid="565ed967-8a47-4071-a9f4-d32b75d2a09d"/>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#090404"/>
+					<leftPen lineWidth="0.0" lineColor="#090404"/>
+					<bottomPen lineWidth="0.0" lineColor="#090404"/>
+					<rightPen lineWidth="0.0" lineColor="#090404"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="6" width="70" height="23" uuid="0aa6e1b5-bc07-4209-89f4-4ba6af9c42fc"/>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#090404"/>
+					<leftPen lineWidth="0.0" lineColor="#090404"/>
+					<bottomPen lineWidth="0.0" lineColor="#090404"/>
+					<rightPen lineWidth="0.0" lineColor="#090404"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DNI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="6" width="30" height="23" uuid="67326dbb-9795-4cf1-9393-c685e0705df5"/>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#090404"/>
+					<leftPen lineWidth="0.0" lineColor="#090404"/>
+					<bottomPen lineWidth="0.0" lineColor="#090404"/>
+					<rightPen lineWidth="0.0" lineColor="#090404"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N°]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="714" y="6" width="79" height="23" uuid="d9bddae8-5922-4a55-8535-ce13dacb7a07"/>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#090404"/>
+					<leftPen lineWidth="0.0" lineColor="#090404"/>
+					<bottomPen lineWidth="0.0" lineColor="#090404"/>
+					<rightPen lineWidth="0.0" lineColor="#090404"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tiempo
+Después Horario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="793" y="6" width="65" height="23" uuid="d3b8458e-1229-4ae4-b040-e102703782c8"/>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#090404"/>
+					<leftPen lineWidth="0.0" lineColor="#090404"/>
+					<bottomPen lineWidth="0.0" lineColor="#090404"/>
+					<rightPen lineWidth="0.0" lineColor="#090404"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tiempo
+Extra]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="403" y="6" width="81" height="23" uuid="e81f89da-09a3-4ac5-8c1c-ca9387707e2a"/>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#090404"/>
+					<leftPen lineWidth="0.0" lineColor="#090404"/>
+					<bottomPen lineWidth="0.0" lineColor="#090404"/>
+					<rightPen lineWidth="0.0" lineColor="#090404"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tiempo
+Antes Horario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="639" y="6" width="75" height="23" uuid="8187f3ef-18a9-4f7a-8e7b-5a253336a8f2"/>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#090404"/>
+					<leftPen lineWidth="0.0" lineColor="#090404"/>
+					<bottomPen lineWidth="0.0" lineColor="#090404"/>
+					<rightPen lineWidth="0.0" lineColor="#090404"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hora Salida]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16">
+			<textField isBlankWhenNull="true">
+				<reportElement x="484" y="0" width="85" height="15" uuid="2dcfbf42-55d2-4661-b79b-0a73f80838da"/>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#090404"/>
+					<leftPen lineWidth="0.0" lineColor="#090404"/>
+					<bottomPen lineWidth="0.0" lineColor="#090404"/>
+					<rightPen lineWidth="0.0" lineColor="#090404"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hor_hor_ingreso}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="714" y="0" width="79" height="15" uuid="ebaed396-6c12-4e2b-99ca-03e1ae7403c0"/>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#090404"/>
+					<leftPen lineWidth="0.0" lineColor="#090404"/>
+					<bottomPen lineWidth="0.0" lineColor="#090404"/>
+					<rightPen lineWidth="0.0" lineColor="#090404"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hor_despues_horario}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="338" y="0" width="64" height="15" uuid="65436aaf-03e1-4eb6-8e95-aa027ebe3a4a"/>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#090404"/>
+					<leftPen lineWidth="0.0" lineColor="#090404"/>
+					<bottomPen lineWidth="0.0" lineColor="#090404"/>
+					<rightPen lineWidth="0.0" lineColor="#090404"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{dte_fecha})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="322" y="0" width="16" height="15" uuid="a26c3ffa-364f-413a-bff4-fb60708e007b"/>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#090404"/>
+					<leftPen lineWidth="0.0" lineColor="#090404"/>
+					<bottomPen lineWidth="0.0" lineColor="#090404"/>
+					<rightPen lineWidth="0.0" lineColor="#090404"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{numerodocumento_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="793" y="0" width="65" height="15" uuid="2074a392-4378-40ff-918f-de74d85de0c7"/>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#090404"/>
+					<leftPen lineWidth="0.0" lineColor="#090404"/>
+					<bottomPen lineWidth="0.0" lineColor="#090404"/>
+					<rightPen lineWidth="0.0" lineColor="#090404"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hor_fuera_horario}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="569" y="0" width="70" height="15" uuid="9e03c432-eb21-4750-a156-0af694c12620"/>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#090404"/>
+					<leftPen lineWidth="0.0" lineColor="#090404"/>
+					<bottomPen lineWidth="0.0" lineColor="#090404"/>
+					<rightPen lineWidth="0.0" lineColor="#090404"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hor_despues_horario_tardanza}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="403" y="0" width="81" height="15" uuid="42c6ab6e-57bd-4bc5-8981-3b72eeb8dca2"/>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#090404"/>
+					<leftPen lineWidth="0.0" lineColor="#090404"/>
+					<bottomPen lineWidth="0.0" lineColor="#090404"/>
+					<rightPen lineWidth="0.0" lineColor="#090404"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hor_antes_horario}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="639" y="0" width="75" height="15" uuid="5345079b-7854-48c4-a4dd-234b5111b76d"/>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#090404"/>
+					<leftPen lineWidth="0.0" lineColor="#090404"/>
+					<bottomPen lineWidth="0.0" lineColor="#090404"/>
+					<rightPen lineWidth="0.0" lineColor="#090404"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hor_hor_salida}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="21">
+			<textField>
+				<reportElement x="646" y="0" width="146" height="20" uuid="0cb1b90d-8810-445e-9519-0c6adaa9cea2"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}+" de "]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="792" y="0" width="32" height="20" uuid="7b5f78cb-e17c-48ed-8f03-13739b70f9e6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

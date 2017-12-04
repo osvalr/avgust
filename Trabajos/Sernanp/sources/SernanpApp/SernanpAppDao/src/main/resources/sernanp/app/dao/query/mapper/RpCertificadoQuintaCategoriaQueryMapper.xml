@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.RpCertificadoQuintaCategoriaQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+
+	ap.int_anio,
+	ps.idpersonal,
+	--ADD 29-12-2015 DAVID
+	ps.srl_id_regimen_pensionario,
+	napp.idpersonal,
+	(COALESCE(pn.apepat,'')||' '||COALESCE(pn.apemat,'')||' '||COALESCE(pn.nombre,'')) as "nombre_completo",
+	pn.numerodoc,
+	pn.direccion  || ', '         || COALESCE(
+               (SELECT u.nombre || ', ' ||                 
+               (SELECT ud.nombre FROM sernanp.ubigeo ud WHERE ud.coddpto = u.coddpto AND ud.codprov = u.codprov AND ud.coddist = '00' ) || ' - ' ||
+               (SELECT ud.nombre FROM sernanp.ubigeo ud WHERE ud.coddpto = u.coddpto AND ud.codprov = '00' AND ud.coddist = '00' ) 
+               FROM sernanp.ubigeo u 
+               WHERE u.idubigeo = pn.idubigeo
+    ),'' ) as "direccion",
+               
+	c.var_nom_cargo as cargo,
+	(select sum(napp1.dec_total_ingresos) 
+		from personal.t_nomina_anio_periodo_personal napp1
+			inner join personal.t_anio_periodo_planilla app1 ON napp1.srl_id_anio_periodo_planilla = app1.srl_id_anio_periodo_planilla
+			inner join personal.t_anio_planilla ap1 ON app1.srl_id_anio_planilla = ap1.srl_id_anio_planilla
+		where 
+			ap1.int_anio = ap.int_anio
+			AND app1.int_id_periodo_mes BETWEEN (select EXTRACT(month from current_date) - (EXTRACT(month from current_date)-1)) AND app.int_id_periodo_mes
+			AND napp1.idpersonal = ps.idpersonal 
+	) as total_ingresos,
+
+	coalesce((select sum(tnc.dec_monto_calculado) 
+		from	personal.t_nomina_concepto tnc	
+		inner join personal.t_concepto_planilla tcp ON tnc.srl_id_concepto_planilla = tcp.srl_id_concepto_planilla
+		inner join  personal.t_nomina_anio_periodo_personal  tnapp ON  tnc.srl_id_nomina_anio_periodo_personal = tnapp.srl_id_nomina_anio_periodo_personal 
+		inner join sernanp.personal tps ON tps.idpersonaL = tnapp.idpersonaL
+		inner join  personal.t_anio_periodo_planilla tapp ON tnapp.srl_id_anio_periodo_planilla = tapp.srl_id_anio_periodo_planilla
+		inner join  personal.t_anio_planilla tap ON tapp.srl_id_anio_planilla = tap.srl_id_anio_planilla
+		where
+		tcp.srl_id_concepto_planilla in ( 1, 4, 5, 6)
+		--tcp.srl_id_concepto_planilla = 4
+		and tps.idpersonal = ps.idpersonal
+		and tap.int_anio = ap.int_anio)
+	,0.00) as aporte_obligatorio,
+
+	coalesce((select sum(tnc.dec_monto_calculado) 
+		from	personal.t_nomina_concepto tnc	
+		inner join personal.t_concepto_planilla tcp ON tnc.srl_id_concepto_planilla = tcp.srl_id_concepto_planilla
+		inner join personal.t_nomina_anio_periodo_personal  tnapp ON  tnc.srl_id_nomina_anio_periodo_personal = tnapp.srl_id_nomina_anio_periodo_personal 
+		inner join sernanp.personal tps ON tps.idpersonaL = tnapp.idpersonaL
+		inner join personal.t_anio_periodo_planilla tapp ON tnapp.srl_id_anio_periodo_planilla = tapp.srl_id_anio_periodo_planilla
+		inner join personal.t_anio_planilla tap ON tapp.srl_id_anio_planilla = tap.srl_id_anio_planilla
+		where
+		tcp.srl_id_concepto_planilla = 8
+		and tps.idpersonal = ps.idpersonal
+		and tap.int_anio = ap.int_anio),
+	0.00) as quinta_cat,
+
+	(coalesce((select sum(tnc.dec_monto_calculado) 
+	from	personal.t_nomina_concepto tnc	
+	inner join personal.t_concepto_planilla tcp ON tnc.srl_id_concepto_planilla = tcp.srl_id_concepto_planilla
+	inner join personal.t_nomina_anio_periodo_personal  tnapp ON  tnc.srl_id_nomina_anio_periodo_personal = tnapp.srl_id_nomina_anio_periodo_personal 
+	inner join sernanp.personal tps ON tps.idpersonaL = tnapp.idpersonaL
+	inner join personal.t_anio_periodo_planilla tapp ON tnapp.srl_id_anio_periodo_planilla = tapp.srl_id_anio_periodo_planilla
+	inner join personal.t_anio_planilla tap ON tapp.srl_id_anio_planilla = tap.srl_id_anio_planilla
+	where
+	tcp.srl_id_concepto_planilla = 4
+	and tps.idpersonal = ps.idpersonal
+	and tap.int_anio = ap.int_anio),0.00) 
+
+	+
+
+	(select	sum(tnc.dec_monto_calculado) 
+	from	personal.t_nomina_concepto tnc	
+	inner join personal.t_concepto_planilla tcp ON tnc.srl_id_concepto_planilla = tcp.srl_id_concepto_planilla
+	inner join personal.t_nomina_anio_periodo_personal  tnapp ON  tnc.srl_id_nomina_anio_periodo_personal = tnapp.srl_id_nomina_anio_periodo_personal 
+	inner join sernanp.personal tps ON tps.idpersonaL = tnapp.idpersonaL
+	inner join personal.t_anio_periodo_planilla tapp ON tnapp.srl_id_anio_periodo_planilla = tapp.srl_id_anio_periodo_planilla
+	inner join personal.t_anio_planilla tap ON tapp.srl_id_anio_planilla = tap.srl_id_anio_planilla
+	where
+	tcp.srl_id_concepto_planilla = 8
+	and tps.idpersonal = ps.idpersonal
+	and tap.int_anio = ap.int_anio)) as retencion
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[	
+
+
+
+	sernanp.persona pe 
+	INNER JOIN sernanp.personanatural pn ON pn.idpersona = pe.idpersona	
+	INNER JOIN sernanp.personal ps ON ps.idpersonanatural = pn.idpersonanatural
+	INNER JOIN personal.t_nomina_anio_periodo_personal napp ON napp.idpersonal = ps.idpersonal
+	INNER JOIN personal.t_anio_periodo_planilla app ON napp.srl_id_anio_periodo_planilla = app.srl_id_anio_periodo_planilla
+	INNER JOIN personal.t_anio_planilla ap ON app.srl_id_anio_planilla = ap.srl_id_anio_planilla
+	inner JOIN sernanp.t_personal_contrato pc on napp.srl_id_contrato = pc.srl_id_contrato
+	left JOIN sernanp.t_cargo c ON pc.srl_id_cargo = c.srl_id_cargo
+
+	left JOIN  sernanp.sede s on pc.srl_id_sede_pres = s.idsede
+	left JOIN sernanp.areanatural an on s.idareanatural = an.idareanatural
+	left JOIN sernanp.categoriaanp ca on an.idcategoriaanp = ca.idcategoriaanp
+	left JOIN sernanp.areaorganica ao on pc.idarea = ao.idarea
+           
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+
+
+COALESCE(c.srl_id_cargo,0)= COALESCE(#{srl_id_cargo}, COALESCE(c.srl_id_cargo,0)) and
+UPPER(COALESCE(COALESCE(pn.nombre,'') ||' '|| COALESCE(pn.apepat,'') ||' '|| COALESCE(pn.apemat,''),'')) like UPPER(COALESCE('%'|| #{nombre_completo} ||'%',UPPER(COALESCE(COALESCE(pn.nombre,'')||' '||COALESCE(pn.apepat,'')||' '|| COALESCE(pn.apemat,''),'')))) and
+COALESCE(ap.int_anio,0) = COALESCE(#{int_anio},COALESCE(ap.int_anio,0)) 
+AND app.int_id_periodo_mes = COALESCE(#{int_id_periodo_mes},app.int_id_periodo_mes)
+AND COALESCE(napp.srl_id_regimen_contractual,0) = COALESCE(1, COALESCE(napp.srl_id_regimen_contractual,0)) 
+AND napp.int_id_estado = COALESCE(1,napp.int_id_estado)	
+AND napp.idpersonal = ps.idpersonal
+
+
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY
+	nombre_completo,
+	ap.int_anio
+	
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.RpCertificadoQuintaCategoriaQuery" parameterType="sernanp.app.dao.query.domain.RpCertificadoQuintaCategoriaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.RpCertificadoQuintaCategoriaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.RpCertificadoQuintaCategoriaQuery" parameterType="sernanp.app.dao.query.domain.RpCertificadoQuintaCategoriaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.RpCertificadoQuintaCategoriaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.RpCertificadoQuintaCategoriaQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

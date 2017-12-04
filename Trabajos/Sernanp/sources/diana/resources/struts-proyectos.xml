@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<constant name="struts.multipart.maxSize" value="10000000000" />
+
+
+	<package name="proyectos" namespace="/"
+		extends="proyecto,json-default,jfreechart-default">
+
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+
+		
+
+          <action name="reporteProyectoArea" class="proyecto.action.ProyectoAction"
+			method="consultarReporteProyectoxAreaNatural">
+			<result name="success"  >/proyecto/reporte.proyecto.area.jsp</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="defaultStack" />
+		</action>   
+       
+
+		<action name="registroProyecto" class="proyecto.action.ProyectoAction"
+			method="irRegistroProyecto">
+			<result name="success" type="tiles">registroProyecto</result>
+			<interceptor-ref name="general" />
+			<interceptor-ref name="usuario-logeado" />
+			 <interceptor-ref name="defaultStack" />
+		</action>
+
+
+
+
+		<action name="consultaProyecto" class="proyecto.action.ProyectoAction"
+			method="consultarProyectos">
+			<result type="tiles" name="inicio">inicioProyecto</result>
+			<result name="lista">/proyecto/lista.proyecto.jsp</result>
+			<interceptor-ref name="general" />
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="defaultStack" />
+		</action>
+
+		<action name="consultaPaginaProyecto" class="proyecto.action.ProyectoAction"
+			method="consultarPaginaProyectos">
+			<result name="success">/proyecto/lista.proyecto.jsp</result>
+			<interceptor-ref name="general" />
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="defaultStack" />
+		</action>
+
+
+		<action name="consultaDetalleProyecto" class="proyecto.action.ProyectoAction"
+			method="consultarDetalleProyecto">
+			<result name="success">/proyecto/detalle.proyecto.jsp</result>
+			<interceptor-ref name="general" />
+			<interceptor-ref name="usuario-logeado" />
+			 <interceptor-ref name="defaultStack" />
+		</action>
+		
+		
+		<action name="eliminaProyectos" class="proyecto.action.ProyectoAction"
+			method="eliminarRegistroProyectos">
+			<result name="success" type="redirectAction">
+                 <param name="actionName">consultaProyecto</param>
+             </result>
+			<interceptor-ref name="general" />
+			<interceptor-ref name="usuario-logeado" />
+			 <interceptor-ref name="defaultStack" />
+		</action>
+		
+		
+		
+		<action name="reporteCantidadProyectoArea" class="proyecto.action.ProyectoAction"
+			method="generarReporteCantidadProyectoVsAreaNatural">
+			<result name="success" type="tiles">reporteCantidadProyectoArea
+			</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="defaultStack" />
+		</action>
+		
+		<action name="reporteMontoProyectoArea" class="proyecto.action.ProyectoAction"
+			method="generarReporteMontoProyectoVsAreaNatural">
+			<result name="success" type="tiles">reporteMontoProyectoArea
+			</result>
+			<interceptor-ref name="general" />
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="defaultStack" />
+		</action>
+
+		
+
+
+		<action name="muestraArchivoProyecto" class="proyecto.action.ProyectoAction">
+			<result name="success" type="stream">
+				<param name="inputName">archivoProyecto</param>
+				<param name="contentType"> application/octet-stream </param>
+				<param name="contentDisposition">attachment;filename="${nombreArchivo}"</param>
+			</result>
+            <interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado"></interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+		</action>
+
+
+		<action name="guardaInstitucion" class="proyecto.action.ProyectoAction"
+			method="guardarRegistroInstitucion">
+			<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="defaultStack" />
+		</action>
+
+
+		<action name="cargaArchivo" class="proyecto.action.ProyectoAction"
+			method="cargarArchivo">
+
+			<result name="success">/proyecto/listaArchivo.jsp</result>
+			<interceptor-ref name="general" />
+			<interceptor-ref name="usuario-logeado" />
+			 <interceptor-ref name="defaultStack" />
+		</action>
+
+		<action name="eliminaArchivo" class="proyecto.action.ProyectoAction"
+			method="eliminarArchivo">
+			<result name="success">/proyecto/listaArchivo.jsp</result>
+			<interceptor-ref name="general" />
+			<interceptor-ref name="usuario-logeado" />
+			 <interceptor-ref name="defaultStack" />
+		</action>
+
+		<action name="exportaProyecto" class="proyecto.action.ProyectoAction">
+			<result name="success" type="stream">
+				<param name="inputName">resultadoListaProyecto</param>
+				<param name="contentType"> application/octet-stream </param>
+				<param name="contentDisposition">attachment;filename=${nombreArchivo}</param>
+			</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado"></interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+		</action>
+
+		<action name="guardaProyecto" class="proyecto.action.ProyectoAction"
+			method="guardarRegistroProyecto">
+			
+           
+			<result name="actualiza" type="redirectAction">
+				<param name="actionName">consultaProyecto</param>
+
+			</result>
+
+			<result name="crea" type="redirectAction">
+				<param name="actionName">registroProyecto</param>
+
+			</result>
+
+            <interceptor-ref name="general" />  
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="defaultStack" />
+		</action>
+
+	
+
+		<action name="listaAreasNaturales" class="proyecto.action.ProyectoAction"
+			method="listarAreasNaturales">
+			<result name="success">/proyecto/lista.anp.jsp</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="defaultStack" />
+		</action>
+
+
+		<action name="listaAreaNaturalCategoria" class="proyecto.action.ProyectoAction"
+			method="listarAreasNaturalesxCategoria">
+			<result name="success">/proyecto/lista.anp.jsp</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="defaultStack" />
+		</action>
+		
+
+
+		<action name="listaFiltrosInicialProyectos" class="proyecto.action.ProyectoAction"
+			method="listarFiltrosInicialProyectos">
+			<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="defaultStack" />
+		</action>
+
+		<action name="listaFiltrosProyectos" class="proyecto.action.ProyectoAction"
+			method="listarFiltrosProyectos">
+			<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="defaultStack" />
+		</action>
+
+		<action name="buscaProyecto" class="proyecto.action.ProyectoAction"
+			method="buscarProyectos">
+			<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="defaultStack" />
+		</action>
+
+
+		<action name="buscaTipoCambio" class="proyecto.action.ProyectoAction"
+			method="buscarTipoCambio">
+			<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="defaultStack" />
+		</action>
+
+		<action name="buscaEjecutor" class="proyecto.action.ProyectoAction"
+			method="buscarEjecutores">
+			<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="defaultStack" />
+		</action>
+		<action name="buscaFuenteFinanciamiento" class="proyecto.action.ProyectoAction"
+			method="buscarFuenteFinanciamiento">
+			<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="defaultStack" />
+		</action>
+
+	</package>
+
+</struts>

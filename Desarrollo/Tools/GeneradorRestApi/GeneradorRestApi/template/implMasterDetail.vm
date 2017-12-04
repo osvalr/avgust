@@ -1,0 +1,41 @@
+${copy}
+
+/**
+* @author  Javier Raffo
+* @version 1.0
+* @since   ${datetimeCreate}
+*/
+
+package ${packageImplement};
+
+import ${packageService}.${nameCrud}Service;
+import ${packageModel}.${nameModel};
+import ${packageModel}.${nameModelCriteria};
+import ${packageMapper}.${nameModelMapper};
+import ${packageRepository}.${nameRepository};
+#foreach( $detail in $details )
+import ${packageService}.${detail.nameCrud}Service;
+#end
+import org.springframework.stereotype.Service;
+import pe.gob.senamhi.util.DetailCrudRepositories;
+import pe.gob.senamhi.util.DetailCrudRepository;
+import pe.gob.senamhi.util.JpaAndMybatisCrudService;
+import pe.gob.senamhi.util.MasterCrudRepository;
+
+@Service
+@MasterCrudRepository(classRepository = ${nameRepository}.class,propertyId = "${propertyId}")
+#if ($details.size() == 1)
+@DetailCrudRepositories({
+#foreach( $detail in $details )
+        @DetailCrudRepository(classModelService = ${detail.nameCrud}Service.class,namePropertyList = "${detail.namePropertyList}",unionProperty = "${propertyId}"),
+#end
+})
+#else
+@DetailCrudRepositories({
+#foreach( $detail in $details )
+        @DetailCrudRepository(classModelService = ${detail.nameCrud}Service.class,namePropertyList = "${detail.namePropertyList}",unionProperty = "${propertyId}"),
+#end
+})
+#end
+public class ${nameCrud}ServiceImpl extends JpaAndMybatisCrudService<${nameModel},${nameModelCriteria},${nameModelMapper}> implements ${nameCrud}Service{
+}

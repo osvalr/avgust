@@ -1,0 +1,703 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sernanp.app.dao.mapper.TPersonalContratoMapper" >
+  <resultMap id="BaseResultMap" type="sernanp.app.dao.domain.TPersonalContrato" >
+    <id column="srl_id_contrato" property="srl_id_contrato" jdbcType="INTEGER" />
+    <result column="var_num_contrato" property="var_num_contrato" jdbcType="VARCHAR" />
+    <result column="num_sueldo" property="num_sueldo" jdbcType="NUMERIC" />
+    <result column="idpersonal" property="idpersonal" jdbcType="INTEGER" />
+    <result column="dte_fec_inicio" property="dte_fec_inicio" jdbcType="DATE" />
+    <result column="dte_fec_termino" property="dte_fec_termino" jdbcType="DATE" />
+    <result column="dte_fec_suscrip" property="dte_fec_suscrip" jdbcType="DATE" />
+    <result column="int_id_reg_lab" property="int_id_reg_lab" jdbcType="INTEGER" />
+    <result column="idarea" property="idarea" jdbcType="INTEGER" />
+    <result column="dte_fec_cese" property="dte_fec_cese" jdbcType="DATE" />
+    <result column="int_id_tab_tip" property="int_id_tab_tip" jdbcType="INTEGER" />
+    <result column="int_est_contrato" property="int_est_contrato" jdbcType="INTEGER" />
+    <result column="srl_id_cargo" property="srl_id_cargo" jdbcType="INTEGER" />
+    <result column="srl_id_meta_presupuestaria" property="srl_id_meta_presupuestaria" jdbcType="INTEGER" />
+    <result column="srl_id_regimen_contractual" property="srl_id_regimen_contractual" jdbcType="INTEGER" />
+    <result column="srl_id_fuente_financiamiento" property="srl_id_fuente_financiamiento" jdbcType="INTEGER" />
+    <result column="srl_id_postulante_conv_area_org" property="srl_id_postulante_conv_area_org" jdbcType="INTEGER" />
+    <result column="srl_id_sede_pres" property="srl_id_sede_pres" jdbcType="INTEGER" />
+    <result column="srl_id_nivel_remunerativo" property="srl_id_nivel_remunerativo" jdbcType="INTEGER" />
+    <result column="srl_id_contrato_padre" property="srl_id_contrato_padre" jdbcType="INTEGER" />
+    <result column="int_id_estado" property="int_id_estado" jdbcType="INTEGER" />
+    <result column="int_id_tipo_trato" property="int_id_tipo_trato" jdbcType="INTEGER" />
+    <result column="srl_id_resp_unid_oper" property="srl_id_resp_unid_oper" jdbcType="INTEGER" />
+    <result column="srl_id_plantilla_documento_archivo" property="srl_id_plantilla_documento_archivo" jdbcType="INTEGER" />
+    <result column="var_num_resolucion" property="var_num_resolucion" jdbcType="VARCHAR" />
+    <result column="idunidad" property="idunidad" jdbcType="INTEGER" />
+    <result column="var_lugar_prestacion" property="var_lugar_prestacion" jdbcType="VARCHAR" />
+    <result column="des_area_organica" property="des_area_organica" jdbcType="VARCHAR" />
+    <result column="des_unidad_operativa" property="des_unidad_operativa" jdbcType="VARCHAR" />
+    <result column="srl_id_meta_fuente_generica" property="srl_id_meta_fuente_generica" jdbcType="INTEGER" />
+    <result column="var_nivel_regimen_contractual" property="var_nivel_regimen_contractual" jdbcType="VARCHAR" />
+    <result column="codmeta" property="codmeta" jdbcType="VARCHAR" />
+    <result column="codfuente" property="codfuente" jdbcType="VARCHAR" />
+    <result column="var_ubicacion_fisica" property="var_ubicacion_fisica" jdbcType="VARCHAR" />
+    <result column="int_id_idubigeo" property="int_id_idubigeo" jdbcType="INTEGER" />
+    <result column="var_direccion_personal" property="var_direccion_personal" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    srl_id_contrato, var_num_contrato, num_sueldo, idpersonal, dte_fec_inicio, dte_fec_termino, 
+    dte_fec_suscrip, int_id_reg_lab, idarea, dte_fec_cese, int_id_tab_tip, int_est_contrato, 
+    srl_id_cargo, srl_id_meta_presupuestaria, srl_id_regimen_contractual, srl_id_fuente_financiamiento, 
+    srl_id_postulante_conv_area_org, srl_id_sede_pres, srl_id_nivel_remunerativo, srl_id_contrato_padre, 
+    int_id_estado, int_id_tipo_trato, srl_id_resp_unid_oper, srl_id_plantilla_documento_archivo, 
+    var_num_resolucion, idunidad, var_lugar_prestacion, des_area_organica, des_unidad_operativa, 
+    srl_id_meta_fuente_generica, var_nivel_regimen_contractual, codmeta, codfuente, var_ubicacion_fisica, 
+    int_id_idubigeo, var_direccion_personal
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TPersonalContratoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sernanp.t_personal_contrato
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TPersonalContratoKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from sernanp.t_personal_contrato
+    where srl_id_contrato = #{srl_id_contrato,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="sernanp.app.dao.domain.TPersonalContratoKey" >
+    delete from sernanp.t_personal_contrato
+    where srl_id_contrato = #{srl_id_contrato,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sernanp.app.dao.domain.TPersonalContratoExample" >
+    delete from sernanp.t_personal_contrato
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sernanp.app.dao.domain.TPersonalContrato" useGeneratedKeys="true" keyProperty="srl_id_contrato" >
+    insert into sernanp.t_personal_contrato (var_num_contrato, num_sueldo, idpersonal, 
+      dte_fec_inicio, dte_fec_termino, dte_fec_suscrip, 
+      int_id_reg_lab, idarea, dte_fec_cese, 
+      int_id_tab_tip, int_est_contrato, srl_id_cargo, 
+      srl_id_meta_presupuestaria, srl_id_regimen_contractual, 
+      srl_id_fuente_financiamiento, srl_id_postulante_conv_area_org, 
+      srl_id_sede_pres, srl_id_nivel_remunerativo, 
+      srl_id_contrato_padre, int_id_estado, int_id_tipo_trato, 
+      srl_id_resp_unid_oper, srl_id_plantilla_documento_archivo, 
+      var_num_resolucion, idunidad, var_lugar_prestacion, 
+      des_area_organica, des_unidad_operativa, 
+      srl_id_meta_fuente_generica, var_nivel_regimen_contractual, 
+      codmeta, codfuente, var_ubicacion_fisica, 
+      int_id_idubigeo, var_direccion_personal
+      )
+    values (#{var_num_contrato,jdbcType=VARCHAR}, #{num_sueldo,jdbcType=NUMERIC}, #{idpersonal,jdbcType=INTEGER}, 
+      #{dte_fec_inicio,jdbcType=DATE}, #{dte_fec_termino,jdbcType=DATE}, #{dte_fec_suscrip,jdbcType=DATE}, 
+      #{int_id_reg_lab,jdbcType=INTEGER}, #{idarea,jdbcType=INTEGER}, #{dte_fec_cese,jdbcType=DATE}, 
+      #{int_id_tab_tip,jdbcType=INTEGER}, #{int_est_contrato,jdbcType=INTEGER}, #{srl_id_cargo,jdbcType=INTEGER}, 
+      #{srl_id_meta_presupuestaria,jdbcType=INTEGER}, #{srl_id_regimen_contractual,jdbcType=INTEGER}, 
+      #{srl_id_fuente_financiamiento,jdbcType=INTEGER}, #{srl_id_postulante_conv_area_org,jdbcType=INTEGER}, 
+      #{srl_id_sede_pres,jdbcType=INTEGER}, #{srl_id_nivel_remunerativo,jdbcType=INTEGER}, 
+      #{srl_id_contrato_padre,jdbcType=INTEGER}, #{int_id_estado,jdbcType=INTEGER}, #{int_id_tipo_trato,jdbcType=INTEGER}, 
+      #{srl_id_resp_unid_oper,jdbcType=INTEGER}, #{srl_id_plantilla_documento_archivo,jdbcType=INTEGER}, 
+      #{var_num_resolucion,jdbcType=VARCHAR}, #{idunidad,jdbcType=INTEGER}, #{var_lugar_prestacion,jdbcType=VARCHAR}, 
+      #{des_area_organica,jdbcType=VARCHAR}, #{des_unidad_operativa,jdbcType=VARCHAR}, 
+      #{srl_id_meta_fuente_generica,jdbcType=INTEGER}, #{var_nivel_regimen_contractual,jdbcType=VARCHAR}, 
+      #{codmeta,jdbcType=VARCHAR}, #{codfuente,jdbcType=VARCHAR}, #{var_ubicacion_fisica,jdbcType=VARCHAR}, 
+      #{int_id_idubigeo,jdbcType=INTEGER}, #{var_direccion_personal,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="sernanp.app.dao.domain.TPersonalContrato" useGeneratedKeys="true" keyProperty="srl_id_contrato" >
+    insert into sernanp.t_personal_contrato
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="var_num_contrato != null" >
+        var_num_contrato,
+      </if>
+      <if test="num_sueldo != null" >
+        num_sueldo,
+      </if>
+      <if test="idpersonal != null" >
+        idpersonal,
+      </if>
+      <if test="dte_fec_inicio != null" >
+        dte_fec_inicio,
+      </if>
+      <if test="dte_fec_termino != null" >
+        dte_fec_termino,
+      </if>
+      <if test="dte_fec_suscrip != null" >
+        dte_fec_suscrip,
+      </if>
+      <if test="int_id_reg_lab != null" >
+        int_id_reg_lab,
+      </if>
+      <if test="idarea != null" >
+        idarea,
+      </if>
+      <if test="dte_fec_cese != null" >
+        dte_fec_cese,
+      </if>
+      <if test="int_id_tab_tip != null" >
+        int_id_tab_tip,
+      </if>
+      <if test="int_est_contrato != null" >
+        int_est_contrato,
+      </if>
+      <if test="srl_id_cargo != null" >
+        srl_id_cargo,
+      </if>
+      <if test="srl_id_meta_presupuestaria != null" >
+        srl_id_meta_presupuestaria,
+      </if>
+      <if test="srl_id_regimen_contractual != null" >
+        srl_id_regimen_contractual,
+      </if>
+      <if test="srl_id_fuente_financiamiento != null" >
+        srl_id_fuente_financiamiento,
+      </if>
+      <if test="srl_id_postulante_conv_area_org != null" >
+        srl_id_postulante_conv_area_org,
+      </if>
+      <if test="srl_id_sede_pres != null" >
+        srl_id_sede_pres,
+      </if>
+      <if test="srl_id_nivel_remunerativo != null" >
+        srl_id_nivel_remunerativo,
+      </if>
+      <if test="srl_id_contrato_padre != null" >
+        srl_id_contrato_padre,
+      </if>
+      <if test="int_id_estado != null" >
+        int_id_estado,
+      </if>
+      <if test="int_id_tipo_trato != null" >
+        int_id_tipo_trato,
+      </if>
+      <if test="srl_id_resp_unid_oper != null" >
+        srl_id_resp_unid_oper,
+      </if>
+      <if test="srl_id_plantilla_documento_archivo != null" >
+        srl_id_plantilla_documento_archivo,
+      </if>
+      <if test="var_num_resolucion != null" >
+        var_num_resolucion,
+      </if>
+      <if test="idunidad != null" >
+        idunidad,
+      </if>
+      <if test="var_lugar_prestacion != null" >
+        var_lugar_prestacion,
+      </if>
+      <if test="des_area_organica != null" >
+        des_area_organica,
+      </if>
+      <if test="des_unidad_operativa != null" >
+        des_unidad_operativa,
+      </if>
+      <if test="srl_id_meta_fuente_generica != null" >
+        srl_id_meta_fuente_generica,
+      </if>
+      <if test="var_nivel_regimen_contractual != null" >
+        var_nivel_regimen_contractual,
+      </if>
+      <if test="codmeta != null" >
+        codmeta,
+      </if>
+      <if test="codfuente != null" >
+        codfuente,
+      </if>
+      <if test="var_ubicacion_fisica != null" >
+        var_ubicacion_fisica,
+      </if>
+      <if test="int_id_idubigeo != null" >
+        int_id_idubigeo,
+      </if>
+      <if test="var_direccion_personal != null" >
+        var_direccion_personal,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="var_num_contrato != null" >
+        #{var_num_contrato,jdbcType=VARCHAR},
+      </if>
+      <if test="num_sueldo != null" >
+        #{num_sueldo,jdbcType=NUMERIC},
+      </if>
+      <if test="idpersonal != null" >
+        #{idpersonal,jdbcType=INTEGER},
+      </if>
+      <if test="dte_fec_inicio != null" >
+        #{dte_fec_inicio,jdbcType=DATE},
+      </if>
+      <if test="dte_fec_termino != null" >
+        #{dte_fec_termino,jdbcType=DATE},
+      </if>
+      <if test="dte_fec_suscrip != null" >
+        #{dte_fec_suscrip,jdbcType=DATE},
+      </if>
+      <if test="int_id_reg_lab != null" >
+        #{int_id_reg_lab,jdbcType=INTEGER},
+      </if>
+      <if test="idarea != null" >
+        #{idarea,jdbcType=INTEGER},
+      </if>
+      <if test="dte_fec_cese != null" >
+        #{dte_fec_cese,jdbcType=DATE},
+      </if>
+      <if test="int_id_tab_tip != null" >
+        #{int_id_tab_tip,jdbcType=INTEGER},
+      </if>
+      <if test="int_est_contrato != null" >
+        #{int_est_contrato,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_cargo != null" >
+        #{srl_id_cargo,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_meta_presupuestaria != null" >
+        #{srl_id_meta_presupuestaria,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_regimen_contractual != null" >
+        #{srl_id_regimen_contractual,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_fuente_financiamiento != null" >
+        #{srl_id_fuente_financiamiento,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_postulante_conv_area_org != null" >
+        #{srl_id_postulante_conv_area_org,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_sede_pres != null" >
+        #{srl_id_sede_pres,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_nivel_remunerativo != null" >
+        #{srl_id_nivel_remunerativo,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_contrato_padre != null" >
+        #{srl_id_contrato_padre,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_estado != null" >
+        #{int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_tipo_trato != null" >
+        #{int_id_tipo_trato,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_resp_unid_oper != null" >
+        #{srl_id_resp_unid_oper,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_plantilla_documento_archivo != null" >
+        #{srl_id_plantilla_documento_archivo,jdbcType=INTEGER},
+      </if>
+      <if test="var_num_resolucion != null" >
+        #{var_num_resolucion,jdbcType=VARCHAR},
+      </if>
+      <if test="idunidad != null" >
+        #{idunidad,jdbcType=INTEGER},
+      </if>
+      <if test="var_lugar_prestacion != null" >
+        #{var_lugar_prestacion,jdbcType=VARCHAR},
+      </if>
+      <if test="des_area_organica != null" >
+        #{des_area_organica,jdbcType=VARCHAR},
+      </if>
+      <if test="des_unidad_operativa != null" >
+        #{des_unidad_operativa,jdbcType=VARCHAR},
+      </if>
+      <if test="srl_id_meta_fuente_generica != null" >
+        #{srl_id_meta_fuente_generica,jdbcType=INTEGER},
+      </if>
+      <if test="var_nivel_regimen_contractual != null" >
+        #{var_nivel_regimen_contractual,jdbcType=VARCHAR},
+      </if>
+      <if test="codmeta != null" >
+        #{codmeta,jdbcType=VARCHAR},
+      </if>
+      <if test="codfuente != null" >
+        #{codfuente,jdbcType=VARCHAR},
+      </if>
+      <if test="var_ubicacion_fisica != null" >
+        #{var_ubicacion_fisica,jdbcType=VARCHAR},
+      </if>
+      <if test="int_id_idubigeo != null" >
+        #{int_id_idubigeo,jdbcType=INTEGER},
+      </if>
+      <if test="var_direccion_personal != null" >
+        #{var_direccion_personal,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sernanp.app.dao.domain.TPersonalContratoExample" resultType="java.lang.Integer" >
+    select count(*) from sernanp.t_personal_contrato
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sernanp.t_personal_contrato
+    <set >
+      <if test="record.srl_id_contrato != null" >
+        srl_id_contrato = #{record.srl_id_contrato,jdbcType=INTEGER},
+      </if>
+      <if test="record.var_num_contrato != null" >
+        var_num_contrato = #{record.var_num_contrato,jdbcType=VARCHAR},
+      </if>
+      <if test="record.num_sueldo != null" >
+        num_sueldo = #{record.num_sueldo,jdbcType=NUMERIC},
+      </if>
+      <if test="record.idpersonal != null" >
+        idpersonal = #{record.idpersonal,jdbcType=INTEGER},
+      </if>
+      <if test="record.dte_fec_inicio != null" >
+        dte_fec_inicio = #{record.dte_fec_inicio,jdbcType=DATE},
+      </if>
+      <if test="record.dte_fec_termino != null" >
+        dte_fec_termino = #{record.dte_fec_termino,jdbcType=DATE},
+      </if>
+      <if test="record.dte_fec_suscrip != null" >
+        dte_fec_suscrip = #{record.dte_fec_suscrip,jdbcType=DATE},
+      </if>
+      <if test="record.int_id_reg_lab != null" >
+        int_id_reg_lab = #{record.int_id_reg_lab,jdbcType=INTEGER},
+      </if>
+      <if test="record.idarea != null" >
+        idarea = #{record.idarea,jdbcType=INTEGER},
+      </if>
+      <if test="record.dte_fec_cese != null" >
+        dte_fec_cese = #{record.dte_fec_cese,jdbcType=DATE},
+      </if>
+      <if test="record.int_id_tab_tip != null" >
+        int_id_tab_tip = #{record.int_id_tab_tip,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_est_contrato != null" >
+        int_est_contrato = #{record.int_est_contrato,jdbcType=INTEGER},
+      </if>
+      <if test="record.srl_id_cargo != null" >
+        srl_id_cargo = #{record.srl_id_cargo,jdbcType=INTEGER},
+      </if>
+      <if test="record.srl_id_meta_presupuestaria != null" >
+        srl_id_meta_presupuestaria = #{record.srl_id_meta_presupuestaria,jdbcType=INTEGER},
+      </if>
+      <if test="record.srl_id_regimen_contractual != null" >
+        srl_id_regimen_contractual = #{record.srl_id_regimen_contractual,jdbcType=INTEGER},
+      </if>
+      <if test="record.srl_id_fuente_financiamiento != null" >
+        srl_id_fuente_financiamiento = #{record.srl_id_fuente_financiamiento,jdbcType=INTEGER},
+      </if>
+      <if test="record.srl_id_postulante_conv_area_org != null" >
+        srl_id_postulante_conv_area_org = #{record.srl_id_postulante_conv_area_org,jdbcType=INTEGER},
+      </if>
+      <if test="record.srl_id_sede_pres != null" >
+        srl_id_sede_pres = #{record.srl_id_sede_pres,jdbcType=INTEGER},
+      </if>
+      <if test="record.srl_id_nivel_remunerativo != null" >
+        srl_id_nivel_remunerativo = #{record.srl_id_nivel_remunerativo,jdbcType=INTEGER},
+      </if>
+      <if test="record.srl_id_contrato_padre != null" >
+        srl_id_contrato_padre = #{record.srl_id_contrato_padre,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_id_estado != null" >
+        int_id_estado = #{record.int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_id_tipo_trato != null" >
+        int_id_tipo_trato = #{record.int_id_tipo_trato,jdbcType=INTEGER},
+      </if>
+      <if test="record.srl_id_resp_unid_oper != null" >
+        srl_id_resp_unid_oper = #{record.srl_id_resp_unid_oper,jdbcType=INTEGER},
+      </if>
+      <if test="record.srl_id_plantilla_documento_archivo != null" >
+        srl_id_plantilla_documento_archivo = #{record.srl_id_plantilla_documento_archivo,jdbcType=INTEGER},
+      </if>
+      <if test="record.var_num_resolucion != null" >
+        var_num_resolucion = #{record.var_num_resolucion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idunidad != null" >
+        idunidad = #{record.idunidad,jdbcType=INTEGER},
+      </if>
+      <if test="record.var_lugar_prestacion != null" >
+        var_lugar_prestacion = #{record.var_lugar_prestacion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.des_area_organica != null" >
+        des_area_organica = #{record.des_area_organica,jdbcType=VARCHAR},
+      </if>
+      <if test="record.des_unidad_operativa != null" >
+        des_unidad_operativa = #{record.des_unidad_operativa,jdbcType=VARCHAR},
+      </if>
+      <if test="record.srl_id_meta_fuente_generica != null" >
+        srl_id_meta_fuente_generica = #{record.srl_id_meta_fuente_generica,jdbcType=INTEGER},
+      </if>
+      <if test="record.var_nivel_regimen_contractual != null" >
+        var_nivel_regimen_contractual = #{record.var_nivel_regimen_contractual,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codmeta != null" >
+        codmeta = #{record.codmeta,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codfuente != null" >
+        codfuente = #{record.codfuente,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_ubicacion_fisica != null" >
+        var_ubicacion_fisica = #{record.var_ubicacion_fisica,jdbcType=VARCHAR},
+      </if>
+      <if test="record.int_id_idubigeo != null" >
+        int_id_idubigeo = #{record.int_id_idubigeo,jdbcType=INTEGER},
+      </if>
+      <if test="record.var_direccion_personal != null" >
+        var_direccion_personal = #{record.var_direccion_personal,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sernanp.t_personal_contrato
+    set srl_id_contrato = #{record.srl_id_contrato,jdbcType=INTEGER},
+      var_num_contrato = #{record.var_num_contrato,jdbcType=VARCHAR},
+      num_sueldo = #{record.num_sueldo,jdbcType=NUMERIC},
+      idpersonal = #{record.idpersonal,jdbcType=INTEGER},
+      dte_fec_inicio = #{record.dte_fec_inicio,jdbcType=DATE},
+      dte_fec_termino = #{record.dte_fec_termino,jdbcType=DATE},
+      dte_fec_suscrip = #{record.dte_fec_suscrip,jdbcType=DATE},
+      int_id_reg_lab = #{record.int_id_reg_lab,jdbcType=INTEGER},
+      idarea = #{record.idarea,jdbcType=INTEGER},
+      dte_fec_cese = #{record.dte_fec_cese,jdbcType=DATE},
+      int_id_tab_tip = #{record.int_id_tab_tip,jdbcType=INTEGER},
+      int_est_contrato = #{record.int_est_contrato,jdbcType=INTEGER},
+      srl_id_cargo = #{record.srl_id_cargo,jdbcType=INTEGER},
+      srl_id_meta_presupuestaria = #{record.srl_id_meta_presupuestaria,jdbcType=INTEGER},
+      srl_id_regimen_contractual = #{record.srl_id_regimen_contractual,jdbcType=INTEGER},
+      srl_id_fuente_financiamiento = #{record.srl_id_fuente_financiamiento,jdbcType=INTEGER},
+      srl_id_postulante_conv_area_org = #{record.srl_id_postulante_conv_area_org,jdbcType=INTEGER},
+      srl_id_sede_pres = #{record.srl_id_sede_pres,jdbcType=INTEGER},
+      srl_id_nivel_remunerativo = #{record.srl_id_nivel_remunerativo,jdbcType=INTEGER},
+      srl_id_contrato_padre = #{record.srl_id_contrato_padre,jdbcType=INTEGER},
+      int_id_estado = #{record.int_id_estado,jdbcType=INTEGER},
+      int_id_tipo_trato = #{record.int_id_tipo_trato,jdbcType=INTEGER},
+      srl_id_resp_unid_oper = #{record.srl_id_resp_unid_oper,jdbcType=INTEGER},
+      srl_id_plantilla_documento_archivo = #{record.srl_id_plantilla_documento_archivo,jdbcType=INTEGER},
+      var_num_resolucion = #{record.var_num_resolucion,jdbcType=VARCHAR},
+      idunidad = #{record.idunidad,jdbcType=INTEGER},
+      var_lugar_prestacion = #{record.var_lugar_prestacion,jdbcType=VARCHAR},
+      des_area_organica = #{record.des_area_organica,jdbcType=VARCHAR},
+      des_unidad_operativa = #{record.des_unidad_operativa,jdbcType=VARCHAR},
+      srl_id_meta_fuente_generica = #{record.srl_id_meta_fuente_generica,jdbcType=INTEGER},
+      var_nivel_regimen_contractual = #{record.var_nivel_regimen_contractual,jdbcType=VARCHAR},
+      codmeta = #{record.codmeta,jdbcType=VARCHAR},
+      codfuente = #{record.codfuente,jdbcType=VARCHAR},
+      var_ubicacion_fisica = #{record.var_ubicacion_fisica,jdbcType=VARCHAR},
+      int_id_idubigeo = #{record.int_id_idubigeo,jdbcType=INTEGER},
+      var_direccion_personal = #{record.var_direccion_personal,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sernanp.app.dao.domain.TPersonalContrato" >
+    update sernanp.t_personal_contrato
+    <set >
+      <if test="var_num_contrato != null" >
+        var_num_contrato = #{var_num_contrato,jdbcType=VARCHAR},
+      </if>
+      <if test="num_sueldo != null" >
+        num_sueldo = #{num_sueldo,jdbcType=NUMERIC},
+      </if>
+      <if test="idpersonal != null" >
+        idpersonal = #{idpersonal,jdbcType=INTEGER},
+      </if>
+      <if test="dte_fec_inicio != null" >
+        dte_fec_inicio = #{dte_fec_inicio,jdbcType=DATE},
+      </if>
+      <if test="dte_fec_termino != null" >
+        dte_fec_termino = #{dte_fec_termino,jdbcType=DATE},
+      </if>
+      <if test="dte_fec_suscrip != null" >
+        dte_fec_suscrip = #{dte_fec_suscrip,jdbcType=DATE},
+      </if>
+      <if test="int_id_reg_lab != null" >
+        int_id_reg_lab = #{int_id_reg_lab,jdbcType=INTEGER},
+      </if>
+      <if test="idarea != null" >
+        idarea = #{idarea,jdbcType=INTEGER},
+      </if>
+      <if test="dte_fec_cese != null" >
+        dte_fec_cese = #{dte_fec_cese,jdbcType=DATE},
+      </if>
+      <if test="int_id_tab_tip != null" >
+        int_id_tab_tip = #{int_id_tab_tip,jdbcType=INTEGER},
+      </if>
+      <if test="int_est_contrato != null" >
+        int_est_contrato = #{int_est_contrato,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_cargo != null" >
+        srl_id_cargo = #{srl_id_cargo,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_meta_presupuestaria != null" >
+        srl_id_meta_presupuestaria = #{srl_id_meta_presupuestaria,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_regimen_contractual != null" >
+        srl_id_regimen_contractual = #{srl_id_regimen_contractual,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_fuente_financiamiento != null" >
+        srl_id_fuente_financiamiento = #{srl_id_fuente_financiamiento,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_postulante_conv_area_org != null" >
+        srl_id_postulante_conv_area_org = #{srl_id_postulante_conv_area_org,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_sede_pres != null" >
+        srl_id_sede_pres = #{srl_id_sede_pres,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_nivel_remunerativo != null" >
+        srl_id_nivel_remunerativo = #{srl_id_nivel_remunerativo,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_contrato_padre != null" >
+        srl_id_contrato_padre = #{srl_id_contrato_padre,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_estado != null" >
+        int_id_estado = #{int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_tipo_trato != null" >
+        int_id_tipo_trato = #{int_id_tipo_trato,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_resp_unid_oper != null" >
+        srl_id_resp_unid_oper = #{srl_id_resp_unid_oper,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_plantilla_documento_archivo != null" >
+        srl_id_plantilla_documento_archivo = #{srl_id_plantilla_documento_archivo,jdbcType=INTEGER},
+      </if>
+      <if test="var_num_resolucion != null" >
+        var_num_resolucion = #{var_num_resolucion,jdbcType=VARCHAR},
+      </if>
+      <if test="idunidad != null" >
+        idunidad = #{idunidad,jdbcType=INTEGER},
+      </if>
+      <if test="var_lugar_prestacion != null" >
+        var_lugar_prestacion = #{var_lugar_prestacion,jdbcType=VARCHAR},
+      </if>
+      <if test="des_area_organica != null" >
+        des_area_organica = #{des_area_organica,jdbcType=VARCHAR},
+      </if>
+      <if test="des_unidad_operativa != null" >
+        des_unidad_operativa = #{des_unidad_operativa,jdbcType=VARCHAR},
+      </if>
+      <if test="srl_id_meta_fuente_generica != null" >
+        srl_id_meta_fuente_generica = #{srl_id_meta_fuente_generica,jdbcType=INTEGER},
+      </if>
+      <if test="var_nivel_regimen_contractual != null" >
+        var_nivel_regimen_contractual = #{var_nivel_regimen_contractual,jdbcType=VARCHAR},
+      </if>
+      <if test="codmeta != null" >
+        codmeta = #{codmeta,jdbcType=VARCHAR},
+      </if>
+      <if test="codfuente != null" >
+        codfuente = #{codfuente,jdbcType=VARCHAR},
+      </if>
+      <if test="var_ubicacion_fisica != null" >
+        var_ubicacion_fisica = #{var_ubicacion_fisica,jdbcType=VARCHAR},
+      </if>
+      <if test="int_id_idubigeo != null" >
+        int_id_idubigeo = #{int_id_idubigeo,jdbcType=INTEGER},
+      </if>
+      <if test="var_direccion_personal != null" >
+        var_direccion_personal = #{var_direccion_personal,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where srl_id_contrato = #{srl_id_contrato,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sernanp.app.dao.domain.TPersonalContrato" >
+    update sernanp.t_personal_contrato
+    set var_num_contrato = #{var_num_contrato,jdbcType=VARCHAR},
+      num_sueldo = #{num_sueldo,jdbcType=NUMERIC},
+      idpersonal = #{idpersonal,jdbcType=INTEGER},
+      dte_fec_inicio = #{dte_fec_inicio,jdbcType=DATE},
+      dte_fec_termino = #{dte_fec_termino,jdbcType=DATE},
+      dte_fec_suscrip = #{dte_fec_suscrip,jdbcType=DATE},
+      int_id_reg_lab = #{int_id_reg_lab,jdbcType=INTEGER},
+      idarea = #{idarea,jdbcType=INTEGER},
+      dte_fec_cese = #{dte_fec_cese,jdbcType=DATE},
+      int_id_tab_tip = #{int_id_tab_tip,jdbcType=INTEGER},
+      int_est_contrato = #{int_est_contrato,jdbcType=INTEGER},
+      srl_id_cargo = #{srl_id_cargo,jdbcType=INTEGER},
+      srl_id_meta_presupuestaria = #{srl_id_meta_presupuestaria,jdbcType=INTEGER},
+      srl_id_regimen_contractual = #{srl_id_regimen_contractual,jdbcType=INTEGER},
+      srl_id_fuente_financiamiento = #{srl_id_fuente_financiamiento,jdbcType=INTEGER},
+      srl_id_postulante_conv_area_org = #{srl_id_postulante_conv_area_org,jdbcType=INTEGER},
+      srl_id_sede_pres = #{srl_id_sede_pres,jdbcType=INTEGER},
+      srl_id_nivel_remunerativo = #{srl_id_nivel_remunerativo,jdbcType=INTEGER},
+      srl_id_contrato_padre = #{srl_id_contrato_padre,jdbcType=INTEGER},
+      int_id_estado = #{int_id_estado,jdbcType=INTEGER},
+      int_id_tipo_trato = #{int_id_tipo_trato,jdbcType=INTEGER},
+      srl_id_resp_unid_oper = #{srl_id_resp_unid_oper,jdbcType=INTEGER},
+      srl_id_plantilla_documento_archivo = #{srl_id_plantilla_documento_archivo,jdbcType=INTEGER},
+      var_num_resolucion = #{var_num_resolucion,jdbcType=VARCHAR},
+      idunidad = #{idunidad,jdbcType=INTEGER},
+      var_lugar_prestacion = #{var_lugar_prestacion,jdbcType=VARCHAR},
+      des_area_organica = #{des_area_organica,jdbcType=VARCHAR},
+      des_unidad_operativa = #{des_unidad_operativa,jdbcType=VARCHAR},
+      srl_id_meta_fuente_generica = #{srl_id_meta_fuente_generica,jdbcType=INTEGER},
+      var_nivel_regimen_contractual = #{var_nivel_regimen_contractual,jdbcType=VARCHAR},
+      codmeta = #{codmeta,jdbcType=VARCHAR},
+      codfuente = #{codfuente,jdbcType=VARCHAR},
+      var_ubicacion_fisica = #{var_ubicacion_fisica,jdbcType=VARCHAR},
+      int_id_idubigeo = #{int_id_idubigeo,jdbcType=INTEGER},
+      var_direccion_personal = #{var_direccion_personal,jdbcType=VARCHAR}
+    where srl_id_contrato = #{srl_id_contrato,jdbcType=INTEGER}
+  </update>
+</mapper>

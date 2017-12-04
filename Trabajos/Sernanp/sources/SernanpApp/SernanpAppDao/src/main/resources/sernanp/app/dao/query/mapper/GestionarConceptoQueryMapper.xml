@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.GestionarConceptoQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+ 
+  cp.srl_id_concepto_planilla,
+  cp.var_cod_concepto,
+  cp.var_descrip_concepto,
+  cp.var_descrip_corto_concepto,
+  cp.var_cod_pdt_concepto,
+  cp.var_cod_mef_concepto,
+  cp.var_cod_siaf_concepto,
+  cp.int_id_tipo_concepto,
+  vtidp.destablatipo AS descrip_tipo_concepto,
+  cp.int_id_sub_tipo_concepto,
+  stcp.destablatipo AS descrip_sub_tipo_concepto,
+  cp.int_id_tipo_monto_concepto,
+  vtm.destablatipo AS descrip_tipo_monto,
+  cp.int_id_estado,
+  vteg.destablatipo AS descrip_estado,
+  cp.dec_monto_concepto,
+  to_char(cp.tsp_fecha_registro, 'dd/mm/yyyy') AS tsp_fecha_registro
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+  personal.t_concepto_planilla cp
+  INNER JOIN sernanp.vw_concepto_planilla vtidp ON (cp.int_id_tipo_concepto = vtidp.codinttablatipo)
+  INNER JOIN sernanp.vw_sub_tipo_concepto_planilla stcp ON (cp.int_id_sub_tipo_concepto = stcp.codinttablatipo)
+  INNER JOIN sernanp.vw_estado_generico vteg ON (cp.int_id_estado = vteg.codinttablatipo)
+  LEFT JOIN sernanp.vw_tipo_monto vtm ON (cp.int_id_tipo_monto_concepto = vtm.codinttablatipo)
+
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+
+cp.srl_id_concepto_planilla = COALESCE(#{srl_id_concepto_planilla},cp.srl_id_concepto_planilla) AND
+cp.var_cod_concepto like COALESCE('%' || #{var_cod_concepto} || '%',cp.var_cod_concepto) and
+upper(cp.var_descrip_corto_concepto) like COALESCE('%' || upper(#{var_descrip_corto_concepto}) || '%',upper(cp.var_descrip_corto_concepto)) and
+COALESCE(cp.var_cod_pdt_concepto,'') like COALESCE('%' || #{var_cod_pdt_concepto} || '%',COALESCE(cp.var_cod_pdt_concepto,'')) and
+COALESCE(cp.var_cod_mef_concepto,'') like COALESCE('%' || #{var_cod_mef_concepto} || '%',COALESCE(cp.var_cod_mef_concepto,'')) and
+COALESCE(cp.var_cod_siaf_concepto,'') like COALESCE('%' || #{var_cod_siaf_concepto} || '%',COALESCE(cp.var_cod_siaf_concepto,'')) and
+cp.int_id_tipo_concepto = COALESCE(#{int_id_tipo_concepto},cp.int_id_tipo_concepto) and
+cp.int_id_sub_tipo_concepto = COALESCE(#{int_id_sub_tipo_concepto},cp.int_id_sub_tipo_concepto) and
+cp.int_id_estado = COALESCE(#{int_id_estado},cp.int_id_estado)
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.GestionarConceptoQuery" parameterType="sernanp.app.dao.query.domain.GestionarConceptoQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.GestionarConceptoQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.GestionarConceptoQuery" parameterType="sernanp.app.dao.query.domain.GestionarConceptoQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.GestionarConceptoQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.GestionarConceptoQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

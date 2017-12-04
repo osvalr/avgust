@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.GestionarAsignarResponsableMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+ 
+	  c.srl_id_convocatoria,
+	  c.var_num_convocatoria,
+	  cao.var_codigo_postulacion,
+	  cao.int_num_puestos,
+	  cao.srl_id_conv_area_org,
+	  caop.idpersonal,
+	  caop.idrol,
+	  r.desrol,
+	  u.idusuario,
+	  u.usuario,
+	  pn.idpersonanatural,
+	  pn.nombre,
+	  pn.apepat,
+	  pn.apemat,
+	  (pn.nombre || ' ' || pn.apepat || ' ' || pn.apemat) as "nombre_completo"
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+     sernanp.t_convocatoria c
+     LEFT JOIN sernanp.t_convocatoria_area_org cao ON (c.srl_id_convocatoria = cao.srl_id_convocatoria)
+     LEFT JOIN personal.t_convocatoria_area_org_personal caop ON (cao.srl_id_conv_area_org = caop.srl_id_conv_area_org)
+     LEFT JOIN sernanp.personal p ON (p.idpersonal = caop.idpersonal)
+     LEFT JOIN sernanp.usuario u ON (p.idpersonal = u.idpersonal)
+     LEFT JOIN sernanp.personanatural pn ON (p.idpersonanatural = pn.idpersonanatural)
+     LEFT JOIN sernanp.rol r ON (u.idrol = r.idrol)
+     LEFT JOIN sernanp.usuariorol ur ON (r.idrol = ur.idrol)
+     --AND (u.idusuario = ur.idusuario)
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+ 
+     c.srl_id_convocatoria = COALESCE(#{srl_id_convocatoria},c.srl_id_convocatoria)
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.GestionarAsignarResponsable" parameterType="sernanp.app.dao.query.domain.GestionarAsignarResponsableCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.GestionarAsignarResponsable" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.GestionarAsignarResponsable" parameterType="sernanp.app.dao.query.domain.GestionarAsignarResponsableCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.GestionarAsignarResponsable" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.GestionarAsignarResponsableCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

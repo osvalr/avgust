@@ -1,0 +1,25 @@
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\Entidades\bin\Release\Entidades.dll
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\Entidades\bin\Release\Entidades.pdb
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\Entidades\obj\Release\Entidades.csprojResolveAssemblyReference.cache
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\Entidades\obj\Release\Entidades.dll
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\Entidades\obj\Release\Entidades.pdb
+C:\MGUZMAN\AGRICOLA\SolAgricola\Entidades\bin\Release\Entidades.dll
+C:\MGUZMAN\AGRICOLA\SolAgricola\Entidades\bin\Release\Entidades.pdb
+C:\MGUZMAN\AGRICOLA\SolAgricola\Entidades\obj\Release\Entidades.csprojResolveAssemblyReference.cache
+C:\MGUZMAN\AGRICOLA\SolAgricola\Entidades\obj\Release\Entidades.dll
+C:\MGUZMAN\AGRICOLA\SolAgricola\Entidades\obj\Release\Entidades.pdb
+C:\HROMAN\SolAgricola\Entidades\bin\Release\Entidades.dll
+C:\HROMAN\SolAgricola\Entidades\bin\Release\Entidades.pdb
+C:\HROMAN\SolAgricola\Entidades\obj\Release\Entidades.csprojResolveAssemblyReference.cache
+C:\HROMAN\SolAgricola\Entidades\obj\Release\Entidades.dll
+C:\HROMAN\SolAgricola\Entidades\obj\Release\Entidades.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\Entidades\bin\Release\Entidades.dll
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\Entidades\bin\Release\Entidades.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\Entidades\obj\Release\Entidades.csprojResolveAssemblyReference.cache
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\Entidades\obj\Release\Entidades.dll
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\Entidades\obj\Release\Entidades.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\Entidades\bin\Release\Entidades.dll
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\Entidades\bin\Release\Entidades.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\Entidades\obj\Release\Entidades.csprojResolveAssemblyReference.cache
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\Entidades\obj\Release\Entidades.dll
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\Entidades\obj\Release\Entidades.pdb

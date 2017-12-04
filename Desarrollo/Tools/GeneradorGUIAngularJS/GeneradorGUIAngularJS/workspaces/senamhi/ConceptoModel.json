@@ -1,0 +1,19 @@
+{
+	"titleCrud": "Conceptos de Planilla",
+	"nameCrud": "Concepto",
+	"constUrlApi": "CONCEPTOS_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "ConceptoModel.xml",
+	"subModels": [
+		{
+			"nameModel": "ConceptoAfectoModel",
+			"nameCrud": "ConceptoAfecto",
+			"autoIdentityPrimaryKey": true
+		},
+		{
+			"nameModel": "ConceptoFrecuenciaModel",
+			"nameCrud": "ConceptoFrecuencia",
+			"autoIdentityPrimaryKey": true
+		}
+	]
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.PlantillaDocumentoQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.PlantillaDocumentoQuery" parameterType="sernanp.app.dao.query.domain.PlantillaDocumentoQueryCriteria"> 
+<![CDATA[
+
+	      
+	      
+			select 
+			
+				pd.srl_id_plantilla_documento ,
+				pda.srl_id_plantilla_documento_archivo ,
+				a.srl_id_archivo ,
+				a.var_nombre_archivo,
+				a.var_tipo_archivo,
+				a.var_archivo_ruta_almacen,
+				a.num_size_archivo ,
+				a.tsp_fecha_registro 
+			
+			from sernanp.t_plantilla_documento pd 
+			inner join 
+			sernanp.t_plantilla_documento_archivo pda
+			on pd.srl_id_plantilla_documento = pda.srl_id_plantilla_documento 
+			inner join sernanp.t_archivo a
+			on pda.srl_id_archivo = a.srl_id_archivo
+			where 
+			
+			     pda.srl_id_plantilla_documento_archivo = #{srl_id_plantilla_documento_archivo}  
+			    
+			     
+		  
+	      
+]]>
+</select> 
+</mapper> 

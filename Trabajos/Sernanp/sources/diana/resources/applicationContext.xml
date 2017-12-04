@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+            http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+        	http://www.springframework.org/schema/tx 
+            http://www.springframework.org/schema/tx/spring-tx-2.5.xsd 
+        	http://www.springframework.org/schema/context 
+            http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<!-- Context Config -->
+	<context:annotation-config />
+	<context:component-scan base-package="proyecto" />
+
+	<!-- Database Configuration -->
+
+<!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"  -->
+<!--  		destroy-method="close" p:driverClassName="org.postgresql.Driver"  -->
+<!--  		p:url="jdbc:postgresql://10.10.13.7:5432/sernanp" p:username="diana"  -->
+<!--  		p:password="artemisa" />  -->
+
+<!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"  -->
+<!--  		destroy-method="close" p:driverClassName="org.postgresql.Driver"  -->
+<!--  		p:url="jdbc:postgresql://10.10.11.12:5432/sernanp" p:username="diana"  -->
+<!--  		p:password="artemisa" />  -->
+
+
+<!--       <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.postgresql.Driver"/>
+<!-- 		<property name="url" value="jdbc:postgresql://env-dev:5432/sernanp_prod"/> -->		
+		<property name="url" value="jdbc:postgresql://localhost/sernanp"/>				
+		<property name="username" value="postgres"/>
+		<property name="password" value="4780David"/>
+
+	</bean>
+
+
+
+	<!-- Transsaction Configuration -->
+	<tx:annotation-driven />
+
+
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		p:dataSource-ref="dataSource" />
+
+	
+
+	<!-- DAO -->
+
+    <bean id="archivoDAO" class="proyecto.dao.ArchivoDAO" />
+	<bean id="areaNaturalDAO" class="proyecto.dao.AreaNaturalDAO" />
+	<bean id="categoriaAnpDAO" class="proyecto.dao.CategoriaAnpDAO" />
+	<bean id="ejecutorDAO" class="proyecto.dao.EjecutorDAO" />
+	<bean id="estadoDAO" class="proyecto.dao.EstadoDAO" />
+	<bean id="fuenteFinanciamientoDAO" class="proyecto.dao.FuenteFinanciamientoDAO" />
+	<bean id="proyectoDAO" class="proyecto.dao.ProyectoDAO" />
+	<bean id="personaDAO" class="proyecto.dao.PersonaDAO" />
+	<bean id="personalDAO" class="proyecto.dao.PersonalDAO" />
+	<bean id="personaJuridicaDAO" class="proyecto.dao.PersonaJuridicaDAO" />
+	<bean id="proyectoArchivoDAO" class="proyecto.dao.ProyectoArchivoDAO" />
+	<bean id="proyectoAreanaturalDAO" class="proyecto.dao.ProyectoAreanaturalDAO" />
+	<bean id="proyectoEjecutorDAO" class="proyecto.dao.ProyectoEjecutorDAO" />
+	<bean id="proyectoFteFtoDAO" class="proyecto.dao.ProyectoFteFtoDAO" />
+	<bean id="monedaDAO" class="proyecto.dao.MonedaDAO" />
+	<bean id="telefonoDAO" class="proyecto.dao.TelefonoDAO" />
+    <!--<bean id="tipoDAO" class="proyecto.dao.TipoDAO" />-->
+	<bean id="tipoCambioDAO" class="proyecto.dao.TipoCambioDAO" />
+	<bean id="turismoDAO" class="proyecto.dao.TurismoDAO" />
+	<bean id="rolModuloDAO" class="proyecto.dao.RolModuloDAO" />
+	
+	<bean id="personalregistroDAO" class="proyecto.dao.PersonalRegistroDAO" />
+	
+	<bean id="ficharegistroDAO" class="proyecto.dao.FichaRegistroDAO" />
+
+<bean id="personalficharegistroDAO" class="proyecto.dao.PersonalFichaRegistroDAO" />
+
+<bean id="historialjefesanpDAO" class="proyecto.dao.HistorialJefesAnpDAO" />
+
+<!-- <bean id="directorioArchivoModuloDAO" class="proyecto.dao.DirectorioArchivoModuloDAO" />
+<bean id="directorioArchivoDAO" class="proyecto.dao.DirectorioArchivoDAO"  /> -->
+
+<!-- JCEV 19-02-2012 -->
+	<bean id="turismopagosDAO" class="proyecto.dao.TurismoPagosDao" />
+
+	<!-- Service -->
+	
+	  
+    
+   
+	<bean id="areaNaturalService" class="proyecto.service.AreaNaturalService">
+		<property name="areaOrganicaDAO" ref="areaOrganicaDAO" />
+		<property name="areaNaturalDAO" ref="areaNaturalDAO" />
+		<property name="proyectoAreanaturalDAO" ref="proyectoAreanaturalDAO" />
+		<property name="turismoDAO" ref="turismoDAO" />
+		
+	</bean>
+	<bean id="categoriaAnpService" class="proyecto.service.CategoriaAnpService">
+		<property name="categoriaAnpDAO" ref="categoriaAnpDAO" />
+		<property name="proyectoAreanaturalDAO" ref="proyectoAreanaturalDAO" />
+	</bean>
+	<bean id="ejecutorService" class="proyecto.service.EjecutorService">
+		<property name="ejecutorDAO" ref="ejecutorDAO" />
+		<property name="proyectoEjecutorDAO" ref="proyectoEjecutorDAO" />
+
+	</bean>
+	<bean id="estadoService" class="proyecto.service.EstadoService">
+         <property name="estadoDAO" ref="estadoDAO" />
+	</bean>  
+	<bean id="fuenteFinanciamientoService" class="proyecto.service.FuenteFinanciamientoService">
+		<property name="fuenteFinanciamientoDAO" ref="fuenteFinanciamientoDAO" />
+		<property name="proyectoFteFtoDAO" ref="proyectoFteFtoDAO" />
+	</bean>
+
+<!--    <bean id="personaJuridicaService" class="proyecto.service.PersonaJuridicaService">-->
+<!--		<property name="tipoDAO" ref="tipoDAO" />-->
+<!--		<property name="personaDAO" ref="personaDAO" />-->
+<!--		<property name="personaJuridicaDAO" ref="personaJuridicaDAO" />-->
+<!--	</bean>-->
+	   
+	
+      
+    <bean id="telefonoService" class="proyecto.service.TelefonoService">
+		<property name="tipoDAO" ref="tipoDAO" />
+		<property name="telefonoDAO" ref="telefonoDAO" />
+	</bean>  
+      
+<!--	<bean id="tipoService" class="proyecto.service.TipoService">-->
+<!--		<property name="tipoDAO" ref="tipoDAO" />-->
+<!--	</bean>-->
+
+
+	<bean id="tipoCambioService" class="proyecto.service.TipoCambioService">
+		<property name="tipoCambioDAO" ref="tipoCambioDAO" />
+	</bean>
+	<bean id="monedaService" class="proyecto.service.MonedaService">
+		<property name="monedaDAO" ref="monedaDAO" />
+	</bean>
+
+<bean id="personaJuridicaService" class="proyecto.service.PersonaJuridicaService">
+		<property name="personaJuridicaDAO" ref="personaJuridicaDAO" />
+		
+	</bean>
+
+<bean id="personalregistroService" class="proyecto.service.PersonalRegistroService">
+		<property name="personalregistroDAO" ref="personalregistroDAO" />
+		
+	</bean>
+
+<bean id="ficharegistroService" class="proyecto.service.FichaRegistroService">
+		<property name="ficharegistroDAO" ref="ficharegistroDAO" />
+		
+	</bean>
+
+<bean id="personalficharegistroService" class="proyecto.service.PersonalFichaRegistroService">
+		<property name="personalficharegistroDAO" ref="personalficharegistroDAO" />
+		
+	</bean>
+
+<bean id="historialjefesanpService" class="proyecto.service.HistorialJefesAnpService">
+	<property name="historialjefesanpDAO" ref="historialjefesanpDAO" />
+</bean>
+
+<!-- JCEV 19-07-2012 -->
+	<bean id="turismopagosService" class="proyecto.service.TurismoPagosService">
+		<property name="turismopagosDAO" ref="turismopagosDAO" />		
+	</bean>
+
+</beans>

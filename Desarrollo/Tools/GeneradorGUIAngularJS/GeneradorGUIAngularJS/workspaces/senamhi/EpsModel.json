@@ -1,0 +1,7 @@
+{
+	"titleCrud": "EPS",
+	"nameCrud": "Eps",
+	"constUrlApi": "EPS_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "EpsModel.xml"
+}

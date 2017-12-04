@@ -1,0 +1,30 @@
+[
+	{
+		"className": "Integer",
+		"namespace": "java.lang.Integer"
+	},
+	{
+		"className": "Double",
+		"namespace": "java.lang.Double"
+	},
+	{
+		"className": "String",
+		"namespace": "java.lang.String"
+	},
+	{
+		"className": "Date",
+		"namespace": "java.util.Date"
+	},
+	{
+		"className": "Long",
+		"namespace": "java.lang.Long"
+	},
+	{
+		"className": "BigInteger",
+		"namespace": "java.math.BigInteger"
+	},
+	{
+		"className": "BigDecimal",
+		"namespace": "java.math.BigDecimal"
+	}
+]

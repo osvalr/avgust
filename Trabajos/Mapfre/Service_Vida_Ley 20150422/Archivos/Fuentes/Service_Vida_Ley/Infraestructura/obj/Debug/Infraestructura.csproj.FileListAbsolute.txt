@@ -1,0 +1,38 @@
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\Infraestructura\bin\Debug\Infraestructura.dll
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\Infraestructura\bin\Debug\Infraestructura.pdb
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\Infraestructura\obj\Debug\Infraestructura.dll
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\Infraestructura\obj\Debug\Infraestructura.pdb
+C:\MGUZMAN\AGRICOLA\SolFormatos\Infraestructura\bin\Debug\Infraestructura.dll
+C:\MGUZMAN\AGRICOLA\SolFormatos\Infraestructura\bin\Debug\Infraestructura.pdb
+C:\MGUZMAN\AGRICOLA\SolFormatos\Infraestructura\obj\Debug\Infraestructura.csprojResolveAssemblyReference.cache
+C:\MGUZMAN\AGRICOLA\SolFormatos\Infraestructura\obj\Debug\Infraestructura.dll
+C:\MGUZMAN\AGRICOLA\SolFormatos\Infraestructura\obj\Debug\Infraestructura.pdb
+C:\MGUZMAN\AGRICOLA\SolAgricola\Infraestructura\bin\Debug\Infraestructura.dll
+C:\MGUZMAN\AGRICOLA\SolAgricola\Infraestructura\bin\Debug\Infraestructura.pdb
+C:\MGUZMAN\AGRICOLA\SolAgricola\Infraestructura\obj\Debug\Infraestructura.csprojResolveAssemblyReference.cache
+C:\MGUZMAN\AGRICOLA\SolAgricola\Infraestructura\obj\Debug\Infraestructura.dll
+C:\MGUZMAN\AGRICOLA\SolAgricola\Infraestructura\obj\Debug\Infraestructura.pdb
+C:\Infoparque\Web_GOT\Infraestructura\bin\Debug\Infraestructura.dll
+C:\Infoparque\Web_GOT\Infraestructura\bin\Debug\Infraestructura.pdb
+C:\Infoparque\Web_GOT\Infraestructura\obj\Debug\Infraestructura.dll
+C:\Infoparque\Web_GOT\Infraestructura\obj\Debug\Infraestructura.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\Infraestructura\bin\Debug\Infraestructura.dll
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\Infraestructura\bin\Debug\Infraestructura.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\Infraestructura\obj\Debug\Infraestructura.csprojResolveAssemblyReference.cache
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\Infraestructura\obj\Debug\Infraestructura.dll
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\Infraestructura\obj\Debug\Infraestructura.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\Infraestructura\bin\Debug\Infraestructura.dll
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\Infraestructura\bin\Debug\Infraestructura.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\Infraestructura\obj\Debug\Infraestructura.csprojResolveAssemblyReference.cache
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\Infraestructura\obj\Debug\Infraestructura.dll
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\Infraestructura\obj\Debug\Infraestructura.pdb
+C:\Users\nfire\Desktop\APLICACIONES\Service_Vida_Ley\Infraestructura\bin\Debug\Infraestructura.dll
+C:\Users\nfire\Desktop\APLICACIONES\Service_Vida_Ley\Infraestructura\bin\Debug\Infraestructura.pdb
+C:\Users\nfire\Desktop\APLICACIONES\Service_Vida_Ley\Infraestructura\obj\Debug\Infraestructura.csprojResolveAssemblyReference.cache
+C:\Users\nfire\Desktop\APLICACIONES\Service_Vida_Ley\Infraestructura\obj\Debug\Infraestructura.dll
+C:\Users\nfire\Desktop\APLICACIONES\Service_Vida_Ley\Infraestructura\obj\Debug\Infraestructura.pdb
+D:\JRaffo\Service_Vida_Ley 20150422\Service_Vida_Ley\Infraestructura\bin\Debug\Infraestructura.dll
+D:\JRaffo\Service_Vida_Ley 20150422\Service_Vida_Ley\Infraestructura\bin\Debug\Infraestructura.pdb
+D:\JRaffo\Service_Vida_Ley 20150422\Service_Vida_Ley\Infraestructura\obj\Debug\Infraestructura.csprojResolveAssemblyReference.cache
+D:\JRaffo\Service_Vida_Ley 20150422\Service_Vida_Ley\Infraestructura\obj\Debug\Infraestructura.dll
+D:\JRaffo\Service_Vida_Ley 20150422\Service_Vida_Ley\Infraestructura\obj\Debug\Infraestructura.pdb

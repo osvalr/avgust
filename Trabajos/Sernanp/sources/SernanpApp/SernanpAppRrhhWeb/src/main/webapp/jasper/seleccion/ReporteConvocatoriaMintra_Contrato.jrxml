@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteConvocatoriaMintra_Contrato" pageWidth="440" pageHeight="802" columnWidth="440" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" scriptletClass="net.sf.jasperreports.engine.JRDefaultScriptlet" uuid="e6135d39-da02-4eb0-9d34-ede8d3cd0c96">
+	<property name="ireport.zoom" value="1.7715610000000015"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="var_lugar_prestacion" class="java.lang.String"/>
+	<field name="dte_fecha_inicio_contrato" class="java.lang.String"/>
+	<field name="dte_fecha_termino_contrato" class="java.util.Date"/>
+	<field name="dec_honorario_personal" class="java.lang.Double"/>
+	<field name="int_cantidad_tiempo" class="java.lang.Integer"/>
+	<field name="descrip_unidad_tiempo" class="java.lang.String"/>
+	<field name="var_codigo_postulacion" class="java.lang.String"/>
+	<group name="cod_postulacion">
+		<groupExpression><![CDATA[$F{var_codigo_postulacion}]]></groupExpression>
+		<groupHeader>
+			<band height="151">
+				<staticText>
+					<reportElement mode="Opaque" x="211" y="0" width="229" height="20" backcolor="#CCCCCC" uuid="3f88c4b7-1cf5-4bf0-ab00-1884c5797d7c"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans Mono" size="10"/>
+					</textElement>
+					<text><![CDATA[DETALLE]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement mode="Opaque" x="211" y="20" width="229" height="20" backcolor="#FFFFFF" uuid="3a56f9c2-5424-4a7a-b031-b4fae0700ff9"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="DejaVu Sans Mono" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{var_lugar_prestacion}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="0" width="211" height="20" backcolor="#CCCCCC" uuid="ebe952bc-c5dc-4210-94be-a3d9b1c920bc"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans Mono" size="10"/>
+					</textElement>
+					<text><![CDATA[CONDICIONES]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="20" width="211" height="20" backcolor="#FFFFFF" uuid="a0d8ce96-bd09-468a-a834-3a9682cc9075"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement>
+						<font fontName="DejaVu Sans Mono" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<text><![CDATA[Lugar de prestación del servicio]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="40" width="211" height="50" backcolor="#FFFFFF" uuid="2987daf8-e61b-4323-ae72-e00f3f1d9567"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement>
+						<font fontName="DejaVu Sans Mono" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<text><![CDATA[Duración del Contrato]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="211" y="40" width="229" height="15" backcolor="#FFFFFF" uuid="66f6a201-4fd1-4a22-b0a5-47ba49de2da8"/>
+					<box>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="DejaVu Sans Mono" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dte_fecha_inicio_contrato} == null ? "Inicio      :" : "Inicio      : " + $F{dte_fecha_inicio_contrato}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement mode="Opaque" x="211" y="55" width="229" height="15" backcolor="#FFFFFF" uuid="46675643-7ca7-4661-a7f5-303d16b0bf97"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="DejaVu Sans Mono" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dte_fecha_termino_contrato}== null ? "Fin        :" : "Fin        : " + new SimpleDateFormat("dd' de 'MMMMM' de 'yyyy").format($F{dte_fecha_termino_contrato})]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement mode="Opaque" x="211" y="70" width="229" height="20" backcolor="#FFFFFF" uuid="c71f4b4a-11d0-48bc-a3cc-e0b12cfe0a86"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="DejaVu Sans Mono" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{int_cantidad_tiempo}== null ? "Periodo   : " : "Periodo   : " + "0" + $F{int_cantidad_tiempo} + " " + $F{descrip_unidad_tiempo}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="90" width="211" height="61" backcolor="#FFFFFF" uuid="bffc8a81-6b04-4449-af4a-03ac107af07c"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement>
+						<font fontName="DejaVu Sans Mono" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<text><![CDATA[Remuneración mensual]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="211" y="90" width="229" height="61" backcolor="#FFFFFF" uuid="53f924b1-c50d-43fa-a4f7-8d6ee5aa294d"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans Mono" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dec_honorario_personal} == null ? 0 :
+"S/. " + new DecimalFormat("###,##0.00").format($F{dec_honorario_personal}) + " Incluye los montos y afiliaciones de ley, así como toda deducción aplicable al trabajador."]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="50">
+			<staticText>
+				<reportElement x="0" y="15" width="440" height="35" uuid="b4660994-9042-4b61-80de-a2ca966b43c7"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IV.- Condiciones Esenciales del Contrato]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+</jasperReport>

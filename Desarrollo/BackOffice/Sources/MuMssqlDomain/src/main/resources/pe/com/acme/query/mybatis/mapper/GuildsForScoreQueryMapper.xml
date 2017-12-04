@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.acme.query.mybatis.mapper.GuildsForScoreQueryMapper">
+
+<sql id="ddl"> 
+DECLARE @RtnValue table
+(
+    RowNumber int,
+    G_Name varchar(500),
+    G_Count int,
+    G_Score int
+)
+
+insert into  @RtnValue
+
+SELECT
+ROW_NUMBER() OVER 
+(ORDER by g.G_Score desc) AS RowNumber,
+g.G_Name,
+g.G_Count,
+g.G_Score
+
+FROM
+
+Guild g
+
+where 
+
+g.G_Name = g.G_Name;
+</sql> 
+
+<sql id="outs"> 
+<![CDATA[
+
+*
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+@RtnValue g
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+g.G_Name = coalesce(null,g.G_Name)
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.acme.query.mybatis.model.GuildsForScoreQuery" parameterType="pe.com.acme.query.mybatis.model.GuildsForScoreQueryCriteria">
+<include refid="ddl" /> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.acme.query.mybatis.model.GuildsForScoreQuery" parameterType="java.util.Map">
+<include refid="ddl" /> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.acme.query.mybatis.model.GuildsForScoreQuery" parameterType="pe.com.acme.query.mybatis.model.GuildsForScoreQueryCriteria">
+<include refid="ddl" /> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.acme.query.mybatis.model.GuildsForScoreQuery" parameterType="java.util.Map">
+<include refid="ddl" /> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.acme.query.mybatis.model.GuildsForScoreQueryCriteria">
+<include refid="ddl" /> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+<include refid="ddl" /> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

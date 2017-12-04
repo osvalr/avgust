@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteConvocatoriaMintra_Evaluacion" pageWidth="595" pageHeight="842" columnWidth="520" leftMargin="0" rightMargin="75" topMargin="0" bottomMargin="0" uuid="1d80396f-a12f-454b-90f4-ea93b7cfa613">
+	<property name="ireport.zoom" value="1.9487171000000123"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="788"/>
+	<parameter name="idRequerimiento" class="java.lang.Integer"/>
+	<field name="descrip_tipo_factor" class="java.lang.String"/>
+	<field name="dec_puntaje_min" class="java.lang.Double"/>
+	<field name="dec_puntaje_max" class="java.lang.Double"/>
+	<field name="dec_peso" class="java.lang.Double"/>
+	<field name="srl_id_requerimiento_personal" class="java.lang.Integer"/>
+	<field name="srl_id_configuracion_factor_evaluacion" class="java.lang.Integer"/>
+	<field name="puntajemintotal" class="java.lang.Double"/>
+	<field name="int_id_tipo_factor" class="java.lang.Integer"/>
+	<filterExpression><![CDATA[$F{srl_id_requerimiento_personal}.equals( $P{idRequerimiento} )]]></filterExpression>
+	<group name="cod_postulacion">
+		<groupExpression><![CDATA[$F{srl_id_requerimiento_personal}]]></groupExpression>
+		<groupHeader>
+			<band height="24">
+				<staticText>
+					<reportElement isPrintRepeatedValues="false" mode="Opaque" x="0" y="0" width="209" height="24" isPrintInFirstWholeBand="true" backcolor="#CCCCCC" uuid="c04bdfde-380a-4d16-b533-2884feb6cf1c"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="10" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Evaluaciones]]></text>
+				</staticText>
+				<staticText>
+					<reportElement isPrintRepeatedValues="false" mode="Opaque" x="281" y="0" width="77" height="24" isPrintInFirstWholeBand="true" backcolor="#CCCCCC" uuid="b933c697-b26d-464a-8339-f0d6ed8502f7"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="10" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Puntaje Mínimo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement isPrintRepeatedValues="false" mode="Opaque" x="209" y="0" width="72" height="24" isPrintInFirstWholeBand="true" backcolor="#CCCCCC" uuid="568d881f-ce55-4c19-aea2-32a89548690e"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="10" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Peso]]></text>
+				</staticText>
+				<staticText>
+					<reportElement isPrintRepeatedValues="false" mode="Opaque" x="358" y="0" width="82" height="24" isPrintInFirstWholeBand="true" backcolor="#CCCCCC" uuid="0c466500-7d49-41ad-a227-d1b01fd64fb0"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="10" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Puntaje Máximo]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="65">
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="11" width="440" height="54" uuid="3835d79b-68f7-4255-809e-645258b55a02"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font fontName="DejaVu Sans" size="10"/>
+				</textElement>
+				<text><![CDATA[<b>VI.- De la etapa de evaluación</b><br><br>
+Los factores de evaluación dentro del proceso de selección tendrán un máximo y un mínimo, distribuyéndose de esta manera.
+]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="209" height="20" uuid="6dc71d8c-49d6-41cd-9ec5-1f079dde155e"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="html">
+					<font fontName="DejaVu Sans" size="10"/>
+					<paragraph leftIndent="5" spacingBefore="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{int_id_tipo_factor}.equals(2)) ? $F{descrip_tipo_factor} : (
+    ($F{int_id_tipo_factor}.equals(3))?$F{descrip_tipo_factor}: "<b>"+$F{descrip_tipo_factor}+"</b>")]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="281" y="0" width="77" height="20" uuid="dcab3dc4-bf1e-47ae-9b53-96509daf87a7"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="10"/>
+					<paragraph rightIndent="5" spacingBefore="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dec_puntaje_min}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="358" y="0" width="82" height="20" uuid="5286fc28-0d5f-4bba-8665-2a59a2ef5d35"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="10"/>
+					<paragraph rightIndent="5" spacingBefore="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dec_puntaje_max}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="209" y="0" width="72" height="20" uuid="e62b4f3e-3107-4038-a5f7-9a77715dafbf"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="10"/>
+					<paragraph rightIndent="5" spacingBefore="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dec_peso} + " %"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="731" splitType="Immediate">
+			<staticText>
+				<reportElement x="0" y="39" width="440" height="178" uuid="0ea85e3d-f738-468f-b9a9-1edf976b3dae"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font fontName="DejaVu Sans" size="10"/>
+				</textElement>
+				<text><![CDATA[El puntaje aprobatorio será de 80 puntos.<br><br>
+
+Se otorgará una bonificación del diez por ciento (10%) sobre el puntaje obtenido en la Etapa de Entrevista, a los postulantes que hayan acreditado ser Licenciados de las Fuerzas Armadas de conformidad con la Ley N° 29248 y su reglamento.
+
+<br><br>Se otorgará una bonificación por discapacidad del quince por ciento (15%) sobre el puntaje Total, al postulantes que acredite dicha condición de acuerdo a la Ley N° 27050, Ley General de la Persona con Discapacidad y su reglamento.
+
+<br><br>Los postulantes que tengan derecho a la bonificación del diez por ciento (10%) sobre el puntaje obtenido en la Etapa de Entrevista por ser Licenciado de las Fuerzas Armadas de conformidad con la Ley N° 29248 y su reglamento o a la bonificación por discapacidad del quince por ciento (15%) sobre el puntaje Total de acuerdo a la Ley N° 27050, Ley General de la Persona con Discapacidad y su reglamento, deberán adjuntar copia simple de la documentación que acredite la aplicación de estas bonificaciones.
+
+<br><br>Sólo se podrá postular a un solo Código. De presentarse por Mesa de Partes, la Ficha de Inscripción se presentará en sobre cerrado, donde se deberá consignar los nombres y apellidos del postulante y el Código al cual postula, caso contrario no será recepcionado en la Mesa de Partes.
+<br><br>Las etapas de selección (evaluaciones) son <b>cancelatorias</b>, por lo que los resultados de cada etapa tendrán carácter <b>eliminatorio.</b>
+]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="236" width="440" height="175" uuid="2de67292-2714-4287-9e78-9471956a022e"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font fontName="DejaVu Sans" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<b>VII.- Documentación a presentar</b><br><br>"+
+"<b>De la presentación de la Ficha de Inscripción y Declaración Jurada:</b><br>"+
+"La información consignada en la Ficha de Inscripción tiene carácter de declaración jurada, por lo que el postulante " +
+"será responsable de la información consignada en dicho documento y se somete al proceso de fiscalización posterior que " +
+"lleve a cabo la entidad. De enviar la Ficha de Inscripción al correo convocatoriascas@sernanp.gob, éste se entenderá " +
+"recepcionado con la conformidad del mismo.<br>"+
+"Adicionalmente, se deberán presentar los siguientes documentos:"+
+"<ul><li>Copia de Documento Nacional de Identidad vigente.</li>" +
+"<li>Adjuntar copia de la ficha de RUC habilitado.</li></ul><br>"+
+"<b>NOTA.-</b> Las postulaciones que se reciban en otro formato no serán consideradas aptas para el proceso.<br><br>"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement isPrintRepeatedValues="false" mode="Opaque" x="0" y="0" width="209" height="18" isPrintInFirstWholeBand="true" backcolor="#0099CC" uuid="cfe0aa41-cc29-4a62-9887-a00e9f743ff1"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Puntaje Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="209" y="0" width="72" height="18" backcolor="#0099CC" uuid="1023506e-c9e5-4288-b518-99e59f2c5d0d"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" isBold="true"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[100 %]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="358" y="0" width="82" height="18" backcolor="#0099CC" uuid="25683475-3727-44eb-994d-76c37bf05740"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" isBold="true"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[100,00]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="281" y="0" width="77" height="18" backcolor="#0099CC" uuid="73b71c38-47f4-4885-b973-f223f74e04ed"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{puntajemintotal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="411" width="440" height="57" uuid="a76ea186-00a4-42e8-9f09-9ba62717afca"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<text><![CDATA[<b><br>VIII.- De la declaratoria de desierto o de la cancelación del proceso</b><br><br>
+<b>Declaratoria del proceso como desierto</b><br><br>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="468" width="420" height="85" uuid="0986d6ef-32f0-47ee-8763-d13a3355a60b"/>
+				<textElement markup="none"/>
+				<text><![CDATA[El proceso puede ser declarado desierto en alguno de los siguientes supuestos:
+
+a. Cuando no se presentan postulantes al proceso de selección.
+b. Cuando ninguno de los postulantes cumple con los requisitos mínimos.
+c. Cuando habiendo cumplido los requisitos mínimos, ninguno de los postulantes obtiene puntaje mínimo en las
+etapas de evaluación del proceso.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="553" width="440" height="36" uuid="419cea22-721a-4731-82ba-cafc93d42b96"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<text><![CDATA[<b>Cancelación del proceso de selección</b><br><br>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="589" width="420" height="116" uuid="ad1cc71c-55cf-45bc-afea-01ed2deecf7c"/>
+				<textElement markup="none"/>
+				<text><![CDATA[El proceso puede ser cancelado en alguno de los siguientes supuestos, sin que sea
+responsabilidadde la entidad:
+
+a. Cuando desaparece la necesidad del servicio de la entidad con posterioridad al inicio
+del proceso de selección.
+b. Por restricciones presupuestales.
+c. Otras debidamente justificadas.]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

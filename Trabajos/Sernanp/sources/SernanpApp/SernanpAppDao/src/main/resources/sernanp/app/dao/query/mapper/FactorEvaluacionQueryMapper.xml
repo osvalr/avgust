@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.FactorEvaluacionQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+
+fe.srl_id_factor_evaluacion,
+fe.srl_id_configuracion_factor_evaluacion,
+fe.int_id_tipo_factor_padre,
+tfe2.destablatipo as descrip_tipo_factor_padre,
+fe.int_id_tipo_factor,
+tfe.destablatipo as descrip_tipo_factor,
+fe.dec_puntaje_min,
+fe.dec_puntaje_max,
+fe.dec_peso,
+fe.int_id_estado,
+eg.destablatipo as descrip_estado,
+to_char(fe.tsp_fecha_registro,'dd/mm/yyyy') as tsp_fecha_registro
+
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+
+personal.t_factor_evaluacion fe 
+left join sernanp.vw_tipo_factor_evaluacion tfe on tfe.codinttablatipo = fe.int_id_tipo_factor
+left join sernanp.vw_tipo_factor_evaluacion tfe2 on tfe2.codinttablatipo = fe.int_id_tipo_factor_padre
+left join sernanp.vw_estado_generico eg on fe.int_id_estado = eg.codinttablatipo
+
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+
+fe.srl_id_factor_evaluacion = coalesce(#{srl_id_factor_evaluacion},fe.srl_id_factor_evaluacion) and
+fe.srl_id_configuracion_factor_evaluacion = coalesce(#{srl_id_configuracion_factor_evaluacion},fe.srl_id_configuracion_factor_evaluacion) and
+fe.int_id_tipo_factor = coalesce(#{int_id_tipo_factor}, fe.int_id_tipo_factor) AND
+fe.int_id_estado = coalesce(#{int_id_estado},fe.int_id_estado)
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+
+order by 
+fe.int_id_tipo_factor,
+tfe.destablatipo,
+
+fe.srl_id_factor_evaluacion,
+
+fe.int_id_tipo_factor_padre,
+tfe2.destablatipo,
+
+fe.srl_id_configuracion_factor_evaluacion,
+
+fe.dec_puntaje_min,
+fe.dec_puntaje_max,
+fe.dec_peso,
+fe.int_id_estado,
+eg.destablatipo,
+to_char(fe.tsp_fecha_registro,'dd/mm/yyyy') 
+
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.FactorEvaluacionQuery" parameterType="sernanp.app.dao.query.domain.FactorEvaluacionQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.FactorEvaluacionQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.FactorEvaluacionQuery" parameterType="sernanp.app.dao.query.domain.FactorEvaluacionQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.FactorEvaluacionQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.FactorEvaluacionQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

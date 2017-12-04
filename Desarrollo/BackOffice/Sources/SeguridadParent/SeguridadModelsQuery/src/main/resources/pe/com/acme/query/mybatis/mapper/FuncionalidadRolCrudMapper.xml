@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.acme.query.mybatis.mapper.FuncionalidadRolCrudMapper">
+
+<sql id="outs"> 
+<![CDATA[
+
+f.id_funcionalidad,
+f.id_perfil,
+p.nombre_perfil,
+f.id_aplicacion,
+a.nombre_aplicacion,
+f.id_rol,
+r.nombre_rol,
+f.nombre_funcionalidad,
+f.id_estado,
+v.descrip_item as descrip_estado,
+to_char(f.fecha_registro,'dd/mm/yyyy') fecha_registro,
+to_char(f.fecha_modificacion,'dd/mm/yyyy') fecha_modificacion,
+f.id_usuario_reg,
+f.id_usuario_mod
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+seguridad.funcionalidad_rol f
+inner join seguridad.rol_aplicacion r on r.id_rol = f.id_rol
+inner join seguridad.aplicacion a on f.id_aplicacion = a.id_aplicacion
+inner join seguridad.perfil p on f.id_perfil = p.id_perfil
+INNER join general.vw_catalogo v on f.id_estado = v.valor_item and v.nombre_catalogo = 'estado_generico'
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+f.id_funcionalidad = coalesce(#{id_funcionalidad},f.id_funcionalidad)
+and upper(f.nombre_funcionalidad) = coalesce('%' || upper(#{nombre_funcionalidad}) || '%',upper(f.nombre_funcionalidad))
+and f.id_perfil = coalesce(#{id_perfil},f.id_perfil)
+and f.id_aplicacion = coalesce(#{id_aplicacion},f.id_aplicacion)
+and f.id_rol = coalesce(#{id_rol},f.id_rol)
+and f.id_estado = coalesce(#{id_estado},f.id_estado)
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${order_column} ${order_direction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.acme.query.mybatis.model.FuncionalidadRolCrud" parameterType="pe.com.acme.query.mybatis.model.FuncionalidadRolCrudCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.acme.query.mybatis.model.FuncionalidadRolCrud" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.acme.query.mybatis.model.FuncionalidadRolCrud" parameterType="pe.com.acme.query.mybatis.model.FuncionalidadRolCrudCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.acme.query.mybatis.model.FuncionalidadRolCrud" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.acme.query.mybatis.model.FuncionalidadRolCrudCriteria">
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

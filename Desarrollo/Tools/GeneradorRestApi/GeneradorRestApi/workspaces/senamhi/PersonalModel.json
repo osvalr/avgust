@@ -1,0 +1,91 @@
+{
+	"nameCrud": "Personal",
+	"path": "personal",
+	"nameRepository": "TPersonalRepository",
+	"nameModelXml": "PersonalModel.xml",
+	"subModels": [
+		{
+			"nameRepository": "TPersonaDocumentoIdentidadRepository",
+			"nameCrud": "PersonaDocumentoIdentidad",
+			"nameSubModel": "PersonaDocumentoIdentidadModel"
+		},
+		{
+			"nameSubModel": "PersonaDireccionModel",
+			"nameCrud": "PersonaDireccion",
+			"nameRepository": "TPersonaDireccionRepository"
+		},
+		{
+			"nameSubModel": "PersonaBeneficioModel",
+			"nameCrud": "PersonaBeneficio",
+			"nameRepository": "TPersonaBeneficioRepository"
+		}
+		,
+		{
+			"nameSubModel": "PersonaCapacitacionModel",
+			"nameCrud": "PersonaCapacitacion",
+			"nameRepository": "TPersonaCapacitacionRepository"
+		},
+		{
+			"nameSubModel": "PersonaDeclaracionJuradaModel",
+			"nameCrud": "PersonaDeclaracionJurada",
+			"nameRepository": "TPersonaDeclaJuradaRepository"
+		},
+		{
+			"nameSubModel": "PersonaDesignacionModel",
+			"nameCrud": "PersonaDesignacion",
+			"nameRepository": "TPersonaDesignacionRepository"
+		},
+		{
+			"nameSubModel": "PersonaEncargaturaModel",
+			"nameCrud": "PersonaEncargatura",
+			"nameRepository": "TPersonaEncargaturaRepository"
+		},
+		{
+			"nameSubModel": "PersonaFamiliaModel",
+			"nameCrud": "PersonaFamilia",
+			"nameRepository": "TPersonaFamiliaRepository"
+		},
+		{
+			"nameSubModel": "PersonaFormacionAcademicaModel",
+			"nameCrud": "PersonaFormacionAcademica",
+			"nameRepository": "TPersonaFormAcadeRepository"
+		},
+		{
+			"nameSubModel": "PersonaInfoBancoModel",
+			"nameCrud": "PersonaInfoBanco",
+			"nameRepository": "TPersonaInfoBancoRepository"
+		},
+		{
+			"nameSubModel": "PersonaLiquidacionModel",
+			"nameCrud": "PersonaLiquidacion",
+			"nameRepository": "TPersonaLiquidacionRepository"
+		},
+		{
+			"nameSubModel": "PersonaMeritoModel",
+			"nameCrud": "PersonaMerito",
+			"nameRepository": "TPersonaMeritoRepository"
+		},
+		{
+			"nameSubModel": "PersonaMovimientoModel",
+			"nameCrud": "PersonaMovimiento",
+			"nameRepository": "TPersonaMovimientoRepository"
+		},
+		{
+			"nameSubModel": "PersonaSancionModel",
+			"nameCrud": "PersonaSancion",
+			"nameRepository": "TPersonaSancionRepository"
+		},
+		{
+			"nameSubModel": "PersonaTelefonoModel",
+			"nameCrud": "PersonaTelefono",
+			"nameRepository": "TPersonaTelefonoRepository"
+		},
+		{
+			"nameSubModel": "PersonalContratoModel",
+			"nameCrud": "PersonalContrato",
+			"nameRepository": "TPersonalContratoRepository"
+		}
+		
+		
+	]
+}

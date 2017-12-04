@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.BeneficiarioDescuentoJudicialQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+
+bdj.srl_id_beneficiario_descuento_judicial,
+bdj.idpersonal,
+bdj.var_descripcion_descuento,
+bdj.int_id_tipo_documento,
+td.abrtablatipo as descrip_tipo_documento,
+bdj.var_numero_doc,
+bdj.var_nombres,
+bdj.var_ape_pater,
+bdj.var_ape_mater,
+bdj.var_numero_cuenta,
+bdj.int_id_estado,
+eg.destablatipo as descrip_estado,
+to_char(bdj.tsp_fecha_registro,'dd/mm/yyyy') as tsp_fecha_registro
+
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+
+personal.t_beneficiario_descuento_judicial bdj
+inner join sernanp.vw_estado_generico eg on eg.codinttablatipo = bdj.int_id_estado
+inner join sernanp.vw_tipo_documento td on td.idtablatipo = bdj.int_id_tipo_documento
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+ 
+
+bdj.srl_id_beneficiario_descuento_judicial = coalesce(#{srl_id_beneficiario_descuento_judicial},bdj.srl_id_beneficiario_descuento_judicial) and
+bdj.idpersonal = coalesce(#{idpersonal},bdj.idpersonal)
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.BeneficiarioDescuentoJudicialQuery" parameterType="sernanp.app.dao.query.domain.BeneficiarioDescuentoJudicialQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.BeneficiarioDescuentoJudicialQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.BeneficiarioDescuentoJudicialQuery" parameterType="sernanp.app.dao.query.domain.BeneficiarioDescuentoJudicialQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.BeneficiarioDescuentoJudicialQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.BeneficiarioDescuentoJudicialQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

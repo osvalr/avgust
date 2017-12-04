@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.ObtenerLegajosPersonalQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.ObtenerLegajosPersonalQuery" parameterType="sernanp.app.dao.query.domain.ObtenerLegajosPersonalQueryCriteria"> 
+<![CDATA[
+
+	      
+	      
+	      		select 
+	      		
+					       ps.idpersonal,
+					       pn.idpersonanatural ,
+					       pnl.srl_id_persona_natural_legajo ,
+					       pnl.int_id_tipo_documento,
+					       pnl.var_nombre_documento as "nombre",
+					       pnl.var_asunto_documento as "asunto",
+					       pnl.var_descripcion_documento as "descripcion",
+					       to_char(pnl.tsp_fecha_registro, 'DD/MM/YYYY') as "fecha_registro"
+					       	--11-02-2015 DAVID
+							,COALESCE(pnl.srl_id_contrato,0) AS srl_id_contrato
+			    
+				from 
+					       sernanp.personanatural pn inner join
+					       sernanp.personal ps on pn.idpersonanatural = ps.idpersonanatural inner join
+					       sernanp.t_persona_natural_legajo pnl on pn.idpersonanatural = pnl.idpersonanatural
+				where
+				
+					       ps.idpersonal =  COALESCE(#{idpersonal}, ps.idpersonal)  and
+					       pn.idpersonanatural =  COALESCE(#{idpersonanatural}, ps.idpersonanatural) and 
+					       pnl.int_id_estado = 1 and
+					       COALESCE(pnl.int_id_tipo_documento,0) not in(1)
+			    
+	                       order by pnl.tsp_fecha_registro desc;
+				
+		  
+	      
+]]>
+</select> 
+</mapper> 

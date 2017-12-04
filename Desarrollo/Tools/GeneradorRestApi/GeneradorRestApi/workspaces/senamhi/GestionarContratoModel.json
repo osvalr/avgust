@@ -1,0 +1,13 @@
+{
+	"nameCrud": "GestionarContrato",
+	"path": "gestionar-contratos-adendas",
+	"nameRepository": "TPersonalContratoRepository",
+	"nameModelXml": "GestionarContratoModel.xml",
+		"subModels": [
+		{
+			"nameRepository": "TContratoAdendaRepository",
+			"nameCrud": "ContratoAdenda",
+			"nameSubModel": "ContratoAdendaModel"
+		}
+	]
+}

@@ -1,0 +1,35 @@
+${copy}
+
+/**
+* @author  Javier Raffo
+* @version 1.0
+* @since   ${datetimeCreate}
+*/
+
+package ${packageEntities}; 
+
+import pe.gob.senamhi.util.BaseEntity;
+import javax.persistence.*;
+import javax.validation.constraints.*;
+import java.io.Serializable;
+
+@Entity
+@Table(
+	name = "${tableName}", schema = "${schema}"
+#if ( $constraints != $null && !$constraints.isEmpty() )
+	, uniqueConstraints = {
+		@UniqueConstraint(columnNames = {
+#foreach( $c in $constraints )
+			"${c}"
+#end
+		})
+	}
+#end
+)
+public class ${entityName} extends BaseEntity implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
+${properties}
+${getterAndSetter}
+} 

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.FiltrarPersonalQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.FiltrarPersonalQuery" parameterType="sernanp.app.dao.query.domain.FiltrarPersonalQueryCriteria"> 
+<![CDATA[
+
+	      
+			    DROP table IF EXISTS personal_filtro;
+				CREATE TEMP TABLE personal_filtro AS 
+				SELECT * FROM 
+				(
+				select
+		  	
+				p.idpersona ,
+				ps.idpersonal ,
+				(COALESCE(pn.nombre,'') || ' ' || COALESCE(pn.apepat,'') || ' ' || COALESCE(pn.apemat,'')) as "nombre_completo",
+		        pn.nombre ,
+		        pn.apepat ,
+		        pn.apemat ,
+		        pn.idtipodocumento ,
+		        pn.ruc ,
+		        pn.idpersonanatural ,
+				td.abrtablatipo as "tipoDoc",
+				pn.numerodoc,
+		        pc.srl_id_cargo,
+			    pc.var_nom_cargo,
+				pc.dte_fec_inicio,
+        		pc.idareanatural,
+                pc.desareanatural,
+                pc.idcategoriaanp,
+			 	pc.descategoriaanp,
+                pc.idarea,
+			    pc.desarea,
+       	        pc.srl_id_regimen_contractual,
+				    
+				CASE WHEN ps.int_estado = 0 THEN 'ACTIVO'
+				     WHEN ps.int_estado = 1 THEN 'INACTIVO'
+			  	END as "desc_estado",
+        		ps.int_estado,
+			  	(COALESCE(pn.var_num_caja,'') || '  ' || COALESCE(pn.var_num_file,'')) as "expediente"
+			  	,COALESCE(ps.mailpersonal,'') as mailpersonal, pc.dte_fec_cese
+		  		
+		  from
+				sernanp.persona p inner join
+				sernanp.personanatural pn on p.idpersona = pn.idpersona inner join 
+				sernanp.personal ps on ps.idpersonanatural = pn.idpersonanatural inner join
+				(SELECT idtablatipo,destablatipo,abrtablatipo FROM sernanp.tablatipo WHERE idtabla=1) td
+				on pn.idtipodocumento = td.idtablatipo inner join 
+(
+SELECT 
+	       ps.idpersonal ,
+		   pc.srl_id_cargo,
+		   c.var_nom_cargo,
+	       to_char(pc.dte_fec_inicio,'DD/MM/YYYY') as "dte_fec_inicio",
+	       an.idareanatural,
+	       an.desareanatural,
+	       pc.srl_id_regimen_contractual,
+           ca.idcategoriaanp,
+	       ca.descategoriaanp,
+           ao.idarea,
+		   ao.desarea
+		   , pc.dte_fec_cese
+
+FROM        
+           sernanp.personal ps inner join 
+		   sernanp.t_personal_contrato pc on ps.idpersonal = pc.idpersonal left join sernanp.areaorganica ao
+		   on pc.idarea = ao.idarea left join sernanp.t_cargo c
+		   on pc.srl_id_cargo = c.srl_id_cargo left join sernanp.sede se
+		   on pc.srl_id_sede_pres = se.idsede left join sernanp.areanatural an
+		   on se.idareanatural = an.idareanatural left join sernanp.categoriaanp ca 
+		   on an.idcategoriaanp = ca.idcategoriaanp
+
+where 
+		   pc.dte_fec_inicio = (select MAX(dte_fec_inicio) from sernanp.t_personal_contrato where idpersonal = pc.idpersonal) AND	
+		   pc.idpersonal = ps.idpersonal
+)pc 
+
+on ps.idpersonal = pc.idpersonal
+
+)x;
+
+       								
+
+select * from personal_filtro x
+
+	  where
+		  	
+				COALESCE(COALESCE(x.nombre,'') || ' ' || COALESCE(x.apepat,'') || ' ' || COALESCE(x.apemat,''),'') like COALESCE('%'|| #{nombres} ||'%', COALESCE(COALESCE(x.nombre,'') || ' ' || COALESCE(x.apepat,'') || ' ' || COALESCE(x.apemat,''),''))    and  
+				COALESCE(x.idtipodocumento,0) = COALESCE(#{idtipodocumento} ,COALESCE(x.idtipodocumento,0))    and
+				COALESCE(x.numerodoc,'') like COALESCE('%'|| #{numerodoc} ||'%', COALESCE(x.numerodoc,''))    and
+				COALESCE(x.ruc,'') like COALESCE('%'|| #{ruc} ||'%', COALESCE(x.ruc,''))   	and
+				COALESCE(x.int_estado,0 ) = COALESCE(#{int_estado},COALESCE(x.int_estado,0))  and
+				COALESCE(x.srl_id_regimen_contractual ,0) = COALESCE(#{srl_id_regimen_contractual} , COALESCE(x.srl_id_regimen_contractual,0))   and
+				COALESCE(x.srl_id_cargo,0) = COALESCE(#{srl_id_cargo} , COALESCE(x.srl_id_cargo,0)) and
+				COALESCE(x.idarea,0) = COALESCE(#{idarea} , COALESCE(x.idarea,0)) and
+				COALESCE(x.idcategoriaanp,0) = COALESCE(#{idcategoriaanp} , COALESCE(x.idcategoriaanp,0)) and
+				COALESCE(x.idareanatural,0) = COALESCE(#{idareanatural} , COALESCE(x.idareanatural,0)) 
+				
+		   
+				order by COALESCE((x.nombre || ' ' || x.apepat || ' ' || x.apemat),'');	
+
+
+	     				
+		  
+	      
+]]>
+</select> 
+</mapper> 

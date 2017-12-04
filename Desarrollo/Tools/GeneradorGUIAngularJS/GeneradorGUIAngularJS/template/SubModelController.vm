@@ -1,0 +1,271 @@
+'use strict';
+
+app.controller('${configBean.nameCrud}.controllers.${subModel.nameCrud}Controller',
+[
+  '$scope',
+  'urls',
+  'DTOptionsBuilder',
+  'DTColumnDefBuilder',
+  '$uibModal',
+  'Common.services.MainService',
+  function($scope, urls,DTOptionsBuilder,DTColumnDefBuilder,$uibModal,CommonService) {
+
+    var self = this;
+
+    //flags
+    self.formEdit = false;
+    self.grid = true;
+    //Models
+    self.subModel={}
+    self.subModels = [];
+    self.finalRows = [];
+
+    //Op
+    self.operation = null;
+
+    //methods
+    self.submit = submit;
+    self.createModel = createModel;
+    self.updateModel = updateModel;
+    self.removeModel = removeModel;
+    self.editModel = editModel;
+    self.reset = reset;
+    self.cancel = cancel;
+    self.newModel = newModel;
+    self.openModalConfirmRemove = openModalConfirmRemove;
+
+    function submit() {
+      console.log('Submitting');
+      if (self.operation === 'save') {
+        console.log('Saving New SubModel', self.subModel);
+        createModel(self.subModel);
+      } else {
+        updateModel(self.subModel, self.subModel.${subModel.propertyId});
+        console.log('SubModel updated with id ', self.subModel.${subModel.propertyId});
+      }
+      console.log("set Raw Values");
+      setRawValues();
+
+      self.subModel={};
+
+      self.formEdit = false;
+      self.grid = true;
+
+      setFinalRows();
+
+      var data = {
+        "list${subModel.nameModel}":self.subModels
+      }
+
+      $scope.$emit('setSubModel', data);
+
+    }
+
+    function createModel(subModel) {
+
+      console.log('About to create SubModel');
+      
+      subModel.${subModel.propertyId} = (getRandomInt(1000,1))*-1;
+      
+      subModel.newEntry = true;
+      subModel.updatedRecord = false;
+      subModel.removedRecord = false;
+      self.subModels.push(subModel);
+
+    }
+
+
+    function updateModel(subModel, id){
+
+      console.log('About to update SubModel');
+      var index = findIndexModelForId(id);
+      if(subModel.newEntry==true){
+        self.subModels[index] = subModel;
+      }else{
+        subModel.updatedRecord = true;
+        self.subModels[index] = subModel;
+      }
+
+    }
+
+    function removeModel(id){
+      console.log('About to remove SubModel with id '+id);
+      var index = findIndexModelForId(id);
+      var m = self.subModels[index];
+      if(m.newEntry==true){
+        self.subModels.splice(index, 1);
+      }else if(m.updatedRecord==true){
+        m.removedRecord = true;
+        m.updatedRecord = false;
+        self.subModels[index] = m;
+      }else{
+        m.removedRecord = true;
+        self.subModels[index] = m;
+      }
+
+      var data = {
+        "list${subModel.nameModel}":self.subModels
+      }
+
+      setFinalRows();
+
+      $scope.$emit('setSubModel', data);
+
+    }
+
+    function editModel(id) {
+
+      self.operation = 'update';
+      self.formEdit = true;
+      self.grid = false;
+
+      var index = findIndexModelForId(id);
+
+      var m = self.subModels[index];
+      self.subModel = angular.copy(m);
+
+    }
+
+    function newModel() {
+      self.operation = 'save';
+      self.formEdit = true;
+      self.grid = false;
+      self.subModel={};
+    }
+
+    function cancel(){
+      self.subModel={};
+      self.formEdit = false;
+      self.grid = true;
+    }
+
+    function reset(){
+      self.subModel={};
+      $scope.myForm.$setPristine(); //reset Form
+    }
+
+    //Datatables
+    self.dtOptions = DTOptionsBuilder.newOptions()
+    .withPaginationType('full_numbers')
+    .withBootstrap();
+
+    self.dtColumnDefs = [
+      DTColumnDefBuilder.newColumnDef(${subModel.outputs.size()}).notSortable()
+    ];
+
+    function findIndexModelForId(id) {
+      var index = null;
+      angular.forEach(self.subModels, function(value, key){
+
+        if(value.${subModel.propertyId} === id){
+          index = key;
+        }
+      });
+
+      return index;
+    }
+
+    function setRawValues(){
+
+    }
+#[[
+    function openModalConfirmRemove(id){
+
+      var modalInstance = $uibModal.open({
+        animation: true,
+        templateUrl: 'modalConfirmTemplate.html',
+        controller: function ($uibModalInstance, items) {
+          var $ctrlModal = this;
+
+          $ctrlModal.ok = function () {
+            self.removeModel(id);
+            $uibModalInstance.close(true);
+          };
+
+          $ctrlModal.cancel = function () {
+            $uibModalInstance.dismiss('cancel');
+          };
+        },
+        controllerAs: '$ctrlModal',
+        size: 'sm',
+        resolve: {
+          items: function () {
+          }
+        }
+      });
+
+    }
+]]#
+    $scope.$on("loadSubModels", function(event, model){
+
+      if(model != null){
+        self.subModels = model.list${subModel.nameModel};
+        setFinalRows();
+      }else{
+        self.subModels = [];
+        self.finalRows = [];
+      }
+
+    });
+
+    function setFinalRows() {
+      self.finalRows = [];
+
+      angular.forEach(self.subModels, function(value, key){
+        if(value.removedRecord === false){
+          self.finalRows.push(value);
+        }
+      });
+
+    }
+
+    $scope.$on("hideFormEdit", function(event, data){
+
+      self.formEdit = false;
+      self.grid = true;
+
+    });
+    
+            function obtenerItemsCatalogo(nombre_catalogo, fnResponse) {
+
+                CommonService.obtenerItemsPorCatalogo(nombre_catalogo)
+                    .then(
+                        function (response) {
+                            fnResponse(response);
+                        },
+                        function (errResponse) {
+                            console.error('Error while get obtenerItemsCatalogo with '+nombre_catalogo);
+                        }
+                    );
+            }
+            
+            function commonGetRest(url,fnResponse) {
+
+                CommonService.commonGetRest(url)
+                    .then(
+                        function (response) {
+                            fnResponse(response);
+                        },
+                        function (errResponse) {
+                            console.error('Error while get commonGetRest with '+url);
+                        }
+                    );
+            }
+
+            function commonGetSubModelRest(url_rest, id, subModelName,fnResponse) {
+
+                CommonService.commonGetSubModelRest(url_rest, id, subModelName)
+                    .then(
+                        function (response) {
+                            fnResponse(response);
+                        },
+                        function (errResponse) {
+                            console.error('Error while get commonGetSubModelRest with '+ url_rest + '/' + id + '/' + subModelName);
+                        }
+                    );
+            }
+    
+  }
+
+
+]);

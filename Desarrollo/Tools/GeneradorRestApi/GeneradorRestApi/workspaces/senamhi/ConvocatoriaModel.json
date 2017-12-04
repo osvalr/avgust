@@ -1,0 +1,23 @@
+{
+	"nameCrud": "Convocatoria",
+	"path": "convocatorias",
+	"nameRepository": "TConvocatoriaRepository",
+	"nameModelXml": "ConvocatoriaModel.xml",
+		"subModels": [
+		{
+			"nameRepository": "TConvocatoriaSubetapaRepository",
+			"nameCrud": "ConvocatoriaSubEtapa",
+			"nameSubModel": "ConvocatoriaSubEtapaModel"
+		},
+		{
+			"nameRepository": "TConvocatoriaComiteRepository",
+			"nameCrud": "ConvocatoriaComite",
+			"nameSubModel": "ConvocatoriaComiteModel"
+		},
+		{
+			"nameRepository": "TPlazaRepository",
+			"nameCrud": "Plaza",
+			"nameSubModel": "PlazaModel"
+		}
+	]
+}

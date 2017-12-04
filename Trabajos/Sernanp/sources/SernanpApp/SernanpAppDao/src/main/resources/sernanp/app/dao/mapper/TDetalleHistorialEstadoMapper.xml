@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sernanp.app.dao.mapper.TDetalleHistorialEstadoMapper" >
+  <resultMap id="BaseResultMap" type="sernanp.app.dao.domain.TDetalleHistorialEstado" >
+    <id column="srl_id_detalle_historial_estado" property="srl_id_detalle_historial_estado" jdbcType="INTEGER" />
+    <result column="srl_id_estado_tabla" property="srl_id_estado_tabla" jdbcType="INTEGER" />
+    <result column="int_id_registro" property="int_id_registro" jdbcType="INTEGER" />
+    <result column="var_cod_estado" property="var_cod_estado" jdbcType="VARCHAR" />
+    <result column="tsp_fecha_registro" property="tsp_fecha_registro" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    srl_id_detalle_historial_estado, srl_id_estado_tabla, int_id_registro, var_cod_estado, 
+    tsp_fecha_registro
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TDetalleHistorialEstadoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sernanp.t_detalle_historial_estado
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TDetalleHistorialEstadoKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from sernanp.t_detalle_historial_estado
+    where srl_id_detalle_historial_estado = #{srl_id_detalle_historial_estado,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="sernanp.app.dao.domain.TDetalleHistorialEstadoKey" >
+    delete from sernanp.t_detalle_historial_estado
+    where srl_id_detalle_historial_estado = #{srl_id_detalle_historial_estado,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sernanp.app.dao.domain.TDetalleHistorialEstadoExample" >
+    delete from sernanp.t_detalle_historial_estado
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sernanp.app.dao.domain.TDetalleHistorialEstado" useGeneratedKeys="true" keyProperty="srl_id_detalle_historial_estado" >
+    insert into sernanp.t_detalle_historial_estado (srl_id_estado_tabla, int_id_registro, 
+      var_cod_estado, tsp_fecha_registro)
+    values (#{srl_id_estado_tabla,jdbcType=INTEGER}, #{int_id_registro,jdbcType=INTEGER}, 
+      #{var_cod_estado,jdbcType=VARCHAR}, #{tsp_fecha_registro,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="sernanp.app.dao.domain.TDetalleHistorialEstado" useGeneratedKeys="true" keyProperty="srl_id_detalle_historial_estado" >
+    insert into sernanp.t_detalle_historial_estado
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="srl_id_estado_tabla != null" >
+        srl_id_estado_tabla,
+      </if>
+      <if test="int_id_registro != null" >
+        int_id_registro,
+      </if>
+      <if test="var_cod_estado != null" >
+        var_cod_estado,
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        tsp_fecha_registro,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="srl_id_estado_tabla != null" >
+        #{srl_id_estado_tabla,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_registro != null" >
+        #{int_id_registro,jdbcType=INTEGER},
+      </if>
+      <if test="var_cod_estado != null" >
+        #{var_cod_estado,jdbcType=VARCHAR},
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sernanp.app.dao.domain.TDetalleHistorialEstadoExample" resultType="java.lang.Integer" >
+    select count(*) from sernanp.t_detalle_historial_estado
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sernanp.t_detalle_historial_estado
+    <set >
+      <if test="record.srl_id_detalle_historial_estado != null" >
+        srl_id_detalle_historial_estado = #{record.srl_id_detalle_historial_estado,jdbcType=INTEGER},
+      </if>
+      <if test="record.srl_id_estado_tabla != null" >
+        srl_id_estado_tabla = #{record.srl_id_estado_tabla,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_id_registro != null" >
+        int_id_registro = #{record.int_id_registro,jdbcType=INTEGER},
+      </if>
+      <if test="record.var_cod_estado != null" >
+        var_cod_estado = #{record.var_cod_estado,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsp_fecha_registro != null" >
+        tsp_fecha_registro = #{record.tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sernanp.t_detalle_historial_estado
+    set srl_id_detalle_historial_estado = #{record.srl_id_detalle_historial_estado,jdbcType=INTEGER},
+      srl_id_estado_tabla = #{record.srl_id_estado_tabla,jdbcType=INTEGER},
+      int_id_registro = #{record.int_id_registro,jdbcType=INTEGER},
+      var_cod_estado = #{record.var_cod_estado,jdbcType=VARCHAR},
+      tsp_fecha_registro = #{record.tsp_fecha_registro,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sernanp.app.dao.domain.TDetalleHistorialEstado" >
+    update sernanp.t_detalle_historial_estado
+    <set >
+      <if test="srl_id_estado_tabla != null" >
+        srl_id_estado_tabla = #{srl_id_estado_tabla,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_registro != null" >
+        int_id_registro = #{int_id_registro,jdbcType=INTEGER},
+      </if>
+      <if test="var_cod_estado != null" >
+        var_cod_estado = #{var_cod_estado,jdbcType=VARCHAR},
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        tsp_fecha_registro = #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where srl_id_detalle_historial_estado = #{srl_id_detalle_historial_estado,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sernanp.app.dao.domain.TDetalleHistorialEstado" >
+    update sernanp.t_detalle_historial_estado
+    set srl_id_estado_tabla = #{srl_id_estado_tabla,jdbcType=INTEGER},
+      int_id_registro = #{int_id_registro,jdbcType=INTEGER},
+      var_cod_estado = #{var_cod_estado,jdbcType=VARCHAR},
+      tsp_fecha_registro = #{tsp_fecha_registro,jdbcType=TIMESTAMP}
+    where srl_id_detalle_historial_estado = #{srl_id_detalle_historial_estado,jdbcType=INTEGER}
+  </update>
+</mapper>

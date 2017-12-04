@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.UltimaAdendaPorContratoQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.UltimaAdendaPorContratoQuery" parameterType="sernanp.app.dao.query.domain.UltimaAdendaPorContratoQueryCriteria"> 
+<![CDATA[
+
+	      
+				
+				select 
+				
+					pc.srl_id_contrato ,
+					pc.srl_id_contrato_padre ,
+					pc.dte_fec_suscrip ,
+					pc.dte_fec_inicio ,
+					pc.dte_fec_termino ,
+					pc.int_id_estado  
+				
+				from 
+					sernanp.t_personal_contrato pc 
+				where 
+				
+					pc.srl_id_contrato_padre =  #{srl_id_contrato_padre}   and
+					pc.int_id_estado not in (4,3) and
+					pc.dte_fec_termino = (select max(pc.dte_fec_termino) from sernanp.t_personal_contrato pc where pc.srl_id_contrato_padre =  #{srl_id_contrato_padre} and pc.int_id_estado <> 4);
+					
+		  
+	      
+]]>
+</select> 
+</mapper> 

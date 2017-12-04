@@ -1,0 +1,81 @@
+/**
+* Copyright «©» ${anho}, FOCUS CONSULTORES ASOCIADOS SAC. All rights reserved.
+*
+* This file is part of ${nameApp}.
+*
+* ${nameApp} is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* ${nameApp} is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with ${nameApp}.  If not, see <http://www.gnu.org/licenses/>.
+*/	 
+
+/**
+* GENERATOR CRUD EXT JS 5            
+* BY FOCUS CONSULTORES ASOCIADOS SAC  
+* DATE CREATE : ${datetimeCreate}
+* VERSION : 1.0 
+*/
+
+Ext.define('MyApp.view.${name}.${nameModelAlter}List' ,{
+    extend: 'Ext.grid.Panel',
+    alias : 'widget.${nameModelAlter}List',
+    
+    glyph:'xf022@FontAwesome',
+	header: false,
+    store: '${name}.${nameModelAlter}Store',
+
+    columns: [
+#set($counter = 0)
+#foreach( $e in $columns )
+#if($counter==0)
+		{
+	    	header: "${e.header}",
+			flex:${e.flex},
+			dataIndex: '${e.fieldModel}',
+			hidden:${e.hidden}
+		}
+#else
+		,{
+			header: "${e.header}",
+			flex:${e.flex},
+			dataIndex: '${e.fieldModel}',
+			hidden:${e.hidden}
+		}
+#end
+#set($counter = $counter + 1)
+#end
+	],
+	
+	initComponent: function() {
+		
+		this.dockedItems = [{
+            xtype: 'toolbar',
+            items: [{
+            	glyph:'xf055@FontAwesome',
+                itemId: 'add',
+                text: 'Agregar',
+                action: 'add'
+            },{
+            	glyph:'xf056@FontAwesome',
+                text: 'Eliminar',
+                action: 'delete'
+            }]
+        },
+        {
+            xtype: 'pagingtoolbar',
+            dock:'top',
+            store: '${name}.${nameModelAlter}Store',
+            displayInfo: true
+        }];
+		
+		this.callParent(arguments);
+	}
+});

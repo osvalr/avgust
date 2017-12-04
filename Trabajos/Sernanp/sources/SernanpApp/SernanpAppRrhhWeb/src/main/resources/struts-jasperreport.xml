@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+<package name="reporte-jasper" namespace="/" extends="principal">
+    
+    <action name="downloadreportedecuentos" class="sernanp.rrhh.action.PersonalAction" method="listapersonalDescuento" >
+
+		<result name="success" type="jasper" >
+            <param name="location">/jasper/Reportedescuentospersonal.jasper</param>            
+            <param name="dataSource">listapersonaldescuentos</param>            
+            <param name="format">DOC</param>
+            <param name="documentName">ReporteDescuentos_${reportParams['mesofcontdesc']}_${reportParams['periodofcontdesc']}</param>
+            <param name="contentDisposition">attachment</param>
+            <param name="reportParameters">reportParams</param>
+            
+        </result>
+        
+        <result name="error" type="jasper">/Error.jsp</result>
+        
+        <interceptor-ref name="usuario-logeado" />
+		<interceptor-ref name="basicStack" />
+
+    </action>
+    
+    
+    <action name="downloadreportedecuentosXLS" class="sernanp.rrhh.action.PersonalAction" method="listapersonalDescuento" >
+
+		<result name="success" type="jasper" >
+            <param name="location">/jasper/ReportedescuentospersonalXLS.jasper</param>            
+            <param name="dataSource">listapersonaldescuentos</param>            
+            <param name="format">XLS</param>
+            <param name="documentName">ReporteDescuentos_${reportParams['mesofcontdesc']}_${reportParams['periodofcontdesc']}</param>
+            <param name="contentDisposition">attachment</param>
+            <param name="reportParameters">reportParams</param>
+            
+        </result>
+        
+        <result name="error" type="jasper">/Error.jsp</result>
+        
+        <interceptor-ref name="usuario-logeado" />
+		<interceptor-ref name="basicStack" />
+
+    </action>
+    
+    
+    <action name="listarInasistenciasPersonalpdf" class="sernanp.rrhh.action.PersonalAction" method="reportes" >
+		
+			<result name="success" type="jasper" >
+		          <param name="location">/jasper/ReporteInasistenciasRangoFechas_v2.jasper</param>            
+		          <param name="dataSource">listaPersonalAsistencia</param>            
+		          <param name="format">PDF</param>
+		          <param name="documentName">${reportParams['Ubicacion']}_${reportParams['tipoReporte']}</param>
+		          <param name="contentDisposition">attachment</param>
+		          <param name="reportParameters">reportParams</param>
+		          
+		      </result>
+		      
+		      <result name="error" type="jasper">/Error.jsp</result>
+		      
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="basicStack" />
+		
+	</action>
+	
+	
+	
+	 <action name="listarInasistenciasPersonalxls" class="sernanp.rrhh.action.PersonalAction" method="reportes" >
+		
+			<result name="success" type="jasper" >
+		          <param name="location">/jasper/ReporteInasistenciasRangoFechas_xls_v2.jasper</param>            
+		          <param name="dataSource">listaPersonalAsistencia</param>            
+		          <param name="format">XLS</param>
+		          <param name="documentName">${reportParams['Ubicacion']}_${reportParams['tipoReporte']}</param>
+		          <param name="contentDisposition">attachment</param>
+		          <param name="reportParameters">reportParams</param>
+		          
+		      </result>
+		      
+		      <result name="error" type="jasper">/Error.jsp</result>
+		      
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="basicStack" />
+		
+	</action>
+
+    <action name="listarPersonalporActividadpdf" class="sernanp.rrhh.action.PersonalAction" method="reportes" >
+		
+			<result name="success" type="jasper" >
+		          <param name="location">/jasper/ReportePersonalporPapeletas.jasper</param>            
+		          <param name="dataSource">listaPersonalDesplazamiento</param>            
+		          <param name="format">PDF</param>
+		          <param name="documentName">ReportePersonalporPapeletas_${reportParams['tipoReporte']}</param>
+		          <param name="contentDisposition">attachment</param>
+		          <param name="reportParameters">reportParams</param>
+		          
+		      </result>
+		      
+		      <result name="error" type="jasper">/Error.jsp</result>
+		      
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="basicStack" />
+		
+	</action>
+	
+	
+	
+	 <action name="listarPersonalporActividadxls" class="sernanp.rrhh.action.PersonalAction" method="reportes" >
+		
+			<result name="success" type="jasper" >
+		          <param name="location">/jasper/ReportePersonalporPapeletasxls.jasper</param>            
+		          <param name="dataSource">listaPersonalDesplazamiento</param>            
+		          <param name="format">XLS</param>
+		          <param name="documentName">ReportePersonalporPapeletas_${reportParams['tipoReporte']}</param>
+		          <param name="contentDisposition">attachment</param>
+		          <param name="reportParameters">reportParams</param>
+		          
+		      </result>
+		      
+		      <result name="error" type="jasper">/Error.jsp</result>
+		      
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="basicStack" />
+		
+	</action>	
+	
+	<action name="listarPersonalResumenAsistenciapdf" class="sernanp.rrhh.action.PersonalAction" method="reportes" >
+		
+			<result name="success" type="jasper" >
+		          <param name="location">/jasper/ResumenAsistenciaRangoFechas.jasper</param>            
+		          <param name="dataSource">listaPersonalResumenAsistencia</param>            
+		          <param name="format">PDF</param>
+		          <param name="documentName">ResumenAsistencia_${reportParams['tipoReporte']}</param>
+		          <param name="contentDisposition">attachment</param>
+		          <param name="reportParameters">reportParams</param>
+		          
+		      </result>
+		      
+		      <result name="error" type="jasper">/Error.jsp</result>
+		      
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="basicStack" />
+		
+	</action>
+	
+	
+	
+	 <action name="listarPersonalResumenAsistenciaxls" class="sernanp.rrhh.action.PersonalAction" method="reportes" >
+		
+			<result name="success" type="jasper" >
+		          <param name="location">/jasper/ResumenAsistenciaRangoFechasxls.jasper</param>            
+		          <param name="dataSource">listaPersonalResumenAsistencia</param>            
+		          <param name="format">XLS</param>
+		          <param name="documentName">ResumenAsistencia_${reportParams['tipoReporte']}</param>
+		          <param name="contentDisposition">attachment</param>
+		          <param name="reportParameters">reportParams</param>
+		          
+		      </result>
+		      
+		      <result name="error" type="jasper">/Error.jsp</result>
+		      
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="basicStack" />
+		
+	</action>	
+
+
+	<action name="listarPersonalRecordAsistenciapdf" class="sernanp.rrhh.action.PersonalAction" method="reportes" >
+		
+			<result name="success" type="jasper" >
+		          <param name="location">/jasper/RecordAsistenciaRangoFechas.jasper</param>            
+		          <param name="dataSource">listaPersonalAsistenciaRecord</param>		          							         
+		          <param name="format">PDF</param>
+		          <param name="documentName">RecordAsistencia_${reportParams['tipoReporte']}</param>
+		          <param name="contentDisposition">attachment</param>
+		          <param name="reportParameters">reportParams</param>
+		          
+		      </result>
+		      
+		      <result name="error" type="jasper">/Error.jsp</result>
+		      
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="basicStack" />
+		
+	</action>
+	
+	
+	
+	 <action name="listarPersonalRecordAsistenciaxls" class="sernanp.rrhh.action.PersonalAction" method="reportes" >
+		
+			<result name="success" type="jasper" >
+		          <param name="location">/jasper/RecordAsistenciaRangoFechasxls.jasper</param>            
+		          <param name="dataSource">listaPersonalAsistenciaRecord</param>            
+		          <param name="format">XLS</param>
+		          <param name="documentName">RecordAsistencia_${reportParams['tipoReporte']}</param>
+		          <param name="contentDisposition">attachment</param>
+		          <param name="reportParameters">reportParams</param>
+		          
+		      </result>
+		      
+		      <result name="error" type="jasper">/Error.jsp</result>
+		      
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="basicStack" />
+		
+	</action>			
+		
+     
+</package>
+
+</struts>

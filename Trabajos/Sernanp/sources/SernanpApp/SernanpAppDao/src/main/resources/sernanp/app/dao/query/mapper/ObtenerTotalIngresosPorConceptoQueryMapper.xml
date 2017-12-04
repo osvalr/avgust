@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.ObtenerTotalIngresosPorConceptoQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+
+coalesce(sum(nc.dec_monto_calculado),0) as total_ingreso
+
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+
+personal.t_anio_planilla ap
+inner join personal.t_anio_periodo_planilla app on app.srl_id_anio_planilla = ap.srl_id_anio_planilla
+inner join personal.t_nomina_anio_periodo_personal napp on napp.srl_id_anio_periodo_planilla = app.srl_id_anio_periodo_planilla
+inner join personal.t_nomina_concepto nc on nc.srl_id_nomina_anio_periodo_personal = napp.srl_id_nomina_anio_periodo_personal
+inner join personal.t_concepto_planilla cp on nc.srl_id_concepto_planilla = cp.srl_id_concepto_planilla
+
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+app.srl_id_anio_periodo_planilla = #{srl_id_anio_periodo_planilla} and
+--ap.int_anio = #{int_anio} AND
+napp.idpersonal = #{idpersonal} AND
+cp.int_id_tipo_concepto = 1 and
+nc.srl_id_concepto_planilla in 
+(select ac.srl_id_concepto_planilla_afecto from personal.t_afecto_concepto ac where ac.srl_id_concepto_planilla = #{srl_id_concepto_planilla}) and
+nc.int_id_estado = coalesce(#{int_id_estado},nc.int_id_estado)
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.ObtenerTotalIngresosPorConceptoQuery" parameterType="sernanp.app.dao.query.domain.ObtenerTotalIngresosPorConceptoQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.ObtenerTotalIngresosPorConceptoQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.ObtenerTotalIngresosPorConceptoQuery" parameterType="sernanp.app.dao.query.domain.ObtenerTotalIngresosPorConceptoQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.ObtenerTotalIngresosPorConceptoQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.ObtenerTotalIngresosPorConceptoQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

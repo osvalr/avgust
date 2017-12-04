@@ -1,0 +1,18 @@
+{
+	"nameCrud": "GestionarPlaza",
+	"path": "gestionar-plazas",
+	"nameRepository": "TPlazaRepository",
+	"nameModelXml": "GestionarPlazaModel.xml",
+		"subModels": [
+		{
+			"nameRepository": "TPlazaSubetapaComiteRepository",
+			"nameCrud": "PlazaSubetapaComite",
+			"nameSubModel": "PlazaSubetapaComiteModel"
+		},
+		{
+			"nameRepository": "TPlazaSubetapaArchivoRepository",
+			"nameCrud": "PlazaSubetapaArchivo",
+			"nameSubModel": "PlazaSubetapaArchivoModel"
+		}
+	]
+}

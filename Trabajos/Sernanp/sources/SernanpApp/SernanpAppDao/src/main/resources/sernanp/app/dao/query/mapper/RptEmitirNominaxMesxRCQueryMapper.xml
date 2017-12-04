@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.RptEmitirNominaxMesxRCQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+
+	napp.srl_id_nomina_anio_periodo_personal,
+	ap.int_anio,
+	ms.destablatipo as descrip_periodo,
+	pn.numerodoc,
+	(COALESCE(pn.apepat,'')||' '||COALESCE(pn.apemat,'')||' '||COALESCE(pn.nombre,'')) AS nombre_completo,
+	c.var_nom_cargo,
+	ss.var_num_operacion,
+	pn.ruc,
+	napp.c_meta,
+	napp.c_fte_fto,
+	napp.srl_id_regimen_contractual,
+	pc.var_nivel_regimen_contractual,
+	rc.var_descripcion_regimen_contractual,
+	--ubicacion
+	napp.dec_total_ingresos,
+	napp.dec_total_descuentos,
+	napp.dec_total_aportes,
+	napp.dec_total_neto
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+    personal.t_nomina_anio_periodo_personal napp
+    inner join personal.t_anio_periodo_planilla app on napp.srl_id_anio_periodo_planilla = app.srl_id_anio_periodo_planilla
+	inner join personal.t_anio_planilla ap on app.srl_id_anio_planilla = ap.srl_id_anio_planilla
+	inner join sernanp.personal ps on napp.idpersonal = ps.idpersonal
+	inner join sernanp.personanatural pn on ps.idpersonanatural=pn.idpersonanatural
+	inner join sernanp.t_regimen_contractual rc on napp.srl_id_regimen_contractual=rc.srl_id_regimen_contractual
+	inner join sernanp.vw_meses ms on ms.codinttablatipo = app.int_id_periodo_mes
+	left join sernanp.t_personal_contrato pc on napp.srl_id_contrato = pc.srl_id_contrato
+	left join sernanp.t_cargo c on pc.srl_id_cargo = c.srl_id_cargo
+	left join sernanp.sede s on pc.srl_id_sede_pres = s.idsede
+	left join sernanp.areanatural an on s.idareanatural = an.idareanatural
+	left join sernanp.categoriaanp ca on an.idcategoriaanp = ca.idcategoriaanp
+	left join sernanp.areaorganica ao on pc.idarea = ao.idarea
+	inner join mpp.t_fuente_financiamiento ff on napp.c_fte_fto = ff.var_rubro_fte_fto
+	
+	left join (
+             select 
+                   x.idpersonal,
+                   x.var_num_operacion, 
+                   x.dte_fecha_presentacion 
+             from 
+                   personal.t_suspension_cuarta_categoria x
+            ) as ss on (ss.idpersonal = napp.idpersonal and
+                       to_char(ss.dte_fecha_presentacion,'YYYY') = cast(ap.int_anio as character varying)
+                       )
+                    
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+
+COALESCE(napp.srl_id_regimen_contractual,0)=COALESCE(#{srl_id_regimen_contractual},COALESCE(napp.srl_id_regimen_contractual,0)) and
+COALESCE(ff.srl_id_fuente_financiamiento,0) = COALESCE(#{srl_id_fuente_financiamiento},ff.srl_id_fuente_financiamiento) AND
+ap.int_anio = COALESCE(#{int_anio},ap.int_anio) and
+app.int_id_periodo_mes = COALESCE(#{int_id_periodo_mes},app.int_id_periodo_mes)AND
+napp.int_id_estado = COALESCE(1,napp.int_id_estado) 
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+
+ORDER BY ${orderColumn} ${orderDirecction}
+
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.RptEmitirNominaxMesxRCQuery" parameterType="sernanp.app.dao.query.domain.RptEmitirNominaxMesxRCQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.RptEmitirNominaxMesxRCQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.RptEmitirNominaxMesxRCQuery" parameterType="sernanp.app.dao.query.domain.RptEmitirNominaxMesxRCQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.RptEmitirNominaxMesxRCQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.RptEmitirNominaxMesxRCQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

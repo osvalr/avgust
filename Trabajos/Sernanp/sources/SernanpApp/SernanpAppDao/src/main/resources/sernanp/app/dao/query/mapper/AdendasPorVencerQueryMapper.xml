@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.AdendasPorVencerQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.AdendasPorVencerQuery" parameterType="sernanp.app.dao.query.domain.AdendasPorVencerQueryCriteria"> 
+<![CDATA[
+
+	      
+	      
+				select 
+				
+					pc.srl_id_contrato ,
+					pc.srl_id_contrato_padre ,
+					(select a[2] || '-' || a[3] from (select regexp_split_to_array(pc.var_num_contrato, '-')) as dt(a)) as "var_num_contrato",
+					(select a[2] || '-' || a[3] from (select regexp_split_to_array((select pcx.var_num_contrato from sernanp.t_personal_contrato pcx where pcx.srl_id_contrato = pc.srl_id_contrato_padre), '-')) as dt(a)) as "var_num_contrato_padre",
+					to_char(pc.dte_fec_suscrip, 'DD/MM/YYYY') as "dte_fec_suscrip",
+					to_char(pc.dte_fec_inicio, 'DD/MM/YYYY') as "dte_fec_inicio",
+					to_char(pc.dte_fec_termino, 'DD/MM/YYYY') as "dte_fec_termino",
+					ipn.nombre_completo
+				
+				from 
+					sernanp.t_personal_contrato pc
+					left join 
+					(
+					select det.var_cod_estado,det.var_nombre_estado from sernanp.t_detalle_estado_tabla det
+					where det.srl_id_estado_tabla = 2
+					) detx on detx.var_cod_estado = cast(pc.int_id_estado as char)
+					left join
+					(
+						select 
+							pcx.srl_id_contrato,
+							(COALESCE(pn.nombre,pnc.nombre) || ' ' || COALESCE(pn.apepat,pnc.apepat) || ' ' || COALESCE(pn.apemat,pnc.apemat)) as "nombre_completo" 
+							--ADD 03-09-2015 DAVID
+							,ppp.idpersonal
+							--END
+						from 
+							sernanp.t_personal_contrato pcx left join sernanp.t_postulante_cnv_area_org pcao
+							on pcx.srl_id_postulante_conv_area_org = pcao.srl_id_postulante_conv_area_org 
+							left join sernanp.t_postulante_personal pp
+							on pcao.int_id_postulante = pp.int_id_postulante
+							left join sernanp.personanatural pn
+							on pn.idpersonanatural = pp.int_id_postulante
+							left join sernanp.persona p
+							on pn.idpersona = p.idpersona
+							left join sernanp.personal ppp
+							on pcx.idpersonal = ppp.idpersonal
+							left join sernanp.personanatural pnc
+							on ppp.idpersonanatural = pnc.idpersonanatural
+							--ADD 03-09-2015 DAVID
+							WHERE 	ppp.int_estado = 0
+							--END
+					) ipn
+					on ipn.srl_id_contrato = pc.srl_id_contrato_padre
+				where 
+				
+					pc.srl_id_contrato_padre is not null and
+					pc.int_id_estado = 2 and
+					DATE_PART('day', pc.dte_fec_termino - CURRENT_DATE::timestamp) between 0 and #{cant_dias}
+					--ADD 03-09-2015 DAVID
+					AND pc.dte_fec_inicio > (SELECT MAX(dte_fec_inicio) FROM sernanp.t_personal_contrato WHERE idpersonal = ipn.idpersonal)
+					--END
+				
+					
+				order by pc.dte_fec_suscrip desc;
+		  
+	      
+]]>
+</select> 
+</mapper> 

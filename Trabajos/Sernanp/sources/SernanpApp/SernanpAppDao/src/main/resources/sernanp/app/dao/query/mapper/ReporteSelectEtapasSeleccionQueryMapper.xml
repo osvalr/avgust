@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.ReporteSelectEtapasSeleccionQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+	rp.srl_id_requerimiento_personal,
+	c.srl_id_convocatoria, 
+	cao.srl_id_conv_area_org,
+	(
+	CASE 
+		WHEN c.dte_fecha_inicio_publicacion = c.dte_fecha_termino_publicacion THEN 
+		(to_char(c.dte_fecha_inicio_publicacion,'dd') || ' de ' || to_char(c.dte_fecha_inicio_publicacion,'TMMonth') || ' del ' || to_char(c.dte_fecha_inicio_publicacion,'yyyy')) 
+       
+		ELSE
+		('Del ' || to_char(c.dte_fecha_inicio_publicacion,'dd') || ' al ' || to_char(c.dte_fecha_termino_publicacion,'dd') || ' de ' || to_char(c.dte_fecha_termino_publicacion,'TMMonth') || ' de ' || to_char(c.dte_fecha_termino_publicacion,'yyyy')) 
+       
+		END 
+	) as dte_fecha_publicacion,
+	
+       cao.srl_id_configuracion_factor_evaluacion,
+       cfe.var_descrip_configuracion,
+       cao.srl_id_configuracion_evaluacion_personal,
+       cep.var_nombre_configuracion,       
+              
+       eps.srl_id_etapa_proceso_seleccion,
+       eps.var_nombre_etapa,
+       
+       cfec.srl_id_subetapa_proceso_seleccion,
+       (
+       select x.var_descrip_subetapa from personal.t_subetapa_proceso_seleccion x 
+       LEFT JOIN sernanp.sede s ON s.idsede = rp.id_sede_ubicacion
+       where x.srl_id_subetapa_proceso_seleccion = cfec.srl_id_subetapa_proceso_seleccion
+       ) as var_descrip_subetapa,
+       
+       (select 
+	CASE WHEN x.srl_id_subetapa_proceso_seleccion IN (3,5,7) THEN
+		x.var_detalle_subetapa  || ' y/o ' || s.direccion 
+		ELSE
+		x.var_detalle_subetapa
+		END
+	FROM personal.t_subetapa_proceso_seleccion x 
+	LEFT JOIN sernanp.sede s ON s.idsede = rp.id_sede_ubicacion
+       where x.srl_id_subetapa_proceso_seleccion = cfec.srl_id_subetapa_proceso_seleccion
+       ) as var_detalle_subetapa,
+       
+   (
+       CASE 
+       WHEN cfec.dte_fecha_inicio = cfec.dte_fecha_termino OR cfec.dte_fecha_termino ISNULL  THEN 
+		(to_char(cfec.dte_fecha_inicio,'dd') || ' de ' || 
+		CASE 
+			WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 1 THEN 'Enero'
+			WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 2 THEN 'Febrero'
+			WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 3 THEN 'Marzo'
+			WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 4 THEN 'Abril'
+			WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 5 THEN 'Mayo'
+			WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 6 THEN 'Junio'
+			WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 7 THEN 'Julio'
+			WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 8 THEN 'Agosto'
+			WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 9 THEN 'Setiembre'
+			WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 10 THEN 'Octubre'
+			WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 11 THEN 'Noviembre'
+			ELSE
+			'Diciembre'
+		END
+			
+		--to_char(cfec.dte_fecha_inicio,'TMMonth') 
+		
+		|| ' del ' || to_char(cfec.dte_fecha_inicio,'yyyy')) 
+       
+       ELSE
+
+		CASE WHEN EXTRACT(YEAR FROM cfec.dte_fecha_inicio) < EXTRACT(YEAR FROM cfec.dte_fecha_termino) THEN
+
+			('Del ' || to_char(cfec.dte_fecha_inicio,'dd') || ' de ' || 
+				CASE 
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 1 THEN 'Enero'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 2 THEN 'Febrero'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 3 THEN 'Marzo'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 4 THEN 'Abril'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 5 THEN 'Mayo'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 6 THEN 'Junio'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 7 THEN 'Julio'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 8 THEN 'Agosto'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 9 THEN 'Setiembre'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 10 THEN 'Octubre'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 11 THEN 'Noviembre'
+					ELSE
+					'Diciembre'
+				END 
+				|| ' de ' || to_char(cfec.dte_fecha_inicio,'yyyy') || ' al ' ||
+
+				to_char(cfec.dte_fecha_termino,'dd') || ' de ' || 
+				CASE 
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_termino) = 1 THEN 'Enero'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_termino) = 2 THEN 'Febrero'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_termino) = 3 THEN 'Marzo'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_termino) = 4 THEN 'Abril'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_termino) = 5 THEN 'Mayo'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_termino) = 6 THEN 'Junio'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_termino) = 7 THEN 'Julio'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_termino) = 8 THEN 'Agosto'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_termino) = 9 THEN 'Setiembre'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_termino) = 10 THEN 'Octubre'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_termino) = 11 THEN 'Noviembre'
+					ELSE
+					'Diciembre'
+				END 
+				|| ' de ' || to_char(cfec.dte_fecha_termino,'yyyy'))
+		ELSE
+
+			CASE WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = EXTRACT(MONTH FROM cfec.dte_fecha_termino) THEN 	
+				('Del ' || to_char(cfec.dte_fecha_inicio,'dd') || ' al ' || to_char(cfec.dte_fecha_termino,'dd') || ' de ' || 
+				CASE 
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 1 THEN 'Enero'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 2 THEN 'Febrero'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 3 THEN 'Marzo'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 4 THEN 'Abril'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 5 THEN 'Mayo'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 6 THEN 'Junio'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 7 THEN 'Julio'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 8 THEN 'Agosto'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 9 THEN 'Setiembre'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 10 THEN 'Octubre'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 11 THEN 'Noviembre'
+					ELSE
+					'Diciembre'
+				END
+				--to_char(cfec.dte_fecha_termino,'TMMonth') 
+				|| ' de ' || to_char(cfec.dte_fecha_termino,'yyyy'))
+			
+			ELSE
+				('Del ' || to_char(cfec.dte_fecha_inicio,'dd') || ' de ' || 
+				CASE 
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 1 THEN 'Enero'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 2 THEN 'Febrero'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 3 THEN 'Marzo'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 4 THEN 'Abril'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 5 THEN 'Mayo'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 6 THEN 'Junio'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 7 THEN 'Julio'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 8 THEN 'Agosto'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 9 THEN 'Setiembre'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 10 THEN 'Octubre'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_inicio) = 11 THEN 'Noviembre'
+					ELSE
+					'Diciembre'
+				END 
+				|| ' al ' ||	to_char(cfec.dte_fecha_termino,'dd') || ' de ' || 
+				CASE 
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_termino) = 1 THEN 'Enero'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_termino) = 2 THEN 'Febrero'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_termino) = 3 THEN 'Marzo'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_termino) = 4 THEN 'Abril'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_termino) = 5 THEN 'Mayo'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_termino) = 6 THEN 'Junio'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_termino) = 7 THEN 'Julio'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_termino) = 8 THEN 'Agosto'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_termino) = 9 THEN 'Setiembre'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_termino) = 10 THEN 'Octubre'
+					WHEN EXTRACT(MONTH FROM cfec.dte_fecha_termino) = 11 THEN 'Noviembre'
+					ELSE
+					'Diciembre'
+				END 
+				|| ' de ' || to_char(cfec.dte_fecha_termino,'yyyy'))
+			END
+			
+
+
+		END
+       
+	END 
+	) as dte_fecha_cronograma,
+
+	
+	(	
+		COALESCE((
+		SELECT initcap(COALESCE(uo.nomunidad, xao.desarea))	
+		FROM personal.t_subetapa_proceso_seleccion y 
+		INNER JOIN sernanp.areaorganica xao on y.idarea = xao.idarea 
+		LEFT JOIN sernanp.unidadoperativa uo ON  uo.idunidad = y.idunidad
+		WHERE y.srl_id_subetapa_proceso_seleccion = cfec.srl_id_subetapa_proceso_seleccion)
+		,'Área Solicitante')
+		
+        ) as "descrip_area_responsable"
+
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+
+	personal.t_requerimiento_personal rp       
+       LEFT JOIN sernanp.t_convocatoria_area_org cao  				ON cao.srl_id_requerimiento_personal = rp.srl_id_requerimiento_personal
+       LEFT JOIN sernanp.t_convocatoria c 							ON cao.srl_id_convocatoria = c.srl_id_convocatoria       
+       LEFT JOIN sernanp.areaorganica ao 							ON ao.idarea = rp.idarea_solicitante
+       LEFT JOIN sernanp.unidadoperativa uo 						ON uo.idunidad = idunidad_solicitante       
+       
+       INNER JOIN sernanp.t_detalle_estado_tabla det 				ON cao.int_id_estado = cast(det.var_cod_estado as integer) and det.srl_id_estado_tabla = 3
+       
+       INNER JOIN personal.t_conv_area_org_etapa caoe 				ON cao.srl_id_conv_area_org = caoe.srl_id_conv_area_org
+
+	
+       INNER JOIN personal.t_subetapa_proceso_seleccion sps 		ON caoe.srl_id_subetapa_proceso_seleccion = sps.srl_id_subetapa_proceso_seleccion       
+
+       INNER JOIN personal.t_etapa_proceso_seleccion eps 			ON sps.srl_id_etapa_proceso_seleccion = eps.srl_id_etapa_proceso_seleccion       
+
+       INNER JOIN personal.t_conv_fecha_etapa_config cfec 			ON c.srl_id_convocatoria = cfec.srl_id_convocatoria AND sps.srl_id_subetapa_proceso_seleccion = cfec.srl_id_subetapa_proceso_seleccion       
+       
+       INNER JOIN personal.t_configuracion_factor_evaluacion cfe 	ON cao.srl_id_configuracion_factor_evaluacion = cfe.srl_id_configuracion_factor_evaluacion
+       
+       INNER JOIN personal.t_configuracion_evaluacion_personal cep 	ON cao.srl_id_configuracion_evaluacion_personal = cep.srl_id_configuracion_evaluacion_personal        
+
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+       COALESCE(cao.srl_id_conv_area_org,0) = COALESCE(#{srl_id_conv_area_org},COALESCE(cao.srl_id_conv_area_org,0)) AND
+       COALESCE(c.srl_id_convocatoria,0) = COALESCE(#{srl_id_convocatoria},COALESCE(c.srl_id_convocatoria,0))
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY rp.srl_id_requerimiento_personal, cao.var_codigo_postulacion, eps.srl_id_etapa_proceso_seleccion, cfec.srl_id_subetapa_proceso_seleccion
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.ReporteSelectEtapasSeleccionQuery" parameterType="sernanp.app.dao.query.domain.ReporteSelectEtapasSeleccionQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.ReporteSelectEtapasSeleccionQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.ReporteSelectEtapasSeleccionQuery" parameterType="sernanp.app.dao.query.domain.ReporteSelectEtapasSeleccionQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.ReporteSelectEtapasSeleccionQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.ReporteSelectEtapasSeleccionQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

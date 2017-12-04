@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.GestionarPlazaQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+ 
+
+cao.srl_id_conv_area_org,
+(
+	select 
+			a[2] || '-' || a[3] || coalesce('- L' || to_char(conv.int_num_activacion,'9'),'') 
+	from (select regexp_split_to_array(conv.var_num_convocatoria, '-')) as dt(a)
+) as "var_num_convocatoria",
+
+rp.var_numero_requerimiento,
+(select a[2] || '-' || a[3] from (select regexp_split_to_array(rp.var_numero_requerimiento, '-')) as dt(a)) as "var_numero_requerimiento_corto",
+
+cao.var_codigo_postulacion,
+cao.int_num_puestos,
+cao.var_lugar_prestacion,
+
+coalesce(cao.idunidad,cao.idarea) as id_area_responsable,
+coalesce(uo.nomunidad,ao.desarea) as descrip_area_responsable,
+
+cao.idpersonal,
+(pn.apepat || ' ' || pn.apemat || ' ' || pn.nombre  ) as nombres_completos,
+pn.idtipodocumento,
+td.abrtablatipo as descrip_tipodocumento,
+pn.numerodoc,
+
+cao.int_id_estado,
+--eg.destablatipo as descrip_estado,
+ep.var_nombre_estado as descrip_estado,
+
+to_char(cao.tsp_fecha_registro,'dd/mm/yyyy') as tsp_fecha_registro
+
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+sernanp.t_convocatoria_area_org cao
+INNER JOIN sernanp.t_convocatoria conv ON (cao.srl_id_convocatoria = conv.srl_id_convocatoria)
+
+LEFT JOIN personal.t_requerimiento_personal rp ON (cao.srl_id_requerimiento_personal = rp.srl_id_requerimiento_personal)
+
+--INNER JOIN sernanp.vw_estado_generico eg ON (cao.int_id_estado = eg.codinttablatipo)
+LEFT JOIN sernanp.vw_estado_plaza ep ON (cao.int_id_estado = ep.var_cod_estado)
+
+
+left JOIN sernanp.personal p ON (cao.idpersonal = p.idpersonal)
+left JOIN sernanp.personanatural pn ON (p.idpersonanatural = pn.idpersonanatural)
+left JOIN sernanp.vw_tipo_documento td ON (cao.int_id_estado = td.idtablatipo)
+
+left JOIN sernanp.areaorganica ao ON (cao.idarea = ao.idarea)
+left JOIN sernanp.unidadoperativa uo ON (cao.idunidad = uo.idunidad)
+
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+
+coalesce(cao.idarea,0) = coalesce(#{idarea},coalesce(cao.idarea,0)) and
+coalesce(cao.idunidad,0) = COALESCE(#{idunidad},coalesce(cao.idunidad,0)) and
+coalesce(cao.idpersonal,0) = coalesce(#{idpersonal},coalesce(cao.idpersonal,0)) and
+coalesce(cao.srl_id_convocatoria,0) = coalesce(#{srl_id_convocatoria},coalesce(cao.srl_id_convocatoria,0)) and
+coalesce(cao.srl_id_conv_area_org,0) = coalesce(#{srl_id_conv_area_org},coalesce(cao.srl_id_conv_area_org,0)) and
+coalesce(cao.int_id_estado,0) = coalesce(#{int_id_estado},coalesce(cao.int_id_estado,0)) 
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.GestionarPlazaQuery" parameterType="sernanp.app.dao.query.domain.GestionarPlazaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.GestionarPlazaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.GestionarPlazaQuery" parameterType="sernanp.app.dao.query.domain.GestionarPlazaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.GestionarPlazaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.GestionarPlazaQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

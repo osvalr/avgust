@@ -1,0 +1,14 @@
+{
+	"titleCrud": "Sedes",
+	"nameCrud": "Sede",
+	"constUrlApi": "SEDE_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "SedeModel.xml",
+	"subModels": [
+		{
+			"nameModel": "SedeDireccionModel",
+			"nameCrud": "SedeDireccion",
+			"autoIdentityPrimaryKey": true
+		}
+	]
+}

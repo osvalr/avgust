@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.UltimaDireccionDomicilioQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.UltimaDireccionDomicilioQuery" parameterType="sernanp.app.dao.query.domain.UltimaDireccionDomicilioQueryCriteria"> 
+<![CDATA[      
+	      
+				select 
+				
+					srl_id_direccion_domicilio_historial , 
+					idpersonanatural , 
+					var_direccion_domiciliaria, 
+					int_id_ubigeo , 
+					int_id_estado , 
+					tsp_fecha_registro 
+				
+				from sernanp.t_direccion_domicilio_historial ddh
+				where 
+				
+				ddh.idpersonanatural = #{idpersonanatural}   and 
+				ddh.int_id_estado = #{int_id_estado}   and
+				ddh.tsp_fecha_registro = (select max(ddhx.tsp_fecha_registro) from sernanp.t_direccion_domicilio_historial ddhx
+							where ddhx.idpersonanatural = ddh.idpersonanatural 
+							and ddhx.int_id_estado = ddh.int_id_estado 
+							and ddhx.tsp_fecha_registro <= #{tsp_fecha_registro})				
+		  
+	      
+]]>
+</select> 
+</mapper> 

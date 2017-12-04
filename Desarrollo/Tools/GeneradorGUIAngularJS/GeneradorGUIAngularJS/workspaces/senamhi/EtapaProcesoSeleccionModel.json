@@ -1,0 +1,14 @@
+{
+	"titleCrud": "Etapas Proceso Selección",
+	"nameCrud": "EtapaProcesoSeleccion",
+	"constUrlApi": "ETAPAS_PROCESO_SELECCION_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "EtapaProcesoSeleccionModel.xml",
+	"subModels": [
+		{
+			"nameModel": "SubEtapaProcesoSeleccionModel",
+			"nameCrud": "SubEtapaProcesoSeleccion",
+			"autoIdentityPrimaryKey": true
+		}
+	]
+}

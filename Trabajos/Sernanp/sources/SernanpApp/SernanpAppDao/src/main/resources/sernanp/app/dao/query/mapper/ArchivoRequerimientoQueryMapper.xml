@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.ArchivoRequerimientoQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+        ra.srl_id_archivo,
+	ra.srl_id_requerimiento_personal,
+	ra.var_descripcion_archivo,
+	ta.var_nombre_archivo,
+	ta.var_tipo_archivo,
+	ta.var_archivo_ruta_almacen,
+	ta.num_size_archivo,
+	to_char(ta.tsp_fecha_registro,'dd/mm/yyyy') as tsp_fecha_registro
+
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+ 
+        sernanp.t_archivo ta
+        INNER JOIN personal.t_requerimiento_personal_archivo ra on ta.srl_id_archivo = ra.srl_id_archivo
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+	ta.srl_id_archivo = COALESCE(#{srl_id_archivo},ta.srl_id_archivo) AND
+	ra.srl_id_requerimiento_personal = COALESCE(#{srl_id_requerimiento_personal},ra.srl_id_requerimiento_personal)
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.ArchivoRequerimientoQuery" parameterType="sernanp.app.dao.query.domain.ArchivoRequerimientoQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.ArchivoRequerimientoQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.ArchivoRequerimientoQuery" parameterType="sernanp.app.dao.query.domain.ArchivoRequerimientoQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.ArchivoRequerimientoQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.ArchivoRequerimientoQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

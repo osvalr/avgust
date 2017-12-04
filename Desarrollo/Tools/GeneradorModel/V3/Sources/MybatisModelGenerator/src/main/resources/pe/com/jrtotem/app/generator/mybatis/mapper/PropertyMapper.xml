@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pe.com.jrtotem.app.generator.mybatis.mapper.PropertyMapper" >
+  <resultMap id="BaseResultMap" type="pe.com.jrtotem.app.generator.mybatis.domain.Property" >
+    <id column="id_property" property="id_property" jdbcType="INTEGER" />
+    <result column="id_model_input" property="id_model_input" jdbcType="INTEGER" />
+    <result column="id_model_output" property="id_model_output" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="data_type" property="data_type" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="date_record" property="date_record" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id_property, id_model_input, id_model_output, name, type, data_type, state, date_record
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.jrtotem.app.generator.mybatis.domain.PropertyExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from property
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="pe.com.jrtotem.app.generator.mybatis.domain.PropertyKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from property
+    where id_property = #{id_property,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="pe.com.jrtotem.app.generator.mybatis.domain.PropertyKey" >
+    delete from property
+    where id_property = #{id_property,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="pe.com.jrtotem.app.generator.mybatis.domain.PropertyExample" >
+    delete from property
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.jrtotem.app.generator.mybatis.domain.Property" useGeneratedKeys="true" keyProperty="id_property" >
+    insert into property (id_model_input, id_model_output, 
+      name, type, data_type, 
+      state, date_record)
+    values (#{id_model_input,jdbcType=INTEGER}, #{id_model_output,jdbcType=INTEGER}, 
+      #{name,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{data_type,jdbcType=VARCHAR}, 
+      #{state,jdbcType=INTEGER}, #{date_record,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.jrtotem.app.generator.mybatis.domain.Property" useGeneratedKeys="true" keyProperty="id_property" >
+    insert into property
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id_model_input != null" >
+        id_model_input,
+      </if>
+      <if test="id_model_output != null" >
+        id_model_output,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="data_type != null" >
+        data_type,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="date_record != null" >
+        date_record,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id_model_input != null" >
+        #{id_model_input,jdbcType=INTEGER},
+      </if>
+      <if test="id_model_output != null" >
+        #{id_model_output,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="data_type != null" >
+        #{data_type,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="date_record != null" >
+        #{date_record,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.jrtotem.app.generator.mybatis.domain.PropertyExample" resultType="java.lang.Integer" >
+    select count(*) from property
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update property
+    <set >
+      <if test="record.id_property != null" >
+        id_property = #{record.id_property,jdbcType=INTEGER},
+      </if>
+      <if test="record.id_model_input != null" >
+        id_model_input = #{record.id_model_input,jdbcType=INTEGER},
+      </if>
+      <if test="record.id_model_output != null" >
+        id_model_output = #{record.id_model_output,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.data_type != null" >
+        data_type = #{record.data_type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.state != null" >
+        state = #{record.state,jdbcType=INTEGER},
+      </if>
+      <if test="record.date_record != null" >
+        date_record = #{record.date_record,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update property
+    set id_property = #{record.id_property,jdbcType=INTEGER},
+      id_model_input = #{record.id_model_input,jdbcType=INTEGER},
+      id_model_output = #{record.id_model_output,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=VARCHAR},
+      data_type = #{record.data_type,jdbcType=VARCHAR},
+      state = #{record.state,jdbcType=INTEGER},
+      date_record = #{record.date_record,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.jrtotem.app.generator.mybatis.domain.Property" >
+    update property
+    <set >
+      <if test="id_model_input != null" >
+        id_model_input = #{id_model_input,jdbcType=INTEGER},
+      </if>
+      <if test="id_model_output != null" >
+        id_model_output = #{id_model_output,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="data_type != null" >
+        data_type = #{data_type,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="date_record != null" >
+        date_record = #{date_record,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id_property = #{id_property,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.jrtotem.app.generator.mybatis.domain.Property" >
+    update property
+    set id_model_input = #{id_model_input,jdbcType=INTEGER},
+      id_model_output = #{id_model_output,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      data_type = #{data_type,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
+      date_record = #{date_record,jdbcType=VARCHAR}
+    where id_property = #{id_property,jdbcType=INTEGER}
+  </update>
+</mapper>

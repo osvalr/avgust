@@ -1,0 +1,7 @@
+{
+	"titleCrud": "Unidades Organicas",
+	"nameCrud": "UnidadOrganica",
+	"constUrlApi": "UNIDADES_ORGANICAS_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "UnidadOrganicaModel.xml"
+}

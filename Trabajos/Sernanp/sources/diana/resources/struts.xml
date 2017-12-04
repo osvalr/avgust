@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="false" />
+    
+    <constant name="struts.objectFactory" value="spring"/> 
+       
+    <constant name="struts.custom.i18n.resources" value="proyecto.resources.proyecto" />
+        
+    <!-- Add packages here -->
+	<include file="struts-proyecto.xml"/>
+	<!--despues reemplazar general x proyecto -->
+	<include file="struts-general.xml"/>    
+	<include file="struts-util.xml"/>   
+	<include file="struts-turismo.xml"/>
+	<include file="struts-redcap.xml"/>
+	<include file="struts-convoca.xml"/>
+	<include file="struts-proyectos.xml"/>
+	<include file="struts-biblioteca.xml"/>
+	<include file="struts-investigacion.xml"/>  
+	<include file="struts-anp.xml"/>  
+	
+	  
+	<!-- 
+	<include file="struts-usuarios.xml"/>
+	<include file="struts-categorias.xml"/>
+	<include file="struts-roles.xml"/>		
+	 -->
+	 
+	 <include file="struts-infracciones.xml"/>
+	 
+	 <include file="struts-registro.xml"/>
+	 
+	 <include file="struts-saddde.xml"/>
+</struts>
+ 

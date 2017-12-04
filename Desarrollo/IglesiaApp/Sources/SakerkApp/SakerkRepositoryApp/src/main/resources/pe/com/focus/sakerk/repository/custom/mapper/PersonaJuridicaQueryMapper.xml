@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.focus.sakerk.repository.custom.mapper.PersonaJuridicaQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+					p.id_persona ,
+					pj.id_persona_juridica ,
+					pj.razon_social,
+					p.numero_ruc,
+					pj.id_tipo_persona_juridica,
+					tpj.descrip_tipo_persona_juridica,
+					p.email,
+					p.id_pais ,
+					ps.nombre_pais,
+					p.id_estado ,
+					e.descrip_estado_generico as "descrip_estado",
+					to_char(p.fecha_registro, 'DD/MM/YYYY HH24:MI:ss') as "fecha_registro"
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+				general.persona p 
+				inner join
+				general.persona_juridica pj
+				on p.id_persona = pj.id_persona_juridica
+				inner join general.pais ps
+				on p.id_pais = ps.id_pais
+				inner join 
+				vw_estado_generico e
+				on p.id_estado = e.id_estado_generico
+				inner join
+				vw_tipo_persona_juridica tpj
+				on tpj.id_tipo_persona_juridica = pj.id_tipo_persona_juridica
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+					p.id_persona = COALESCE(#{id_persona},p.id_persona) and
+					pj.id_persona_juridica = COALESCE(#{id_persona_juridica},pj.id_persona_juridica) and
+					COALESCE(pj.razon_social,'') like COALESCE(('%' || #{razon_social} || '%'),COALESCE(pj.razon_social,'')) and
+					COALESCE(p.numero_ruc,'') like COALESCE(('%' || #{numero_ruc} || '%'),COALESCE(p.numero_ruc,'')) and
+					pj.id_tipo_persona_juridica = COALESCE(#{id_tipo_persona_juridica},pj.id_tipo_persona_juridica) and
+					p.id_pais = COALESCE(#{id_pais},p.id_pais) and
+					p.id_estado = COALESCE(#{id_estado},p.id_estado)
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.focus.sakerk.repository.custom.model.PersonaJuridicaQuery" parameterType="pe.com.focus.sakerk.repository.custom.model.PersonaJuridicaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.focus.sakerk.repository.custom.model.PersonaJuridicaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.focus.sakerk.repository.custom.model.PersonaJuridicaQuery" parameterType="pe.com.focus.sakerk.repository.custom.model.PersonaJuridicaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.focus.sakerk.repository.custom.model.PersonaJuridicaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.focus.sakerk.repository.custom.model.PersonaJuridicaQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

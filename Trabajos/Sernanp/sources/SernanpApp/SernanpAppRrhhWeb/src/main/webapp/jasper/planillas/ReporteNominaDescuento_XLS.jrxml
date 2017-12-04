@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteNominaDescuento" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="e71672e3-639b-4de0-af6f-4559b94c1ce3">
+	<property name="ireport.zoom" value="1.5394743546921208"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.export.xls.detect.cell.type" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.ignore.cell.background" value="false"/>
+	<property name="net.sf.jasperreports.export.xls.white.page.background" value="false"/>
+	<property name="net.sf.jasperreports.export.xls.remove.empty.space.between.columns" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.remove.empty.space.between.rows" value="true"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\GITHUB\\sernanp\\Consultoria_planillas_seleccion_personal\\Desarrollo\\SernanpApp\\SernanpAppRrhhWeb\\src\\main\\webapp\\jasper\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="listResult" class="java.util.List">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<field name="int_anio" class="java.lang.Integer"/>
+	<field name="descrip_periodo" class="java.lang.String"/>
+	<field name="nombre_completo" class="java.lang.String"/>
+	<field name="c_fte_fto" class="java.lang.String"/>
+	<field name="c_meta" class="java.lang.String"/>
+	<field name="fondo_pension" class="java.lang.Double"/>
+	<field name="remuneracion" class="java.lang.Double"/>
+	<field name="dec_monto_calculado" class="java.lang.Double"/>
+	<field name="numerodoc" class="java.lang.String"/>
+	<field name="var_descrip_corto_concepto" class="java.lang.String"/>
+	<field name="dec_total_descuentos" class="java.lang.Double"/>
+	<field name="var_descripcion_regimen_contractual" class="java.lang.String"/>
+	<field name="srl_id_regimen_pensionario" class="java.lang.Integer"/>
+	<field name="var_descripcion_regimen_pensionario" class="java.lang.String"/>
+	<field name="total" class="java.lang.Double"/>
+	<field name="srl_id_regimen_contractual" class="java.lang.Integer"/>
+	<field name="var_descripcion_fuente_financiamiento" class="java.lang.String"/>
+	<field name="reg_19990" class="java.lang.Double"/>
+	<field name="reg_afp" class="java.lang.Double"/>
+	<field name="reg_20530" class="java.lang.Double"/>
+	<field name="reg_25897" class="java.lang.Double"/>
+	<field name="total_19990" class="java.lang.Double"/>
+	<field name="total_afp" class="java.lang.Double"/>
+	<field name="total_20530" class="java.lang.Double"/>
+	<field name="total_25897" class="java.lang.Double"/>
+	<variable name="total_neto" class="java.lang.Double" incrementType="Group" incrementGroup="idregimen" calculation="Sum">
+		<variableExpression><![CDATA[$F{srl_id_regimen_pensionario}]]></variableExpression>
+	</variable>
+	<variable name="total_afp" class="java.lang.Double" resetType="Group" resetGroup="idfuente" calculation="Sum">
+		<variableExpression><![CDATA[$F{reg_afp}]]></variableExpression>
+	</variable>
+	<variable name="total_20530" class="java.lang.Double" resetType="Group" resetGroup="idfuente" calculation="Sum">
+		<variableExpression><![CDATA[$F{reg_20530}]]></variableExpression>
+	</variable>
+	<variable name="total_19990" class="java.lang.Double" resetType="Group" resetGroup="idfuente" calculation="Sum">
+		<variableExpression><![CDATA[$F{reg_19990}]]></variableExpression>
+	</variable>
+	<variable name="total_25897" class="java.lang.Double" resetType="Group" resetGroup="idfuente" calculation="Sum">
+		<variableExpression><![CDATA[$F{reg_25897}]]></variableExpression>
+	</variable>
+	<group name="idfuente" keepTogether="true">
+		<groupExpression><![CDATA[$F{c_fte_fto}]]></groupExpression>
+		<groupHeader>
+			<band height="30">
+				<textField>
+					<reportElement x="94" y="0" width="708" height="18" uuid="4821134f-3146-4847-8131-6c9d2cac76de"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="7" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{var_descripcion_fuente_financiamiento}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="50"/>
+		</groupFooter>
+	</group>
+	<group name="idregimen" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{srl_id_regimen_pensionario}]]></groupExpression>
+		<groupHeader>
+			<band height="71">
+				<textField>
+					<reportElement x="94" y="0" width="708" height="20" uuid="ff74913d-eb72-40b2-b1e9-16048cd49f96"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="7" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{var_descripcion_regimen_pensionario} == null ?
+"CONCEPTO: " : "CONCEPTO: " + $F{var_descripcion_regimen_pensionario}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement isPrintRepeatedValues="false" x="94" y="20" width="708" height="21" uuid="99593931-b972-4f3d-8748-36c610bebf37"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="7" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{descrip_periodo}+ " DE " + $F{int_anio}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="709" y="51" width="93" height="20" uuid="41b4ab7f-1db7-4f3a-b405-2d554a82b916"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[MONTO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="94" y="51" width="350" height="20" uuid="f4770292-88a3-4cb4-af39-16d10ea5ac28"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Nombres y Apellidos]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="30" y="51" width="64" height="20" uuid="aac6060e-d4f9-4996-8dd1-4196b4e15277"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DNI N°]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="51" width="30" height="20" uuid="48913c8a-225f-4e24-a832-b966e16e83fd"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[N°]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="20">
+				<staticText>
+					<reportElement x="0" y="0" width="444" height="20" uuid="edfd2f7f-e11b-4f36-88bc-11ab3dfd4231">
+						<property name="net.sf.jasperreports.export.xls.auto.fit.row" value="true"/>
+						<property name="net.sf.jasperreports.export.xls.auto.fit.column" value="true"/>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TOTAL:]]></text>
+				</staticText>
+				<textField pattern="###,##0.00">
+					<reportElement x="709" y="0" width="93" height="20" uuid="ce2e4928-55b3-4328-a484-33cecdabdff1"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="6" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{srl_id_regimen_pensionario} == 1 ? ($V{total_25897}== null ? 0 : new DecimalFormat("###,##0.00").format($V{total_25897})):
+($F{srl_id_regimen_pensionario} == 2 ? ($V{total_19990}== null ? 0 : new DecimalFormat("###,##0.00").format($V{total_19990})):
+($F{srl_id_regimen_pensionario} == 3 ? ($V{total_20530}== null ? 0 : new DecimalFormat("###,##0.00").format($V{total_20530})):
+($F{srl_id_regimen_pensionario} == 4 ? ($V{total_afp}== null ? 0 : new DecimalFormat("###,##0.00").format($V{total_afp})):
+""
+)))]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="63">
+			<staticText>
+				<reportElement x="0" y="1" width="94" height="41" uuid="8f6a0681-d323-4a3c-bbc2-a93ca16c56a0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SERNANP]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="94" y="1" width="708" height="41" uuid="7ea4f48c-8139-4af0-8428-71cec4afa56f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font fontName="DejaVu Sans" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{srl_id_regimen_contractual} == 1 ? " RESUMEN DE NOMINA DE DESCUENTOS<br>PERSONAL CONTRATADO A PLAZO INDETERMINADO D.L. 728" : "RESUMEN DE NOMINA DE DESCUENTOS<br>REGIMEN ESPECIAL DE CONTRATACIÓN ADMINISTRATIVA DE SERVICIOS - CAS"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="20">
+			<textField>
+				<reportElement x="94" y="0" width="350" height="20" uuid="2a6b1099-a1b6-4350-9df7-f5f33581d807"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="6" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_completo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="30" height="20" uuid="3b884e0a-162b-471c-bea8-9fe83eb9eeea"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="30" y="0" width="64" height="20" uuid="8c29026e-aa0c-40f4-a8d2-8f2e9f60d8d2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="6" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numerodoc}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###,##0.00">
+				<reportElement x="709" y="0" width="93" height="20" uuid="957066b1-c8f1-4e7e-8e72-1e61f0c3d48d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{srl_id_regimen_pensionario} == 1 ? ($F{reg_25897}== null ? 0 : new DecimalFormat("###,##0.00").format($F{reg_25897})):
+($F{srl_id_regimen_pensionario} == 2 ? ($F{reg_19990}== null ? 0 : new DecimalFormat("###,##0.00").format($F{reg_19990})):
+($F{srl_id_regimen_pensionario} == 3 ? ($F{reg_20530}== null ? 0 : new DecimalFormat("###,##0.00").format($F{reg_20530})):
+($F{srl_id_regimen_pensionario} == 4 ? ($F{reg_afp}== null ? 0 : new DecimalFormat("###,##0.00").format($F{reg_afp})):
+""
+)))]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="31"/>
+	</summary>
+</jasperReport>

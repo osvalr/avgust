@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.InfoContratosPersonalConstanciaQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.InfoContratosPersonalConstanciaQuery" parameterType="sernanp.app.dao.query.domain.InfoContratosPersonalConstanciaQueryCriteria"> 
+<![CDATA[
+
+	      
+	      
+				select 
+				
+					pc.srl_id_contrato ,
+					cg.srl_id_cargo ,
+					pc.idpersonal ,
+					cg.var_nom_cargo,
+					ao.idarea ,
+					ao.desarea,
+					pc.num_sueldo ,
+					pc.dte_fec_inicio ,
+					COALESCE((select COALESCE(pcx.dte_fec_cese,pcx.dte_fec_termino) from sernanp.t_personal_contrato pcx 
+								where 
+								pcx.srl_id_contrato_padre = pc.srl_id_contrato and
+								pcx.dte_fec_suscrip = (select max(pcy.dte_fec_suscrip) 
+														from sernanp.t_personal_contrato pcy 
+														where pcy.srl_id_contrato_padre = pc.srl_id_contrato)),COALESCE(pc.dte_fec_cese,pc.dte_fec_termino)) as "dte_fec_termino" 
+				
+				from sernanp.t_personal_contrato pc left join sernanp.t_cargo cg
+				on pc.srl_id_cargo = cg.srl_id_cargo left join  sernanp.areaorganica ao
+				on pc.idarea = ao.idarea
+				
+				where 
+				
+				pc.idpersonal = #{idpersonal}  
+				
+				group by 
+				
+					pc.srl_id_contrato,
+					cg.srl_id_cargo,
+					cg.var_nom_cargo,
+					ao.idarea,
+					ao.desarea,
+					pc.num_sueldo
+				
+				order by pc.dte_fec_inicio asc;
+
+		  
+	      
+]]>
+</select> 
+</mapper> 

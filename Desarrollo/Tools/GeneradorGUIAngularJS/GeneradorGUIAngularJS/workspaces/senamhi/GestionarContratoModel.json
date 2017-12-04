@@ -1,0 +1,14 @@
+{
+	"titleCrud": "Contratos y Adendas",
+	"nameCrud": "GestionarContrato",
+	"constUrlApi": "GESTIONAR_CONTRATO_ADENDAS_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "GestionarContratoModel.xml",
+	"subModels": [
+		{
+			"nameModel": "ContratoAdendaModel",
+			"nameCrud": "ContratoAdenda",
+			"autoIdentityPrimaryKey": true
+		}
+	]
+}

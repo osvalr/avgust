@@ -1,0 +1,6 @@
+{
+	"nameCrud": "AreaOrganica",
+	"path": "area-organica",
+	"nameRepository": "TAreaOrganicaRepository",
+	"nameModelXml": "AreaOrganicaModel.xml"
+}

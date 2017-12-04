@@ -1,0 +1,9 @@
+C:\git\mapfre\Proyectos\GeneracionArchivoReporteFatcaSUNAT\Fuentes\FatcaDesktopApp\FatcaDesktopApp\bin\Debug\FatcaDesktopApp.exe.config
+C:\git\mapfre\Proyectos\GeneracionArchivoReporteFatcaSUNAT\Fuentes\FatcaDesktopApp\FatcaDesktopApp\bin\Debug\FatcaDesktopApp.exe
+C:\git\mapfre\Proyectos\GeneracionArchivoReporteFatcaSUNAT\Fuentes\FatcaDesktopApp\FatcaDesktopApp\bin\Debug\FatcaDesktopApp.pdb
+C:\git\mapfre\Proyectos\GeneracionArchivoReporteFatcaSUNAT\Fuentes\FatcaDesktopApp\FatcaDesktopApp\obj\Debug\FatcaDesktopApp.csprojResolveAssemblyReference.cache
+C:\git\mapfre\Proyectos\GeneracionArchivoReporteFatcaSUNAT\Fuentes\FatcaDesktopApp\FatcaDesktopApp\obj\Debug\WindowsFormsApplication1.MainForm.resources
+C:\git\mapfre\Proyectos\GeneracionArchivoReporteFatcaSUNAT\Fuentes\FatcaDesktopApp\FatcaDesktopApp\obj\Debug\FatcaDesktopApp.Properties.Resources.resources
+C:\git\mapfre\Proyectos\GeneracionArchivoReporteFatcaSUNAT\Fuentes\FatcaDesktopApp\FatcaDesktopApp\obj\Debug\FatcaDesktopApp.csproj.GenerateResource.Cache
+C:\git\mapfre\Proyectos\GeneracionArchivoReporteFatcaSUNAT\Fuentes\FatcaDesktopApp\FatcaDesktopApp\obj\Debug\FatcaDesktopApp.exe
+C:\git\mapfre\Proyectos\GeneracionArchivoReporteFatcaSUNAT\Fuentes\FatcaDesktopApp\FatcaDesktopApp\obj\Debug\FatcaDesktopApp.pdb

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.CantidadPostulacionesPorPeriodoQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.CantidadPostulacionesPorPeriodoQuery" parameterType="sernanp.app.dao.query.domain.CantidadPostulacionesPorPeriodoQueryCriteria"> 
+<![CDATA[
+
+	      
+				select 
+				
+				count(*) as "cantidad_postulaciones" 
+				
+				from sernanp.persona p inner join sernanp.personanatural pn
+				on p.idpersona = pn.idpersona inner join sernanp.t_postulante_personal pp
+				on pn.idpersonanatural = pp.int_id_postulante inner join sernanp.t_postulante_convocatoria_area_organica pcao
+				on pp.int_id_postulante = pcao.int_id_postulante inner join sernanp.t_convocatoria_areaorganica cao
+				on cao.srl_id_convocatoria_areaorganica = pcao.srl_id_convocatoria_areaorganica inner join sernanp.t_convocatoria cnv
+				on cao.srl_id_convocatoria = cnv.srl_id_convocatoria
+				where 
+				
+				p.idpersona = #{idpersona}   and 
+				cao.srl_id_convocatoria = #{srl_id_convocatoria}  
+				
+		  
+	      
+]]>
+</select> 
+</mapper> 

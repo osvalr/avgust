@@ -1,0 +1,6 @@
+{
+	"nameCrud": "InstitucionAcademica",
+	"path": "instituciones-academicas",
+	"nameRepository": "TInstitucionAcademicaRepository",
+	"nameModelXml": "InstitucionAcademicaModel.xml"
+}

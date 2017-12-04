@@ -1,0 +1,6 @@
+{
+	"nameCrud": "EstacionHidrometeorologica",
+	"path": "estaciones-hidrometeorologicas",
+	"nameRepository": "TEstacionHmRepository",
+	"nameModelXml": "EstacionHidrometeorologicaModel.xml"
+}

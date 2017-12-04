@@ -1,0 +1,7 @@
+{
+	"titleCrud": "Paises",
+	"nameCrud": "Pais",
+	"constUrlApi": "PAIS_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "PaisModel.xml"
+}

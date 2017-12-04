@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.PersonalDiasLicenciasQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+
+pl.idpersonal,
+pl.dte_fec_inicio_lic,
+pl.dte_fec_fin_lic
+
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+
+sernanp.t_personal_licencias pl
+
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+ 
+ 
+pl.idpersonal = #{idpersonal} and
+pl.srl_id_pers_lic <> #{srl_id_pers_lic} and
+pl.srl_id_per_activ = #{srl_id_per_activ} and
+
+pl.dte_fec_fin_lic < #{dte_fec_inicio_lic} and
+
+(Extract(year from pl.dte_fec_inicio_lic) = #{int_anho} or
+Extract(year from pl.dte_fec_fin_lic) = #{int_anho})
+
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.PersonalDiasLicenciasQuery" parameterType="sernanp.app.dao.query.domain.PersonalDiasLicenciasQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.PersonalDiasLicenciasQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.PersonalDiasLicenciasQuery" parameterType="sernanp.app.dao.query.domain.PersonalDiasLicenciasQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.PersonalDiasLicenciasQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.PersonalDiasLicenciasQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteQuintaCategoria" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2560f1b0-9934-4709-b713-cb587435493e">
+	<property name="ireport.zoom" value="1.9487171000000014"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="288"/>
+	<field name="var_denominacion_requerimiento" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="286" splitType="Stretch">
+			<staticText>
+				<reportElement x="5" y="48" width="538" height="35" uuid="9b191d9e-c53a-4635-b1e1-69a42a7150b4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="7" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[" Año de la Diversificación Productiva y del Fortalecimiento de la Educación"
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="120" width="498" height="65" uuid="425bd4ef-7312-4ed5-9393-16e57bd60d1a"/>
+				<textElement verticalAlignment="Middle" markup="html">
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[<u>Señores:</u><br>
+<b>Ministerio del Trabajo y Promocion del Empleo<br>
+Dirección General del Servicio Nacional del Empleo</b><br>
+Av. Salaverry Nº 655, Jesus Maria<br>
+<u>Presente.-</u>]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="73" y="0" width="63" height="47" forecolor="#FF0000" backcolor="#CE0000" uuid="f588f42f-543c-4f93-8bbe-c8fadf05cf10"/>
+				<graphicElement>
+					<pen lineColor="#FFFFFF"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="136" y="0" width="136" height="47" backcolor="#333333" uuid="879d9365-9ae1-4269-a7f1-e33960d24f5e"/>
+				<graphicElement>
+					<pen lineColor="#FFFFFF"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="272" y="0" width="147" height="47" backcolor="#666666" uuid="dfc45c1a-a305-487d-9ae2-ec9430baf2db"/>
+				<graphicElement>
+					<pen lineColor="#FFFFFF"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="419" y="0" width="124" height="47" backcolor="#999999" uuid="226acab5-6a27-4261-a717-f886173547e2"/>
+				<graphicElement>
+					<pen lineColor="#FFFFFF"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="73" y="1" width="63" height="46" forecolor="#FFFFFF" uuid="80b7baf4-1bba-4369-b3c2-26147d588ccb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PERÚ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="136" y="1" width="136" height="46" forecolor="#FFFFFF" backcolor="#FFFFFF" uuid="684779d5-5030-467f-af14-7d2e438e856a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ministerio del Ambiente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="272" y="1" width="147" height="46" forecolor="#FFFFFF" uuid="d2201b15-2d1a-4ee6-bca4-c40a9f2bf88f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Servicio Nacional de Áreas Naturales  Protegidas por el Estado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="419" y="1" width="124" height="46" forecolor="#FFFFFF" uuid="d92d9899-47f3-44d8-9c9d-ab543f81a9e3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Oficina de Administración]]></text>
+			</staticText>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement positionType="Float" x="81" y="83" width="127" height="20" uuid="c6b21aab-518c-40ca-989f-9f84df1fcf15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="30" y="83" width="51" height="20" uuid="f0d73a43-53af-46e3-9b76-449b359906a2"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Lima,"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="30" y="185" width="498" height="44" uuid="38e82cbc-8789-4ccc-9758-ee079fa29429"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="html">
+					<font fontName="DejaVu Sans" size="10" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[<b>ASUNTO:</b>    Remisión de Vacantes Públicas              ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="29" y="229" width="499" height="53" uuid="0ac133e7-35db-481d-a5f0-c887dd639d8e"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font fontName="DejaVu Sans" size="10"/>
+				</textElement>
+				<text><![CDATA[Es grato dirigirme a usted, con relación al asunto de la referencia a fin de comunicarle
+que el Servicio Nacional de Áreas Naturales Protegidas por el Estado (SERNANP) convocará
+a concurso para la contratación administrativa de servicios de la siguiente vacante:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="20">
+			<textField isBlankWhenNull="true">
+				<reportElement x="30" y="0" width="498" height="20" uuid="4c191a8c-e748-42fa-b765-99f700f461d5"/>
+				<textElement markup="html">
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{var_denominacion_requerimiento} == null ? "" :
+"- " + $F{var_denominacion_requerimiento}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="213" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="172" width="208" height="38" uuid="20d45587-9e76-4001-94ef-2eb5013670cb"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="7" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[
+Calle Diecisiete Nº 355,
+Urb. El Palomar-  San Isidro, Lima 27
+LIMA - PERÚ
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="363" y="172" width="192" height="41" uuid="ef10f601-8b75-4a6d-8222-df64dfcbd39b"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="7" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[
+Teléfono (51 1) 2252803
+Fax (51 1) 2251053
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="5" y="172" width="538" height="1" uuid="287c9192-2e72-4325-9d08-3978be726c66"/>
+			</line>
+			<line>
+				<reportElement x="5" y="169" width="538" height="1" uuid="4ba2016f-c5a4-431c-b2bc-21940f4fe68b"/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="29" y="11" width="499" height="77" uuid="864b3e8b-e27f-4622-8d6e-b6d78012d368"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle" markup="html">
+					<font fontName="DejaVu Sans" size="10"/>
+				</textElement>
+				<text><![CDATA[En tal sentido se comunica que las bases de los concursos serán publicadas en (página web, portal
+institucional, link o ruta directiva, vitrina de la institucion u otro medio de difusión).
+Es propicia la oportunidad para expresar a usted los sentimientos de mi especial consideración y estima.<br><br>
+Atentamente,
+]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

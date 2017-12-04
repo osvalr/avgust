@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    
+    <constant name="struts.multipart.maxSize" value="10000000000" />
+      
+	<package name="directorio" namespace="/" extends="proyecto,json-default">
+
+    <result-types> 
+      <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" /> 
+    </result-types>
+       
+     <action name="consultaDirectorio" class="proyecto.action.DirectorioAction"
+			method="consultarDirectorio">
+			<result type="tiles" name="inicio">inicioDirectorio</result>
+			<result name="lista">/directorio/lista.directorio.jsp</result>
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="defaultStack" />
+	</action>      
+        
+          
+          
+	
+
+	</package>
+
+</struts>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteConvocatoriaMintra" pageWidth="595" pageHeight="842" columnWidth="440" leftMargin="80" rightMargin="75" topMargin="20" bottomMargin="20" scriptletClass="net.sf.jasperreports.engine.JRDefaultScriptlet" uuid="00a87ea8-b6aa-45a2-9284-e3ffada79b88">
+	<property name="ireport.zoom" value="1.771561000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.awt.ignore.missing.font" value="true"/>
+	<property name="net.sf.jasperreports.default.font.name" value="DejaVu Sans"/>
+	<style name="hanging-indentation-style">
+		<box leftPadding="23"/>
+		<paragraph firstLineIndent="-23"/>
+	</style>
+	<subDataset name="listConvocatoria_Perfil_DS" uuid="09c7730f-0b05-4067-a9fc-74abef1821a1"/>
+	<subDataset name="listConvocatoria_Puesto_DS" uuid="824d1f45-b0c9-40f5-9097-c5960c594e75"/>
+	<subDataset name="listConvocatoria_Contrato_DS" uuid="3cc84a52-e781-4ff6-81e9-bbcb43b8fffd"/>
+	<subDataset name="listConvocatoria_Evaluacion_DS" uuid="85f30786-9d39-42b3-9813-971a3c5eb638"/>
+	<subDataset name="listConvocatoria_Cronograma_DS" uuid="c91d7c98-c154-4584-b42d-bb189c9fbda0"/>
+	<subDataset name="listConvocatoria_Postulacion_DS" uuid="48997431-9c35-4876-8660-30099d4b25c8"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/Datos/DesarrolloSW/Proyectos/SernanpApp/SernanpAppRrhhWeb/src/main/webapp/jasper/seleccion/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="parametros.listConvocatoria_Puesto_DS" class="java.lang.Object"/>
+	<parameter name="parametros.SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/Datos/DesarrolloSW/Proyectos/SernanpApp/SernanpAppRrhhWeb/src/main/webapp/jasper/seleccion/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="parametros.listConvocatoria_Perfil_DS" class="java.lang.Object"/>
+	<parameter name="parametros.listConvocatoria_Contrato_DS" class="java.lang.Object"/>
+	<parameter name="parametros.listConvocatoria_Evaluacion_DS" class="java.lang.Object"/>
+	<parameter name="parametros.listConvocatoria_Cronograma_DS" class="java.lang.Object"/>
+	<parameter name="parametros.listConvocatoria_Postulacion_DS" class="java.lang.Object"/>
+	<field name="var_numero_convocatoria_corto" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="81">
+			<textField>
+				<reportElement x="0" y="0" width="435" height="81" isPrintInFirstWholeBand="true" uuid="32ebbb51-7bc6-42a7-a6dc-c3e599918496"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font fontName="DejaVu Sans" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{var_numero_convocatoria_corto} == null ?
+"SERNANP<br><br>" +
+"PROCESO DE SELECCIÓN PARA LA CONTRATACIÓN <br>" +
+"ADMINISTRATIVA DE SERVICIOS CAS N° SERNANP " :
+"SERNANP<br><br>" +
+"PROCESO DE SELECCIÓN PARA LA CONTRATACIÓN <br>" +
+"ADMINISTRATIVA DE SERVICIOS CAS N° " + $F{var_numero_convocatoria_corto} + "-SERNANP"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="20" splitType="Immediate">
+			<subreport isUsingCache="true">
+				<reportElement x="0" y="0" width="435" height="20" isRemoveLineWhenBlank="true" uuid="bc426917-360f-45d4-b24f-b3da857b342c"/>
+				<dataSourceExpression><![CDATA[$P{parametros.listConvocatoria_Postulacion_DS}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ReporteConvocatoriaMintra_Postulacion.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="20" splitType="Immediate">
+			<subreport isUsingCache="true">
+				<reportElement x="0" y="0" width="435" height="20" isRemoveLineWhenBlank="true" uuid="99ad6fce-1efa-44c6-9140-70dec38ea61f"/>
+				<dataSourceExpression><![CDATA[$P{parametros.listConvocatoria_Perfil_DS}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ReporteConvocatoriaMintra_Perfil.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="20" splitType="Immediate">
+			<subreport isUsingCache="true">
+				<reportElement x="0" y="0" width="435" height="20" isRemoveLineWhenBlank="true" uuid="57168f3a-1663-42cf-9a35-19a66afe2ea7"/>
+				<dataSourceExpression><![CDATA[$P{parametros.listConvocatoria_Puesto_DS}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ReporteConvocatoriaMintra_Puesto.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="20" splitType="Immediate">
+			<subreport isUsingCache="true">
+				<reportElement x="0" y="0" width="435" height="20" isRemoveLineWhenBlank="true" uuid="5b30d036-3b7e-4d54-bc03-6cef77a0270e"/>
+				<dataSourceExpression><![CDATA[$P{parametros.listConvocatoria_Contrato_DS}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ReporteConvocatoriaMintra_Contrato.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="20" splitType="Immediate">
+			<subreport isUsingCache="true">
+				<reportElement x="0" y="0" width="435" height="20" isRemoveLineWhenBlank="true" uuid="40efcd3f-30b5-4320-abd3-8478dc5b89df"/>
+				<dataSourceExpression><![CDATA[$P{parametros.listConvocatoria_Cronograma_DS}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ReporteConvocatoriaMintra_Cronograma.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="20" splitType="Immediate">
+			<subreport isUsingCache="true">
+				<reportElement x="0" y="0" width="435" height="20" isRemoveLineWhenBlank="true" uuid="95236156-635e-416e-9e93-098d85ce306c"/>
+				<dataSourceExpression><![CDATA[$P{parametros.listConvocatoria_Evaluacion_DS}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ReporteConvocatoriaMintra_Evaluacion.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

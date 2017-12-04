@@ -1,0 +1,6 @@
+{
+	"nameCrud": "ProgramaPresupuestal",
+	"path": "programas-contractuales",
+	"nameRepository": "TProgramaPresupuestalRepository",
+	"nameModelXml": "ProgramaPresupuestalModel.xml"
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.ConvocatoriaRegistradaQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.ConvocatoriaRegistradaQuery" parameterType="sernanp.app.dao.query.domain.ConvocatoriaRegistradaQueryCriteria"> 
+<![CDATA[
+      
+select 
+	(select a[2] || '-' || a[3] from (select regexp_split_to_array(cnv.var_num_convocatoria, '-')) as dt(a)) as "var_num_convocatoria",
+	cao.var_codigo_postulacion,
+	ao.desarea,
+	uo.nomunidad,
+	pcao.int_num_activacion,
+	pcao.int_orden_merito,
+	detx.var_nombre_estado as "estado_descrip",
+	to_char(pcao.tsp_fecha_registro, 'DD/MM/YYYY') as "tsp_fecha_registro" 
+
+from 
+sernanp.persona p 
+inner join sernanp.personanatural pn on p.idpersona = pn.idpersona
+inner join sernanp.t_postulante_personal pp on pn.idpersonanatural = pp.int_id_postulante
+inner join sernanp.t_postulante_cnv_area_org pcao on pp.int_id_postulante = pcao.int_id_postulante
+inner join sernanp.t_convocatoria_area_org cao on pcao.srl_id_conv_area_org = cao.srl_id_conv_area_org
+inner join sernanp.t_convocatoria cnv on cao.srl_id_convocatoria = cnv.srl_id_convocatoria
+inner join sernanp.areaorganica ao on  cao.idarea = ao.idarea
+inner join 
+(
+select det.var_cod_estado,det.var_nombre_estado from sernanp.t_detalle_estado_tabla det
+where det.srl_id_estado_tabla = 4
+) detx on detx.var_cod_estado = cast(pcao.int_id_estado as char)
+left join
+sernanp.pais pais on p.idpais = pais.idpais left join
+sernanp.unidadoperativa uo on uo.idunidad = cao.idunidad	
+	
+where p.idpersona = #{idpersona}
+			     
+]]>
+</select> 
+</mapper> 

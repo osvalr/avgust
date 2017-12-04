@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.ArchivoPlazaQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+
+caoa.srl_id_archivo,
+caoa.srl_id_conv_area_org,
+eps.srl_id_etapa_proceso_seleccion,
+eps.var_nombre_etapa,
+caoa.srl_id_conv_area_org_etapa,
+sps.var_descrip_subetapa,
+ta.var_nombre_archivo,
+caoa.var_descrip_archivo,
+ta.var_tipo_archivo,
+ta.var_archivo_ruta_almacen,
+ta.num_size_archivo,
+to_char(ta.tsp_fecha_registro,'dd/mm/yyyy') as tsp_fecha_registro
+
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+
+personal.t_conv_area_org_archivo caoa
+inner join sernanp.t_archivo ta on ta.srl_id_archivo = caoa.srl_id_archivo
+inner join personal.t_conv_area_org_etapa caoe on caoa.srl_id_conv_area_org_etapa = caoe.srl_id_conv_area_org_etapa
+inner join personal.t_subetapa_proceso_seleccion sps on caoe.srl_id_subetapa_proceso_seleccion = sps.srl_id_subetapa_proceso_seleccion
+inner join personal.t_etapa_proceso_seleccion eps on sps.srl_id_etapa_proceso_seleccion = eps.srl_id_etapa_proceso_seleccion
+
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+
+caoa.srl_id_archivo = COALESCE(#{srl_id_archivo},caoa.srl_id_archivo) and
+caoa.srl_id_conv_area_org = COALESCE(#{srl_id_conv_area_org},caoa.srl_id_conv_area_org)
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.ArchivoPlazaQuery" parameterType="sernanp.app.dao.query.domain.ArchivoPlazaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.ArchivoPlazaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.ArchivoPlazaQuery" parameterType="sernanp.app.dao.query.domain.ArchivoPlazaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.ArchivoPlazaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.ArchivoPlazaQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

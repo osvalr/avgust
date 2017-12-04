@@ -1,0 +1,7 @@
+{
+	"titleCrud": "Departamentos",
+	"nameCrud": "UbigeoDepartamento",
+	"constUrlApi": "UBIGEO_DEPARTAMENTOS_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "UbigeoDepartamentoModel.xml"
+}

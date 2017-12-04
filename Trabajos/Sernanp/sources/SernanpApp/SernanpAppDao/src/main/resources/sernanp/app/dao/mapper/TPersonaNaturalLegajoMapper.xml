@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sernanp.app.dao.mapper.TPersonaNaturalLegajoMapper" >
+  <resultMap id="BaseResultMap" type="sernanp.app.dao.domain.TPersonaNaturalLegajo" >
+    <id column="srl_id_persona_natural_legajo" property="srl_id_persona_natural_legajo" jdbcType="INTEGER" />
+    <result column="idpersonanatural" property="idpersonanatural" jdbcType="INTEGER" />
+    <result column="int_id_tipo_documento" property="int_id_tipo_documento" jdbcType="INTEGER" />
+    <result column="var_nombre_documento" property="var_nombre_documento" jdbcType="VARCHAR" />
+    <result column="tsp_fecha_registro" property="tsp_fecha_registro" jdbcType="TIMESTAMP" />
+    <result column="var_asunto_documento" property="var_asunto_documento" jdbcType="VARCHAR" />
+    <result column="var_descripcion_documento" property="var_descripcion_documento" jdbcType="VARCHAR" />
+    <result column="int_id_estado" property="int_id_estado" jdbcType="INTEGER" />
+    <result column="srl_id_contrato" property="srl_id_contrato" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    srl_id_persona_natural_legajo, idpersonanatural, int_id_tipo_documento, var_nombre_documento, 
+    tsp_fecha_registro, var_asunto_documento, var_descripcion_documento, int_id_estado, 
+    srl_id_contrato
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TPersonaNaturalLegajoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sernanp.t_persona_natural_legajo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TPersonaNaturalLegajoKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from sernanp.t_persona_natural_legajo
+    where srl_id_persona_natural_legajo = #{srl_id_persona_natural_legajo,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="sernanp.app.dao.domain.TPersonaNaturalLegajoKey" >
+    delete from sernanp.t_persona_natural_legajo
+    where srl_id_persona_natural_legajo = #{srl_id_persona_natural_legajo,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sernanp.app.dao.domain.TPersonaNaturalLegajoExample" >
+    delete from sernanp.t_persona_natural_legajo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sernanp.app.dao.domain.TPersonaNaturalLegajo" useGeneratedKeys="true" keyProperty="srl_id_persona_natural_legajo" >
+    insert into sernanp.t_persona_natural_legajo (idpersonanatural, int_id_tipo_documento, 
+      var_nombre_documento, tsp_fecha_registro, 
+      var_asunto_documento, var_descripcion_documento, 
+      int_id_estado, srl_id_contrato)
+    values (#{idpersonanatural,jdbcType=INTEGER}, #{int_id_tipo_documento,jdbcType=INTEGER}, 
+      #{var_nombre_documento,jdbcType=VARCHAR}, #{tsp_fecha_registro,jdbcType=TIMESTAMP}, 
+      #{var_asunto_documento,jdbcType=VARCHAR}, #{var_descripcion_documento,jdbcType=VARCHAR}, 
+      #{int_id_estado,jdbcType=INTEGER}, #{srl_id_contrato,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="sernanp.app.dao.domain.TPersonaNaturalLegajo" useGeneratedKeys="true" keyProperty="srl_id_persona_natural_legajo" >
+    insert into sernanp.t_persona_natural_legajo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="idpersonanatural != null" >
+        idpersonanatural,
+      </if>
+      <if test="int_id_tipo_documento != null" >
+        int_id_tipo_documento,
+      </if>
+      <if test="var_nombre_documento != null" >
+        var_nombre_documento,
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        tsp_fecha_registro,
+      </if>
+      <if test="var_asunto_documento != null" >
+        var_asunto_documento,
+      </if>
+      <if test="var_descripcion_documento != null" >
+        var_descripcion_documento,
+      </if>
+      <if test="int_id_estado != null" >
+        int_id_estado,
+      </if>
+      <if test="srl_id_contrato != null" >
+        srl_id_contrato,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="idpersonanatural != null" >
+        #{idpersonanatural,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_tipo_documento != null" >
+        #{int_id_tipo_documento,jdbcType=INTEGER},
+      </if>
+      <if test="var_nombre_documento != null" >
+        #{var_nombre_documento,jdbcType=VARCHAR},
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+      <if test="var_asunto_documento != null" >
+        #{var_asunto_documento,jdbcType=VARCHAR},
+      </if>
+      <if test="var_descripcion_documento != null" >
+        #{var_descripcion_documento,jdbcType=VARCHAR},
+      </if>
+      <if test="int_id_estado != null" >
+        #{int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_contrato != null" >
+        #{srl_id_contrato,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sernanp.app.dao.domain.TPersonaNaturalLegajoExample" resultType="java.lang.Integer" >
+    select count(*) from sernanp.t_persona_natural_legajo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sernanp.t_persona_natural_legajo
+    <set >
+      <if test="record.srl_id_persona_natural_legajo != null" >
+        srl_id_persona_natural_legajo = #{record.srl_id_persona_natural_legajo,jdbcType=INTEGER},
+      </if>
+      <if test="record.idpersonanatural != null" >
+        idpersonanatural = #{record.idpersonanatural,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_id_tipo_documento != null" >
+        int_id_tipo_documento = #{record.int_id_tipo_documento,jdbcType=INTEGER},
+      </if>
+      <if test="record.var_nombre_documento != null" >
+        var_nombre_documento = #{record.var_nombre_documento,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsp_fecha_registro != null" >
+        tsp_fecha_registro = #{record.tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.var_asunto_documento != null" >
+        var_asunto_documento = #{record.var_asunto_documento,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_descripcion_documento != null" >
+        var_descripcion_documento = #{record.var_descripcion_documento,jdbcType=VARCHAR},
+      </if>
+      <if test="record.int_id_estado != null" >
+        int_id_estado = #{record.int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="record.srl_id_contrato != null" >
+        srl_id_contrato = #{record.srl_id_contrato,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sernanp.t_persona_natural_legajo
+    set srl_id_persona_natural_legajo = #{record.srl_id_persona_natural_legajo,jdbcType=INTEGER},
+      idpersonanatural = #{record.idpersonanatural,jdbcType=INTEGER},
+      int_id_tipo_documento = #{record.int_id_tipo_documento,jdbcType=INTEGER},
+      var_nombre_documento = #{record.var_nombre_documento,jdbcType=VARCHAR},
+      tsp_fecha_registro = #{record.tsp_fecha_registro,jdbcType=TIMESTAMP},
+      var_asunto_documento = #{record.var_asunto_documento,jdbcType=VARCHAR},
+      var_descripcion_documento = #{record.var_descripcion_documento,jdbcType=VARCHAR},
+      int_id_estado = #{record.int_id_estado,jdbcType=INTEGER},
+      srl_id_contrato = #{record.srl_id_contrato,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sernanp.app.dao.domain.TPersonaNaturalLegajo" >
+    update sernanp.t_persona_natural_legajo
+    <set >
+      <if test="idpersonanatural != null" >
+        idpersonanatural = #{idpersonanatural,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_tipo_documento != null" >
+        int_id_tipo_documento = #{int_id_tipo_documento,jdbcType=INTEGER},
+      </if>
+      <if test="var_nombre_documento != null" >
+        var_nombre_documento = #{var_nombre_documento,jdbcType=VARCHAR},
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        tsp_fecha_registro = #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+      <if test="var_asunto_documento != null" >
+        var_asunto_documento = #{var_asunto_documento,jdbcType=VARCHAR},
+      </if>
+      <if test="var_descripcion_documento != null" >
+        var_descripcion_documento = #{var_descripcion_documento,jdbcType=VARCHAR},
+      </if>
+      <if test="int_id_estado != null" >
+        int_id_estado = #{int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_contrato != null" >
+        srl_id_contrato = #{srl_id_contrato,jdbcType=INTEGER},
+      </if>
+    </set>
+    where srl_id_persona_natural_legajo = #{srl_id_persona_natural_legajo,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sernanp.app.dao.domain.TPersonaNaturalLegajo" >
+    update sernanp.t_persona_natural_legajo
+    set idpersonanatural = #{idpersonanatural,jdbcType=INTEGER},
+      int_id_tipo_documento = #{int_id_tipo_documento,jdbcType=INTEGER},
+      var_nombre_documento = #{var_nombre_documento,jdbcType=VARCHAR},
+      tsp_fecha_registro = #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      var_asunto_documento = #{var_asunto_documento,jdbcType=VARCHAR},
+      var_descripcion_documento = #{var_descripcion_documento,jdbcType=VARCHAR},
+      int_id_estado = #{int_id_estado,jdbcType=INTEGER},
+      srl_id_contrato = #{srl_id_contrato,jdbcType=INTEGER}
+    where srl_id_persona_natural_legajo = #{srl_id_persona_natural_legajo,jdbcType=INTEGER}
+  </update>
+</mapper>

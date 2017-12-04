@@ -1,0 +1,14 @@
+{
+	"titleCrud": "Catalogos",
+	"nameCrud": "Catalogo",
+	"constUrlApi": "CATALOGO_SERVICE_API",
+	"autoIdentityPrimaryKey": false,
+	"nameModelXml": "CatalogoModel.xml",
+	"subModels": [
+		{
+			"nameModel": "CatalogoItemModel",
+			"nameCrud": "CatalogoItem",
+			"autoIdentityPrimaryKey": false
+		}
+	]
+}

@@ -1,0 +1,6 @@
+{
+	"nameCrud": "DireccionOrganica",
+	"path": "direcciones-organicas",
+	"nameRepository": "TAreaOrganicaRepository",
+	"nameModelXml": "DireccionModel.xml"
+}

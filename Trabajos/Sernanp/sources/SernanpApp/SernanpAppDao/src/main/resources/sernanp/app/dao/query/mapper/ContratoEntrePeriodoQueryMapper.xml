@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.ContratoEntrePeriodoQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.ContratoEntrePeriodoQuery" parameterType="sernanp.app.dao.query.domain.ContratoEntrePeriodoQueryCriteria"> 
+<![CDATA[
+
+	      
+	      
+				select 
+				
+					pc.srl_id_contrato ,
+					pc.srl_id_contrato_padre ,
+					pc.dte_fec_suscrip ,
+					pc.dte_fec_inicio ,
+					pc.dte_fec_termino ,
+					pc.dte_fec_cese ,
+					pc.int_id_estado ,
+					p.idpersona ,
+					pn.idpersonanatural ,
+					pp.int_id_postulante ,
+					ppp.idpersonal 
+				
+				from 
+					sernanp.t_personal_contrato pc left join sernanp.t_postulante_cnv_area_org pcao
+					on pc.srl_id_postulante_conv_area_org = pcao.srl_id_postulante_conv_area_org 
+					left join sernanp.t_postulante_personal pp
+					on pcao.int_id_postulante = pp.int_id_postulante
+					left join sernanp.personanatural pn
+					on pn.idpersonanatural = pp.int_id_postulante
+					left join sernanp.persona p
+					on pn.idpersona = p.idpersona
+					left join sernanp.personal ppp
+					on pc.idpersonal = ppp.idpersonal
+				where 
+				
+					COALESCE(p.idpersona,0) = COALESCE(#{idpersona},COALESCE(p.idpersona,0))   and 
+					COALESCE(pn.idpersonanatural,0) = COALESCE(#{idpersonanatural},COALESCE(pn.idpersonanatural,0))   and 
+					COALESCE(pp.int_id_postulante,0) = COALESCE(#{int_id_postulante},COALESCE(pp.int_id_postulante,0))   and 
+					COALESCE(ppp.idpersonal,0) = COALESCE(#{idpersonal},COALESCE(ppp.idpersonal,0))   and
+					COALESCE(pc.srl_id_contrato,0) <>  COALESCE(#{srl_id_contrato},0) and
+					pc.int_id_estado <> 4 and
+					(#{dte_fec_inicio}  between pc.dte_fec_inicio and COALESCE(pc.dte_fec_cese,pc.dte_fec_termino) or
+					 #{dte_fec_termino}  between pc.dte_fec_inicio and COALESCE(pc.dte_fec_cese,pc.dte_fec_termino));
+		  
+	      
+]]>
+</select> 
+</mapper> 

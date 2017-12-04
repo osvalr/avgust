@@ -1,0 +1,7 @@
+{
+	"titleCrud": "Unidades Operativas Funcionales",
+	"nameCrud": "Uof",
+	"constUrlApi": "UOF_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "UofQuery.xml"
+}

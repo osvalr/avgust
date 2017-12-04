@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pe.com.acme.domain.mybatis.mapper.PersonaMapper" >
+  <resultMap id="BaseResultMap" type="pe.com.acme.domain.mybatis.model.Persona" >
+    <id column="id_persona" property="id_persona" jdbcType="INTEGER" />
+    <result column="nombres" property="nombres" jdbcType="VARCHAR" />
+    <result column="ape_pater" property="ape_pater" jdbcType="VARCHAR" />
+    <result column="ape_mater" property="ape_mater" jdbcType="VARCHAR" />
+    <result column="razon_social" property="razon_social" jdbcType="VARCHAR" />
+    <result column="id_tipo_doc" property="id_tipo_doc" jdbcType="INTEGER" />
+    <result column="num_tipo_doc" property="num_tipo_doc" jdbcType="VARCHAR" />
+    <result column="fecha_nacimiento" property="fecha_nacimiento" jdbcType="DATE" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="id_estado" property="id_estado" jdbcType="INTEGER" />
+    <result column="id_usuario_reg" property="id_usuario_reg" jdbcType="INTEGER" />
+    <result column="fecha_registro" property="fecha_registro" jdbcType="TIMESTAMP" />
+    <result column="id_usuario_mod" property="id_usuario_mod" jdbcType="INTEGER" />
+    <result column="fecha_modificacion" property="fecha_modificacion" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id_persona, nombres, ape_pater, ape_mater, razon_social, id_tipo_doc, num_tipo_doc, 
+    fecha_nacimiento, email, id_estado, id_usuario_reg, fecha_registro, id_usuario_mod, 
+    fecha_modificacion
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.acme.domain.mybatis.model.PersonaExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from general.persona
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="pe.com.acme.domain.mybatis.model.PersonaKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from general.persona
+    where id_persona = #{id_persona,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="pe.com.acme.domain.mybatis.model.PersonaKey" >
+    delete from general.persona
+    where id_persona = #{id_persona,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="pe.com.acme.domain.mybatis.model.PersonaExample" >
+    delete from general.persona
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.acme.domain.mybatis.model.Persona" useGeneratedKeys="true" keyProperty="id_persona" >
+    insert into general.persona (nombres, ape_pater, ape_mater, 
+      razon_social, id_tipo_doc, num_tipo_doc, 
+      fecha_nacimiento, email, id_estado, 
+      id_usuario_reg, fecha_registro, id_usuario_mod, 
+      fecha_modificacion)
+    values (#{nombres,jdbcType=VARCHAR}, #{ape_pater,jdbcType=VARCHAR}, #{ape_mater,jdbcType=VARCHAR}, 
+      #{razon_social,jdbcType=VARCHAR}, #{id_tipo_doc,jdbcType=INTEGER}, #{num_tipo_doc,jdbcType=VARCHAR}, 
+      #{fecha_nacimiento,jdbcType=DATE}, #{email,jdbcType=VARCHAR}, #{id_estado,jdbcType=INTEGER}, 
+      #{id_usuario_reg,jdbcType=INTEGER}, #{fecha_registro,jdbcType=TIMESTAMP}, #{id_usuario_mod,jdbcType=INTEGER}, 
+      #{fecha_modificacion,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.acme.domain.mybatis.model.Persona" useGeneratedKeys="true" keyProperty="id_persona" >
+    insert into general.persona
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nombres != null" >
+        nombres,
+      </if>
+      <if test="ape_pater != null" >
+        ape_pater,
+      </if>
+      <if test="ape_mater != null" >
+        ape_mater,
+      </if>
+      <if test="razon_social != null" >
+        razon_social,
+      </if>
+      <if test="id_tipo_doc != null" >
+        id_tipo_doc,
+      </if>
+      <if test="num_tipo_doc != null" >
+        num_tipo_doc,
+      </if>
+      <if test="fecha_nacimiento != null" >
+        fecha_nacimiento,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="id_estado != null" >
+        id_estado,
+      </if>
+      <if test="id_usuario_reg != null" >
+        id_usuario_reg,
+      </if>
+      <if test="fecha_registro != null" >
+        fecha_registro,
+      </if>
+      <if test="id_usuario_mod != null" >
+        id_usuario_mod,
+      </if>
+      <if test="fecha_modificacion != null" >
+        fecha_modificacion,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nombres != null" >
+        #{nombres,jdbcType=VARCHAR},
+      </if>
+      <if test="ape_pater != null" >
+        #{ape_pater,jdbcType=VARCHAR},
+      </if>
+      <if test="ape_mater != null" >
+        #{ape_mater,jdbcType=VARCHAR},
+      </if>
+      <if test="razon_social != null" >
+        #{razon_social,jdbcType=VARCHAR},
+      </if>
+      <if test="id_tipo_doc != null" >
+        #{id_tipo_doc,jdbcType=INTEGER},
+      </if>
+      <if test="num_tipo_doc != null" >
+        #{num_tipo_doc,jdbcType=VARCHAR},
+      </if>
+      <if test="fecha_nacimiento != null" >
+        #{fecha_nacimiento,jdbcType=DATE},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="id_estado != null" >
+        #{id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="id_usuario_reg != null" >
+        #{id_usuario_reg,jdbcType=INTEGER},
+      </if>
+      <if test="fecha_registro != null" >
+        #{fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+      <if test="id_usuario_mod != null" >
+        #{id_usuario_mod,jdbcType=INTEGER},
+      </if>
+      <if test="fecha_modificacion != null" >
+        #{fecha_modificacion,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.acme.domain.mybatis.model.PersonaExample" resultType="java.lang.Integer" >
+    select count(*) from general.persona
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update general.persona
+    <set >
+      <if test="record.id_persona != null" >
+        id_persona = #{record.id_persona,jdbcType=INTEGER},
+      </if>
+      <if test="record.nombres != null" >
+        nombres = #{record.nombres,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ape_pater != null" >
+        ape_pater = #{record.ape_pater,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ape_mater != null" >
+        ape_mater = #{record.ape_mater,jdbcType=VARCHAR},
+      </if>
+      <if test="record.razon_social != null" >
+        razon_social = #{record.razon_social,jdbcType=VARCHAR},
+      </if>
+      <if test="record.id_tipo_doc != null" >
+        id_tipo_doc = #{record.id_tipo_doc,jdbcType=INTEGER},
+      </if>
+      <if test="record.num_tipo_doc != null" >
+        num_tipo_doc = #{record.num_tipo_doc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fecha_nacimiento != null" >
+        fecha_nacimiento = #{record.fecha_nacimiento,jdbcType=DATE},
+      </if>
+      <if test="record.email != null" >
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.id_estado != null" >
+        id_estado = #{record.id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="record.id_usuario_reg != null" >
+        id_usuario_reg = #{record.id_usuario_reg,jdbcType=INTEGER},
+      </if>
+      <if test="record.fecha_registro != null" >
+        fecha_registro = #{record.fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.id_usuario_mod != null" >
+        id_usuario_mod = #{record.id_usuario_mod,jdbcType=INTEGER},
+      </if>
+      <if test="record.fecha_modificacion != null" >
+        fecha_modificacion = #{record.fecha_modificacion,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update general.persona
+    set id_persona = #{record.id_persona,jdbcType=INTEGER},
+      nombres = #{record.nombres,jdbcType=VARCHAR},
+      ape_pater = #{record.ape_pater,jdbcType=VARCHAR},
+      ape_mater = #{record.ape_mater,jdbcType=VARCHAR},
+      razon_social = #{record.razon_social,jdbcType=VARCHAR},
+      id_tipo_doc = #{record.id_tipo_doc,jdbcType=INTEGER},
+      num_tipo_doc = #{record.num_tipo_doc,jdbcType=VARCHAR},
+      fecha_nacimiento = #{record.fecha_nacimiento,jdbcType=DATE},
+      email = #{record.email,jdbcType=VARCHAR},
+      id_estado = #{record.id_estado,jdbcType=INTEGER},
+      id_usuario_reg = #{record.id_usuario_reg,jdbcType=INTEGER},
+      fecha_registro = #{record.fecha_registro,jdbcType=TIMESTAMP},
+      id_usuario_mod = #{record.id_usuario_mod,jdbcType=INTEGER},
+      fecha_modificacion = #{record.fecha_modificacion,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.acme.domain.mybatis.model.Persona" >
+    update general.persona
+    <set >
+      <if test="nombres != null" >
+        nombres = #{nombres,jdbcType=VARCHAR},
+      </if>
+      <if test="ape_pater != null" >
+        ape_pater = #{ape_pater,jdbcType=VARCHAR},
+      </if>
+      <if test="ape_mater != null" >
+        ape_mater = #{ape_mater,jdbcType=VARCHAR},
+      </if>
+      <if test="razon_social != null" >
+        razon_social = #{razon_social,jdbcType=VARCHAR},
+      </if>
+      <if test="id_tipo_doc != null" >
+        id_tipo_doc = #{id_tipo_doc,jdbcType=INTEGER},
+      </if>
+      <if test="num_tipo_doc != null" >
+        num_tipo_doc = #{num_tipo_doc,jdbcType=VARCHAR},
+      </if>
+      <if test="fecha_nacimiento != null" >
+        fecha_nacimiento = #{fecha_nacimiento,jdbcType=DATE},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="id_estado != null" >
+        id_estado = #{id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="id_usuario_reg != null" >
+        id_usuario_reg = #{id_usuario_reg,jdbcType=INTEGER},
+      </if>
+      <if test="fecha_registro != null" >
+        fecha_registro = #{fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+      <if test="id_usuario_mod != null" >
+        id_usuario_mod = #{id_usuario_mod,jdbcType=INTEGER},
+      </if>
+      <if test="fecha_modificacion != null" >
+        fecha_modificacion = #{fecha_modificacion,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id_persona = #{id_persona,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.acme.domain.mybatis.model.Persona" >
+    update general.persona
+    set nombres = #{nombres,jdbcType=VARCHAR},
+      ape_pater = #{ape_pater,jdbcType=VARCHAR},
+      ape_mater = #{ape_mater,jdbcType=VARCHAR},
+      razon_social = #{razon_social,jdbcType=VARCHAR},
+      id_tipo_doc = #{id_tipo_doc,jdbcType=INTEGER},
+      num_tipo_doc = #{num_tipo_doc,jdbcType=VARCHAR},
+      fecha_nacimiento = #{fecha_nacimiento,jdbcType=DATE},
+      email = #{email,jdbcType=VARCHAR},
+      id_estado = #{id_estado,jdbcType=INTEGER},
+      id_usuario_reg = #{id_usuario_reg,jdbcType=INTEGER},
+      fecha_registro = #{fecha_registro,jdbcType=TIMESTAMP},
+      id_usuario_mod = #{id_usuario_mod,jdbcType=INTEGER},
+      fecha_modificacion = #{fecha_modificacion,jdbcType=TIMESTAMP}
+    where id_persona = #{id_persona,jdbcType=INTEGER}
+  </update>
+  <select resultMap="BaseResultMap" parameterType="pe.com.acme.domain.mybatis.model.PersonaExample" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from general.persona
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

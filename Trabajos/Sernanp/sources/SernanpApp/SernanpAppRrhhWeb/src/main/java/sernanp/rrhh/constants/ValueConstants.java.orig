@@ -1,0 +1,31 @@
+package sernanp.rrhh.constants;
+
+import java.io.Serializable;
+
+public class ValueConstants implements Serializable{
+
+	/**	 *	 */	
+	private static final long serialVersionUID = 1L;
+	public static final int VALOR_CERO=-1;
+	
+	//tipos tabla
+	
+	public static final int TipoMarcacionTempus = 124;
+	public static final int TipoMarcacionManual = 125;
+	public static final int TipoDescuentoInasistencia = 126;
+	public static final int TipoDescuentoTardanza = 127;
+	public static final int TipoPermisoCGH	= 128;
+	public static final int TipoPermisoSGH	= 129;
+	
+	public static final int CantDiasMes	= 30;
+	public static final int CantMinMes	= 14400;
+	public static final int CantMinMaxToler	= 30;
+	public static final String NombreTablaDescTMP	= "sernanp.t_personal_descuento_tmp";
+	public static final String NombreTablaDesc	= "sernanp.t_personal_descuento";
+
+}
+
+
+
+
+

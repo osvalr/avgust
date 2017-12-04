@@ -1,0 +1,24 @@
+${copy}
+
+/**
+* @author  Javier Raffo
+* @version 1.0
+* @since   ${datetimeCreate}
+*/
+
+package ${packageRest};
+
+import ${packageService}.${nameCrud}Service;
+import ${packageModel}.${nameModel};
+import ${packageModel}.${nameModelCriteria};
+import ${packageMapper}.${nameModelMapper};
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import pe.gob.senamhi.util.KapcomRestController;
+import pe.gob.senamhi.util.RestCrudController;
+
+@RestController
+@RequestMapping("/api/v1.0/${path}")
+@RestCrudController(classModelService = ${nameCrud}Service.class,propertyId = "${propertyId}")
+public class ${nameCrud}RestController extends KapcomRestController<${nameModel},${nameModelCriteria},${nameModelMapper}> {
+}

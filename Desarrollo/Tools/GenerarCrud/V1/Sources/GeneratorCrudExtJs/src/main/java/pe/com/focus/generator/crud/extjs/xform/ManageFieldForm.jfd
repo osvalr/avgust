@@ -1,0 +1,677 @@
+JFDML JFormDesigner: "5.2.1.0.138" Java: "1.7.0_75" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.GridBagLayout ) {
+			"$columnSpecs": "4, 0:1.0, 0"
+			"$rowSpecs": "2, 0, 0, 0:1.0, 0, 0"
+			"$hGap": 5
+			"$vGap": 5
+			"$alignLeft": true
+			"$alignTop": true
+		} ) {
+			name: "this"
+			"minimumSize": new java.awt.Dimension( 1020, 800 )
+			"defaultCloseOperation": 2
+			"title": "Mange Field"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+				"$columnSpecs": "0, 0, 0:1.0, 0, 0, 0:1.0, 0, 0, 0:1.0, 0"
+				"$rowSpecs": "0, 0, 0, 0, 0, 0, 0, 0, 0, 0"
+				"$hGap": 5
+				"$vGap": 5
+				"$alignLeft": true
+				"$alignTop": true
+			} ) {
+				name: "panel1"
+				"preferredSize": new java.awt.Dimension( 805, 330 )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"text": "Name"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"hAlign": 4
+					"gridx": 1
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "txtName"
+					"editable": false
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 2
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label14"
+					"text": "Display Field"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 4
+					"hAlign": 4
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "txtDisplayField"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 5
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label21"
+					"text": "Ignore In Form"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 7
+					"hAlign": 4
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "cbIgnoreInForm"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 8
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label18"
+					"text": "Id"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"hAlign": 4
+					"gridx": 1
+					"gridy": 1
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "txtId"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 2
+					"gridy": 1
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label15"
+					"text": "Value Field"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 4
+					"hAlign": 4
+					"gridy": 1
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "txtValueField"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 5
+					"gridy": 1
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label22"
+					"text": "Ignore In Grid"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 7
+					"hAlign": 4
+					"gridy": 1
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "cbIgnoreInGrid"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 8
+					"gridy": 1
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label2"
+					"text": "XType"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridy": 2
+					"gridx": 1
+					"hAlign": 4
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "txtXtype"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 2
+					"gridy": 2
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label11"
+					"text": "Min Length"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 4
+					"gridy": 2
+					"hAlign": 4
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "txtMinLength"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 5
+					"gridy": 2
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label23"
+					"text": "Ignore In Filter"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 7
+					"gridy": 2
+					"hAlign": 4
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "cbIgnoreInFilter"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 8
+					"gridy": 2
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label3"
+					"text": "VType"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridy": 3
+					"gridx": 1
+					"hAlign": 4
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "txtVType"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridy": 3
+					"gridx": 2
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label12"
+					"text": "Max Length"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridy": 3
+					"gridx": 4
+					"hAlign": 4
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "txtMaxLength"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 5
+					"gridy": 3
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label19"
+					"text": "Show In Form"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 7
+					"gridy": 3
+					"hAlign": 4
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "cbShowInForm"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 8
+					"gridy": 3
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label4"
+					"text": "Format"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 1
+					"gridy": 4
+					"hAlign": 4
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "txtFormat"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 2
+					"gridy": 4
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label25"
+					"text": "Value"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 4
+					"gridy": 4
+					"hAlign": 4
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "txtValue"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 5
+					"gridy": 4
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label20"
+					"text": "Show In Grid"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 7
+					"gridy": 4
+					"hAlign": 4
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "cbShowInGrid"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 8
+					"gridy": 4
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label5"
+					"text": "Label Field"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 1
+					"gridy": 5
+					"hAlign": 4
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "txtLabelField"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 2
+					"gridy": 5
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label27"
+					"text": "Flex Grid Column"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 4
+					"gridy": 5
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "txtFlexGridColumn"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 5
+					"gridy": 5
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label26"
+					"text": "Hidden"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 7
+					"gridy": 5
+					"hAlign": 4
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "cbHidden"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 8
+					"gridy": 5
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label6"
+					"text": "Label Field Form"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 1
+					"gridy": 6
+					"hAlign": 4
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "txtLabelFIeldForm"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridy": 6
+					"gridx": 2
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label13"
+					"text": "Query Mode"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 4
+					"hAlign": 4
+					"gridy": 6
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "cbQueryMode"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 5
+					"gridy": 6
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label16"
+					"text": "Editable"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 7
+					"gridy": 6
+					"hAlign": 4
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "cbEditable"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 8
+					"gridy": 6
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label7"
+					"text": "Label Field Grid"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 1
+					"gridy": 7
+					"hAlign": 4
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "txtLabelFieldGrid"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 2
+					"gridy": 7
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label24"
+					"text": "Descrip"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 4
+					"gridy": 7
+					"hAlign": 4
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "cbDescrip"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 5
+					"gridy": 7
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label17"
+					"text": "Disabled"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 7
+					"gridy": 7
+					"hAlign": 4
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "cbDisabled"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 8
+					"gridy": 7
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label8"
+					"text": "Label Field Filter"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridy": 8
+					"gridx": 1
+					"hAlign": 4
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "txtLabelFieldFilter"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridy": 8
+					"gridx": 2
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label9"
+					"text": "Allow Blank"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 4
+					"gridy": 8
+					"hAlign": 4
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "cbAllowBlank"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 5
+					"gridy": 8
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label38"
+					"text": "Read Only"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 7
+					"gridy": 8
+					"hAlign": 4
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "cbReadOnly"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 8
+					"gridy": 8
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label10"
+					"text": "Empty Text"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 1
+					"gridy": 9
+					"hAlign": 4
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "txtEmptyText"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 2
+					"gridy": 9
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+				"gridx": 1
+				"gridy": 1
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+				"$columnSpecs": "default:grow"
+				"$rowSpecs": "top:default"
+			} ) {
+				name: "panel5"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+					"$columnSpecs": "0, 0, 0:1.0, 0, 0, 0:1.0, 0"
+					"$rowSpecs": "0, 0, 0, 0, 0"
+					"$hGap": 5
+					"$vGap": 5
+					"$alignLeft": true
+					"$alignTop": true
+				} ) {
+					name: "panel2"
+					"border": new javax.swing.border.TitledBorder( "Store" )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label28"
+						"text": "Registered"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 1
+						"hAlign": 4
+					} )
+					add( new FormComponent( "javax.swing.JComboBox" ) {
+						name: "cbRegisteredStore"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "cbRegisteredStoreActionPerformed", true ) )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 2
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label29"
+						"text": "Url"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 1
+						"gridy": 1
+						"hAlign": 4
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "txtUrl"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 2
+						"gridy": 1
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label32"
+						"text": "Auto Load"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 4
+						"gridy": 1
+						"hAlign": 4
+					} )
+					add( new FormComponent( "javax.swing.JComboBox" ) {
+						name: "cbAutoLoad"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 5
+						"gridy": 1
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label30"
+						"text": "Fields"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 1
+						"gridy": 2
+						"hAlign": 4
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "txtFields"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 2
+						"gridy": 2
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label34"
+						"text": "Type Proxy"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 4
+						"gridy": 2
+					} )
+					add( new FormComponent( "javax.swing.JComboBox" ) {
+						name: "cbTypeProxy"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 5
+						"gridy": 2
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label31"
+						"text": "Root Property"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 1
+						"gridy": 3
+						"hAlign": 4
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "txtRootProperty"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 2
+						"gridy": 3
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label35"
+						"text": "Type Reader"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 4
+						"gridy": 3
+					} )
+					add( new FormComponent( "javax.swing.JComboBox" ) {
+						name: "cbTypeReader"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 5
+						"gridy": 3
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label37"
+						"text": "Data"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 1
+						"gridy": 4
+						"hAlign": 4
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "txtData"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 2
+						"gridy": 4
+						"gridwidth": 4
+					} )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+				"gridx": 1
+				"gridy": 2
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+				"$columnSpecs": "0:1.0"
+				"$rowSpecs": "0, 0:1.0"
+				"$hGap": 5
+				"$vGap": 5
+				"$alignLeft": true
+				"$alignTop": true
+			} ) {
+				name: "panel4"
+				"border": new javax.swing.border.TitledBorder( "Listener" )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+					"$columnSpecs": "0, 0, 0:1.0, 0"
+					"$rowSpecs": "0, 0"
+					"$hGap": 5
+					"$vGap": 5
+					"$alignLeft": true
+					"$alignTop": true
+				} ) {
+					name: "panel3"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label33"
+						"text": "Type"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 1
+					} )
+					add( new FormComponent( "javax.swing.JComboBox" ) {
+						name: "cbTypeListener"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 2
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label36"
+						"text": "On Id Field"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 1
+						"gridy": 1
+					} )
+					add( new FormComponent( "javax.swing.JComboBox" ) {
+						name: "cbOnField"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 2
+						"gridy": 1
+					} )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+					"$columnSpecs": "0:1.0"
+					"$rowSpecs": "0, 0:1.0"
+					"$hGap": 5
+					"$vGap": 5
+					"$alignLeft": true
+					"$alignTop": true
+				} ) {
+					name: "panel6"
+					"border": new javax.swing.border.TitledBorder( "Parameters" )
+					"preferredSize": new java.awt.Dimension( 100, 150 )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+						"$columnSpecs": "0, 0"
+						"$rowSpecs": "0"
+						"$hGap": 5
+						"$vGap": 5
+						"$alignLeft": true
+						"$alignTop": true
+					} ) {
+						name: "panel7"
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "btnAddParameter"
+							"text": "Add"
+							"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/silk/add.png" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnAddParameterActionPerformed", true ) )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "btnRemoveParameter"
+							"text": "Remove"
+							"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/silk/delete.png" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnRemoveParameterActionPerformed", true ) )
+						}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+							"gridx": 1
+						} )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"hAlign": 4
+					} )
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "scrollPane1"
+						add( new FormComponent( "javax.swing.JTable" ) {
+							name: "jtParameters"
+						} )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridy": 1
+					} )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridy": 1
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+				"gridx": 1
+				"gridy": 3
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+				"$columnSpecs": "0, 0"
+				"$rowSpecs": "0"
+				"$hGap": 5
+				"$vGap": 5
+				"$alignLeft": true
+				"$alignTop": true
+			} ) {
+				name: "panel8"
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "btnSaveField"
+					"text": "Save"
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/silk/disk.png" )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnSaveFieldActionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "btnCancelField"
+					"text": "Cancel"
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/silk/cancel.png" )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnCancelFieldActionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 1
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+				"gridx": 1
+				"gridy": 4
+				"hAlign": 4
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 5, 5 )
+			"size": new java.awt.Dimension( 955, 885 )
+		} )
+	}
+}

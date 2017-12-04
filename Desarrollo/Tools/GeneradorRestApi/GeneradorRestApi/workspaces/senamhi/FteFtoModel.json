@@ -1,0 +1,6 @@
+{
+	"nameCrud": "FteFto",
+	"path": "fuentes-financiamiento",
+	"nameRepository": "TFuenteFinanciamientoRepository",
+	"nameModelXml": "FteFtoModel.xml"
+}

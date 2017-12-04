@@ -1,0 +1,20 @@
+${copy}
+
+/**
+* @author  Javier Raffo
+* @version 1.0
+* @since   ${datetimeCreate}
+*/
+
+package ${packageEntities}; 
+
+import javax.persistence.*;
+import javax.validation.constraints.*;
+import java.io.Serializable;
+
+@Embeddable
+public class ${entityName} implements Serializable {
+	
+${properties}
+${getterAndSetter}
+} 

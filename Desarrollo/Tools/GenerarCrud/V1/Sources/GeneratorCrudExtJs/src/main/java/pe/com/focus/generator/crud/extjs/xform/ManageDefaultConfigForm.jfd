@@ -1,0 +1,357 @@
+JFDML JFormDesigner: "5.2.1.0.138" Java: "1.8.0_31" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.GridBagLayout ) {
+			"$columnSpecs": "3, 0:1.0, 0"
+			"$rowSpecs": "3, 396:1.0, 0, 0"
+			"$hGap": 5
+			"$vGap": 5
+			"$alignLeft": true
+			"$alignTop": true
+		} ) {
+			name: "this"
+			"title": "Setup Default"
+			"minimumSize": new java.awt.Dimension( 722, 580 )
+			"defaultCloseOperation": 2
+			"$sizePolicy": 0
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+				"$columnSpecs": "97, 0:1.0, 0"
+				"$rowSpecs": "0, 0:1.0, 0:1.0, 0:1.0, 0, 0, 0, 0, 0, 0:1.0, 0:1.0, 0:1.0, 0:1.0, 0:1.0, 0, 0:1.0, 34:1.0, 0"
+				"$hGap": 5
+				"$vGap": 5
+				"$alignLeft": true
+				"$alignTop": true
+			} ) {
+				name: "panel1"
+				"border": new javax.swing.border.TitledBorder( "Enter default config" )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"text": "Path Main Project"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"hAlign": 4
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "txtPathMainProject"
+					"editable": false
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 1
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "btnExplorePathMainProject"
+					"text": "..."
+					"icon": &SwingIcon0 new com.jformdesigner.model.SwingIcon( 0, "/icons/silk/find.png" )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnExplorePathMainProjectActionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 2
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label4"
+					"text": "Name App"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"hAlign": 4
+					"gridy": 1
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "txtNameApp"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 1
+					"gridy": 1
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label5"
+					"text": "Path Templates"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"hAlign": 4
+					"gridy": 2
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "txtPathTemplates"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridy": 2
+					"gridx": 1
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label6"
+					"text": "Path Model Project"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"hAlign": 4
+					"gridy": 3
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "txtPathRepository"
+					"editable": false
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridy": 3
+					"gridx": 1
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "btnExplorePathRepositoryProject"
+					"text": "..."
+					"icon": #SwingIcon0
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnExplorePathRepositoryProjectActionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridy": 3
+					"gridx": 2
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label8"
+					"text": "Package Model"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"hAlign": 4
+					"gridy": 4
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "cbPackageModel"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridy": 4
+					"gridx": 1
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label16"
+					"text": "Package Mapper Model"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"hAlign": 4
+					"gridy": 5
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "cbPackageMapperModel"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridy": 5
+					"gridx": 1
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label17"
+					"text": "Path Entities Project"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridy": 6
+					"hAlign": 4
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "txtPathEntitiesProject"
+					"editable": false
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 1
+					"gridy": 6
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "btnExplorePathEntitiesProject"
+					"text": "..."
+					"icon": #SwingIcon0
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnExplorePathEntitiesProjectActionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridy": 6
+					"gridx": 2
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label7"
+					"text": "Package Entities"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"hAlign": 4
+					"gridy": 7
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "cbPackageEntities"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 1
+					"gridy": 7
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label15"
+					"text": "Package Mappers Entities"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"hAlign": 4
+					"gridy": 8
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "cbPackageMapperEntities"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridy": 8
+					"gridx": 1
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label9"
+					"text": "Path Service Project "
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"hAlign": 4
+					"gridy": 9
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "txtPathServiceProject"
+					"editable": false
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridy": 9
+					"gridx": 1
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "btnExplorePathServiceProject"
+					"text": "..."
+					"icon": #SwingIcon0
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnExplorePathServiceProjectActionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridy": 9
+					"gridx": 2
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label10"
+					"text": "Default service package"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"hAlign": 4
+					"gridy": 10
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "cbDefaultPackageService"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridy": 10
+					"gridx": 1
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label11"
+					"text": "Default implementation package"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"hAlign": 4
+					"gridy": 11
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "cbDefaulPackageImplement"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridy": 11
+					"gridx": 1
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label12"
+					"text": "Path Web Project"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"hAlign": 4
+					"gridy": 12
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "txtPathWebProject"
+					"editable": false
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridy": 12
+					"gridx": 1
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "btnExplorePathWebProject"
+					"text": "..."
+					"icon": #SwingIcon0
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnExplorePathWebProjectActionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridy": 12
+					"gridx": 2
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label13"
+					"text": "Default Controller Package"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"hAlign": 4
+					"gridy": 13
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "cbDefaultPackageController"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridy": 13
+					"gridx": 1
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label3"
+					"text": "Path ExtJs App"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"hAlign": 4
+					"gridy": 14
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "txtPathExtjs"
+					"editable": false
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 1
+					"gridy": 14
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "btnExplorePathExtjsApp"
+					"text": "..."
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/silk/find.png" )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnExplorePathExtjsAppActionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 2
+					"gridy": 14
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label14"
+					"text": "Type Persistence"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"hAlign": 4
+					"gridy": 15
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "cbTypePersistence"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridy": 15
+					"gridx": 1
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label2"
+					"text": "Framework web"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridy": 16
+					"hAlign": 4
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "cbTypeFwWeb"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 1
+					"gridy": 16
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label18"
+					"text": "Path Result XML File"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridy": 17
+					"hAlign": 4
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "txtPathResultXmlFile"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 1
+					"gridy": 17
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+				"gridx": 1
+				"gridy": 1
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+				"$columnSpecs": "0, 0"
+				"$rowSpecs": "0"
+				"$hGap": 5
+				"$vGap": 5
+				"$alignLeft": true
+				"$alignTop": true
+			} ) {
+				name: "panel2"
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "btnSaveDafaultConfig"
+					"text": "Save"
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/silk/disk.png" )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnSaveDafaultConfigActionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "btnCancelDefaultConfig"
+					"text": "Cancel"
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/silk/cancel.png" )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnCancelDefaultConfigActionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 1
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+				"gridx": 1
+				"gridy": 2
+				"hAlign": 4
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 615, 630 )
+		} )
+	}
+}

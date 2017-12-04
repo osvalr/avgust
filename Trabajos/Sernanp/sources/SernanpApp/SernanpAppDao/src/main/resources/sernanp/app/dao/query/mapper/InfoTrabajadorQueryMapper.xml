@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.InfoTrabajadorQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.InfoTrabajadorQuery" parameterType="sernanp.app.dao.query.domain.InfoTrabajadorQueryCriteria"> 
+<![CDATA[
+
+	      
+	      
+select 
+	pn.idpersonanatural ,
+	pn.idtipodocumento ,
+	td.abrtablatipo as "des_tipo_documento",
+	pn.numerodoc,
+	pn.ruc ,
+	pn.nombre || ' ' || pn.apepat || ' ' || pn.apemat as "nombres",
+-- ADD 07-05-2015 DVR
+	pn.direccion  || ', ' 	|| COALESCE(
+		(SELECT u.nombre || ', ' || 		
+		(SELECT ud.nombre FROM sernanp.ubigeo ud WHERE ud.coddpto = u.coddpto AND ud.codprov = u.codprov AND ud.coddist = '00' ) || ' - ' ||
+		(SELECT ud.nombre FROM sernanp.ubigeo ud WHERE ud.coddpto = u.coddpto AND ud.codprov = '00' AND ud.coddist = '00' ) 
+		FROM sernanp.ubigeo u 
+		WHERE u.idubigeo = pn.idubigeo
+		),'' )	as "var_direccion_domiciliaria"
+-- 	pn.direccion as "var_direccion_domiciliaria"
+	,pn.idubigeo as int_id_idubigeo
+from sernanp.personanatural pn
+inner join
+(select tt.ordtablatipo,tt.abrtablatipo from sernanp.tablatipo tt 
+where tt.idtabla = (select t.idtabla from sernanp.tabla t where t.destabla = 'Tipo de Documento')) td
+on pn.idtipodocumento = td.ordtablatipo
+
+
+where 
+
+pn.idpersonanatural = #{idpersonanatural}  
+
+		  
+	      
+]]>
+</select> 
+</mapper> 

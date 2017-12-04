@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.UltimoRegimenPensionarioQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.UltimoRegimenPensionarioQuery" parameterType="sernanp.app.dao.query.domain.UltimoRegimenPensionarioQueryCriteria"> 
+<![CDATA[
+
+	      
+				
+			select 
+			
+				rph.srl_id_regimen_pensionario_historial ,
+				rph.idpersonal ,
+				rph.srl_id_regimen_pensionario ,
+			    rph.int_estado ,
+			    rph.var_nombre_afp,
+			    rph.var_codigo_afiliacion,
+			    rph.dte_fecha_afiliacion 
+			
+			from sernanp.t_regimen_pensionario_historial rph
+			where 
+			
+				rph.idpersonal = #{idpersonal}   and 
+			    rph.int_estado = #{int_estado}  
+			
+			
+		  
+	      
+]]>
+</select> 
+</mapper> 

@@ -1,0 +1,7 @@
+{
+	"titleCrud": "Pensionistas",
+	"nameCrud": "Pensionista",
+	"constUrlApi": "PENSIONISTAS_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "PensionistaModel.xml"
+}

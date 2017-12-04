@@ -1,0 +1,7 @@
+{
+	"titleCrud": "Cargos",
+	"nameCrud": "Cargos",
+	"constUrlApi": "CARGOS_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "CargoModel.xml"
+}

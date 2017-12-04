@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.RpPostulantesInscritosQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+  p.idpersona,
+	pn.idpersonanatural, 
+	pp.int_id_postulante,
+	(COALESCE(pn.apepat,'')|| ' ' || COALESCE(pn.apemat,'')|| ' ' || COALESCE(pn.nombre,'')) as nombre_completo,
+	pn.idtipodocumento,
+	vwtd.abrtablatipo AS tipodocumento,
+	pn.numerodoc, 
+	c.srl_id_convocatoria,
+	c.var_num_convocatoria,
+	c.int_id_estado as estado_convocatoria,
+	cao.srl_id_conv_area_org,
+	cao.var_codigo_postulacion,
+	cao.idarea,
+	ao.desarea,
+	cao.idunidad,
+	uo.nomunidad,
+	vec.var_nombre_estado as des_estado_convocatoria,
+	pcao.int_id_estado as estado_postulante_cnv_area_org,
+	vepcao.var_nombre_estado as des_estado_postulante_cnv_area_org,
+	to_char(pcao.tsp_fecha_registro, 'DD/MM/YYYY') as tsp_fecha_registro
+	,sars.srl_id_sede_req_sel 
+	,sars.var_nomb_sede
+	,coalesce('L' || to_char(C.int_num_activacion,'9'),'') AS lanzamiento
+	
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+ sernanp.persona p 
+	inner join sernanp.personanatural pn on p.idpersona = pn.idpersona
+	INNER JOIN sernanp.t_postulante_personal pp ON pn.idpersonanatural = pp.int_id_postulante
+	INNER JOIN sernanp.t_postulante_cnv_area_org pcao ON pp.int_id_postulante = pcao.int_id_postulante
+	INNER JOIN sernanp.t_convocatoria_area_org cao ON pcao.srl_id_conv_area_org = cao.srl_id_conv_area_org
+	INNER JOIN sernanp.t_convocatoria c ON cao.srl_id_convocatoria = c.srl_id_convocatoria
+	INNER JOIN sernanp.vw_tipo_documento vwtd ON pn.idtipodocumento = vwtd.ordtablatipo
+	INNER JOIN sernanp.vw_estado_convocatoria vec ON c.int_id_estado = to_number(vec.var_cod_estado,'99')
+	INNER JOIN sernanp.vw_estado_postulante_cnv_area_org vepcao ON pcao.int_id_estado = vepcao.var_cod_estado
+	LEFT JOIN sernanp.areaorganica ao ON cao.idarea = ao.idarea
+	LEFT JOIN sernanp.unidadoperativa uo ON cao.idunidad = uo.idunidad
+	
+	--ADD TO FILTER FOR UNIDAD OPERATIVA
+	LEFT JOIN personal.t_requerimiento_personal rp ON rp.srl_id_requerimiento_personal = cao.srl_id_requerimiento_personal
+	LEFT JOIN sernanp.t_sede_administrativa_req_sel sars ON sars.srl_id_sede_req_sel = rp.srl_id_sede_req_sel
+	
+	--END
+	
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+ 	UPPER(COALESCE(COALESCE(pn.nombre,'') || ' ' || COALESCE(pn.apepat,'') || ' ' || COALESCE(pn.apemat,''),'')) like UPPER(COALESCE('%'|| #{nombre_completo} ||'%',COALESCE(COALESCE(pn.nombre,'') || ' ' || COALESCE(pn.apepat,'') || ' ' || COALESCE(pn.apemat,''),''))) AND
+	coalesce(pn.numerodoc,'') like coalesce('%'|| #{numerodoc} ||'%', coalesce(pn.numerodoc,'') ) AND
+	coalesce(cao.srl_id_conv_area_org,0) = coalesce (#{srl_id_conv_area_org}, coalesce(cao.srl_id_conv_area_org,0)) AND
+	coalesce(c.srl_id_convocatoria,0) = coalesce(#{srl_id_convocatoria}, coalesce(c.srl_id_convocatoria,0)) AND
+	
+	--ADD TO FILTER FOR UNIDAD OPERATIVA
+	COALESCE(sars.srl_id_sede_req_sel,0) = COALESCE(#{srl_id_sede_req_sel},COALESCE(sars.srl_id_sede_req_sel,0)) AND
+	--COALESCE(suoa.srl_id_sede_uni_ope_anp,0) = COALESCE(NULL, COALESCE(suoa.srl_id_sede_uni_ope_anp,0)) AND
+	--END
+	
+	
+	coalesce(c.int_id_estado,0) = coalesce(#{int_id_estado}, coalesce(c.int_id_estado,0)) AND
+	coalesce(cao.idarea,0) = coalesce(#{idarea}, coalesce(cao.idarea,0)) and
+	coalesce(cao.idunidad,0) = coalesce(#{idunidad}, coalesce (cao.idunidad,0) ) 
+	--and coalesce(pcao.int_id_estado,0) = coalesce(1,coalesce(pcao.int_id_estado,0))
+	and coalesce(pcao.int_id_estado,0) = coalesce(coalesce(pcao.int_id_estado,0))
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY 
+srl_id_convocatoria desc, var_nomb_sede,  var_codigo_postulacion, nombre_completo
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.RpPostulantesInscritosQuery" parameterType="sernanp.app.dao.query.domain.RpPostulantesInscritosQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.RpPostulantesInscritosQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.RpPostulantesInscritosQuery" parameterType="sernanp.app.dao.query.domain.RpPostulantesInscritosQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.RpPostulantesInscritosQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.RpPostulantesInscritosQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

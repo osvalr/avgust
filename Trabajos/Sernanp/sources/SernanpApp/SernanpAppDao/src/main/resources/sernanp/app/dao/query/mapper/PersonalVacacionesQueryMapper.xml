@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.PersonalVacacionesQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+
+pv.srl_id_pers_vac,
+pv.int_periodo_vac,
+pv.dte_fec_inicio_programacion_vac,
+pv.int_est_vacaciones,
+pv.tsp_fec_sys_crea,
+pv.idpersonal,
+pv.int_dias_vac_corresponde,
+pv.int_dias_vac_goce,
+pv.int_dias_vac_truncas
+
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+
+sernanp.t_personal_vacaciones pv 
+
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+pv.idpersonal = #{idpersonal} and
+pv.tsp_fec_sys_crea = (
+select
+	max(tsp_fec_sys_crea)
+from
+	sernanp.t_personal_vacaciones
+where 
+	idpersonal = pv.idpersonal and
+	tsp_fec_sys_crea <= CURRENT_TIMESTAMP
+)
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.PersonalVacacionesQuery" parameterType="sernanp.app.dao.query.domain.PersonalVacacionesQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.PersonalVacacionesQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.PersonalVacacionesQuery" parameterType="sernanp.app.dao.query.domain.PersonalVacacionesQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.PersonalVacacionesQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.PersonalVacacionesQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

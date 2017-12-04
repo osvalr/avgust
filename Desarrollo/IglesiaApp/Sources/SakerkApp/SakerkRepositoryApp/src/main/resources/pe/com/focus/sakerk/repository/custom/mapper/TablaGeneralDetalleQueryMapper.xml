@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.focus.sakerk.repository.custom.mapper.TablaGeneralDetalleQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+			tg.id_tabla_general ,
+			tg.nombre_tabla_general,
+			tgd.id_tabla_general_detalle ,
+			tgd.valor_general,
+			tgd.campo_a,
+			tgd.campo_b,
+			tgd.campo_c,
+			tgd.campo_d,
+			tgd.campo_e,
+			tgd.id_estado,
+			eg.descrip_estado_generico as "descrip_estado",
+			tgd.orden,
+			to_char(tgd.fecha_registro, 'DD/MM/YYYY HH24:MI:ss') as "fecha_registro"
+					
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+			general.tabla_general tg 
+			inner join general.tabla_general_detalle tgd 
+			on tg.id_tabla_general = tgd.id_tabla_general
+			inner join vw_estado_generico eg
+			on tgd.id_estado = eg.id_estado_generico
+			
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+			tgd.id_tabla_general_detalle = COALESCE(#{id_tabla_general_detalle},tgd.id_tabla_general_detalle) and
+			tg.id_tabla_general = COALESCE(#{id_tabla_general},tg.id_tabla_general) and
+			tg.nombre_tabla_general = COALESCE(#{nombre_tabla_general},tg.nombre_tabla_general)
+			
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+order by tg.id_tabla_general, tgd.id_tabla_general_detalle
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.focus.sakerk.repository.custom.model.TablaGeneralDetalleQuery" parameterType="pe.com.focus.sakerk.repository.custom.model.TablaGeneralDetalleQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.focus.sakerk.repository.custom.model.TablaGeneralDetalleQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.focus.sakerk.repository.custom.model.TablaGeneralDetalleQuery" parameterType="pe.com.focus.sakerk.repository.custom.model.TablaGeneralDetalleQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.focus.sakerk.repository.custom.model.TablaGeneralDetalleQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.focus.sakerk.repository.custom.model.TablaGeneralDetalleQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

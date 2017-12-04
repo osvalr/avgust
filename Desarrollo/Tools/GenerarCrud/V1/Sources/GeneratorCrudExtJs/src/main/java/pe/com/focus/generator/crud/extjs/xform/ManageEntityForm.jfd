@@ -1,0 +1,147 @@
+JFDML JFormDesigner: "5.2.1.0.138" Java: "1.7.0_75" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.GridBagLayout ) {
+			"$columnSpecs": "2, 0:1.0, 0"
+			"$rowSpecs": "1, 0, 0, 0"
+			"$hGap": 5
+			"$vGap": 5
+			"$alignLeft": true
+			"$alignTop": true
+		} ) {
+			name: "this"
+			"title": "Manage Entity"
+			"minimumSize": new java.awt.Dimension( 450, 231 )
+			"resizable": false
+			"defaultCloseOperation": 2
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+				"$columnSpecs": "0, 0, 0:1.0, 0"
+				"$rowSpecs": "0, 0, 0, 0, 0, 0"
+				"$hGap": 5
+				"$vGap": 5
+				"$alignLeft": true
+				"$alignTop": true
+			} ) {
+				name: "panel1"
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"text": "Class *"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 1
+					"hAlign": 4
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "cbClassEntity"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "cbClassEntityActionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 2
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label2"
+					"text": "Mapper Class *"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 1
+					"hAlign": 4
+					"gridy": 1
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "cbMapperClassEntity"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 2
+					"gridy": 1
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label3"
+					"text": "Primary key *"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridy": 2
+					"gridx": 1
+					"hAlign": 4
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "cbPrimaryKey"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 2
+					"gridy": 2
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label5"
+					"text": "Entity Refer"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 1
+					"gridy": 3
+					"hAlign": 4
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "cbEntityRefer"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 2
+					"gridy": 3
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label4"
+					"text": "Join Property"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 1
+					"gridy": 4
+					"hAlign": 4
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "cbJoinProperty"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 2
+					"gridy": 4
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label7"
+					"text": "Return Last Id"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 1
+					"gridy": 5
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "cbReturnLastId"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 2
+					"gridy": 5
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+				"gridx": 1
+				"gridy": 1
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+				"$columnSpecs": "0, 0"
+				"$rowSpecs": "0"
+				"$hGap": 5
+				"$vGap": 5
+				"$alignLeft": true
+				"$alignTop": true
+			} ) {
+				name: "panel2"
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "btnSaveEntity"
+					"text": "Save"
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/silk/disk.png" )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnSaveEntityActionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "btnCancelEntity"
+					"text": "Cancel"
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/silk/cancel.png" )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnCancelEntityActionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 1
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+				"gridx": 1
+				"gridy": 2
+				"hAlign": 4
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 400, 265 )
+		} )
+	}
+}

@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Reportedescuentospersonal" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" scriptletClass="sernanp.rrhh.util.FuncionesScriptlet" isIgnorePagination="true" uuid="7df83e35-7b14-4d33-97d3-6d8e268cb60c">
+	<property name="ireport.zoom" value="3.797498335832424"/>
+	<property name="ireport.x" value="2157"/>
+	<property name="ireport.y" value="108"/>
+	<property name="net.sf.jasperreports.export.xls.ignore.cell.background" value="false"/>
+	<property name="net.sf.jasperreports.export.xls.remove.empty.space.between.columns" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.remove.empty.space.between.rows" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.white.page.background" value="false"/>
+	<property name="net.sf.jasperreports.export.xls.detect.cell.type" value="true"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="reportParams" class="java.util.HashMap"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="apepat" class="java.lang.String">
+		<fieldDescription><![CDATA[personaldescuento.apepat]]></fieldDescription>
+	</field>
+	<field name="apemat" class="java.lang.String">
+		<fieldDescription><![CDATA[personaldescuento.apemat]]></fieldDescription>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[personaldescuento.nombre]]></fieldDescription>
+	</field>
+	<field name="numerodocumento" class="java.lang.String">
+		<fieldDescription><![CDATA[personaldescuento.numerodocumento]]></fieldDescription>
+	</field>
+	<field name="minutos_tardanza" class="java.lang.Integer">
+		<fieldDescription><![CDATA[minutos_tardanza]]></fieldDescription>
+	</field>
+	<field name="permisos" class="java.lang.Integer">
+		<fieldDescription><![CDATA[permisos]]></fieldDescription>
+	</field>
+	<field name="inasistencias" class="java.lang.Integer">
+		<fieldDescription><![CDATA[inasistencias]]></fieldDescription>
+	</field>
+	<field name="total_descuento" class="java.lang.Double">
+		<fieldDescription><![CDATA[total_descuento]]></fieldDescription>
+	</field>
+	<field name="permiso_horas" class="java.lang.String"/>
+	<field name="permiso_minutos" class="java.lang.String"/>
+	<field name="licencias_sgh" class="java.lang.String"/>
+	<variable name="TotalD" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{total_descuento}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="102" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="0" y="34" width="801" height="41" uuid="1d6ca2ea-7013-4339-9a23-267d991d4a87"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Consolidado de descuentos del Personal por Concepto de: Tardanzas, Permisos, Inasistencias y Licencias sin goce de haber  correspondiente al mes de " + $P{reportParams}.get( "mesofcontdesc" ) + "-" + $P{reportParams}.get( "periodofcontdesc" )]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="0" y="75" width="801" height="23" uuid="7e8ae5ea-c163-4dd8-a02c-0cd689f701e6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Mes a efectuarse el descuento: " + $P{reportParams}.get( "mesofefectuadesc" ) + "-" + $P{reportParams}.get( "periodoefectuadesc" )]]></textFieldExpression>
+			</textField>
+			<image scaleImage="RealSize">
+				<reportElement x="0" y="0" width="101" height="34" uuid="a0b8fd23-659f-44af-bf9f-2da17330f168"/>
+				<imageExpression><![CDATA[$P{SUBREPORT_DIR}]]></imageExpression>
+			</image>
+			<textField pattern="dd/MM/yyyy HH:mm:ss">
+				<reportElement x="101" y="0" width="700" height="34" uuid="172b06e9-6741-4d77-8f29-348eeecd910a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="26" height="31" backcolor="#CBC7C7" uuid="f7ca1572-a39b-42ad-97bd-25371f44c8f8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N°]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="0" width="74" height="31" backcolor="#CBC7C7" uuid="fa4d2270-1450-4664-96b5-d2f3e1b394b9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número Doc.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="298" height="31" backcolor="#CBC7C7" uuid="fc607315-bb83-4b39-bc3c-a57b03c1bedf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Apellidos y Nombres]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="398" y="0" width="62" height="31" backcolor="#CBC7C7" uuid="ba419184-10c0-49a9-a816-820e51c64af0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tardanza
+Minutos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="460" y="16" width="33" height="15" backcolor="#CBC7C7" uuid="24906926-0d42-4c8e-ab1d-f273a05cd8a4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Días]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="721" y="0" width="80" height="31" backcolor="#CBC7C7" uuid="021a0626-6e5d-4d7d-92aa-be7abb019e63"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descuento(S/.)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="493" y="16" width="34" height="15" backcolor="#CBC7C7" uuid="b36ffdc3-717f-41bb-8c00-bf1baa80a18e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Horas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="527" y="16" width="41" height="15" backcolor="#CBC7C7" uuid="54829077-8c83-4825-93cb-393642820e20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Minutos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="460" y="0" width="108" height="16" backcolor="#CBC7C7" uuid="ae0acbd3-6a71-46f0-b1a6-443758b7171b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Permisos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="568" y="0" width="84" height="31" backcolor="#CBC7C7" uuid="98f1b5a1-abe0-4707-828d-c03f3c0639cd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Inasistencias]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="652" y="0" width="69" height="31" backcolor="#CBC7C7" uuid="65a57491-28ed-49c5-b459-05c73f3afd1c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Licencias]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="100" y="0" width="298" height="20" uuid="862c1527-9c6a-48cb-b0de-7a00ab9886f8"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{apepat} + " " + $F{apemat} + ", " + $F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="26" y="0" width="74" height="20" uuid="8c65df4c-d147-4c07-9995-3850429e7cc3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numerodocumento}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="26" height="20" uuid="a23558b1-e2e8-4743-b129-c3901665f01c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="398" y="0" width="62" height="20" uuid="b39308ae-c195-48b6-bf2a-a201a8c2d229"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{minutos_tardanza}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="460" y="0" width="33" height="20" uuid="39ded2fb-f242-4ee9-a896-866b5ba0c467"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{permisos}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="721" y="0" width="80" height="20" uuid="83fa9f50-5abe-4cba-800a-b2997ba8a52c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_descuento}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="493" y="0" width="34" height="20" uuid="1432e492-f6f6-4758-a1b8-6b1e9efea9d4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{permiso_horas}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="527" y="0" width="41" height="20" uuid="4fe54dcd-8c9a-4353-8a38-b3462a9d1dce"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{permiso_minutos}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="568" y="0" width="84" height="20" uuid="091bfaf0-b56c-4c6d-b0ee-aef140cc041d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inasistencias}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="652" y="0" width="69" height="20" uuid="47b0f9d1-65fc-4755-a64f-588048fe7c8c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{licencias_sgh}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="23" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="23" splitType="Stretch">
+			<textField pattern="###0.00" isBlankWhenNull="false">
+				<reportElement x="721" y="1" width="80" height="20" uuid="fca36b6d-a088-4359-a75a-93105bacc4cc"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{TotalD}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="652" y="1" width="69" height="20" uuid="532525e5-a562-4fb2-83e1-09352e0e569e"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total: ]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

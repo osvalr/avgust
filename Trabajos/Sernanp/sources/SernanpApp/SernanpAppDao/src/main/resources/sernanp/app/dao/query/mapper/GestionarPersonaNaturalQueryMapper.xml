@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.GestionarPersonaNaturalQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+
+	p.idpersona ,
+	pn.idpersonanatural ,
+	pp.int_id_postulante,
+	(coalesce(pn.nombre,'') || ' ' || coalesce(pn.apepat,'') || ' ' || coalesce(pn.apemat,'')) as "nombres_completos",
+	pn.nombre,
+	pn.apepat,
+	pn.apemat,
+	pn.idtipodocumento,
+	td.abrtablatipo as "descrip_tipo_documento",
+	pn.numerodoc,
+	pn.ruc,
+	to_char(pn.fechanacimiento,'dd/mm/yyyy') fechanacimiento,
+	pn.idsexo,
+	gs.destablatipo as "descrip_sexo",
+	pn.idestadocivil,
+	ec.destablatipo as descrip_estado_civil,
+	u.coddpto,
+	u.descrip_depto,
+	u.codprov,
+	u.descrip_prov,
+	pn.idubigeo ,
+	u.descrip_ubigeo,
+	pn.direccion,
+	pais.idpais,
+	pais.nompais,
+	pp.var_email_principal,
+	pp.var_email_secundario,
+	pp.int_persona_discapacitada,
+	pp.int_pertenece_ffaa,
+	pp.int_culmino_edu_prima,
+	pp.int_culmino_edu_secun,
+	pp.var_resumen_profesional
+
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+	sernanp.persona p 
+	inner join sernanp.personanatural pn on p.idpersona = pn.idpersona
+	left join sernanp.t_postulante_personal pp on pn.idpersonanatural = pp.int_id_postulante
+	left join sernanp.pais pais on p.idpais = pais.idpais
+	left join sernanp.vw_tipo_documento td on td.idtablatipo = pn.idtipodocumento
+	left join sernanp.vw_genero_sexual gs on gs.idtablatipo = pn.idsexo
+	left join sernanp.vw_estado_civil ec on ec.idtablatipo = pn.idestadocivil
+	left join 
+	(
+				select 
+
+				u.idubigeo, 
+				d.coddpto,
+				d.nombre as "descrip_depto",
+				p.codprov,
+				p.nombre as "descrip_prov",
+				u.coddist,
+				u.nombre as "descrip_ubigeo"
+
+				from 
+				sernanp.vw_departamento_ubigeo d
+				inner join sernanp.vw_provincia_ubigeo p
+				on d.coddpto = p.coddpto
+				inner join sernanp.ubigeo u
+				on p.codprov = u.codprov and u.coddpto = d.coddpto and u.coddist <> '00' and u.codprov <> '00'
+	 ) u
+	   on pn.idubigeo = u.idubigeo
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+	p.idpersona = coalesce(#{idpersona},p.idpersona) and
+	pn.idpersonanatural = coalesce(#{idpersonanatural},pn.idpersonanatural) and
+	COALESCE(pp.int_id_postulante,0) = coalesce(#{int_id_postulante},COALESCE(pp.int_id_postulante,0)) and
+	upper(COALESCE((pn.nombre || ' ' || pn.apepat || ' ' || pn.apemat),'')) like upper(COALESCE('%'|| #{nombres_completos} ||'%', COALESCE((pn.nombre || ' ' || pn.apepat || ' ' || pn.apemat),'')) )  and 
+	COALESCE(pn.idtipodocumento,0) = COALESCE(#{idtipodocumento},COALESCE(pn.idtipodocumento,0))   and 
+	COALESCE(pn.numerodoc,'') like COALESCE('%'|| #{numerodoc} ||'%', COALESCE(pn.numerodoc,''))   and 
+	COALESCE(pn.ruc,'') like COALESCE('%'|| #{ruc} ||'%', COALESCE(pn.ruc,'')) and
+	COALESCE(pn.idsexo,0) = COALESCE(#{idsexo}, COALESCE(pn.idsexo,0)) and
+	COALESCE(u.coddpto,'') = COALESCE(#{coddpto}, COALESCE(u.coddpto,'')) and
+	COALESCE(u.codprov,'') = COALESCE(#{codprov}, COALESCE(u.codprov,'')) and
+	COALESCE(pn.idubigeo,0) = COALESCE(#{idubigeo}, COALESCE(pn.idubigeo,0)) and
+	coalesce(pais.idpais,0) = coalesce(#{idpais},coalesce(pais.idpais,0))
+	
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.GestionarPersonaNaturalQuery" parameterType="sernanp.app.dao.query.domain.GestionarPersonaNaturalQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.GestionarPersonaNaturalQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.GestionarPersonaNaturalQuery" parameterType="sernanp.app.dao.query.domain.GestionarPersonaNaturalQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.GestionarPersonaNaturalQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.GestionarPersonaNaturalQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

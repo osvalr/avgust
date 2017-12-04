@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE generatorConfiguration  
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"  
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">  
+  
+<generatorConfiguration>  
+
+<!--   <classPathEntry location="/Users/JRaffo/.m2/repository/org/postgresql/postgresql/9.3-1101-jdbc3/postgresql-9.3-1101-jdbc3.jar" /> -->
+  <classPathEntry location="/home/dvaldez/.m2/repository/org/postgresql/postgresql/9.3-1101-jdbc3/postgresql-9.3-1101-jdbc3.jar" />
+
+   
+  <context id="DB1" targetRuntime="MyBatis3">  
+       
+    <commentGenerator>  
+      <property name="suppressAllComments" value="true"/>  
+    </commentGenerator>  
+     	
+    <jdbcConnection 
+        driverClass="org.postgresql.Driver"  
+        connectionURL="jdbc:postgresql://localhost/sernanp"  
+        userId="postgres"  
+        password="123456">  
+    </jdbcConnection>	
+  
+    <javaModelGenerator targetPackage="sernanp.app.dao.domain" targetProject="SernanpAppDao">  
+      <property name="enableSubPackages" value="false" />  
+    </javaModelGenerator>  
+  
+    <sqlMapGenerator targetPackage="sernanp.app.dao.mapper"  targetProject="SernanpAppDao/src/main/resources">  
+      <property name="enableSubPackages" value="false" />  
+    </sqlMapGenerator>  
+      
+    <!-- También podríamos indicar el tipo ANNOTATEDMAPPER or XMLMAPPER -->  
+    <javaClientGenerator type="XMLMAPPER" targetPackage="sernanp.app.dao.mapper"  targetProject="SernanpAppDao">  
+      <property name="enableSubPackages" value="false" />  
+    </javaClientGenerator>  
+  
+  
+    <!-- Generamos el código fuente de todas las tablas evitando la generación varios métodos -->  
+
+
+<!-- 	<table tableName="t_dias_no_laborables" schema="sernanp" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_no_laborable" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+    
+    
+<!--     <table tableName="t_personal_contrato" schema="sernanp" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_contrato" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+
+<!-- 	<table tableName="t_personal_asistencia" schema="sernanp" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_personal_asistencia" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+    
+    
+<!--     <table tableName="t_requerimiento_personal" schema="personal" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_requerimiento_personal" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+
+
+<!--     <table tableName="t_convocatoria_area_org" schema="sernanp" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_conv_area_org" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+
+    <table tableName="t_postulante_personal" schema="sernanp" modelType="hierarchical">  
+      <property name="useActualColumnNames" value="true"/> 
+    </table> 
+    
+  </context>  
+</generatorConfiguration>  

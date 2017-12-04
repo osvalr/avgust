@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sernanp.app.dao.mapper.TSuspensionCuartaCategoriaMapper" >
+  <resultMap id="BaseResultMap" type="sernanp.app.dao.domain.TSuspensionCuartaCategoria" >
+    <id column="srl_id_suspension_cuarta_categoria" property="srl_id_suspension_cuarta_categoria" jdbcType="INTEGER" />
+    <result column="idpersonal" property="idpersonal" jdbcType="INTEGER" />
+    <result column="var_num_operacion" property="var_num_operacion" jdbcType="VARCHAR" />
+    <result column="dte_fecha_presentacion" property="dte_fecha_presentacion" jdbcType="DATE" />
+    <result column="int_id_estado" property="int_id_estado" jdbcType="INTEGER" />
+    <result column="tsp_fecha_registro" property="tsp_fecha_registro" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    srl_id_suspension_cuarta_categoria, idpersonal, var_num_operacion, dte_fecha_presentacion, 
+    int_id_estado, tsp_fecha_registro
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TSuspensionCuartaCategoriaExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from personal.t_suspension_cuarta_categoria
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TSuspensionCuartaCategoriaKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from personal.t_suspension_cuarta_categoria
+    where srl_id_suspension_cuarta_categoria = #{srl_id_suspension_cuarta_categoria,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="sernanp.app.dao.domain.TSuspensionCuartaCategoriaKey" >
+    delete from personal.t_suspension_cuarta_categoria
+    where srl_id_suspension_cuarta_categoria = #{srl_id_suspension_cuarta_categoria,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sernanp.app.dao.domain.TSuspensionCuartaCategoriaExample" >
+    delete from personal.t_suspension_cuarta_categoria
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sernanp.app.dao.domain.TSuspensionCuartaCategoria" useGeneratedKeys="true" keyProperty="srl_id_suspension_cuarta_categoria" >
+    insert into personal.t_suspension_cuarta_categoria (idpersonal, var_num_operacion, dte_fecha_presentacion, 
+      int_id_estado, tsp_fecha_registro)
+    values (#{idpersonal,jdbcType=INTEGER}, #{var_num_operacion,jdbcType=VARCHAR}, #{dte_fecha_presentacion,jdbcType=DATE}, 
+      #{int_id_estado,jdbcType=INTEGER}, #{tsp_fecha_registro,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="sernanp.app.dao.domain.TSuspensionCuartaCategoria" useGeneratedKeys="true" keyProperty="srl_id_suspension_cuarta_categoria" >
+    insert into personal.t_suspension_cuarta_categoria
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="idpersonal != null" >
+        idpersonal,
+      </if>
+      <if test="var_num_operacion != null" >
+        var_num_operacion,
+      </if>
+      <if test="dte_fecha_presentacion != null" >
+        dte_fecha_presentacion,
+      </if>
+      <if test="int_id_estado != null" >
+        int_id_estado,
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        tsp_fecha_registro,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="idpersonal != null" >
+        #{idpersonal,jdbcType=INTEGER},
+      </if>
+      <if test="var_num_operacion != null" >
+        #{var_num_operacion,jdbcType=VARCHAR},
+      </if>
+      <if test="dte_fecha_presentacion != null" >
+        #{dte_fecha_presentacion,jdbcType=DATE},
+      </if>
+      <if test="int_id_estado != null" >
+        #{int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sernanp.app.dao.domain.TSuspensionCuartaCategoriaExample" resultType="java.lang.Integer" >
+    select count(*) from personal.t_suspension_cuarta_categoria
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update personal.t_suspension_cuarta_categoria
+    <set >
+      <if test="record.srl_id_suspension_cuarta_categoria != null" >
+        srl_id_suspension_cuarta_categoria = #{record.srl_id_suspension_cuarta_categoria,jdbcType=INTEGER},
+      </if>
+      <if test="record.idpersonal != null" >
+        idpersonal = #{record.idpersonal,jdbcType=INTEGER},
+      </if>
+      <if test="record.var_num_operacion != null" >
+        var_num_operacion = #{record.var_num_operacion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dte_fecha_presentacion != null" >
+        dte_fecha_presentacion = #{record.dte_fecha_presentacion,jdbcType=DATE},
+      </if>
+      <if test="record.int_id_estado != null" >
+        int_id_estado = #{record.int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="record.tsp_fecha_registro != null" >
+        tsp_fecha_registro = #{record.tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update personal.t_suspension_cuarta_categoria
+    set srl_id_suspension_cuarta_categoria = #{record.srl_id_suspension_cuarta_categoria,jdbcType=INTEGER},
+      idpersonal = #{record.idpersonal,jdbcType=INTEGER},
+      var_num_operacion = #{record.var_num_operacion,jdbcType=VARCHAR},
+      dte_fecha_presentacion = #{record.dte_fecha_presentacion,jdbcType=DATE},
+      int_id_estado = #{record.int_id_estado,jdbcType=INTEGER},
+      tsp_fecha_registro = #{record.tsp_fecha_registro,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sernanp.app.dao.domain.TSuspensionCuartaCategoria" >
+    update personal.t_suspension_cuarta_categoria
+    <set >
+      <if test="idpersonal != null" >
+        idpersonal = #{idpersonal,jdbcType=INTEGER},
+      </if>
+      <if test="var_num_operacion != null" >
+        var_num_operacion = #{var_num_operacion,jdbcType=VARCHAR},
+      </if>
+      <if test="dte_fecha_presentacion != null" >
+        dte_fecha_presentacion = #{dte_fecha_presentacion,jdbcType=DATE},
+      </if>
+      <if test="int_id_estado != null" >
+        int_id_estado = #{int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        tsp_fecha_registro = #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where srl_id_suspension_cuarta_categoria = #{srl_id_suspension_cuarta_categoria,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sernanp.app.dao.domain.TSuspensionCuartaCategoria" >
+    update personal.t_suspension_cuarta_categoria
+    set idpersonal = #{idpersonal,jdbcType=INTEGER},
+      var_num_operacion = #{var_num_operacion,jdbcType=VARCHAR},
+      dte_fecha_presentacion = #{dte_fecha_presentacion,jdbcType=DATE},
+      int_id_estado = #{int_id_estado,jdbcType=INTEGER},
+      tsp_fecha_registro = #{tsp_fecha_registro,jdbcType=TIMESTAMP}
+    where srl_id_suspension_cuarta_categoria = #{srl_id_suspension_cuarta_categoria,jdbcType=INTEGER}
+  </update>
+  <select resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TSuspensionCuartaCategoriaExample" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from personal.t_suspension_cuarta_categoria
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

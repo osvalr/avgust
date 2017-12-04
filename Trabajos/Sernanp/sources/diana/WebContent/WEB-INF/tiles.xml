@@ -1,0 +1,342 @@
+<?xml version="1.0"    encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions> 
+
+
+	<definition name="baseLayout" template="/layouts/baseLayout.jsp"> 
+		<put-attribute name="title" value="SERNANP::" /> 
+		<put-attribute name="header" value="/layouts/header.jsp" />
+		<put-attribute name="menu" value="/layouts/menu.jsp" />
+		<put-attribute name="content" value="" />
+		<put-attribute name="footer" value="/layouts/footer.jsp" />
+		<put-attribute name="js" value="" /> 
+        <!--  
+        <put-attribute name="js" value="js/general.js" />  
+		--> 		
+		<put-list-attribute name="JSFiles" />
+		
+		<put-list-attribute name="styles">       
+	      <add-attribute value="css/_base.css"/>  
+	  	</put-list-attribute>  
+	</definition>
+	
+	
+	<definition name="simpleLayout" template="/layouts/SimpleLayout.jsp"> 
+		<put-attribute name="title" value="SERNANP" />  
+		<put-attribute name="content" value="" />
+		<put-attribute name="footer" value="/layouts/footer.jsp" />         
+	</definition>
+	
+	
+	<definition name="simpleLayout2" template="/layouts/SimpleLayoutContent.jsp">		
+		<put-attribute name="content" value="" />		
+	</definition>
+	
+	
+	<definition name="/welcome.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Welcome page" />
+		<put-attribute name="content" value="/Welcome.jsp" />
+		
+	</definition>
+	<definition name="/error.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="Error page" />
+		<put-attribute name="content" value="/Error.jsp" />  
+	</definition>
+	
+	
+	<!-- PRINCIPAL -->
+	<definition name="portada" extends="baseLayout"> 
+ 		<put-attribute name="content"   value="/portada.jsp"/>        
+ 	</definition>
+ 	
+ 	<!-- MENU -->
+ 	  	
+ 	  	<definition name="menu.inicial" extends="baseLayout"> 
+ 		<put-attribute name="menu" value="/layouts/menu.jsp" />
+ 		</definition>  
+ 	
+ 	
+ 	<!-- GENERAL -->
+ 	  	
+ 	  	<definition name="opciones.modulo" extends="baseLayout">   
+ 		<put-attribute name="content" value="/general/lista.opciones.modulo.jsp" />
+ 		<put-attribute name="js" value="js/turismo.js" />  
+ 		</definition>
+ 	
+	<!-- PROYECTOS -->
+	 
+  	<definition name="proyectos.base" extends="baseLayout">     
+ 		<put-attribute name="js" value="js/proyectos.js" />    
+		<put-list-attribute name="styles">
+	      <add-attribute value="css/proyectos.css"/> 
+	  	</put-list-attribute>        
+ 	</definition> 
+ 	
+  	<definition name="inicioProyecto" extends="proyectos.base"> 
+ 		<put-attribute name="content"   value="/proyecto/inicio.proyecto.jsp"/>      
+ 	</definition>  
+	
+	<definition name="registroProyecto" extends="proyectos.base"> 
+ 		<put-attribute name="content"   value="/proyecto/registro.proyecto.jsp"/>      
+ 	</definition> 
+ 	<definition name="reporteCantidadProyectoArea" extends="proyectos.base"> 
+ 		<put-attribute name="content"   value="/proyecto/reporte.cantidadproyecto.area.jsp"/>  
+ 	</definition>  
+ 	<definition name="reporteMontoProyectoArea" extends="proyectos.base"> 
+ 		<put-attribute name="content"   value="/proyecto/reporte.montoproyecto.area.jsp"/>       
+ 	</definition> 
+ 	      
+ 	      
+ 	      
+ 	      
+ 	<!-- BIBLIOTECA -->
+	 
+  	<definition name="biblioteca.base" extends="baseLayout">     
+ 		   
+		<put-list-attribute name="styles">
+	      <add-attribute value="css/biblioteca.css"/> 
+	  	</put-list-attribute>        
+ 	</definition> 
+ 	
+  	<definition name="inicioRecursoInformacion" extends="biblioteca.base"> 
+ 		<put-attribute name="js" value="js/biblioteca.js" /> 
+ 		<put-attribute name="content"   value="/biblioteca/inicio.recursoinformacion.jsp"/>      
+ 	    <put-list-attribute name="styles">
+	      <add-attribute value="css/biblioteca.css"/> 
+	  	</put-list-attribute>  
+ 	</definition>  
+	
+	<definition name="inicioRegistroRecursoInformacion" extends="biblioteca.base"> 
+ 		<put-attribute name="js" value="js/biblioteca.js" /> 
+ 		<put-attribute name="content"   value="/biblioteca/inicio.registro.recursoinformacion.jsp"/>      
+ 	   <put-list-attribute name="styles">
+	      <add-attribute value="css/biblioteca.css"/> 
+	  	</put-list-attribute>  
+ 	</definition> 
+ 	      
+ 	      
+ 	      
+ 	
+	<!-- TURISMO -->
+  	<definition name="turismo.base" extends="baseLayout">     
+ 		<put-attribute name="js" value="js/turismo.js" />    
+		<put-list-attribute name="styles">
+	      <add-attribute value="css/turismo.css"/> 
+	  	</put-list-attribute>        
+ 	</definition> 
+ 	 
+    <definition name="lista.anp.turismo" extends="turismo.base"> 
+ 		<put-attribute name="content"   value="/turismo/lista.anp.turismo.jsp"/>   
+ 	</definition> 
+ 	
+  	<definition name="turismo.menu" extends="turismo.base">   
+ 		<put-attribute name="content"   value="/turismo/turismo.menu.jsp"/>           
+ 	</definition> 
+ 	
+  	<definition name="turismo.registro" extends="turismo.base">   
+ 		<put-attribute name="content"   value="/turismo/registro.form.jsp"/>      
+ 	</definition> 
+ 	   
+ 	<definition name="turismo.listar.ficha" extends="turismo.base">      
+		<put-attribute name="title" value="Listar Ficha" />  
+ 		<put-attribute name="content" value="/turismo/listar.ficha.jsp" />  
+ 	</definition>  
+ 	
+ 	<definition name="turismo.reporte" extends="turismo.base">       
+		<put-attribute name="title" value="Reporte Turismo" />  
+ 		<put-attribute name="content" value="/turismo/reporte.area.jsp" /> 
+ 	</definition>
+ 	
+ 	<definition name="turismo.ficha" extends="turismo.base">
+ 		<put-attribute name="content" value="/turismo/cont.detalle.fichaturismo.jsp" />     
+ 	</definition>
+ 	
+  	<definition name="turismo.elegir.anp" extends="turismo.base"> 
+ 		<put-attribute name="content"   value="/turismo/elegir.anp.jsp"/>   
+ 	</definition> 
+ 	 
+  	<definition name="turismo.agregar.visitantes" extends="turismo.base"> 
+ 		<put-attribute name="content"   value="/turismo/agregar.visitantes.jsp"/>    
+ 	</definition> 
+ 	  
+ 	 <definition name="turismo.inicio.pago.fichaturismo" extends="turismo.base"> 
+ 		<put-attribute name="content"   value="/turismo/inicio.pago.fichaturismo.jsp"/>    
+ 	</definition>  
+ 	 
+ 	 <definition name="turismo.inicio.pagobanco.fichaturismo" extends="turismo.base"> 
+ 		<put-attribute name="content"   value="/turismo/inicio.pagobanco.fichaturismo.jsp"/>    
+ 	</definition> 
+ 	 
+ 	<definition name="registro.fichaturismo.edit" extends="turismo.base" >   
+ 		<put-attribute name="content"   value="/turismo/registro.fichaturismo.edit.jsp" />      
+ 	</definition>
+ 	
+ 	<definition name="registro.fichaturismo" extends="turismo.base" >   
+ 		<put-attribute name="content"   value="/turismo/registro.fichaturismo.jsp" />      
+ 	</definition>
+ 	
+ 	<definition name="turismo.inicio.operadorturismo" extends="turismo.base"> 
+ 		<put-attribute name="content"   value="/turismo/inicio.operadorturismo.jsp"/>    
+ 	</definition>
+ 	 
+ 	 <definition name="turismo.inicio.guiaturismo" extends="turismo.base"> 
+ 		<put-attribute name="content"   value="/turismo/inicio.guiaturismo.jsp"/>    
+ 	</definition>
+ 	 	
+ 	<!-- 17/07/2012 JCEV -->
+    <definition name="lista.bnk.nacion" extends="turismo.base"> 
+ 		<put-attribute name="content"   value="/turismo/lista.bnk.nacion.jsp"/>
+ 		<put-attribute name="js" value="js/pagosturismo.js" />
+ 		<!-- <put-list-attribute name="styles">
+	      <add-attribute value="css/displaytagex.css"/> 
+	  	</put-list-attribute>  --> 
+ 	</definition> 
+ 	 	
+ 	
+ 	 <!-- INVESTIGACION -->
+ 	 
+  	<definition name="investigacion.listar" extends="baseLayout"> 
+ 		<put-attribute name="content"   value="/investigacion/investigacion.jsp"/>   
+ 		<put-attribute name="js" value="js/investigacion.js" />     
+ 	</definition>  
+ 	 
+ 	 
+ 	 <!-- ANP -->
+ 	 
+  	<definition name="anp.index" extends="baseLayout">  
+ 		<put-attribute name="content"   value="/anp/index.jsp"/>     
+ 	</definition>  
+ 	
+  	<definition name="anp.reporte.acumulado" extends="baseLayout">  
+ 		<put-attribute name="content"   value="/anp/listar.jsp"/>  
+ 		<put-attribute name="js" value="js/anp.reporte.js" />       
+ 	</definition>  
+ 	
+  	<definition name="anp.reporte.variacion" extends="baseLayout">  
+ 		<put-attribute name="content"   value="/anp/listar.jsp"/>  
+ 		<put-attribute name="js" value="js/anp.reporte.variacion.js" />      
+ 	</definition>  
+ 	
+ 	
+ 	<!-- INFRACCION -->
+	<definition name="infraccion.base" extends="baseLayout">     
+ 		<put-attribute name="js" value="js/infraccion.js" /> 		
+ 		
+		<put-list-attribute name="styles">
+	      <add-attribute value="css/infracciones.css"/>	      
+	  	</put-list-attribute>	  	
+ 	</definition>
+ 	
+	<definition name="inicio.infraccion" extends="infraccion.base">
+		<put-attribute name="content" value="/infraccion/index.infraccion.jsp"/>
+	</definition>
+	
+	<definition name="nuevo.infraccion" extends="infraccion.base">
+		<put-attribute name="content" value="/infraccion/nuevo.infraccion.jsp"/>		 
+	</definition>
+	
+	<definition name="modulo.listado.infractor" extends="infraccion.base">
+		<put-attribute name="content" value="/infraccion/lista.infractor.jsp"/>		
+	</definition>	
+	
+	<definition name="modulo.listadoxanp.infractor" extends="infraccion.base">
+		<put-attribute name="content" value="/infraccion/lista.infractor.anp.jsp"/>		
+	</definition>
+	
+	<definition name="ingresado" extends="infraccion.base">
+		<put-attribute name="content" value="/infraccion/ingresado.jsp"/>		
+	</definition>
+	
+	<definition name="listado.infraccion" extends="baseLayout">
+		<put-attribute name="content" value="/infraccion/listado.infraccion.jsp"/>
+		<put-attribute name="js" value="js/infraccion.js" /> 
+	</definition>
+	
+	<definition name="registro.infractor" extends="infraccion.base">
+		<put-attribute name="content" value="/infraccion/registro.infractor.jsp"/>				
+	</definition>	
+	
+	<definition name="actualiza.infractor" extends="infraccion.base">
+		<put-attribute name="content" value="/infraccion/actualiza.infractor.jsp"/>
+	</definition>
+	
+	<definition name="errorMorosidad" extends="infraccion.base">
+		<put-attribute name="content" value="/infraccion/error.morosidad.jsp"/>
+	</definition>
+
+<!-- REGISTRO -->
+
+	<definition name="registro.base" extends="baseLayout"> 		
+ 		<put-attribute name="js" value="js/registro.js" />
+		<put-list-attribute name="styles">
+	      <add-attribute value="css/registro.css"/>	      
+	  	</put-list-attribute>        
+ 	</definition>
+ 	
+ 	<definition name="registro.base.ajax" extends="simpleLayout2"> 	
+ 		<put-attribute name="js" value="/js/registro.js" />
+		<put-list-attribute name="styles">
+	      <add-attribute value="css/registro.css"/>	      
+	  	</put-list-attribute>        
+ 	</definition>
+ 	
+ 	<definition name="lista.anp.registro" extends="registro.base"> 
+ 		<put-attribute name="content"   value="/registro/lista.anp.registro.jsp"/>   
+ 	</definition> 
+ 	
+	<definition name="formulario.registro" extends="registro.base">		
+ 		<put-attribute name="content"   value="/registro/registro.form.jsp"/> 		  
+ 	</definition>
+ 	
+ 	<definition name="formularioficha.mostrar" extends="registro.base">		
+ 		<put-attribute name="content"   value="/registro/registro.view.form.jsp"/> 		  
+ 	</definition>
+ 	
+ 	<definition name="formulariofichaAprob.mostrar" extends="registro.base">		
+ 		<put-attribute name="content"   value="/registro/registro.view.Aprobform.jsp"/> 		  
+ 	</definition>
+ 	
+ 	<definition name="formulariofichaConsolida.mostrar" extends="registro.base">		
+ 		<put-attribute name="content"   value="/registro/form.view.consolida.jsp"/> 		  
+ 	</definition> 	
+ 	
+ 	<definition name="fichaAprobada.mostrar" extends="registro.base">		
+ 		<put-attribute name="content"   value="/registro/mensajes.ficha.jsp"/> 		  
+ 	</definition>
+ 	
+ 	<definition name="fichaDesaprobada.mostrar" extends="registro.base">		
+ 		<put-attribute name="content"   value="/registro/mensajes.ficha.jsp"/> 		  
+ 	</definition>
+ 	
+ 	<definition name="listado.envio" extends="registro.base">			
+ 		<put-attribute name="content"   value="/registro/listado.form.jsp"/> 		 			  
+ 	</definition>
+ 	
+ 	<definition name="formulario.persona" extends="registro.base">			
+ 		<put-attribute name="content"   value="/registro/persona.form.jsp"/> 		 			  
+ 	</definition>
+ 	
+ 	<definition name="upload.form" extends="registro.base.ajax"> 		
+ 		<put-attribute name="content"   value="/registro/upload.form.jsp"/>
+ 	</definition>
+ 	
+ 	
+ 	<definition name="mensaje.ficha" extends="registro.base">			
+ 		<put-attribute name="content"   value="/registro/mensajes.ficha.jsp"/> 		 			  
+ 	</definition>
+ 	
+ 	<definition name="listado.formAreaNatural" extends="registro.base">			
+ 		<put-attribute name="content"   value="/registro/listado.form.Anp.jsp"/> 		 			  
+ 	</definition>
+ 	
+ 	<definition name="listado.consolidaformAreaNatural" extends="registro.base">			
+ 		<put-attribute name="content"   value="/registro/listado.consolidaform.Anp.jsp"/> 		 			  
+ 	</definition>
+ 	
+ 	<definition name="mensaje.error.ficha" extends="registro.base">			
+ 		<put-attribute name="content"   value="/registro/mensajes.error.ficha.jsp"/> 		 			  
+ 	</definition> 	
+ 	
+</tiles-definitions>

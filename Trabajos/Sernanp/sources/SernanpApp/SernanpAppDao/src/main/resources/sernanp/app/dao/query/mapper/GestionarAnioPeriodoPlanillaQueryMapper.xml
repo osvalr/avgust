@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.GestionarAnioPeriodoPlanillaQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+ 
+	tapp.srl_id_anio_periodo_planilla, 
+	tapp.srl_id_anio_planilla, 
+	tapp.int_id_periodo_mes,
+	vwm.destablatipo as var_des_periodo_mes, 
+	to_char(tapp.dte_fecha_inicio_periodo,'DD/MM/YYYY') as dte_fecha_inicio_periodo, 
+	to_char(tapp.dte_fecha_fin_periodo,'DD/MM/YYYY') as dte_fecha_fin_periodo, 
+	tapp.int_id_estado,
+	vweg2.destablatipo as var_des_tipo_estado,
+	to_char(tapp.tsp_fecha_registro,'DD/MM/YYYY') as tsp_fecha_registro
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+ 
+	personal.t_anio_periodo_planilla tapp
+	inner join sernanp.vw_meses vwm on tapp.int_id_periodo_mes = vwm.codinttablatipo 
+	inner join sernanp.vw_estado_generico vweg2 on tapp.int_id_estado = vweg2.codinttablatipo
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+ 
+	tapp.srl_id_anio_planilla = coalesce(#{srl_id_anio_planilla}, tapp.srl_id_anio_planilla)
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.GestionarAnioPeriodoPlanillaQuery" parameterType="sernanp.app.dao.query.domain.GestionarAnioPeriodoPlanillaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.GestionarAnioPeriodoPlanillaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.GestionarAnioPeriodoPlanillaQuery" parameterType="sernanp.app.dao.query.domain.GestionarAnioPeriodoPlanillaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.GestionarAnioPeriodoPlanillaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.GestionarAnioPeriodoPlanillaQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

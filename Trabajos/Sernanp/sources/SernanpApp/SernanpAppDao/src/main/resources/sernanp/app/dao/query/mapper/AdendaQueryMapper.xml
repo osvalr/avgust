@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.AdendaQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.AdendaQuery" parameterType="sernanp.app.dao.query.domain.AdendaQueryCriteria"> 
+<![CDATA[
+
+	      
+	      
+				select 
+				
+					pc.srl_id_contrato ,
+					pc.srl_id_contrato_padre ,
+					pc.var_num_contrato,
+					pc.int_id_estado ,
+					to_char(pc.dte_fec_inicio, 'DD/MM/YYYY') as "dte_fec_inicio",
+					to_char(pc.dte_fec_termino, 'DD/MM/YYYY') as "dte_fec_termino",
+					to_char(pc.dte_fec_suscrip, 'DD/MM/YYYY') as "dte_fec_suscrip"
+				
+				from sernanp.t_personal_contrato pc 
+				where 
+				
+					pc.srl_id_contrato_padre = #{srl_id_contrato_padre}  and
+      				pc.dte_fec_inicio = (select max(x.dte_fec_inicio) from sernanp.t_personal_contrato x 
+      				where x.srl_id_contrato_padre = #{srl_id_contrato_padre})
+				
+		  
+	      
+]]>
+</select> 
+</mapper> 

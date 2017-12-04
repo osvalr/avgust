@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>    
+   
+	<package name="general" namespace="/" extends="principal,json-default,jasperreports-default">
+	
+	<action name="listaopcmod" class="sernanp.rrhh.action.GeneralAction"  >
+			<result name="success" type="tiles">opciones.modulo</result>
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />	
+			<interceptor-ref name="defaultStack" />	    
+    </action>
+		
+	</package>
+  
+</struts>
+

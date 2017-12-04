@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sernanp.app.dao.mapper.TFactorEvaluacionMapper" >
+  <resultMap id="BaseResultMap" type="sernanp.app.dao.domain.TFactorEvaluacion" >
+    <id column="srl_id_factor_evaluacion" property="srl_id_factor_evaluacion" jdbcType="INTEGER" />
+    <result column="srl_id_configuracion_factor_evaluacion" property="srl_id_configuracion_factor_evaluacion" jdbcType="INTEGER" />
+    <result column="int_id_tipo_factor" property="int_id_tipo_factor" jdbcType="INTEGER" />
+    <result column="dec_peso" property="dec_peso" jdbcType="NUMERIC" />
+    <result column="dec_puntaje_min" property="dec_puntaje_min" jdbcType="NUMERIC" />
+    <result column="dec_puntaje_max" property="dec_puntaje_max" jdbcType="NUMERIC" />
+    <result column="int_id_estado" property="int_id_estado" jdbcType="INTEGER" />
+    <result column="tsp_fecha_registro" property="tsp_fecha_registro" jdbcType="TIMESTAMP" />
+    <result column="int_id_tipo_factor_padre" property="int_id_tipo_factor_padre" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    srl_id_factor_evaluacion, srl_id_configuracion_factor_evaluacion, int_id_tipo_factor, 
+    dec_peso, dec_puntaje_min, dec_puntaje_max, int_id_estado, tsp_fecha_registro, int_id_tipo_factor_padre
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TFactorEvaluacionExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from personal.t_factor_evaluacion
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TFactorEvaluacionKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from personal.t_factor_evaluacion
+    where srl_id_factor_evaluacion = #{srl_id_factor_evaluacion,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="sernanp.app.dao.domain.TFactorEvaluacionKey" >
+    delete from personal.t_factor_evaluacion
+    where srl_id_factor_evaluacion = #{srl_id_factor_evaluacion,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sernanp.app.dao.domain.TFactorEvaluacionExample" >
+    delete from personal.t_factor_evaluacion
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sernanp.app.dao.domain.TFactorEvaluacion" useGeneratedKeys="true" keyProperty="srl_id_factor_evaluacion" >
+    insert into personal.t_factor_evaluacion (srl_id_configuracion_factor_evaluacion, int_id_tipo_factor, 
+      dec_peso, dec_puntaje_min, dec_puntaje_max, 
+      int_id_estado, tsp_fecha_registro, int_id_tipo_factor_padre
+      )
+    values (#{srl_id_configuracion_factor_evaluacion,jdbcType=INTEGER}, #{int_id_tipo_factor,jdbcType=INTEGER}, 
+      #{dec_peso,jdbcType=NUMERIC}, #{dec_puntaje_min,jdbcType=NUMERIC}, #{dec_puntaje_max,jdbcType=NUMERIC}, 
+      #{int_id_estado,jdbcType=INTEGER}, #{tsp_fecha_registro,jdbcType=TIMESTAMP}, #{int_id_tipo_factor_padre,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="sernanp.app.dao.domain.TFactorEvaluacion" useGeneratedKeys="true" keyProperty="srl_id_factor_evaluacion" >
+    insert into personal.t_factor_evaluacion
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="srl_id_configuracion_factor_evaluacion != null" >
+        srl_id_configuracion_factor_evaluacion,
+      </if>
+      <if test="int_id_tipo_factor != null" >
+        int_id_tipo_factor,
+      </if>
+      <if test="dec_peso != null" >
+        dec_peso,
+      </if>
+      <if test="dec_puntaje_min != null" >
+        dec_puntaje_min,
+      </if>
+      <if test="dec_puntaje_max != null" >
+        dec_puntaje_max,
+      </if>
+      <if test="int_id_estado != null" >
+        int_id_estado,
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        tsp_fecha_registro,
+      </if>
+      <if test="int_id_tipo_factor_padre != null" >
+        int_id_tipo_factor_padre,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="srl_id_configuracion_factor_evaluacion != null" >
+        #{srl_id_configuracion_factor_evaluacion,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_tipo_factor != null" >
+        #{int_id_tipo_factor,jdbcType=INTEGER},
+      </if>
+      <if test="dec_peso != null" >
+        #{dec_peso,jdbcType=NUMERIC},
+      </if>
+      <if test="dec_puntaje_min != null" >
+        #{dec_puntaje_min,jdbcType=NUMERIC},
+      </if>
+      <if test="dec_puntaje_max != null" >
+        #{dec_puntaje_max,jdbcType=NUMERIC},
+      </if>
+      <if test="int_id_estado != null" >
+        #{int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+      <if test="int_id_tipo_factor_padre != null" >
+        #{int_id_tipo_factor_padre,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sernanp.app.dao.domain.TFactorEvaluacionExample" resultType="java.lang.Integer" >
+    select count(*) from personal.t_factor_evaluacion
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update personal.t_factor_evaluacion
+    <set >
+      <if test="record.srl_id_factor_evaluacion != null" >
+        srl_id_factor_evaluacion = #{record.srl_id_factor_evaluacion,jdbcType=INTEGER},
+      </if>
+      <if test="record.srl_id_configuracion_factor_evaluacion != null" >
+        srl_id_configuracion_factor_evaluacion = #{record.srl_id_configuracion_factor_evaluacion,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_id_tipo_factor != null" >
+        int_id_tipo_factor = #{record.int_id_tipo_factor,jdbcType=INTEGER},
+      </if>
+      <if test="record.dec_peso != null" >
+        dec_peso = #{record.dec_peso,jdbcType=NUMERIC},
+      </if>
+      <if test="record.dec_puntaje_min != null" >
+        dec_puntaje_min = #{record.dec_puntaje_min,jdbcType=NUMERIC},
+      </if>
+      <if test="record.dec_puntaje_max != null" >
+        dec_puntaje_max = #{record.dec_puntaje_max,jdbcType=NUMERIC},
+      </if>
+      <if test="record.int_id_estado != null" >
+        int_id_estado = #{record.int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="record.tsp_fecha_registro != null" >
+        tsp_fecha_registro = #{record.tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.int_id_tipo_factor_padre != null" >
+        int_id_tipo_factor_padre = #{record.int_id_tipo_factor_padre,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update personal.t_factor_evaluacion
+    set srl_id_factor_evaluacion = #{record.srl_id_factor_evaluacion,jdbcType=INTEGER},
+      srl_id_configuracion_factor_evaluacion = #{record.srl_id_configuracion_factor_evaluacion,jdbcType=INTEGER},
+      int_id_tipo_factor = #{record.int_id_tipo_factor,jdbcType=INTEGER},
+      dec_peso = #{record.dec_peso,jdbcType=NUMERIC},
+      dec_puntaje_min = #{record.dec_puntaje_min,jdbcType=NUMERIC},
+      dec_puntaje_max = #{record.dec_puntaje_max,jdbcType=NUMERIC},
+      int_id_estado = #{record.int_id_estado,jdbcType=INTEGER},
+      tsp_fecha_registro = #{record.tsp_fecha_registro,jdbcType=TIMESTAMP},
+      int_id_tipo_factor_padre = #{record.int_id_tipo_factor_padre,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sernanp.app.dao.domain.TFactorEvaluacion" >
+    update personal.t_factor_evaluacion
+    <set >
+      <if test="srl_id_configuracion_factor_evaluacion != null" >
+        srl_id_configuracion_factor_evaluacion = #{srl_id_configuracion_factor_evaluacion,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_tipo_factor != null" >
+        int_id_tipo_factor = #{int_id_tipo_factor,jdbcType=INTEGER},
+      </if>
+      <if test="dec_peso != null" >
+        dec_peso = #{dec_peso,jdbcType=NUMERIC},
+      </if>
+      <if test="dec_puntaje_min != null" >
+        dec_puntaje_min = #{dec_puntaje_min,jdbcType=NUMERIC},
+      </if>
+      <if test="dec_puntaje_max != null" >
+        dec_puntaje_max = #{dec_puntaje_max,jdbcType=NUMERIC},
+      </if>
+      <if test="int_id_estado != null" >
+        int_id_estado = #{int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        tsp_fecha_registro = #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+      <if test="int_id_tipo_factor_padre != null" >
+        int_id_tipo_factor_padre = #{int_id_tipo_factor_padre,jdbcType=INTEGER},
+      </if>
+    </set>
+    where srl_id_factor_evaluacion = #{srl_id_factor_evaluacion,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sernanp.app.dao.domain.TFactorEvaluacion" >
+    update personal.t_factor_evaluacion
+    set srl_id_configuracion_factor_evaluacion = #{srl_id_configuracion_factor_evaluacion,jdbcType=INTEGER},
+      int_id_tipo_factor = #{int_id_tipo_factor,jdbcType=INTEGER},
+      dec_peso = #{dec_peso,jdbcType=NUMERIC},
+      dec_puntaje_min = #{dec_puntaje_min,jdbcType=NUMERIC},
+      dec_puntaje_max = #{dec_puntaje_max,jdbcType=NUMERIC},
+      int_id_estado = #{int_id_estado,jdbcType=INTEGER},
+      tsp_fecha_registro = #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      int_id_tipo_factor_padre = #{int_id_tipo_factor_padre,jdbcType=INTEGER}
+    where srl_id_factor_evaluacion = #{srl_id_factor_evaluacion,jdbcType=INTEGER}
+  </update>
+  <select resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TFactorEvaluacionExample" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from personal.t_factor_evaluacion
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

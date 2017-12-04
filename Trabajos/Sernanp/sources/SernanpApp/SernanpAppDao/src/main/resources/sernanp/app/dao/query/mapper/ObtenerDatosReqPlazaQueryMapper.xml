@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.ObtenerDatosReqPlazaQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+ 
+       rp.srl_id_requerimiento_personal, 
+       rp.idarea_solicitante, 
+       ao.desarea,
+       rp.idunidad_solicitante, 
+       uo.nomunidad,
+       rp.var_numero_requerimiento, 
+       (select a[2] || '-' || a[3] from (select regexp_split_to_array(rp.var_numero_requerimiento, '-')) as dt(a)
+       ) as "var_numero_requerimiento_corto",
+       
+       --rp.int_cantidad_requerida, 
+       COALESCE(
+       		(SELECT cao.int_num_puestos
+			FROM sernanp.t_convocatoria_area_org cao 
+			INNER JOIN sernanp.t_convocatoria c ON cao.srl_id_convocatoria = c.srl_id_convocatoria
+			WHERE cao.srl_id_requerimiento_personal = rp.srl_id_requerimiento_personal
+			AND cao.srl_id_convocatoria = #{srl_id_convocatoria}
+		), rp.int_cantidad_requerida
+       ) as int_cantidad_requerida,
+
+        
+       rp.var_lugar_prestacion, 
+       rp.int_id_estado,
+       vwe.destablatipo as "descrip_estado",
+       rp.var_denominacion_requerimiento
+       ,TO_CHAR(rp.dte_fec_aprobacion_oa,'DD/MM/YYYY') as "dte_fec_aprobacion_oa"
+  
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+ 
+       personal.t_requerimiento_personal rp
+       LEFT JOIN sernanp.areaorganica ao ON rp.idarea_solicitante = ao.idarea
+       LEFT JOIN sernanp.unidadoperativa uo ON rp.idunidad_solicitante = uo.idunidad
+       LEFT JOIN sernanp.vw_estado_generico vwe ON rp.int_id_estado = vwe.ordtablatipo
+  
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+       rp.srl_id_requerimiento_personal = COALESCE(#{srl_id_requerimiento_personal},rp.srl_id_requerimiento_personal) AND
+rp.int_id_estado = COALESCE(#{int_id_estado},rp.int_id_estado)
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.ObtenerDatosReqPlazaQuery" parameterType="sernanp.app.dao.query.domain.ObtenerDatosReqPlazaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.ObtenerDatosReqPlazaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.ObtenerDatosReqPlazaQuery" parameterType="sernanp.app.dao.query.domain.ObtenerDatosReqPlazaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.ObtenerDatosReqPlazaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.ObtenerDatosReqPlazaQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.acme.query.mybatis.mapper.CharactersForResetsQueryMapper">
+
+<sql id="ddl"> 
+DECLARE @RtnValue table
+(
+    RowNumber int,
+    AccountID varchar(500),
+    Name varchar(500),
+    Class int,
+    descrip_clazz varchar(500),
+    cLevel int,
+    Strength int,
+    Dexterity int,
+    Vitality int,
+    Energy int,
+    Leadership int,
+    Resets int,
+    CtlCode int
+)
+
+insert into  @RtnValue
+
+SELECT
+ROW_NUMBER() OVER 
+(ORDER by c.Resets desc,c.cLevel desc,c.Strength desc, c.Dexterity desc,c.Vitality desc,c.Energy desc,c.Leadership desc) AS RowNumber,
+c.AccountID,
+c.Name,
+c.Class,
+cc.descrip_clazz,
+c.cLevel,
+c.Strength,
+c.Dexterity,
+c.Vitality,
+c.Energy,
+c.Leadership,
+c.Resets,
+c.CtlCode
+
+FROM
+
+Character c
+left join  character_clazz cc on c.Class = cc.cod_clazz
+
+where 
+
+c.AccountID = c.AccountID
+and c.CtlCode not in (32)
+and c.Resets > 0;
+</sql> 
+
+<sql id="outs"> 
+<![CDATA[
+
+*
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+@RtnValue c
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+c.Class = coalesce(null,c.class)
+
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.acme.query.mybatis.model.CharactersForResetsQuery" parameterType="pe.com.acme.query.mybatis.model.CharactersForResetsQueryCriteria">
+<include refid="ddl" /> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.acme.query.mybatis.model.CharactersForResetsQuery" parameterType="java.util.Map">
+<include refid="ddl" /> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.acme.query.mybatis.model.CharactersForResetsQuery" parameterType="pe.com.acme.query.mybatis.model.CharactersForResetsQueryCriteria">
+<include refid="ddl" /> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.acme.query.mybatis.model.CharactersForResetsQuery" parameterType="java.util.Map">
+<include refid="ddl" /> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.acme.query.mybatis.model.CharactersForResetsQueryCriteria">
+<include refid="ddl" /> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+<include refid="ddl" /> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

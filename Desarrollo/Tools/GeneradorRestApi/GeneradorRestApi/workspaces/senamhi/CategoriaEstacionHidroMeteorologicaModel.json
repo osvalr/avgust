@@ -1,0 +1,6 @@
+{
+	"nameCrud": "CategoriaEstacionHidroMeteorologica",
+	"path": "categorias-estacion-hidrometeorologica",
+	"nameRepository": "TCategoriaEstacionHmRepository",
+	"nameModelXml": "CategoriaEstacionHidroMeteorologicaModel.xml"
+}

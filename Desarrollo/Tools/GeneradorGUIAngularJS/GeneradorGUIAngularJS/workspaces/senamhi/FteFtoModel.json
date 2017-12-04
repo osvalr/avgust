@@ -1,0 +1,7 @@
+{
+	"titleCrud": "Fuentes de Financiamiento",
+	"nameCrud": "FteFto",
+	"constUrlApi": "FTE_FTO_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "FteFtoModel.xml"
+}

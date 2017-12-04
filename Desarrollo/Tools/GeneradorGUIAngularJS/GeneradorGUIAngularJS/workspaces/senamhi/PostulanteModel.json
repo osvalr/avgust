@@ -1,0 +1,29 @@
+{
+	"titleCrud": "Postulantes",
+	"nameCrud": "Postulante",
+	"constUrlApi": "POSTULANTES_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "PostulanteModel.xml",
+	"subModels": [
+		{
+			"nameModel": "PersonaDocumentoIdentidadModel",
+			"nameCrud": "PersonaDocumentoIdentidad",
+			"autoIdentityPrimaryKey": true
+		},
+		{
+			"nameModel": "PersonaDireccionModel",
+			"nameCrud": "PersonaDireccion",
+			"autoIdentityPrimaryKey": true
+		},
+		{
+			"nameModel": "PostulacionModel",
+			"nameCrud": "Postulacion",
+			"autoIdentityPrimaryKey": true
+		},
+		{
+			"nameModel": "PostulanteArchivoModel",
+			"nameCrud": "PostulanteArchivo",
+			"autoIdentityPrimaryKey": true
+		}
+	]
+}

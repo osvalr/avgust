@@ -1,0 +1,7 @@
+{
+	"titleCrud": "Direcciones Organicas",
+	"nameCrud": "DireccionOrganica",
+	"constUrlApi": "DIRECCION_ORGANICA_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "DireccionModel.xml"
+}

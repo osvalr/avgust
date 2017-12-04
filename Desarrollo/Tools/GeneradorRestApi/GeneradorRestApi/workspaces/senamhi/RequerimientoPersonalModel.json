@@ -1,0 +1,28 @@
+{
+	"nameCrud": "RequerimientoPersonal",
+	"path": "requerimientos-personal",
+	"nameRepository": "TRequerimientoPersonalRepository",
+	"nameModelXml": "RequerimientoPersonalModel.xml",
+	"subModels": [
+		{
+			"nameRepository": "TRequerimientoPersonalArchivoRepository",
+			"nameCrud": "RequerimientoPersonalArchivo",
+			"nameSubModel": "RequerimientoPersonalArchivoModel"
+		},
+		{
+			"nameRepository": "TRequerimientoPersonalEstudioRepository",
+			"nameCrud": "RequerimientoPersonalEstudio",
+			"nameSubModel": "RequerimientoPersonalEstudioModel"
+		},
+		{
+			"nameRepository": "TRequerimientoPersonalFuncionRepository",
+			"nameCrud": "RequerimientoPersonalFuncion",
+			"nameSubModel": "RequerimientoPersonalFuncionModel"
+		},
+		{
+			"nameRepository": "TRequerimientoPersonalHabexRepository",
+			"nameCrud": "RequerimientoPersonalHabex",
+			"nameSubModel": "RequerimientoPersonalHabexModel"
+		}
+	]
+}

@@ -1,0 +1,13 @@
+{
+	"nameCrud": "Catalogo",
+	"path": "catalogo",
+	"nameRepository": "TCatalogoRepository",
+	"nameModelXml": "CatalogoModel.xml",
+		"subModels": [
+		{
+			"nameRepository": "TCatalogoItemRepository",
+			"nameCrud": "CatalogoItem",
+			"nameSubModel": "CatalogoItemModel"
+		}
+	]
+}

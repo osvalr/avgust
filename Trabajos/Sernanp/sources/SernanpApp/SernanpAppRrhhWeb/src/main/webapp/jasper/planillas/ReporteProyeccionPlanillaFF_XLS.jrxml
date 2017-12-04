@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteProyeccionPlanillaFF_XLS" language="groovy" pageWidth="2000" pageHeight="595" orientation="Landscape" columnWidth="1960" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="74e04a49-c975-4d1b-8655-98fa7f147fac">
+	<property name="ireport.zoom" value="1.3310000000000362"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.export.xls.ignore.cell.background" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.white.page.background" value="false"/>
+	<property name="net.sf.jasperreports.export.xls.detect.cell.type" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.wrap.text" value="false"/>
+	<property name="net.sf.jasperreports.export.xls.auto.fit.row" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.auto.fit.column" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.remove.empty.space.between.columns" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.remove.empty.space.between.rows" value="true"/>
+	<subDataset name="listMapDetalle_DS" uuid="e8cce9b3-42c5-4b36-bef1-44fbd5dbea61">
+		<field name="dec_monto_calculado" class="java.lang.Double"/>
+		<field name="dec_total_ingresos" class="java.lang.Double"/>
+		<field name="dte_fec_inicio" class="java.lang.String"/>
+		<field name="apemat" class="java.lang.String"/>
+		<field name="nombre_completo" class="java.lang.String"/>
+		<field name="ubicacion" class="java.lang.String"/>
+		<field name="idpersonal" class="java.lang.Integer"/>
+		<field name="numerodoc" class="java.lang.String"/>
+		<field name="var_nom_cargo" class="java.lang.String"/>
+		<field name="apepat" class="java.lang.String"/>
+		<field name="nombre" class="java.lang.String"/>
+		<field name="listMapDetalle_DS" class="java.lang.Object"/>
+	</subDataset>
+	<subDataset name="listMapDetalleCab_DS" uuid="39f9c3ea-2a3c-4603-a81f-ef2c55d443d2">
+		<field name="strValor" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="listMapDetalleTotales_DS" uuid="332cf512-cf3a-48b0-bcb2-dda4204f4b12">
+		<field name="strValor" class="java.lang.Double"/>
+	</subDataset>
+	<subDataset name="listMapDetalleTotalesFF_DS" uuid="9bbb93f0-526e-4ae2-98cb-5041334a9452">
+		<field name="strValor" class="java.lang.Double"/>
+	</subDataset>
+	<parameter name="parametros.SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["/Datos/DesarrolloSW/Proyectos/SernanpApp/SernanpAppRrhhWeb/src/main/webapp/jasper/planillas/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="parametros.strMes" class="java.lang.String"/>
+	<parameter name="parametros.strAnio" class="java.lang.String"/>
+	<parameter name="parametros.listMapDetalleCab_DS" class="java.lang.Object"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\GITHUB\\sernanp\\Consultoria_planillas_seleccion_personal\\Desarrollo\\SernanpApp\\SernanpAppRrhhWeb\\src\\main\\webapp\\jasper\\planillas\\"]]></defaultValueExpression>
+	</parameter>
+	<field name="c_meta" class="java.lang.String"/>
+	<field name="srl_id_regimen_contractual" class="java.lang.Integer"/>
+	<field name="var_descripcion_fuente_financiamiento" class="java.lang.String"/>
+	<field name="listMapDetalleTotales_DS" class="java.lang.Object"/>
+	<field name="listMapDetalle_DS" class="java.lang.Object"/>
+	<field name="c_fte_fto" class="java.lang.String"/>
+	<field name="listMapDetalleTotalesFF_DS" class="java.lang.Object"/>
+	<variable name="subtotal" class="java.lang.Double">
+		<variableExpression><![CDATA[]]></variableExpression>
+	</variable>
+	<group name="idfuente">
+		<groupExpression><![CDATA[$F{var_descripcion_fuente_financiamiento}]]></groupExpression>
+		<groupHeader>
+			<band height="43">
+				<textField>
+					<reportElement mode="Transparent" x="0" y="0" width="779" height="43" forecolor="#000000" backcolor="#FFFFFF" uuid="f4d0d6ca-1ed4-48f4-b5a6-69972b9e3376"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{var_descripcion_fuente_financiamiento}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="33">
+				<subreport isUsingCache="false">
+					<reportElement x="779" y="0" width="1181" height="33" uuid="6b730363-2e5f-41bd-8b7e-e3b0f49825bd"/>
+					<subreportParameter name="parametros.SUBREPORT_DIR"/>
+					<dataSourceExpression><![CDATA[$F{listMapDetalleTotalesFF_DS}]]></dataSourceExpression>
+					<subreportExpression><![CDATA[$P{parametros.SUBREPORT_DIR} + "ReporteProyeccionPlanillaFF_ValoresDetalleFF.jasper"]]></subreportExpression>
+				</subreport>
+				<textField>
+					<reportElement x="0" y="0" width="779" height="33" uuid="951f18e5-f5a1-4504-9d36-57736fcd79f0"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["TOTAL " + $F{var_descripcion_fuente_financiamiento}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="idmeta">
+		<groupExpression><![CDATA[$F{c_meta}]]></groupExpression>
+		<groupHeader>
+			<band height="28">
+				<textField>
+					<reportElement x="0" y="0" width="58" height="28" uuid="93bfe503-af2c-4dcd-9213-72fa2b352793"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{c_meta} == null ? "META: " : "META: " + $F{c_meta}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="16">
+				<subreport isUsingCache="false">
+					<reportElement x="779" y="0" width="1181" height="16" uuid="908ae84a-da07-4321-9dfd-9d89ae9a8b43"/>
+					<subreportParameter name="parametros.SUBREPORT_DIR">
+						<subreportParameterExpression><![CDATA[$P{parametros.SUBREPORT_DIR}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[$F{listMapDetalleTotales_DS}]]></dataSourceExpression>
+					<subreportExpression><![CDATA[$P{parametros.SUBREPORT_DIR} + "ReporteProyeccionPlanillaFF_ValoresDetalle.jasper"]]></subreportExpression>
+				</subreport>
+				<staticText>
+					<reportElement x="0" y="0" width="779" height="16" uuid="9694ae98-028d-489f-b3a4-e3a16bfdff86"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TOTAL]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="39">
+			<textField>
+				<reportElement x="0" y="0" width="645" height="39" uuid="23f404e1-4047-4ec6-b795-57b53673eb98"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{srl_id_regimen_contractual} == 1 ? "PLANILLA 728 MES DE " + $P{parametros.strMes} + " DEL " + $P{parametros.strAnio} : "PLANILLA CAS MES DE " + $P{parametros.strMes} + " DEL " + $P{parametros.strAnio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="645" y="11" width="53" height="12" uuid="421c76f4-a22c-4cb8-96e6-453aeff2c31a"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="6"/>
+				</textElement>
+				<text><![CDATA[HORA:]]></text>
+			</staticText>
+			<textField>
+				<reportElement isPrintRepeatedValues="false" x="698" y="23" width="81" height="16" uuid="50cf6d2c-690f-4002-8a29-d7567b8f1557"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="645" y="23" width="53" height="16" uuid="9c23646a-8c1c-4dfa-b119-108b24c26e06"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="6"/>
+				</textElement>
+				<text><![CDATA[PAGINA:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement isPrintRepeatedValues="false" x="698" y="0" width="81" height="11" uuid="38eabe32-6c39-4bea-9944-79e313455d64"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="645" y="0" width="53" height="11" uuid="fb0b131f-d3d4-4215-af02-1cfdab8644dc"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="6"/>
+				</textElement>
+				<text><![CDATA[FECHA:]]></text>
+			</staticText>
+			<textField pattern="h.mm.ss a">
+				<reportElement isPrintRepeatedValues="false" x="698" y="11" width="81" height="12" uuid="c8fd765f-a343-42f6-a068-37ee114bb94a"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="49" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="29" width="58" height="20" uuid="3df62923-083d-4098-a383-a09428ec3388"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N°]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="369" y="29" width="194" height="20" uuid="22e58035-480e-4e5f-9379-495faf538331"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CARGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="58" y="29" width="100" height="20" backcolor="#FFFFFF" uuid="eb5848ae-90ee-482f-bd99-e1edec687c58"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Apellido Paterno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="158" y="29" width="111" height="20" uuid="54b758fc-4e4a-40ea-ad7e-86efeb685076"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Apellido Materno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="269" y="29" width="100" height="20" uuid="6fb61773-032b-48f5-b06b-bb9e6af921ef"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="563" y="29" width="216" height="20" uuid="54fd3c4d-1eed-44b4-a0de-f3d420cc300d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UBICACIÓN]]></text>
+			</staticText>
+			<subreport isUsingCache="false">
+				<reportElement x="779" y="29" width="1181" height="20" uuid="6f8ebfbb-3a12-4b32-b9ac-a45f6289bc98"/>
+				<subreportParameter name="parametros.SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{parametros.SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{parametros.listMapDetalleCab_DS}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{parametros.SUBREPORT_DIR} + "ReporteProyeccionPlanillaFF_DetalleCab.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Immediate">
+			<subreport isUsingCache="false">
+				<reportElement x="0" y="0" width="1960" height="16" uuid="f9e9785a-d181-4d37-bb29-364ee6e7d1f8"/>
+				<subreportParameter name="parametros.SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{parametros.SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$F{listMapDetalle_DS}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{parametros.SUBREPORT_DIR} + "ReporteProyeccionPlanillaFF_Detalle.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="16"/>
+	</pageFooter>
+</jasperReport>

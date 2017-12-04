@@ -1,0 +1,41 @@
+/**
+* Copyright «©» ${anho}, FOCUS CONSULTORES ASOCIADOS SAC. All rights reserved.
+*
+* This file is part of ${nameApp}.
+*
+* ${nameApp} is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* ${nameApp} is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with ${nameApp}.  If not, see <http://www.gnu.org/licenses/>.
+*/	 
+
+/**
+* GENERATOR CRUD EXT JS 5            
+* BY FOCUS CONSULTORES ASOCIADOS SAC  
+* DATE CREATE : ${datetimeCreate}
+* VERSION : 1.0 
+*/
+
+Ext.define('MyApp.model.${name}.MainModel', {
+    extend: 'Ext.data.Model',
+    fields: [		
+    #set($counter = 0)
+    #foreach( $e in $fieldsBean )	
+    #if($counter==0)
+    		{name: '${e.name}', type: '${e.dataType}'}
+    #else
+    		   ,{name: '${e.name}', type: '${e.dataType}'}
+    #end
+   #set($counter = $counter + 1)
+   #end
+            ],
+   idProperty:'${idProperty}'
+});

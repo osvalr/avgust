@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sernanp.app.dao.mapper.TConvocatoriaMapper" >
+  <resultMap id="BaseResultMap" type="sernanp.app.dao.domain.TConvocatoria" >
+    <id column="srl_id_convocatoria" property="srl_id_convocatoria" jdbcType="INTEGER" />
+    <result column="var_num_convocatoria" property="var_num_convocatoria" jdbcType="VARCHAR" />
+    <result column="int_id_estado" property="int_id_estado" jdbcType="INTEGER" />
+    <result column="tsp_fecha_registro" property="tsp_fecha_registro" jdbcType="TIMESTAMP" />
+    <result column="int_num_activacion" property="int_num_activacion" jdbcType="INTEGER" />
+    <result column="dte_fecha_aprobacion" property="dte_fecha_aprobacion" jdbcType="DATE" />
+    <result column="dte_fecha_inicio_publicacion" property="dte_fecha_inicio_publicacion" jdbcType="DATE" />
+    <result column="dte_fecha_termino_publicacion" property="dte_fecha_termino_publicacion" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    srl_id_convocatoria, var_num_convocatoria, int_id_estado, tsp_fecha_registro, int_num_activacion, 
+    dte_fecha_aprobacion, dte_fecha_inicio_publicacion, dte_fecha_termino_publicacion
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TConvocatoriaExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sernanp.t_convocatoria
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TConvocatoriaKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from sernanp.t_convocatoria
+    where srl_id_convocatoria = #{srl_id_convocatoria,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="sernanp.app.dao.domain.TConvocatoriaKey" >
+    delete from sernanp.t_convocatoria
+    where srl_id_convocatoria = #{srl_id_convocatoria,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sernanp.app.dao.domain.TConvocatoriaExample" >
+    delete from sernanp.t_convocatoria
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sernanp.app.dao.domain.TConvocatoria" useGeneratedKeys="true" keyProperty="srl_id_convocatoria" >
+    insert into sernanp.t_convocatoria (var_num_convocatoria, int_id_estado, 
+      tsp_fecha_registro, int_num_activacion, 
+      dte_fecha_aprobacion, dte_fecha_inicio_publicacion, 
+      dte_fecha_termino_publicacion)
+    values (#{var_num_convocatoria,jdbcType=VARCHAR}, #{int_id_estado,jdbcType=INTEGER}, 
+      #{tsp_fecha_registro,jdbcType=TIMESTAMP}, #{int_num_activacion,jdbcType=INTEGER}, 
+      #{dte_fecha_aprobacion,jdbcType=DATE}, #{dte_fecha_inicio_publicacion,jdbcType=DATE}, 
+      #{dte_fecha_termino_publicacion,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="sernanp.app.dao.domain.TConvocatoria" useGeneratedKeys="true" keyProperty="srl_id_convocatoria" >
+    insert into sernanp.t_convocatoria
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="var_num_convocatoria != null" >
+        var_num_convocatoria,
+      </if>
+      <if test="int_id_estado != null" >
+        int_id_estado,
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        tsp_fecha_registro,
+      </if>
+      <if test="int_num_activacion != null" >
+        int_num_activacion,
+      </if>
+      <if test="dte_fecha_aprobacion != null" >
+        dte_fecha_aprobacion,
+      </if>
+      <if test="dte_fecha_inicio_publicacion != null" >
+        dte_fecha_inicio_publicacion,
+      </if>
+      <if test="dte_fecha_termino_publicacion != null" >
+        dte_fecha_termino_publicacion,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="var_num_convocatoria != null" >
+        #{var_num_convocatoria,jdbcType=VARCHAR},
+      </if>
+      <if test="int_id_estado != null" >
+        #{int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+      <if test="int_num_activacion != null" >
+        #{int_num_activacion,jdbcType=INTEGER},
+      </if>
+      <if test="dte_fecha_aprobacion != null" >
+        #{dte_fecha_aprobacion,jdbcType=DATE},
+      </if>
+      <if test="dte_fecha_inicio_publicacion != null" >
+        #{dte_fecha_inicio_publicacion,jdbcType=DATE},
+      </if>
+      <if test="dte_fecha_termino_publicacion != null" >
+        #{dte_fecha_termino_publicacion,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sernanp.app.dao.domain.TConvocatoriaExample" resultType="java.lang.Integer" >
+    select count(*) from sernanp.t_convocatoria
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sernanp.t_convocatoria
+    <set >
+      <if test="record.srl_id_convocatoria != null" >
+        srl_id_convocatoria = #{record.srl_id_convocatoria,jdbcType=INTEGER},
+      </if>
+      <if test="record.var_num_convocatoria != null" >
+        var_num_convocatoria = #{record.var_num_convocatoria,jdbcType=VARCHAR},
+      </if>
+      <if test="record.int_id_estado != null" >
+        int_id_estado = #{record.int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="record.tsp_fecha_registro != null" >
+        tsp_fecha_registro = #{record.tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.int_num_activacion != null" >
+        int_num_activacion = #{record.int_num_activacion,jdbcType=INTEGER},
+      </if>
+      <if test="record.dte_fecha_aprobacion != null" >
+        dte_fecha_aprobacion = #{record.dte_fecha_aprobacion,jdbcType=DATE},
+      </if>
+      <if test="record.dte_fecha_inicio_publicacion != null" >
+        dte_fecha_inicio_publicacion = #{record.dte_fecha_inicio_publicacion,jdbcType=DATE},
+      </if>
+      <if test="record.dte_fecha_termino_publicacion != null" >
+        dte_fecha_termino_publicacion = #{record.dte_fecha_termino_publicacion,jdbcType=DATE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sernanp.t_convocatoria
+    set srl_id_convocatoria = #{record.srl_id_convocatoria,jdbcType=INTEGER},
+      var_num_convocatoria = #{record.var_num_convocatoria,jdbcType=VARCHAR},
+      int_id_estado = #{record.int_id_estado,jdbcType=INTEGER},
+      tsp_fecha_registro = #{record.tsp_fecha_registro,jdbcType=TIMESTAMP},
+      int_num_activacion = #{record.int_num_activacion,jdbcType=INTEGER},
+      dte_fecha_aprobacion = #{record.dte_fecha_aprobacion,jdbcType=DATE},
+      dte_fecha_inicio_publicacion = #{record.dte_fecha_inicio_publicacion,jdbcType=DATE},
+      dte_fecha_termino_publicacion = #{record.dte_fecha_termino_publicacion,jdbcType=DATE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sernanp.app.dao.domain.TConvocatoria" >
+    update sernanp.t_convocatoria
+    <set >
+      <if test="var_num_convocatoria != null" >
+        var_num_convocatoria = #{var_num_convocatoria,jdbcType=VARCHAR},
+      </if>
+      <if test="int_id_estado != null" >
+        int_id_estado = #{int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        tsp_fecha_registro = #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+      <if test="int_num_activacion != null" >
+        int_num_activacion = #{int_num_activacion,jdbcType=INTEGER},
+      </if>
+      <if test="dte_fecha_aprobacion != null" >
+        dte_fecha_aprobacion = #{dte_fecha_aprobacion,jdbcType=DATE},
+      </if>
+      <if test="dte_fecha_inicio_publicacion != null" >
+        dte_fecha_inicio_publicacion = #{dte_fecha_inicio_publicacion,jdbcType=DATE},
+      </if>
+      <if test="dte_fecha_termino_publicacion != null" >
+        dte_fecha_termino_publicacion = #{dte_fecha_termino_publicacion,jdbcType=DATE},
+      </if>
+    </set>
+    where srl_id_convocatoria = #{srl_id_convocatoria,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sernanp.app.dao.domain.TConvocatoria" >
+    update sernanp.t_convocatoria
+    set var_num_convocatoria = #{var_num_convocatoria,jdbcType=VARCHAR},
+      int_id_estado = #{int_id_estado,jdbcType=INTEGER},
+      tsp_fecha_registro = #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      int_num_activacion = #{int_num_activacion,jdbcType=INTEGER},
+      dte_fecha_aprobacion = #{dte_fecha_aprobacion,jdbcType=DATE},
+      dte_fecha_inicio_publicacion = #{dte_fecha_inicio_publicacion,jdbcType=DATE},
+      dte_fecha_termino_publicacion = #{dte_fecha_termino_publicacion,jdbcType=DATE}
+    where srl_id_convocatoria = #{srl_id_convocatoria,jdbcType=INTEGER}
+  </update>
+  <select resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TConvocatoriaExample" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sernanp.t_convocatoria
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

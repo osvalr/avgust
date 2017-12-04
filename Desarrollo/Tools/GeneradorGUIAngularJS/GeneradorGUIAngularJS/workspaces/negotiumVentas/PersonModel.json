@@ -1,0 +1,7 @@
+{
+	"titleCrud": "Mantenimiento persona",
+	"nameCrud": "personCrud",
+	"constUrlApi": "PERSON_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "PersonModel.xml"
+}

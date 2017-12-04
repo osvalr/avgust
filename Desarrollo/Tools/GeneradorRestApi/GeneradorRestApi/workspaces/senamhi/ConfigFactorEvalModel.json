@@ -1,0 +1,13 @@
+{
+	"nameCrud": "ConfigFactorEval",
+	"path": "config-factor-eval",
+	"nameRepository": "TConfiguracionFactorEvaluacionRepository",
+	"nameModelXml": "ConfigFactorEvalModel.xml",
+	"subModels": [
+		{
+			"nameRepository": "TFactorEvaluacionRepository",
+			"nameCrud": "FactorEvaluacion",
+			"nameSubModel": "FactorEvaluacionModel"
+		}
+	]
+}

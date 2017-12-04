@@ -1,0 +1,14 @@
+{
+	"titleCrud": "Afps",
+	"nameCrud": "Afp",
+	"constUrlApi": "AFP_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "AfpModel.xml",
+	"subModels": [
+		{
+			"nameModel": "AfpComisionModel",
+			"nameCrud": "AfpComision",
+			"autoIdentityPrimaryKey": true
+		}
+	]
+}

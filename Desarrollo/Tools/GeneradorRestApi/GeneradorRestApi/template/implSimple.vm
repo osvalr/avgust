@@ -1,0 +1,23 @@
+${copy}
+
+/**
+* @author  Javier Raffo
+* @version 1.0
+* @since   ${datetimeCreate}
+*/
+
+package ${packageImplement};
+
+import ${packageService}.${nameCrud}Service;
+import ${packageModel}.${nameModel};
+import ${packageModel}.${nameModelCriteria};
+import ${packageMapper}.${nameModelMapper};
+import ${packageRepository}.${nameRepository};
+import org.springframework.stereotype.Service;
+import pe.gob.senamhi.util.JpaAndMybatisCrudService;
+import pe.gob.senamhi.util.MasterCrudRepository;
+
+@Service
+@MasterCrudRepository(classRepository = ${nameRepository}.class,propertyId = "${propertyId}")
+public class ${nameCrud}ServiceImpl extends JpaAndMybatisCrudService<${nameModel},${nameModelCriteria},${nameModelMapper}> implements ${nameCrud}Service{
+}

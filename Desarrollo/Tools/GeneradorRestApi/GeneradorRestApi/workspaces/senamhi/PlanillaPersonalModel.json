@@ -1,0 +1,6 @@
+{
+	"nameCrud": "PlanillaPersonal",
+	"path": "planilla-personal",
+	"nameRepository": "TPlanillaRepository",
+	"nameModelXml": "PlanillaPersonalModel.xml"
+}

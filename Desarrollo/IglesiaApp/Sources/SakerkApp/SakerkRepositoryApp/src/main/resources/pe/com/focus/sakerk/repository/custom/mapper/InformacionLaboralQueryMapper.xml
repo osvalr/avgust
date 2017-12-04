@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.focus.sakerk.repository.custom.mapper.InformacionLaboralQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+			il.id_informacion_laboral ,
+			il.id_persona_natural ,
+			tpj.id_tipo_persona_juridica ,
+			tpj.descrip_tipo_persona_juridica,
+			il.id_empresa ,
+			pj.razon_social,
+			il.id_cargo ,
+			cg.descrip_cargo,
+			to_char(il.fecha_ingreso, 'DD/MM/YYYY') as "fecha_ingreso",
+			to_char(il.fecha_salida, 'DD/MM/YYYY') as "fecha_salida",
+			il.flag_encurso ,
+			(case il.flag_encurso
+			when 1 then 'En Curso'
+			when 2 then 'Finalizado'
+			end) as "descrip_flag_encurso",
+			il.id_estado ,
+			e.descrip_estado_generico as "descrip_estado",
+			to_char(il.fecha_registro, 'DD/MM/YYYY HH24:MI:ss') as "fecha_registro"
+			
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+			general.informacion_laboral il
+			inner join 
+			vw_estado_generico e
+			on il.id_estado = e.id_estado_generico
+			inner join
+			general.persona_juridica pj
+			on il.id_empresa = pj.id_persona_juridica
+			inner join 
+			vw_cargo cg
+			on il.id_cargo = cg.id_cargo
+			inner join
+			vw_tipo_persona_juridica tpj
+			on pj.id_tipo_persona_juridica = tpj.id_tipo_persona_juridica
+			
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+			il.id_informacion_laboral = COALESCE(#{id_informacion_laboral  },il.id_informacion_laboral) and
+			il.id_persona_natural = COALESCE(#{id_persona_natural  },il.id_persona_natural)
+			
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.focus.sakerk.repository.custom.model.InformacionLaboralQuery" parameterType="pe.com.focus.sakerk.repository.custom.model.InformacionLaboralQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.focus.sakerk.repository.custom.model.InformacionLaboralQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.focus.sakerk.repository.custom.model.InformacionLaboralQuery" parameterType="pe.com.focus.sakerk.repository.custom.model.InformacionLaboralQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.focus.sakerk.repository.custom.model.InformacionLaboralQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.focus.sakerk.repository.custom.model.InformacionLaboralQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

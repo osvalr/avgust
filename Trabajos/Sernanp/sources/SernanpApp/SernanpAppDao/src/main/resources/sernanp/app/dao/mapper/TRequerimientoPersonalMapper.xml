@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sernanp.app.dao.mapper.TRequerimientoPersonalMapper" >
+  <resultMap id="BaseResultMap" type="sernanp.app.dao.domain.TRequerimientoPersonal" >
+    <id column="srl_id_requerimiento_personal" property="srl_id_requerimiento_personal" jdbcType="INTEGER" />
+    <result column="idarea_solicitante" property="idarea_solicitante" jdbcType="INTEGER" />
+    <result column="idunidad_solicitante" property="idunidad_solicitante" jdbcType="INTEGER" />
+    <result column="idarea_supervisora" property="idarea_supervisora" jdbcType="INTEGER" />
+    <result column="idunidad_supervisora" property="idunidad_supervisora" jdbcType="INTEGER" />
+    <result column="var_numero_requerimiento" property="var_numero_requerimiento" jdbcType="VARCHAR" />
+    <result column="int_cantidad_requerida" property="int_cantidad_requerida" jdbcType="INTEGER" />
+    <result column="dec_honorario_personal" property="dec_honorario_personal" jdbcType="NUMERIC" />
+    <result column="int_cantidad_tiempo" property="int_cantidad_tiempo" jdbcType="INTEGER" />
+    <result column="int_id_tipo_unidad_tiempo" property="int_id_tipo_unidad_tiempo" jdbcType="INTEGER" />
+    <result column="var_experiencia_requerida" property="var_experiencia_requerida" jdbcType="VARCHAR" />
+    <result column="var_competencias_requeridas" property="var_competencias_requeridas" jdbcType="VARCHAR" />
+    <result column="var_formacion_academica" property="var_formacion_academica" jdbcType="VARCHAR" />
+    <result column="var_cursos_especializacion" property="var_cursos_especializacion" jdbcType="VARCHAR" />
+    <result column="var_requisitos_puesto" property="var_requisitos_puesto" jdbcType="VARCHAR" />
+    <result column="var_principales_funciones" property="var_principales_funciones" jdbcType="VARCHAR" />
+    <result column="int_requiere_evaluacion" property="int_requiere_evaluacion" jdbcType="INTEGER" />
+    <result column="var_lugar_prestacion" property="var_lugar_prestacion" jdbcType="VARCHAR" />
+    <result column="int_id_tipo_trabajador" property="int_id_tipo_trabajador" jdbcType="INTEGER" />
+    <result column="var_denominacion_requerimiento" property="var_denominacion_requerimiento" jdbcType="VARCHAR" />
+    <result column="int_id_estado" property="int_id_estado" jdbcType="INTEGER" />
+    <result column="tsp_fecha_registro" property="tsp_fecha_registro" jdbcType="TIMESTAMP" />
+    <result column="c_fte_fto" property="c_fte_fto" jdbcType="VARCHAR" />
+    <result column="c_meta" property="c_meta" jdbcType="VARCHAR" />
+    <result column="int_anio" property="int_anio" jdbcType="INTEGER" />
+    <result column="id_sede_ubicacion" property="id_sede_ubicacion" jdbcType="INTEGER" />
+    <result column="srl_id_sede_req_sel" property="srl_id_sede_req_sel" jdbcType="INTEGER" />
+    <result column="dte_fec_aprobacion_oa" property="dte_fec_aprobacion_oa" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    srl_id_requerimiento_personal, idarea_solicitante, idunidad_solicitante, idarea_supervisora, 
+    idunidad_supervisora, var_numero_requerimiento, int_cantidad_requerida, dec_honorario_personal, 
+    int_cantidad_tiempo, int_id_tipo_unidad_tiempo, var_experiencia_requerida, var_competencias_requeridas, 
+    var_formacion_academica, var_cursos_especializacion, var_requisitos_puesto, var_principales_funciones, 
+    int_requiere_evaluacion, var_lugar_prestacion, int_id_tipo_trabajador, var_denominacion_requerimiento, 
+    int_id_estado, tsp_fecha_registro, c_fte_fto, c_meta, int_anio, id_sede_ubicacion, 
+    srl_id_sede_req_sel, dte_fec_aprobacion_oa
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TRequerimientoPersonalExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from personal.t_requerimiento_personal
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TRequerimientoPersonalKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from personal.t_requerimiento_personal
+    where srl_id_requerimiento_personal = #{srl_id_requerimiento_personal,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="sernanp.app.dao.domain.TRequerimientoPersonalKey" >
+    delete from personal.t_requerimiento_personal
+    where srl_id_requerimiento_personal = #{srl_id_requerimiento_personal,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sernanp.app.dao.domain.TRequerimientoPersonalExample" >
+    delete from personal.t_requerimiento_personal
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sernanp.app.dao.domain.TRequerimientoPersonal" useGeneratedKeys="true" keyProperty="srl_id_requerimiento_personal" >
+    insert into personal.t_requerimiento_personal (idarea_solicitante, idunidad_solicitante, 
+      idarea_supervisora, idunidad_supervisora, 
+      var_numero_requerimiento, int_cantidad_requerida, 
+      dec_honorario_personal, int_cantidad_tiempo, 
+      int_id_tipo_unidad_tiempo, var_experiencia_requerida, 
+      var_competencias_requeridas, var_formacion_academica, 
+      var_cursos_especializacion, var_requisitos_puesto, 
+      var_principales_funciones, int_requiere_evaluacion, 
+      var_lugar_prestacion, int_id_tipo_trabajador, 
+      var_denominacion_requerimiento, int_id_estado, 
+      tsp_fecha_registro, c_fte_fto, c_meta, 
+      int_anio, id_sede_ubicacion, srl_id_sede_req_sel, 
+      dte_fec_aprobacion_oa)
+    values (#{idarea_solicitante,jdbcType=INTEGER}, #{idunidad_solicitante,jdbcType=INTEGER}, 
+      #{idarea_supervisora,jdbcType=INTEGER}, #{idunidad_supervisora,jdbcType=INTEGER}, 
+      #{var_numero_requerimiento,jdbcType=VARCHAR}, #{int_cantidad_requerida,jdbcType=INTEGER}, 
+      #{dec_honorario_personal,jdbcType=NUMERIC}, #{int_cantidad_tiempo,jdbcType=INTEGER}, 
+      #{int_id_tipo_unidad_tiempo,jdbcType=INTEGER}, #{var_experiencia_requerida,jdbcType=VARCHAR}, 
+      #{var_competencias_requeridas,jdbcType=VARCHAR}, #{var_formacion_academica,jdbcType=VARCHAR}, 
+      #{var_cursos_especializacion,jdbcType=VARCHAR}, #{var_requisitos_puesto,jdbcType=VARCHAR}, 
+      #{var_principales_funciones,jdbcType=VARCHAR}, #{int_requiere_evaluacion,jdbcType=INTEGER}, 
+      #{var_lugar_prestacion,jdbcType=VARCHAR}, #{int_id_tipo_trabajador,jdbcType=INTEGER}, 
+      #{var_denominacion_requerimiento,jdbcType=VARCHAR}, #{int_id_estado,jdbcType=INTEGER}, 
+      #{tsp_fecha_registro,jdbcType=TIMESTAMP}, #{c_fte_fto,jdbcType=VARCHAR}, #{c_meta,jdbcType=VARCHAR}, 
+      #{int_anio,jdbcType=INTEGER}, #{id_sede_ubicacion,jdbcType=INTEGER}, #{srl_id_sede_req_sel,jdbcType=INTEGER}, 
+      #{dte_fec_aprobacion_oa,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="sernanp.app.dao.domain.TRequerimientoPersonal" useGeneratedKeys="true" keyProperty="srl_id_requerimiento_personal" >
+    insert into personal.t_requerimiento_personal
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="idarea_solicitante != null" >
+        idarea_solicitante,
+      </if>
+      <if test="idunidad_solicitante != null" >
+        idunidad_solicitante,
+      </if>
+      <if test="idarea_supervisora != null" >
+        idarea_supervisora,
+      </if>
+      <if test="idunidad_supervisora != null" >
+        idunidad_supervisora,
+      </if>
+      <if test="var_numero_requerimiento != null" >
+        var_numero_requerimiento,
+      </if>
+      <if test="int_cantidad_requerida != null" >
+        int_cantidad_requerida,
+      </if>
+      <if test="dec_honorario_personal != null" >
+        dec_honorario_personal,
+      </if>
+      <if test="int_cantidad_tiempo != null" >
+        int_cantidad_tiempo,
+      </if>
+      <if test="int_id_tipo_unidad_tiempo != null" >
+        int_id_tipo_unidad_tiempo,
+      </if>
+      <if test="var_experiencia_requerida != null" >
+        var_experiencia_requerida,
+      </if>
+      <if test="var_competencias_requeridas != null" >
+        var_competencias_requeridas,
+      </if>
+      <if test="var_formacion_academica != null" >
+        var_formacion_academica,
+      </if>
+      <if test="var_cursos_especializacion != null" >
+        var_cursos_especializacion,
+      </if>
+      <if test="var_requisitos_puesto != null" >
+        var_requisitos_puesto,
+      </if>
+      <if test="var_principales_funciones != null" >
+        var_principales_funciones,
+      </if>
+      <if test="int_requiere_evaluacion != null" >
+        int_requiere_evaluacion,
+      </if>
+      <if test="var_lugar_prestacion != null" >
+        var_lugar_prestacion,
+      </if>
+      <if test="int_id_tipo_trabajador != null" >
+        int_id_tipo_trabajador,
+      </if>
+      <if test="var_denominacion_requerimiento != null" >
+        var_denominacion_requerimiento,
+      </if>
+      <if test="int_id_estado != null" >
+        int_id_estado,
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        tsp_fecha_registro,
+      </if>
+      <if test="c_fte_fto != null" >
+        c_fte_fto,
+      </if>
+      <if test="c_meta != null" >
+        c_meta,
+      </if>
+      <if test="int_anio != null" >
+        int_anio,
+      </if>
+      <if test="id_sede_ubicacion != null" >
+        id_sede_ubicacion,
+      </if>
+      <if test="srl_id_sede_req_sel != null" >
+        srl_id_sede_req_sel,
+      </if>
+      <if test="dte_fec_aprobacion_oa != null" >
+        dte_fec_aprobacion_oa,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="idarea_solicitante != null" >
+        #{idarea_solicitante,jdbcType=INTEGER},
+      </if>
+      <if test="idunidad_solicitante != null" >
+        #{idunidad_solicitante,jdbcType=INTEGER},
+      </if>
+      <if test="idarea_supervisora != null" >
+        #{idarea_supervisora,jdbcType=INTEGER},
+      </if>
+      <if test="idunidad_supervisora != null" >
+        #{idunidad_supervisora,jdbcType=INTEGER},
+      </if>
+      <if test="var_numero_requerimiento != null" >
+        #{var_numero_requerimiento,jdbcType=VARCHAR},
+      </if>
+      <if test="int_cantidad_requerida != null" >
+        #{int_cantidad_requerida,jdbcType=INTEGER},
+      </if>
+      <if test="dec_honorario_personal != null" >
+        #{dec_honorario_personal,jdbcType=NUMERIC},
+      </if>
+      <if test="int_cantidad_tiempo != null" >
+        #{int_cantidad_tiempo,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_tipo_unidad_tiempo != null" >
+        #{int_id_tipo_unidad_tiempo,jdbcType=INTEGER},
+      </if>
+      <if test="var_experiencia_requerida != null" >
+        #{var_experiencia_requerida,jdbcType=VARCHAR},
+      </if>
+      <if test="var_competencias_requeridas != null" >
+        #{var_competencias_requeridas,jdbcType=VARCHAR},
+      </if>
+      <if test="var_formacion_academica != null" >
+        #{var_formacion_academica,jdbcType=VARCHAR},
+      </if>
+      <if test="var_cursos_especializacion != null" >
+        #{var_cursos_especializacion,jdbcType=VARCHAR},
+      </if>
+      <if test="var_requisitos_puesto != null" >
+        #{var_requisitos_puesto,jdbcType=VARCHAR},
+      </if>
+      <if test="var_principales_funciones != null" >
+        #{var_principales_funciones,jdbcType=VARCHAR},
+      </if>
+      <if test="int_requiere_evaluacion != null" >
+        #{int_requiere_evaluacion,jdbcType=INTEGER},
+      </if>
+      <if test="var_lugar_prestacion != null" >
+        #{var_lugar_prestacion,jdbcType=VARCHAR},
+      </if>
+      <if test="int_id_tipo_trabajador != null" >
+        #{int_id_tipo_trabajador,jdbcType=INTEGER},
+      </if>
+      <if test="var_denominacion_requerimiento != null" >
+        #{var_denominacion_requerimiento,jdbcType=VARCHAR},
+      </if>
+      <if test="int_id_estado != null" >
+        #{int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+      <if test="c_fte_fto != null" >
+        #{c_fte_fto,jdbcType=VARCHAR},
+      </if>
+      <if test="c_meta != null" >
+        #{c_meta,jdbcType=VARCHAR},
+      </if>
+      <if test="int_anio != null" >
+        #{int_anio,jdbcType=INTEGER},
+      </if>
+      <if test="id_sede_ubicacion != null" >
+        #{id_sede_ubicacion,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_sede_req_sel != null" >
+        #{srl_id_sede_req_sel,jdbcType=INTEGER},
+      </if>
+      <if test="dte_fec_aprobacion_oa != null" >
+        #{dte_fec_aprobacion_oa,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sernanp.app.dao.domain.TRequerimientoPersonalExample" resultType="java.lang.Integer" >
+    select count(*) from personal.t_requerimiento_personal
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update personal.t_requerimiento_personal
+    <set >
+      <if test="record.srl_id_requerimiento_personal != null" >
+        srl_id_requerimiento_personal = #{record.srl_id_requerimiento_personal,jdbcType=INTEGER},
+      </if>
+      <if test="record.idarea_solicitante != null" >
+        idarea_solicitante = #{record.idarea_solicitante,jdbcType=INTEGER},
+      </if>
+      <if test="record.idunidad_solicitante != null" >
+        idunidad_solicitante = #{record.idunidad_solicitante,jdbcType=INTEGER},
+      </if>
+      <if test="record.idarea_supervisora != null" >
+        idarea_supervisora = #{record.idarea_supervisora,jdbcType=INTEGER},
+      </if>
+      <if test="record.idunidad_supervisora != null" >
+        idunidad_supervisora = #{record.idunidad_supervisora,jdbcType=INTEGER},
+      </if>
+      <if test="record.var_numero_requerimiento != null" >
+        var_numero_requerimiento = #{record.var_numero_requerimiento,jdbcType=VARCHAR},
+      </if>
+      <if test="record.int_cantidad_requerida != null" >
+        int_cantidad_requerida = #{record.int_cantidad_requerida,jdbcType=INTEGER},
+      </if>
+      <if test="record.dec_honorario_personal != null" >
+        dec_honorario_personal = #{record.dec_honorario_personal,jdbcType=NUMERIC},
+      </if>
+      <if test="record.int_cantidad_tiempo != null" >
+        int_cantidad_tiempo = #{record.int_cantidad_tiempo,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_id_tipo_unidad_tiempo != null" >
+        int_id_tipo_unidad_tiempo = #{record.int_id_tipo_unidad_tiempo,jdbcType=INTEGER},
+      </if>
+      <if test="record.var_experiencia_requerida != null" >
+        var_experiencia_requerida = #{record.var_experiencia_requerida,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_competencias_requeridas != null" >
+        var_competencias_requeridas = #{record.var_competencias_requeridas,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_formacion_academica != null" >
+        var_formacion_academica = #{record.var_formacion_academica,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_cursos_especializacion != null" >
+        var_cursos_especializacion = #{record.var_cursos_especializacion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_requisitos_puesto != null" >
+        var_requisitos_puesto = #{record.var_requisitos_puesto,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_principales_funciones != null" >
+        var_principales_funciones = #{record.var_principales_funciones,jdbcType=VARCHAR},
+      </if>
+      <if test="record.int_requiere_evaluacion != null" >
+        int_requiere_evaluacion = #{record.int_requiere_evaluacion,jdbcType=INTEGER},
+      </if>
+      <if test="record.var_lugar_prestacion != null" >
+        var_lugar_prestacion = #{record.var_lugar_prestacion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.int_id_tipo_trabajador != null" >
+        int_id_tipo_trabajador = #{record.int_id_tipo_trabajador,jdbcType=INTEGER},
+      </if>
+      <if test="record.var_denominacion_requerimiento != null" >
+        var_denominacion_requerimiento = #{record.var_denominacion_requerimiento,jdbcType=VARCHAR},
+      </if>
+      <if test="record.int_id_estado != null" >
+        int_id_estado = #{record.int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="record.tsp_fecha_registro != null" >
+        tsp_fecha_registro = #{record.tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.c_fte_fto != null" >
+        c_fte_fto = #{record.c_fte_fto,jdbcType=VARCHAR},
+      </if>
+      <if test="record.c_meta != null" >
+        c_meta = #{record.c_meta,jdbcType=VARCHAR},
+      </if>
+      <if test="record.int_anio != null" >
+        int_anio = #{record.int_anio,jdbcType=INTEGER},
+      </if>
+      <if test="record.id_sede_ubicacion != null" >
+        id_sede_ubicacion = #{record.id_sede_ubicacion,jdbcType=INTEGER},
+      </if>
+      <if test="record.srl_id_sede_req_sel != null" >
+        srl_id_sede_req_sel = #{record.srl_id_sede_req_sel,jdbcType=INTEGER},
+      </if>
+      <if test="record.dte_fec_aprobacion_oa != null" >
+        dte_fec_aprobacion_oa = #{record.dte_fec_aprobacion_oa,jdbcType=DATE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update personal.t_requerimiento_personal
+    set srl_id_requerimiento_personal = #{record.srl_id_requerimiento_personal,jdbcType=INTEGER},
+      idarea_solicitante = #{record.idarea_solicitante,jdbcType=INTEGER},
+      idunidad_solicitante = #{record.idunidad_solicitante,jdbcType=INTEGER},
+      idarea_supervisora = #{record.idarea_supervisora,jdbcType=INTEGER},
+      idunidad_supervisora = #{record.idunidad_supervisora,jdbcType=INTEGER},
+      var_numero_requerimiento = #{record.var_numero_requerimiento,jdbcType=VARCHAR},
+      int_cantidad_requerida = #{record.int_cantidad_requerida,jdbcType=INTEGER},
+      dec_honorario_personal = #{record.dec_honorario_personal,jdbcType=NUMERIC},
+      int_cantidad_tiempo = #{record.int_cantidad_tiempo,jdbcType=INTEGER},
+      int_id_tipo_unidad_tiempo = #{record.int_id_tipo_unidad_tiempo,jdbcType=INTEGER},
+      var_experiencia_requerida = #{record.var_experiencia_requerida,jdbcType=VARCHAR},
+      var_competencias_requeridas = #{record.var_competencias_requeridas,jdbcType=VARCHAR},
+      var_formacion_academica = #{record.var_formacion_academica,jdbcType=VARCHAR},
+      var_cursos_especializacion = #{record.var_cursos_especializacion,jdbcType=VARCHAR},
+      var_requisitos_puesto = #{record.var_requisitos_puesto,jdbcType=VARCHAR},
+      var_principales_funciones = #{record.var_principales_funciones,jdbcType=VARCHAR},
+      int_requiere_evaluacion = #{record.int_requiere_evaluacion,jdbcType=INTEGER},
+      var_lugar_prestacion = #{record.var_lugar_prestacion,jdbcType=VARCHAR},
+      int_id_tipo_trabajador = #{record.int_id_tipo_trabajador,jdbcType=INTEGER},
+      var_denominacion_requerimiento = #{record.var_denominacion_requerimiento,jdbcType=VARCHAR},
+      int_id_estado = #{record.int_id_estado,jdbcType=INTEGER},
+      tsp_fecha_registro = #{record.tsp_fecha_registro,jdbcType=TIMESTAMP},
+      c_fte_fto = #{record.c_fte_fto,jdbcType=VARCHAR},
+      c_meta = #{record.c_meta,jdbcType=VARCHAR},
+      int_anio = #{record.int_anio,jdbcType=INTEGER},
+      id_sede_ubicacion = #{record.id_sede_ubicacion,jdbcType=INTEGER},
+      srl_id_sede_req_sel = #{record.srl_id_sede_req_sel,jdbcType=INTEGER},
+      dte_fec_aprobacion_oa = #{record.dte_fec_aprobacion_oa,jdbcType=DATE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sernanp.app.dao.domain.TRequerimientoPersonal" >
+    update personal.t_requerimiento_personal
+    <set >
+      <if test="idarea_solicitante != null" >
+        idarea_solicitante = #{idarea_solicitante,jdbcType=INTEGER},
+      </if>
+      <if test="idunidad_solicitante != null" >
+        idunidad_solicitante = #{idunidad_solicitante,jdbcType=INTEGER},
+      </if>
+      <if test="idarea_supervisora != null" >
+        idarea_supervisora = #{idarea_supervisora,jdbcType=INTEGER},
+      </if>
+      <if test="idunidad_supervisora != null" >
+        idunidad_supervisora = #{idunidad_supervisora,jdbcType=INTEGER},
+      </if>
+      <if test="var_numero_requerimiento != null" >
+        var_numero_requerimiento = #{var_numero_requerimiento,jdbcType=VARCHAR},
+      </if>
+      <if test="int_cantidad_requerida != null" >
+        int_cantidad_requerida = #{int_cantidad_requerida,jdbcType=INTEGER},
+      </if>
+      <if test="dec_honorario_personal != null" >
+        dec_honorario_personal = #{dec_honorario_personal,jdbcType=NUMERIC},
+      </if>
+      <if test="int_cantidad_tiempo != null" >
+        int_cantidad_tiempo = #{int_cantidad_tiempo,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_tipo_unidad_tiempo != null" >
+        int_id_tipo_unidad_tiempo = #{int_id_tipo_unidad_tiempo,jdbcType=INTEGER},
+      </if>
+      <if test="var_experiencia_requerida != null" >
+        var_experiencia_requerida = #{var_experiencia_requerida,jdbcType=VARCHAR},
+      </if>
+      <if test="var_competencias_requeridas != null" >
+        var_competencias_requeridas = #{var_competencias_requeridas,jdbcType=VARCHAR},
+      </if>
+      <if test="var_formacion_academica != null" >
+        var_formacion_academica = #{var_formacion_academica,jdbcType=VARCHAR},
+      </if>
+      <if test="var_cursos_especializacion != null" >
+        var_cursos_especializacion = #{var_cursos_especializacion,jdbcType=VARCHAR},
+      </if>
+      <if test="var_requisitos_puesto != null" >
+        var_requisitos_puesto = #{var_requisitos_puesto,jdbcType=VARCHAR},
+      </if>
+      <if test="var_principales_funciones != null" >
+        var_principales_funciones = #{var_principales_funciones,jdbcType=VARCHAR},
+      </if>
+      <if test="int_requiere_evaluacion != null" >
+        int_requiere_evaluacion = #{int_requiere_evaluacion,jdbcType=INTEGER},
+      </if>
+      <if test="var_lugar_prestacion != null" >
+        var_lugar_prestacion = #{var_lugar_prestacion,jdbcType=VARCHAR},
+      </if>
+      <if test="int_id_tipo_trabajador != null" >
+        int_id_tipo_trabajador = #{int_id_tipo_trabajador,jdbcType=INTEGER},
+      </if>
+      <if test="var_denominacion_requerimiento != null" >
+        var_denominacion_requerimiento = #{var_denominacion_requerimiento,jdbcType=VARCHAR},
+      </if>
+      <if test="int_id_estado != null" >
+        int_id_estado = #{int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        tsp_fecha_registro = #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+      <if test="c_fte_fto != null" >
+        c_fte_fto = #{c_fte_fto,jdbcType=VARCHAR},
+      </if>
+      <if test="c_meta != null" >
+        c_meta = #{c_meta,jdbcType=VARCHAR},
+      </if>
+      <if test="int_anio != null" >
+        int_anio = #{int_anio,jdbcType=INTEGER},
+      </if>
+      <if test="id_sede_ubicacion != null" >
+        id_sede_ubicacion = #{id_sede_ubicacion,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_sede_req_sel != null" >
+        srl_id_sede_req_sel = #{srl_id_sede_req_sel,jdbcType=INTEGER},
+      </if>
+      <if test="dte_fec_aprobacion_oa != null" >
+        dte_fec_aprobacion_oa = #{dte_fec_aprobacion_oa,jdbcType=DATE},
+      </if>
+    </set>
+    where srl_id_requerimiento_personal = #{srl_id_requerimiento_personal,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sernanp.app.dao.domain.TRequerimientoPersonal" >
+    update personal.t_requerimiento_personal
+    set idarea_solicitante = #{idarea_solicitante,jdbcType=INTEGER},
+      idunidad_solicitante = #{idunidad_solicitante,jdbcType=INTEGER},
+      idarea_supervisora = #{idarea_supervisora,jdbcType=INTEGER},
+      idunidad_supervisora = #{idunidad_supervisora,jdbcType=INTEGER},
+      var_numero_requerimiento = #{var_numero_requerimiento,jdbcType=VARCHAR},
+      int_cantidad_requerida = #{int_cantidad_requerida,jdbcType=INTEGER},
+      dec_honorario_personal = #{dec_honorario_personal,jdbcType=NUMERIC},
+      int_cantidad_tiempo = #{int_cantidad_tiempo,jdbcType=INTEGER},
+      int_id_tipo_unidad_tiempo = #{int_id_tipo_unidad_tiempo,jdbcType=INTEGER},
+      var_experiencia_requerida = #{var_experiencia_requerida,jdbcType=VARCHAR},
+      var_competencias_requeridas = #{var_competencias_requeridas,jdbcType=VARCHAR},
+      var_formacion_academica = #{var_formacion_academica,jdbcType=VARCHAR},
+      var_cursos_especializacion = #{var_cursos_especializacion,jdbcType=VARCHAR},
+      var_requisitos_puesto = #{var_requisitos_puesto,jdbcType=VARCHAR},
+      var_principales_funciones = #{var_principales_funciones,jdbcType=VARCHAR},
+      int_requiere_evaluacion = #{int_requiere_evaluacion,jdbcType=INTEGER},
+      var_lugar_prestacion = #{var_lugar_prestacion,jdbcType=VARCHAR},
+      int_id_tipo_trabajador = #{int_id_tipo_trabajador,jdbcType=INTEGER},
+      var_denominacion_requerimiento = #{var_denominacion_requerimiento,jdbcType=VARCHAR},
+      int_id_estado = #{int_id_estado,jdbcType=INTEGER},
+      tsp_fecha_registro = #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      c_fte_fto = #{c_fte_fto,jdbcType=VARCHAR},
+      c_meta = #{c_meta,jdbcType=VARCHAR},
+      int_anio = #{int_anio,jdbcType=INTEGER},
+      id_sede_ubicacion = #{id_sede_ubicacion,jdbcType=INTEGER},
+      srl_id_sede_req_sel = #{srl_id_sede_req_sel,jdbcType=INTEGER},
+      dte_fec_aprobacion_oa = #{dte_fec_aprobacion_oa,jdbcType=DATE}
+    where srl_id_requerimiento_personal = #{srl_id_requerimiento_personal,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,28 @@
+{
+	"nameCrud": "Postulante",
+	"path": "postulantes",
+	"nameRepository": "TPostulanteRepository",
+	"nameModelXml": "PostulanteModel.xml",
+	"subModels": [
+		{
+			"nameRepository": "TPersonaDocumentoIdentidadRepository",
+			"nameCrud": "PersonaDocumentoIdentidad",
+			"nameSubModel": "PersonaDocumentoIdentidadModel"
+		},
+		{
+			"nameRepository": "TPersonaDireccionRepository",
+			"nameCrud": "PersonaDireccion",
+			"nameSubModel": "PersonaDireccionModel"
+		},
+		{
+			"nameRepository": "TPlazaPostulanteRepository",
+			"nameCrud": "Postulacion",
+			"nameSubModel": "PostulacionModel"
+		},
+		{
+			"nameRepository": "TPostulanteArchivoRepository",
+			"nameCrud": "PostulanteArchivo",
+			"nameSubModel": "PostulanteArchivoModel"
+		}
+	]
+}

@@ -1,0 +1,6 @@
+{
+	"nameCrud": "Estudio",
+	"path": "estudio-formacion",
+	"nameRepository": "TEstudioRepository",
+	"nameModelXml": "EstudioModel.xml"
+}

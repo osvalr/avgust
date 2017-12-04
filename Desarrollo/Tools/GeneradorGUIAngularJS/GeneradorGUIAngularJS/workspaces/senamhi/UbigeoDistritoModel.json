@@ -1,0 +1,7 @@
+{
+	"titleCrud": "Distritos",
+	"nameCrud": "UbigeoDistrito",
+	"constUrlApi": "UBIGEO_DISTRITOS_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "UbigeoDistritoModel.xml"
+}

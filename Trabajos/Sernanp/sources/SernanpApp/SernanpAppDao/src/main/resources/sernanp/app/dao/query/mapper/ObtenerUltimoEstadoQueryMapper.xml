@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.ObtenerUltimoEstadoQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.ObtenerUltimoEstadoQuery" parameterType="sernanp.app.dao.query.domain.ObtenerUltimoEstadoQueryCriteria"> 
+<![CDATA[
+
+	      
+			select 
+			
+				he.srl_id_detalle_historial_estado ,
+				he.srl_id_estado_tabla ,
+				he.int_id_registro ,
+				he.var_cod_estado,
+				to_char(he.tsp_fecha_registro, 'DD-MM-YYYY') as "tsp_fecha_registro"
+			
+			from sernanp.t_estado_tabla et inner join sernanp.t_detalle_historial_estado he
+			on et.srl_id_estado_tabla = he.srl_id_estado_tabla
+			where
+			
+				  et.var_nombre_tabla = #{var_nombre_tabla}   and
+			      he.int_id_registro = #{int_id_registro}   and 
+			      he.tsp_fecha_registro = 
+			      (select max(hex.tsp_fecha_registro) from sernanp.t_detalle_historial_estado hex 
+			      where hex.srl_id_estado_tabla =  he.srl_id_estado_tabla and
+			      hex.int_id_registro = #{int_id_registro_sub_query} and
+			      hex.tsp_fecha_registro <= #{tsp_fecha_registro})
+			
+]]>
+</select> 
+</mapper> 

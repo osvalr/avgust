@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.PersonalPorRegimenContractualQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+
+p.idpersona,
+pn.idpersonanatural,
+ps.idpersonal,
+pc.srl_id_regimen_contractual,
+ps.int_estado
+
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+
+sernanp.persona p inner join sernanp.personanatural pn on p.idpersona=pn.idpersona
+inner join sernanp.personal ps on ps.idpersonanatural=pn.idpersonanatural
+left join sernanp.t_personal_contrato pc on ps.idpersonal=pc.idpersonal
+
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+
+p.idpersona = coalesce(#{idpersona},p.idpersona) and
+pn.idpersonanatural = coalesce(#{idpersonanatural},pn.idpersonanatural) and
+ps.idpersonal = coalesce(#{idpersonal},ps.idpersonal) and
+pc.srl_id_regimen_contractual = coalesce(#{srl_id_regimen_contractual},pc.srl_id_regimen_contractual) and
+pc.dte_fec_inicio=(select MAX(dte_fec_inicio) from sernanp.t_personal_contrato where idpersonal=pc.idpersonal)
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.PersonalPorRegimenContractualQuery" parameterType="sernanp.app.dao.query.domain.PersonalPorRegimenContractualQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.PersonalPorRegimenContractualQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.PersonalPorRegimenContractualQuery" parameterType="sernanp.app.dao.query.domain.PersonalPorRegimenContractualQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.PersonalPorRegimenContractualQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.PersonalPorRegimenContractualQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

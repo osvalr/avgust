@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteDocumentoConsolidadoConvocatoria" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2560f1b0-9934-4709-b713-cb587435493e">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="288"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<field name="srl_id_convocatoria" class="java.lang.String"/>
+	<field name="var_num_convocatoria" class="java.lang.Integer"/>
+	<field name="var_codigo_postulacion" class="java.lang.String"/>
+	<field name="var_numero_requerimiento" class="java.lang.String"/>
+	<field name="var_denominacion_requerimiento" class="java.lang.String"/>
+	<field name="desarea" class="java.lang.String"/>
+	<field name="var_experiencia_requerida" class="java.lang.String"/>
+	<field name="var_competencias_requeridas" class="java.lang.Double"/>
+	<field name="var_formacion_academica" class="java.lang.Double"/>
+	<field name="var_cursos_especializacion" class="java.lang.String"/>
+	<field name="var_principales_funciones" class="java.lang.String"/>
+	<field name="var_requisitos_puesto" class="java.lang.String"/>
+	<field name="var_lugar_prestacion" class="java.lang.String"/>
+	<field name="int_cantidad_tiempo" class="java.lang.String"/>
+	<field name="int_id_tipo_unidad_tiempo" class="java.lang.String"/>
+	<field name="int_cantidad_requerida" class="java.lang.String"/>
+	<field name="dec_honorario_personal" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="640">
+			<textField>
+				<reportElement x="32" y="155" width="493" height="20" uuid="974fa7b6-c1b7-4372-840c-57b4cfcbd108"/>
+				<textFieldExpression><![CDATA["Contratar los servicios de "+$F{var_denominacion_requerimiento}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="32" y="115" width="100" height="20" uuid="b11486d2-b7c2-42cb-94f9-4332f856f0b5"/>
+				<text><![CDATA[I.- Generalidades]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="135" width="168" height="20" uuid="931d523c-50f9-4210-862f-09b327565274"/>
+				<text><![CDATA[1.- Objeto de la Convocatoria:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="32" y="60" width="493" height="35" uuid="ce68a470-fc86-40c6-b201-da6f5c95878b"/>
+				<textFieldExpression><![CDATA["Convocatoria para la Contratación Administrativa de Servicios de"+ $F{int_cantidad_requerida} +"Especialista(s) para" +$F{desarea} +"y/o en cualquier Área Natural Protegida del Perú, por disposición del SERNANP"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="32" y="95" width="156" height="20" uuid="7e2ed7a0-194f-40cd-9594-8394eac2fe07"/>
+				<textFieldExpression><![CDATA[$F{var_codigo_postulacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="32" y="175" width="100" height="20" uuid="bbb78d99-4e87-4a04-9a3e-22335ecd6cfe"/>
+				<text><![CDATA[2.- Área Solicitante:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="32" y="195" width="330" height="20" uuid="3ba5d353-5ea2-4f30-a0ac-94070eb4e338"/>
+				<textFieldExpression><![CDATA[$F{desarea}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="32" y="215" width="493" height="20" uuid="1376253a-af2c-43fc-a3ff-be321c3f6c04"/>
+				<text><![CDATA[3.- Dependencia encargada de realizar el proceso de contratación:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="235" width="493" height="20" uuid="0409544c-9bb0-40e4-b7b5-44aa5e8b392d"/>
+				<text><![CDATA[La Unidad Operativa Funcional de Recursos Humanos del SERNANP ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="255" width="493" height="105" uuid="4256b4ed-f83c-4ba9-8407-85b47b4c337d"/>
+				<text><![CDATA[4.- Base legal
+Decreto Legislativo N° 1057, que regula el Régimen Especial de Contratación Administrativa de Servicios (en adelante “régimen CAS”).
+Reglamento del Decreto Legislativo N° 1057 que regula el Régimen Especial de Contratación Administrativa de Servicios, el Decreto Supremo Nº 075-2008-PCM , modificado por Decreto Supremo 065-2011-PCM.
+Ley N° 29849, que establece la eliminación progresiva del Régimen Especial del Decreto Legislativo N° 1057 y otorga derechos laborales.
+Las demás disposiciones que regulen el Contrato Administrativo de Servicios.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="363" width="119" height="20" uuid="95bcc329-2ff4-4035-8415-664da0d6570b"/>
+				<text><![CDATA[II.- Perfil del Puesto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="387" width="116" height="20" uuid="17b66edd-97a4-4848-b023-773e673c6532"/>
+				<text><![CDATA[Experiencia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="407" width="100" height="20" uuid="2b6b87d1-19d5-4b88-8d84-b38689bba3a7"/>
+				<text><![CDATA[Competencias]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="427" width="119" height="20" uuid="43680b61-7c3c-4c5c-819e-b556eda7ba77"/>
+				<text><![CDATA[Formación Académica]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="447" width="116" height="20" uuid="5e626c34-a210-4059-83b9-3a543f4fceca"/>
+				<text><![CDATA[Cursos y/o estudios de especialización]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="467" width="119" height="20" uuid="2fb365a8-5f79-4574-9834-fa7ba945c8ba"/>
+				<text><![CDATA[Requisitos para el puesto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="487" width="168" height="20" uuid="d016b793-0d99-4195-b6d9-b514ae89aff3"/>
+				<text><![CDATA[III.- Características del Puesto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="527" width="260" height="20" uuid="da50dc70-af59-4dc1-99fa-8ab2c4151ecf"/>
+				<text><![CDATA[IV.- Condiciones Esenciales del Contrato]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="35" y="547" width="165" height="20" uuid="464ccdf2-e54d-460c-98b1-64d422c643ff"/>
+				<text><![CDATA[Lugar de prestación del servicio]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="200" y="547" width="325" height="20" uuid="9d4bd5e4-7b57-4de2-9bc4-83845f71d83d"/>
+				<textFieldExpression><![CDATA[$F{var_lugar_prestacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="32" y="567" width="156" height="20" uuid="322649f5-6936-41e7-8787-d70668595a10"/>
+				<text><![CDATA[Duración del Contrato]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="587" width="156" height="20" uuid="af04ec96-346b-420d-8b9a-6b2d6f10b5c2"/>
+				<text><![CDATA[Remuneración mensual]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="188" y="587" width="337" height="20" uuid="a519a8f6-7bfc-4f3f-98c6-b4cde6e23138"/>
+				<textFieldExpression><![CDATA[$F{dec_honorario_personal} + "Nuevos Soles. Incluye los montos y afiliaciones de ley, así como toda deducción aplicable al trabajador."]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement x="151" y="387" width="374" height="20" uuid="67603caf-79dd-444b-bb6a-3283169cc524"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{var_experiencia_requerida}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="151" y="407" width="374" height="20" uuid="b89503d2-1fd2-4a49-ad5b-1fe964ed0901"/>
+				<hc:html xmlns:hc="http://jasperreports.sourceforge.net/htmlcomponent" xsi:schemaLocation="http://jasperreports.sourceforge.net/htmlcomponent http://jasperreports.sourceforge.net/xsd/htmlcomponent.xsd" scaleType="RetainShape" horizontalAlign="Left" verticalAlign="Middle" evaluationTime="Report" clipOnOverflow="true"/>
+			</componentElement>
+		</band>
+	</title>
+</jasperReport>

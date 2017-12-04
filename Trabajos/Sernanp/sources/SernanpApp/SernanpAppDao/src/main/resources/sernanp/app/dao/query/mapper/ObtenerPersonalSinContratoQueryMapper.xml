@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.ObtenerPersonalSinContratoQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.ObtenerPersonalSinContratoQuery" parameterType="sernanp.app.dao.query.domain.ObtenerPersonalSinContratoQueryCriteria"> 
+<![CDATA[
+
+	      
+	      
+	            select 
+				
+					pc.srl_id_contrato ,
+					pc.dte_fec_suscrip ,
+					pc.dte_fec_inicio ,
+					pc.dte_fec_termino ,
+					pc.int_id_estado ,
+					ppp.idpersonal 
+				
+				from 
+					sernanp.t_personal_contrato pc left join sernanp.personal ppp
+					on pc.idpersonal = ppp.idpersonal
+				where 
+				
+					COALESCE(ppp.idpersonal,0) = COALESCE(#{idpersonal},COALESCE(ppp.idpersonal,0))   and 
+					COALESCE(pc.srl_id_contrato,0) <>  COALESCE(#{srl_id_contrato},0)  ;
+					
+
+		  
+	      
+]]>
+</select> 
+</mapper> 

@@ -1,0 +1,6 @@
+{
+	"nameCrud": "ModalidadContractual",
+	"path": "modalidades-contractuales",
+	"nameRepository": "TModalidadContractualRepository",
+	"nameModelXml": "ModalidadContractualModel.xml"
+}

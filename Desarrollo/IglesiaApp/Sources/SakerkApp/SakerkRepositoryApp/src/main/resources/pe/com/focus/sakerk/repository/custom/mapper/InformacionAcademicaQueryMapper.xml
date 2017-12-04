@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.focus.sakerk.repository.custom.mapper.InformacionAcademicaQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+ia.id_informacion_academica ,
+ia.id_persona_natural ,
+et.id_categoria_estudio ,
+cet.descrip_categoria_estudio,
+ia.id_estudio ,
+et.nombre_estudio,
+ia.id_centro_estudio,
+pj.razon_social,
+ia.id_tipo_grado_instruccion ,
+tgi.descrip_tipo_grado_instruccion,
+to_char(ia.fecha_ingreso, 'DD/MM/YYYY') as "fecha_ingreso",
+to_char(ia.fecha_egreso, 'DD/MM/YYYY') as "fecha_egreso",
+ia.flag_encurso ,
+(case ia.flag_encurso
+when 1 then 'En Curso'
+when 2 then 'Finalizado'
+end) as "descrip_flag_encurso",
+ia.id_estado ,
+e.descrip_estado_generico as "descrip_estado",
+to_char(ia.fecha_registro, 'DD/MM/YYYY HH24:MI:ss') as "fecha_registro"
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+general.informacion_academica ia
+inner join 
+vw_estado_generico e
+on ia.id_estado = e.id_estado_generico
+inner join
+sakerk.estudio et
+on ia.id_estudio = et.id_estudio
+inner join
+general.persona_juridica pj
+on ia.id_centro_estudio = pj.id_persona_juridica
+inner join vw_categoria_estudio cet
+on et.id_categoria_estudio = cet.id_categoria_estudio
+inner join vw_tipo_grado_instruccion tgi
+on ia.id_tipo_grado_instruccion = tgi.id_tipo_grado_instruccion
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+ia.id_informacion_academica = COALESCE(#{id_informacion_academica},ia.id_informacion_academica) and
+ia.id_persona_natural = COALESCE(#{id_persona_natural},ia.id_persona_natural) and
+et.id_categoria_estudio = COALESCE(#{id_categoria_estudio},et.id_categoria_estudio) and
+ia.id_estudio = COALESCE(#{id_estudio},ia.id_estudio) and
+ia.id_centro_estudio = COALESCE(#{id_centro_estudio},ia.id_centro_estudio) and
+ia.id_tipo_grado_instruccion = COALESCE(#{id_tipo_grado_instruccion},ia.id_tipo_grado_instruccion) and
+ia.flag_encurso = COALESCE(#{flag_encurso},ia.flag_encurso)	
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.focus.sakerk.repository.custom.model.InformacionAcademicaQuery" parameterType="pe.com.focus.sakerk.repository.custom.model.InformacionAcademicaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.focus.sakerk.repository.custom.model.InformacionAcademicaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.focus.sakerk.repository.custom.model.InformacionAcademicaQuery" parameterType="pe.com.focus.sakerk.repository.custom.model.InformacionAcademicaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.focus.sakerk.repository.custom.model.InformacionAcademicaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.focus.sakerk.repository.custom.model.InformacionAcademicaQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

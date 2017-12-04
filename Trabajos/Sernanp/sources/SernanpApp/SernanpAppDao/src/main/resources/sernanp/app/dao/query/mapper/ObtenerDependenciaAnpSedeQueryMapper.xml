@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.ObtenerDependenciaAnpSedeQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+
+x.srl_id_sede_uni_ope_anp,
+coalesce((ca.descategoriaanp || ' '|| an.desareanatural), s.dessede) as var_descrip
+
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+
+sernanp.t_sede_uni_ope_anp x 
+left join sernanp.areanatural an on x.idareanatural = an.idareanatural
+left join sernanp.categoriaanp ca on an.idcategoriaanp = ca.idcategoriaanp
+left join sernanp.t_sub_sede ss on x.srl_id_sub_sede = ss.srl_id_sub_sede
+left join sernanp.sede s on ss.idsede_hija = s.idsede
+
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+
+x.srl_id_unidad_operativa = #{srl_id_unidad_operativa}
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.ObtenerDependenciaAnpSedeQuery" parameterType="sernanp.app.dao.query.domain.ObtenerDependenciaAnpSedeQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.ObtenerDependenciaAnpSedeQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.ObtenerDependenciaAnpSedeQuery" parameterType="sernanp.app.dao.query.domain.ObtenerDependenciaAnpSedeQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.ObtenerDependenciaAnpSedeQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.ObtenerDependenciaAnpSedeQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

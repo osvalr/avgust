@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.AreaOrganicaQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.AreaOrganicaQuery" parameterType="sernanp.app.dao.query.domain.AreaOrganicaQueryCriteria"> 
+<![CDATA[
+	
+select 
+  ao.idarea,
+CASE WHEN substring(ao.desarea from 1 for 6) = 'JANP -' 
+	THEN (canp.descategoriaanp  || ' - ' || an.desareanatural)
+	else ao.desarea
+END as "descrip_dependencia"
+from sernanp.areaorganica ao left join sernanp.sede sd
+on ao.idsede = sd.idsede left join sernanp.areanatural an
+on sd.idareanatural = an.idareanatural left join sernanp.categoriaanp canp 
+on an.idcategoriaanp = canp.idcategoriaanp
+where COALESCE(ao.idarea,0)  = COALESCE(#{idarea},COALESCE(ao.idarea,0))
+order by ao.idarea;
+	      
+]]>
+</select> 
+</mapper> 

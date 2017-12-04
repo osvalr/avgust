@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.ReporteConvocatoriaMintraQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+	cao.srl_id_conv_area_org,
+       c.srl_id_convocatoria,
+       (select a[2] || '-' || a[3] from (select regexp_split_to_array(c.var_num_convocatoria, '-')) as dt(a)) as "var_numero_convocatoria_corto",
+       
+        CASE WHEN (ROW_NUMBER() OVER(ORDER BY cao.srl_id_requerimiento_personal)) < 10 THEN
+		'0'||(ROW_NUMBER() OVER(ORDER BY cao.srl_id_requerimiento_personal)) || '.- Código: '|| cao.var_codigo_postulacion
+		ELSE
+		(ROW_NUMBER() OVER(ORDER BY cao.srl_id_requerimiento_personal)) || '.- Código: '|| cao.var_codigo_postulacion
+		END AS var_codigo_postulacion,
+       
+       --cao.var_codigo_postulacion,
+       cao.idarea as "idarea_solicitante",       
+       --ao.desarea as "descrip_area",
+       	CASE WHEN ao.idtipoarea = 6 THEN
+			'Jefatura de ' || initcap(canp.descategoriaanp) || ' ' || an.desareanatural
+		ELSE
+			CASE WHEN uo.nomunidad ISNULL THEN
+				ao.desarea
+			ELSE
+				ao.desarea || ' - ' || COALESCE(initcap(uo.nomunidad), '')
+			END
+		END as "descrip_area",
+		
+       cao.idunidad as "idunidad_solicitante",
+       uo.nomunidad as "descrip_unidad",
+       --rp.var_denominacion_requerimiento,
+       initcap(rp.var_denominacion_requerimiento) as var_denominacion_requerimiento, 
+       rp.idarea_supervisora,
+       (select x.desarea from sernanp.areaorganica x where x.idarea = rp.idarea_supervisora) as "descrip_area_supervisora",
+       cao.srl_id_configuracion_factor_evaluacion,
+       cao.srl_id_configuracion_evaluacion_personal,
+       cao.srl_id_requerimiento_personal,
+       cao.idpersonal,
+       rp.var_numero_requerimiento,
+      (select a[2] || '-' || a[3] from (select regexp_split_to_array(rp.var_numero_requerimiento, '-')) as dt(a)) as "var_numero_requerimiento_corto",
+       
+       --rp.int_cantidad_requerida,
+       c.int_num_activacion,
+       COALESCE(cao.int_num_puestos,rp.int_cantidad_requerida) AS int_cantidad_requerida,
+       --rp.var_lugar_prestacion,
+       initcap(rp.var_lugar_prestacion) as var_lugar_prestacion,
+       rp.var_formacion_academica, 
+       rp.var_cursos_especializacion, 
+       rp.var_requisitos_puesto, 
+       rp.var_principales_funciones, 
+       rp.var_competencias_requeridas, 
+       rp.var_experiencia_requerida,
+       rp.dec_honorario_personal,
+       rp.int_cantidad_tiempo,
+       rp.int_id_tipo_unidad_tiempo,
+       
+       (SELECT destablatipo FROM sernanp.tablatipo WHERE idtablatipo = 206 AND ordtablatipo = rp.int_id_tipo_unidad_tiempo) as descrip_unidad_tiempo,
+
+       rp.dte_fec_aprobacion_oa as dte_fecha_aprobacion,
+                      
+       TO_CHAR(cao.dte_fecha_inicio_contrato,'DD/MM/YYYY') AS dte_fecha_inicio_contrato,
+       TO_CHAR(cao.dte_fecha_fin_contrato,'DD/MM/YYYY') AS dte_fecha_termino_contrato,
+       
+       /*               
+       (
+		select 
+		(to_char(xcfec.dte_fecha_termino,'dd') || ' de ' || to_char(xcfec.dte_fecha_termino,'TMMonth') || ' del ' || to_char(xcfec.dte_fecha_termino,'yyyy')) 
+		from personal.t_conv_fecha_etapa_config xcfec 
+		where xcfec.srl_id_subetapa_proceso_seleccion = 9  AND xcfec.srl_id_convocatoria = c.srl_id_convocatoria
+		) as dte_fecha_inicio_contrato,
+		
+		(CASE 
+			WHEN rp.int_id_tipo_unidad_tiempo = 1 THEN
+			 (select (xcfec.dte_fecha_termino + (rp.int_cantidad_tiempo * rp.int_id_tipo_unidad_tiempo))  
+			 from personal.t_conv_fecha_etapa_config xcfec 
+			 where xcfec.srl_id_subetapa_proceso_seleccion = 9 AND xcfec.srl_id_convocatoria = c.srl_id_convocatoria)
+	
+			WHEN rp.int_id_tipo_unidad_tiempo = 2 THEN
+			     (select (xcfec.dte_fecha_termino + (rp.int_cantidad_tiempo * 30))  
+			     from personal.t_conv_fecha_etapa_config xcfec 
+			     where xcfec.srl_id_subetapa_proceso_seleccion = 9 AND xcfec.srl_id_convocatoria = c.srl_id_convocatoria)
+		    
+		ELSE 
+			(select (xcfec.dte_fecha_termino + (rp.int_cantidad_tiempo * 365))  
+			from personal.t_conv_fecha_etapa_config xcfec 
+			where xcfec.srl_id_subetapa_proceso_seleccion = 9 AND xcfec.srl_id_convocatoria = c.srl_id_convocatoria)
+			
+		END ) as dte_fecha_termino_contrato,
+		*/
+	
+	(CASE 
+		WHEN c.dte_fecha_inicio_publicacion = c.dte_fecha_termino_publicacion THEN 
+		(to_char(c.dte_fecha_inicio_publicacion,'dd') || ' de ' || 
+		CASE 
+			WHEN EXTRACT(MONTH FROM c.dte_fecha_inicio_publicacion) = 1 THEN 'Enero'
+			WHEN EXTRACT(MONTH FROM c.dte_fecha_inicio_publicacion) = 2 THEN 'Febrero'
+			WHEN EXTRACT(MONTH FROM c.dte_fecha_inicio_publicacion) = 3 THEN 'Marzo'
+			WHEN EXTRACT(MONTH FROM c.dte_fecha_inicio_publicacion) = 4 THEN 'Abril'
+			WHEN EXTRACT(MONTH FROM c.dte_fecha_inicio_publicacion) = 5 THEN 'Mayo'
+			WHEN EXTRACT(MONTH FROM c.dte_fecha_inicio_publicacion) = 6 THEN 'Junio'
+			WHEN EXTRACT(MONTH FROM c.dte_fecha_inicio_publicacion) = 7 THEN 'Julio'
+			WHEN EXTRACT(MONTH FROM c.dte_fecha_inicio_publicacion) = 8 THEN 'Agosto'
+			WHEN EXTRACT(MONTH FROM c.dte_fecha_inicio_publicacion) = 9 THEN 'Setiembre'
+			WHEN EXTRACT(MONTH FROM c.dte_fecha_inicio_publicacion) = 10 THEN 'Octubre'
+			WHEN EXTRACT(MONTH FROM c.dte_fecha_inicio_publicacion) = 11 THEN 'Noviembre'
+			ELSE
+			'Diciembre'
+		END
+		
+		--to_char(c.dte_fecha_inicio_publicacion,'TMMonth') 
+		
+		|| ' del ' || to_char(c.dte_fecha_inicio_publicacion,'yyyy')) 
+       
+		ELSE
+
+		CASE 
+			WHEN EXTRACT(MONTH FROM c.dte_fecha_inicio_publicacion) = EXTRACT(MONTH FROM c.dte_fecha_termino_publicacion) THEN 
+				('Del ' || to_char(c.dte_fecha_inicio_publicacion,'dd') || ' al ' || to_char(c.dte_fecha_termino_publicacion,'dd') || ' de ' || 
+				CASE 
+					WHEN EXTRACT(MONTH FROM c.dte_fecha_inicio_publicacion) = 1 THEN 'Enero'
+					WHEN EXTRACT(MONTH FROM c.dte_fecha_inicio_publicacion) = 2 THEN 'Febrero'
+					WHEN EXTRACT(MONTH FROM c.dte_fecha_inicio_publicacion) = 3 THEN 'Marzo'
+					WHEN EXTRACT(MONTH FROM c.dte_fecha_inicio_publicacion) = 4 THEN 'Abril'
+					WHEN EXTRACT(MONTH FROM c.dte_fecha_inicio_publicacion) = 5 THEN 'Mayo'
+					WHEN EXTRACT(MONTH FROM c.dte_fecha_inicio_publicacion) = 6 THEN 'Junio'
+					WHEN EXTRACT(MONTH FROM c.dte_fecha_inicio_publicacion) = 7 THEN 'Julio'
+					WHEN EXTRACT(MONTH FROM c.dte_fecha_inicio_publicacion) = 8 THEN 'Agosto'
+					WHEN EXTRACT(MONTH FROM c.dte_fecha_inicio_publicacion) = 9 THEN 'Setiembre'
+					WHEN EXTRACT(MONTH FROM c.dte_fecha_inicio_publicacion) = 10 THEN 'Octubre'
+					WHEN EXTRACT(MONTH FROM c.dte_fecha_inicio_publicacion) = 11 THEN 'Noviembre'
+					ELSE
+					'Diciembre'
+				END
+			--to_char(c.dte_fecha_termino_publicacion,'TMMonth') 
+
+			|| ' de ' || to_char(c.dte_fecha_termino_publicacion,'yyyy')) 
+			ELSE
+
+			('Del ' || to_char(c.dte_fecha_inicio_publicacion,'dd') || ' de ' || 
+				CASE 
+					WHEN EXTRACT(MONTH FROM c.dte_fecha_inicio_publicacion) = 1 THEN 'Enero'
+					WHEN EXTRACT(MONTH FROM c.dte_fecha_inicio_publicacion) = 2 THEN 'Febrero'
+					WHEN EXTRACT(MONTH FROM c.dte_fecha_inicio_publicacion) = 3 THEN 'Marzo'
+					WHEN EXTRACT(MONTH FROM c.dte_fecha_inicio_publicacion) = 4 THEN 'Abril'
+					WHEN EXTRACT(MONTH FROM c.dte_fecha_inicio_publicacion) = 5 THEN 'Mayo'
+					WHEN EXTRACT(MONTH FROM c.dte_fecha_inicio_publicacion) = 6 THEN 'Junio'
+					WHEN EXTRACT(MONTH FROM c.dte_fecha_inicio_publicacion) = 7 THEN 'Julio'
+					WHEN EXTRACT(MONTH FROM c.dte_fecha_inicio_publicacion) = 8 THEN 'Agosto'
+					WHEN EXTRACT(MONTH FROM c.dte_fecha_inicio_publicacion) = 9 THEN 'Setiembre'
+					WHEN EXTRACT(MONTH FROM c.dte_fecha_inicio_publicacion) = 10 THEN 'Octubre'
+					WHEN EXTRACT(MONTH FROM c.dte_fecha_inicio_publicacion) = 11 THEN 'Noviembre'
+					ELSE
+					'Diciembre'
+				END
+				|| ' al '|| to_char(c.dte_fecha_termino_publicacion,'dd') || ' de ' || 
+				CASE 
+					WHEN EXTRACT(MONTH FROM c.dte_fecha_termino_publicacion) = 1 THEN 'Enero'
+					WHEN EXTRACT(MONTH FROM c.dte_fecha_termino_publicacion) = 2 THEN 'Febrero'
+					WHEN EXTRACT(MONTH FROM c.dte_fecha_termino_publicacion) = 3 THEN 'Marzo'
+					WHEN EXTRACT(MONTH FROM c.dte_fecha_termino_publicacion) = 4 THEN 'Abril'
+					WHEN EXTRACT(MONTH FROM c.dte_fecha_termino_publicacion) = 5 THEN 'Mayo'
+					WHEN EXTRACT(MONTH FROM c.dte_fecha_termino_publicacion) = 6 THEN 'Junio'
+					WHEN EXTRACT(MONTH FROM c.dte_fecha_termino_publicacion) = 7 THEN 'Julio'
+					WHEN EXTRACT(MONTH FROM c.dte_fecha_termino_publicacion) = 8 THEN 'Agosto'
+					WHEN EXTRACT(MONTH FROM c.dte_fecha_termino_publicacion) = 9 THEN 'Setiembre'
+					WHEN EXTRACT(MONTH FROM c.dte_fecha_termino_publicacion) = 10 THEN 'Octubre'
+					WHEN EXTRACT(MONTH FROM c.dte_fecha_termino_publicacion) = 11 THEN 'Noviembre'
+					ELSE
+					'Diciembre'
+				END
+
+			|| ' de ' || to_char(c.dte_fecha_termino_publicacion,'yyyy')) 
+			END
+       
+		END 
+	) as dte_fecha_publicacion,
+
+	
+	(
+	SELECT xao.desarea from personal.t_subetapa_proceso_seleccion y 
+    INNER JOIN sernanp.areaorganica xao 					ON y.idarea = xao.idarea 	
+	INNER JOIN personal.t_subetapa_proceso_seleccion sps 	ON y.srl_id_subetapa_proceso_seleccion = sps.srl_id_subetapa_proceso_seleccion    
+	INNER JOIN personal.t_conv_fecha_etapa_config cfec 		ON c.srl_id_convocatoria = cfec.srl_id_convocatoria AND sps.srl_id_subetapa_proceso_seleccion = cfec.srl_id_subetapa_proceso_seleccion         
+        where y.srl_id_subetapa_proceso_seleccion = 1
+    ) as "descrip_area_responsable"  
+
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+	personal.t_requerimiento_personal rp       
+       LEFT JOIN sernanp.t_convocatoria_area_org cao  	ON cao.srl_id_requerimiento_personal = rp.srl_id_requerimiento_personal
+       LEFT JOIN sernanp.t_convocatoria c 				ON cao.srl_id_convocatoria = c.srl_id_convocatoria       
+       LEFT JOIN sernanp.areaorganica ao 				ON ao.idarea = rp.idarea_solicitante
+       LEFT JOIN sernanp.unidadoperativa uo 			ON uo.idunidad = rp.idunidad_solicitante
+       LEFT JOIN sernanp.sede s							ON s.idsede = ao.idsede
+       LEFT JOIN sernanp.areanatural an					ON an.idareanatural = s.idareanatural
+       LEFT JOIN sernanp.categoriaanp canp				ON canp.idcategoriaanp = an.idcategoriaanp
+       INNER JOIN sernanp.t_detalle_estado_tabla det 	ON cao.int_id_estado = cast(det.var_cod_estado as integer) and det.srl_id_estado_tabla = 3  
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+
+       COALESCE(cao.srl_id_conv_area_org,0) = COALESCE(#{srl_id_conv_area_org},COALESCE(cao.srl_id_conv_area_org,0)) AND
+       COALESCE(c.srl_id_convocatoria,0) = COALESCE(#{srl_id_convocatoria},COALESCE(c.srl_id_convocatoria,0)) 
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+
+ORDER BY rp.srl_id_requerimiento_personal --, cao.var_codigo_postulacion--, eps.srl_id_etapa_proceso_seleccion, cfec.srl_id_subetapa_proceso_seleccion
+
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.ReporteConvocatoriaMintraQuery" parameterType="sernanp.app.dao.query.domain.ReporteConvocatoriaMintraQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.ReporteConvocatoriaMintraQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.ReporteConvocatoriaMintraQuery" parameterType="sernanp.app.dao.query.domain.ReporteConvocatoriaMintraQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.ReporteConvocatoriaMintraQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.ReporteConvocatoriaMintraQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

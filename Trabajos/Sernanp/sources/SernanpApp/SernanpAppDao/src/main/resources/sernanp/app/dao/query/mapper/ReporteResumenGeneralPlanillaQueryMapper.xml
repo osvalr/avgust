@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.ReporteResumenGeneralPlanillaQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+
+ps.idpersonal,
+pn.idpersonanatural,
+(COALESCE(pn.apepat,'')||' '||COALESCE(pn.apemat,'')||' '||COALESCE(pn.nombre,'')) as "nombre_completo",
+pn.numerodoc,
+to_char((select MAX(x.dte_fec_inicio) from sernanp.t_personal_contrato x where x.idpersonal=napp.idpersonal),'DD/MM/YYYY') as dte_fec_inicio,
+napp.srl_id_regimen_contractual,
+rc.var_descripcion_regimen_contractual,
+ap.srl_id_anio_planilla,
+ap.int_anio,
+app.int_id_periodo_mes,
+ms.destablatipo as descrip_periodo,
+napp.c_meta,
+napp.c_fte_fto,
+ff.var_descripcion_fuente_financiamiento
+
+
+
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+
+personal.t_nomina_anio_periodo_personal napp
+inner join personal.t_anio_periodo_planilla app on napp.srl_id_anio_periodo_planilla = app.srl_id_anio_periodo_planilla
+inner join personal.t_anio_planilla ap on app.srl_id_anio_planilla = ap.srl_id_anio_planilla
+inner join sernanp.vw_meses ms on ms.codinttablatipo = app.int_id_periodo_mes
+inner join sernanp.t_regimen_contractual rc on napp.srl_id_regimen_contractual=rc.srl_id_regimen_contractual
+inner join sernanp.personal ps on napp.idpersonal = ps.idpersonal
+inner join sernanp.personanatural pn on ps.idpersonanatural=pn.idpersonanatural
+left join personal.t_anio_meta am on napp.c_meta = am.cod_meta and ap.srl_id_anio_planilla = am.srl_id_anio_planilla
+left join sernanp.t_personal_contrato pc on napp.srl_id_contrato=pc.srl_id_contrato
+left join mpp.t_fuente_financiamiento ff on napp.c_fte_fto = ff.var_rubro_fte_fto
+
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+
+UPPER(COALESCE(COALESCE(pn.nombre,'') ||' '|| COALESCE(pn.apepat,'') ||' '|| COALESCE(pn.apemat,''),'')) like UPPER(COALESCE('%'|| #{nombre_completo} ||'%',UPPER(COALESCE(COALESCE(pn.nombre,'')||' '||COALESCE(pn.apepat,'')||' '|| COALESCE(pn.apemat,''),'')))) and
+COALESCE(napp.srl_id_regimen_contractual,0)=COALESCE(#{srl_id_regimen_contractual},COALESCE(napp.srl_id_regimen_contractual,0)) and
+COALESCE(napp.c_fte_fto,'') = COALESCE(#{c_fte_fto},COALESCE(napp.c_fte_fto,'')) AND
+--COALESCE(napp.c_meta,'') in (${c_meta}) and
+ap.int_anio = COALESCE(#{int_anio},ap.int_anio) and
+app.int_id_periodo_mes = COALESCE(#{int_id_periodo_mes},app.int_id_periodo_mes) and
+napp.int_id_estado = COALESCE(1,napp.int_id_estado)
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.ReporteResumenGeneralPlanillaQuery" parameterType="sernanp.app.dao.query.domain.ReporteResumenGeneralPlanillaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.ReporteResumenGeneralPlanillaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.ReporteResumenGeneralPlanillaQuery" parameterType="sernanp.app.dao.query.domain.ReporteResumenGeneralPlanillaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.ReporteResumenGeneralPlanillaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.ReporteResumenGeneralPlanillaQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

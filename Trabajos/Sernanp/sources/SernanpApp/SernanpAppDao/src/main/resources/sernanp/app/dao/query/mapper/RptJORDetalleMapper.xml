@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.RptJORDetalleMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+ 
+ lpad(cast(pn.idtipodocumento as varchar), 2, '0') idtipodocumento,
+ pn.numerodoc
+ 
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+personal.t_nomina_anio_periodo_personal napp
+inner join personal.t_anio_periodo_planilla app on napp.srl_id_anio_periodo_planilla = app.srl_id_anio_periodo_planilla
+inner join personal.t_anio_planilla ap on app.srl_id_anio_planilla = ap.srl_id_anio_planilla
+inner join sernanp.personal ps on napp.idpersonal = ps.idpersonal
+inner join sernanp.personanatural pn on ps.idpersonanatural=pn.idpersonanatural
+
+left join personal.t_anio_meta am on napp.c_meta = am.cod_meta and ap.srl_id_anio_planilla = am.srl_id_anio_planilla
+left join sernanp.t_personal_contrato pc on napp.srl_id_contrato=pc.srl_id_contrato
+
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+ 
+ap.int_anio = COALESCE(#{int_anio},ap.int_anio) and
+app.int_id_periodo_mes = COALESCE(#{int_id_periodo_mes},app.int_id_periodo_mes) and
+COALESCE(napp.srl_id_regimen_contractual,0)=COALESCE(#{srl_id_regimen_contractual},COALESCE(napp.srl_id_regimen_contractual,0)) and
+napp.int_id_estado = COALESCE(1,napp.int_id_estado)
+
+
+
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+
+
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.RptJORDetalle" parameterType="sernanp.app.dao.query.domain.RptJORDetalleCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.RptJORDetalle" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.RptJORDetalle" parameterType="sernanp.app.dao.query.domain.RptJORDetalleCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.RptJORDetalle" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.RptJORDetalleCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

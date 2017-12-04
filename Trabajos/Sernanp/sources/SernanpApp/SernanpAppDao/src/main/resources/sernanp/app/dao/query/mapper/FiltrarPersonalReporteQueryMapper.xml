@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.FiltrarPersonalReporteQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.FiltrarPersonalReporteQuery" parameterType="sernanp.app.dao.query.domain.FiltrarPersonalReporteQueryCriteria"> 
+<![CDATA[
+
+	      
+DROP table IF EXISTS personal_filtro;
+CREATE TEMP TABLE personal_filtro AS 
+SELECT * FROM 
+(
+select
+		  	
+				p.idpersona ,
+				ps.idpersonal ,
+				(COALESCE(pn.nombre,'') || ' ' || COALESCE(pn.apepat,'') || ' ' || COALESCE(pn.apemat,'')) as "nombre_completo",
+        pn.nombre ,
+        pn.apepat ,
+        pn.apemat ,
+        pn.idtipodocumento ,
+        pn.ruc ,
+        pn.idpersonanatural ,
+				td.abrtablatipo as "tipoDoc",
+				pn.numerodoc,
+        pc.srl_id_cargo,
+	      pc.var_nom_cargo,
+				pc.dte_fec_inicio,
+pc.dte_fec_termino,
+        pc.desareanatural,
+			  pc.descategoriaanp,
+			  pc.desarea,
+        pc.srl_id_regimen_contractual,
+				pc.dte_fec_inicio_aux,
+				    
+				CASE WHEN ps.int_estado = 0 THEN 'ACTIVO'
+				     WHEN ps.int_estado = 1 THEN 'INACTIVO'
+			  END as "desc_estado",
+        ps.int_estado,
+			  (COALESCE(pn.var_num_caja,'') || '  ' || COALESCE(pn.var_num_file,'')) as "expediente",
+		pc.srl_id_contrato
+		  from
+				sernanp.persona p inner join
+				sernanp.personanatural pn on p.idpersona = pn.idpersona inner join 
+				sernanp.personal ps on ps.idpersonanatural = pn.idpersonanatural inner join
+				(SELECT idtablatipo,destablatipo,abrtablatipo FROM sernanp.tablatipo WHERE idtabla=1) td
+				on pn.idtipodocumento = td.idtablatipo left join 
+(
+SELECT 
+       ps.idpersonal ,
+	   pc.srl_id_cargo,
+	   c.var_nom_cargo,
+       to_char(pc.dte_fec_inicio,'DD/MM/YYYY') as "dte_fec_inicio",
+
+	   to_char(COALESCE((select pcx.dte_fec_termino from sernanp.t_personal_contrato pcx 
+				where 
+				pcx.srl_id_contrato_padre = pc.srl_id_contrato and
+				pcx.idpersonal = ps.idpersonal and
+				pcx.dte_fec_suscrip = (select max(pcy.dte_fec_suscrip) 
+										from sernanp.t_personal_contrato pcy 
+										where pcy.srl_id_contrato_padre = pc.srl_id_contrato)),pc.dte_fec_termino),'DD/MM/YYYY') as "dte_fec_termino",
+
+	   pc.dte_fec_inicio as "dte_fec_inicio_aux",
+       an.desareanatural,
+       pc.srl_id_regimen_contractual,
+       
+			 ca.descategoriaanp,
+			 ao.desarea,
+		pc.srl_id_contrato
+
+FROM             sernanp.personal ps inner join 
+					       sernanp.t_personal_contrato pc on ps.idpersonal = pc.idpersonal left join sernanp.areaorganica ao
+								 on pc.idarea = ao.idarea left join sernanp.t_cargo c
+								 on pc.srl_id_cargo = c.srl_id_cargo left join sernanp.sede se
+								 on pc.srl_id_sede_pres = se.idsede left join sernanp.areanatural an
+								 on se.idareanatural = an.idareanatural left join sernanp.categoriaanp ca 
+								 on an.idcategoriaanp = ca.idcategoriaanp
+)pc 
+
+on ps.idpersonal = pc.idpersonal
+
+)x;
+
+
+       								
+
+select * from personal_filtro x
+
+	  where
+
+		  	COALESCE(x.srl_id_regimen_contractual ,0) = COALESCE(#{srl_id_regimen_contractual} , COALESCE(x.srl_id_regimen_contractual,0))   and
+				COALESCE(x.srl_id_cargo,0) = COALESCE(#{srl_id_cargo} , COALESCE(x.srl_id_cargo,0)) and
+				EXTRACT(YEAR FROM x.dte_fec_inicio_aux) = COALESCE(#{anho_inicio},EXTRACT(YEAR FROM x.dte_fec_inicio_aux)) and
+				(
+					x.dte_fec_inicio_aux BETWEEN COALESCE(#{dte_fec_inicio_desde},TO_DATE('1900-01-01', 'YYYY-MM-DD')) and COALESCE(#{dte_fec_inicio_hasta},CURRENT_DATE) OR
+					x.srl_id_contrato in (select pcx.srl_id_contrato_padre from sernanp.t_personal_contrato pcx where pcx.srl_id_contrato_padre = x.srl_id_contrato AND
+										  EXTRACT(YEAR FROM pcx.dte_fec_inicio) = COALESCE(#{anho_inicio},EXTRACT(YEAR FROM pcx.dte_fec_inicio)) and
+										  pcx.dte_fec_inicio BETWEEN COALESCE(#{dte_fec_inicio_desde},TO_DATE('1900-01-01', 'YYYY-MM-DD')) and COALESCE(#{dte_fec_inicio_hasta},CURRENT_DATE)) 
+				)
+		   
+	  order by COALESCE((x.nombre || ' ' || x.apepat || ' ' || x.apemat),'');	
+
+
+
+	     				
+		  
+	      
+]]>
+</select> 
+</mapper> 

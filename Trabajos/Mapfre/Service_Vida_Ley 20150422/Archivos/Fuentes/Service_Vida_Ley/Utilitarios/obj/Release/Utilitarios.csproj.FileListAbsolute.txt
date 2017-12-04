@@ -1,0 +1,24 @@
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\Utilitarios\bin\Release\Utilitarios.dll
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\Utilitarios\bin\Release\Utilitarios.pdb
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\Utilitarios\bin\Release\UtilitarioJO.dll
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\Utilitarios\obj\Release\Utilitarios.csprojResolveAssemblyReference.cache
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\Utilitarios\obj\Release\Utilitarios.dll
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\Utilitarios\obj\Release\Utilitarios.pdb
+C:\MGUZMAN\AGRICOLA\SolAgricola\Utilitarios\bin\Release\Utilitarios.dll
+C:\MGUZMAN\AGRICOLA\SolAgricola\Utilitarios\bin\Release\Utilitarios.pdb
+C:\MGUZMAN\AGRICOLA\SolAgricola\Utilitarios\bin\Release\UtilitarioJO.dll
+C:\MGUZMAN\AGRICOLA\SolAgricola\Utilitarios\obj\Release\Utilitarios.csprojResolveAssemblyReference.cache
+C:\MGUZMAN\AGRICOLA\SolAgricola\Utilitarios\obj\Release\Utilitarios.dll
+C:\MGUZMAN\AGRICOLA\SolAgricola\Utilitarios\obj\Release\Utilitarios.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\Utilitarios\bin\Release\Utilitarios.dll
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\Utilitarios\bin\Release\Utilitarios.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\Utilitarios\bin\Release\UtilitarioJO.dll
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\Utilitarios\obj\Release\Utilitarios.csprojResolveAssemblyReference.cache
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\Utilitarios\obj\Release\Utilitarios.dll
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\Utilitarios\obj\Release\Utilitarios.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\Utilitarios\bin\Release\Utilitarios.dll
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\Utilitarios\bin\Release\Utilitarios.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\Utilitarios\bin\Release\UtilitarioJO.dll
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\Utilitarios\obj\Release\Utilitarios.csprojResolveAssemblyReference.cache
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\Utilitarios\obj\Release\Utilitarios.dll
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\Utilitarios\obj\Release\Utilitarios.pdb

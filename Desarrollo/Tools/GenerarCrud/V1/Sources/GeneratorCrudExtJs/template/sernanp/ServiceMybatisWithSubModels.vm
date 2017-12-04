@@ -1,0 +1,43 @@
+/**
+* Copyright «©» ${anho}, FOCUS CONSULTORES ASOCIADOS SAC. All rights reserved.
+*
+* This file is part of ${nameApp}.
+*
+* ${nameApp} is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* ${nameApp} is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with ${nameApp}.  If not, see <http://www.gnu.org/licenses/>.
+*/	 
+
+/**
+* GENERATOR CRUD EXT JS 5            
+* BY FOCUS CONSULTORES ASOCIADOS SAC  
+* DATE CREATE : ${datetimeCreate}
+* VERSION : 1.0 
+*/
+
+package ${packageService};
+
+import java.util.List;
+
+import sernanp.app.util.BusinessException;
+import sernanp.app.util.HelperServiceMybatis;
+
+import ${classModel};
+#foreach( $e in $classSubModels )
+import ${e};
+#end
+
+public interface ${nameService}Service extends HelperServiceMybatis {
+	Integer create(${nameModel} model, ${listsParam}) throws BusinessException;
+	void save(${nameModel} model, ${listsParam}) throws BusinessException;
+	void remove(${nameModel} model, ${listsParam}) throws BusinessException;
+}

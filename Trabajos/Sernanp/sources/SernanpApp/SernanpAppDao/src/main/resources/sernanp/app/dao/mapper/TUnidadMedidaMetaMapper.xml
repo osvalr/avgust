@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sernanp.app.dao.mapper.TUnidadMedidaMetaMapper" >
+  <resultMap id="BaseResultMap" type="sernanp.app.dao.domain.TUnidadMedidaMeta" >
+    <id column="srl_id_unidad_medida_meta" property="srl_id_unidad_medida_meta" jdbcType="INTEGER" />
+    <result column="var_descrip_unidad_medida_meta" property="var_descrip_unidad_medida_meta" jdbcType="VARCHAR" />
+    <result column="var_ambito_unidad_medida_meta" property="var_ambito_unidad_medida_meta" jdbcType="VARCHAR" />
+    <result column="var_estructura_unidad_medida_meta" property="var_estructura_unidad_medida_meta" jdbcType="VARCHAR" />
+    <result column="int_id_estado" property="int_id_estado" jdbcType="INTEGER" />
+    <result column="tsp_fecha_registro" property="tsp_fecha_registro" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    srl_id_unidad_medida_meta, var_descrip_unidad_medida_meta, var_ambito_unidad_medida_meta, 
+    var_estructura_unidad_medida_meta, int_id_estado, tsp_fecha_registro
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TUnidadMedidaMetaExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from mpp.t_unidad_medida_meta
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TUnidadMedidaMetaKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from mpp.t_unidad_medida_meta
+    where srl_id_unidad_medida_meta = #{srl_id_unidad_medida_meta,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="sernanp.app.dao.domain.TUnidadMedidaMetaKey" >
+    delete from mpp.t_unidad_medida_meta
+    where srl_id_unidad_medida_meta = #{srl_id_unidad_medida_meta,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sernanp.app.dao.domain.TUnidadMedidaMetaExample" >
+    delete from mpp.t_unidad_medida_meta
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sernanp.app.dao.domain.TUnidadMedidaMeta" useGeneratedKeys="true" keyProperty="srl_id_unidad_medida_meta" >
+    insert into mpp.t_unidad_medida_meta (var_descrip_unidad_medida_meta, var_ambito_unidad_medida_meta, 
+      var_estructura_unidad_medida_meta, int_id_estado, 
+      tsp_fecha_registro)
+    values (#{var_descrip_unidad_medida_meta,jdbcType=VARCHAR}, #{var_ambito_unidad_medida_meta,jdbcType=VARCHAR}, 
+      #{var_estructura_unidad_medida_meta,jdbcType=VARCHAR}, #{int_id_estado,jdbcType=INTEGER}, 
+      #{tsp_fecha_registro,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="sernanp.app.dao.domain.TUnidadMedidaMeta" useGeneratedKeys="true" keyProperty="srl_id_unidad_medida_meta" >
+    insert into mpp.t_unidad_medida_meta
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="var_descrip_unidad_medida_meta != null" >
+        var_descrip_unidad_medida_meta,
+      </if>
+      <if test="var_ambito_unidad_medida_meta != null" >
+        var_ambito_unidad_medida_meta,
+      </if>
+      <if test="var_estructura_unidad_medida_meta != null" >
+        var_estructura_unidad_medida_meta,
+      </if>
+      <if test="int_id_estado != null" >
+        int_id_estado,
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        tsp_fecha_registro,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="var_descrip_unidad_medida_meta != null" >
+        #{var_descrip_unidad_medida_meta,jdbcType=VARCHAR},
+      </if>
+      <if test="var_ambito_unidad_medida_meta != null" >
+        #{var_ambito_unidad_medida_meta,jdbcType=VARCHAR},
+      </if>
+      <if test="var_estructura_unidad_medida_meta != null" >
+        #{var_estructura_unidad_medida_meta,jdbcType=VARCHAR},
+      </if>
+      <if test="int_id_estado != null" >
+        #{int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sernanp.app.dao.domain.TUnidadMedidaMetaExample" resultType="java.lang.Integer" >
+    select count(*) from mpp.t_unidad_medida_meta
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update mpp.t_unidad_medida_meta
+    <set >
+      <if test="record.srl_id_unidad_medida_meta != null" >
+        srl_id_unidad_medida_meta = #{record.srl_id_unidad_medida_meta,jdbcType=INTEGER},
+      </if>
+      <if test="record.var_descrip_unidad_medida_meta != null" >
+        var_descrip_unidad_medida_meta = #{record.var_descrip_unidad_medida_meta,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_ambito_unidad_medida_meta != null" >
+        var_ambito_unidad_medida_meta = #{record.var_ambito_unidad_medida_meta,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_estructura_unidad_medida_meta != null" >
+        var_estructura_unidad_medida_meta = #{record.var_estructura_unidad_medida_meta,jdbcType=VARCHAR},
+      </if>
+      <if test="record.int_id_estado != null" >
+        int_id_estado = #{record.int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="record.tsp_fecha_registro != null" >
+        tsp_fecha_registro = #{record.tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update mpp.t_unidad_medida_meta
+    set srl_id_unidad_medida_meta = #{record.srl_id_unidad_medida_meta,jdbcType=INTEGER},
+      var_descrip_unidad_medida_meta = #{record.var_descrip_unidad_medida_meta,jdbcType=VARCHAR},
+      var_ambito_unidad_medida_meta = #{record.var_ambito_unidad_medida_meta,jdbcType=VARCHAR},
+      var_estructura_unidad_medida_meta = #{record.var_estructura_unidad_medida_meta,jdbcType=VARCHAR},
+      int_id_estado = #{record.int_id_estado,jdbcType=INTEGER},
+      tsp_fecha_registro = #{record.tsp_fecha_registro,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sernanp.app.dao.domain.TUnidadMedidaMeta" >
+    update mpp.t_unidad_medida_meta
+    <set >
+      <if test="var_descrip_unidad_medida_meta != null" >
+        var_descrip_unidad_medida_meta = #{var_descrip_unidad_medida_meta,jdbcType=VARCHAR},
+      </if>
+      <if test="var_ambito_unidad_medida_meta != null" >
+        var_ambito_unidad_medida_meta = #{var_ambito_unidad_medida_meta,jdbcType=VARCHAR},
+      </if>
+      <if test="var_estructura_unidad_medida_meta != null" >
+        var_estructura_unidad_medida_meta = #{var_estructura_unidad_medida_meta,jdbcType=VARCHAR},
+      </if>
+      <if test="int_id_estado != null" >
+        int_id_estado = #{int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        tsp_fecha_registro = #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where srl_id_unidad_medida_meta = #{srl_id_unidad_medida_meta,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sernanp.app.dao.domain.TUnidadMedidaMeta" >
+    update mpp.t_unidad_medida_meta
+    set var_descrip_unidad_medida_meta = #{var_descrip_unidad_medida_meta,jdbcType=VARCHAR},
+      var_ambito_unidad_medida_meta = #{var_ambito_unidad_medida_meta,jdbcType=VARCHAR},
+      var_estructura_unidad_medida_meta = #{var_estructura_unidad_medida_meta,jdbcType=VARCHAR},
+      int_id_estado = #{int_id_estado,jdbcType=INTEGER},
+      tsp_fecha_registro = #{tsp_fecha_registro,jdbcType=TIMESTAMP}
+    where srl_id_unidad_medida_meta = #{srl_id_unidad_medida_meta,jdbcType=INTEGER}
+  </update>
+</mapper>

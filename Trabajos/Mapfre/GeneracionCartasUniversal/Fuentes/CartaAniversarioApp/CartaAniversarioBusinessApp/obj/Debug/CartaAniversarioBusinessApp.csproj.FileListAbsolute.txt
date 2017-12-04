@@ -1,0 +1,19 @@
+C:\Users\jraffo_w7_app\documents\visual studio 2010\Projects\CartaAniversarioApp\CartaAniversarioBusinessApp\bin\Debug\CartaAniversarioBusinessApp.dll
+C:\Users\jraffo_w7_app\documents\visual studio 2010\Projects\CartaAniversarioApp\CartaAniversarioBusinessApp\bin\Debug\CartaAniversarioBusinessApp.pdb
+C:\Users\jraffo_w7_app\documents\visual studio 2010\Projects\CartaAniversarioApp\CartaAniversarioBusinessApp\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Users\jraffo_w7_app\documents\visual studio 2010\Projects\CartaAniversarioApp\CartaAniversarioBusinessApp\obj\Debug\CartaAniversarioBusinessApp.dll
+C:\Users\jraffo_w7_app\documents\visual studio 2010\Projects\CartaAniversarioApp\CartaAniversarioBusinessApp\obj\Debug\CartaAniversarioBusinessApp.pdb
+C:\Users\jraffo_w7_app\documents\visual studio 2010\Projects\CartaAniversarioApp\CartaAniversarioBusinessApp\obj\Debug\CartaAniversarioBusinessApp.csprojResolveAssemblyReference.cache
+C:\git\mapfre\Proyectos\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioBusinessApp\bin\Debug\CartaAniversarioBusinessApp.dll
+C:\git\mapfre\Proyectos\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioBusinessApp\bin\Debug\CartaAniversarioBusinessApp.pdb
+C:\git\mapfre\Proyectos\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioBusinessApp\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\git\mapfre\Proyectos\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioBusinessApp\bin\Debug\Oracle.DataAccess.dll
+C:\git\mapfre\Proyectos\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioBusinessApp\obj\Debug\CartaAniversarioBusinessApp.csprojResolveAssemblyReference.cache
+C:\git\mapfre\Proyectos\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioBusinessApp\obj\Debug\CartaAniversarioBusinessApp.dll
+C:\git\mapfre\Proyectos\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioBusinessApp\obj\Debug\CartaAniversarioBusinessApp.pdb
+D:\JRaffo\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioBusinessApp\bin\Debug\CartaAniversarioBusinessApp.dll
+D:\JRaffo\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioBusinessApp\bin\Debug\CartaAniversarioBusinessApp.pdb
+D:\JRaffo\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioBusinessApp\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\JRaffo\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioBusinessApp\bin\Debug\Oracle.DataAccess.dll
+D:\JRaffo\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioBusinessApp\obj\Debug\CartaAniversarioBusinessApp.dll
+D:\JRaffo\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioBusinessApp\obj\Debug\CartaAniversarioBusinessApp.pdb

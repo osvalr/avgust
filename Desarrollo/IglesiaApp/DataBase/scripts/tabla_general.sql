@@ -1,0 +1,10 @@
+INSERT INTO general.tabla_general (id_tabla_general, nombre_tabla_general, fecha_registro) VALUES (1, 'Genero_Persona', '2010-10-10 04:00:00');
+INSERT INTO general.tabla_general (id_tabla_general, nombre_tabla_general, fecha_registro) VALUES (2, 'Estado_Civil', '2010-10-10 04:00:00');
+INSERT INTO general.tabla_general (id_tabla_general, nombre_tabla_general, fecha_registro) VALUES (3, 'Tipo_Documento_Identidad', '2010-10-10 04:00:00');
+INSERT INTO general.tabla_general (id_tabla_general, nombre_tabla_general, fecha_registro) VALUES (4, 'Tipo_Telefono', '2010-10-10 04:00:00');
+INSERT INTO general.tabla_general (id_tabla_general, nombre_tabla_general, fecha_registro) VALUES (10, 'Categoria_Estudio', '2010-10-10 04:00:00');
+INSERT INTO general.tabla_general (id_tabla_general, nombre_tabla_general, fecha_registro) VALUES (11, 'Nivel_Academico', '2010-10-10 04:00:00');
+INSERT INTO general.tabla_general (id_tabla_general, nombre_tabla_general, fecha_registro) VALUES (12, 'Estado_Generico', '2010-10-10 04:00:00');
+INSERT INTO general.tabla_general (id_tabla_general, nombre_tabla_general, fecha_registro) VALUES (13, 'Tipo_Persona_Juridica', now());
+INSERT INTO general.tabla_general (id_tabla_general, nombre_tabla_general, fecha_registro) VALUES (14, 'Cargos', now());
+INSERT INTO general.tabla_general (id_tabla_general, nombre_tabla_general, fecha_registro) VALUES (16, 'Evento_Eclesiastico', now());

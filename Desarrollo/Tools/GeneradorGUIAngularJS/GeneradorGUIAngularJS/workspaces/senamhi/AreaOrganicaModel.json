@@ -1,0 +1,7 @@
+{
+	"titleCrud": "Areas Organicas",
+	"nameCrud": "AreaOrganica",
+	"constUrlApi": "AREA_ORGANICA_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "AreaOrganicaModel.xml"
+}

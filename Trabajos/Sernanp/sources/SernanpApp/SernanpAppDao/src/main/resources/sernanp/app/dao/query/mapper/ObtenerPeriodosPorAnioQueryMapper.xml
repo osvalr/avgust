@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.ObtenerPeriodosPorAnioQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+ 
+app.srl_id_anio_periodo_planilla,
+ms.destablatipo as descrip_periodo
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+ 
+personal.t_anio_periodo_planilla app
+inner join personal.t_anio_planilla ap on app.srl_id_anio_planilla = ap.srl_id_anio_planilla
+inner join sernanp.vw_meses ms on app.int_id_periodo_mes = ms.codinttablatipo
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+ap.int_anio = #{int_anio} and
+app.int_id_estado = coalesce(#{int_id_estado},app.int_id_estado)
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.ObtenerPeriodosPorAnioQuery" parameterType="sernanp.app.dao.query.domain.ObtenerPeriodosPorAnioQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.ObtenerPeriodosPorAnioQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.ObtenerPeriodosPorAnioQuery" parameterType="sernanp.app.dao.query.domain.ObtenerPeriodosPorAnioQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.ObtenerPeriodosPorAnioQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.ObtenerPeriodosPorAnioQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

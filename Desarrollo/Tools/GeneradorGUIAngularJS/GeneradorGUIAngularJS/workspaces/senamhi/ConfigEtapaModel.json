@@ -1,0 +1,14 @@
+{
+	"titleCrud": "Configuración Etapas",
+	"nameCrud": "ConfigEtapa",
+	"constUrlApi": "CONFIG_ETAPAS_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "ConfigEtapaModel.xml",
+	"subModels": [
+		{
+			"nameModel": "ConfigSubEtapaModel",
+			"nameCrud": "ConfigSubEtapa",
+			"autoIdentityPrimaryKey": true
+		}
+	]
+}

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.focus.sakerk.repository.custom.mapper.ObtenerPersonaNaturalParentescoQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+			pn.id_persona_natural ,
+			concat(pn.nombres,' ',pn.ape_pater,' ',pn.ape_mater) as "nombres_completos",
+			to_char(pn.fecha_nacimiento, 'DD/MM/YYYY') as "fecha_nacimiento",
+			pn.id_tipo_documento ,
+			tdi.descrip_tipo_documento,
+			pn.numero_documento,
+			p.id_estado ,
+			e.descrip_estado_generico,
+			to_char(p.fecha_registro, 'DD/MM/YYYY HH24:MI:ss') as "fecha_registro"
+			
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+			general.persona p
+			inner join 
+			general.persona_natural pn
+			on p.id_persona = pn.id_persona_natural
+			inner join 
+			vw_estado_generico e
+			on p.id_estado = e.id_estado_generico
+			inner join 
+			vw_tipo_documento tdi
+			on pn.id_tipo_documento = tdi.id_tipo_documento
+			
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+			pn.id_persona_natural = COALESCE(#{id_persona_natural},0)
+			
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.focus.sakerk.repository.custom.model.ObtenerPersonaNaturalParentescoQuery" parameterType="pe.com.focus.sakerk.repository.custom.model.ObtenerPersonaNaturalParentescoQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.focus.sakerk.repository.custom.model.ObtenerPersonaNaturalParentescoQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.focus.sakerk.repository.custom.model.ObtenerPersonaNaturalParentescoQuery" parameterType="pe.com.focus.sakerk.repository.custom.model.ObtenerPersonaNaturalParentescoQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.focus.sakerk.repository.custom.model.ObtenerPersonaNaturalParentescoQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.focus.sakerk.repository.custom.model.ObtenerPersonaNaturalParentescoQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

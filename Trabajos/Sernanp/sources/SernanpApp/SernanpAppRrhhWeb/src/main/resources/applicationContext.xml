@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jdbc="http://www.springframework.org/schema/jdbc" 
+xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="
+     http://www.springframework.org/schema/context 
+http://www.springframework.org/schema/context/spring-context-3.0.xsd
+     http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+     http://www.springframework.org/schema/jdbc 
+http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+     http://www.springframework.org/schema/tx 
+http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.postgresql.Driver"/>
+<!-- 		<property name="url" value="jdbc:postgresql://env-dev:5432/sernanp_prod"/> -->		
+		<property name="url" value="jdbc:postgresql://localhost:5432/sernanp"/>				
+		<property name="username" value="postgres"/>
+		<property name="password" value="1234"/>
+
+	</bean>
+	
+	<!-- transaction manager, use JtaTransactionManager for global tx -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	<!-- enable component scanning and autowire (beware that this does not enable mapper scanning!)     -->
+	<context:component-scan base-package="sernanp.app.business"/>
+	<context:component-scan base-package="sernanp.app.business.personal.impl"/>
+	<context:component-scan base-package="sernanp.app.util"/>
+	
+<!-- 	<context:component-scan base-package="sernanp.rrhh.service"/>	 -->
+<!-- 	<context:component-scan base-package="sernanp.rrhh.dao"/> -->
+	
+	<!-- componentes sernanp -->
+	<context:component-scan base-package="proyecto"/>
+	<!--  enable transaction demarcation with annotations -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	<!-- define the SqlSessionFactory -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="typeAliasesPackage" value="sernanp.app.dao.domain;sernanp.app.dao.query.domain"/>
+	</bean>
+	<!-- define the SqlSession -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory"/>
+	</bean>
+	<!-- scan for mappers and let them be autowired -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="sernanp.app.dao.mapper;sernanp.app.dao.query.mapper"/>
+	</bean>
+	
+	<!-- beans de funcionalidades del aplicativo personal desarrollado en sernanp -->
+	<!-- DAO -->	
+	<bean id="usuarioDAO" class="sernanp.rrhh.dao.UsuarioDAO"/>
+	<bean id="rolModuloDAO" class="sernanp.rrhh.dao.RolModuloDAO"/>
+	<bean id="usuarioRolDAO" class="sernanp.rrhh.dao.UsuarioRolDAO"/>
+	<bean id="loginDAO" class="sernanp.rrhh.dao.LoginDAO"/>
+	<bean id="areaNaturalDAO" class="sernanp.rrhh.dao.AreaNaturalDAO"/>
+	<bean id="personalDAO" class="sernanp.rrhh.dao.PersonalDAO"/>
+	<bean id="tipoDAO" class="sernanp.rrhh.dao.TipoDAO"/>
+	<bean id="paisDAO" class="sernanp.rrhh.dao.PaisDAO"/>
+	<bean id="personalMarcacionDAO" class="sernanp.rrhh.dao.PersonalMarcacionDAO"/>
+	<bean id="personalContratoDAO" class="sernanp.rrhh.dao.PersonalContratoDAO"/>
+	<bean id="personalActividadDAO" class="sernanp.rrhh.dao.PersonalActividadDAO"/>
+	<bean id="personalPapeletaDAO" class="sernanp.rrhh.dao.PersonalPapeletaDAO"/>
+	<bean id="personalVacacionesDAO" class="sernanp.rrhh.dao.PersonalVacacionesDAO"/>
+	<bean id="personalLicenciasDAO" class="sernanp.rrhh.dao.PersonalLicenciasDAO"/>
+	<!-- Service -->
+	<bean id="usuarioService" class="sernanp.rrhh.service.UsuarioService"/>
+	<bean id="loginService" class="sernanp.rrhh.service.LoginService"/>
+	<bean id="areaNaturalService" class="sernanp.rrhh.service.AreaNaturalService"/>
+	<bean id="personalService" class="sernanp.rrhh.service.PersonalService"/>
+	<bean id="tipoService" class="sernanp.rrhh.service.TipoService"/>
+	<bean id="paisService" class="sernanp.rrhh.service.PaisService"/>
+	<bean id="personalMarcacionService" class="sernanp.rrhh.service.PersonalMarcacionService"/>
+	<bean id="personalcontratoService" class="sernanp.rrhh.service.PersonalContratoService"/>
+	<bean id="personalActividadService" class="sernanp.rrhh.service.PersonalActividadService"/>
+	<bean id="personalPapeletaService" class="sernanp.rrhh.service.PersonalPapeletaService"/>
+	<bean id="personalVacacionesService" class="sernanp.rrhh.service.PersonalVacacionesService"/>
+	<bean id="personalLicenciasService" class="sernanp.rrhh.service.PersonalLicenciasService"/>
+	<!-- beans de funcionalidades del aplicativo personal desarrollado en sernanp -->
+</beans>

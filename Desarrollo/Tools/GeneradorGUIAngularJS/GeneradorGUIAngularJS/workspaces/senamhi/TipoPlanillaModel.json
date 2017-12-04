@@ -1,0 +1,14 @@
+{
+	"titleCrud": "Tipos de Planilla",
+	"nameCrud": "TipoPlanilla",
+	"constUrlApi": "TIPO_PLANILLA_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "TipoPlanillaModel.xml",
+		"subModels": [
+		{
+			"nameModel": "TipoPlanillaPeriodoModel",
+			"nameCrud": "TipoPlanillaPeriodo",
+			"autoIdentityPrimaryKey": true
+		}
+	]
+}

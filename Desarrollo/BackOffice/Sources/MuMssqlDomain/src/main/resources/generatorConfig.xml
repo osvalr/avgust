@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE generatorConfiguration  
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"  
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">  
+  
+<generatorConfiguration>  
+
+  <classPathEntry location="/Users/JRaffo/.m2/repository/com/microsoft/sqlserver/sqljdbc4/4.0/sqljdbc4-4.0.jar" />
+	
+  <context id="DB1" targetRuntime="MyBatis3"> 
+  
+    <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>
+    <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+    <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+    <plugin type="org.mybatis.generator.plugins.VirtualPrimaryKeyPlugin"/> 
+       
+    <commentGenerator>  
+      <property name="suppressAllComments" value="true"/>  
+    </commentGenerator>  
+     	
+	<jdbcConnection 
+		driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+		connectionURL="jdbc:sqlserver://192.168.109.132:1433;DatabaseName=MO_ANKER_PRD"
+		userId="sa" password="1234">
+	</jdbcConnection>
+  
+    <javaModelGenerator targetPackage="pe.com.acme.domain.mybatis.model" targetProject="MuMssqlDomain">  
+      <property name="enableSubPackages" value="false" />  
+    </javaModelGenerator>
+  
+    <sqlMapGenerator targetPackage="pe.com.acme.domain.mybatis.mapper"  targetProject="MuMssqlDomain/src/main/resources">  
+      <property name="enableSubPackages" value="false" />  
+    </sqlMapGenerator>  
+      
+    <javaClientGenerator type="XMLMAPPER" targetPackage="pe.com.acme.domain.mybatis.mapper"  targetProject="MuMssqlDomain">  
+      <property name="enableSubPackages" value="false" />  
+    </javaClientGenerator>  
+      
+<!--     <table tableName="MEMB_INFO" schema="dbo" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/> -->
+<!--       <generatedKey column="memb_guid" sqlStatement="JDBC" />  -->
+<!--     </table> -->
+
+<!--     <table tableName="Character" schema="dbo" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/> -->
+<!--     </table> -->
+
+<!-- 	<table tableName="MEMB_INFO_EXT" schema="dbo" modelType="hierarchical"> -->
+<!-- 		<property name="useActualColumnNames" value="true" /> -->
+<!-- 	</table> -->
+
+<!-- 	<table tableName="MEMB_INFO_REFERIDO" schema="dbo" modelType="hierarchical"> -->
+<!-- 		<property name="useActualColumnNames" value="true" /> -->
+<!-- 		<generatedKey column="id_referido" sqlStatement="JDBC" /> -->
+<!-- 	</table>   -->
+
+<!-- 	<table tableName="paises" schema="dbo" modelType="hierarchical"> -->
+<!-- 		<property name="useActualColumnNames" value="true" /> -->
+<!-- 	</table> -->
+
+	<table tableName="reset_historico" schema="dbo" modelType="hierarchical">
+		<property name="useActualColumnNames" value="true" />
+		<generatedKey column="id_reset_historico" sqlStatement="JDBC" />
+	</table>  
+
+
+  </context>  
+</generatorConfiguration>  

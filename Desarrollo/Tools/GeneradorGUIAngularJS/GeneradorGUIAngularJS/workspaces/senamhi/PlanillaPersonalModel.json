@@ -1,0 +1,7 @@
+{
+	"titleCrud": "Planilla Personal",
+	"nameCrud": "PlanillaPersonal",
+	"constUrlApi": "PLANILLA_PERSONAL_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "PlanillaPersonalModel.xml"
+}

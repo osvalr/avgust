@@ -1,0 +1,7 @@
+{
+	"titleCrud": "Estudios",
+	"nameCrud": "Estudio",
+	"constUrlApi": "ESTUDIOS_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "EstudioModel.xml"
+}

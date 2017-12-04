@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.GestionarAnhoMetaQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+
+am.srl_id_anio_meta,
+am.srl_id_anio_planilla,
+ap.int_anio,
+am.cod_meta,
+am.idarea,
+ao.desarea,
+am.idunidad,
+uo.nomunidad,
+am.int_id_estado,
+vteg.destablatipo AS descrip_estado,
+to_char(am.tsp_fecha_registro, 'dd/mm/yyyy') AS tsp_fecha_registro
+
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+
+personal.t_anio_meta am
+inner join personal.t_anio_planilla ap on am.srl_id_anio_planilla = ap.srl_id_anio_planilla
+left JOIN sernanp.vw_estado_generico vteg ON (am.int_id_estado = vteg.codinttablatipo)
+left join sernanp.areaorganica ao on am.idarea = ao.idarea
+left join sernanp.unidadoperativa uo on am.idunidad = uo.idunidad
+
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+
+am.srl_id_anio_meta = coalesce(#{srl_id_anio_meta},am.srl_id_anio_meta) and
+am.srl_id_anio_planilla = coalesce(#{srl_id_anio_planilla},am.srl_id_anio_planilla) and
+am.cod_meta = coalesce(#{cod_meta},am.cod_meta) and
+coalesce(am.idarea,0) = coalesce(#{idarea},coalesce(am.idarea,0)) and
+coalesce(am.idunidad,0) = coalesce(#{idunidad},coalesce(am.idunidad,0))
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.GestionarAnhoMetaQuery" parameterType="sernanp.app.dao.query.domain.GestionarAnhoMetaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.GestionarAnhoMetaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.GestionarAnhoMetaQuery" parameterType="sernanp.app.dao.query.domain.GestionarAnhoMetaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.GestionarAnhoMetaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.GestionarAnhoMetaQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

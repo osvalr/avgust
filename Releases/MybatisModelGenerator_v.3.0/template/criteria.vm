@@ -1,0 +1,26 @@
+${copy}
+
+/**
+* The ${modelDto.nameCriteria} class content the params in shape attributes 
+* equivalents of an clause WHERE for SQL query.
+*
+* @author  Javier Raffo
+* @version 1.0
+* @since   ${datetimeCreate}
+*/
+
+package ${modelDto.packageCriteria}; 
+
+import pe.com.kapcom.util.BaseModelCriteria;
+
+public class ${modelDto.nameCriteria} extends BaseModelCriteria implements java.io.Serializable  { 
+
+	private static final long serialVersionUID = 1L;
+	
+${modelDto.attributesInput}
+	public ${modelDto.nameCriteria}() {
+		super();
+	}
+	
+${modelDto.methodsInput}
+} 

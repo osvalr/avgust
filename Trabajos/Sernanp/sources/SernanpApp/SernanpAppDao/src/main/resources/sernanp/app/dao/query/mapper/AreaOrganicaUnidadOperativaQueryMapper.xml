@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.AreaOrganicaUnidadOperativaQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+   * 
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+ 
+(
+
+SELECT s.idsede, ao.desarea AS var_descrip, s.idareanatural
+FROM sernanp.areaorganica ao 
+LEFT JOIN sernanp.sede s ON ao.idsede = s.idsede
+WHERE ao.idsede = COALESCE(#{idsede},s.idsede)
+
+UNION ALL
+
+SELECT s.idsede, uo.nomunidad  AS var_descrip, s.idareanatural
+FROM sernanp.unidadoperativa uo 
+LEFT JOIN sernanp.sede s ON uo.idsede = s.idsede
+WHERE uo.idsede = COALESCE(#{idsede},s.idsede)
+
+) AS x
+
+ORDER BY x.idsede, x.idareanatural, x.var_descrip
+
+]]>
+</sql> 
+
+
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.AreaOrganicaUnidadOperativaQuery" parameterType="sernanp.app.dao.query.domain.AreaOrganicaUnidadOperativaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.AreaOrganicaUnidadOperativaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.AreaOrganicaUnidadOperativaQuery" parameterType="sernanp.app.dao.query.domain.AreaOrganicaUnidadOperativaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.AreaOrganicaUnidadOperativaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.AreaOrganicaUnidadOperativaQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+
+</select> 
+
+</mapper> 

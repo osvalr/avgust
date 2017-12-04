@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sernanp.app.dao.mapper.TConvAreaOrgFactorEvalMapper" >
+  <resultMap id="BaseResultMap" type="sernanp.app.dao.domain.TConvAreaOrgFactorEval" >
+    <id column="srl_conv_area_org_factor_eval" property="srl_conv_area_org_factor_eval" jdbcType="INTEGER" />
+    <result column="srl_id_conv_area_org" property="srl_id_conv_area_org" jdbcType="INTEGER" />
+    <result column="srl_id_postulante_conv_area_org" property="srl_id_postulante_conv_area_org" jdbcType="INTEGER" />
+    <result column="srl_id_factor_evaluacion" property="srl_id_factor_evaluacion" jdbcType="INTEGER" />
+    <result column="int_id_estado_asistencia" property="int_id_estado_asistencia" jdbcType="INTEGER" />
+    <result column="dec_puntaje_obtenido" property="dec_puntaje_obtenido" jdbcType="NUMERIC" />
+    <result column="dec_puntaje_calculado" property="dec_puntaje_calculado" jdbcType="NUMERIC" />
+    <result column="int_id_estado_clasificacion" property="int_id_estado_clasificacion" jdbcType="INTEGER" />
+    <result column="int_id_estado" property="int_id_estado" jdbcType="INTEGER" />
+    <result column="tsp_fecha_registro" property="tsp_fecha_registro" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    srl_conv_area_org_factor_eval, srl_id_conv_area_org, srl_id_postulante_conv_area_org, 
+    srl_id_factor_evaluacion, int_id_estado_asistencia, dec_puntaje_obtenido, dec_puntaje_calculado, 
+    int_id_estado_clasificacion, int_id_estado, tsp_fecha_registro
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TConvAreaOrgFactorEvalExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from personal.t_conv_area_org_factor_eval
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TConvAreaOrgFactorEvalKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from personal.t_conv_area_org_factor_eval
+    where srl_conv_area_org_factor_eval = #{srl_conv_area_org_factor_eval,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="sernanp.app.dao.domain.TConvAreaOrgFactorEvalKey" >
+    delete from personal.t_conv_area_org_factor_eval
+    where srl_conv_area_org_factor_eval = #{srl_conv_area_org_factor_eval,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sernanp.app.dao.domain.TConvAreaOrgFactorEvalExample" >
+    delete from personal.t_conv_area_org_factor_eval
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sernanp.app.dao.domain.TConvAreaOrgFactorEval" useGeneratedKeys="true" keyProperty="srl_conv_area_org_factor_eval" >
+    insert into personal.t_conv_area_org_factor_eval (srl_id_conv_area_org, srl_id_postulante_conv_area_org, 
+      srl_id_factor_evaluacion, int_id_estado_asistencia, 
+      dec_puntaje_obtenido, dec_puntaje_calculado, 
+      int_id_estado_clasificacion, int_id_estado, 
+      tsp_fecha_registro)
+    values (#{srl_id_conv_area_org,jdbcType=INTEGER}, #{srl_id_postulante_conv_area_org,jdbcType=INTEGER}, 
+      #{srl_id_factor_evaluacion,jdbcType=INTEGER}, #{int_id_estado_asistencia,jdbcType=INTEGER}, 
+      #{dec_puntaje_obtenido,jdbcType=NUMERIC}, #{dec_puntaje_calculado,jdbcType=NUMERIC}, 
+      #{int_id_estado_clasificacion,jdbcType=INTEGER}, #{int_id_estado,jdbcType=INTEGER}, 
+      #{tsp_fecha_registro,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="sernanp.app.dao.domain.TConvAreaOrgFactorEval" useGeneratedKeys="true" keyProperty="srl_conv_area_org_factor_eval" >
+    insert into personal.t_conv_area_org_factor_eval
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="srl_id_conv_area_org != null" >
+        srl_id_conv_area_org,
+      </if>
+      <if test="srl_id_postulante_conv_area_org != null" >
+        srl_id_postulante_conv_area_org,
+      </if>
+      <if test="srl_id_factor_evaluacion != null" >
+        srl_id_factor_evaluacion,
+      </if>
+      <if test="int_id_estado_asistencia != null" >
+        int_id_estado_asistencia,
+      </if>
+      <if test="dec_puntaje_obtenido != null" >
+        dec_puntaje_obtenido,
+      </if>
+      <if test="dec_puntaje_calculado != null" >
+        dec_puntaje_calculado,
+      </if>
+      <if test="int_id_estado_clasificacion != null" >
+        int_id_estado_clasificacion,
+      </if>
+      <if test="int_id_estado != null" >
+        int_id_estado,
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        tsp_fecha_registro,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="srl_id_conv_area_org != null" >
+        #{srl_id_conv_area_org,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_postulante_conv_area_org != null" >
+        #{srl_id_postulante_conv_area_org,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_factor_evaluacion != null" >
+        #{srl_id_factor_evaluacion,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_estado_asistencia != null" >
+        #{int_id_estado_asistencia,jdbcType=INTEGER},
+      </if>
+      <if test="dec_puntaje_obtenido != null" >
+        #{dec_puntaje_obtenido,jdbcType=NUMERIC},
+      </if>
+      <if test="dec_puntaje_calculado != null" >
+        #{dec_puntaje_calculado,jdbcType=NUMERIC},
+      </if>
+      <if test="int_id_estado_clasificacion != null" >
+        #{int_id_estado_clasificacion,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_estado != null" >
+        #{int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sernanp.app.dao.domain.TConvAreaOrgFactorEvalExample" resultType="java.lang.Integer" >
+    select count(*) from personal.t_conv_area_org_factor_eval
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update personal.t_conv_area_org_factor_eval
+    <set >
+      <if test="record.srl_conv_area_org_factor_eval != null" >
+        srl_conv_area_org_factor_eval = #{record.srl_conv_area_org_factor_eval,jdbcType=INTEGER},
+      </if>
+      <if test="record.srl_id_conv_area_org != null" >
+        srl_id_conv_area_org = #{record.srl_id_conv_area_org,jdbcType=INTEGER},
+      </if>
+      <if test="record.srl_id_postulante_conv_area_org != null" >
+        srl_id_postulante_conv_area_org = #{record.srl_id_postulante_conv_area_org,jdbcType=INTEGER},
+      </if>
+      <if test="record.srl_id_factor_evaluacion != null" >
+        srl_id_factor_evaluacion = #{record.srl_id_factor_evaluacion,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_id_estado_asistencia != null" >
+        int_id_estado_asistencia = #{record.int_id_estado_asistencia,jdbcType=INTEGER},
+      </if>
+      <if test="record.dec_puntaje_obtenido != null" >
+        dec_puntaje_obtenido = #{record.dec_puntaje_obtenido,jdbcType=NUMERIC},
+      </if>
+      <if test="record.dec_puntaje_calculado != null" >
+        dec_puntaje_calculado = #{record.dec_puntaje_calculado,jdbcType=NUMERIC},
+      </if>
+      <if test="record.int_id_estado_clasificacion != null" >
+        int_id_estado_clasificacion = #{record.int_id_estado_clasificacion,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_id_estado != null" >
+        int_id_estado = #{record.int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="record.tsp_fecha_registro != null" >
+        tsp_fecha_registro = #{record.tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update personal.t_conv_area_org_factor_eval
+    set srl_conv_area_org_factor_eval = #{record.srl_conv_area_org_factor_eval,jdbcType=INTEGER},
+      srl_id_conv_area_org = #{record.srl_id_conv_area_org,jdbcType=INTEGER},
+      srl_id_postulante_conv_area_org = #{record.srl_id_postulante_conv_area_org,jdbcType=INTEGER},
+      srl_id_factor_evaluacion = #{record.srl_id_factor_evaluacion,jdbcType=INTEGER},
+      int_id_estado_asistencia = #{record.int_id_estado_asistencia,jdbcType=INTEGER},
+      dec_puntaje_obtenido = #{record.dec_puntaje_obtenido,jdbcType=NUMERIC},
+      dec_puntaje_calculado = #{record.dec_puntaje_calculado,jdbcType=NUMERIC},
+      int_id_estado_clasificacion = #{record.int_id_estado_clasificacion,jdbcType=INTEGER},
+      int_id_estado = #{record.int_id_estado,jdbcType=INTEGER},
+      tsp_fecha_registro = #{record.tsp_fecha_registro,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sernanp.app.dao.domain.TConvAreaOrgFactorEval" >
+    update personal.t_conv_area_org_factor_eval
+    <set >
+      <if test="srl_id_conv_area_org != null" >
+        srl_id_conv_area_org = #{srl_id_conv_area_org,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_postulante_conv_area_org != null" >
+        srl_id_postulante_conv_area_org = #{srl_id_postulante_conv_area_org,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_factor_evaluacion != null" >
+        srl_id_factor_evaluacion = #{srl_id_factor_evaluacion,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_estado_asistencia != null" >
+        int_id_estado_asistencia = #{int_id_estado_asistencia,jdbcType=INTEGER},
+      </if>
+      <if test="dec_puntaje_obtenido != null" >
+        dec_puntaje_obtenido = #{dec_puntaje_obtenido,jdbcType=NUMERIC},
+      </if>
+      <if test="dec_puntaje_calculado != null" >
+        dec_puntaje_calculado = #{dec_puntaje_calculado,jdbcType=NUMERIC},
+      </if>
+      <if test="int_id_estado_clasificacion != null" >
+        int_id_estado_clasificacion = #{int_id_estado_clasificacion,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_estado != null" >
+        int_id_estado = #{int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        tsp_fecha_registro = #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where srl_conv_area_org_factor_eval = #{srl_conv_area_org_factor_eval,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sernanp.app.dao.domain.TConvAreaOrgFactorEval" >
+    update personal.t_conv_area_org_factor_eval
+    set srl_id_conv_area_org = #{srl_id_conv_area_org,jdbcType=INTEGER},
+      srl_id_postulante_conv_area_org = #{srl_id_postulante_conv_area_org,jdbcType=INTEGER},
+      srl_id_factor_evaluacion = #{srl_id_factor_evaluacion,jdbcType=INTEGER},
+      int_id_estado_asistencia = #{int_id_estado_asistencia,jdbcType=INTEGER},
+      dec_puntaje_obtenido = #{dec_puntaje_obtenido,jdbcType=NUMERIC},
+      dec_puntaje_calculado = #{dec_puntaje_calculado,jdbcType=NUMERIC},
+      int_id_estado_clasificacion = #{int_id_estado_clasificacion,jdbcType=INTEGER},
+      int_id_estado = #{int_id_estado,jdbcType=INTEGER},
+      tsp_fecha_registro = #{tsp_fecha_registro,jdbcType=TIMESTAMP}
+    where srl_conv_area_org_factor_eval = #{srl_conv_area_org_factor_eval,jdbcType=INTEGER}
+  </update>
+  <select resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TConvAreaOrgFactorEvalExample" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from personal.t_conv_area_org_factor_eval
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

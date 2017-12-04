@@ -1,0 +1,6 @@
+{
+	"nameCrud": "UnidadOperativaFuncional",
+	"path": "unidades-operativas-funcionales",
+	"nameRepository": "TAreaOrganicaRepository",
+	"nameModelXml": "UnidadOperativaFuncionalModel.xml"
+}

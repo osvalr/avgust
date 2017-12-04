@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.PersonalContratoQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.PersonalContratoQuery" parameterType="sernanp.app.dao.query.domain.PersonalContratoQueryCriteria"> 
+<![CDATA[
+
+	      
+	      
+			select
+			
+				p.idpersona ,
+				pn.idpersonanatural ,
+				ps.idpersonal ,
+				(pn.nombre || ' ' || pn.apepat || ' ' || pn.apemat) as "nombre_completo",
+				td.abrtablatipo as "tipoDoc" ,
+				pn.numerodoc,
+				pn.ruc,
+				g.destablatipo as "genero" ,
+				pais.nompais as "nacionalidad"
+				
+			from
+				sernanp.persona p inner join 
+				sernanp.personanatural pn on p.idpersona = pn.idpersona left join
+				sernanp.personal ps on ps.idpersonal = pn.idpersonanatural left join 
+				(SELECT idtablatipo,destablatipo,abrtablatipo FROM sernanp.tablatipo WHERE idtabla=1) td
+				on pn.idtipodocumento = td.idtablatipo left join
+				(SELECT idtablatipo,destablatipo,abrtablatipo FROM sernanp.tablatipo WHERE idtabla=2) g
+				on pn.idsexo = g.idtablatipo left join
+				(SELECT idtablatipo,destablatipo,abrtablatipo FROM sernanp.tablatipo WHERE idtabla=3) e
+				on pn.idestadocivil = e.idtablatipo left join
+				sernanp.pais pais on p.idpais = pais.idpais									
+			where
+				
+				
+				COALESCE(upper(pn.nombre || ' ' || pn.apepat || ' ' || pn.apemat),'') like COALESCE('%'|| upper(#{nombres}) ||'%', COALESCE((pn.nombre || ' ' || pn.apepat || ' ' || pn.apemat),''))   and 
+				COALESCE(pn.idtipodocumento,0) = COALESCE(#{tipoDoc},COALESCE(pn.idtipodocumento,0))   and 
+				COALESCE(pn.numerodoc,'') like COALESCE('%'|| #{numeroDoc} ||'%', COALESCE(pn.numerodoc,''))   and 
+				COALESCE(pn.ruc,'') like COALESCE('%'|| #{numeroRuc} ||'%', COALESCE(pn.ruc,''))  
+				
+				order by COALESCE((pn.nombre || ' ' || pn.apepat || ' ' || pn.apemat),'');
+			     
+		  
+	      
+]]>
+</select> 
+</mapper> 

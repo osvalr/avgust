@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteOficioRequerimientosMintra" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2560f1b0-9934-4709-b713-cb587435493e">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.export.docx.new.line.as.paragraph" value="true"/>
+	<property name="net.sf.jasperreports.export.html.wrap.break.word" value="true"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="dataset1" uuid="2b55bb9a-4d81-4ff1-8b5e-a3f5b81d9a70"/>
+	<parameter name="parametros" class="java.lang.String"/>
+	<field name="srl_id_requerimiento_personal" class="java.lang.String"/>
+	<field name="int_cantidad_requerida" class="java.lang.Integer"/>
+	<field name="var_denominacion_requerimiento" class="java.lang.String"/>
+	<field name="idarea_solicitante" class="java.lang.String"/>
+	<field name="desarea" class="java.lang.String"/>
+	<field name="idunidad_solicitante" class="java.lang.String"/>
+	<field name="nomunidad" class="java.lang.String"/>
+	<field name="int_id_estado" class="java.lang.Double"/>
+	<field name="var_nombre_estado" class="java.lang.Double"/>
+	<field name="var_nombre_anio" class="java.lang.String"/>
+	<field name="ultimo_lanzamiento" class="java.lang.String"/>
+	<field name="flag_segunda_convocataria" class="java.lang.String"/>
+	<variable name="numeracion_por_grupo" class="java.lang.Integer" incrementType="Group" incrementGroup="denominacion_requerimiento" calculation="Count">
+		<variableExpression><![CDATA[$V{numeracion_por_grupo}]]></variableExpression>
+		<initialValueExpression><![CDATA[1]]></initialValueExpression>
+	</variable>
+	<group name="denominacion_requerimiento">
+		<groupExpression><![CDATA[$F{srl_id_requerimiento_personal}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="337">
+			<textField pattern="">
+				<reportElement style="table" x="32" y="57" width="493" height="28" uuid="af15e005-4ad4-437a-bf87-bc0a4b1e3073">
+					<property name="net.sf.jasperreports.export.pdf.tag.tr" value="full"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" markup="html">
+					<font fontName="DejaVu Sans" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{var_nombre_anio} == null ? "" :$F{var_nombre_anio}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy" isBlankWhenNull="true">
+				<reportElement x="32" y="106" width="41" height="27" uuid="c6b21aab-518c-40ca-989f-9f84df1fcf15"/>
+				<textElement>
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Lima, "]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="32" y="187" width="493" height="43" uuid="0ac133e7-35db-481d-a5f0-c887dd639d8e"/>
+				<textElement textAlignment="Justified">
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<text><![CDATA[Ministerio de Trabajo y Promoción del Empleo
+Dirección General del Servicio Nacional del Empleo
+Av. Salaverry N° 655, Jesus María]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="34" y="168" width="44" height="19" uuid="425bd4ef-7312-4ed5-9393-16e57bd60d1a"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Señores:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="34" y="230" width="59" height="19" uuid="03afa7cb-97b8-4c83-a392-b2cb12f7724a"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Presente:]]></text>
+			</staticText>
+			<textField>
+				<reportElement stretchType="RelativeToTallestObject" x="283" y="249" width="242" height="31" isPrintWhenDetailOverflows="true" uuid="98c53fd5-d9bf-4524-b5ce-4b66b9aec71f"/>
+				<textElement markup="none">
+					<font fontName="DejaVu Sans" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ultimo_lanzamiento} == null ?
+"Remisión de Vacantes Públicas":
+"Remisión de Vacantes Públicas - Segunda Convocatoria "]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="32" y="292" width="493" height="42" uuid="864b3e8b-e27f-4622-8d6e-b6d78012d368"/>
+				<textElement textAlignment="Justified">
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<text><![CDATA[Es grato dirigirme a usted, con relación al asunto de la referencia a fin de comunicarle que el Servicio Nacional de Áreas Naturales Protegidas por el Estado (SERNANP) convocará a concurso para la contratación administrativa de servicios de la siguiente vacante:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="133" width="288" height="21" uuid="c3b8e21e-ce57-47a6-b83a-520be416a6e0"/>
+				<textElement markup="none">
+					<font fontName="DejaVu Sans" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[OFICIO Nº                -SERNANP-OA-RRHH]]></text>
+			</staticText>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="73" y="106" width="94" height="27" uuid="2c7b786a-3930-4b5e-85d0-855256a9e6eb"/>
+				<textElement>
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="55" y="3" width="63" height="47" forecolor="#FF0000" backcolor="#CE0000" uuid="f588f42f-543c-4f93-8bbe-c8fadf05cf10"/>
+				<graphicElement>
+					<pen lineColor="#FFFFFF"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="118" y="3" width="136" height="47" backcolor="#333333" uuid="879d9365-9ae1-4269-a7f1-e33960d24f5e"/>
+				<graphicElement>
+					<pen lineColor="#FFFFFF"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="254" y="3" width="147" height="47" backcolor="#666666" uuid="dfc45c1a-a305-487d-9ae2-ec9430baf2db"/>
+				<graphicElement>
+					<pen lineColor="#FFFFFF"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="401" y="3" width="124" height="47" backcolor="#999999" uuid="226acab5-6a27-4261-a717-f886173547e2"/>
+				<graphicElement>
+					<pen lineColor="#FFFFFF"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="55" y="4" width="63" height="46" forecolor="#FFFFFF" uuid="80b7baf4-1bba-4369-b3c2-26147d588ccb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PERÚ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="118" y="4" width="136" height="46" forecolor="#FFFFFF" backcolor="#FFFFFF" uuid="684779d5-5030-467f-af14-7d2e438e856a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ministerio del Ambiente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="254" y="4" width="147" height="46" forecolor="#FFFFFF" uuid="d2201b15-2d1a-4ee6-bca4-c40a9f2bf88f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Servicio Nacional de Áreas Naturales  Protegidas por el Estado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="401" y="4" width="124" height="46" forecolor="#FFFFFF" uuid="d92d9899-47f3-44d8-9c9d-ab543f81a9e3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Oficina de Administración]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="224" y="249" width="59" height="13" uuid="70f4a5d1-59be-4ab1-8d7d-a55dbd98833b"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" isItalic="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[ASUNTO:]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="23" splitType="Prevent">
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="32" y="0" width="232" height="23" uuid="bea231e6-e628-441a-9d51-50480dddc0d5"/>
+				<textElement verticalAlignment="Middle" markup="styled">
+					<font fontName="DejaVu Sans"/>
+					<paragraph lineSpacing="Proportional"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{var_denominacion_requerimiento}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="264" y="0" width="261" height="23" uuid="638136b9-2100-46c8-931d-e2cefcf4f7b4"/>
+				<textElement verticalAlignment="Middle" markup="styled">
+					<font fontName="DejaVu Sans"/>
+					<paragraph lineSpacing="Proportional"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{desarea}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<lastPageFooter>
+		<band height="75">
+			<staticText>
+				<reportElement x="32" y="32" width="208" height="43" uuid="fb1994be-8774-4338-95a5-c259e6b862b4"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="7"/>
+				</textElement>
+				<text><![CDATA[
+Calle Diecisiete Nº 355,
+Urb. El Palomar-  San Isidro, Lima 27
+LIMA - PERÚ
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="328" y="32" width="197" height="43" uuid="0ecdcb49-c9c0-4bcf-a564-868f36dfc309"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="7"/>
+				</textElement>
+				<text><![CDATA[
+Teléfono (51 1) 2252803
+Fax (51 1) 2251053
+]]></text>
+			</staticText>
+		</band>
+	</lastPageFooter>
+	<summary>
+		<band height="83">
+			<textField>
+				<reportElement x="32" y="12" width="493" height="53" isPrintWhenDetailOverflows="true" uuid="9bd173c8-f929-4826-baf0-d2233dfe965f"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ultimo_lanzamiento} == null ?
+"En tal sentido se comunica que las Bases de los concursos serán publicadas en (página web, portal institucional, link o ruta directa, vitrina de la institución u otro medio   de difusión). Es propicia la oportunidad para expresar a usted los sentimientos de mi especial consideración y estima." :
+"Cabe mencionar que las plazas (*) ya fueron notificadas mediante documentos de la referencia y convocadas mediante Proceso de Selección CAS N° " + $F{ultimo_lanzamiento}
++" - SERNANP respectivamente, motivo por el cual se realizará  una segunda convocatoria a fin de cubri las plazas mencionadas <br> <br>"
++"Es propicia la oportunidad para expresar a usted los sentimientos de mi especial consideración y estma."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="32" y="65" width="84" height="18" uuid="6b77cd27-e106-4681-b76c-3866b924c7dd"/>
+				<textElement markup="none">
+					<font fontName="DejaVu Sans" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Atentamente,]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

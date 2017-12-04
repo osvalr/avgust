@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sernanp.app.dao.mapper.PersonanaturalMapper" >
+  <resultMap id="BaseResultMap" type="sernanp.app.dao.domain.Personanatural" >
+    <id column="idpersonanatural" property="idpersonanatural" jdbcType="INTEGER" />
+    <result column="idpersona" property="idpersona" jdbcType="INTEGER" />
+    <result column="nombre" property="nombre" jdbcType="VARCHAR" />
+    <result column="apepat" property="apepat" jdbcType="VARCHAR" />
+    <result column="apemat" property="apemat" jdbcType="VARCHAR" />
+    <result column="idtipodocumento" property="idtipodocumento" jdbcType="INTEGER" />
+    <result column="numerodoc" property="numerodoc" jdbcType="VARCHAR" />
+    <result column="fechanacimiento" property="fechanacimiento" jdbcType="DATE" />
+    <result column="idsexo" property="idsexo" jdbcType="INTEGER" />
+    <result column="idestadocivil" property="idestadocivil" jdbcType="INTEGER" />
+    <result column="temporal" property="temporal" jdbcType="INTEGER" />
+    <result column="ruc" property="ruc" jdbcType="VARCHAR" />
+    <result column="direccion" property="direccion" jdbcType="VARCHAR" />
+    <result column="idubigeo" property="idubigeo" jdbcType="INTEGER" />
+    <result column="var_num_file" property="var_num_file" jdbcType="VARCHAR" />
+    <result column="var_num_caja" property="var_num_caja" jdbcType="VARCHAR" />
+    <result column="var_numero_pasaporte" property="var_numero_pasaporte" jdbcType="VARCHAR" />
+    <result column="var_numero_brevete" property="var_numero_brevete" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    idpersonanatural, idpersona, nombre, apepat, apemat, idtipodocumento, numerodoc, 
+    fechanacimiento, idsexo, idestadocivil, temporal, ruc, direccion, idubigeo, var_num_file, 
+    var_num_caja, var_numero_pasaporte, var_numero_brevete
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.PersonanaturalExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sernanp.personanatural
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.PersonanaturalKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from sernanp.personanatural
+    where idpersonanatural = #{idpersonanatural,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="sernanp.app.dao.domain.PersonanaturalKey" >
+    delete from sernanp.personanatural
+    where idpersonanatural = #{idpersonanatural,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sernanp.app.dao.domain.PersonanaturalExample" >
+    delete from sernanp.personanatural
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sernanp.app.dao.domain.Personanatural" useGeneratedKeys="true" keyProperty="idpersonanatural" >
+    insert into sernanp.personanatural (idpersona, nombre, apepat, 
+      apemat, idtipodocumento, numerodoc, 
+      fechanacimiento, idsexo, idestadocivil, 
+      temporal, ruc, direccion, 
+      idubigeo, var_num_file, var_num_caja, 
+      var_numero_pasaporte, var_numero_brevete
+      )
+    values (#{idpersona,jdbcType=INTEGER}, #{nombre,jdbcType=VARCHAR}, #{apepat,jdbcType=VARCHAR}, 
+      #{apemat,jdbcType=VARCHAR}, #{idtipodocumento,jdbcType=INTEGER}, #{numerodoc,jdbcType=VARCHAR}, 
+      #{fechanacimiento,jdbcType=DATE}, #{idsexo,jdbcType=INTEGER}, #{idestadocivil,jdbcType=INTEGER}, 
+      #{temporal,jdbcType=INTEGER}, #{ruc,jdbcType=VARCHAR}, #{direccion,jdbcType=VARCHAR}, 
+      #{idubigeo,jdbcType=INTEGER}, #{var_num_file,jdbcType=VARCHAR}, #{var_num_caja,jdbcType=VARCHAR}, 
+      #{var_numero_pasaporte,jdbcType=VARCHAR}, #{var_numero_brevete,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="sernanp.app.dao.domain.Personanatural" useGeneratedKeys="true" keyProperty="idpersonanatural" >
+    insert into sernanp.personanatural
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="idpersona != null" >
+        idpersona,
+      </if>
+      <if test="nombre != null" >
+        nombre,
+      </if>
+      <if test="apepat != null" >
+        apepat,
+      </if>
+      <if test="apemat != null" >
+        apemat,
+      </if>
+      <if test="idtipodocumento != null" >
+        idtipodocumento,
+      </if>
+      <if test="numerodoc != null" >
+        numerodoc,
+      </if>
+      <if test="fechanacimiento != null" >
+        fechanacimiento,
+      </if>
+      <if test="idsexo != null" >
+        idsexo,
+      </if>
+      <if test="idestadocivil != null" >
+        idestadocivil,
+      </if>
+      <if test="temporal != null" >
+        temporal,
+      </if>
+      <if test="ruc != null" >
+        ruc,
+      </if>
+      <if test="direccion != null" >
+        direccion,
+      </if>
+      <if test="idubigeo != null" >
+        idubigeo,
+      </if>
+      <if test="var_num_file != null" >
+        var_num_file,
+      </if>
+      <if test="var_num_caja != null" >
+        var_num_caja,
+      </if>
+      <if test="var_numero_pasaporte != null" >
+        var_numero_pasaporte,
+      </if>
+      <if test="var_numero_brevete != null" >
+        var_numero_brevete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="idpersona != null" >
+        #{idpersona,jdbcType=INTEGER},
+      </if>
+      <if test="nombre != null" >
+        #{nombre,jdbcType=VARCHAR},
+      </if>
+      <if test="apepat != null" >
+        #{apepat,jdbcType=VARCHAR},
+      </if>
+      <if test="apemat != null" >
+        #{apemat,jdbcType=VARCHAR},
+      </if>
+      <if test="idtipodocumento != null" >
+        #{idtipodocumento,jdbcType=INTEGER},
+      </if>
+      <if test="numerodoc != null" >
+        #{numerodoc,jdbcType=VARCHAR},
+      </if>
+      <if test="fechanacimiento != null" >
+        #{fechanacimiento,jdbcType=DATE},
+      </if>
+      <if test="idsexo != null" >
+        #{idsexo,jdbcType=INTEGER},
+      </if>
+      <if test="idestadocivil != null" >
+        #{idestadocivil,jdbcType=INTEGER},
+      </if>
+      <if test="temporal != null" >
+        #{temporal,jdbcType=INTEGER},
+      </if>
+      <if test="ruc != null" >
+        #{ruc,jdbcType=VARCHAR},
+      </if>
+      <if test="direccion != null" >
+        #{direccion,jdbcType=VARCHAR},
+      </if>
+      <if test="idubigeo != null" >
+        #{idubigeo,jdbcType=INTEGER},
+      </if>
+      <if test="var_num_file != null" >
+        #{var_num_file,jdbcType=VARCHAR},
+      </if>
+      <if test="var_num_caja != null" >
+        #{var_num_caja,jdbcType=VARCHAR},
+      </if>
+      <if test="var_numero_pasaporte != null" >
+        #{var_numero_pasaporte,jdbcType=VARCHAR},
+      </if>
+      <if test="var_numero_brevete != null" >
+        #{var_numero_brevete,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sernanp.app.dao.domain.PersonanaturalExample" resultType="java.lang.Integer" >
+    select count(*) from sernanp.personanatural
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sernanp.personanatural
+    <set >
+      <if test="record.idpersonanatural != null" >
+        idpersonanatural = #{record.idpersonanatural,jdbcType=INTEGER},
+      </if>
+      <if test="record.idpersona != null" >
+        idpersona = #{record.idpersona,jdbcType=INTEGER},
+      </if>
+      <if test="record.nombre != null" >
+        nombre = #{record.nombre,jdbcType=VARCHAR},
+      </if>
+      <if test="record.apepat != null" >
+        apepat = #{record.apepat,jdbcType=VARCHAR},
+      </if>
+      <if test="record.apemat != null" >
+        apemat = #{record.apemat,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idtipodocumento != null" >
+        idtipodocumento = #{record.idtipodocumento,jdbcType=INTEGER},
+      </if>
+      <if test="record.numerodoc != null" >
+        numerodoc = #{record.numerodoc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fechanacimiento != null" >
+        fechanacimiento = #{record.fechanacimiento,jdbcType=DATE},
+      </if>
+      <if test="record.idsexo != null" >
+        idsexo = #{record.idsexo,jdbcType=INTEGER},
+      </if>
+      <if test="record.idestadocivil != null" >
+        idestadocivil = #{record.idestadocivil,jdbcType=INTEGER},
+      </if>
+      <if test="record.temporal != null" >
+        temporal = #{record.temporal,jdbcType=INTEGER},
+      </if>
+      <if test="record.ruc != null" >
+        ruc = #{record.ruc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.direccion != null" >
+        direccion = #{record.direccion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idubigeo != null" >
+        idubigeo = #{record.idubigeo,jdbcType=INTEGER},
+      </if>
+      <if test="record.var_num_file != null" >
+        var_num_file = #{record.var_num_file,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_num_caja != null" >
+        var_num_caja = #{record.var_num_caja,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_numero_pasaporte != null" >
+        var_numero_pasaporte = #{record.var_numero_pasaporte,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_numero_brevete != null" >
+        var_numero_brevete = #{record.var_numero_brevete,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sernanp.personanatural
+    set idpersonanatural = #{record.idpersonanatural,jdbcType=INTEGER},
+      idpersona = #{record.idpersona,jdbcType=INTEGER},
+      nombre = #{record.nombre,jdbcType=VARCHAR},
+      apepat = #{record.apepat,jdbcType=VARCHAR},
+      apemat = #{record.apemat,jdbcType=VARCHAR},
+      idtipodocumento = #{record.idtipodocumento,jdbcType=INTEGER},
+      numerodoc = #{record.numerodoc,jdbcType=VARCHAR},
+      fechanacimiento = #{record.fechanacimiento,jdbcType=DATE},
+      idsexo = #{record.idsexo,jdbcType=INTEGER},
+      idestadocivil = #{record.idestadocivil,jdbcType=INTEGER},
+      temporal = #{record.temporal,jdbcType=INTEGER},
+      ruc = #{record.ruc,jdbcType=VARCHAR},
+      direccion = #{record.direccion,jdbcType=VARCHAR},
+      idubigeo = #{record.idubigeo,jdbcType=INTEGER},
+      var_num_file = #{record.var_num_file,jdbcType=VARCHAR},
+      var_num_caja = #{record.var_num_caja,jdbcType=VARCHAR},
+      var_numero_pasaporte = #{record.var_numero_pasaporte,jdbcType=VARCHAR},
+      var_numero_brevete = #{record.var_numero_brevete,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sernanp.app.dao.domain.Personanatural" >
+    update sernanp.personanatural
+    <set >
+      <if test="idpersona != null" >
+        idpersona = #{idpersona,jdbcType=INTEGER},
+      </if>
+      <if test="nombre != null" >
+        nombre = #{nombre,jdbcType=VARCHAR},
+      </if>
+      <if test="apepat != null" >
+        apepat = #{apepat,jdbcType=VARCHAR},
+      </if>
+      <if test="apemat != null" >
+        apemat = #{apemat,jdbcType=VARCHAR},
+      </if>
+      <if test="idtipodocumento != null" >
+        idtipodocumento = #{idtipodocumento,jdbcType=INTEGER},
+      </if>
+      <if test="numerodoc != null" >
+        numerodoc = #{numerodoc,jdbcType=VARCHAR},
+      </if>
+      <if test="fechanacimiento != null" >
+        fechanacimiento = #{fechanacimiento,jdbcType=DATE},
+      </if>
+      <if test="idsexo != null" >
+        idsexo = #{idsexo,jdbcType=INTEGER},
+      </if>
+      <if test="idestadocivil != null" >
+        idestadocivil = #{idestadocivil,jdbcType=INTEGER},
+      </if>
+      <if test="temporal != null" >
+        temporal = #{temporal,jdbcType=INTEGER},
+      </if>
+      <if test="ruc != null" >
+        ruc = #{ruc,jdbcType=VARCHAR},
+      </if>
+      <if test="direccion != null" >
+        direccion = #{direccion,jdbcType=VARCHAR},
+      </if>
+      <if test="idubigeo != null" >
+        idubigeo = #{idubigeo,jdbcType=INTEGER},
+      </if>
+      <if test="var_num_file != null" >
+        var_num_file = #{var_num_file,jdbcType=VARCHAR},
+      </if>
+      <if test="var_num_caja != null" >
+        var_num_caja = #{var_num_caja,jdbcType=VARCHAR},
+      </if>
+      <if test="var_numero_pasaporte != null" >
+        var_numero_pasaporte = #{var_numero_pasaporte,jdbcType=VARCHAR},
+      </if>
+      <if test="var_numero_brevete != null" >
+        var_numero_brevete = #{var_numero_brevete,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where idpersonanatural = #{idpersonanatural,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sernanp.app.dao.domain.Personanatural" >
+    update sernanp.personanatural
+    set idpersona = #{idpersona,jdbcType=INTEGER},
+      nombre = #{nombre,jdbcType=VARCHAR},
+      apepat = #{apepat,jdbcType=VARCHAR},
+      apemat = #{apemat,jdbcType=VARCHAR},
+      idtipodocumento = #{idtipodocumento,jdbcType=INTEGER},
+      numerodoc = #{numerodoc,jdbcType=VARCHAR},
+      fechanacimiento = #{fechanacimiento,jdbcType=DATE},
+      idsexo = #{idsexo,jdbcType=INTEGER},
+      idestadocivil = #{idestadocivil,jdbcType=INTEGER},
+      temporal = #{temporal,jdbcType=INTEGER},
+      ruc = #{ruc,jdbcType=VARCHAR},
+      direccion = #{direccion,jdbcType=VARCHAR},
+      idubigeo = #{idubigeo,jdbcType=INTEGER},
+      var_num_file = #{var_num_file,jdbcType=VARCHAR},
+      var_num_caja = #{var_num_caja,jdbcType=VARCHAR},
+      var_numero_pasaporte = #{var_numero_pasaporte,jdbcType=VARCHAR},
+      var_numero_brevete = #{var_numero_brevete,jdbcType=VARCHAR}
+    where idpersonanatural = #{idpersonanatural,jdbcType=INTEGER}
+  </update>
+</mapper>

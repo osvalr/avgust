@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.TablaTipoReferQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+  
+					
+tt.idtablatipo ,
+tt.ordtablatipo ,
+tt.destablatipo,
+tt.abrtablatipo,
+tt.idtabla ,
+tt.codinttablatipo ,
+tt.mensajetablatipo,
+tt.clasetablatipo,
+tt.flagvisible,
+tt.int_cod_refer_tablatipo 
+					
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+ 
+
+sernanp.tablatipo tt
+				  
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+ 
+				 
+tt.idtabla = (select t.idtabla from sernanp.tabla t where t.destabla = #{destabla}) and
+tt.int_cod_refer_tablatipo = #{int_cod_refer_tablatipo}
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.TablaTipoReferQuery" parameterType="sernanp.app.dao.query.domain.TablaTipoReferQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.TablaTipoReferQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.TablaTipoReferQuery" parameterType="sernanp.app.dao.query.domain.TablaTipoReferQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.TablaTipoReferQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.TablaTipoReferQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

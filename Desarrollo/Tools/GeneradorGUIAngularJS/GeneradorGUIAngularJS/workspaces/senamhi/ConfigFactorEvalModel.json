@@ -1,0 +1,14 @@
+{
+	"titleCrud": "Configuración Factores de Evaluación",
+	"nameCrud": "ConfigFactorEval",
+	"constUrlApi": "CONFIG_FACTOR_EVAL_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "ConfigFactorEvalModel.xml",
+	"subModels": [
+		{
+			"nameModel": "FactorEvaluacionModel",
+			"nameCrud": "FactorEvaluacion",
+			"autoIdentityPrimaryKey": true
+		}
+	]
+}

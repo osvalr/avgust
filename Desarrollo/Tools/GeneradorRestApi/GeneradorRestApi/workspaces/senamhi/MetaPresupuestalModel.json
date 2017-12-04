@@ -1,0 +1,6 @@
+{
+	"nameCrud": "MetaPresupuestal",
+	"path": "metas-presupuestales",
+	"nameRepository": "TMetaPresupuestalRepository",
+	"nameModelXml": "MetaPresupuestalModel.xml"
+}

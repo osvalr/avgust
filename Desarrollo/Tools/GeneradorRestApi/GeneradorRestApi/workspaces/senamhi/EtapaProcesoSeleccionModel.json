@@ -1,0 +1,13 @@
+{
+	"nameCrud": "EtapaProcesoSeleccion",
+	"path": "etapa-proceso-seleccion",
+	"nameRepository": "TEtapaProcesoSeleccionRepository",
+	"nameModelXml": "EtapaProcesoSeleccionModel.xml",
+	"subModels": [
+		{
+			"nameRepository": "TSubetapaProcesoSeleccionRepository",
+			"nameCrud": "SubEtapaProcesoSeleccion",
+			"nameSubModel": "SubEtapaProcesoSeleccionModel"
+		}
+	]
+}

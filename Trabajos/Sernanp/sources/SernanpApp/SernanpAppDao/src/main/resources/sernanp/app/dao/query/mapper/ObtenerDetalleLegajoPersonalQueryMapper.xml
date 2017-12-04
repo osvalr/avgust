@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.ObtenerDetalleLegajoPersonalQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.ObtenerDetalleLegajoPersonalQuery" parameterType="sernanp.app.dao.query.domain.ObtenerDetalleLegajoPersonalQueryCriteria"> 
+<![CDATA[
+
+	      select 
+	      		
+					       ps.idpersonal,
+                 		   pn.idpersonanatural ,
+					       pnl.srl_id_persona_natural_legajo ,
+					       pnl.int_id_tipo_documento,
+					       pnl.var_nombre_documento as "nombre",
+					       pnl.var_asunto_documento as "asunto",
+					       pnl.var_descripcion_documento as "descripcion",
+					       a.var_nombre_archivo as "nombre_archivo",
+                 		   to_char(pc.dte_fec_cese, 'DD/MM/YYYY') as "dte_fec_cese",
+					       to_char(pnl.tsp_fecha_registro, 'DD/MM/YYYY') as "fecha_registro"
+							--11-02-2015 DAVID
+							,COALESCE(pnl.srl_id_contrato,0) AS srl_id_contrato
+			    
+				from      
+			               sernanp.personal ps inner join sernanp.personanatural pn 
+			               on ps.idpersonanatural = pn.idpersonanatural left join sernanp.t_persona_natural_legajo pnl 
+						   on pn.idpersonanatural = pnl.idpersonanatural left join sernanp.t_persona_natural_legajo_archivo pnla 
+			               on pnl.srl_id_persona_natural_legajo = pnla.srl_id_persona_natural_legajo left join sernanp.t_archivo a 
+			               on pnla.srl_id_archivo = a.srl_id_archivo left join sernanp.t_personal_contrato pc
+			               on ps.idpersonal = pc.idpersonal
+				where
+				
+						   pnl.srl_id_persona_natural_legajo = COALESCE(#{srl_id_persona_natural_legajo}, pnl.srl_id_persona_natural_legajo);
+	      
+	      	
+	      
+]]>
+</select> 
+</mapper> 

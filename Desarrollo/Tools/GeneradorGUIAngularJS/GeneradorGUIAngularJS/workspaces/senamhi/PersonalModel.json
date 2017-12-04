@@ -1,0 +1,90 @@
+{
+	"titleCrud": "Personal",
+	"nameCrud": "Personal",
+	"constUrlApi": "PERSONAL_SERVICE_API",
+	"autoIdentityPrimaryKey": false,
+	"nameModelXml": "PersonalModel.xml",
+	"subModels": [
+		{
+			"nameModel": "PersonaDocumentoIdentidadModel",
+			"nameCrud": "PersonaDocumentoIdentidad",
+			"autoIdentityPrimaryKey": true
+		},
+		{
+			"nameModel": "PersonaDireccionModel",
+			"nameCrud": "PersonaDireccion",
+			"autoIdentityPrimaryKey": true
+		},
+		{
+			"nameModel": "PersonaBeneficioModel",
+			"nameCrud": "PersonaBeneficio",
+			"autoIdentityPrimaryKey": true
+		},
+		{
+			"nameModel": "PersonaCapacitacionModel",
+			"nameCrud": "PersonaCapacitacion",
+			"autoIdentityPrimaryKey": true
+		},
+		{
+			"nameModel": "PersonaDeclaracionJuradaModel",
+			"nameCrud": "PersonaDeclaracionJurada",
+			"autoIdentityPrimaryKey": true
+		},
+		{
+			"nameModel": "PersonaDesignacionModel",
+			"nameCrud": "PersonaDesignacion",
+			"autoIdentityPrimaryKey": true
+		}
+		,
+		{
+			"nameModel": "PersonaEncargaturaModel",
+			"nameCrud": "PersonaEncargatura",
+			"autoIdentityPrimaryKey": true
+		},
+		{
+			"nameModel": "PersonaFamiliaModel",
+			"nameCrud": "PersonaFamilia",
+			"autoIdentityPrimaryKey": true
+		},
+		{
+			"nameModel": "PersonaFormacionAcademicaModel",
+			"nameCrud": "PersonaFormacionAcademica",
+			"autoIdentityPrimaryKey": true
+		},
+		{
+			"nameModel": "PersonaInfoBancoModel",
+			"nameCrud": "PersonaInfoBanco",
+			"autoIdentityPrimaryKey": true
+		},
+		{
+			"nameModel": "PersonaLiquidacionModel",
+			"nameCrud": "PersonaLiquidacion",
+			"autoIdentityPrimaryKey": true
+		},
+		{
+			"nameModel": "PersonaMeritoModel",
+			"nameCrud": "PersonaMerito",
+			"autoIdentityPrimaryKey": true
+		},
+		{
+			"nameModel": "PersonaMovimientoModel",
+			"nameCrud": "PersonaMovimiento",
+			"autoIdentityPrimaryKey": true
+		},
+		{
+			"nameModel": "PersonaSancionModel",
+			"nameCrud": "PersonaSancion",
+			"autoIdentityPrimaryKey": true
+		},
+		{
+			"nameModel": "PersonaTelefonoModel",
+			"nameCrud": "PersonaTelefono",
+			"autoIdentityPrimaryKey": true
+		},
+		{
+			"nameModel": "PersonalContratoModel",
+			"nameCrud": "PersonalContrato",
+			"autoIdentityPrimaryKey": true
+		}
+	]
+}

@@ -1,0 +1,6 @@
+{
+	"nameCrud": "Cargos",
+	"path": "cargos",
+	"nameRepository": "TCargoRepository",
+	"nameModelXml": "CargoModel.xml"
+}

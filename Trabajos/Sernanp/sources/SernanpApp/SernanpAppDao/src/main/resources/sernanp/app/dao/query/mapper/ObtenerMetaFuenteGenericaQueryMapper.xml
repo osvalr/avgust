@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.ObtenerMetaFuenteGenericaQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+ 
+       mfg.srl_id_meta_fuente_generica,
+       mfg.srl_id_fuente_financiamiento,
+       ff.var_descripcion_fuente_financiamiento,
+       mfg.srl_id_meta_presupuestaria, 
+       mp.var_descripcion
+  
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+ 
+       mpp.t_meta_fuente_generica mfg
+       LEFT JOIN mpp.t_fuente_financiamiento ff ON mfg.srl_id_fuente_financiamiento = ff.srl_id_fuente_financiamiento
+       LEFT JOIN mpp.t_meta_presupuestaria mp ON mfg.srl_id_meta_presupuestaria = mp.srl_id_meta_presupuestaria
+ 
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+       mfg.srl_id_meta_fuente_generica = COALESCE(#{srl_id_meta_fuente_generica},mfg.srl_id_meta_fuente_generica)
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.ObtenerMetaFuenteGenericaQuery" parameterType="sernanp.app.dao.query.domain.ObtenerMetaFuenteGenericaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.ObtenerMetaFuenteGenericaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.ObtenerMetaFuenteGenericaQuery" parameterType="sernanp.app.dao.query.domain.ObtenerMetaFuenteGenericaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.ObtenerMetaFuenteGenericaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.ObtenerMetaFuenteGenericaQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

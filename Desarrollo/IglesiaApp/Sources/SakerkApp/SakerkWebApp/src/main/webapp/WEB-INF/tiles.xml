@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+	
+	<definition name="baseLayoutExtJs" template="/template/baseLayoutExtJs.jsp">
+		<put-attribute name="title" value=":: SAKERK APP ::"/>
+		<put-attribute name="header" value="/layoutsRRHH/header2.jsp"/>
+		<put-attribute name="content" value=""/>
+	</definition>
+		
+	<definition name="gestionar_postulante" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/persona/gestionar_persona/postulante/gestionarPostulante.jsp"/>
+	</definition>
+	
+</tiles-definitions> 

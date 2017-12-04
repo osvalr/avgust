@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.UltimoEstadoPersonalQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.UltimoEstadoPersonalQuery" parameterType="sernanp.app.dao.query.domain.UltimoEstadoPersonalQueryCriteria"> 
+<![CDATA[
+
+	      
+	      
+	      		select 
+						   
+						   ep.srl_id_estado_personal ,
+					       ep.idpersonal ,
+                           ep.int_id_tipificacion ,
+					       ep.var_motivo,
+							ep.int_id_estado ,
+					       ep.dte_fecha_estado 
+			    
+				from 
+					       sernanp.personanatural pn inner join
+					       sernanp.personal pl on pn.idpersonanatural = pl.idpersonanatural inner join
+					       sernanp.t_estado_personal ep on pl.idpersonal = ep.idpersonal inner join
+					       sernanp.t_tipificacion t on ep.int_id_tipificacion = t.int_id_tipificacion
+				where
+				
+					       pl.idpersonal =  COALESCE(#{idpersonal}, pl.idpersonal) and
+						   ep.dte_fecha_estado = (select max(ep.dte_fecha_estado) from sernanp.t_estado_personal ep where ep.idpersonal = #{idpersonal});
+	      		
+				
+		  
+	      
+]]>
+</select> 
+</mapper> 

@@ -1,0 +1,7 @@
+{
+	"titleCrud": "Metas Presupuestales",
+	"nameCrud": "MetaPresupuestal",
+	"constUrlApi": "META_PRESUPUESTAL_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "MetaPresupuestalModel.xml"
+}

@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sernanp.app.dao.mapper.TEstadoPersonalMapper" >
+  <resultMap id="BaseResultMap" type="sernanp.app.dao.domain.TEstadoPersonal" >
+    <id column="srl_id_estado_personal" property="srl_id_estado_personal" jdbcType="INTEGER" />
+    <id column="idpersonal" property="idpersonal" jdbcType="INTEGER" />
+    <result column="var_motivo" property="var_motivo" jdbcType="VARCHAR" />
+    <result column="int_id_estado" property="int_id_estado" jdbcType="INTEGER" />
+    <result column="int_id_tipificacion" property="int_id_tipificacion" jdbcType="INTEGER" />
+    <result column="dte_fecha_estado" property="dte_fecha_estado" jdbcType="DATE" />
+    <result column="srl_id_contrato" property="srl_id_contrato" jdbcType="INTEGER" />
+    <result column="int_anio" property="int_anio" jdbcType="INTEGER" />
+    <result column="int_mes" property="int_mes" jdbcType="INTEGER" />
+    <result column="dec_dias_vac_truncas" property="dec_dias_vac_truncas" jdbcType="NUMERIC" />
+    <result column="c_meta" property="c_meta" jdbcType="VARCHAR" />
+    <result column="c_fte_fto" property="c_fte_fto" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    srl_id_estado_personal, idpersonal, var_motivo, int_id_estado, int_id_tipificacion, 
+    dte_fecha_estado, srl_id_contrato, int_anio, int_mes, dec_dias_vac_truncas, c_meta, 
+    c_fte_fto
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TEstadoPersonalExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sernanp.t_estado_personal
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TEstadoPersonalKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from sernanp.t_estado_personal
+    where srl_id_estado_personal = #{srl_id_estado_personal,jdbcType=INTEGER}
+      and idpersonal = #{idpersonal,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="sernanp.app.dao.domain.TEstadoPersonalKey" >
+    delete from sernanp.t_estado_personal
+    where srl_id_estado_personal = #{srl_id_estado_personal,jdbcType=INTEGER}
+      and idpersonal = #{idpersonal,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sernanp.app.dao.domain.TEstadoPersonalExample" >
+    delete from sernanp.t_estado_personal
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sernanp.app.dao.domain.TEstadoPersonal" useGeneratedKeys="true" keyProperty="srl_id_estado_personal" >
+    insert into sernanp.t_estado_personal (idpersonal, var_motivo, int_id_estado, 
+      int_id_tipificacion, dte_fecha_estado, srl_id_contrato, 
+      int_anio, int_mes, dec_dias_vac_truncas, 
+      c_meta, c_fte_fto)
+    values (#{idpersonal,jdbcType=INTEGER}, #{var_motivo,jdbcType=VARCHAR}, #{int_id_estado,jdbcType=INTEGER}, 
+      #{int_id_tipificacion,jdbcType=INTEGER}, #{dte_fecha_estado,jdbcType=DATE}, #{srl_id_contrato,jdbcType=INTEGER}, 
+      #{int_anio,jdbcType=INTEGER}, #{int_mes,jdbcType=INTEGER}, #{dec_dias_vac_truncas,jdbcType=NUMERIC}, 
+      #{c_meta,jdbcType=VARCHAR}, #{c_fte_fto,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="sernanp.app.dao.domain.TEstadoPersonal" useGeneratedKeys="true" keyProperty="srl_id_estado_personal" >
+    insert into sernanp.t_estado_personal
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="idpersonal != null" >
+        idpersonal,
+      </if>
+      <if test="var_motivo != null" >
+        var_motivo,
+      </if>
+      <if test="int_id_estado != null" >
+        int_id_estado,
+      </if>
+      <if test="int_id_tipificacion != null" >
+        int_id_tipificacion,
+      </if>
+      <if test="dte_fecha_estado != null" >
+        dte_fecha_estado,
+      </if>
+      <if test="srl_id_contrato != null" >
+        srl_id_contrato,
+      </if>
+      <if test="int_anio != null" >
+        int_anio,
+      </if>
+      <if test="int_mes != null" >
+        int_mes,
+      </if>
+      <if test="dec_dias_vac_truncas != null" >
+        dec_dias_vac_truncas,
+      </if>
+      <if test="c_meta != null" >
+        c_meta,
+      </if>
+      <if test="c_fte_fto != null" >
+        c_fte_fto,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="idpersonal != null" >
+        #{idpersonal,jdbcType=INTEGER},
+      </if>
+      <if test="var_motivo != null" >
+        #{var_motivo,jdbcType=VARCHAR},
+      </if>
+      <if test="int_id_estado != null" >
+        #{int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_tipificacion != null" >
+        #{int_id_tipificacion,jdbcType=INTEGER},
+      </if>
+      <if test="dte_fecha_estado != null" >
+        #{dte_fecha_estado,jdbcType=DATE},
+      </if>
+      <if test="srl_id_contrato != null" >
+        #{srl_id_contrato,jdbcType=INTEGER},
+      </if>
+      <if test="int_anio != null" >
+        #{int_anio,jdbcType=INTEGER},
+      </if>
+      <if test="int_mes != null" >
+        #{int_mes,jdbcType=INTEGER},
+      </if>
+      <if test="dec_dias_vac_truncas != null" >
+        #{dec_dias_vac_truncas,jdbcType=NUMERIC},
+      </if>
+      <if test="c_meta != null" >
+        #{c_meta,jdbcType=VARCHAR},
+      </if>
+      <if test="c_fte_fto != null" >
+        #{c_fte_fto,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sernanp.app.dao.domain.TEstadoPersonalExample" resultType="java.lang.Integer" >
+    select count(*) from sernanp.t_estado_personal
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sernanp.t_estado_personal
+    <set >
+      <if test="record.srl_id_estado_personal != null" >
+        srl_id_estado_personal = #{record.srl_id_estado_personal,jdbcType=INTEGER},
+      </if>
+      <if test="record.idpersonal != null" >
+        idpersonal = #{record.idpersonal,jdbcType=INTEGER},
+      </if>
+      <if test="record.var_motivo != null" >
+        var_motivo = #{record.var_motivo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.int_id_estado != null" >
+        int_id_estado = #{record.int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_id_tipificacion != null" >
+        int_id_tipificacion = #{record.int_id_tipificacion,jdbcType=INTEGER},
+      </if>
+      <if test="record.dte_fecha_estado != null" >
+        dte_fecha_estado = #{record.dte_fecha_estado,jdbcType=DATE},
+      </if>
+      <if test="record.srl_id_contrato != null" >
+        srl_id_contrato = #{record.srl_id_contrato,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_anio != null" >
+        int_anio = #{record.int_anio,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_mes != null" >
+        int_mes = #{record.int_mes,jdbcType=INTEGER},
+      </if>
+      <if test="record.dec_dias_vac_truncas != null" >
+        dec_dias_vac_truncas = #{record.dec_dias_vac_truncas,jdbcType=NUMERIC},
+      </if>
+      <if test="record.c_meta != null" >
+        c_meta = #{record.c_meta,jdbcType=VARCHAR},
+      </if>
+      <if test="record.c_fte_fto != null" >
+        c_fte_fto = #{record.c_fte_fto,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sernanp.t_estado_personal
+    set srl_id_estado_personal = #{record.srl_id_estado_personal,jdbcType=INTEGER},
+      idpersonal = #{record.idpersonal,jdbcType=INTEGER},
+      var_motivo = #{record.var_motivo,jdbcType=VARCHAR},
+      int_id_estado = #{record.int_id_estado,jdbcType=INTEGER},
+      int_id_tipificacion = #{record.int_id_tipificacion,jdbcType=INTEGER},
+      dte_fecha_estado = #{record.dte_fecha_estado,jdbcType=DATE},
+      srl_id_contrato = #{record.srl_id_contrato,jdbcType=INTEGER},
+      int_anio = #{record.int_anio,jdbcType=INTEGER},
+      int_mes = #{record.int_mes,jdbcType=INTEGER},
+      dec_dias_vac_truncas = #{record.dec_dias_vac_truncas,jdbcType=NUMERIC},
+      c_meta = #{record.c_meta,jdbcType=VARCHAR},
+      c_fte_fto = #{record.c_fte_fto,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sernanp.app.dao.domain.TEstadoPersonal" >
+    update sernanp.t_estado_personal
+    <set >
+      <if test="var_motivo != null" >
+        var_motivo = #{var_motivo,jdbcType=VARCHAR},
+      </if>
+      <if test="int_id_estado != null" >
+        int_id_estado = #{int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_tipificacion != null" >
+        int_id_tipificacion = #{int_id_tipificacion,jdbcType=INTEGER},
+      </if>
+      <if test="dte_fecha_estado != null" >
+        dte_fecha_estado = #{dte_fecha_estado,jdbcType=DATE},
+      </if>
+      <if test="srl_id_contrato != null" >
+        srl_id_contrato = #{srl_id_contrato,jdbcType=INTEGER},
+      </if>
+      <if test="int_anio != null" >
+        int_anio = #{int_anio,jdbcType=INTEGER},
+      </if>
+      <if test="int_mes != null" >
+        int_mes = #{int_mes,jdbcType=INTEGER},
+      </if>
+      <if test="dec_dias_vac_truncas != null" >
+        dec_dias_vac_truncas = #{dec_dias_vac_truncas,jdbcType=NUMERIC},
+      </if>
+      <if test="c_meta != null" >
+        c_meta = #{c_meta,jdbcType=VARCHAR},
+      </if>
+      <if test="c_fte_fto != null" >
+        c_fte_fto = #{c_fte_fto,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where srl_id_estado_personal = #{srl_id_estado_personal,jdbcType=INTEGER}
+      and idpersonal = #{idpersonal,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sernanp.app.dao.domain.TEstadoPersonal" >
+    update sernanp.t_estado_personal
+    set var_motivo = #{var_motivo,jdbcType=VARCHAR},
+      int_id_estado = #{int_id_estado,jdbcType=INTEGER},
+      int_id_tipificacion = #{int_id_tipificacion,jdbcType=INTEGER},
+      dte_fecha_estado = #{dte_fecha_estado,jdbcType=DATE},
+      srl_id_contrato = #{srl_id_contrato,jdbcType=INTEGER},
+      int_anio = #{int_anio,jdbcType=INTEGER},
+      int_mes = #{int_mes,jdbcType=INTEGER},
+      dec_dias_vac_truncas = #{dec_dias_vac_truncas,jdbcType=NUMERIC},
+      c_meta = #{c_meta,jdbcType=VARCHAR},
+      c_fte_fto = #{c_fte_fto,jdbcType=VARCHAR}
+    where srl_id_estado_personal = #{srl_id_estado_personal,jdbcType=INTEGER}
+      and idpersonal = #{idpersonal,jdbcType=INTEGER}
+  </update>
+</mapper>

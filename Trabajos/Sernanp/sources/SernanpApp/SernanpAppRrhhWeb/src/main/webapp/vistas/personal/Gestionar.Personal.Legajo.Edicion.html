@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+<meta charset="utf-8">
+<title>SERNANP</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta content="" name="description">
+<meta content="" name="author">
+<!-- BEGIN PLUGIN CSS -->
+
+<link href="../../assets/plugins/dropzone/css/dropzone.css" rel="stylesheet" type="text/css">
+
+
+<link href="../../assets/plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" media="screen">
+<link href="../../assets/plugins/jquery-slider/css/jquery.sidr.light.css" rel="stylesheet" type="text/css" media="screen">
+<!-- END PLUGIN CSS -->
+
+<!-- BEGIN PLUGIN CSS -->
+<!-- <link href="assets/plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" media="screen"/> -->
+<link href="../../assets/plugins/bootstrap-select2/select2.css" rel="stylesheet" type="text/css" media="screen">
+<link href="../../assets/plugins/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" type="text/css">
+<link href="../../assets/plugins/bootstrap-timepicker/css/bootstrap-timepicker.css" rel="stylesheet" type="text/css">
+<link href="../../assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css" rel="stylesheet" type="text/css">
+<link href="../../assets/plugins/jquery-datatable/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
+
+<link href="../../assets/plugins/boostrap-checkbox/css/bootstrap-checkbox.css" rel="stylesheet" type="text/css" media="screen">
+<link rel="stylesheet" href="../../assets/plugins/ios-switch/ios7-switch.css" type="text/css" media="screen">
+<link href="../../assets/plugins/jquery-slider/css/jquery.sidr.light.css" rel="stylesheet" type="text/css" media="screen">
+<!-- END PLUGIN CSS -->
+
+<!-- BEGIN CORE CSS FRAMEWORK -->
+<link href="../../assets/plugins/boostrapv3/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/plugins/boostrapv3/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/animate.min.css" rel="stylesheet" type="text/css">
+<!-- END CORE CSS FRAMEWORK -->
+
+<!-- BEGIN CSS TEMPLATE -->
+<link href="../../assets/css/style.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/responsive.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/custom-icon-set.css" rel="stylesheet" type="text/css">
+<!-- END CSS TEMPLATE -->
+<link href="../../assets/plugins/boostrap-slider/css/slider.css" rel="stylesheet" type="text/css">
+<style type="text/css"></style>
+<style type="text/css"></style>
+</head>
+<!-- BEGIN BODY -->
+<body>
+<!-- BEGIN HEADER -->
+
+<!-- END HEADER -->
+<!-- BEGIN CONTAINER -->
+<div class="page-container row">
+  
+  <div class="row-fluid">
+        <div class="span12">
+        
+        
+          <div class="grid simple">
+          
+            <div class="grid-title">
+            
+            <h4 class="semi-bold"><span class="light">Editar</span> <span class="bold">Legajo</span></h4>
+            </div>
+            
+        <div class="grid-body no-border" id="formFiltrar" style="overflow: hidden; display: block;">
+
+			<form class="form-no-horizontal-spacing" id="form-condensed" novalidate="novalidate">	
+              <div class="row">
+                <div class="col-md-8">
+                
+                <br>
+                                                     
+                   <div class="row form-row">
+                    
+                      
+                      <div class="col-md-6">
+                        <input name="f_num_convocatoria" id="f_num_convocatoria" type="text" class="form-control" placeholder="Tipo de documento">
+                      </div>
+                      
+                         
+                      <div class="col-md-6">
+                        <input name="f_descripcion_convocatoria" id="f_descripcion_convocatoria" class="form-control" placeholder="Nº de Documento">
+                      </div>
+                      
+                                        
+                      
+                      
+                   </div>
+                  
+                   <div class="row form-row">
+                   
+                   
+                   
+                   
+                   <div class="grid-body no-border">
+                  <div class="row-fluid">
+                    <form action="http://www.revox.io/file-upload" class="dropzone no-margin dz-clickable">
+                      
+                    <div class="dz-default dz-message"><span>Drop files here to upload</span></div></form>
+                  </div>
+                </div>
+                    
+                       
+                   
+                   
+                   </div>   
+                   
+                    
+                   
+                       
+                       <div class="col-md-6">
+<!-- <%--                            <select name="f_area_organica" id="f_area_organica" class="select2 form-control select2-offscreen" tabindex="-1"> --%> -->
+<!-- <!--                           <option value="">Area Organica</option> --> 
+<!-- <!--                           <option value="1">DNI</option> --> 
+<!-- <!--                           <option value="2">Female</option> --> 
+<!-- <%--                         </select> --%> -->
+                        
+<!--                         <s:select cssClass="select2 form-control select2-offscreen" tabindex="-1"  -->
+<!--                         		  headerKey="" headerValue="Area Organica" list="listAreaOrganica"  -->
+<!--                         		  name="f_area_organica" id="f_area_organica" listKey="idarea" listValue="desarea" /> -->
+                        
+                      </div>
+                      
+
+                      
+                      </div>
+                      <div class="row form-row">   
+                      
+                      <div class="col-md-6">
+                           <select name="f_estado_convocatoria" id="f_estado_convocatoria" class="select2 form-control select2-offscreen" tabindex="-1">
+                          <option value="1">En Proceso</option>
+                          <option value="2">Desierto</option>
+                          <option value="3">Finalizado</option>
+                        </select>
+                      </div>
+                      
+                      </div>
+                </div>
+               
+              
+				<div class="form-actions">
+					
+					<div class="center-block">
+					  <button class="btn btn-success btn-cons" type="button" onclick="iniciarFiltro()"><i class="icon-ok"></i> Filtrar</button>
+					  <button class="btn btn-white btn-cons" type="button">Cancelar</button>
+					</div>
+				  </div>
+			</form>
+
+</div>  
+              <div class="grid-body no-border">          
+         <form class="form-no-horizontal-spacing" id="form-condensed" novalidate="novalidate">
+             <div class="grid-body no-border ">
+  <br>
+              <div id="example3_wrapper" class="dataTables_wrapper form-inline" role="grid"><div class="row"><div class="col-md-6"><div id="example3_length" class="dataTables_length"><label><div class="select2-container span12" id="s2id_autogen7"><a href="javascript:void(0)" onclick="return false;" class="select2-choice" tabindex="-1">   <span class="select2-chosen">25</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow"><b></b></span></a><input class="select2-focusser select2-offscreen" type="text" id="s2id_autogen8"></div><select size="1" name="example3_length" aria-controls="example3" class="select2-wrapper span12 select2-offscreen" tabindex="-1"><option value="10" selected="selected">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div><div class="toolbar"><div class="table-tools-actions"><button class="btn btn-primary" style="margin-left:12px" id="test2">Add</button></div></div></div><div class="col-md-6"><div class="dataTables_filter" id="example3_filter"><label>Search: <input type="text" aria-controls="example3" class="input-medium"></label></div></div></div><table class="table dataTable" id="example3" aria-describedby="example3_info">
+                <thead>
+                  <tr role="row"><th class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" style="width: 278px;" aria-label="Rendering engine">Rendering engine</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="example3" rowspan="1" colspan="1" style="width: 350px;" aria-label="Browser: activate to sort column ascending">Browser</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="example3" rowspan="1" colspan="1" style="width: 323px;" aria-label="Platform(s): activate to sort column ascending">Platform(s)</th><th class="sorting_desc" role="columnheader" tabindex="0" aria-controls="example3" rowspan="1" colspan="1" style="width: 240px;" aria-sort="descending" aria-label="Engine version: activate to sort column ascending">Engine version</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="example3" rowspan="1" colspan="1" style="width: 173px;" aria-label="CSS grade: activate to sort column ascending">CSS grade</th></tr>
+                </thead>
+                
+              <tbody role="alert" aria-live="polite" aria-relevant="all"><tr class="odd"><td class="">Gecko</td><td class="">Internet Explorer 10</td><td class="">Windows</td><td class=" sorting_1">789.</td><td class="">A</td></tr><tr class="gradeA even">
+                    <td class=" ">Webkit</td>
+                    <td class=" ">Safari 3.0</td>
+                    <td class=" ">OSX.4+</td>
+                    <td class="center  sorting_1">522.1</td>
+                    <td class="center ">A</td>
+                  </tr><tr class="gradeA odd">
+                    <td class=" ">Webkit</td>
+                    <td class=" ">iPod Touch / iPhone</td>
+                    <td class=" ">iPod</td>
+                    <td class="center  sorting_1">420.1</td>
+                    <td class="center ">A</td>
+                  </tr><tr class="gradeA even">
+                    <td class=" ">Webkit</td>
+                    <td class=" ">OmniWeb 5.5</td>
+                    <td class=" ">OSX.4+</td>
+                    <td class="center  sorting_1">420</td>
+                    <td class="center ">A</td>
+                  </tr><tr class="gradeA even">
+                    <td class=" ">Gecko</td>
+                    <td class=" ">Netscape Navigator 9</td>
+                    <td class=" ">Win 98+ / OSX.2+</td>
+                    <td class="center  sorting_1">1.8</td>
+                    <td class="center ">A</td>
+                  </tr><tr class="gradeA odd">
+                    <td class=" ">Gecko</td>
+                    <td class=" ">Mozilla 1.8</td>
+                    <td class=" ">Win 98+ / OSX.1+</td>
+                    <td class="center  sorting_1">1.8</td>
+                    <td class="center ">A</td>
+                  </tr></tbody></table><div class="row"><div class="col-md-12"><div class="dataTables_paginate paging_bootstrap pagination"><ul><li class="prev disabled"><a href="#"><i class="fa fa-chevron-left"></i></a></li><li class="active"><a href="#">1</a></li><li><a href="#">2</a></li><li><a href="#">3</a></li><li class="next"><a href="#"><i class="fa fa-chevron-right"></i></a></li></ul></div><div class="dataTables_info" id="example3_info">Showing <b>1 to 25</b> of 58 entries</div></div></div></div>
+            </div>
+             
+             <div class="form-actions">
+					
+  
+					<div class="pull-right">
+					  <button class="btn btn-success btn-cons" type="submit"><i class="icon-ok"></i> Grabar</button>
+					  <button class="btn btn-white btn-cons" type="button">Cancelar</button>
+					</div>
+				  </div>
+				       
+             </form>
+                 
+             </div><!--end grid-body -->
+           
+          </div><!-- end grid simple -->
+        </div><!-- end span12 -->
+      </div>
+  
+  
+</div>  
+  
+  
+
+<!-- END CONTAINER -->
+<!-- BEGIN CORE JS FRAMEWORK-->
+<script src="../../assets/plugins/jquery-1.8.3.min.js" type="text/javascript"></script>
+<script src="../../assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+<script src="../../assets/plugins/boostrapv3/js/bootstrap.min.js" type="text/javascript"></script>
+<!-- <script src="../../assets/plugins/breakpoints.js" type="text/javascript"></script> -->
+<!-- <script src="../../assets/plugins/jquery-unveil/jquery.unveil.min.js" type="text/javascript"></script> -->
+<!-- <!-- END CORE JS FRAMEWORK --> 
+<!-- <!-- BEGIN PAGE LEVEL JS --> 
+<!-- <script src="../../assets/plugins/pace/pace.min.js" type="text/javascript"></script> -->
+<!-- <script src="../../assets/plugins/modernizr.js" type="text/javascript"></script> -->
+<!-- <script src="../../assets/plugins/jquery-slider/jquery.sidr.min.js" type="text/javascript"></script> -->
+<!-- <script src="../../assets/plugins/jquery-numberAnimate/jquery.animateNumbers.js" type="text/javascript"></script> -->
+<!-- <script src="../../assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>  -->
+<!-- <script src="../../assets/plugins/boostrap-slider/js/bootstrap-slider.js" type="text/javascript"></script> -->
+<!-- <!-- END PAGE LEVEL PLUGINS --> 
+<!-- <!-- BEGIN PAGE LEVEL JS --> 
+<!-- <!-- <script src="assets/plugins/jquery-slider/jquery.sidr.min.js" type="text/javascript"></script> --> 
+<!-- <script src="../../assets/plugins/jquery-block-ui/jqueryblockui.js" type="text/javascript"></script>  -->
+<!-- <!-- <script src="assets/plugins/jquery-numberAnimate/jquery.animateNumbers.js" type="text/javascript"></script> --> 
+<!-- <!-- <script src="assets/plugins/pace/pace.min.js" type="text/javascript"></script> --> 
+<!-- <script src="../../assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script> -->
+<!-- <!-- <script src="../../assets/plugins/bootstrap-select2/select2.min.js" type="text/javascript"></script> --> 
+<!-- <!-- <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script> --> 
+<!-- <script src="../../assets/plugins/boostrap-form-wizard/js/jquery.bootstrap.wizard.min.js" type="text/javascript"></script> -->
+<!-- <script src="../../assets/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script> -->
+<!-- END PAGE LEVEL PLUGINS -->
+
+<!-- <script src="../../assets/js/form_validations.js" type="text/javascript"></script> -->
+<!-- <script src="../../assets/js/tabs_accordian.js" type="text/javascript"></script> -->
+<script src="../../assets/plugins/dropzone/dropzone.min.js" type="text/javascript"></script>
+<!-- PAGE JS -->
+<!-- <script src="../../assets/js/icon.js" type="text/javascript"></script> -->
+<!-- <!-- BEGIN CORE TEMPLATE JS --> 
+<!-- <script src="../../assets/js/core.js" type="text/javascript"></script> -->
+<!-- <script src="../../assets/js/chat.js" type="text/javascript"></script>  -->
+<!-- <script src="../../assets/js/demo.js" type="text/javascript"></script> -->
+<!-- END CORE TEMPLATE JS -->
+
+<!-- END JAVASCRIPTS -->
+</body>
+</html>

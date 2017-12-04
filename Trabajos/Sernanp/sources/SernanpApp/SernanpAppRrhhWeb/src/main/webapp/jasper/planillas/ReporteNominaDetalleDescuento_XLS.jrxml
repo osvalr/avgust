@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteNominaDescuento" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="e71672e3-639b-4de0-af6f-4559b94c1ce3">
+	<property name="ireport.zoom" value="2.1435888100000224"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="240"/>
+	<property name="net.sf.jasperreports.export.xls.ignore.cell.background" value="false"/>
+	<property name="net.sf.jasperreports.export.xls.white.page.background" value="false"/>
+	<property name="net.sf.jasperreports.export.xls.remove.empty.space.between.columns" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.detect.cell.type" value="true"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\GITHUB\\sernanp\\Consultoria_planillas_seleccion_personal\\Desarrollo\\SernanpApp\\SernanpAppRrhhWeb\\src\\main\\webapp\\jasper\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="listResult" class="java.util.List">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<field name="int_anio" class="java.lang.String"/>
+	<field name="descrip_periodo" class="java.lang.String"/>
+	<field name="nombre_completo" class="java.lang.String"/>
+	<field name="c_fte_fto" class="java.lang.String"/>
+	<field name="c_meta" class="java.lang.String"/>
+	<field name="fondo_pension" class="java.lang.Double"/>
+	<field name="remuneracion" class="java.lang.Double"/>
+	<field name="dec_monto_calculado" class="java.lang.Double"/>
+	<field name="numerodoc" class="java.lang.String"/>
+	<field name="var_descrip_corto_concepto" class="java.lang.String"/>
+	<field name="dec_total_descuentos" class="java.lang.Double"/>
+	<field name="var_descripcion_regimen_contractual" class="java.lang.String"/>
+	<field name="srl_id_regimen_pensionario" class="java.lang.String"/>
+	<field name="var_descripcion_regimen_pensionario" class="java.lang.String"/>
+	<variable name="total_monto_calculado" class="java.lang.Double" resetType="Group" resetGroup="idregimen" calculation="Sum">
+		<variableExpression><![CDATA[$F{dec_monto_calculado}]]></variableExpression>
+	</variable>
+	<group name="numerodoc" keepTogether="true">
+		<groupExpression><![CDATA[$F{numerodoc}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField>
+					<reportElement x="94" y="0" width="339" height="20" uuid="7caf4255-89c3-413f-bd15-4d369a97a756"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["CONCEPTO: " + $F{var_descripcion_regimen_pensionario}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="23"/>
+		</groupFooter>
+	</group>
+	<group name="idregimen">
+		<groupExpression><![CDATA[$F{srl_id_regimen_pensionario}]]></groupExpression>
+		<groupHeader>
+			<band height="69">
+				<staticText>
+					<reportElement x="1" y="45" width="313" height="24" uuid="21353f69-123a-438d-ada4-4dc5f7e7c717"/>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="DejaVu Sans" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TIPO DE DESCUENTO: ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="433" y="45" width="108" height="24" uuid="41b4ab7f-1db7-4f3a-b405-2d554a82b916"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[MONTO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="94" y="0" width="220" height="25" uuid="f4770292-88a3-4cb4-af39-16d10ea5ac28"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="8" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Nombres y Apellidos]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="94" y="25" width="220" height="20" uuid="2a6b1099-a1b6-4350-9df7-f5f33581d807"/>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="DejaVu Sans" size="7" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nombre_completo}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="1" y="25" width="93" height="20" uuid="8c29026e-aa0c-40f4-a8d2-8f2e9f60d8d2"/>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="DejaVu Sans" size="7" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{numerodoc}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="1" y="0" width="93" height="25" uuid="aac6060e-d4f9-4996-8dd1-4196b4e15277"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="8" isBold="false"/>
+					</textElement>
+					<text><![CDATA[N° Doc.]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="20">
+				<staticText>
+					<reportElement x="1" y="0" width="432" height="20" uuid="7e3833a1-cfb0-4227-8aea-c5b8ef4b72e4"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TOTAL]]></text>
+				</staticText>
+				<textField pattern="#,##0.00">
+					<reportElement x="433" y="0" width="108" height="20" uuid="e1a1c34e-553c-44be-8ac8-a355798f790e"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{total_monto_calculado}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="60">
+			<staticText>
+				<reportElement x="1" y="0" width="93" height="41" uuid="8f6a0681-d323-4a3c-bbc2-a93ca16c56a0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SERNANP]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="94" y="41" width="339" height="19" uuid="99593931-b972-4f3d-8748-36c610bebf37"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descrip_periodo}+ " DEL " + $F{int_anio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="94" y="0" width="339" height="41" uuid="7ea4f48c-8139-4af0-8428-71cec4afa56f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["RESUMEN DE NOMINA DE DESCUENTOS <br> DEL PERSONAL CONTRATADO " + $F{var_descripcion_regimen_contractual}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="23">
+			<textField>
+				<reportElement x="1" y="0" width="313" height="23" uuid="82bbd921-8657-40b6-bc80-21e44d339d98"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="DejaVu Sans" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $F{var_descrip_corto_concepto}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="433" y="0" width="108" height="23" uuid="590979d7-d70f-440c-b4c6-f6d1929e4286"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dec_monto_calculado}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

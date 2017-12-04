@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sernanp.app.dao.mapper.TDiasNoLaborablesMapper" >
+  <resultMap id="BaseResultMap" type="sernanp.app.dao.domain.TDiasNoLaborables" >
+    <id column="srl_id_no_laborable" property="srl_id_no_laborable" jdbcType="INTEGER" />
+    <result column="dte_fec_no_laborable" property="dte_fec_no_laborable" jdbcType="DATE" />
+    <result column="int_estado" property="int_estado" jdbcType="INTEGER" />
+    <result column="tsp_fec_sys_reg" property="tsp_fec_sys_reg" jdbcType="TIMESTAMP" />
+    <result column="int_id_usu_crea" property="int_id_usu_crea" jdbcType="INTEGER" />
+    <result column="tsp_fec_sys_anul" property="tsp_fec_sys_anul" jdbcType="TIMESTAMP" />
+    <result column="int_id_usu_anul" property="int_id_usu_anul" jdbcType="INTEGER" />
+    <result column="var_dia_no_lab_descripcion" property="var_dia_no_lab_descripcion" jdbcType="VARCHAR" />
+    <result column="int_anio" property="int_anio" jdbcType="INTEGER" />
+    <result column="int_mes" property="int_mes" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    srl_id_no_laborable, dte_fec_no_laborable, int_estado, tsp_fec_sys_reg, int_id_usu_crea, 
+    tsp_fec_sys_anul, int_id_usu_anul, var_dia_no_lab_descripcion, int_anio, int_mes
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TDiasNoLaborablesExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sernanp.t_dias_no_laborables
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TDiasNoLaborablesKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from sernanp.t_dias_no_laborables
+    where srl_id_no_laborable = #{srl_id_no_laborable,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="sernanp.app.dao.domain.TDiasNoLaborablesKey" >
+    delete from sernanp.t_dias_no_laborables
+    where srl_id_no_laborable = #{srl_id_no_laborable,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sernanp.app.dao.domain.TDiasNoLaborablesExample" >
+    delete from sernanp.t_dias_no_laborables
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sernanp.app.dao.domain.TDiasNoLaborables" useGeneratedKeys="true" keyProperty="srl_id_no_laborable" >
+    insert into sernanp.t_dias_no_laborables (dte_fec_no_laborable, int_estado, tsp_fec_sys_reg, 
+      int_id_usu_crea, tsp_fec_sys_anul, int_id_usu_anul, 
+      var_dia_no_lab_descripcion, int_anio, int_mes
+      )
+    values (#{dte_fec_no_laborable,jdbcType=DATE}, #{int_estado,jdbcType=INTEGER}, #{tsp_fec_sys_reg,jdbcType=TIMESTAMP}, 
+      #{int_id_usu_crea,jdbcType=INTEGER}, #{tsp_fec_sys_anul,jdbcType=TIMESTAMP}, #{int_id_usu_anul,jdbcType=INTEGER}, 
+      #{var_dia_no_lab_descripcion,jdbcType=VARCHAR}, #{int_anio,jdbcType=INTEGER}, #{int_mes,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="sernanp.app.dao.domain.TDiasNoLaborables" useGeneratedKeys="true" keyProperty="srl_id_no_laborable" >
+    insert into sernanp.t_dias_no_laborables
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dte_fec_no_laborable != null" >
+        dte_fec_no_laborable,
+      </if>
+      <if test="int_estado != null" >
+        int_estado,
+      </if>
+      <if test="tsp_fec_sys_reg != null" >
+        tsp_fec_sys_reg,
+      </if>
+      <if test="int_id_usu_crea != null" >
+        int_id_usu_crea,
+      </if>
+      <if test="tsp_fec_sys_anul != null" >
+        tsp_fec_sys_anul,
+      </if>
+      <if test="int_id_usu_anul != null" >
+        int_id_usu_anul,
+      </if>
+      <if test="var_dia_no_lab_descripcion != null" >
+        var_dia_no_lab_descripcion,
+      </if>
+      <if test="int_anio != null" >
+        int_anio,
+      </if>
+      <if test="int_mes != null" >
+        int_mes,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dte_fec_no_laborable != null" >
+        #{dte_fec_no_laborable,jdbcType=DATE},
+      </if>
+      <if test="int_estado != null" >
+        #{int_estado,jdbcType=INTEGER},
+      </if>
+      <if test="tsp_fec_sys_reg != null" >
+        #{tsp_fec_sys_reg,jdbcType=TIMESTAMP},
+      </if>
+      <if test="int_id_usu_crea != null" >
+        #{int_id_usu_crea,jdbcType=INTEGER},
+      </if>
+      <if test="tsp_fec_sys_anul != null" >
+        #{tsp_fec_sys_anul,jdbcType=TIMESTAMP},
+      </if>
+      <if test="int_id_usu_anul != null" >
+        #{int_id_usu_anul,jdbcType=INTEGER},
+      </if>
+      <if test="var_dia_no_lab_descripcion != null" >
+        #{var_dia_no_lab_descripcion,jdbcType=VARCHAR},
+      </if>
+      <if test="int_anio != null" >
+        #{int_anio,jdbcType=INTEGER},
+      </if>
+      <if test="int_mes != null" >
+        #{int_mes,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sernanp.app.dao.domain.TDiasNoLaborablesExample" resultType="java.lang.Integer" >
+    select count(*) from sernanp.t_dias_no_laborables
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sernanp.t_dias_no_laborables
+    <set >
+      <if test="record.srl_id_no_laborable != null" >
+        srl_id_no_laborable = #{record.srl_id_no_laborable,jdbcType=INTEGER},
+      </if>
+      <if test="record.dte_fec_no_laborable != null" >
+        dte_fec_no_laborable = #{record.dte_fec_no_laborable,jdbcType=DATE},
+      </if>
+      <if test="record.int_estado != null" >
+        int_estado = #{record.int_estado,jdbcType=INTEGER},
+      </if>
+      <if test="record.tsp_fec_sys_reg != null" >
+        tsp_fec_sys_reg = #{record.tsp_fec_sys_reg,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.int_id_usu_crea != null" >
+        int_id_usu_crea = #{record.int_id_usu_crea,jdbcType=INTEGER},
+      </if>
+      <if test="record.tsp_fec_sys_anul != null" >
+        tsp_fec_sys_anul = #{record.tsp_fec_sys_anul,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.int_id_usu_anul != null" >
+        int_id_usu_anul = #{record.int_id_usu_anul,jdbcType=INTEGER},
+      </if>
+      <if test="record.var_dia_no_lab_descripcion != null" >
+        var_dia_no_lab_descripcion = #{record.var_dia_no_lab_descripcion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.int_anio != null" >
+        int_anio = #{record.int_anio,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_mes != null" >
+        int_mes = #{record.int_mes,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sernanp.t_dias_no_laborables
+    set srl_id_no_laborable = #{record.srl_id_no_laborable,jdbcType=INTEGER},
+      dte_fec_no_laborable = #{record.dte_fec_no_laborable,jdbcType=DATE},
+      int_estado = #{record.int_estado,jdbcType=INTEGER},
+      tsp_fec_sys_reg = #{record.tsp_fec_sys_reg,jdbcType=TIMESTAMP},
+      int_id_usu_crea = #{record.int_id_usu_crea,jdbcType=INTEGER},
+      tsp_fec_sys_anul = #{record.tsp_fec_sys_anul,jdbcType=TIMESTAMP},
+      int_id_usu_anul = #{record.int_id_usu_anul,jdbcType=INTEGER},
+      var_dia_no_lab_descripcion = #{record.var_dia_no_lab_descripcion,jdbcType=VARCHAR},
+      int_anio = #{record.int_anio,jdbcType=INTEGER},
+      int_mes = #{record.int_mes,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sernanp.app.dao.domain.TDiasNoLaborables" >
+    update sernanp.t_dias_no_laborables
+    <set >
+      <if test="dte_fec_no_laborable != null" >
+        dte_fec_no_laborable = #{dte_fec_no_laborable,jdbcType=DATE},
+      </if>
+      <if test="int_estado != null" >
+        int_estado = #{int_estado,jdbcType=INTEGER},
+      </if>
+      <if test="tsp_fec_sys_reg != null" >
+        tsp_fec_sys_reg = #{tsp_fec_sys_reg,jdbcType=TIMESTAMP},
+      </if>
+      <if test="int_id_usu_crea != null" >
+        int_id_usu_crea = #{int_id_usu_crea,jdbcType=INTEGER},
+      </if>
+      <if test="tsp_fec_sys_anul != null" >
+        tsp_fec_sys_anul = #{tsp_fec_sys_anul,jdbcType=TIMESTAMP},
+      </if>
+      <if test="int_id_usu_anul != null" >
+        int_id_usu_anul = #{int_id_usu_anul,jdbcType=INTEGER},
+      </if>
+      <if test="var_dia_no_lab_descripcion != null" >
+        var_dia_no_lab_descripcion = #{var_dia_no_lab_descripcion,jdbcType=VARCHAR},
+      </if>
+      <if test="int_anio != null" >
+        int_anio = #{int_anio,jdbcType=INTEGER},
+      </if>
+      <if test="int_mes != null" >
+        int_mes = #{int_mes,jdbcType=INTEGER},
+      </if>
+    </set>
+    where srl_id_no_laborable = #{srl_id_no_laborable,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sernanp.app.dao.domain.TDiasNoLaborables" >
+    update sernanp.t_dias_no_laborables
+    set dte_fec_no_laborable = #{dte_fec_no_laborable,jdbcType=DATE},
+      int_estado = #{int_estado,jdbcType=INTEGER},
+      tsp_fec_sys_reg = #{tsp_fec_sys_reg,jdbcType=TIMESTAMP},
+      int_id_usu_crea = #{int_id_usu_crea,jdbcType=INTEGER},
+      tsp_fec_sys_anul = #{tsp_fec_sys_anul,jdbcType=TIMESTAMP},
+      int_id_usu_anul = #{int_id_usu_anul,jdbcType=INTEGER},
+      var_dia_no_lab_descripcion = #{var_dia_no_lab_descripcion,jdbcType=VARCHAR},
+      int_anio = #{int_anio,jdbcType=INTEGER},
+      int_mes = #{int_mes,jdbcType=INTEGER}
+    where srl_id_no_laborable = #{srl_id_no_laborable,jdbcType=INTEGER}
+  </update>
+</mapper>

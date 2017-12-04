@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.SubEtapaPorPlazaQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+
+caoe.srl_id_conv_area_org_etapa,
+sps.var_descrip_subetapa
+
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+
+personal.t_conv_area_org_etapa caoe
+inner join personal.t_subetapa_proceso_seleccion sps on caoe.srl_id_subetapa_proceso_seleccion = sps.srl_id_subetapa_proceso_seleccion
+inner join personal.t_etapa_proceso_seleccion eps on sps.srl_id_etapa_proceso_seleccion = eps.srl_id_etapa_proceso_seleccion
+
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+eps.srl_id_etapa_proceso_seleccion = coalesce(#{srl_id_etapa_proceso_seleccion},eps.srl_id_etapa_proceso_seleccion) and
+caoe.srl_id_conv_area_org = coalesce(#{srl_id_conv_area_org},caoe.srl_id_conv_area_org)
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.SubEtapaPorPlazaQuery" parameterType="sernanp.app.dao.query.domain.SubEtapaPorPlazaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.SubEtapaPorPlazaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.SubEtapaPorPlazaQuery" parameterType="sernanp.app.dao.query.domain.SubEtapaPorPlazaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.SubEtapaPorPlazaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.SubEtapaPorPlazaQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

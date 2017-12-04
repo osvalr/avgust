@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.CodigoPostulacionDisponibleQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.CodigoPostulacionDisponibleQuery" parameterType="sernanp.app.dao.query.domain.CodigoPostulacionDisponibleQueryCriteria"> 
+<![CDATA[
+
+select 
+				
+cao.srl_id_conv_area_org,				
+cao.idarea ,
+cao.srl_id_convocatoria,
+cao.var_codigo_postulacion
+				
+from sernanp.t_convocatoria_area_org cao 
+
+where 
+cao.srl_id_convocatoria = #{srl_id_convocatoria}
+and cao.int_id_estado = #{int_id_estado};			
+		  
+	      
+]]>
+</select> 
+</mapper> 

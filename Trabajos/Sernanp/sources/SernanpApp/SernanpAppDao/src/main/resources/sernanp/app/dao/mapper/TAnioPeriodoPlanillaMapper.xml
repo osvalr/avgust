@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sernanp.app.dao.mapper.TAnioPeriodoPlanillaMapper" >
+  <resultMap id="BaseResultMap" type="sernanp.app.dao.domain.TAnioPeriodoPlanilla" >
+    <id column="srl_id_anio_periodo_planilla" property="srl_id_anio_periodo_planilla" jdbcType="INTEGER" />
+    <result column="srl_id_anio_planilla" property="srl_id_anio_planilla" jdbcType="INTEGER" />
+    <result column="int_id_periodo_mes" property="int_id_periodo_mes" jdbcType="INTEGER" />
+    <result column="dte_fecha_inicio_periodo" property="dte_fecha_inicio_periodo" jdbcType="DATE" />
+    <result column="dte_fecha_fin_periodo" property="dte_fecha_fin_periodo" jdbcType="DATE" />
+    <result column="int_id_estado" property="int_id_estado" jdbcType="INTEGER" />
+    <result column="tsp_fecha_registro" property="tsp_fecha_registro" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    srl_id_anio_periodo_planilla, srl_id_anio_planilla, int_id_periodo_mes, dte_fecha_inicio_periodo, 
+    dte_fecha_fin_periodo, int_id_estado, tsp_fecha_registro
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TAnioPeriodoPlanillaExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from personal.t_anio_periodo_planilla
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TAnioPeriodoPlanillaKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from personal.t_anio_periodo_planilla
+    where srl_id_anio_periodo_planilla = #{srl_id_anio_periodo_planilla,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="sernanp.app.dao.domain.TAnioPeriodoPlanillaKey" >
+    delete from personal.t_anio_periodo_planilla
+    where srl_id_anio_periodo_planilla = #{srl_id_anio_periodo_planilla,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sernanp.app.dao.domain.TAnioPeriodoPlanillaExample" >
+    delete from personal.t_anio_periodo_planilla
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sernanp.app.dao.domain.TAnioPeriodoPlanilla" useGeneratedKeys="true" keyProperty="srl_id_anio_periodo_planilla" >
+    insert into personal.t_anio_periodo_planilla (srl_id_anio_planilla, int_id_periodo_mes, 
+      dte_fecha_inicio_periodo, dte_fecha_fin_periodo, 
+      int_id_estado, tsp_fecha_registro)
+    values (#{srl_id_anio_planilla,jdbcType=INTEGER}, #{int_id_periodo_mes,jdbcType=INTEGER}, 
+      #{dte_fecha_inicio_periodo,jdbcType=DATE}, #{dte_fecha_fin_periodo,jdbcType=DATE}, 
+      #{int_id_estado,jdbcType=INTEGER}, #{tsp_fecha_registro,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="sernanp.app.dao.domain.TAnioPeriodoPlanilla" useGeneratedKeys="true" keyProperty="srl_id_anio_periodo_planilla" >
+    insert into personal.t_anio_periodo_planilla
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="srl_id_anio_planilla != null" >
+        srl_id_anio_planilla,
+      </if>
+      <if test="int_id_periodo_mes != null" >
+        int_id_periodo_mes,
+      </if>
+      <if test="dte_fecha_inicio_periodo != null" >
+        dte_fecha_inicio_periodo,
+      </if>
+      <if test="dte_fecha_fin_periodo != null" >
+        dte_fecha_fin_periodo,
+      </if>
+      <if test="int_id_estado != null" >
+        int_id_estado,
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        tsp_fecha_registro,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="srl_id_anio_planilla != null" >
+        #{srl_id_anio_planilla,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_periodo_mes != null" >
+        #{int_id_periodo_mes,jdbcType=INTEGER},
+      </if>
+      <if test="dte_fecha_inicio_periodo != null" >
+        #{dte_fecha_inicio_periodo,jdbcType=DATE},
+      </if>
+      <if test="dte_fecha_fin_periodo != null" >
+        #{dte_fecha_fin_periodo,jdbcType=DATE},
+      </if>
+      <if test="int_id_estado != null" >
+        #{int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sernanp.app.dao.domain.TAnioPeriodoPlanillaExample" resultType="java.lang.Integer" >
+    select count(*) from personal.t_anio_periodo_planilla
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update personal.t_anio_periodo_planilla
+    <set >
+      <if test="record.srl_id_anio_periodo_planilla != null" >
+        srl_id_anio_periodo_planilla = #{record.srl_id_anio_periodo_planilla,jdbcType=INTEGER},
+      </if>
+      <if test="record.srl_id_anio_planilla != null" >
+        srl_id_anio_planilla = #{record.srl_id_anio_planilla,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_id_periodo_mes != null" >
+        int_id_periodo_mes = #{record.int_id_periodo_mes,jdbcType=INTEGER},
+      </if>
+      <if test="record.dte_fecha_inicio_periodo != null" >
+        dte_fecha_inicio_periodo = #{record.dte_fecha_inicio_periodo,jdbcType=DATE},
+      </if>
+      <if test="record.dte_fecha_fin_periodo != null" >
+        dte_fecha_fin_periodo = #{record.dte_fecha_fin_periodo,jdbcType=DATE},
+      </if>
+      <if test="record.int_id_estado != null" >
+        int_id_estado = #{record.int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="record.tsp_fecha_registro != null" >
+        tsp_fecha_registro = #{record.tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update personal.t_anio_periodo_planilla
+    set srl_id_anio_periodo_planilla = #{record.srl_id_anio_periodo_planilla,jdbcType=INTEGER},
+      srl_id_anio_planilla = #{record.srl_id_anio_planilla,jdbcType=INTEGER},
+      int_id_periodo_mes = #{record.int_id_periodo_mes,jdbcType=INTEGER},
+      dte_fecha_inicio_periodo = #{record.dte_fecha_inicio_periodo,jdbcType=DATE},
+      dte_fecha_fin_periodo = #{record.dte_fecha_fin_periodo,jdbcType=DATE},
+      int_id_estado = #{record.int_id_estado,jdbcType=INTEGER},
+      tsp_fecha_registro = #{record.tsp_fecha_registro,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sernanp.app.dao.domain.TAnioPeriodoPlanilla" >
+    update personal.t_anio_periodo_planilla
+    <set >
+      <if test="srl_id_anio_planilla != null" >
+        srl_id_anio_planilla = #{srl_id_anio_planilla,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_periodo_mes != null" >
+        int_id_periodo_mes = #{int_id_periodo_mes,jdbcType=INTEGER},
+      </if>
+      <if test="dte_fecha_inicio_periodo != null" >
+        dte_fecha_inicio_periodo = #{dte_fecha_inicio_periodo,jdbcType=DATE},
+      </if>
+      <if test="dte_fecha_fin_periodo != null" >
+        dte_fecha_fin_periodo = #{dte_fecha_fin_periodo,jdbcType=DATE},
+      </if>
+      <if test="int_id_estado != null" >
+        int_id_estado = #{int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        tsp_fecha_registro = #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where srl_id_anio_periodo_planilla = #{srl_id_anio_periodo_planilla,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sernanp.app.dao.domain.TAnioPeriodoPlanilla" >
+    update personal.t_anio_periodo_planilla
+    set srl_id_anio_planilla = #{srl_id_anio_planilla,jdbcType=INTEGER},
+      int_id_periodo_mes = #{int_id_periodo_mes,jdbcType=INTEGER},
+      dte_fecha_inicio_periodo = #{dte_fecha_inicio_periodo,jdbcType=DATE},
+      dte_fecha_fin_periodo = #{dte_fecha_fin_periodo,jdbcType=DATE},
+      int_id_estado = #{int_id_estado,jdbcType=INTEGER},
+      tsp_fecha_registro = #{tsp_fecha_registro,jdbcType=TIMESTAMP}
+    where srl_id_anio_periodo_planilla = #{srl_id_anio_periodo_planilla,jdbcType=INTEGER}
+  </update>
+</mapper>

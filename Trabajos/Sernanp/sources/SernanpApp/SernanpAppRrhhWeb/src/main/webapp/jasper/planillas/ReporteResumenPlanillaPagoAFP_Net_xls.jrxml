@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReportePlanillaPagoAFPNet" pageWidth="850" pageHeight="595" orientation="Landscape" columnWidth="810" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="e71672e3-639b-4de0-af6f-4559b94c1ce3">
+	<property name="ireport.zoom" value="1.6500000000000066"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.export.xls.ignore.cell.background" value="false"/>
+	<property name="net.sf.jasperreports.export.xls.white.page.background" value="false"/>
+	<property name="net.sf.jasperreports.default.font.size" value="8"/>
+	<property name="net.sf.jasperreports.export.xls.remove.empty.space.between.rows" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.detect.cell.type" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.remove.empty.space.between.columns" value="true"/>
+	<parameter name="reportParam" class="java.util.HashMap">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="listResult" class="java.util.List">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<field name="int_anio" class="java.lang.Integer"/>
+	<field name="descrip_periodo" class="java.lang.String"/>
+	<field name="var_codigo_afiliacion" class="java.lang.String"/>
+	<field name="nombre_completo" class="java.lang.String"/>
+	<field name="total" class="java.lang.Double"/>
+	<field name="sueldo" class="java.lang.Double"/>
+	<field name="numerodoc" class="java.lang.String"/>
+	<field name="c_fte_fto" class="java.lang.String"/>
+	<field name="c_meta" class="java.lang.String"/>
+	<field name="comision_variable" class="java.lang.Double"/>
+	<field name="fondo_pension" class="java.lang.Double"/>
+	<field name="seguro" class="java.lang.Double"/>
+	<field name="var_descripcion_regimen_contractual" class="java.lang.String"/>
+	<field name="var_nombre_afp" class="java.lang.String"/>
+	<field name="retencion" class="java.lang.Double"/>
+	<field name="srl_id_afp" class="java.lang.Integer"/>
+	<field name="srl_id_regimen_contractual" class="java.lang.Integer"/>
+	<field name="apepat" class="java.lang.String"/>
+	<field name="apemat" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<variable name="retencion" class="java.lang.Double" resetType="Group" resetGroup="idafp" calculation="Sum">
+		<variableExpression><![CDATA[$F{seguro} + $F{comision_variable}]]></variableExpression>
+	</variable>
+	<variable name="Total" class="java.lang.Double" resetType="None">
+		<variableExpression><![CDATA[$F{fondo_pension}+$F{retencion}]]></variableExpression>
+	</variable>
+	<variable name="total_sueldo" class="java.lang.Double" resetType="Group" resetGroup="idafp" calculation="Sum">
+		<variableExpression><![CDATA[$F{sueldo}]]></variableExpression>
+	</variable>
+	<variable name="total_fondo_pension" class="java.lang.Double" resetType="Group" resetGroup="idafp" calculation="Sum">
+		<variableExpression><![CDATA[$F{fondo_pension}]]></variableExpression>
+	</variable>
+	<variable name="total_seguro" class="java.lang.Double" resetType="Group" resetGroup="idafp" calculation="Sum">
+		<variableExpression><![CDATA[$F{seguro}]]></variableExpression>
+	</variable>
+	<variable name="total_comision_variable" class="java.lang.Double" resetType="Group" resetGroup="idafp" calculation="Sum">
+		<variableExpression><![CDATA[$F{comision_variable}]]></variableExpression>
+	</variable>
+	<variable name="total_retencion" class="java.lang.Double" resetType="Group" resetGroup="idafp" calculation="Sum">
+		<variableExpression><![CDATA[$F{retencion}]]></variableExpression>
+	</variable>
+	<variable name="total_total" class="java.lang.Double" resetType="Group" resetGroup="idafp" calculation="Sum">
+		<variableExpression><![CDATA[$V{Total}]]></variableExpression>
+	</variable>
+	<group name="idfuente">
+		<groupExpression><![CDATA[$F{c_fte_fto}]]></groupExpression>
+		<groupHeader>
+			<band height="58">
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement isPrintRepeatedValues="false" x="0" y="0" width="112" height="23" uuid="21c7ca53-977c-4826-a887-28b3cedecc45"/>
+					<textElement verticalAlignment="Middle" markup="html">
+						<font fontName="DejaVu Sans" size="7" isBold="false" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{c_fte_fto} == null ? "<b>FTE.FTO: </b>" : "<b>FTE.FTO: </b>" + $F{c_fte_fto}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="271" y="38" width="99" height="20" uuid="f1d380bf-7f19-4ea9-bbb5-56e09cb21d18"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="5" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Ap. Materno]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="748" y="38" width="62" height="20" uuid="3386e4a3-c0c1-4e29-849c-396ef994fb41"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="5" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Total]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="548" y="38" width="47" height="20" uuid="a4077f95-a033-48c4-8a9b-e411dfdf5714"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="5" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Fondo Pensión]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="370" y="38" width="130" height="20" uuid="07b8085e-02c8-4c0f-a115-bddf67af1896"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="5" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Nombres]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="500" y="38" width="48" height="20" uuid="c21dec45-a811-4047-98fb-b558f31784f2"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="5" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Sueldo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="166" y="38" width="105" height="20" uuid="e1f10036-6975-4d5d-8b57-562c9a5dfa27"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="5" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Ap. Paterno]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="112" y="38" width="54" height="20" uuid="18325e56-ab29-49c8-b280-798e4d304400"/>
+					<box>
+						<pen lineWidth="0.0"/>
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="5" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DNI]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="595" y="38" width="52" height="20" uuid="ec146a7b-601d-4010-9b6a-9b4223e6d749"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="5" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Seguro]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="695" y="38" width="53" height="20" uuid="aa39d43c-bffc-48ef-ac4b-0a08420da39a"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="5" isBold="true"/>
+					</textElement>
+					<text><![CDATA[SubTotal Retención]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="647" y="38" width="48" height="20" uuid="ed5c6293-a64f-46de-961d-a576abd9e399"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="5" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Comisión Variable]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="31" y="38" width="81" height="20" uuid="1635d6f8-5997-41cd-8918-c8b4d98bf197"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="5" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Código]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="38" width="31" height="20" uuid="fbd315d3-29be-4605-a087-58c4c535bb9e"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="5" isBold="true"/>
+					</textElement>
+					<text><![CDATA[N°]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="idafp" keepTogether="true">
+		<groupExpression><![CDATA[$F{srl_id_afp}]]></groupExpression>
+		<groupHeader>
+			<band height="21">
+				<textField>
+					<reportElement x="112" y="6" width="159" height="14" uuid="133454e6-5f8e-4ba5-af7a-93e739228b23"/>
+					<box>
+						<pen lineWidth="0.0"/>
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="6" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["AFP: "+$F{var_nombre_afp} + " (expresado en S/.)"]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="20">
+				<textField pattern="#,##0.00">
+					<reportElement x="647" y="0" width="48" height="12" uuid="3903062d-4fe2-4691-be89-7444ba5371d7"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="6" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new DecimalFormat("###,##0.00").format($V{total_comision_variable})]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00">
+					<reportElement x="595" y="0" width="52" height="12" uuid="c6b7331a-1a0e-49ee-be27-f6821fe13fd2"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="6" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new DecimalFormat("###,##0.00").format($V{total_seguro})]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00">
+					<reportElement x="548" y="0" width="47" height="12" uuid="58d41d33-9591-4838-b78f-f5a3607cdad9"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="6" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new DecimalFormat("###,##0.00").format($V{total_fondo_pension})]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="false">
+					<reportElement x="500" y="0" width="48" height="12" uuid="cb364418-c2d4-474b-8500-0642bbe7c7df"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="6" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new DecimalFormat("###,##0.00").format($V{total_sueldo})]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="370" y="0" width="130" height="12" uuid="7e3833a1-cfb0-4227-8aea-c5b8ef4b72e4"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="6" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TOTAL : ]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="748" y="0" width="62" height="12" uuid="5694e5da-3eaa-4b15-9fb1-d2993fb35bdc"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="6" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new DecimalFormat("###,##0.00").format($V{total_total})]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="695" y="0" width="53" height="12" uuid="a4f9667a-69fb-49e3-8328-ab00c3b2baed"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="6" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new DecimalFormat("###,##0.00").format($V{total_retencion})]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="66">
+			<textField>
+				<reportElement isPrintRepeatedValues="false" x="112" y="23" width="583" height="16" uuid="99593931-b972-4f3d-8748-36c610bebf37"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descrip_periodo}+ " DEL " + $F{int_anio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement isPrintRepeatedValues="false" x="112" y="0" width="583" height="23" uuid="65315c84-3814-4ee2-8176-608e181039fe"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font fontName="DejaVu Sans" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{srl_id_regimen_contractual}== 1? "RESUMEN DE NOMINA DE PAGOS - AFP<br>PERSONAL CONTRATADO PLAZO INDETERMINADO D.L. 728 " : "RESUMEN DE NOMINA DE PAGOS - AFP<br>REGIMEN ESPECIAL DE CONTRATACION ADMINISTRATIVA DE SERVICIOS -RECAS"]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement isPrintRepeatedValues="false" x="748" y="0" width="62" height="11" uuid="65fc0417-12ce-4e3b-9aa6-21dc4c623114"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="h.mm.ss">
+				<reportElement isPrintRepeatedValues="false" x="748" y="11" width="62" height="12" uuid="a0be7391-231e-43f0-b48f-2c42876f89e5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="695" y="0" width="53" height="11" uuid="c6c81496-9a0a-44a0-a526-0388bf15a536"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="6"/>
+				</textElement>
+				<text><![CDATA[FECHA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="695" y="11" width="53" height="12" uuid="77a5908a-5e56-4988-bbf3-7328ec6dd1a6"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="6"/>
+				</textElement>
+				<text><![CDATA[HORA:]]></text>
+			</staticText>
+			<textField>
+				<reportElement isPrintRepeatedValues="false" x="748" y="23" width="62" height="16" uuid="d88e73e1-d4f3-4da4-ac84-db7e8617a7db"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="695" y="23" width="53" height="16" uuid="b1c0067b-9917-43ef-bba2-4ac5452811d7"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="6"/>
+				</textElement>
+				<text><![CDATA[PAGINA:]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="112" height="39" uuid="4150bad8-509f-46a8-9538-8466eeec07de"/>
+				<imageExpression><![CDATA[$P{reportParam}.get( "logo" )]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="12">
+			<textField pattern="#,##0.00">
+				<reportElement x="500" y="0" width="48" height="12" uuid="44099528-2b1e-41f4-819c-2c0240728039"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sueldo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="647" y="0" width="48" height="12" uuid="ebcf3bb5-d4b1-4849-a65f-490f1f434093"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{comision_variable}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="548" y="0" width="47" height="12" uuid="dfd2d36d-5bfa-499b-8da7-0c76ce7ee907"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fondo_pension}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="595" y="0" width="52" height="12" uuid="3fef554a-bb9a-49ec-99e7-b52a44e13b7c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{seguro}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="31" y="0" width="81" height="12" uuid="506e234a-207a-435a-9cfb-7816c2cfe0dd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{var_codigo_afiliacion}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="false">
+				<reportElement x="695" y="0" width="53" height="12" uuid="3dc55143-5da8-4790-b213-ed5c069eed51"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{retencion}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###,##0.00">
+				<reportElement x="748" y="0" width="62" height="12" uuid="0c6ecc68-ec50-4366-8757-8088872757d9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="166" y="0" width="105" height="12" uuid="007ca4d0-3855-4f59-a394-8b84834fc310"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{apepat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="271" y="0" width="99" height="12" uuid="2fae8063-0aad-4436-ac81-dab4491dcce0"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{apemat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="370" y="0" width="130" height="12" uuid="cd438773-03c4-4647-8ab5-4b8aa7793e5d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="112" y="0" width="54" height="12" uuid="ddff1de2-01e1-4fcf-89ec-8024da037790"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numerodoc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="31" height="12" uuid="4d39916d-b2a1-4cdc-8c63-149bb2b64c86"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{idafp_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

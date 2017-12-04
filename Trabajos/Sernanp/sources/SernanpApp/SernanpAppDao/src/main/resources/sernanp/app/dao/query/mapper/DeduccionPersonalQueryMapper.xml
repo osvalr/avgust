@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.DeduccionPersonalQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+ 
+
+
+pid.srl_id_personal_concepto,
+p.idpersonal,
+idpa.int_id_tipo_concepto,
+vtiidp.destablatipo as descrip_tipo_concepto,
+idpa.int_id_sub_tipo_concepto,
+vstiidp.destablatipo as descrip_sub_tipo_concepto,
+pid.srl_id_concepto_planilla,
+idpa.var_descrip_corto_concepto,
+idpa.int_id_tipo_monto_concepto,
+tm.destabla as descrip_tipo_monto,
+idpa.dec_monto_concepto,
+pid.int_id_estado,
+veg.destablatipo as descrip_estado,
+to_char(pid.tsp_fecha_registro, 'dd/mm/yyyy') AS tsp_fecha_registro
+
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+
+personal.t_personal_concepto pid
+inNER JOIN sernanp.personal p on pid.idpersonal = p.idpersonal
+left JOIN personal.t_concepto_planilla idpa ON (idpa.srl_id_concepto_planilla = pid.srl_id_concepto_planilla)
+left JOIN sernanp.vw_estado_generico veg ON (pid.int_id_estado = veg.codinttablatipo)
+left JOIN sernanp.vw_concepto_planilla vtiidp ON (idpa.int_id_tipo_concepto = vtiidp.codinttablatipo)
+left JOIN sernanp.vw_sub_tipo_concepto_planilla vstiidp ON (idpa.int_id_sub_tipo_concepto = vstiidp.codinttablatipo)
+left JOIN sernanp.vw_tipo_monto tm ON (idpa.int_id_tipo_monto_concepto = tm.codinttablatipo)
+
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+
+pid.srl_id_personal_concepto = COALESCE(#{srl_id_personal_concepto},pid.srl_id_personal_concepto) and
+pid.idpersonal = COALESCE(#{idpersonal},pid.idpersonal) and
+idpa.int_id_tipo_concepto  = 2
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.DeduccionPersonalQuery" parameterType="sernanp.app.dao.query.domain.DeduccionPersonalQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.DeduccionPersonalQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.DeduccionPersonalQuery" parameterType="sernanp.app.dao.query.domain.DeduccionPersonalQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.DeduccionPersonalQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.DeduccionPersonalQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

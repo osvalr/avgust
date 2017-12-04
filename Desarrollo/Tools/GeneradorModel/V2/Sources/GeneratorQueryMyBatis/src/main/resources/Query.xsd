@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!-- To change this license header, choose License Headers in Project Properties. 
+	To change this template file, choose Tools | Templates and open the template 
+	in the editor. -->
+
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://www.sakerk.com.pe/query/generator/mybatis"
+	xmlns:xsd="http://www.sakerk.com.pe/query/generator/mybatis"
+	elementFormDefault="qualified">
+
+	<complexType name="Target">
+		<sequence>
+			<element type="string" name="targetPackage" />
+			<element type="string" name="targetProject" />
+			<element type="string" name="type" />
+		</sequence>
+	</complexType>
+
+	<complexType name="Targets">
+		<sequence>
+			<element name="target" type="xsd:Target" maxOccurs="3" minOccurs="3" />
+		</sequence>
+	</complexType>
+
+	<complexType name="Query">
+		<sequence>
+			<element type="string" name="name" />
+			<element type="boolean" name="generate" />
+			<element type="string" name="sql" />
+		</sequence>
+	</complexType>
+
+	<complexType name="Querys">
+		<sequence>
+			<element name="query" type="xsd:Query" maxOccurs="unbounded" minOccurs="1" />
+		</sequence>
+	</complexType>
+
+	<complexType name="QueryGenerator">
+		<sequence>
+			<element name="configs" type="xsd:Targets" maxOccurs="1" minOccurs="1" />
+			<element name="querys" type="xsd:Querys" maxOccurs="1" minOccurs="1" />
+		</sequence>
+	</complexType>
+
+	<element name="queryGenerator" type="xsd:QueryGenerator" />
+
+</schema>

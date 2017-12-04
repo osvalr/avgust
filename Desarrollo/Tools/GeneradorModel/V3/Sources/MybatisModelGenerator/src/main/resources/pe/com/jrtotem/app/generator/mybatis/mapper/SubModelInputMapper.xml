@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pe.com.jrtotem.app.generator.mybatis.mapper.SubModelInputMapper" >
+  <resultMap id="BaseResultMap" type="pe.com.jrtotem.app.generator.mybatis.domain.SubModelInput" >
+    <id column="id_sub_model_input" property="id_sub_model_input" jdbcType="INTEGER" />
+    <result column="id_model_input_parent" property="id_model_input_parent" jdbcType="INTEGER" />
+    <result column="id_model_input_child" property="id_model_input_child" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id_sub_model_input, id_model_input_parent, id_model_input_child
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.jrtotem.app.generator.mybatis.domain.SubModelInputExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sub_model_input
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="pe.com.jrtotem.app.generator.mybatis.domain.SubModelInputKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from sub_model_input
+    where id_sub_model_input = #{id_sub_model_input,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="pe.com.jrtotem.app.generator.mybatis.domain.SubModelInputKey" >
+    delete from sub_model_input
+    where id_sub_model_input = #{id_sub_model_input,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="pe.com.jrtotem.app.generator.mybatis.domain.SubModelInputExample" >
+    delete from sub_model_input
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.jrtotem.app.generator.mybatis.domain.SubModelInput" useGeneratedKeys="true" keyProperty="id_sub_model_input" >
+    insert into sub_model_input (id_model_input_parent, id_model_input_child
+      )
+    values (#{id_model_input_parent,jdbcType=INTEGER}, #{id_model_input_child,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.jrtotem.app.generator.mybatis.domain.SubModelInput" useGeneratedKeys="true" keyProperty="id_sub_model_input" >
+    insert into sub_model_input
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id_model_input_parent != null" >
+        id_model_input_parent,
+      </if>
+      <if test="id_model_input_child != null" >
+        id_model_input_child,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id_model_input_parent != null" >
+        #{id_model_input_parent,jdbcType=INTEGER},
+      </if>
+      <if test="id_model_input_child != null" >
+        #{id_model_input_child,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.jrtotem.app.generator.mybatis.domain.SubModelInputExample" resultType="java.lang.Integer" >
+    select count(*) from sub_model_input
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sub_model_input
+    <set >
+      <if test="record.id_sub_model_input != null" >
+        id_sub_model_input = #{record.id_sub_model_input,jdbcType=INTEGER},
+      </if>
+      <if test="record.id_model_input_parent != null" >
+        id_model_input_parent = #{record.id_model_input_parent,jdbcType=INTEGER},
+      </if>
+      <if test="record.id_model_input_child != null" >
+        id_model_input_child = #{record.id_model_input_child,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sub_model_input
+    set id_sub_model_input = #{record.id_sub_model_input,jdbcType=INTEGER},
+      id_model_input_parent = #{record.id_model_input_parent,jdbcType=INTEGER},
+      id_model_input_child = #{record.id_model_input_child,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.jrtotem.app.generator.mybatis.domain.SubModelInput" >
+    update sub_model_input
+    <set >
+      <if test="id_model_input_parent != null" >
+        id_model_input_parent = #{id_model_input_parent,jdbcType=INTEGER},
+      </if>
+      <if test="id_model_input_child != null" >
+        id_model_input_child = #{id_model_input_child,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id_sub_model_input = #{id_sub_model_input,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.jrtotem.app.generator.mybatis.domain.SubModelInput" >
+    update sub_model_input
+    set id_model_input_parent = #{id_model_input_parent,jdbcType=INTEGER},
+      id_model_input_child = #{id_model_input_child,jdbcType=INTEGER}
+    where id_sub_model_input = #{id_sub_model_input,jdbcType=INTEGER}
+  </update>
+</mapper>

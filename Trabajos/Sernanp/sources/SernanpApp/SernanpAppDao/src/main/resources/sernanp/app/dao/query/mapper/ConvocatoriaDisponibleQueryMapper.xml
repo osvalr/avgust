@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.ConvocatoriaDisponibleQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.ConvocatoriaDisponibleQuery" parameterType="sernanp.app.dao.query.domain.ConvocatoriaDisponibleQueryCriteria"> 
+<![CDATA[
+   				 
+select distinct x.srl_id_convocatoria,
+		(select a[2] || '-' || a[3] || coalesce(' - L' || to_char(x.int_num_activacion,'9'),'') 
+	from (select regexp_split_to_array(x.var_num_convocatoria, '-')) as dt(a)
+) as "var_num_convocatoria"
+from 
+(
+select cnv.srl_id_convocatoria,cnv.var_num_convocatoria,cnv.int_num_activacion from sernanp.t_convocatoria cnv left join sernanp.t_convocatoria_area_org coa
+on cnv.srl_id_convocatoria = coa.srl_id_convocatoria  
+where COALESCE(coa.int_id_estado,0) in (#{int_id_estado},0, 2)
+) x
+order by 1 desc;
+ 
+]]>
+</select> 
+</mapper> 

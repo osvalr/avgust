@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sernanp.app.dao.mapper.TPostulanteCapacitacionMapper" >
+  <resultMap id="BaseResultMap" type="sernanp.app.dao.domain.TPostulanteCapacitacion" >
+    <id column="srl_id_postulante_capacitacion" property="srl_id_postulante_capacitacion" jdbcType="INTEGER" />
+    <result column="int_id_postulante" property="int_id_postulante" jdbcType="INTEGER" />
+    <result column="int_id_institucion" property="int_id_institucion" jdbcType="INTEGER" />
+    <result column="var_descrip_programa" property="var_descrip_programa" jdbcType="VARCHAR" />
+    <result column="int_cant_anio" property="int_cant_anio" jdbcType="INTEGER" />
+    <result column="int_cant_meses" property="int_cant_meses" jdbcType="INTEGER" />
+    <result column="int_cant_dias" property="int_cant_dias" jdbcType="INTEGER" />
+    <result column="dte_fecha_inicio" property="dte_fecha_inicio" jdbcType="DATE" />
+    <result column="dte_fecha_fin" property="dte_fecha_fin" jdbcType="DATE" />
+    <result column="int_id_tipo_nivel" property="int_id_tipo_nivel" jdbcType="INTEGER" />
+    <result column="int_id_estado" property="int_id_estado" jdbcType="INTEGER" />
+    <result column="tsp_fecha_registro" property="tsp_fecha_registro" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    srl_id_postulante_capacitacion, int_id_postulante, int_id_institucion, var_descrip_programa, 
+    int_cant_anio, int_cant_meses, int_cant_dias, dte_fecha_inicio, dte_fecha_fin, int_id_tipo_nivel, 
+    int_id_estado, tsp_fecha_registro
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TPostulanteCapacitacionExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from personal.t_postulante_capacitacion
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TPostulanteCapacitacionKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from personal.t_postulante_capacitacion
+    where srl_id_postulante_capacitacion = #{srl_id_postulante_capacitacion,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="sernanp.app.dao.domain.TPostulanteCapacitacionKey" >
+    delete from personal.t_postulante_capacitacion
+    where srl_id_postulante_capacitacion = #{srl_id_postulante_capacitacion,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sernanp.app.dao.domain.TPostulanteCapacitacionExample" >
+    delete from personal.t_postulante_capacitacion
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sernanp.app.dao.domain.TPostulanteCapacitacion" useGeneratedKeys="true" keyProperty="srl_id_postulante_capacitacion" >
+    insert into personal.t_postulante_capacitacion (int_id_postulante, int_id_institucion, 
+      var_descrip_programa, int_cant_anio, int_cant_meses, 
+      int_cant_dias, dte_fecha_inicio, dte_fecha_fin, 
+      int_id_tipo_nivel, int_id_estado, tsp_fecha_registro
+      )
+    values (#{int_id_postulante,jdbcType=INTEGER}, #{int_id_institucion,jdbcType=INTEGER}, 
+      #{var_descrip_programa,jdbcType=VARCHAR}, #{int_cant_anio,jdbcType=INTEGER}, #{int_cant_meses,jdbcType=INTEGER}, 
+      #{int_cant_dias,jdbcType=INTEGER}, #{dte_fecha_inicio,jdbcType=DATE}, #{dte_fecha_fin,jdbcType=DATE}, 
+      #{int_id_tipo_nivel,jdbcType=INTEGER}, #{int_id_estado,jdbcType=INTEGER}, #{tsp_fecha_registro,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="sernanp.app.dao.domain.TPostulanteCapacitacion" useGeneratedKeys="true" keyProperty="srl_id_postulante_capacitacion" >
+    insert into personal.t_postulante_capacitacion
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="int_id_postulante != null" >
+        int_id_postulante,
+      </if>
+      <if test="int_id_institucion != null" >
+        int_id_institucion,
+      </if>
+      <if test="var_descrip_programa != null" >
+        var_descrip_programa,
+      </if>
+      <if test="int_cant_anio != null" >
+        int_cant_anio,
+      </if>
+      <if test="int_cant_meses != null" >
+        int_cant_meses,
+      </if>
+      <if test="int_cant_dias != null" >
+        int_cant_dias,
+      </if>
+      <if test="dte_fecha_inicio != null" >
+        dte_fecha_inicio,
+      </if>
+      <if test="dte_fecha_fin != null" >
+        dte_fecha_fin,
+      </if>
+      <if test="int_id_tipo_nivel != null" >
+        int_id_tipo_nivel,
+      </if>
+      <if test="int_id_estado != null" >
+        int_id_estado,
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        tsp_fecha_registro,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="int_id_postulante != null" >
+        #{int_id_postulante,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_institucion != null" >
+        #{int_id_institucion,jdbcType=INTEGER},
+      </if>
+      <if test="var_descrip_programa != null" >
+        #{var_descrip_programa,jdbcType=VARCHAR},
+      </if>
+      <if test="int_cant_anio != null" >
+        #{int_cant_anio,jdbcType=INTEGER},
+      </if>
+      <if test="int_cant_meses != null" >
+        #{int_cant_meses,jdbcType=INTEGER},
+      </if>
+      <if test="int_cant_dias != null" >
+        #{int_cant_dias,jdbcType=INTEGER},
+      </if>
+      <if test="dte_fecha_inicio != null" >
+        #{dte_fecha_inicio,jdbcType=DATE},
+      </if>
+      <if test="dte_fecha_fin != null" >
+        #{dte_fecha_fin,jdbcType=DATE},
+      </if>
+      <if test="int_id_tipo_nivel != null" >
+        #{int_id_tipo_nivel,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_estado != null" >
+        #{int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sernanp.app.dao.domain.TPostulanteCapacitacionExample" resultType="java.lang.Integer" >
+    select count(*) from personal.t_postulante_capacitacion
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update personal.t_postulante_capacitacion
+    <set >
+      <if test="record.srl_id_postulante_capacitacion != null" >
+        srl_id_postulante_capacitacion = #{record.srl_id_postulante_capacitacion,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_id_postulante != null" >
+        int_id_postulante = #{record.int_id_postulante,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_id_institucion != null" >
+        int_id_institucion = #{record.int_id_institucion,jdbcType=INTEGER},
+      </if>
+      <if test="record.var_descrip_programa != null" >
+        var_descrip_programa = #{record.var_descrip_programa,jdbcType=VARCHAR},
+      </if>
+      <if test="record.int_cant_anio != null" >
+        int_cant_anio = #{record.int_cant_anio,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_cant_meses != null" >
+        int_cant_meses = #{record.int_cant_meses,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_cant_dias != null" >
+        int_cant_dias = #{record.int_cant_dias,jdbcType=INTEGER},
+      </if>
+      <if test="record.dte_fecha_inicio != null" >
+        dte_fecha_inicio = #{record.dte_fecha_inicio,jdbcType=DATE},
+      </if>
+      <if test="record.dte_fecha_fin != null" >
+        dte_fecha_fin = #{record.dte_fecha_fin,jdbcType=DATE},
+      </if>
+      <if test="record.int_id_tipo_nivel != null" >
+        int_id_tipo_nivel = #{record.int_id_tipo_nivel,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_id_estado != null" >
+        int_id_estado = #{record.int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="record.tsp_fecha_registro != null" >
+        tsp_fecha_registro = #{record.tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update personal.t_postulante_capacitacion
+    set srl_id_postulante_capacitacion = #{record.srl_id_postulante_capacitacion,jdbcType=INTEGER},
+      int_id_postulante = #{record.int_id_postulante,jdbcType=INTEGER},
+      int_id_institucion = #{record.int_id_institucion,jdbcType=INTEGER},
+      var_descrip_programa = #{record.var_descrip_programa,jdbcType=VARCHAR},
+      int_cant_anio = #{record.int_cant_anio,jdbcType=INTEGER},
+      int_cant_meses = #{record.int_cant_meses,jdbcType=INTEGER},
+      int_cant_dias = #{record.int_cant_dias,jdbcType=INTEGER},
+      dte_fecha_inicio = #{record.dte_fecha_inicio,jdbcType=DATE},
+      dte_fecha_fin = #{record.dte_fecha_fin,jdbcType=DATE},
+      int_id_tipo_nivel = #{record.int_id_tipo_nivel,jdbcType=INTEGER},
+      int_id_estado = #{record.int_id_estado,jdbcType=INTEGER},
+      tsp_fecha_registro = #{record.tsp_fecha_registro,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sernanp.app.dao.domain.TPostulanteCapacitacion" >
+    update personal.t_postulante_capacitacion
+    <set >
+      <if test="int_id_postulante != null" >
+        int_id_postulante = #{int_id_postulante,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_institucion != null" >
+        int_id_institucion = #{int_id_institucion,jdbcType=INTEGER},
+      </if>
+      <if test="var_descrip_programa != null" >
+        var_descrip_programa = #{var_descrip_programa,jdbcType=VARCHAR},
+      </if>
+      <if test="int_cant_anio != null" >
+        int_cant_anio = #{int_cant_anio,jdbcType=INTEGER},
+      </if>
+      <if test="int_cant_meses != null" >
+        int_cant_meses = #{int_cant_meses,jdbcType=INTEGER},
+      </if>
+      <if test="int_cant_dias != null" >
+        int_cant_dias = #{int_cant_dias,jdbcType=INTEGER},
+      </if>
+      <if test="dte_fecha_inicio != null" >
+        dte_fecha_inicio = #{dte_fecha_inicio,jdbcType=DATE},
+      </if>
+      <if test="dte_fecha_fin != null" >
+        dte_fecha_fin = #{dte_fecha_fin,jdbcType=DATE},
+      </if>
+      <if test="int_id_tipo_nivel != null" >
+        int_id_tipo_nivel = #{int_id_tipo_nivel,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_estado != null" >
+        int_id_estado = #{int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        tsp_fecha_registro = #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where srl_id_postulante_capacitacion = #{srl_id_postulante_capacitacion,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sernanp.app.dao.domain.TPostulanteCapacitacion" >
+    update personal.t_postulante_capacitacion
+    set int_id_postulante = #{int_id_postulante,jdbcType=INTEGER},
+      int_id_institucion = #{int_id_institucion,jdbcType=INTEGER},
+      var_descrip_programa = #{var_descrip_programa,jdbcType=VARCHAR},
+      int_cant_anio = #{int_cant_anio,jdbcType=INTEGER},
+      int_cant_meses = #{int_cant_meses,jdbcType=INTEGER},
+      int_cant_dias = #{int_cant_dias,jdbcType=INTEGER},
+      dte_fecha_inicio = #{dte_fecha_inicio,jdbcType=DATE},
+      dte_fecha_fin = #{dte_fecha_fin,jdbcType=DATE},
+      int_id_tipo_nivel = #{int_id_tipo_nivel,jdbcType=INTEGER},
+      int_id_estado = #{int_id_estado,jdbcType=INTEGER},
+      tsp_fecha_registro = #{tsp_fecha_registro,jdbcType=TIMESTAMP}
+    where srl_id_postulante_capacitacion = #{srl_id_postulante_capacitacion,jdbcType=INTEGER}
+  </update>
+</mapper>

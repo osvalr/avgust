@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.ObtenerDatosBasicosPersonalQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.ObtenerDatosBasicosPersonalQuery" parameterType="sernanp.app.dao.query.domain.ObtenerDatosBasicosPersonalQueryCriteria"> 
+<![CDATA[
+
+	      
+	      
+	            select 
+	      		 	       ps.idpersonal,
+					       pn.idpersonanatural ,
+					       pn.nombre as "nombrePersonal",
+					       pn.apepat,
+					       pn.apemat,
+					       pn.idtipodocumento ,
+					       (select t.abrtablatipo from sernanp.tablatipo t where t.idtabla = 1 and t.idtablatipo = pn.idtipodocumento ) as "descrip_tipo_documento",
+					       pn.numerodoc,
+					       to_char(pc.dte_fec_inicio, 'DD/MM/YYYY') as "dte_fec_inicio"
+
+			    from 
+					       sernanp.personanatural pn inner join
+					       sernanp.personal ps on pn.idpersonanatural = ps.idpersonanatural inner join
+					       sernanp.t_personal_contrato pc on ps.idpersonal = pc.idpersonal
+				where
+						   ps.idpersonal =  COALESCE(#{idpersonal}, ps.idpersonal)  and
+					       pn.idpersonanatural =  COALESCE(#{idpersonanatural}, ps.idpersonanatural)  and
+					       pc.dte_fec_inicio = COALESCE((select MIN(dte_fec_inicio) from sernanp.t_personal_contrato where idpersonal = COALESCE(#{idpersonal}, idpersonal)),pc.dte_fec_inicio);
+			    
+				
+		  
+	      
+]]>
+</select> 
+</mapper> 

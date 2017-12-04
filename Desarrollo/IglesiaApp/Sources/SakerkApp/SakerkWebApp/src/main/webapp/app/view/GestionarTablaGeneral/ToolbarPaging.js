@@ -1,0 +1,141 @@
+/**
+* Copyright «©» 2014, FOCUS CONSULTORES ASOCIADOS SAC. All rights reserved.
+*
+* This file is part of SakerkApp.
+*
+* SakerkApp is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* SakerkApp is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with SakerkApp.  If not, see <http://www.gnu.org/licenses/>.
+*/	 
+
+/**
+* GENERATOR CRUD EXT JS 5            
+* BY FOCUS CONSULTORES ASOCIADOS SAC  
+* DATE CREATE : 09/11/2014 02:30:50
+* VERSION : 1.0 
+*/
+
+Ext.define('MyApp.view.GestionarTablaGeneral.ToolbarPaging', {
+    extend: 'Ext.toolbar.Paging',
+    alias: 'widget.GestionarTablaGeneralToolbarPaging',
+    alternateClassName: [
+        'GestionarTablaGeneralToolbarPaging'
+    ],
+    requires: [
+        'Ext.toolbar.Paging'
+    ],
+    /**
+     * Move to the first page, has the same effect as clicking the 'first' button.
+     * Fires the {@link #beforechange} event. If the event returns `false`, then
+     * the load will not be attempted.
+     * @return {Boolean} `true` if the load was passed to the store.
+     */
+    moveFirst : function(){
+    	
+        var form = Ext.getCmp('form_filter_GestionarTablaGeneral');
+        var values = form.getValues();
+
+        if (this.fireEvent('beforechange', this, 1) !== false){
+            this.store.loadPage(1,{params:values});
+            return true;
+        }
+        return false;
+    },
+
+    /**
+     * Move to the previous page, has the same effect as clicking the 'previous' button.
+     * Fires the {@link #beforechange} event. If the event returns `false`, then
+     * the load will not be attempted.
+     * @return {Boolean} `true` if the load was passed to the store.
+     */
+    movePrevious : function(){
+        var me = this,
+            store = me.store,
+            prev = store.currentPage - 1;
+        
+        var form = Ext.getCmp('form_filter_GestionarTablaGeneral');
+        var values = form.getValues();
+
+        if (prev > 0) {
+            if (me.fireEvent('beforechange', me, prev) !== false) {
+                store.previousPage({params:values});
+                return true;
+            }
+        }
+        return false;
+    },
+
+    /**
+     * Move to the next page, has the same effect as clicking the 'next' button.
+     * Fires the {@link #beforechange} event. If the event returns `false`, then
+     * the load will not be attempted.
+     * @return {Boolean} `true` if the load was passed to the store.
+     */
+    moveNext : function(){
+        var me = this,
+            store = me.store,
+            total = me.getPageData().pageCount,
+            next = store.currentPage + 1;
+        
+        var form = Ext.getCmp('form_filter_GestionarTablaGeneral');
+        var values = form.getValues();
+
+        if (next <= total) {
+            if (me.fireEvent('beforechange', me, next) !== false) {
+                store.nextPage({params:values});
+                return true;
+            }
+        }
+        return false;
+    },
+
+    /**
+     * Move to the last page, has the same effect as clicking the 'last' button.
+     * Fires the {@link #beforechange} event. If the event returns `false`, then
+     * the load will not be attempted.
+     * @return {Boolean} `true` if the load was passed to the store.
+     */
+    moveLast : function(){
+        var me = this,
+            last = me.getPageData().pageCount;
+        
+        var form = Ext.getCmp('form_filter_GestionarTablaGeneral');
+        var values = form.getValues();
+
+        if (me.fireEvent('beforechange', me, last) !== false) {
+            me.store.loadPage(last,{params:values});
+            return true;
+        }
+        return false;
+    },
+
+    /**
+     * Refresh the current page, has the same effect as clicking the 'refresh' button.
+     * Fires the {@link #beforechange} event. If the event returns `false`, then
+     * the load will not be attempted.
+     * @return {Boolean} `true` if the load was passed to the store.
+     */
+    doRefresh : function(){
+        var me = this,
+            store = me.store,
+            current = store.currentPage;
+        
+        var form = Ext.getCmp('form_filter_GestionarTablaGeneral');
+        var values = form.getValues();
+	
+        if (me.fireEvent('beforechange', me, current) !== false) {
+            store.loadPage(current,{params:values});
+            return true;
+        }
+        return false;
+    }
+});

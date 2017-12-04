@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.focus.generator.crud.extjs.mybatis.mapper.InfoColumnsMysqlQueryMapper"> 
+
+<select id="getListQuery" resultType="pe.com.focus.generator.crud.extjs.mybatis.model.InfoColumnsMysqlQuery" parameterType="pe.com.focus.generator.crud.extjs.mybatis.model.InfoColumnsMysqlQueryCriteria"> 
+<![CDATA[
+
+	select 
+	
+	x.column_name,
+	x.is_nullable,
+	x.data_type,
+	x.character_maximum_length,
+	x.numeric_precision,
+	x.numeric_scale,
+	x.datetime_precision,
+	x.column_type,
+	x.column_key,
+	x.extra
+	
+	from information_schema.columns x where x.table_name in (${table_name});
+
+]]>
+</select> 
+
+<select id="getListQueryPostgres" resultType="pe.com.focus.generator.crud.extjs.mybatis.model.InfoColumnsMysqlQuery" parameterType="pe.com.focus.generator.crud.extjs.mybatis.model.InfoColumnsMysqlQueryCriteria"> 
+<![CDATA[
+
+SELECT 
+
+	x.column_name,
+	x.is_nullable,
+	x.data_type as "data_type_alter",
+	x.udt_name as "data_type",
+	x.character_maximum_length,
+	x.numeric_precision,
+	x.numeric_scale,
+	x.datetime_precision--,
+	--x.column_type,
+	--x.column_key,
+	--x.extra
+
+FROM information_schema.columns x
+
+WHERE 
+   x.table_name  in (${table_name});
+
+]]>
+</select>
+</mapper> 

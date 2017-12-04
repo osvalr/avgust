@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.ObtenerVacacionesQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.ObtenerVacacionesQuery" parameterType="sernanp.app.dao.query.domain.ObtenerVacacionesQueryCriteria"> 
+<![CDATA[
+
+				      
+				   SELECT                     
+			       ps.idpersonal ,
+			       pv.int_est_vacaciones ,
+			       gv.int_estado_goce_vac ,
+			       pl.int_est_lic ,
+			      (select max(p.int_periodo_vac) from sernanp.t_personal_vacaciones p where p.idpersonal = ps.idpersonal ) as "int_periodo_vac"
+			               
+			FROM
+			      sernanp.personal ps 
+			      left JOIN sernanp.t_personal_vacaciones pv on ps.idpersonal = pv.idpersonal 
+			      left JOIN sernanp.t_personal_goce_vacaciones gv on pv.srl_id_pers_vac = gv.id_pers_vac 
+			      left JOIN sernanp.t_personal_licencias pl on ps.idpersonal = pl.idpersonal
+			
+			WHERE                         
+			       ps.idpersonal = COALESCE(#{idpersonal},COALESCE(ps.idpersonal,0))           
+			       AND ( gv.int_estado_goce_vac NOTNULL 
+			       OR  pl.int_est_lic IN (1,2) )
+			       AND ( gv.int_estado_goce_vac IN (1,2) 
+			       OR  pl.int_est_lic  IS NOT NULL )
+			       AND (  gv.int_estado_goce_vac IS NOT NULL 
+			       OR  pl.int_est_lic IS NOT NULL )
+			       AND ( gv.int_estado_goce_vac  IN (1,2) 
+			       OR  pl.int_est_lic IN (1,2)
+			       )
+			       LIMIT 1;
+	           
+		  
+	      
+]]>
+</select> 
+</mapper> 

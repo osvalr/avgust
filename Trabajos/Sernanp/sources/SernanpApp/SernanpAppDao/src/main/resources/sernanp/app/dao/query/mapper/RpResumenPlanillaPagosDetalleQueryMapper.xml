@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.RpResumenPlanillaPagosDetalleQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+ 	napp.srl_id_nomina_anio_periodo_personal,
+	nc.srl_id_nomina_concepto,
+	cp.srl_id_concepto_planilla,
+	cp.int_id_tipo_concepto,
+	cp.var_descrip_concepto,
+	nc.dec_monto_calculado
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+ 
+personal.t_nomina_concepto nc
+INNER JOIN personal.t_nomina_anio_periodo_personal napp on napp.srl_id_nomina_anio_periodo_personal = nc.srl_id_nomina_anio_periodo_personal
+INNER JOIN personal.t_anio_periodo_planilla app ON napp.srl_id_anio_periodo_planilla = app.srl_id_anio_periodo_planilla
+INNER JOIN personal.t_concepto_planilla cp ON nc.srl_id_concepto_planilla = cp.srl_id_concepto_planilla 
+
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+ 	
+napp.srl_id_nomina_anio_periodo_personal = COALESCE(#{srl_id_nomina_anio_periodo_personal}, napp.srl_id_nomina_anio_periodo_personal) AND
+cp.srl_id_concepto_planilla = COALESCE(#{srl_id_concepto_planilla},cp.srl_id_concepto_planilla)
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.RpResumenPlanillaPagosDetalleQuery" parameterType="sernanp.app.dao.query.domain.RpResumenPlanillaPagosDetalleQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.RpResumenPlanillaPagosDetalleQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.RpResumenPlanillaPagosDetalleQuery" parameterType="sernanp.app.dao.query.domain.RpResumenPlanillaPagosDetalleQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.RpResumenPlanillaPagosDetalleQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.RpResumenPlanillaPagosDetalleQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

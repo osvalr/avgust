@@ -1,0 +1,90 @@
+${copy}
+
+/**
+* @author  Javier Raffo
+* @version 1.0
+* @since   ${datetimeCreate}
+*/
+
+'use strict';
+
+app.factory('${configBean.nameCrud}.services.MainService',
+['$http', '$q', 'urls', function ($http, $q, urls) {
+
+  var factory = {
+    getModel: getModel,
+    createModel: createModel,
+    updateModel: updateModel,
+    removeModel: removeModel
+  };
+
+  function getModel(id) {
+    console.log('Fetching Model with id :' + id);
+    var deferred = $q.defer();
+    #[[$http.get]]#(urls.${configBean.constUrlApi} + id)
+    .then(
+      function (response) {
+        console.log('Fetched successfully model with id :' + id);
+        deferred.resolve(response.data.record);
+      },
+      function (errResponse) {
+        console.error('Error while loading model with id :' + id);
+        deferred.reject(errResponse);
+      }
+    );
+    return deferred.promise;
+  }
+
+  function createModel(model) {
+    console.log('Creating Model');
+    var deferred = $q.defer();
+
+    #[[$http.post]]#(urls.${configBean.constUrlApi}, model)
+    .then(
+      function (response) {
+        deferred.resolve(response.data);
+      },
+      function (errResponse) {
+        console.log(errResponse);
+        console.error('Error while creating Model : ' + errResponse.data.message);
+        deferred.reject(errResponse);
+      }
+    );
+    return deferred.promise;
+  }
+
+  function updateModel(model, id) {
+    console.log('Updating Model with id ' + id);
+    var deferred = $q.defer();
+    #[[$http.put]]#(urls.${configBean.constUrlApi} + id, model)
+    .then(
+      function (response) {
+        deferred.resolve(response.data);
+      },
+      function (errResponse) {
+        console.error('Error while updating Model with id :' + id);
+        deferred.reject(errResponse);
+      }
+    );
+    return deferred.promise;
+  }
+
+  function removeModel(id) {
+    console.log('Removing Model with id ' + id);
+    var deferred = $q.defer();
+    #[[$http.delete]]#(urls.${configBean.constUrlApi} + id)
+    .then(
+      function (response) {
+        deferred.resolve(response.data);
+      },
+      function (errResponse) {
+        console.error('Error while removing Model with id :' + id);
+        deferred.reject(errResponse);
+      }
+    );
+    return deferred.promise;
+  }
+
+  return factory;
+}
+]);

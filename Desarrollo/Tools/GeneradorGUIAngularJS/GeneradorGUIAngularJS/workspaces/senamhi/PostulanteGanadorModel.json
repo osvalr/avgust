@@ -1,0 +1,7 @@
+{
+	"titleCrud": "Postulante Ganador",
+	"nameCrud": "PostulanteGanador",
+	"constUrlApi": "POSTULANTE_GANADOR_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "PostulanteGanadorModel.xml"
+}

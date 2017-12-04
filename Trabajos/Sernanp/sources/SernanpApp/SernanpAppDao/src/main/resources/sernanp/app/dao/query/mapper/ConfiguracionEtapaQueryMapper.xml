@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.ConfiguracionEtapaQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+
+ce.srl_id_configuracion_etapa,
+ce.srl_id_configuracion_evaluacion_personal,
+eps.srl_id_etapa_proceso_seleccion,
+eps.var_nombre_etapa,
+ce.srl_id_subetapa_proceso_seleccion,
+sps.var_descrip_subetapa,
+ce.int_orden,
+ce.int_id_estado,
+eg.destablatipo as descrip_estado,
+to_char(ce.tsp_fecha_registro,'dd/mm/yyyy') as tsp_fecha_registro
+
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+
+personal.t_configuracion_etapa ce
+inner join sernanp.vw_estado_generico eg on ce.int_id_estado = eg.codinttablatipo
+inner join personal.t_subetapa_proceso_seleccion sps on ce.srl_id_subetapa_proceso_seleccion = sps.srl_id_subetapa_proceso_seleccion
+inner join personal.t_etapa_proceso_seleccion eps on sps.srl_id_etapa_proceso_seleccion = eps.srl_id_etapa_proceso_seleccion
+
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+
+ce.srl_id_configuracion_etapa = coalesce(#{srl_id_configuracion_etapa},ce.srl_id_configuracion_etapa) and
+ce.srl_id_configuracion_evaluacion_personal = coalesce(#{srl_id_configuracion_evaluacion_personal},ce.srl_id_configuracion_evaluacion_personal)
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.ConfiguracionEtapaQuery" parameterType="sernanp.app.dao.query.domain.ConfiguracionEtapaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.ConfiguracionEtapaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.ConfiguracionEtapaQuery" parameterType="sernanp.app.dao.query.domain.ConfiguracionEtapaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.ConfiguracionEtapaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.ConfiguracionEtapaQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

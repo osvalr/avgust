@@ -1,0 +1,6 @@
+{
+	"nameCrud": "Eps",
+	"path": "eps",
+	"nameRepository": "TEpsRepository",
+	"nameModelXml": "EpsModel.xml"
+}

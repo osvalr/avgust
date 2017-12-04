@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.jrtotem.app.generator.mybatis.query.mapper.SubModelQueryMapper">
+
+<sql id="outs"> 
+<![CDATA[
+
+smi.id_sub_model_input,
+smi.id_model_input_parent,
+smi.id_model_input_child,
+mic.name_model
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+model_input mi
+inner join sub_model_input smi
+on mi.id_model_input = smi.id_model_input_parent
+inner join model_input mic
+on mic.id_model_input = smi.id_model_input_child
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+smi.id_model_input_parent = #{id_model_input_parent}
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${order_column} ${order_direction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.jrtotem.app.generator.mybatis.query.domain.SubModelQuery" parameterType="pe.com.jrtotem.app.generator.mybatis.query.domain.SubModelQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.jrtotem.app.generator.mybatis.query.domain.SubModelQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.jrtotem.app.generator.mybatis.query.domain.SubModelQuery" parameterType="pe.com.jrtotem.app.generator.mybatis.query.domain.SubModelQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.jrtotem.app.generator.mybatis.query.domain.SubModelQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.jrtotem.app.generator.mybatis.query.domain.SubModelQueryCriteria">
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

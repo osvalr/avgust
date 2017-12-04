@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.focus.sakerk.repository.custom.mapper.CongregacionLocalQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+					p.id_persona ,
+					pj.id_persona_juridica ,
+					cl.id_congregacion_local,
+					cl.id_congregacion_general,
+					ug.id_ubicacion_geografica,
+					cg.nombre_congregacion,
+					pj.razon_social,
+					p.email,
+					p.id_pais ,
+					ps.nombre_pais,
+					u.cod_depto,
+					u.descrip_depto,
+					u.cod_prov,
+					u.descrip_prov,
+					ug.id_ubigeo ,
+					u.descrip_ubigeo,
+					ug.direccion,
+					ug.cor_x,
+					ug.cor_y,
+					p.id_estado ,
+					e.descrip_estado_generico as "descrip_estado",
+					to_char(p.fecha_registro, 'DD/MM/YYYY HH24:MI:ss') as "fecha_registro"
+			
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+				general.persona p 
+				inner join
+				general.persona_juridica pj
+				on p.id_persona = pj.id_persona_juridica
+				inner join sakerk.congregacion_local cl
+				on pj.id_persona_juridica = cl.id_congregacion_local
+				inner join general.pais ps
+				on p.id_pais = ps.id_pais
+				inner join 
+				vw_estado_generico e
+				on p.id_estado = e.id_estado_generico
+				inner join
+				sakerk.congregacion_general cg
+				on cl.id_congregacion_general = cg.id_congregacion_general
+				left join
+				general.persona_ubicacion_geografica pug
+				on p.id_persona = pug.id_persona
+				left join general.ubicacion_geografica ug
+				on pug.id_ubicacion_geografica = ug.id_ubicacion_geografica
+				left join 
+				(
+				select 
+
+				u.id_ubigeo, 
+				d.cod_depto,
+				d.nombre_ubicacion as "descrip_depto",
+				p.cod_prov,
+				p.nombre_ubicacion as "descrip_prov",
+				u.cod_dist,
+				u.nombre_ubicacion as "descrip_ubigeo"
+
+				from 
+				vw_departamentos d
+				inner join vw_provincias p
+				on d.cod_depto = p.cod_depto
+				inner join general.ubigeo u
+				on p.cod_prov = u.cod_prov and u.cod_depto = d.cod_depto and u.cod_dist <> '00' and u.cod_prov <> '00'
+				) u
+				on ug.id_ubigeo = u.id_ubigeo
+
+			
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+					COALESCE(p.id_persona,0) = COALESCE(#{id_persona},COALESCE(p.id_persona,0)) and
+					COALESCE(pj.id_persona_juridica,0) = COALESCE(#{id_persona_juridica},COALESCE(pj.id_persona_juridica,0)) and
+					COALESCE(cl.id_congregacion_general,0) = COALESCE(#{id_congregacion_general},COALESCE(cl.id_congregacion_general,0)) and
+					COALESCE(pj.razon_social,'') like COALESCE(('%' || #{razon_social} || '%'),COALESCE(pj.razon_social,'')) and
+					COALESCE(p.id_pais,0) = COALESCE(#{id_pais},COALESCE(p.id_pais,0)) and
+					COALESCE(u.cod_depto,'') = COALESCE(#{cod_depto},COALESCE(u.cod_depto,'')) and
+					COALESCE(u.cod_prov,'') = COALESCE(#{cod_prov},COALESCE(u.cod_prov,'')) and
+					COALESCE(ug.id_ubigeo,0) = COALESCE(#{id_ubigeo},COALESCE(ug.id_ubigeo,0)) and
+					COALESCE(p.id_estado,0) = COALESCE(#{id_estado},COALESCE(p.id_estado,0)) and
+					pj.id_tipo_persona_juridica = 4
+			
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.focus.sakerk.repository.custom.model.CongregacionLocalQuery" parameterType="pe.com.focus.sakerk.repository.custom.model.CongregacionLocalQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.focus.sakerk.repository.custom.model.CongregacionLocalQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.focus.sakerk.repository.custom.model.CongregacionLocalQuery" parameterType="pe.com.focus.sakerk.repository.custom.model.CongregacionLocalQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.focus.sakerk.repository.custom.model.CongregacionLocalQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.focus.sakerk.repository.custom.model.CongregacionLocalQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

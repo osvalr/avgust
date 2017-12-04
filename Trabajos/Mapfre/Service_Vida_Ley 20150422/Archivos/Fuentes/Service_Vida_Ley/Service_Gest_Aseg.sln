@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BackEnd", "BackEnd", "{3C076703-E202-41E7-8B0D-1A0082D5B3D5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Servicios", "Servicios", "{7C9AD6E2-513A-41FC-838B-6EB9410144AF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Transversa", "Transversa", "{4C4BAE94-C362-40FF-985C-679ECD1347C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicaNegocio", "LogicaNegocio\LogicaNegocio.csproj", "{5ADCEE1F-E064-4A78-846B-B3207829D4AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entidades", "Entidades\Entidades.csproj", "{2C1B15C8-E96F-414B-A275-6FE33163D019}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infraestructura", "Infraestructura\Infraestructura.csproj", "{47A5AF6D-9998-4768-85F5-3A5330447E3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilitarios", "Utilitarios\Utilitarios.csproj", "{5BEF616E-36A6-43DE-A4FC-47F1F4D29D1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ws_ServiceCentral", "ws_ServiceCentral\ws_ServiceCentral.csproj", "{C2CE4D0E-3300-4DAA-985F-BF74A46537F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccesoDatos", "AccesoDatos\AccesoDatos.csproj", "{EA745379-C3BF-40A7-AB37-8570095A2955}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5ADCEE1F-E064-4A78-846B-B3207829D4AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5ADCEE1F-E064-4A78-846B-B3207829D4AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5ADCEE1F-E064-4A78-846B-B3207829D4AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5ADCEE1F-E064-4A78-846B-B3207829D4AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C1B15C8-E96F-414B-A275-6FE33163D019}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C1B15C8-E96F-414B-A275-6FE33163D019}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C1B15C8-E96F-414B-A275-6FE33163D019}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C1B15C8-E96F-414B-A275-6FE33163D019}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47A5AF6D-9998-4768-85F5-3A5330447E3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47A5AF6D-9998-4768-85F5-3A5330447E3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47A5AF6D-9998-4768-85F5-3A5330447E3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47A5AF6D-9998-4768-85F5-3A5330447E3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BEF616E-36A6-43DE-A4FC-47F1F4D29D1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BEF616E-36A6-43DE-A4FC-47F1F4D29D1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BEF616E-36A6-43DE-A4FC-47F1F4D29D1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BEF616E-36A6-43DE-A4FC-47F1F4D29D1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2CE4D0E-3300-4DAA-985F-BF74A46537F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2CE4D0E-3300-4DAA-985F-BF74A46537F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2CE4D0E-3300-4DAA-985F-BF74A46537F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2CE4D0E-3300-4DAA-985F-BF74A46537F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA745379-C3BF-40A7-AB37-8570095A2955}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA745379-C3BF-40A7-AB37-8570095A2955}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA745379-C3BF-40A7-AB37-8570095A2955}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA745379-C3BF-40A7-AB37-8570095A2955}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5ADCEE1F-E064-4A78-846B-B3207829D4AE} = {3C076703-E202-41E7-8B0D-1A0082D5B3D5}
+		{EA745379-C3BF-40A7-AB37-8570095A2955} = {3C076703-E202-41E7-8B0D-1A0082D5B3D5}
+		{C2CE4D0E-3300-4DAA-985F-BF74A46537F7} = {7C9AD6E2-513A-41FC-838B-6EB9410144AF}
+		{2C1B15C8-E96F-414B-A275-6FE33163D019} = {4C4BAE94-C362-40FF-985C-679ECD1347C5}
+		{47A5AF6D-9998-4768-85F5-3A5330447E3D} = {4C4BAE94-C362-40FF-985C-679ECD1347C5}
+		{5BEF616E-36A6-43DE-A4FC-47F1F4D29D1A} = {4C4BAE94-C362-40FF-985C-679ECD1347C5}
+	EndGlobalSection
+EndGlobal

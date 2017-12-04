@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN" "http://tiles.apache.org/dtds/tiles-config_2_0.dtd"> -->
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+	<definition name="baseLayout" template="/layoutsRRHH/baseLayout.jsp">
+		<put-attribute name="title" value="SERNANP"/>
+		<put-attribute name="header" value="/layoutsRRHH/header2.jsp"/>
+		
+		<put-attribute name="content" value=""/>
+		
+		<put-attribute name="core" value="/assets/js/core/sernanp.js"/>
+		<put-attribute name="jsfile" value=""/>
+		<put-attribute name="js" value=""/>
+		<put-attribute name="content_buscar_expediente" value=""/>
+		<put-attribute name="content_buscar_expediente_js" value=""/>
+		<put-attribute name="content_buscar_persona" value=""/>
+		<put-attribute name="content_buscar_persona_js" value=""/>
+		<put-attribute name="content_subir_archivo_js" value=""/>
+	</definition>
+	<!--
+ 	<definition name="baseLayout" template="/layouts/baseLayout.jsp">  
+	-->
+	<!--
+ 		<put-attribute name="title" value="SERNANP::" />  
+	-->
+	<!--
+ 		<put-attribute name="header" value="/layouts/header.jsp" /> 
+	-->
+	<!--
+ 		<put-attribute name="menu" value="/layouts/menu.jsp" /> 
+	-->
+	<!--
+ 		<put-attribute name="content" value="" /> 
+	-->
+	<!--
+ 		<put-attribute name="footer" value="/layouts/footer.jsp" /> 
+	-->
+	<!--
+ 		<put-attribute name="js" value="" />   
+	-->
+	<!--
+ 		<put-list-attribute name="styles">        
+	-->
+	<!--
+ 	      <add-attribute value="css/_base.css"/> 
+	-->
+	<!--
+ 	  	</put-list-attribute>   
+	-->
+	<!--
+ 	</definition> 
+	-->
+	<definition name="simpleLayout" template="/layouts/SimpleLayout.jsp">
+		<put-attribute name="title" value="SERNANP"/>
+		<put-attribute name="content" value=""/>
+		<put-attribute name="footer" value="/layouts/footer.jsp"/>
+		<put-attribute name="js" value="/js/general.js"/>
+	</definition>
+	<!-- GENERAL -->
+	<!--
+   	<definition name="opciones.modulo" extends="baseLayout">    
+	-->
+	<!--
+ 	<put-attribute name="content" value="/general/lista.opciones.modulo.jsp" /> 
+	-->
+	<!--
+ 	</definition> 
+	-->
+	<!-- PRINCIPAL -->
+	<definition name="personal.base" extends="baseLayout">
+		<put-attribute name="js" value="js/personal.js"/>
+		<put-list-attribute name="styles">
+			<add-attribute value="css/personal.css"/>
+		</put-list-attribute>
+	</definition>
+	<definition name="opciones.modulo" extends="personal.base">
+		<put-attribute name="content" value="/general/lista.opciones.modulo.jsp"/>
+		<put-attribute name="jsfile" value=""/>
+	</definition>
+	<definition name="registro.personal" extends="personal.base">
+		<put-attribute name="content" value="/paginas/form.registro.personal.jsp"/>
+	</definition>
+	<definition name="listado.personal" extends="personal.base">
+		<put-attribute name="content" value="/paginas/listado.personal.jsp"/>
+	</definition>
+	<definition name="listado.personal.descuento" extends="personal.base">
+		<put-attribute name="content" value="/paginas/listado.personal.descuento.jsp"/>
+	</definition>
+	<definition name="listado.personal.tardanza" extends="personal.base">
+		<put-attribute name="content" value="/paginas/listado.personal.tardanza.jsp"/>
+	</definition>
+	<definition name="registro.marcaciones" extends="personal.base">
+		<put-attribute name="content" value="/paginas/form.registro.marcaciones.jsp"/>
+	</definition>
+	<definition name="listado.personal.vaciones" extends="personal.base">
+		<put-attribute name="content" value="/paginas/listado.personal.vacaciones.jsp"/>
+  	</definition> 
+
+	<!--
+**************************************************************************
+                      PERSONA - (PERSONAL - POSTULANTE)
+                                
+**************************************************************************                            
+	-->
+	<definition name="registrar_editar_postulante" extends="baseLayout">
+		<put-attribute name="content" value="/pages/persona/gestionar_persona/postulante/registrar_editar_postulante.jsp"/>
+		<put-attribute name="jsfile" value="/pages/persona/gestionar_persona/postulante/registrar_editar_postulante.js"/>
+		<put-attribute name="content_buscar_persona" value="/pages/persona/buscar_persona/buscar_persona.jsp"/>
+		<put-attribute name="content_buscar_persona_js" value="/pages/persona/buscar_persona/buscar_persona.js"/>
+	</definition>
+	<!--
+    <definition name="gestionar_personal" extends="baseLayout">  
+	-->
+	<!--
+  		<put-attribute name="content" value="/pages/persona/gestionar_persona/gestionar_personal/registrar_editar_personal.jsp"/> 		 	 		  
+	-->
+	<!--
+  	</definition> 
+	-->
+
+<!--
+**************************************************************************
+                      PERSONA - (LEGAJO PERSONAL)
+                                
+**************************************************************************                            
+	-->
+	
+	<definition name="gestionar_personal_filtro" extends="baseLayout">
+		<put-attribute name="content" value="/pages/persona/gestionar_persona/personal/legajo_personal/gestionar_personal_filtro.jsp"/>
+		<put-attribute name="jsfile" value="/pages/persona/gestionar_persona/personal/legajo_personal/gestionar_personal_filtro.js"/>
+		<put-attribute name="content_buscar_persona_js" value="/pages/persona/buscar_persona/buscar_persona_generico.js"/>
+	</definition>
+	
+	<definition name="gestionar_personal_filtro_reporte" extends="baseLayout">
+		<put-attribute name="content" value="/pages/persona/gestionar_persona/personal/legajo_personal/gestionar_personal_filtro_reporte.jsp"/>
+		<put-attribute name="jsfile" value="/pages/persona/gestionar_persona/personal/legajo_personal/gestionar_personal_filtro_reporte.js"/>
+		<put-attribute name="content_buscar_persona_js" value="/pages/persona/buscar_persona/buscar_persona_generico.js"/>
+	</definition>
+	
+	<definition name="registrar_editar_personal" extends="baseLayout">
+		<put-attribute name="content" value="/pages/persona/gestionar_persona/personal/legajo_personal/registrar_editar_personal.jsp"/>
+		<put-attribute name="jsfile" value="/pages/persona/gestionar_persona/personal/legajo_personal/registrar_editar_personal.js"/>
+	</definition>
+	
+	<definition name="gestionar_desvinculacion_personal" extends="baseLayout">
+		<put-attribute name="content" value="/pages/persona/gestionar_persona/personal/legajo_personal/gestionar_desvinculacion_personal.jsp"/>
+		<put-attribute name="jsfile" value="/pages/persona/gestionar_persona/personal/legajo_personal/gestionar_desvinculacion_personal.js"/>
+	</definition>
+	
+	<definition name="gestionar_personal_legajo" extends="baseLayout">
+		<put-attribute name="content" value="/pages/persona/gestionar_persona/personal/legajo_personal/gestionar_personal_legajo.jsp"/>
+		<put-attribute name="jsfile" value="/pages/persona/gestionar_persona/personal/legajo_personal/gestionar_personal_legajo.js"/>
+	</definition>
+	
+	<definition name="gestionar_personal_legajo_filtro" extends="baseLayout">
+		<put-attribute name="content" value="/pages/persona/gestionar_persona/personal/legajo_personal/gestionar_personal_legajo_filtro.jsp"/>
+		<put-attribute name="jsfile" value="/pages/persona/gestionar_persona/personal/legajo_personal/gestionar_personal_legajo_filtro.js"/>
+		<put-attribute name="content_subir_archivo_js" value="/assets/plugins/filestyle/bootstrap-filestyle.min.js"/>
+		
+	</definition>
+	 
+<!-- 	<definition name="gestionar_subida_archivos" extends="baseLayout"> -->
+<!-- 		<put-attribute name="content" value="/pages/persona/gestionar_persona/personal/legajo_personal/gestionar_subida_archivos.jsp"/> -->
+<!-- 		<put-attribute name="jsfile" value="/pages/persona/gestionar_persona/personal/legajo_personal/gestionar_subida_archivos.js"/> -->
+<!-- 	</definition> -->
+	
+	<definition name="gestionar_listado_archivos" extends="baseLayout">
+		<put-attribute name="content" value="/pages/persona/gestionar_persona/personal/legajo_personal/gestionar_listado_archivos.jsp"/>
+		<put-attribute name="jsfile" value="/pages/persona/gestionar_persona/personal/legajo_personal/gestionar_listado_archivos.js"/>
+	</definition>
+
+<!--
+**************************************************************************
+                      PERSONA - (CONTRATO ADENDA)
+                                
+**************************************************************************                            
+	-->	
+	
+	<definition name="gestionar_contrato_filtro" extends="baseLayout">
+		<put-attribute name="content" value="/pages/contrato/gestionar_contrato/gestionar_contrato_filtro.jsp"/>
+		<put-attribute name="jsfile" value="/pages/contrato/gestionar_contrato/gestionar_contrato_filtro.js"/>
+		<put-attribute name="content_buscar_persona_js" value="/pages/persona/buscar_persona/buscar_persona_generico.js"/>
+	</definition>
+	
+	<definition name="gestionar_contrato_personal_filtro" extends="baseLayout">
+		<put-attribute name="content" value="/pages/contrato/gestionar_contrato/gestionar_contrato_personal_filtro.jsp"/>
+		<put-attribute name="jsfile" value="/pages/contrato/gestionar_contrato/gestionar_contrato_personal_filtro.js"/>
+		<put-attribute name="content_buscar_persona_js" value="/pages/persona/buscar_persona/buscar_persona_generico.js"/>
+	</definition>
+		
+	<definition name="gestionar_contrato" extends="baseLayout">
+		<put-attribute name="content" value="/pages/contrato/gestionar_contrato/gestionar_contrato.jsp"/>
+		<put-attribute name="jsfile" value="/pages/contrato/gestionar_contrato/gestionar_contrato.js"/>
+	</definition>
+	
+	<definition name="registrar_editar_contrato" extends="baseLayout">
+		<put-attribute name="content" value="/pages/contrato/gestionar_contrato/registrar_editar_contrato.jsp"/>
+		<put-attribute name="jsfile" value="/pages/contrato/gestionar_contrato/registrar_editar_contrato.js"/>
+	</definition>
+	
+	<definition name="generar_contrato_pdf" extends="baseLayout">
+		<put-attribute name="content" value="/pages/contrato/gestionar_contrato/generar_contrato_pdf.jsp"/>
+		<put-attribute name="jsfile" value="/pages/contrato/gestionar_contrato/generar_contrato_pdf.js"/>
+	</definition>
+		
+		
+	<definition name="contrato_adenda_vencimiento" extends="baseLayout">
+		<put-attribute name="content" value="/pages/contrato/gestionar_contrato/contrato_adenda_vencimiento.jsp"/>
+		<put-attribute name="jsfile" value="/pages/contrato/gestionar_contrato/contrato_adenda_vencimiento.js"/>
+	</definition>
+	
+		<!-- *************************** PLANILLAS - SELECCION*********************************** -->
+	<definition name="baseLayoutExtJs" template="/layoutsRRHH/baseLayoutExtJs.jsp">
+		<put-attribute name="title" value="SERNANP"/>
+		<put-attribute name="header" value="/layoutsRRHH/header2.jsp"/>
+		<put-attribute name="content" value=""/>
+	</definition>
+
+	<definition name="gestionar_parametro_planilla" extends="baseLayoutExtJs">
+		<put-attribute name="content"
+			value="/pages/planilla/gestionar_parametro/gestionarParametroPlanilla.jsp"/>
+	</definition>
+
+
+	<definition name="gestionar_afp_planilla" extends = "baseLayoutExtJs" >
+	<put-attribute name="content" value="/pages/planilla/gestionar_afp/gestionarAfpPlanilla.jsp"/>
+	</definition>
+
+	<definition name="gestionar_anio_planilla" extends = "baseLayoutExtJs" >
+	<put-attribute name="content" value="/pages/planilla/gestionar_anio/gestionarAnioPlanilla.jsp"/>
+	</definition>
+
+	<definition name="gestionar_concepto_planilla" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/planilla/gestionarConcepto.jsp"/>
+	</definition>
+
+	<definition name="gestionar_asignar_concepto" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/planilla/gestionarAsignarConcepto.jsp"/>
+	</definition>
+
+	<definition name="gestionar_nomina" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/planilla/gestionarNomina.jsp"/>
+	</definition>
+	
+	<definition name="gestionar_postulante" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/seleccion/gestionarPostulante.jsp"/>
+	</definition>
+	
+	<definition name="gestionar_postulante_alterno" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/seleccion/gestionarPostulanteAlterno.jsp"/>
+	</definition>
+	
+	<definition name="gestionar_reponsables_plazas" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/seleccion/gestionarResponsablesPlazas.jsp"/>
+	</definition>
+	
+	<definition name="gestionar_configuracion_etapa" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/seleccion/gestionarConfigEtapa.jsp"/>
+	</definition>
+	
+	<definition name="gestionar_etapa" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/seleccion/gestionarEtapas.jsp"/>
+	</definition>
+	
+	<definition name="gestionar_factor_evaluacion" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/seleccion/gestionarConfigFactorEvaluacion.jsp"/>
+	</definition>
+	
+	<definition name="gestionar_meta_fuente_generica" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/planilla/gestionarMetaFuenteGenerica.jsp"/>
+	</definition>
+	
+	<definition name="gestionar_plazas" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/seleccion/gestionarPlazas.jsp"/>
+	</definition>
+	
+	<definition name="gestionar_plazas_alterno" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/seleccion/gestionarPlazasAlterno.jsp"/>
+	</definition>
+	
+	<definition name="gestionar_notas_postulante" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/seleccion/gestionarNotasPostulante.jsp"/>
+	</definition>
+	
+	<definition name="gestionar_requerimiento_personal" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/seleccion/gestionarRequerimientoPersonal.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="gestionar_requerimiento_personal_alterno" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/seleccion/gestionarRequerimientoPersonalAlterno.jsp"></put-attribute>
+	</definition>
+
+    <definition name="gestionar_convocatoria_personal" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/seleccion/gestionarConvocatoriaPersonal.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="gestionar_trabajadores" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/planilla/gestionarTrabajadores.jsp"></put-attribute>
+	</definition>
+	
+	<!-- ************** REPORTES PLANILLA *************** -->
+	
+	<definition name="reporte_planilla_cas_mes_anio" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/planilla/reportes/reportePlanillaRegimenFuenteMeta.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="reporte_certificado_cuarta_categoria" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/planilla/reportes/reporteCertificadoCuartaCategoria.jsp"></put-attribute>
+	</definition>
+	<definition name="reporte_emitir_nomina_mes_regimen" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/planilla/reportes/reporteEmitirNominaxMesxRC.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="reporte_boleta_personal" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/planilla/reportes/reporteBoletaPersonal.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="reporte_certificado_quinta_categoria" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/planilla/reportes/reporteCertificadoQuintaCategoria.jsp"></put-attribute>
+	</definition>
+	
+	
+		<definition name="reporte_descuento_judicial" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/planilla/reportes/reporteDescuentoJudicial.jsp"></put-attribute>
+	</definition>
+		
+	<definition name="reporte_resumen_afp" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/planilla/reportes/reporteResumenAfp.jsp"></put-attribute>
+	</definition>
+		
+		
+		<definition name="reporte_planilla_snp" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/planilla/reportes/reportePlanillaPagoSNP.jsp"></put-attribute>
+	</definition>
+	<definition name="reporte_nomina_728_mes_fuente_meta" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/planilla/reportes/reporteNomina728MesAnioFuenteMeta.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="reporte_resumen_altas_bajas" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/planilla/reportes/reporteResumenAltasBajas.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="reporte_nomina_descuento" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/planilla/reportes/reporteNominaDescuentoPersonal.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="reporte_requerimiento_personal_mintra" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/seleccion/reportes/reporteRequerimientoPersonalMintra.jsp"></put-attribute>
+	</definition>
+		
+	<definition name="reporte_documento_consolidado_convocatoria" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/seleccion/reportes/reporteDocumentoConsolidadoConvocatoria.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="reporte_altas_bajas_personal" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/planilla/reportes/reporteAltasBajasPersonal.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="resumen_nomina_pago_regimen_pensionario" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/planilla/reportes/resumenNominaPagoRegimenPensionario.jsp"></put-attribute>
+	</definition>
+	
+
+	
+	
+	
+	<!-- 
+				**************************************************************************
+					 		REPORTE REQUERIMIENTO Y SELECCION DE PERSONAL                
+				**************************************************************************
+	-->
+	
+	
+	<definition name="reporte_postulantes_inscritos" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/seleccion/reportes/reportePostulantesInscritos.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="reporte_postulantes_contratos" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/seleccion/reportes/reportePostulantesContratosSuscritosYNoSuscritos.jsp"></put-attribute>
+	</definition>
+
+<!--
+	<definition name="reporte_postulantes_ficha_postulacion" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/seleccion/reportes/reportePostulantesFichaPostulacion.jsp"></put-attribute>
+	</definition>
+
+	SE REMPLAZO POR : reporte_postulantes_evaluacion
+-->
+
+	<definition name="reporte_postulantes_evaluacion" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/seleccion/reportes/reportePostulantesFichaPostulacion.jsp"></put-attribute>
+	</definition>
+
+
+	<definition name="reporte_postulantes_evaluacion_escrita" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/seleccion/reportes/reportePostulantesEvaluacionEscrita.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="reporte_postulantes_entrevista_personal" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/seleccion/reportes/reportePostulantesEntrevistaPersonal.jsp"></put-attribute>
+	</definition>
+		
+
+	<!-- 
+				**************************************************************************
+						END REPORTE REQUERIMIENTO Y SELECCION DE PERSONAL              
+				**************************************************************************	
+	 -->
+	
+	
+	
+	
+	<definition name="reporte_planilla_pago_ONP" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/planilla/reportes/reportePlanillaPagoOnp.jsp"></put-attribute>
+	</definition>
+	
+	
+
+	<definition name="reporte_resumen_general_planilla" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/planilla/reportes/reporteResumenGeneralPlanilla.jsp"></put-attribute>
+	</definition>
+
+	
+	
+	<!--
+**************************************************************************
+                      PLANILLAS - (CONSULTA PERSONAL)
+                                
+**************************************************************************                            
+	-->
+	
+	<definition name="consulta_personal" extends="baseLayout">
+		<put-attribute name="content" value="/pages/persona/gestionar_persona/personal/legajo_personal/consulta_personal.jsp"/>
+		<put-attribute name="jsfile" value="/pages/persona/gestionar_persona/personal/legajo_personal/consulta_personal.js"/>
+		<put-attribute name="content_buscar_persona_js" value="/pages/persona/buscar_persona/buscar_persona_generico.js"/>
+	</definition>
+	
+	<definition name="consulta_personal_reporte" extends="baseLayout">
+		<put-attribute name="content" value="/pages/persona/gestionar_persona/personal/legajo_personal/consulta_personal_reporte.jsp"/>
+		<put-attribute name="jsfile" value="/pages/persona/gestionar_persona/personal/legajo_personal/gestionar_personal_filtro_reporte.js"/>
+		<put-attribute name="content_buscar_persona_js" value="/pages/persona/buscar_persona/buscar_persona_generico.js"/>
+	</definition>
+	
+	<definition name="consulta_personal_detalle" extends="baseLayout">
+		<put-attribute name="content" value="/pages/persona/gestionar_persona/personal/legajo_personal/consulta_personal_detalle.jsp"/>
+		<put-attribute name="jsfile" value="/pages/persona/gestionar_persona/personal/legajo_personal/consulta_personal_detalle.js"/>
+	</definition>
+
+	<!--
+**************************************************************************
+                      FIN
+                                
+**************************************************************************                            
+	-->
+
+	<definition name="gestionar_meta_anho" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/planilla/gestionarMetaAnho.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="reporte_banco" extends="baseLayoutExtJs">
+		<put-attribute name="content" value="/pages/planilla/reportes/reporteBanco.jsp"></put-attribute>
+	</definition>
+	
+	
+</tiles-definitions> 

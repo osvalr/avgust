@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.ResponsableContratosQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.ResponsableContratosQuery" parameterType="sernanp.app.dao.query.domain.ResponsableContratosQueryCriteria"> 
+<![CDATA[
+      
+select 
+	
+	u.idusuario,
+	u.usuario,
+	r.idrol,
+	r.desrol,
+	ps.mailpersonal,
+	pn.nombre,
+	pn.apepat,
+	pn.apemat 
+
+from sernanp.usuario u inner join sernanp.usuariorol ur 
+on u.idusuario = ur.idusuario inner join sernanp.rol r on
+ur.idrol = r.idrol inner join sernanp.personal ps on
+u.idpersonal = ps.idpersonal inner join sernanp.personanatural pn on
+ps.idpersonanatural = pn.idpersonanatural
+
+where r.idrol = #{idrol};
+	      
+]]>
+</select> 
+</mapper> 

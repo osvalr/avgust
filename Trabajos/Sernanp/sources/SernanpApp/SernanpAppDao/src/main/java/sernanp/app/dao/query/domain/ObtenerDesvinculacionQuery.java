@@ -1,0 +1,88 @@
+package sernanp.app.dao.query.domain;
+
+public class ObtenerDesvinculacionQuery {
+	
+	private Integer srl_id_estado_personal;
+	private Integer idpersonal;
+	private String var_descripcion_tipificacion;
+	private String var_motivo;
+	private Integer int_id_estado;
+	private String dte_fecha_estado;
+	private String dte_fec_cese;
+	private String des_estado_desvinculacion;
+	private Integer ultima_desvinculacion;
+
+	public Integer getIdpersonal() {
+		return idpersonal;
+	}
+
+	public void setIdpersonal(Integer idpersonal) {
+		this.idpersonal = idpersonal;
+	}
+
+	public String getVar_descripcion_tipificacion() {
+		return var_descripcion_tipificacion;
+	}
+
+	public void setVar_descripcion_tipificacion(
+			String var_descripcion_tipificacion) {
+		this.var_descripcion_tipificacion = var_descripcion_tipificacion;
+	}
+
+	public String getVar_motivo() {
+		return var_motivo;
+	}
+
+	public void setVar_motivo(String var_motivo) {
+		this.var_motivo = var_motivo;
+	}
+
+	public Integer getInt_id_estado() {
+		return int_id_estado;
+	}
+
+	public void setInt_id_estado(Integer int_id_estado) {
+		this.int_id_estado = int_id_estado;
+	}
+
+	public String getDte_fecha_estado() {
+		return dte_fecha_estado;
+	}
+
+	public void setDte_fecha_estado(String dte_fecha_estado) {
+		this.dte_fecha_estado = dte_fecha_estado;
+	}
+
+	public Integer getSrl_id_estado_personal() {
+		return srl_id_estado_personal;
+	}
+
+	public void setSrl_id_estado_personal(Integer srl_id_estado_personal) {
+		this.srl_id_estado_personal = srl_id_estado_personal;
+	}
+
+	public String getDes_estado_desvinculacion() {
+		return des_estado_desvinculacion;
+	}
+
+	public void setDes_estado_desvinculacion(String des_estado_desvinculacion) {
+		this.des_estado_desvinculacion = des_estado_desvinculacion;
+	}
+
+	public Integer getUltima_desvinculacion() {
+		return ultima_desvinculacion;
+	}
+
+	public void setUltima_desvinculacion(Integer ultima_desvinculacion) {
+		this.ultima_desvinculacion = ultima_desvinculacion;
+	}
+
+	public String getDte_fec_cese() {
+		return dte_fec_cese;
+	}
+
+	public void setDte_fec_cese(String dte_fec_cese) {
+		this.dte_fec_cese = dte_fec_cese;
+	}
+
+}

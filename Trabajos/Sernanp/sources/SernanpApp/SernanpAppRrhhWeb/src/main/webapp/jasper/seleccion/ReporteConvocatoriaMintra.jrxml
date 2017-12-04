@@ -1,0 +1,736 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteConvocatoriaMintra" pageWidth="595" pageHeight="1500" columnWidth="440" leftMargin="80" rightMargin="75" topMargin="20" bottomMargin="20" isSummaryWithPageHeaderAndFooter="true" uuid="00a87ea8-b6aa-45a2-9284-e3ffada79b88">
+	<property name="ireport.zoom" value="1.3310000000000013"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.export.html.wrap.break.word" value="true"/>
+	<property name="net.sf.jasperreports.export.docx.flexible.row.height" value="true"/>
+	<property name="net.sf.jasperreports.export.docx.new.line.as.paragraph" value="true"/>
+	<property name="net.sf.jasperreports.export.docx.frames.as.nested.tables" value="true"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<style name="hanging-indentation-style">
+		<box leftPadding="23"/>
+		<paragraph firstLineIndent="-23"/>
+	</style>
+	<style name="prueba" fontName="DejaVu Sans"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/Datos/DesarrolloSW/Proyectos/SernanpApp/SernanpAppRrhhWeb/src/main/webapp/jasper/seleccion/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="parametros.listConvocatoria_Puesto_DS" class="java.lang.Object"/>
+	<parameter name="parametros.SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/Datos/DesarrolloSW/Proyectos/SernanpApp/SernanpAppRrhhWeb/src/main/webapp/jasper/seleccion/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="parametros.listConvocatoria_Perfil_DS" class="java.lang.Object"/>
+	<parameter name="parametros.listConvocatoria_Contrato_DS" class="java.lang.Object"/>
+	<parameter name="parametros.listConvocatoria_Evaluacion_DS" class="java.lang.Object"/>
+	<parameter name="parametros.listConvocatoria_Cronograma_DS" class="java.lang.Object"/>
+	<parameter name="parametros.listConvocatoria_Postulacion_DS" class="java.lang.Object"/>
+	<parameter name="requerimiento_personal" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[$F{srl_id_requerimiento_personal}]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[]]>
+	</queryString>
+	<field name="var_numero_convocatoria_corto" class="java.lang.String"/>
+	<field name="var_codigo_postulacion" class="java.lang.String"/>
+	<field name="dte_fecha_inicio" class="java.lang.String"/>
+	<field name="dte_fecha_termino" class="java.lang.String"/>
+	<field name="descrip_area_supervisora" class="java.lang.String"/>
+	<field name="dte_fecha_aprobacion" class="java.util.Date"/>
+	<field name="var_detalle_subetapa" class="java.lang.String"/>
+	<field name="dte_fecha_cronograma" class="java.lang.String"/>
+	<field name="descrip_area_responsable" class="java.lang.String"/>
+	<field name="dte_fecha_publicacion" class="java.lang.String"/>
+	<field name="var_descrip_subetapa" class="java.lang.String"/>
+	<field name="var_nombre_etapa" class="java.lang.String"/>
+	<field name="srl_id_subetapa_proceso_seleccion" class="java.lang.Integer"/>
+	<field name="var_denominacion_requerimiento" class="java.lang.String"/>
+	<field name="descrip_area" class="java.lang.String"/>
+	<field name="var_experiencia_requerida" class="java.lang.String"/>
+	<field name="var_competencias_requeridas" class="java.lang.String"/>
+	<field name="var_formacion_academica" class="java.lang.String"/>
+	<field name="var_cursos_especializacion" class="java.lang.String"/>
+	<field name="var_requisitos_puesto" class="java.lang.String"/>
+	<field name="var_principales_funciones" class="java.lang.String"/>
+	<field name="var_lugar_prestacion" class="java.lang.String"/>
+	<field name="dte_fecha_inicio_contrato" class="java.lang.String"/>
+	<field name="dte_fecha_termino_contrato" class="java.lang.String"/>
+	<field name="dec_honorario_personal" class="java.lang.Double"/>
+	<field name="int_cantidad_tiempo" class="java.lang.Integer"/>
+	<field name="descrip_unidad_tiempo" class="java.lang.String"/>
+	<field name="descrip_tipo_factor" class="java.lang.String"/>
+	<field name="dec_puntaje_min" class="java.lang.Double"/>
+	<field name="dec_puntaje_max" class="java.lang.Double"/>
+	<field name="dec_peso" class="java.lang.Double"/>
+	<field name="int_id_tipo_factor" class="java.lang.Integer"/>
+	<field name="srl_id_configuracion_factor_evaluacion" class="java.lang.Integer"/>
+	<field name="srl_id_requerimiento_personal" class="java.lang.Integer"/>
+	<field name="listEvaluacion" class="java.lang.Object"/>
+	<field name="listEtapas" class="java.lang.Object"/>
+	<field name="int_num_activacion" class="java.lang.Integer"/>
+	<variable name="idRequerimiento" class="java.lang.Integer">
+		<variableExpression><![CDATA[$F{srl_id_requerimiento_personal}]]></variableExpression>
+	</variable>
+	<group name="cod_postulacion" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{srl_id_requerimiento_personal}]]></groupExpression>
+		<groupHeader>
+			<band height="31">
+				<textField isStretchWithOverflow="true">
+					<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="440" height="31" isPrintInFirstWholeBand="true" uuid="9dc3b859-f4d9-49f3-9bc0-316bf707f1c4"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+						<font fontName="DejaVu Sans" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{int_num_activacion}.equals( 2 ) ? "Segunda Convocatoria para la Contratación Administrativa de Servicios de " + $F{var_denominacion_requerimiento} + " para la " +
+($F{descrip_area} == null ? "" : $F{descrip_area}) + " y/o en cualquier Área Natural Protegida del Perú, por disposición del SERNANP"
+:
+"Convocatoria para la Contratación Administrativa de Servicios de " + $F{var_denominacion_requerimiento} + " para la " +
+($F{descrip_area} == null ? "" : $F{descrip_area}) + " y/o en cualquier Área Natural Protegida del Perú, por disposición del SERNANP"]]></textFieldExpression>
+				</textField>
+			</band>
+			<band height="329">
+				<staticText>
+					<reportElement x="0" y="290" width="440" height="21" uuid="f9441641-5a95-4f7c-939e-945cbc827fa6"/>
+					<textElement verticalAlignment="Top">
+						<font fontName="DejaVu Sans" size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[II.- Perfil del Puesto]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="209" y="311" width="231" height="18" backcolor="#CCCCCC" uuid="6377cbd6-31ef-4281-805f-c636438a0f22"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="10"/>
+					</textElement>
+					<text><![CDATA[DETALLE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="311" width="209" height="18" backcolor="#CCCCCC" uuid="5855cdbd-da1b-4cc8-9894-5f2203330806"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="10"/>
+					</textElement>
+					<text><![CDATA[REQUISITOS]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="0" y="0" width="440" height="32" isPrintInFirstWholeBand="true" forecolor="#FF0000" uuid="ee285cee-e84b-4ad7-830c-5dd72d10f188"/>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="DejaVu Sans" size="12" isBold="true" isUnderline="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{var_codigo_postulacion} == null ? "" : $F{var_codigo_postulacion}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="134" width="440" height="35" uuid="d1f71031-a1d9-4a26-a71c-5b5224b9294d"/>
+					<textElement markup="html">
+						<font fontName="DejaVu Sans"/>
+					</textElement>
+					<text><![CDATA[<b>3.- Dependencia encargada de realizar el proceso de contratación:</b><br>
+La Unidad Operativa Funcional de Recursos Humanos del SERNANP
+]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="0" y="64" width="440" height="35" isPrintInFirstWholeBand="true" uuid="71fad307-b098-4745-9b7f-89a8bac46497"/>
+					<textElement markup="html">
+						<font fontName="DejaVu Sans" size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{var_denominacion_requerimiento} == null ? "<b>1.- Objeto de la Convocatoria:</b><br>" :
+"<b>1.- Objeto de la Convocatoria:</b><br>Contratar los servicios de " + $F{var_denominacion_requerimiento} + " para la " + $F{descrip_area} +"<br>"]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="32" width="440" height="32" isPrintInFirstWholeBand="true" uuid="aa07aa26-4738-4857-9691-f4b06f473722"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[I.- Generalidades]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="169" width="440" height="121" uuid="d51d1b3e-829c-4c63-bf2f-494fef50f7ee"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="DejaVu Sans"/>
+					</textElement>
+					<text><![CDATA[<b>4.- Base legal</b> <br>
+- <b>Decreto Legislativo N° 1057</b>, que regula el Régimen Especial de Contratación Administrativa de
+Servicios (en adelante “régimen CAS”). <br>
+- <b>Reglamento del Decreto Legislativo N° 1057</b> que regula el Régimen Especial de Contratación
+Administrativa de Servicios, el Decreto Supremo Nº 075-2008-PCM, modificado por Decreto Supremo 065-2011-PCM. <br>
+- <b>Ley N° 29849</b>, que establece la eliminación progresiva del Régimen Especial del Decreto
+Legislativo N° 1057 y otorga derechos laborales. <br>
+- Las demás disposiciones que regulen el Contrato Administrativo de Servicios. ]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="0" y="99" width="440" height="35" isPrintInFirstWholeBand="true" uuid="f5890dfb-0b34-4ee5-ba32-37784a4465d6"/>
+					<textElement markup="html">
+						<font fontName="DejaVu Sans" size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{descrip_area} == null ? "<b>2.- Área Solicitante:</b>" :
+"<b>2.- Área Solicitante:</b><br>" + $F{descrip_area}]]></textFieldExpression>
+				</textField>
+			</band>
+			<band height="29">
+				<printWhenExpression><![CDATA[!$F{var_experiencia_requerida}.equals( "" )]]></printWhenExpression>
+				<staticText>
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="209" height="29" uuid="6369b6fd-fc2a-4f39-a999-ce8b8d6b3ff3">
+						<printWhenExpression><![CDATA[$F{var_experiencia_requerida} != null]]></printWhenExpression>
+					</reportElement>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement>
+						<font fontName="DejaVu Sans" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<text><![CDATA[Experiencia]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement stretchType="RelativeToBandHeight" x="209" y="0" width="231" height="29" uuid="ce1c943e-b661-43a7-84fa-2713717969c3"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement markup="html">
+						<font fontName="DejaVu Sans" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{var_experiencia_requerida} == null ? "" : $F{var_experiencia_requerida}]]></textFieldExpression>
+				</textField>
+			</band>
+			<band height="29">
+				<printWhenExpression><![CDATA[!$F{var_competencias_requeridas}.equals( "" )]]></printWhenExpression>
+				<staticText>
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="209" height="29" uuid="c3685f85-1ee8-48f2-ab5a-72199802078b"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement>
+						<font fontName="DejaVu Sans" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<text><![CDATA[Competencias]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement stretchType="RelativeToBandHeight" x="209" y="0" width="231" height="29" uuid="9c01b085-a4b5-4ed7-b9d5-5eb815d0e051"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement markup="html">
+						<font fontName="DejaVu Sans" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{var_competencias_requeridas}  == null ? "" :  $F{var_competencias_requeridas}]]></textFieldExpression>
+				</textField>
+			</band>
+			<band height="29">
+				<printWhenExpression><![CDATA[!$F{var_formacion_academica}.equals( "" )]]></printWhenExpression>
+				<staticText>
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="209" height="29" uuid="56840d5b-3eba-4cdc-b3aa-df9a33d463b7"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement>
+						<font fontName="DejaVu Sans" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<text><![CDATA[Formación Académica]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement stretchType="RelativeToBandHeight" x="209" y="0" width="231" height="29" uuid="67be04e0-8be2-4723-964b-3ce466eb595a"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement markup="html">
+						<font fontName="DejaVu Sans" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{var_formacion_academica}  == null ? "" : $F{var_formacion_academica}]]></textFieldExpression>
+				</textField>
+			</band>
+			<band height="29">
+				<printWhenExpression><![CDATA[!$F{var_cursos_especializacion}.equals( "" )]]></printWhenExpression>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement stretchType="RelativeToBandHeight" x="209" y="0" width="231" height="29" uuid="afd1add9-8048-4d48-b7b1-47faeea05a57"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement markup="html">
+						<font fontName="DejaVu Sans" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{var_cursos_especializacion} == null ? "" : $F{var_cursos_especializacion}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="209" height="29" uuid="e160eba8-417e-4075-b9b1-0dbac9cb46e0"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement>
+						<font fontName="DejaVu Sans" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<text><![CDATA[Cursos / Especialización]]></text>
+				</staticText>
+			</band>
+			<band height="29">
+				<printWhenExpression><![CDATA[!$F{var_requisitos_puesto}.equals( "" )]]></printWhenExpression>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement stretchType="RelativeToBandHeight" x="209" y="0" width="231" height="29" uuid="c0d526ab-286e-4c88-8661-08016b39b66a"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement markup="html">
+						<font fontName="DejaVu Sans" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{var_requisitos_puesto} == null ? "" : $F{var_requisitos_puesto}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="209" height="29" isPrintWhenDetailOverflows="true" uuid="bd34e758-768f-488d-9bd7-2724d852ccf9"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement>
+						<font fontName="DejaVu Sans" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<text><![CDATA[Requisitos del Puesto]]></text>
+				</staticText>
+			</band>
+			<band height="56">
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+					<reportElement stretchType="RelativeToBandHeight" x="0" y="31" width="440" height="24" uuid="4a60ffb5-3f28-495f-a50c-82196564ae83"/>
+					<textElement textAlignment="Justified" verticalAlignment="Top" rotation="None" markup="html">
+						<font fontName="DejaVu Sans" size="10"/>
+						<paragraph leftIndent="20"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{var_principales_funciones} == null ? "" : $F{var_principales_funciones}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="440" height="31" uuid="3f03dc9e-76ca-4618-acd8-f9d8ee2e6808"/>
+					<textElement verticalAlignment="Bottom" markup="html">
+						<font fontName="DejaVu Sans" size="10"/>
+					</textElement>
+					<text><![CDATA[<b>III.- Características del Puesto<br><br>Principales funciones a desarrollar:</b>
+]]></text>
+				</staticText>
+			</band>
+			<band height="170">
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="75" width="211" height="50" backcolor="#FFFFFF" uuid="6b975ec1-1d37-4561-b980-60a353475c7d"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement>
+						<font fontName="DejaVu Sans" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<text><![CDATA[Duración del Contrato]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="257" y="92" width="183" height="17" backcolor="#FFFFFF" uuid="cefb068f-683c-442f-81e1-8f9d4021e880"/>
+					<box>
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dte_fecha_termino_contrato}== null ? "" : $F{dte_fecha_termino_contrato}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="44" width="211" height="31" backcolor="#FFFFFF" uuid="c7d22fd1-0060-4988-96e8-e905f7152db1"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement>
+						<font fontName="DejaVu Sans" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<text><![CDATA[Lugar de prestación del servicio]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="24" width="211" height="20" backcolor="#CCCCCC" uuid="d82b7128-b45b-45f8-a4c7-ecd9d3b2198d"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="10"/>
+					</textElement>
+					<text><![CDATA[CONDICIONES]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="211" y="24" width="229" height="20" backcolor="#CCCCCC" uuid="5730436a-51d5-48ff-bf10-4fcb2a258542"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="10"/>
+					</textElement>
+					<text><![CDATA[DETALLE]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="257" y="75" width="183" height="17" backcolor="#FFFFFF" uuid="cb2bd968-d639-4c24-ab47-19577e006d5e"/>
+					<box>
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dte_fecha_inicio_contrato} == null ? "" : $F{dte_fecha_inicio_contrato}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement mode="Opaque" x="257" y="109" width="183" height="16" backcolor="#FFFFFF" uuid="a9ad2412-1c46-4bf5-b334-5f5151b47984"/>
+					<box>
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{int_cantidad_tiempo}== null ? " " : $F{int_cantidad_tiempo} + " " + $F{descrip_unidad_tiempo}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="211" y="125" width="229" height="45" backcolor="#FFFFFF" uuid="3fd0041c-8771-4183-9475-6aff5b457956"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dec_honorario_personal} == null ? 0 :
+"S/. " + new DecimalFormat("###,##0.00").format($F{dec_honorario_personal}) + " Incluye los montos y afiliaciones de ley, así como toda deducción aplicable al trabajador."]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="440" height="24" uuid="e7690151-ed16-428f-b8e5-85424c3071dd"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[IV.- Condiciones Esenciales del Contrato]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="211" y="44" width="229" height="31" backcolor="#FFFFFF" uuid="33e805bc-4981-4896-9f22-33f7b354e527"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement verticalAlignment="Top">
+						<font fontName="DejaVu Sans" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{var_lugar_prestacion}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="125" width="211" height="45" backcolor="#FFFFFF" uuid="0fdacaa7-8f8c-4c08-8161-3157d81515ee"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement>
+						<font fontName="DejaVu Sans" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<text><![CDATA[Remuneración mensual]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="211" y="75" width="46" height="17" uuid="867df47c-7078-486c-9f51-983a0269e976"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="DejaVu Sans"/>
+					</textElement>
+					<text><![CDATA[Inicio	:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="211" y="92" width="46" height="17" uuid="82b0ebc6-0fce-403f-8e7d-a9a0b8442bcc"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="DejaVu Sans"/>
+					</textElement>
+					<text><![CDATA[Fín	:	:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="211" y="109" width="46" height="16" uuid="cf4c16b5-c8f7-472b-8a7e-03708627e865"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="DejaVu Sans"/>
+					</textElement>
+					<text><![CDATA[Periodo	:]]></text>
+				</staticText>
+			</band>
+			<band height="123">
+				<staticText>
+					<reportElement isPrintRepeatedValues="false" mode="Opaque" x="315" y="17" width="125" height="18" isPrintInFirstWholeBand="true" backcolor="#CCCCCC" uuid="6bc68aff-cf6d-4562-8ef1-34651165faa4"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ÁREA RESPONSABLE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement isPrintRepeatedValues="false" x="0" y="0" width="440" height="18" isPrintInFirstWholeBand="true" uuid="0476979b-4962-4181-8833-268c0b200f8c"/>
+					<textElement verticalAlignment="Middle" markup="none">
+						<font fontName="DejaVu Sans" size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[V.- Cronograma y Etapas del Proceso]]></text>
+				</staticText>
+				<textField isBlankWhenNull="false">
+					<reportElement stretchType="RelativeToBandHeight" x="211" y="77" width="104" height="45" uuid="1942474f-3056-46fa-a297-6709c27cc0a1"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement markup="html">
+						<font fontName="DejaVu Sans" size="10" isUnderline="false"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dte_fecha_publicacion}  == null ? "" :  $F{dte_fecha_publicacion}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement isPrintRepeatedValues="false" mode="Opaque" x="211" y="17" width="104" height="18" isPrintInFirstWholeBand="true" backcolor="#CCCCCC" uuid="a355559b-ec99-4f3c-9bb6-6121357fe276"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CRONOGRAMA ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement isPrintRepeatedValues="false" x="0" y="35" width="211" height="42" isPrintInFirstWholeBand="true" uuid="4e512d3d-f6db-4c62-aae4-e4be9f751337"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement>
+						<font fontName="DejaVu Sans" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<text><![CDATA[Aprobación de la Convocatoria]]></text>
+				</staticText>
+				<staticText>
+					<reportElement isPrintRepeatedValues="false" mode="Opaque" x="0" y="17" width="211" height="18" isPrintInFirstWholeBand="true" backcolor="#CCCCCC" uuid="a7feee10-f5da-4263-98ae-1802bb15da00"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ETAPAS DEL PROCESO]]></text>
+				</staticText>
+				<textField isBlankWhenNull="false">
+					<reportElement x="315" y="35" width="125" height="42" uuid="1c91b4f9-b527-47ef-8416-fa262c128d11"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement>
+						<font fontName="DejaVu Sans" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Oficina de Administración"]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="false">
+					<reportElement x="211" y="35" width="104" height="42" uuid="3e2dea58-bfb4-4e95-a437-0f4d6233d175"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement markup="html">
+						<font fontName="DejaVu Sans" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dte_fecha_aprobacion} == null ? "" : DateFormat.getDateInstance(DateFormat.LONG, $P{REPORT_LOCALE}).format($F{dte_fecha_aprobacion})]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="false">
+					<reportElement stretchType="RelativeToBandHeight" x="315" y="77" width="125" height="45" uuid="01162cba-bfe1-4b57-be77-6434027fc506"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement>
+						<font fontName="DejaVu Sans" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{descrip_area_responsable} == null ? "" : $F{descrip_area_responsable}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement isPrintRepeatedValues="false" x="0" y="77" width="211" height="45" isPrintInFirstWholeBand="true" uuid="fc301167-7bc4-414d-85dc-4bd07d5a1ad5"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement>
+						<font fontName="DejaVu Sans" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<text><![CDATA[Publicación del proceso en el Servicio Nacional del Empleo]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="104" splitType="Immediate">
+			<textField>
+				<reportElement style="prueba" x="0" y="34" width="440" height="70" isPrintInFirstWholeBand="true" uuid="32ebbb51-7bc6-42a7-a6dc-c3e599918496"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font fontName="DejaVu Sans" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{var_numero_convocatoria_corto} == null ?
+"SERNANP"+"<br>"+"<br>"+"PROCESO DE SELECCIÓN PARA LA CONTRATACIÓN <br>" +
+"ADMINISTRATIVA DE SERVICIOS CAS N° SERNANP " :
+"SERNANP<br><br>" +
+"PROCESO DE SELECCIÓN PARA LA CONTRATACIÓN <br>" +
+"ADMINISTRATIVA DE SERVICIOS CAS N° " + $F{var_numero_convocatoria_corto} + "-SERNANP"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="8"/>
+	</pageHeader>
+	<detail>
+		<band height="36">
+			<subreport>
+				<reportElement x="0" y="0" width="440" height="36" uuid="cd56aa99-a019-4a9f-93d2-63a9358cacb8"/>
+				<subreportParameter name="parametros.SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{parametros.SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="idRequerimiento">
+					<subreportParameterExpression><![CDATA[$V{idRequerimiento}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$F{listEtapas}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ReporteConvocatoriaMintra_Cronograma.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="34">
+			<subreport isUsingCache="false">
+				<reportElement x="0" y="0" width="440" height="33" printWhenGroupChanges="cod_postulacion" uuid="05f07af4-1c02-41ce-bbba-c650c0ab98e4"/>
+				<subreportParameter name="parametros.SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{parametros.SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="idRequerimiento">
+					<subreportParameterExpression><![CDATA[$V{idRequerimiento}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$F{listEvaluacion}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ReporteConvocatoriaMintra_Evaluacion.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

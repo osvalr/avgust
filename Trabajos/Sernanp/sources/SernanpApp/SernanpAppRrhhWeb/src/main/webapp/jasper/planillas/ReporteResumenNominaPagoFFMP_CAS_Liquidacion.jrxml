@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteResumenNominaPagoFFMP_CAS_Liquidacion" language="groovy" pageWidth="300" pageHeight="802" columnWidth="300" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="3a8151a9-e05c-49cd-b5f3-a02a9323c088">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="61"/>
+	<property name="ireport.y" value="244"/>
+	<field name="var_descrip_concepto" class="java.lang.String"/>
+	<field name="dec_monto_calculado" class="java.lang.Double"/>
+	<field name="var_nombre_afp" class="java.lang.String"/>
+	<field name="liquido_pagar" class="java.lang.Double"/>
+	<field name="c_meta" class="java.lang.String"/>
+	<field name="a19990" class="java.lang.Double"/>
+	<variable name="suma_dec_monto_calculado" class="java.lang.Double" resetType="Group" resetGroup="idmeta" calculation="Sum">
+		<variableExpression><![CDATA[$F{dec_monto_calculado}]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<variable name="suma_liquidacion" class="java.lang.Double" resetType="Group" resetGroup="afp" calculation="Highest">
+		<variableExpression><![CDATA[$F{liquido_pagar}]]></variableExpression>
+	</variable>
+	<variable name="suma_19990" class="java.lang.Double" resetType="Group" resetGroup="afp" calculation="Highest">
+		<variableExpression><![CDATA[$F{a19990}]]></variableExpression>
+	</variable>
+	<variable name="total" class="java.lang.Double" resetType="Group" resetGroup="afp" calculation="Sum">
+		<variableExpression><![CDATA[($F{dec_monto_calculado})]]></variableExpression>
+	</variable>
+	<variable name="suma_descuentos" class="java.lang.Double" resetType="Group" resetGroup="afp" calculation="Sum">
+		<variableExpression><![CDATA[$F{dec_monto_calculado}]]></variableExpression>
+	</variable>
+	<group name="afp" isStartNewPage="true" keepTogether="true">
+		<groupExpression><![CDATA[$F{c_meta}]]></groupExpression>
+		<groupHeader>
+			<band height="141">
+				<staticText>
+					<reportElement x="0" y="89" width="300" height="14" uuid="78cd9a2d-64d4-4364-8787-c13518344184"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font fontName="DejaVu Sans" size="7"/>
+					</textElement>
+					<text><![CDATA[LIQUIDACIÓN DE PAGOS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="13" y="103" width="177" height="10" uuid="5110adf7-b94b-48b2-9e0a-3f4e0b6c00ce"/>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="DejaVu Sans" size="7"/>
+					</textElement>
+					<text><![CDATA[LIQUIDO A PAGAR]]></text>
+				</staticText>
+				<textField pattern="###,##0.00">
+					<reportElement x="190" y="103" width="55" height="10" uuid="eaffcc9a-d6f5-4653-8706-c4fac55656f7"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font fontName="DejaVu Sans" size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new DecimalFormat("###,###.00").format($F{liquido_pagar})]]></textFieldExpression>
+				</textField>
+				<textField pattern="###,##0.00">
+					<reportElement x="245" y="113" width="55" height="9" uuid="6cc961f6-db2c-49a0-ad02-839f26a26933"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font fontName="DejaVu Sans" size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new DecimalFormat("###,###.00").format($F{liquido_pagar})]]></textFieldExpression>
+				</textField>
+				<textField pattern="###,##0.00" isBlankWhenNull="true">
+					<reportElement x="245" y="132" width="55" height="9" uuid="4ee93d73-e5ab-4e71-8115-466db23e5391"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{a19990} == 0 ? " " : new DecimalFormat("###,###.00").format($F{a19990})]]></textFieldExpression>
+				</textField>
+				<textField pattern="###,##0.00" isBlankWhenNull="true">
+					<reportElement x="190" y="122" width="55" height="10" uuid="11ba2546-8168-4bbb-8ab1-3ac144c44354"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{a19990} == 0 ? " " : new DecimalFormat("###,###.00").format($F{a19990})]]></textFieldExpression>
+				</textField>
+				<textField pattern="###,##0.00" isBlankWhenNull="true">
+					<reportElement x="13" y="122" width="177" height="10" uuid="c2a9624b-904d-40f6-813e-b1a153ffb405"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{a19990}== 0 ? " " : "19990"]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="21" splitType="Prevent">
+				<textField pattern="###,##0.00">
+					<reportElement x="245" y="0" width="55" height="20" uuid="474a7363-59b4-4eac-808a-bddd1c5668b7"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="7" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new DecimalFormat("###,##0.00").format(($V{total} + ($V{suma_19990} == null ? 0 : $V{suma_19990}) + $V{suma_liquidacion}))]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="215" y="0" width="30" height="20" uuid="28a5ae1a-a863-403b-b28f-c4cf15c8c900"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TOTAL]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="idmeta" keepTogether="true">
+		<groupExpression><![CDATA[$F{var_nombre_afp}]]></groupExpression>
+		<groupHeader>
+			<band height="10"/>
+		</groupHeader>
+		<groupFooter>
+			<band height="9">
+				<textField pattern="#,##0.00">
+					<reportElement x="245" y="0" width="55" height="9" uuid="2854224f-0505-423b-9122-b50704585375">
+						<printWhenExpression><![CDATA[!$F{var_nombre_afp}.trim().equals("")]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new DecimalFormat("###,###.00").format($V{suma_dec_monto_calculado})]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<detail>
+		<band height="11" splitType="Stretch">
+			<textField>
+				<reportElement x="13" y="0" width="177" height="11" uuid="d152605a-8bd5-439e-96cc-32e01b8627df"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{var_nombre_afp}== null ? ($F{var_descrip_concepto}=="OBLIGACIONES DEL EMPLEADOR" ? "APORTES ESSALUD" : $F{var_descrip_concepto} ) :
+$F{var_nombre_afp} + " " + ($F{var_descrip_concepto}=="OBLIGACIONES DEL EMPLEADOR" ? "APORTES ESSALUD" : $F{var_descrip_concepto} )]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="190" y="0" width="55" height="11" uuid="b144c9e1-21e5-4ae8-a751-e1b63316eed6"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new DecimalFormat("###,###.00").format($F{dec_monto_calculado})]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="9" splitType="Stretch">
+			<printWhenExpression><![CDATA[$F{var_nombre_afp} == null]]></printWhenExpression>
+			<textField pattern="#,##0.00">
+				<reportElement x="245" y="0" width="55" height="9" uuid="6a4b07ea-d77a-43f8-ba7f-3ab58f63072c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new DecimalFormat("###,###.00").format($F{dec_monto_calculado})]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

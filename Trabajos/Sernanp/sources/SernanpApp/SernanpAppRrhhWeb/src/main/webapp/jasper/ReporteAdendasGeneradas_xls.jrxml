@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteAdendasGeneradas" language="groovy" pageWidth="1000" pageHeight="555" orientation="Landscape" columnWidth="1000" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isIgnorePagination="true" uuid="2560f1b0-9934-4709-b713-cb587435493e">
+	<property name="ireport.zoom" value="1.3660269107301566"/>
+	<property name="ireport.x" value="46"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.export.xls.white.page.background" value="false"/>
+	<property name="net.sf.jasperreports.export.xls.ignore.cell.background" value="false"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="reportParams" class="java.util.HashMap">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<field name="apepat" class="java.lang.String"/>
+	<field name="apemat" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="dte_fec_suscrip" class="java.lang.String"/>
+	<field name="dte_fec_inicio" class="java.lang.String"/>
+	<field name="dte_fec_termino" class="java.lang.String"/>
+	<field name="desarea" class="java.lang.String"/>
+	<field name="var_num_contrato" class="java.lang.String"/>
+	<field name="adenda" class="java.lang.String"/>
+	<field name="numerodoc" class="java.lang.String"/>
+	<field name="int_meses_prorroga" class="java.lang.String"/>
+	<title>
+		<band height="44" splitType="Stretch">
+			<textField pattern="HH.mm.ss">
+				<reportElement x="802" y="22" width="177" height="22" uuid="f0e9c66b-505a-4703-9c81-6cddf663caed"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("'Fecha : ' dd/MM/yyy HH:mm:ss",
+new Locale("es_ES")).format(
+new java.util.Date()
+)]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="85" y="0" width="717" height="22" uuid="6d2765f4-e503-443d-ac08-718cf6a75628"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VENCIMIENTO DE CONTRATOS ]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="85" height="22" uuid="5ebfe3f7-69df-4098-a88f-4483dcc4ac9e"/>
+				<imageExpression><![CDATA[$P{reportParams}.get( "logo" )]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="85" y="22" width="717" height="22" uuid="b8f1b143-66cb-441f-9d6e-26fa8746d82d"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="none">
+					<font fontName="DejaVu Sans" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{reportParams}.get( "mes" ) != null ?
+$P{reportParams}.get( "mes" ) : ""]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="11">
+			<staticText>
+				<reportElement x="85" y="0" width="92" height="11" uuid="9cfddfc7-6522-4279-a0b2-cd35a82d97d9"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[APE. PATERNO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="177" y="0" width="92" height="11" uuid="f6e23331-0e4c-4c84-988e-4c74b4bf0da8"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[APE. MATERNO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="269" y="0" width="120" height="11" uuid="67719187-9df9-4306-907e-8d0fe7025018"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOMBRES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="389" y="0" width="306" height="11" uuid="aceb7150-8368-4a11-93ab-1ee752019f58"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UBICACIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="802" y="0" width="107" height="11" uuid="37fc11a6-1f83-4f0c-ae11-6991bf850800"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VIGENCIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="20" height="11" uuid="329dad95-9679-4593-b5d4-24a62bba87e3"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N°]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="0" width="65" height="11" uuid="d7f5ec01-97aa-4477-9730-0ec31dea79c4"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° DOC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="909" y="0" width="70" height="11" uuid="32ec304a-c499-4c6f-b482-61241c6e3233"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MESES PRORROGA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="695" y="0" width="107" height="11" uuid="54f69304-7a27-418b-a220-6642220fdae7"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ADENDA]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="10">
+			<textField>
+				<reportElement x="85" y="0" width="92" height="10" uuid="c843a943-94da-43fc-836c-fb376f027d4b"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{apepat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="177" y="0" width="92" height="10" uuid="65221e64-0a7e-41c1-a652-ac5abe2a0c33"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{apemat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="269" y="0" width="120" height="10" uuid="beaea351-e09b-4aa9-9abf-10aa1951a9a6"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="389" y="0" width="306" height="10" uuid="7e5fa169-d66d-42a1-b574-311cfb5a9c73"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{desarea}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="802" y="0" width="107" height="10" uuid="83462e29-1bf1-4af6-81f1-e3a68676d664"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dte_fec_inicio} + " AL " + $F{dte_fec_termino}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="20" height="10" uuid="c98c4116-b70e-4f37-9f92-da235a80f5f0"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="20" y="0" width="65" height="10" uuid="4f112f85-439a-4d25-b277-725f77d66475"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numerodoc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="909" y="0" width="70" height="10" uuid="c04e0c98-7486-4888-b96a-04dee387e2e7"/>
+				<textElement>
+					<font fontName="DejaVu Sans Mono"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{int_meses_prorroga}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="695" y="0" width="107" height="10" uuid="29cc5789-e57e-4886-a758-7c33d79b0ba7"/>
+				<textElement>
+					<font fontName="DejaVu Sans Mono"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{var_num_contrato}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="11"/>
+	</pageFooter>
+</jasperReport>

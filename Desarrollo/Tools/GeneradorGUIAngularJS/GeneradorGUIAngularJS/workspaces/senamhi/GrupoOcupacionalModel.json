@@ -1,0 +1,7 @@
+{
+	"titleCrud": "Grupos Ocupacionales",
+	"nameCrud": "GrupoOcupacional",
+	"constUrlApi": "GRUPO_OCUPACIONAL_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "GrupoOcupacionalModel.xml"
+}

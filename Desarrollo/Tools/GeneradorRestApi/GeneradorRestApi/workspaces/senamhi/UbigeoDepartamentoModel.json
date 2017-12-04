@@ -1,0 +1,6 @@
+{
+	"nameCrud": "UbigeoDepartamento",
+	"path": "ubigeo-departamentos",
+	"nameRepository": "TUbigeoDepartamentoRepository",
+	"nameModelXml": "UbigeoDepartamentoModel.xml"
+}

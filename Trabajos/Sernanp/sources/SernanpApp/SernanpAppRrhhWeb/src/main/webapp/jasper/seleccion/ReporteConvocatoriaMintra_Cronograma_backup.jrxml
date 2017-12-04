@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteConvocatoriaMintra_Evaluacion" pageWidth="440" pageHeight="802" columnWidth="440" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="1d80396f-a12f-454b-90f4-ea93b7cfa613">
+	<property name="ireport.zoom" value="1.9487171000000063"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="dte_fecha_inicio" class="java.lang.String"/>
+	<field name="dte_fecha_termino" class="java.lang.String"/>
+	<field name="descrip_area_supervisora" class="java.lang.String"/>
+	<field name="dte_fecha_aprobacion" class="java.util.Date"/>
+	<field name="var_detalle_subetapa" class="java.lang.String"/>
+	<field name="dte_fecha_cronograma" class="java.lang.String"/>
+	<field name="descrip_area_responsable" class="java.lang.String"/>
+	<field name="dte_fecha_publicacion" class="java.lang.String"/>
+	<field name="var_codigo_postulacion" class="java.lang.String"/>
+	<field name="var_descrip_subetapa" class="java.lang.String"/>
+	<field name="var_nombre_etapa" class="java.lang.String"/>
+	<field name="srl_id_subetapa_proceso_seleccion" class="java.lang.Integer"/>
+	<group name="cod_postulacion">
+		<groupExpression><![CDATA[$F{var_codigo_postulacion}]]></groupExpression>
+		<groupHeader>
+			<band height="127">
+				<staticText>
+					<reportElement isPrintRepeatedValues="false" x="0" y="17" width="440" height="35" isPrintInFirstWholeBand="true" uuid="3835d79b-68f7-4255-809e-645258b55a02"/>
+					<textElement verticalAlignment="Middle" markup="none">
+						<font fontName="DejaVu Sans Mono" size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[V.- Cronograma y Etapas del Proceso]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement isPrintRepeatedValues="false" x="206" y="90" width="109" height="35" isPrintInFirstWholeBand="true" uuid="6717d242-ff62-49c7-b2eb-0787d35d3b6a"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement markup="html">
+						<font fontName="DejaVu Sans Mono" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dte_fecha_publicacion}  == null ? "" :  $F{dte_fecha_publicacion}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement isPrintRepeatedValues="false" x="0" y="90" width="206" height="35" isPrintInFirstWholeBand="true" uuid="9354dbb1-daad-4935-9ee1-462b7fbc835c"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement>
+						<font fontName="DejaVu Sans Mono" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<text><![CDATA[Publicación del proceso en el Servicio Nacional del Empleo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement isPrintRepeatedValues="false" mode="Opaque" x="0" y="52" width="206" height="18" isPrintInFirstWholeBand="true" backcolor="#CCCCCC" uuid="5155109b-9cee-45b3-8184-2c4a1915662c"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans Mono" size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ETAPAS DEL PROCESO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement isPrintRepeatedValues="false" x="0" y="70" width="206" height="20" isPrintInFirstWholeBand="true" uuid="5d086150-9317-44ae-b464-7c5fe333b114"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement>
+						<font fontName="DejaVu Sans Mono" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<text><![CDATA[Aprobación de la Convocatoria]]></text>
+				</staticText>
+				<staticText>
+					<reportElement isPrintRepeatedValues="false" mode="Opaque" x="206" y="52" width="109" height="18" isPrintInFirstWholeBand="true" backcolor="#CCCCCC" uuid="c5357048-b59c-4047-8bda-17af0a876d58"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans Mono" size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CRONOGRAMA ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement isPrintRepeatedValues="false" mode="Opaque" x="315" y="52" width="125" height="18" isPrintInFirstWholeBand="true" backcolor="#CCCCCC" uuid="0e451eea-316f-4175-80b6-ccb598384c50"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans Mono" size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ÁREA RESPONSABLE]]></text>
+				</staticText>
+				<textField>
+					<reportElement isPrintRepeatedValues="false" x="315" y="90" width="125" height="35" isPrintInFirstWholeBand="true" uuid="114a054a-148a-4e65-8448-5a819577fbd6"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement>
+						<font fontName="DejaVu Sans Mono" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{descrip_area_responsable} == null ? "" : $F{descrip_area_responsable}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement isPrintRepeatedValues="false" x="206" y="70" width="109" height="20" isPrintInFirstWholeBand="true" uuid="469fa5f2-a035-418b-ac7e-67b08c5e1b62"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" markup="html">
+						<font fontName="DejaVu Sans Mono" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dte_fecha_aprobacion} == null ? "" : DateFormat.getDateInstance(DateFormat.LONG, $P{REPORT_LOCALE}).format($F{dte_fecha_aprobacion})]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement isPrintRepeatedValues="false" x="315" y="70" width="125" height="20" isPrintInFirstWholeBand="true" uuid="36813c77-8590-4e0b-9771-75a34593acce"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement>
+						<font fontName="DejaVu Sans Mono" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{descrip_area_responsable} == null ? "" : $F{descrip_area_responsable}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="etapa_convocatoria_seleccion">
+		<groupExpression><![CDATA[$F{var_nombre_etapa}]]></groupExpression>
+		<groupHeader>
+			<band height="21">
+				<textField>
+					<reportElement mode="Opaque" x="0" y="0" width="440" height="18" backcolor="#CCCCCC" uuid="379fe06a-565f-4a16-b772-7a364b19df93"/>
+					<textElement verticalAlignment="Middle" markup="none">
+						<font fontName="DejaVu Sans Mono" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{var_nombre_etapa}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="35"/>
+	</columnHeader>
+	<detail>
+		<band height="50">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="206" height="26" uuid="6cc3bd7c-4991-4dde-b8b9-710bd58404c1"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Justified" markup="html">
+					<font fontName="DejaVu Sans Mono" size="10"/>
+					<paragraph leftIndent="5" rightIndent="5" spacingBefore="5" spacingAfter="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{var_detalle_subetapa} + "<br>"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="206" y="0" width="109" height="26" uuid="d3ce4f82-81bc-4df0-b15a-8755d10d6e19"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="DejaVu Sans Mono" size="10"/>
+					<paragraph leftIndent="5" rightIndent="5" spacingBefore="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dte_fecha_cronograma} == null ? "" : $F{dte_fecha_cronograma}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="315" y="0" width="125" height="26" uuid="cdce2d1a-dcd9-4529-b78c-6bba8ac9ee9d"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Top">
+					<font fontName="DejaVu Sans Mono" size="10"/>
+					<paragraph leftIndent="5" spacingBefore="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descrip_area_responsable} == null ? "" :$F{descrip_area_responsable}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

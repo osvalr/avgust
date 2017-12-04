@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.RpPadronTrabajadoresQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+DISTINCT ON(pn.numerodoc)
+ap.int_anio,
+app.int_id_periodo_mes,
+napp.srl_id_regimen_contractual,
+ps.idpersonal,
+pn.numerodoc,
+pn.apepat,
+pn.apemat,
+pn.nombre,
+(COALESCE(pn.apepat,'')||' '||COALESCE(pn.apemat,'')||' '||COALESCE(pn.nombre,'')) as "nombre_completo",
+ps.int_estado,
+case when ps.int_estado =0 then 'activo' else 'inactivo' end as estado,
+pn.direccion,
+pa.nompais,
+es.abrtablatipo as sexo,
+to_char(pn.fechanacimiento,'DD/MM/YYYY')as fechanacimiento,
+pn.ruc,
+p.telefono,
+ps.mailpersonal,
+--TIPO TRABAJADOR
+
+pc.idarea,
+ao.desarea, -- MATCHING?
+to_char(pc.dte_fec_inicio,'DD/MM/YYYY')as inicio_contrato,
+to_char(coalesce(ad.dte_fec_cese,coalesce(ad.dte_fec_termino,coalesce(pc.dte_fec_cese,pc.dte_fec_termino))),'DD/MM/YYYY') as termino_contrato,
+go.var_desc_grupo_ocupacional,
+c.var_nom_cargo,
+rgp.var_descripcion_regimen_pensionario,
+a.var_nombre_afp,
+--tipo de comision
+ps.var_codigo_afiliacion,
+ps.dte_fecha_afiliacion,
+ps.var_numero_cuenta_bancaria,
+napp.c_meta,
+napp.c_fte_fto,
+(COALESCE(ca.descategoriaanp,'')|| ' ' || COALESCE(an.desareanatural,'')) as "ubicacion",
+napp.dec_total_ingresos,
+ne.var_cod_nivel_estudio,
+ne.var_descripcion_nivel_estudio,
+tp.int_cod_tipo_profesion,
+tp.var_descripcion_tipo_profesion,
+pr.int_cod_profesion,
+pr.var_descripcion_profesion,
+pnf.var_descripcion_institucion,
+to_char(pnf.dte_fecha_ingreso, 'DD/MM/YYYY') as dte_fecha_ingreso,
+to_char(pnf.dte_fecha_culminacion, 'DD/MM/YYYY') as dte_fecha_culminacion,
+pnf.int_sigue_estudios,
+--MONTO BRUTO ACUMULADO
+--TIPO COMISION FLUJO - MIXTA
+
+ms.destablatipo as descrip_periodo,
+
+COALESCE(
+        (select	
+               sum(tnc.dec_monto_calculado) 
+				from	 personal.t_nomina_concepto tnc	
+	             inner join personal.t_concepto_planilla tcp ON tnc.srl_id_concepto_planilla = tcp.srl_id_concepto_planilla
+							 inner join personal.t_nomina_anio_periodo_personal  tnapp ON  tnc.srl_id_nomina_anio_periodo_personal = tnapp.srl_id_nomina_anio_periodo_personal 
+	             inner join sernanp.personal tps ON tps.idpersonal = tnapp.idpersonal
+	             inner join personal.t_anio_periodo_planilla tapp ON tnapp.srl_id_anio_periodo_planilla = tapp.srl_id_anio_periodo_planilla
+	      where
+	             tcp.var_descrip_concepto = 'QUINTA CATEGORIA' AND
+	             tps.idpersonal = ps.idpersonal AND
+	             tnapp.srl_id_nomina_anio_periodo_personal = napp.srl_id_nomina_anio_periodo_personal)
+,0) as quinta_categoria,
+
+COALESCE(
+        (select	
+               sum(tnc.dec_monto_calculado) 
+				from	 personal.t_nomina_concepto tnc	
+	             inner join personal.t_concepto_planilla tcp ON tnc.srl_id_concepto_planilla = tcp.srl_id_concepto_planilla
+							 inner join personal.t_nomina_anio_periodo_personal  tnapp ON  tnc.srl_id_nomina_anio_periodo_personal = tnapp.srl_id_nomina_anio_periodo_personal 
+	             inner join sernanp.personal tps ON tps.idpersonal = tnapp.idpersonal
+	             inner join personal.t_anio_periodo_planilla tapp ON tnapp.srl_id_anio_periodo_planilla = tapp.srl_id_anio_periodo_planilla
+	      where
+	             tcp.var_descrip_concepto = 'CUARTA CATEGORIA' AND
+	             tps.idpersonal = ps.idpersonal AND
+	             tnapp.srl_id_nomina_anio_periodo_personal = napp.srl_id_nomina_anio_periodo_personal)
+,0) as cuarta_categoria,
+
+COALESCE(
+        (select	
+               sum(tnc.dec_monto_calculado) 
+				from	 personal.t_nomina_concepto tnc	
+	             inner join personal.t_concepto_planilla tcp ON tnc.srl_id_concepto_planilla = tcp.srl_id_concepto_planilla
+							 inner join personal.t_nomina_anio_periodo_personal  tnapp ON  tnc.srl_id_nomina_anio_periodo_personal = tnapp.srl_id_nomina_anio_periodo_personal 
+	             inner join sernanp.personal tps ON tps.idpersonal = tnapp.idpersonal
+	             inner join personal.t_anio_periodo_planilla tapp ON tnapp.srl_id_anio_periodo_planilla = tapp.srl_id_anio_periodo_planilla
+	      where
+	             tcp.var_descrip_concepto = 'APORTE OBLIGATORIO' AND
+	             tps.idpersonal = ps.idpersonal AND
+	             tnapp.srl_id_nomina_anio_periodo_personal = napp.srl_id_nomina_anio_periodo_personal)
+,0) as essalud
+
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+
+
+personal.t_nomina_anio_periodo_personal napp
+inner join personal.t_anio_periodo_planilla app on napp.srl_id_anio_periodo_planilla = app.srl_id_anio_periodo_planilla
+inner join personal.t_anio_planilla ap on app.srl_id_anio_planilla = ap.srl_id_anio_planilla
+inner join sernanp.vw_meses ms on ms.codinttablatipo = app.int_id_periodo_mes
+inner join sernanp.t_regimen_contractual rc on napp.srl_id_regimen_contractual=rc.srl_id_regimen_contractual
+inner join sernanp.personal ps on napp.idpersonal = ps.idpersonal
+inner join sernanp.personanatural pn on ps.idpersonanatural=pn.idpersonanatural
+left join sernanp.persona p on pn.idpersona = p.idpersona
+left join personal.t_anio_meta am on napp.c_meta = am.cod_meta and ap.srl_id_anio_planilla = am.srl_id_anio_planilla
+left join sernanp.t_personal_contrato pc on napp.srl_id_contrato=pc.srl_id_contrato
+left join sernanp.t_personal_contrato ad on pc.srl_id_contrato = ad.srl_id_contrato_padre
+left join personal.t_afp af ON ps.srl_id_afp = af.srl_id_afp
+left join personal.t_nomina_concepto nc on napp.srl_id_nomina_anio_periodo_personal = nc.srl_id_nomina_anio_periodo_personal
+left join personal.t_concepto_planilla cp on nc.srl_id_concepto_planilla = cp.srl_id_concepto_planilla
+left join sernanp.pais pa on p.idpais = pa.idpais
+left join sernanp.sede s on pc.srl_id_sede_pres = s.idsede
+left join sernanp.areanatural an on s.idareanatural = an.idareanatural
+left join sernanp.categoriaanp ca on an.idcategoriaanp = ca.idcategoriaanp
+left join sernanp.areaorganica ao on pc.idarea = ao.idarea
+left join sernanp.vw_estado_generico eg on eg.codinttablatipo = ps.int_estado
+left join sernanp.vw_genero_sexual es on pn.idsexo = es.idtablatipo
+left join sernanp.t_personanatural_formacion pnf on pn.idpersonanatural = pnf.idpersonanatural
+left join sernanp.t_cargo c on pc.srl_id_cargo = c.srl_id_cargo
+left join sernanp.t_grupo_ocupacional go on pnf.srl_id_grupo_ocupacional = go.srl_id_grupo_ocupacional
+left join sernanp.t_regimen_pensionario rgp on ps.srl_id_regimen_pensionario = rgp.srl_id_regimen_pensionario
+left join sernanp.t_nivel_estudio ne on pnf.srl_id_nivel_estudio = ne.srl_id_nivel_estudio
+left join sernanp.t_profesion pr on pnf.srl_id_profesion = pr.srl_id_profesion
+left join sernanp.t_tipo_profesion tp on pr.srl_id_tipo_profesion = tp.srl_id_tipo_profesion
+left join personal.t_afp a on a.srl_id_afp = ps.srl_id_afp
+
+
+
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+UPPER(COALESCE(COALESCE(pn.nombre,'') ||' '|| COALESCE(pn.apepat,'') ||' '|| COALESCE(pn.apemat,''),'')) like UPPER(COALESCE('%'|| #{nombre_completo}||'%',UPPER(COALESCE(COALESCE(pn.nombre,'')||' '||COALESCE(pn.apepat,'')||' '|| COALESCE(pn.apemat,''),'')))) and
+COALESCE(napp.srl_id_regimen_contractual,0)=COALESCE(#{srl_id_regimen_contractual},COALESCE(napp.srl_id_regimen_contractual,0)) AND
+COALESCE(napp.c_fte_fto,'')=COALESCE(#{c_fte_fto},COALESCE(napp.c_fte_fto,'')) and
+ap.int_anio = COALESCE(#{int_anio},ap.int_anio) and
+app.int_id_periodo_mes = COALESCE(#{int_id_periodo_mes},app.int_id_periodo_mes) and
+napp.int_id_estado = COALESCE(1,napp.int_id_estado)
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+				 
+GROUP BY
+
+ap.int_anio,
+app.int_id_periodo_mes,
+napp.srl_id_nomina_anio_periodo_personal,
+napp.srl_id_regimen_contractual,
+ps.idpersonal,
+pn.numerodoc,
+pn.apepat,
+pn.apemat,
+pn.nombre,
+ps.int_estado,
+pn.direccion,
+pa.nompais,
+es.abrtablatipo,
+pn.fechanacimiento,
+pn.ruc,
+p.telefono,
+ps.mailpersonal,
+pc.idarea,
+ao.desarea, 
+pc.dte_fec_inicio,
+ad.dte_fec_cese,
+ad.dte_fec_termino,
+go.var_desc_grupo_ocupacional,
+c.var_nom_cargo,
+rgp.var_descripcion_regimen_pensionario,
+a.var_nombre_afp,
+ps.var_codigo_afiliacion,
+ps.dte_fecha_afiliacion,
+ps.var_numero_cuenta_bancaria,
+napp.c_meta,
+napp.c_fte_fto,
+ca.descategoriaanp,
+an.desareanatural,
+napp.dec_total_ingresos,
+ne.var_cod_nivel_estudio,
+ne.var_descripcion_nivel_estudio,
+tp.int_cod_tipo_profesion,
+tp.var_descripcion_tipo_profesion,
+pr.int_cod_profesion,
+pr.var_descripcion_profesion,
+pnf.var_descripcion_institucion,
+pnf.dte_fecha_ingreso,
+pnf.dte_fecha_culminacion,
+pnf.int_sigue_estudios,
+pc.dte_fec_cese,
+pc.dte_fec_termino,
+ms.destablatipo
+
+ORDER BY 
+pn.numerodoc
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.RpPadronTrabajadoresQuery" parameterType="sernanp.app.dao.query.domain.RpPadronTrabajadoresQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.RpPadronTrabajadoresQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.RpPadronTrabajadoresQuery" parameterType="sernanp.app.dao.query.domain.RpPadronTrabajadoresQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.RpPadronTrabajadoresQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.RpPadronTrabajadoresQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

@@ -1,0 +1,7 @@
+{
+	"titleCrud": "Conceptos por Planilla",
+	"nameCrud": "ConceptoPlanilla",
+	"constUrlApi": "CONCEPTOS_PLANILLA_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "ConceptoPlanillaModel.xml"
+}

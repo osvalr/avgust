@@ -1,0 +1,301 @@
+/**
+* Copyright «©» ${anho}, FOCUS CONSULTORES ASOCIADOS SAC. All rights reserved.
+*
+* This file is part of ${nameApp}.
+*
+* ${nameApp} is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* ${nameApp} is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with ${nameApp}.  If not, see <http://www.gnu.org/licenses/>.
+*/	 
+
+/**
+* GENERATOR CRUD EXT JS 5            
+* BY FOCUS CONSULTORES ASOCIADOS SAC  
+* DATE CREATE : ${datetimeCreate}
+* VERSION : 1.0 
+*/
+
+package ${packageController};
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import sernanp.app.util.BusinessException;
+import sernanp.app.util.ExtJsStrutsUtil;
+import sernanp.rrhh.web.action.helper.ActionHelperExtjs;
+
+import ${packageService}.${nameService}Service;
+import ${classModel};
+import ${classModel}Criteria;
+import ${classMapperModel};
+
+#foreach( $e in $subModels )
+import ${e.classModel};
+import ${e.classMapperModel};
+#end
+
+public class ${nameController}Action extends ActionHelperExtjs {
+
+
+	private static final long serialVersionUID = 1L;
+
+	@Autowired
+	private ${nameService}Service ${varNameService}Service;
+	private ${nameModel} ${nameVarModel};
+#foreach( $e in $subModels )
+	private ${e.nameModel} ${e.nameVarModel};
+#end
+	
+	public String view(){
+		
+		try{
+			
+			int start = this.getIntegerParameter("start");
+			int limit = this.getIntegerParameter("limit");
+			
+			${nameModel}Criteria ${nameVarModel}Criteria = this.loadCriteria(this.getHttpRequest(), ${nameModel}Criteria.class);
+			List<${nameModel}> list${nameModel} = ${varNameService}Service.getListByQuery(${nameMapperModel}.class, ${nameVarModel}Criteria, start, limit);
+			int total = ${varNameService}Service.getCountRowsByQuery(${nameMapperModel}.class, ${nameVarModel}Criteria);
+			
+			this.success(list${nameModel},total);
+			
+		}catch(BusinessException e){
+			this.exception(e.getMessage());
+		}
+		
+		return SUCCESS;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public String create(){
+		
+		try{
+#foreach( $e in $subModels )
+			List<${e.nameModel}> list${e.nameModel} = (List<${e.nameModel}>) this.getSessionContext().getAttribute("${e.nameModel}List");
+#end
+			${varNameService}Service.create(${nameVarModel},${lists});
+#foreach( $e in $subModels )
+			this.getSessionContext().setAttribute("${e.nameModel}List",null);
+#end
+			this.success(${nameVarModel}, "Operation Success.");
+			
+		}catch(BusinessException e){
+			this.exception(e.getMessage());
+		}
+		
+		return SUCCESS;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public String save(){
+		
+		try{
+#foreach( $e in $subModels )
+			List<${e.nameModel}> list${e.nameModel} = (List<${e.nameModel}>) this.getSessionContext().getAttribute("${e.nameModel}List");
+#end
+			${varNameService}Service.save(${nameVarModel},${lists});
+#foreach( $e in $subModels )
+			this.getSessionContext().setAttribute("${e.nameModel}List",null);
+#end
+			this.success(${nameVarModel}, "Operation Success.");
+		}catch(BusinessException e){
+			this.exception(e.getMessage());
+		}
+		
+		return SUCCESS;
+	}
+	
+	public String remove(){
+		
+		try{
+			Map<String, Object> paramMap = this.getParamMap();
+#foreach( $e in $subModels )
+			paramMap.put("${e.joinProperty}", ${nameVarModel}.${e.joinPropertyGetMethod}());
+			List<${e.nameModel}> list${e.nameModel} = this.${varNameService}Service.getListByQuery(${e.nameMapperModel}.class, paramMap);
+#end
+			${varNameService}Service.remove(${nameVarModel},${lists});
+#foreach( $e in $subModels )
+			this.getSessionContext().removeAttribute("${e.nameModel}List");
+#end
+			this.extjsReturn.setSuccess(true);
+		}catch(BusinessException e){
+			this.exception(e.getMessage());
+		}
+		
+		return SUCCESS;
+	}
+	
+#foreach( $e in $subModels )	
+	@SuppressWarnings("unchecked")
+	public String ${e.nameModel}List(){
+		
+		List<${e.nameModel}> list${e.nameModel};
+		List<${e.nameModel}> subList${e.nameModel};
+		Integer ${e.joinProperty} = this.getIntegerParameter("${e.joinProperty}");
+		int start = this.getIntegerParameter("start");
+		int limit = this.getIntegerParameter("limit");
+		
+		if(${e.joinProperty} == null){
+			list${e.nameModel} = (List<${e.nameModel}>) this.getSessionContext().getAttribute("${e.nameModel}List");
+		}else if(${e.joinProperty}.equals("-1")){
+			list${e.nameModel} = new ArrayList<${e.nameModel}>();
+		}else{
+			Map<String, Object> paramMap = this.getParamMap();
+			paramMap.put("${e.joinProperty}", ${e.joinProperty});
+			list${e.nameModel} = this.${varNameService}Service.getListByQuery(${e.nameMapperModel}.class, paramMap);
+		}
+
+		if(list${e.nameModel} == null){
+			list${e.nameModel} = new ArrayList<${e.nameModel}>();
+		}
+		this.getSessionContext(true).setAttribute("${e.nameModel}List",list${e.nameModel});
+		int size = list${e.nameModel}.size();
+		subList${e.nameModel} = this.getSubList(list${e.nameModel}, start, limit);
+		
+		this.success(subList${e.nameModel},size);
+
+		return SUCCESS;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public String ${e.nameModel}Add(){
+		
+		List<${e.nameModel}> list${e.nameModel} = (List<${e.nameModel}>) this.getSessionContext().getAttribute("${e.nameModel}List");
+		int randomInt = this.getNegativeIdRandom();
+		${e.nameVarModel}.${e.propertySetMethod}(randomInt);
+		list${e.nameModel}.add(${e.nameVarModel});	
+		this.getSessionContext().setAttribute("${e.nameModel}List",list${e.nameModel});
+		this.success(${e.nameVarModel}, "Operation Success.");
+			
+		return SUCCESS;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public String ${e.nameModel}Update(){
+		
+		List<${e.nameModel}> list${e.nameModel} = (List<${e.nameModel}>) this.getSessionContext().getAttribute("${e.nameModel}List");
+		int index = -1;
+		
+		for (int i = 0; i < list${e.nameModel}.size(); i++) {
+			if(list${e.nameModel}.get(i).${e.propertyGetMethod}().equals(${e.nameVarModel}.${e.propertyGetMethod}())){
+				index = i;
+				break;
+			}
+		}
+		
+		if(index > -1){
+			list${e.nameModel}.set(index, ${e.nameVarModel});
+		}
+		
+		this.getSessionContext().setAttribute("${e.nameModel}List",list${e.nameModel});
+		this.success(${e.nameVarModel}, "Operation Success.");
+			
+		return SUCCESS;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public String ${e.nameModel}Delete(){
+		
+		List<${e.nameModel}> list${e.nameModel} = (List<${e.nameModel}>) this.getSessionContext().getAttribute("${e.nameModel}List");
+		int index = -1;
+		for (int i = 0; i < list${e.nameModel}.size(); i++) {
+			if(list${e.nameModel}.get(i).${e.propertyGetMethod}().equals(${e.nameVarModel}.${e.propertyGetMethod}())){
+				index = i;
+				break;
+			}
+		}
+		
+		if(index > -1){
+			list${e.nameModel}.remove(index);
+		}
+		
+		this.getSessionContext().setAttribute("${e.nameModel}List",list${e.nameModel});
+		this.extjsReturn.setSuccess(true);
+			
+		return SUCCESS;
+	}
+#end
+	
+	@Override
+	public ExtJsStrutsUtil getExtjsReturn() {
+		return extjsReturn;
+	}
+	
+	public ${nameService}Service ${nameGetMethodService}Service() {
+		return ${varNameService}Service;
+	}
+
+	public void ${nameSetMethodService}Service(${nameService}Service ${varNameService}Service) {
+		this.${varNameService}Service = ${varNameService}Service;
+	}
+	
+	public ${nameModel} ${nameGetMethodModel}() {
+		return ${nameVarModel};
+	}
+
+	public void ${nameSetMethodModel}(${nameModel} ${nameVarModel}) {
+		this.${nameVarModel} = ${nameVarModel};
+	}
+#foreach( $e in $subModels )
+	public ${e.nameModel} ${e.nameGetMethodModel}() {
+		return ${e.nameVarModel};
+	}
+
+	public void ${e.nameSetMethodModel}(${e.nameModel} ${e.nameVarModel}) {
+		this.${e.nameVarModel} = ${e.nameVarModel};
+	}
+#end
+
+/*
+<!-- Start Actions ${nameController} -->
+<action name="${nameController}View" class="${packageController}.${nameController}Action" method="view">
+		<result type="json" />
+</action>
+
+<action name="${nameController}Create" class="${packageController}.${nameController}Action" method="create">
+		<result type="json" />
+</action>
+
+<action name="${nameController}Save" class="${packageController}.${nameController}Action" method="save">
+		<result type="json" />
+</action>
+
+<action name="${nameController}Remove" class="${packageController}.${nameController}Action" method="remove">
+		<result type="json" />
+</action>
+
+#foreach( $e in $subModels )
+<!-- Start Sub Model ${e.nameModel} Actions -->
+<action name="${e.nameModel}List" class="${packageController}.${nameController}Action" method="${e.nameModel}List">
+		<result type="json" />
+</action>
+
+<action name="${e.nameModel}Add" class="${packageController}.${nameController}Action" method="${e.nameModel}Add">
+		<result type="json" />
+</action>
+
+<action name="${e.nameModel}Update" class="${packageController}.${nameController}Action" method="${e.nameModel}Update">
+		<result type="json" />
+</action>
+
+<action name="${e.nameModel}Delete" class="${packageController}.${nameController}Action" method="${e.nameModel}Delete">
+		<result type="json" />
+</action>
+<!-- End Sub Model ${e.nameModel} Actions -->
+#end
+
+<!-- End Actions ${nameController} -->
+*/
+}

@@ -1,0 +1,169 @@
+@CHARSET "UTF-8";
+
+h1 span{font-size:12px;}
+.paginationinf, .paginationinfxanp {text-align:right;} 
+.paginationinf a, .paginationinfxanp a{padding:0px 5px;margin:0 1px;border-bottom:3px solid #f5f5f5;color:#666;text-decoration:none;font-weight:bold;font-size:11px;}
+.paginationinf a:hover, .paginationinf a.active{border-color:#F5A021;color:#000;}
+.paginationinfxanp a:hover, .paginationinfxanp a.active{border-color:#F5A021;color:#000;}
+
+#content {
+	max-width:1024px;
+}
+
+#formularioInfractor legend {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	display: block;
+	padding: 10px;
+	font-weight: bold;
+	text-transform: none;
+	font-size: 120%;
+}
+
+#formConfirmaPago legend {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	display: block;
+	padding: 5px;
+	font-weight: bold;
+	text-transform: none;
+	font-size: 90%;
+}
+
+#formConfirmaPago label{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 110%;
+}
+
+/* .campo {
+	float: left;
+	margin-right: 30px;
+	margin-left: 10px;
+	width: 150px;	
+} */
+
+
+#divLinkInfra .btnInfra{
+	color:#fff;
+	font:bold 10pt Verdana;
+	text-transform:uppercase;
+	padding:5px 10px;
+	cursor:pointer;
+	background-color: #69A74E;
+	border-color: #3B6E22 #3B6E22 #2C5115;
+	}
+
+#divLinkInfra .btnInfraDisabled{
+	color:#ccc;
+	font:bold 10pt Verdana;
+	text-transform:uppercase;
+	padding:5px 10px;	
+	background-color: #aaa;
+	border-color: #ccc;
+}
+
+#hor-minimalist-a
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;	
+	background-color: #ccc;
+	margin-top: 10px;
+	text-align: left;
+	
+	border-collapse: separate;
+  	border-spacing: 1px;
+  	*border-collapse: expression('separate', cellSpacing = '1px');	
+}
+#hor-minimalist-a thead th
+{
+	font-size: 12px;  
+	font-weight: normal;
+	font-weight: bold;	
+	background-color: #fff;
+}
+
+#hor-minimalist-a thead th.tc
+{
+padding: 5px 58px;
+}
+
+#hor-minimalist-a thead th.topc
+{
+padding: 5px 10px;
+background-color: #ccc;
+}
+
+#hor-minimalist-a tbody td
+{
+	color: #333;
+	background-color: #fff;
+
+}
+
+label{
+	color: #333;
+}
+
+.fieldSetSanc label{
+	display: inline-block;	
+}
+
+#divPersona{
+	margin-top: 5px;
+}
+
+.elimInf{
+background-color: #fff;
+padding: 2px; 
+}
+
+.elimInfHover{
+background-color: #feeecc;
+padding: 2px;
+}
+
+#BotonAdd{
+	margin-top: 5px;
+}
+
+.tablaListinf{	
+	width: 100%;	
+	background-color: #ccc;
+}
+
+.tablaListinf thead tr td{
+	font-weight: bold;
+	border: 1px #fff solid;			
+}
+
+.tablaListinf tbody tr td{
+	background: #fff;
+	border: 1px #ccc solid;
+	font-size: 90%;
+}
+
+.tablaListinf tbody tr td table{
+	border: none;
+	margin: 0;
+}
+
+.tablaListinf tbody tr td table td{
+	
+	border: none;
+	border-bottom: 1px #ccc solid;	
+}
+
+.divMensajeMorSuccess{
+	/*width: 400px;
+	height: 25px;*/
+	background-color: #69D74E;
+	color: #fff;
+	font-weight: bold;
+	padding: 10px;
+}
+
+.divMensajeMorError{
+	/*width: 400px;
+	height: 25px;*/
+	background-color: #F07B87;
+	color: #fff;
+	font-weight: bold;
+	padding: 10px;
+}

@@ -1,0 +1,7 @@
+{
+	"titleCrud": "Programas Presupuestales",
+	"nameCrud": "ProgramaPresupuestal",
+	"constUrlApi": "PROGRAMA_PRESUPUESTAL_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "ProgramaPresupuestalModel.xml"
+}

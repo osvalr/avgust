@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.InfoPersonalConstanciaQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.InfoPersonalConstanciaQuery" parameterType="sernanp.app.dao.query.domain.InfoPersonalConstanciaQueryCriteria"> 
+<![CDATA[
+
+	      
+	      
+				select 
+				
+					ps.idpersonal,
+					pn.nombre,
+					pn.apepat,
+					pn.apemat,
+					td.abrtablatipo as "tipoDoc",
+					pn.numerodoc,
+					rc.var_descripcion_regimen_contractual
+				
+				from sernanp.personal ps inner join sernanp.personanatural pn
+				on ps.idpersonanatural = pn.idpersonanatural inner join sernanp.t_personal_contrato pc
+				on ps.idpersonal = pc.idpersonal left join sernanp.t_regimen_contractual rc
+				on ps.srl_id_regimen_contractual = rc.srl_id_regimen_contractual inner join
+				(SELECT idtablatipo,destablatipo,abrtablatipo FROM sernanp.tablatipo WHERE idtabla=1) td
+				on pn.idtipodocumento = td.idtablatipo
+				where 
+					pc.dte_fec_inicio = (select MAX(dte_fec_inicio) from sernanp.t_personal_contrato where idpersonal = pc.idpersonal) and
+					pc.idpersonal = #{idpersonal}  ;
+					
+		  
+	      
+]]>
+</select> 
+</mapper> 

@@ -1,0 +1,7 @@
+{
+	"titleCrud": "Beneficiarios Judiciales",
+	"nameCrud": "Beneficiario",
+	"constUrlApi": "BENEFICIARIOS_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "BeneficiarioModel.xml"
+}

@@ -1,0 +1,13 @@
+{
+	"nameCrud": "Afp",
+	"path": "afp",
+	"nameRepository": "TAfpRepository",
+	"nameModelXml": "AfpModel.xml",
+		"subModels": [
+		{
+			"nameRepository": "TAfpComisionRepository",
+			"nameCrud": "AfpComision",
+			"nameSubModel": "AfpComisionModel"
+		}
+	]
+}

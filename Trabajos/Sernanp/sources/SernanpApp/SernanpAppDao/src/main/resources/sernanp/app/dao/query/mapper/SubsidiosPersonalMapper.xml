@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.SubsidiosPersonalMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+
+pl.srl_id_pers_lic,
+pl.dte_fec_inicio_lic,
+pl.dte_fec_fin_lic,
+pl.int_est_lic,
+pl.idpersonal,
+pl.srl_id_per_activ,
+pl.int_dias_lic
+
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+
+sernanp.t_personal_licencias pl
+
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+ 
+
+pl.srl_id_per_activ = #{srl_id_per_activ} AND
+pl.idpersonal = #{idpersonal}
+
+AND
+
+COALESCE(#{int_anho}, Extract(year from pl.dte_fec_inicio_lic)) BETWEEN Extract(year from pl.dte_fec_inicio_lic) AND Extract(year from pl.dte_fec_fin_lic) AND
+
+CASE 	
+	WHEN Extract(year from pl.dte_fec_fin_lic) > Extract(year from pl.dte_fec_inicio_lic) THEN 
+
+		CASE 
+			WHEN Extract(year from pl.dte_fec_inicio_lic) = #{int_anho} THEN
+				COALESCE(#{int_mes}, Extract(MONTH from pl.dte_fec_inicio_lic)) BETWEEN Extract(MONTH from pl.dte_fec_inicio_lic) AND 12
+			WHEN Extract(year from pl.dte_fec_fin_lic) = #{int_anho}  THEN
+				COALESCE(#{int_mes}, Extract(MONTH from pl.dte_fec_fin_lic)) BETWEEN 1 AND Extract(MONTH from pl.dte_fec_fin_lic)
+			ELSE
+				COALESCE(#{int_mes}, Extract(MONTH from pl.dte_fec_inicio_lic)) BETWEEN Extract(MONTH from pl.dte_fec_inicio_lic) AND 12
+				OR
+				COALESCE(#{int_mes}, Extract(MONTH from pl.dte_fec_fin_lic)) BETWEEN 1 AND Extract(MONTH from pl.dte_fec_fin_lic)
+		END
+		
+
+	ELSE
+		COALESCE(#{int_mes}, Extract(MONTH from pl.dte_fec_inicio_lic)) BETWEEN Extract(MONTH from pl.dte_fec_inicio_lic) AND Extract(MONTH from pl.dte_fec_fin_lic) 
+END 
+
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY pl.dte_fec_inicio_lic
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.SubsidiosPersonal" parameterType="sernanp.app.dao.query.domain.SubsidiosPersonalCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.SubsidiosPersonal" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.SubsidiosPersonal" parameterType="sernanp.app.dao.query.domain.SubsidiosPersonalCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.SubsidiosPersonal" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.SubsidiosPersonalCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

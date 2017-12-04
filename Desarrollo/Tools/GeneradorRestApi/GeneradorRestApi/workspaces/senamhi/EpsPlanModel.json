@@ -1,0 +1,13 @@
+{
+	"nameCrud": "EpsPlan",
+	"path": "eps-plan",
+	"nameRepository": "TEpsPlanRepository",
+	"nameModelXml": "EpsPlanModel.xml",
+		"subModels": [
+		{
+			"nameRepository": "TEpsPlanTarifaRepository",
+			"nameCrud": "EpsPlanTarifa",
+			"nameSubModel": "EpsPlanTarifaModel"
+		}
+	]
+}

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.PersonalConceptoFrecuenciaQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+ 
+
+fid.srl_id_frecuencia,
+pcf.srl_id_personal_concepto,
+fid.int_id_mes,
+m.destablatipo AS descrip_mes,
+fid.int_id_estado,
+eg.destablatipo AS descrip_estado,
+to_char(fid.tsp_fecha_registro, 'dd/mm/yyyy') AS tsp_fecha_registro
+
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+
+personal.t_personal_concepto_frecuencia pcf
+inner join personal.t_frecuencia fid on pcf.srl_id_frecuencia = fid.srl_id_frecuencia
+INNER JOIN sernanp.vw_meses m ON (fid.int_id_mes = m.codinttablatipo)
+INNER JOIN sernanp.vw_estado_generico eg ON (fid.int_id_estado = eg.codinttablatipo)
+
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+
+fid.srl_id_frecuencia = COALESCE(#{srl_id_frecuencia},fid.srl_id_frecuencia) and 
+pcf.srl_id_personal_concepto = COALESCE(#{srl_id_personal_concepto},pcf.srl_id_personal_concepto) and
+fid.int_id_estado = COALESCE(#{int_id_estado},fid.int_id_estado)
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.PersonalConceptoFrecuenciaQuery" parameterType="sernanp.app.dao.query.domain.PersonalConceptoFrecuenciaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.PersonalConceptoFrecuenciaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.PersonalConceptoFrecuenciaQuery" parameterType="sernanp.app.dao.query.domain.PersonalConceptoFrecuenciaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.PersonalConceptoFrecuenciaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.PersonalConceptoFrecuenciaQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

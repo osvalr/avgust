@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteConvocatoriaMintra_Perfil" pageWidth="440" pageHeight="802" columnWidth="440" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a1ffeb05-3ffe-46d9-9bd1-d18199c271ab">
+	<property name="ireport.zoom" value="1.7715610000000075"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.awt.ignore.missing.font" value="true"/>
+	<property name="net.sf.jasperreports.default.font.name" value="Dejavu Sans"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#A9A9A9">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<field name="var_experiencia_requerida" class="java.lang.String"/>
+	<field name="var_competencias_requeridas" class="java.lang.String"/>
+	<field name="var_formacion_academica" class="java.lang.String"/>
+	<field name="var_cursos_especializacion" class="java.lang.String"/>
+	<field name="var_requisitos_puesto" class="java.lang.String"/>
+	<field name="var_codigo_postulacion" class="java.lang.String"/>
+	<group name="var_codigo_postulacion">
+		<groupExpression><![CDATA[$F{var_codigo_postulacion}]]></groupExpression>
+		<groupHeader>
+			<band height="29">
+				<staticText>
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="209" height="19" uuid="6c9170be-7b87-49a2-bb8a-f3084aa8e1c0"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement>
+						<font fontName="DejaVu Sans Mono" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<text><![CDATA[Experiencia]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="209" y="0" width="231" height="19" uuid="e906579f-3e78-49f0-b920-c9c46967d76e"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement markup="html">
+						<font fontName="DejaVu Sans Mono" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{var_experiencia_requerida} == null ? "a" : $F{var_experiencia_requerida}]]></textFieldExpression>
+				</textField>
+			</band>
+			<band height="25">
+				<staticText>
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="209" height="20" uuid="1bc04bf2-04d9-4ab8-9a7a-5bdeb6446fae"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement>
+						<font fontName="DejaVu Sans Mono" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<text><![CDATA[Competencias]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="209" y="0" width="231" height="20" uuid="593e22d6-fdea-4c13-8585-b958e5c12bf4"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement markup="html">
+						<font fontName="DejaVu Sans Mono" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{var_competencias_requeridas}  == null ? "" :  $F{var_competencias_requeridas}]]></textFieldExpression>
+				</textField>
+			</band>
+			<band height="27">
+				<staticText>
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="209" height="20" uuid="bdddba52-78e8-4b80-8777-01166e6f0419"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement>
+						<font fontName="DejaVu Sans Mono" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<text><![CDATA[Formación Académica]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="209" y="0" width="231" height="20" uuid="3f2a4302-ea28-4f28-bb9a-16fbd22054ca"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement markup="html">
+						<font fontName="DejaVu Sans Mono" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{var_formacion_academica}  == null ? "" : $F{var_formacion_academica}]]></textFieldExpression>
+				</textField>
+			</band>
+			<band height="27">
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="209" y="0" width="231" height="20" uuid="5ab4a0ec-2b7d-475b-aeb1-b3b8501900b9"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement markup="html">
+						<font fontName="DejaVu Sans Mono" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{var_cursos_especializacion} == null ? "" : $F{var_cursos_especializacion}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="209" height="20" uuid="ecfd9823-b3b3-474a-9845-812587e9b21e"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement>
+						<font fontName="DejaVu Sans Mono" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<text><![CDATA[Cursos / Especialización]]></text>
+				</staticText>
+			</band>
+			<band height="26">
+				<staticText>
+					<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="209" height="20" isPrintWhenDetailOverflows="true" uuid="b11a128c-a790-4095-bf5b-066682c328f1"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement>
+						<font fontName="DejaVu Sans Mono" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<text><![CDATA[Requisitos del Puesto]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement stretchType="RelativeToBandHeight" x="209" y="0" width="231" height="20" uuid="0bc319f0-3b37-4457-8da3-d47e736771ab"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement markup="html">
+						<font fontName="DejaVu Sans Mono" size="10"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{var_requisitos_puesto} == null ? "" : $F{var_requisitos_puesto}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="54">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="35" width="209" height="18" backcolor="#CCCCCC" uuid="26e82006-f708-46d4-bef4-6931b72f6261"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="10"/>
+				</textElement>
+				<text><![CDATA[REQUISITOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="209" y="35" width="231" height="18" backcolor="#CCCCCC" uuid="9bc2becd-0085-44ab-97ce-3254089f9e82"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="10"/>
+				</textElement>
+				<text><![CDATA[DETALLE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="14" width="440" height="21" uuid="2e25cf18-b605-473f-86cb-3f0d94ffcf74"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="DejaVu Sans Mono" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[II.- Perfil del Puesto]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+</jasperReport>

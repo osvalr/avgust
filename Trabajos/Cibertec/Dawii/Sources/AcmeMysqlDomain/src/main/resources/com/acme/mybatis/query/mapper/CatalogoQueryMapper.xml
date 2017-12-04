@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.acme.mybatis.query.mapper.CatalogoQueryMapper">
+
+<sql id="outs"> 
+<![CDATA[
+c.id_catalogo,
+c.nombre_catalogo,
+
+c.id_user,
+concat(p1.ape_pater,' ',p1.ape_mater,', ',p1.nombres_completos) nom_user,
+DATE_FORMAT(c.fec_reg, '%d/%m/%Y') fec_reg,
+c.id_user_mod,
+concat(p2.ape_pater,' ',p2.ape_mater,', ',p2.nombres_completos) nom_user_mod,
+DATE_FORMAT(c.fec_mod, '%d/%m/%Y') fec_mod,
+
+c.id_estado,
+e.valor_a as descrip_estado
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+catalogo c
+inner join (select ci.valor_a,ci.valor_b from catalogo_item ci inner join catalogo c on ci.id_catalogo = c.id_catalogo where c.nombre_catalogo = 'Estado_Generico') e on cast(e.valor_b as SIGNED) = c.id_estado
+inner join persona p1 on p1.id_persona = c.id_user
+inner join persona p2 on p2.id_persona = c.id_user_mod
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+c.id_catalogo = IFNULL(#{id_catalogo},c.id_catalogo) and
+c.nombre_catalogo like CONCAT('%',ifnull(#{nombre_catalogo},c.nombre_catalogo),'%') and
+c.id_estado = IFNULL(#{id_estado},c.id_estado)
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${order_column} ${order_direction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="com.acme.mybatis.query.model.CatalogoQuery" parameterType="com.acme.mybatis.query.model.CatalogoQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="com.acme.mybatis.query.model.CatalogoQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="com.acme.mybatis.query.model.CatalogoQuery" parameterType="com.acme.mybatis.query.model.CatalogoQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="com.acme.mybatis.query.model.CatalogoQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="com.acme.mybatis.query.model.CatalogoQueryCriteria">
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

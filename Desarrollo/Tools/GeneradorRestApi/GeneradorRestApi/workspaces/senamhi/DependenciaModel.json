@@ -1,0 +1,6 @@
+{
+	"nameCrud": "DependenciaOrganica",
+	"path": "dependencias-organicas",
+	"nameRepository": "TAreaOrganicaRepository",
+	"nameModelXml": "DependenciaModel.xml"
+}

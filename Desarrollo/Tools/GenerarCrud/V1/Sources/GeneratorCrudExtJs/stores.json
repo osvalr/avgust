@@ -1,0 +1,162 @@
+[
+  {
+    "url": "/AcmeCommonWebApp/common/catalogo/buscarPorNombre?nombre_catalogo\u003destado_generico",
+    "fields": "valor_item,descrip_item",
+    "rootProperty": "list",
+    "autoLoad": "true",
+    "typeProxy": "ajax",
+    "typeReader": "json"
+  },
+  {
+    "url": "/AcmeCommonWebApp/common/seguridad/appPorNombre",
+    "fields": "id_aplicacion,nombre_aplicacion",
+    "rootProperty": "list",
+    "autoLoad": "true",
+    "typeProxy": "ajax",
+    "typeReader": "json"
+  },
+  {
+    "url": "/AcmeCommonWebApp/common/seguridad/funcionalidadPorApp",
+    "fields": "id_funcionalidad,nombre_funcionalidad",
+    "rootProperty": "list",
+    "autoLoad": "false",
+    "typeProxy": "ajax",
+    "typeReader": "json"
+  },
+  {
+    "url": "/AcmeCommonWebApp/common/seguridad/perfilPorNombre",
+    "fields": "id_perfil,nombre_perfil",
+    "rootProperty": "list",
+    "autoLoad": "true",
+    "typeProxy": "ajax",
+    "typeReader": "json"
+  },
+  {
+    "url": "/AcmeCommonWebApp/common/seguridad/aplicacionPorPerfil",
+    "fields": "id_aplicacion,nombre_aplicacion",
+    "rootProperty": "list",
+    "autoLoad": "false",
+    "typeProxy": "ajax",
+    "typeReader": "json"
+  },
+  {
+    "url": "/AcmeCommonWebApp/common/seguridad/rolPorAplicacion",
+    "fields": "id_rol,nombre_rol",
+    "rootProperty": "list",
+    "autoLoad": "false",
+    "typeProxy": "ajax",
+    "typeReader": "json"
+  },
+  {
+    "url": "/AcmeCommonWebApp/common/seguridad/ususarioPorPerfil",
+    "fields": "id_usuario,nombre_usuario",
+    "rootProperty": "list",
+    "autoLoad": "false",
+    "typeProxy": "ajax",
+    "typeReader": "json"
+  },
+  {
+    "url": "/AcmeCommonWebApp/common/seguridad/aplicacionPorUsuario",
+    "fields": "id_aplicacion,nombre_aplicacion",
+    "rootProperty": "list",
+    "autoLoad": "false",
+    "typeProxy": "ajax",
+    "typeReader": "json"
+  },
+  {
+    "url": "/AcmeCommonWebApp/common/seguridad/ususarioPorNombre",
+    "fields": "id_usuario,nombre_usuario",
+    "rootProperty": "list",
+    "autoLoad": "true",
+    "typeProxy": "ajax",
+    "typeReader": "json"
+  },
+  {
+    "url": "/AcmeCommonWebApp/common/catalogo/buscarPorNombre?nombre_catalogo\u003dtipo_persona",
+    "fields": "valor_item,descrip_item",
+    "rootProperty": "list",
+    "autoLoad": "true",
+    "typeProxy": "ajax",
+    "typeReader": "json"
+  },
+  {
+    "url": "/AcmeCommonWebApp/common/catalogo/buscarPorNombre?nombre_catalogo\u003dtipo_documento_identidad",
+    "fields": "valor_item,descrip_item",
+    "rootProperty": "list",
+    "autoLoad": "true",
+    "typeProxy": "ajax",
+    "typeReader": "json"
+  },
+  {
+    "url": "/AcmeCommonWebApp/common/catalogo/buscarPorNombre?nombre_catalogo\u003dtipo_peso_guia",
+    "fields": "valor_item,descrip_item",
+    "rootProperty": "list",
+    "autoLoad": "true",
+    "typeProxy": "ajax",
+    "typeReader": "json"
+  },
+  {
+    "url": "/AcmeCommonWebApp/common/catalogo/buscarPorNombre?nombre_catalogo\u003dtipo_mvto_guia",
+    "fields": "valor_item,descrip_item",
+    "rootProperty": "list",
+    "autoLoad": "true",
+    "typeProxy": "ajax",
+    "typeReader": "json"
+  },
+  {
+    "url": "/AcmeCommonWebApp/common/catalogo/buscarPorNombre?nombre_catalogo\u003dtipo_producto",
+    "fields": "valor_item,descrip_item",
+    "rootProperty": "list",
+    "autoLoad": "true",
+    "typeProxy": "ajax",
+    "typeReader": "json"
+  },
+  {
+    "url": "/InaviWSRestApp/api/common/jornadas",
+    "fields": "cod_jornada,fecha_jornada",
+    "rootProperty": "list",
+    "autoLoad": "true",
+    "typeProxy": "ajax",
+    "typeReader": "json"
+  },
+  {
+    "url": "/InaviWSRestApp/api/common/clientes",
+    "fields": "id_persona,nombres",
+    "rootProperty": "list",
+    "autoLoad": "true",
+    "typeProxy": "ajax",
+    "typeReader": "json"
+  },
+  {
+    "url": "/AcmeCommonWebApp/common/catalogo/buscarPorNombre?nombre_catalogo\u003dtipo_concepto_saldo",
+    "fields": "valor_item,descrip_item",
+    "rootProperty": "list",
+    "autoLoad": "true",
+    "typeProxy": "ajax",
+    "typeReader": "json"
+  },
+  {
+    "url": "/AcmeCommonWebApp/common/catalogo/buscarPorNombre?nombre_catalogo\u003dtipo_mvto_saldo",
+    "fields": "valor_item,descrip_item",
+    "rootProperty": "list",
+    "autoLoad": "true",
+    "typeProxy": "ajax",
+    "typeReader": "json"
+  },
+  {
+    "url": "/MuWSRestApp/api/common/generos",
+    "fields": "id_gender,descrip_gender",
+    "rootProperty": "list",
+    "autoLoad": "true",
+    "typeProxy": "ajax",
+    "typeReader": "json"
+  },
+  {
+    "url": "/MuWSRestApp/api/common/paises",
+    "fields": "id_pais,nombre",
+    "rootProperty": "list",
+    "autoLoad": "true",
+    "typeProxy": "ajax",
+    "typeReader": "json"
+  }
+]

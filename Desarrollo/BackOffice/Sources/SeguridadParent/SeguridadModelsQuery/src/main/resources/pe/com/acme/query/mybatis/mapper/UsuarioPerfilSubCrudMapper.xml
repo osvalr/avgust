@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.acme.query.mybatis.mapper.UsuarioPerfilSubCrudMapper">
+
+<sql id="outs"> 
+<![CDATA[
+
+up.id_usuario,
+up.id_perfil,
+p.nombre_perfil,
+up.id_estado,
+v.descrip_item as descrip_estado,
+to_char(up.fecha_registro,'dd/mm/yyyy') fecha_registro,
+to_char(up.fecha_modificacion,'dd/mm/yyyy') fecha_modificacion,
+up.id_usuario_reg,
+up.id_usuario_mod
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+seguridad.usuario_perfil up
+inner join seguridad.perfil p on p.id_perfil = up.id_perfil
+inner join general.vw_catalogo v on up.id_estado = v.valor_item and v.nombre_catalogo = 'estado_generico'
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+up.id_usuario = coalesce(#{id_usuario},up.id_usuario)
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${order_column} ${order_direction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.acme.query.mybatis.model.UsuarioPerfilSubCrud" parameterType="pe.com.acme.query.mybatis.model.UsuarioPerfilSubCrudCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.acme.query.mybatis.model.UsuarioPerfilSubCrud" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.acme.query.mybatis.model.UsuarioPerfilSubCrud" parameterType="pe.com.acme.query.mybatis.model.UsuarioPerfilSubCrudCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.acme.query.mybatis.model.UsuarioPerfilSubCrud" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.acme.query.mybatis.model.UsuarioPerfilSubCrudCriteria">
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="C:\Users\jraffo\Desktop\Pub\CartaAniversarioWebApp" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Perfil1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="bootstrap-3.3.5/js/npm.js" publishTime="08/03/2015 20:09:20" />
+    <file relUrl="js/validator.js" publishTime="08/05/2015 14:54:16" />
+    <file relUrl="bootstrap-3.3.5/css/bootstrap.css" publishTime="08/08/2015 16:06:56" />
+    <file relUrl="js/jquery-1.11.3.min.js" publishTime="08/04/2015 09:41:32" />
+    <file relUrl="bootstrap-3.3.5/css/bootstrap-theme.css" publishTime="08/08/2015 15:05:58" />
+    <file relUrl="gestionarConfiguraciones.aspx" publishTime="09/29/2015 18:20:49" />
+    <file relUrl="procesarCartas.aspx" publishTime="09/17/2015 13:17:36" />
+    <file relUrl="bootstrap-3.3.5/css/bootstrap-theme.min.css" publishTime="08/06/2015 18:17:48" />
+    <file relUrl="js/validator.min.js" publishTime="08/05/2015 14:54:16" />
+    <file relUrl="bin/CartaAniversarioWebApp.dll" publishTime="10/14/2015 16:59:01" />
+    <file relUrl="Styles/Site.css" publishTime="08/03/2015 19:56:00" />
+    <file relUrl="Scripts/jquery-1.4.1.js" publishTime="08/03/2015 19:56:00" />
+    <file relUrl="bootstrap-3.3.5/js/bootstrap.min.js" publishTime="08/03/2015 20:09:20" />
+    <file relUrl="bin/CartaAniversarioWebApp.pdb" publishTime="10/14/2015 16:59:01" />
+    <file relUrl="bin/CartaAniversarioBusinessApp.pdb" publishTime="10/14/2015 16:56:46" />
+    <file relUrl="bootstrap-3.3.5/js/bootstrap.js" publishTime="08/03/2015 20:09:20" />
+    <file relUrl="Global.asax" publishTime="08/03/2015 19:56:00" />
+    <file relUrl="bin/Oracle.DataAccess.dll" publishTime="02/28/2010 02:19:56" />
+    <file relUrl="Scripts/jquery-1.4.1-vsdoc.js" publishTime="08/03/2015 19:56:00" />
+    <file relUrl="Web.config" publishTime="10/14/2015 16:59:02" />
+    <file relUrl="bin/ICSharpCode.SharpZipLib.dll" publishTime="07/16/2015 15:06:38" />
+    <file relUrl="bin/CartaAniversarioBusinessApp.dll" publishTime="10/14/2015 16:56:46" />
+    <file relUrl="Scripts/jquery-1.4.1.min.js" publishTime="08/03/2015 19:56:00" />
+    <file relUrl="bootstrap-3.3.5/css/bootstrap.min.css" publishTime="08/06/2015 18:16:00" />
+  </publishProfile>
+</publishData>

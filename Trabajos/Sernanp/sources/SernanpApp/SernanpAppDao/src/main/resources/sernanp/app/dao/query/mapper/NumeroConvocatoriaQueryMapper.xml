@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.NumeroConvocatoriaQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+
+distinct
+c.var_num_convocatoria,
+(select a[2] || '-' || a[3] from (select regexp_split_to_array(c.var_num_convocatoria, '-')) as dt(a)) as "var_num_convocatoria_corto",
+cast((select a[2] from (select regexp_split_to_array(c.var_num_convocatoria, '-')) as dt(a)) as integer) as num, 
+cast((select a[3] from (select regexp_split_to_array(c.var_num_convocatoria, '-')) as dt(a)) as integer) as anho 
+
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+
+sernanp.t_convocatoria c
+
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+ 
+
+c.int_id_estado = COALESCE(#{int_id_estado},c.int_id_estado)
+
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+order by 
+cast((select a[3] from (select regexp_split_to_array(c.var_num_convocatoria, '-')) as dt(a)) as integer)
+desc
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.NumeroConvocatoriaQuery" parameterType="sernanp.app.dao.query.domain.NumeroConvocatoriaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.NumeroConvocatoriaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.NumeroConvocatoriaQuery" parameterType="sernanp.app.dao.query.domain.NumeroConvocatoriaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.NumeroConvocatoriaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.NumeroConvocatoriaQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

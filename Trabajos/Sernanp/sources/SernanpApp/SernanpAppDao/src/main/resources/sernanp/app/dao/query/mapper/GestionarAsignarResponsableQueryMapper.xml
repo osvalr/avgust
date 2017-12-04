@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.GestionarAsignarResponsableQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+
+p.idpersona,
+pn.idpersonanatural,
+ps.idpersonal,
+(COALESCE(pn.apepat,'') ||' '|| COALESCE(pn.apemat,'') ||' '|| COALESCE(pn.nombre,'')) as "nombre_completo",
+pn.nombre,
+pn.apepat,
+pn.apemat,
+pn.idtipodocumento,
+td.abrtablatipo as "descrip_documento",
+pn.numerodoc,
+pn.ruc
+
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+
+sernanp.persona p inner join sernanp.personanatural pn on p.idpersona=pn.idpersona
+inner join sernanp.personal ps on ps.idpersonanatural=pn.idpersonanatural
+left join sernanp.vw_tipo_documento td on pn.idtipodocumento=td.idtablatipo
+left join sernanp.usuario u on u.idpersona = p.idpersona
+inner join sernanp.usuariorol ur on ur.idusuario = u.idusuario
+
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+
+p.idpersona = coalesce(#{idpersona},p.idpersona) and
+pn.idpersonanatural = coalesce(#{idpersonanatural},pn.idpersonanatural) and
+ps.idpersonal = coalesce(#{idpersonal},ps.idpersonal) and
+UPPER(COALESCE(COALESCE(pn.nombre,'')||' '||COALESCE(pn.apepat,'')||' '||COALESCE(pn.apemat,''),'')) like UPPER(COALESCE('%'||#{nombre_completo}||'%',COALESCE(COALESCE(pn.nombre,'')||' '||COALESCE(pn.apepat,'')||' '|| COALESCE(pn.apemat,''),''))) and
+COALESCE(pn.idtipodocumento,0)=COALESCE(#{idtipodocumento},COALESCE(pn.idtipodocumento,0)) and
+COALESCE(pn.numerodoc,'')like COALESCE('%'||#{numerodoc}||'%',COALESCE(pn.numerodoc,'')) and
+COALESCE(pn.ruc,'')like COALESCE('%'||#{ruc}||'%',COALESCE(pn.ruc,'')) and
+ ur.idrol = 56
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.GestionarAsignarResponsableQuery" parameterType="sernanp.app.dao.query.domain.GestionarAsignarResponsableQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.GestionarAsignarResponsableQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.GestionarAsignarResponsableQuery" parameterType="sernanp.app.dao.query.domain.GestionarAsignarResponsableQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.GestionarAsignarResponsableQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.GestionarAsignarResponsableQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

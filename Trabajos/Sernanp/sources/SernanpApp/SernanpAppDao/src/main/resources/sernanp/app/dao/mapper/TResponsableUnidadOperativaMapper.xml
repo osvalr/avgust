@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sernanp.app.dao.mapper.TResponsableUnidadOperativaMapper" >
+  <resultMap id="BaseResultMap" type="sernanp.app.dao.domain.TResponsableUnidadOperativa" >
+    <id column="srl_id_resp_unid_oper" property="srl_id_resp_unid_oper" jdbcType="INTEGER" />
+    <result column="idunidad" property="idunidad" jdbcType="INTEGER" />
+    <result column="idpersonal" property="idpersonal" jdbcType="INTEGER" />
+    <result column="int_id_tipo_responsable" property="int_id_tipo_responsable" jdbcType="INTEGER" />
+    <result column="int_id_estado" property="int_id_estado" jdbcType="INTEGER" />
+    <result column="tsp_fecha_inicio_ejercicio" property="tsp_fecha_inicio_ejercicio" jdbcType="TIMESTAMP" />
+    <result column="tsp_fecha_fin_ejercicio" property="tsp_fecha_fin_ejercicio" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    srl_id_resp_unid_oper, idunidad, idpersonal, int_id_tipo_responsable, int_id_estado, 
+    tsp_fecha_inicio_ejercicio, tsp_fecha_fin_ejercicio
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TResponsableUnidadOperativaExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sernanp.t_responsable_unidad_operativa
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TResponsableUnidadOperativaKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from sernanp.t_responsable_unidad_operativa
+    where srl_id_resp_unid_oper = #{srl_id_resp_unid_oper,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="sernanp.app.dao.domain.TResponsableUnidadOperativaKey" >
+    delete from sernanp.t_responsable_unidad_operativa
+    where srl_id_resp_unid_oper = #{srl_id_resp_unid_oper,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sernanp.app.dao.domain.TResponsableUnidadOperativaExample" >
+    delete from sernanp.t_responsable_unidad_operativa
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sernanp.app.dao.domain.TResponsableUnidadOperativa" useGeneratedKeys="true" keyProperty="srl_id_resp_unid_oper" >
+    insert into sernanp.t_responsable_unidad_operativa (idunidad, idpersonal, int_id_tipo_responsable, 
+      int_id_estado, tsp_fecha_inicio_ejercicio, 
+      tsp_fecha_fin_ejercicio)
+    values (#{idunidad,jdbcType=INTEGER}, #{idpersonal,jdbcType=INTEGER}, #{int_id_tipo_responsable,jdbcType=INTEGER}, 
+      #{int_id_estado,jdbcType=INTEGER}, #{tsp_fecha_inicio_ejercicio,jdbcType=TIMESTAMP}, 
+      #{tsp_fecha_fin_ejercicio,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="sernanp.app.dao.domain.TResponsableUnidadOperativa" useGeneratedKeys="true" keyProperty="srl_id_resp_unid_oper" >
+    insert into sernanp.t_responsable_unidad_operativa
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="idunidad != null" >
+        idunidad,
+      </if>
+      <if test="idpersonal != null" >
+        idpersonal,
+      </if>
+      <if test="int_id_tipo_responsable != null" >
+        int_id_tipo_responsable,
+      </if>
+      <if test="int_id_estado != null" >
+        int_id_estado,
+      </if>
+      <if test="tsp_fecha_inicio_ejercicio != null" >
+        tsp_fecha_inicio_ejercicio,
+      </if>
+      <if test="tsp_fecha_fin_ejercicio != null" >
+        tsp_fecha_fin_ejercicio,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="idunidad != null" >
+        #{idunidad,jdbcType=INTEGER},
+      </if>
+      <if test="idpersonal != null" >
+        #{idpersonal,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_tipo_responsable != null" >
+        #{int_id_tipo_responsable,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_estado != null" >
+        #{int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="tsp_fecha_inicio_ejercicio != null" >
+        #{tsp_fecha_inicio_ejercicio,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tsp_fecha_fin_ejercicio != null" >
+        #{tsp_fecha_fin_ejercicio,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sernanp.app.dao.domain.TResponsableUnidadOperativaExample" resultType="java.lang.Integer" >
+    select count(*) from sernanp.t_responsable_unidad_operativa
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sernanp.t_responsable_unidad_operativa
+    <set >
+      <if test="record.srl_id_resp_unid_oper != null" >
+        srl_id_resp_unid_oper = #{record.srl_id_resp_unid_oper,jdbcType=INTEGER},
+      </if>
+      <if test="record.idunidad != null" >
+        idunidad = #{record.idunidad,jdbcType=INTEGER},
+      </if>
+      <if test="record.idpersonal != null" >
+        idpersonal = #{record.idpersonal,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_id_tipo_responsable != null" >
+        int_id_tipo_responsable = #{record.int_id_tipo_responsable,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_id_estado != null" >
+        int_id_estado = #{record.int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="record.tsp_fecha_inicio_ejercicio != null" >
+        tsp_fecha_inicio_ejercicio = #{record.tsp_fecha_inicio_ejercicio,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.tsp_fecha_fin_ejercicio != null" >
+        tsp_fecha_fin_ejercicio = #{record.tsp_fecha_fin_ejercicio,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sernanp.t_responsable_unidad_operativa
+    set srl_id_resp_unid_oper = #{record.srl_id_resp_unid_oper,jdbcType=INTEGER},
+      idunidad = #{record.idunidad,jdbcType=INTEGER},
+      idpersonal = #{record.idpersonal,jdbcType=INTEGER},
+      int_id_tipo_responsable = #{record.int_id_tipo_responsable,jdbcType=INTEGER},
+      int_id_estado = #{record.int_id_estado,jdbcType=INTEGER},
+      tsp_fecha_inicio_ejercicio = #{record.tsp_fecha_inicio_ejercicio,jdbcType=TIMESTAMP},
+      tsp_fecha_fin_ejercicio = #{record.tsp_fecha_fin_ejercicio,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sernanp.app.dao.domain.TResponsableUnidadOperativa" >
+    update sernanp.t_responsable_unidad_operativa
+    <set >
+      <if test="idunidad != null" >
+        idunidad = #{idunidad,jdbcType=INTEGER},
+      </if>
+      <if test="idpersonal != null" >
+        idpersonal = #{idpersonal,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_tipo_responsable != null" >
+        int_id_tipo_responsable = #{int_id_tipo_responsable,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_estado != null" >
+        int_id_estado = #{int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="tsp_fecha_inicio_ejercicio != null" >
+        tsp_fecha_inicio_ejercicio = #{tsp_fecha_inicio_ejercicio,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tsp_fecha_fin_ejercicio != null" >
+        tsp_fecha_fin_ejercicio = #{tsp_fecha_fin_ejercicio,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where srl_id_resp_unid_oper = #{srl_id_resp_unid_oper,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sernanp.app.dao.domain.TResponsableUnidadOperativa" >
+    update sernanp.t_responsable_unidad_operativa
+    set idunidad = #{idunidad,jdbcType=INTEGER},
+      idpersonal = #{idpersonal,jdbcType=INTEGER},
+      int_id_tipo_responsable = #{int_id_tipo_responsable,jdbcType=INTEGER},
+      int_id_estado = #{int_id_estado,jdbcType=INTEGER},
+      tsp_fecha_inicio_ejercicio = #{tsp_fecha_inicio_ejercicio,jdbcType=TIMESTAMP},
+      tsp_fecha_fin_ejercicio = #{tsp_fecha_fin_ejercicio,jdbcType=TIMESTAMP}
+    where srl_id_resp_unid_oper = #{srl_id_resp_unid_oper,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sernanp.app.dao.mapper.TConvAreaOrgEtapaMapper" >
+  <resultMap id="BaseResultMap" type="sernanp.app.dao.domain.TConvAreaOrgEtapa" >
+    <id column="srl_id_conv_area_org_etapa" property="srl_id_conv_area_org_etapa" jdbcType="INTEGER" />
+    <result column="srl_id_conv_area_org" property="srl_id_conv_area_org" jdbcType="INTEGER" />
+    <result column="idarea" property="idarea" jdbcType="INTEGER" />
+    <result column="idunidad" property="idunidad" jdbcType="INTEGER" />
+    <result column="srl_id_subetapa_proceso_seleccion" property="srl_id_subetapa_proceso_seleccion" jdbcType="INTEGER" />
+    <result column="var_descrip_subetapa" property="var_descrip_subetapa" jdbcType="VARCHAR" />
+    <result column="dte_fecha_inicio" property="dte_fecha_inicio" jdbcType="DATE" />
+    <result column="dte_fecha_termino" property="dte_fecha_termino" jdbcType="DATE" />
+    <result column="int_id_estado" property="int_id_estado" jdbcType="INTEGER" />
+    <result column="tsp_fecha_registro" property="tsp_fecha_registro" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    srl_id_conv_area_org_etapa, srl_id_conv_area_org, idarea, idunidad, srl_id_subetapa_proceso_seleccion, 
+    var_descrip_subetapa, dte_fecha_inicio, dte_fecha_termino, int_id_estado, tsp_fecha_registro
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TConvAreaOrgEtapaExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from personal.t_conv_area_org_etapa
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TConvAreaOrgEtapaKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from personal.t_conv_area_org_etapa
+    where srl_id_conv_area_org_etapa = #{srl_id_conv_area_org_etapa,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="sernanp.app.dao.domain.TConvAreaOrgEtapaKey" >
+    delete from personal.t_conv_area_org_etapa
+    where srl_id_conv_area_org_etapa = #{srl_id_conv_area_org_etapa,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sernanp.app.dao.domain.TConvAreaOrgEtapaExample" >
+    delete from personal.t_conv_area_org_etapa
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sernanp.app.dao.domain.TConvAreaOrgEtapa" useGeneratedKeys="true" keyProperty="srl_id_conv_area_org_etapa" >
+    insert into personal.t_conv_area_org_etapa (srl_id_conv_area_org, idarea, idunidad, 
+      srl_id_subetapa_proceso_seleccion, var_descrip_subetapa, 
+      dte_fecha_inicio, dte_fecha_termino, int_id_estado, 
+      tsp_fecha_registro)
+    values (#{srl_id_conv_area_org,jdbcType=INTEGER}, #{idarea,jdbcType=INTEGER}, #{idunidad,jdbcType=INTEGER}, 
+      #{srl_id_subetapa_proceso_seleccion,jdbcType=INTEGER}, #{var_descrip_subetapa,jdbcType=VARCHAR}, 
+      #{dte_fecha_inicio,jdbcType=DATE}, #{dte_fecha_termino,jdbcType=DATE}, #{int_id_estado,jdbcType=INTEGER}, 
+      #{tsp_fecha_registro,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="sernanp.app.dao.domain.TConvAreaOrgEtapa" useGeneratedKeys="true" keyProperty="srl_id_conv_area_org_etapa" >
+    insert into personal.t_conv_area_org_etapa
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="srl_id_conv_area_org != null" >
+        srl_id_conv_area_org,
+      </if>
+      <if test="idarea != null" >
+        idarea,
+      </if>
+      <if test="idunidad != null" >
+        idunidad,
+      </if>
+      <if test="srl_id_subetapa_proceso_seleccion != null" >
+        srl_id_subetapa_proceso_seleccion,
+      </if>
+      <if test="var_descrip_subetapa != null" >
+        var_descrip_subetapa,
+      </if>
+      <if test="dte_fecha_inicio != null" >
+        dte_fecha_inicio,
+      </if>
+      <if test="dte_fecha_termino != null" >
+        dte_fecha_termino,
+      </if>
+      <if test="int_id_estado != null" >
+        int_id_estado,
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        tsp_fecha_registro,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="srl_id_conv_area_org != null" >
+        #{srl_id_conv_area_org,jdbcType=INTEGER},
+      </if>
+      <if test="idarea != null" >
+        #{idarea,jdbcType=INTEGER},
+      </if>
+      <if test="idunidad != null" >
+        #{idunidad,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_subetapa_proceso_seleccion != null" >
+        #{srl_id_subetapa_proceso_seleccion,jdbcType=INTEGER},
+      </if>
+      <if test="var_descrip_subetapa != null" >
+        #{var_descrip_subetapa,jdbcType=VARCHAR},
+      </if>
+      <if test="dte_fecha_inicio != null" >
+        #{dte_fecha_inicio,jdbcType=DATE},
+      </if>
+      <if test="dte_fecha_termino != null" >
+        #{dte_fecha_termino,jdbcType=DATE},
+      </if>
+      <if test="int_id_estado != null" >
+        #{int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sernanp.app.dao.domain.TConvAreaOrgEtapaExample" resultType="java.lang.Integer" >
+    select count(*) from personal.t_conv_area_org_etapa
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update personal.t_conv_area_org_etapa
+    <set >
+      <if test="record.srl_id_conv_area_org_etapa != null" >
+        srl_id_conv_area_org_etapa = #{record.srl_id_conv_area_org_etapa,jdbcType=INTEGER},
+      </if>
+      <if test="record.srl_id_conv_area_org != null" >
+        srl_id_conv_area_org = #{record.srl_id_conv_area_org,jdbcType=INTEGER},
+      </if>
+      <if test="record.idarea != null" >
+        idarea = #{record.idarea,jdbcType=INTEGER},
+      </if>
+      <if test="record.idunidad != null" >
+        idunidad = #{record.idunidad,jdbcType=INTEGER},
+      </if>
+      <if test="record.srl_id_subetapa_proceso_seleccion != null" >
+        srl_id_subetapa_proceso_seleccion = #{record.srl_id_subetapa_proceso_seleccion,jdbcType=INTEGER},
+      </if>
+      <if test="record.var_descrip_subetapa != null" >
+        var_descrip_subetapa = #{record.var_descrip_subetapa,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dte_fecha_inicio != null" >
+        dte_fecha_inicio = #{record.dte_fecha_inicio,jdbcType=DATE},
+      </if>
+      <if test="record.dte_fecha_termino != null" >
+        dte_fecha_termino = #{record.dte_fecha_termino,jdbcType=DATE},
+      </if>
+      <if test="record.int_id_estado != null" >
+        int_id_estado = #{record.int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="record.tsp_fecha_registro != null" >
+        tsp_fecha_registro = #{record.tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update personal.t_conv_area_org_etapa
+    set srl_id_conv_area_org_etapa = #{record.srl_id_conv_area_org_etapa,jdbcType=INTEGER},
+      srl_id_conv_area_org = #{record.srl_id_conv_area_org,jdbcType=INTEGER},
+      idarea = #{record.idarea,jdbcType=INTEGER},
+      idunidad = #{record.idunidad,jdbcType=INTEGER},
+      srl_id_subetapa_proceso_seleccion = #{record.srl_id_subetapa_proceso_seleccion,jdbcType=INTEGER},
+      var_descrip_subetapa = #{record.var_descrip_subetapa,jdbcType=VARCHAR},
+      dte_fecha_inicio = #{record.dte_fecha_inicio,jdbcType=DATE},
+      dte_fecha_termino = #{record.dte_fecha_termino,jdbcType=DATE},
+      int_id_estado = #{record.int_id_estado,jdbcType=INTEGER},
+      tsp_fecha_registro = #{record.tsp_fecha_registro,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sernanp.app.dao.domain.TConvAreaOrgEtapa" >
+    update personal.t_conv_area_org_etapa
+    <set >
+      <if test="srl_id_conv_area_org != null" >
+        srl_id_conv_area_org = #{srl_id_conv_area_org,jdbcType=INTEGER},
+      </if>
+      <if test="idarea != null" >
+        idarea = #{idarea,jdbcType=INTEGER},
+      </if>
+      <if test="idunidad != null" >
+        idunidad = #{idunidad,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_subetapa_proceso_seleccion != null" >
+        srl_id_subetapa_proceso_seleccion = #{srl_id_subetapa_proceso_seleccion,jdbcType=INTEGER},
+      </if>
+      <if test="var_descrip_subetapa != null" >
+        var_descrip_subetapa = #{var_descrip_subetapa,jdbcType=VARCHAR},
+      </if>
+      <if test="dte_fecha_inicio != null" >
+        dte_fecha_inicio = #{dte_fecha_inicio,jdbcType=DATE},
+      </if>
+      <if test="dte_fecha_termino != null" >
+        dte_fecha_termino = #{dte_fecha_termino,jdbcType=DATE},
+      </if>
+      <if test="int_id_estado != null" >
+        int_id_estado = #{int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        tsp_fecha_registro = #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where srl_id_conv_area_org_etapa = #{srl_id_conv_area_org_etapa,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sernanp.app.dao.domain.TConvAreaOrgEtapa" >
+    update personal.t_conv_area_org_etapa
+    set srl_id_conv_area_org = #{srl_id_conv_area_org,jdbcType=INTEGER},
+      idarea = #{idarea,jdbcType=INTEGER},
+      idunidad = #{idunidad,jdbcType=INTEGER},
+      srl_id_subetapa_proceso_seleccion = #{srl_id_subetapa_proceso_seleccion,jdbcType=INTEGER},
+      var_descrip_subetapa = #{var_descrip_subetapa,jdbcType=VARCHAR},
+      dte_fecha_inicio = #{dte_fecha_inicio,jdbcType=DATE},
+      dte_fecha_termino = #{dte_fecha_termino,jdbcType=DATE},
+      int_id_estado = #{int_id_estado,jdbcType=INTEGER},
+      tsp_fecha_registro = #{tsp_fecha_registro,jdbcType=TIMESTAMP}
+    where srl_id_conv_area_org_etapa = #{srl_id_conv_area_org_etapa,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.ConvocatoriaCodigoPostulacionPersonaQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.ConvocatoriaCodigoPostulacionPersonaQuery" parameterType="sernanp.app.dao.query.domain.ConvocatoriaCodigoPostulacionPersonaQueryCriteria"> 
+<![CDATA[
+
+	      
+	      
+	      
+			select
+			
+				pcao.srl_id_postulante_conv_area_org ,
+				pp.int_id_postulante ,
+				(select a[2] || '-' || a[3] from (select regexp_split_to_array(cnv.var_num_convocatoria, '-')) as dt(a)) as "var_num_convocatoria",
+				cao.var_codigo_postulacion,
+				(select a[2] || '-' || a[3] from (select regexp_split_to_array(cnv.var_num_convocatoria, '-')) as dt(a)) || ' - ' ||cao.var_codigo_postulacion as "descrip_completa",
+				uo.idunidad,
+				uo.nomunidad,
+				
+				/*
+				--COMMENT 01-09-2015  -- DAVID
+				--s.idsede,
+				trim(both ' ' from s.direccion) as "sede_direccion",
+				COALESCE(uo.nomunidad,(canp.descategoriaanp || ' - '||ao.desarea)) as "nombre_dependencia",
+				an.desareanatural,
+				canp.descategoriaanp
+				*/
+				
+				--ADD 03-09-2015  -- DAVID
+				COALESCE(s1.idsede,s.idsede) AS idsede,
+				trim(both ' ' from COALESCE(s1.direccion, s.direccion)) as "sede_direccion",
+				COALESCE(uo.nomunidad,(COALESCE(canp1.descategoriaanp,canp.descategoriaanp) || ' - '||ao.desarea)) as "nombre_dependencia",
+				COALESCE(an1.desareanatural,an.desareanatural) AS desareanatural, 
+				COALESCE(canp1.descategoriaanp, canp.descategoriaanp) AS descategoriaanp
+				--END
+				
+				--ADD 01-02-2016  -- DAVID
+				,rp.dec_honorario_personal
+       			,TO_CHAR(cao.dte_fecha_inicio_contrato,'DD/MM/YYYY') AS "dte_fecha_inicio_contrato"
+		       	,TO_CHAR(cao.dte_fecha_fin_contrato,'DD/MM/YYYY') AS "dte_fecha_fin_contrato"
+				--END
+				
+			from
+				sernanp.t_postulante_personal pp  
+				left join sernanp.t_postulante_cnv_area_org pcao on pcao.int_id_postulante = pp.int_id_postulante and COALESCE(pcao.int_id_estado,0) IN (2,3)
+				left join sernanp.t_convocatoria_area_org cao on pcao.srl_id_conv_area_org = cao.srl_id_conv_area_org
+				left join sernanp.t_convocatoria cnv on cao.srl_id_convocatoria = cnv.srl_id_convocatoria
+				left join sernanp.areaorganica ao on cao.idarea = ao.idarea and cao.int_id_estado = 1
+				
+				left join sernanp.unidadoperativa uo on cao.idunidad = uo.idunidad
+				left join sernanp.sede s on ao.idsede = s.idsede
+				left join sernanp.areanatural an on an.idareanatural = s.idareanatural
+				left join sernanp.categoriaanp canp on canp.idcategoriaanp = an.idcategoriaanp
+				
+				--ADD 01-09-2015  -- DAVID
+				LEFT JOIN personal.t_requerimiento_personal rp ON rp.srl_id_requerimiento_personal = cao.srl_id_requerimiento_personal
+				--LEFT JOIN sernanp.t_sede_uni_ope_anp suoa ON suoa.srl_id_sede_uni_ope_anp = rp.srl_id_sede_uni_ope_anp
+				LEFT JOIN sernanp.sede s1 ON rp.id_sede_ubicacion = s1.idsede
+				LEFT JOIN sernanp.areanatural an1 ON an1.idareanatural = s1.idareanatural
+				LEFT JOIN sernanp.categoriaanp canp1 ON canp1.idcategoriaanp = an1.idcategoriaanp
+				--END
+
+	
+			where 
+			
+			COALESCE(pp.int_id_postulante,0) = COALESCE(#{int_id_postulante},COALESCE(pp.int_id_postulante,0)) and
+			pcao.srl_id_postulante_conv_area_org = #{srl_id_postulante_conv_area_org} 
+			--and pcao.srl_id_postulante_conv_area_org not in (select pcx.srl_id_postulante_conv_area_org from sernanp.t_personal_contrato pcx where pcx.srl_id_postulante_conv_area_org = pcao.srl_id_postulante_conv_area_org)
+				
+		  
+	      
+]]>
+</select> 
+</mapper> 

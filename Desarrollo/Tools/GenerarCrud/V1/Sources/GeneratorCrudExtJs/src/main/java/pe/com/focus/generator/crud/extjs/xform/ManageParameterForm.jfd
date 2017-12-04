@@ -1,0 +1,78 @@
+JFDML JFormDesigner: "5.2.1.0.138" Java: "1.8.0_31" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class java.awt.GridBagLayout ) {
+			"$columnSpecs": "1, 0, 0:1.0, 0"
+			"$rowSpecs": "1, 0, 0, 0, 0"
+			"$hGap": 5
+			"$vGap": 5
+			"$alignLeft": true
+			"$alignTop": true
+		} ) {
+			name: "this"
+			"title": "Parameter"
+			"minimumSize": new java.awt.Dimension( 340, 22 )
+			"defaultCloseOperation": 2
+			"resizable": false
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "Name *"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+				"gridx": 1
+				"gridy": 1
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "txtNameParameter"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+				"gridx": 2
+				"gridy": 1
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "Value Field *"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+				"gridx": 1
+				"gridy": 2
+			} )
+			add( new FormComponent( "javax.swing.JComboBox" ) {
+				name: "cbValueFieldParameter"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+				"gridx": 2
+				"gridy": 2
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+				"$columnSpecs": "0, 0"
+				"$rowSpecs": "0"
+				"$hGap": 5
+				"$vGap": 5
+				"$alignLeft": true
+				"$alignTop": true
+			} ) {
+				name: "panel1"
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "btnSaveParameter"
+					"text": "Save"
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/silk/disk.png" )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnSaveParameterActionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "btnCancelParameter"
+					"text": "Cancel"
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/silk/cancel.png" )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnCancelParameterActionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 1
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+				"gridx": 2
+				"gridy": 3
+				"hAlign": 4
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 400, 170 )
+		} )
+	}
+}

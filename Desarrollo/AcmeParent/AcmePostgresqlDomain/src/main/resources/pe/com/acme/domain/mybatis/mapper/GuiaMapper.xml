@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pe.com.acme.domain.mybatis.mapper.GuiaMapper" >
+  <resultMap id="BaseResultMap" type="pe.com.acme.domain.mybatis.model.Guia" >
+    <id column="id_guia" property="id_guia" jdbcType="INTEGER" />
+    <result column="num_dia" property="num_dia" jdbcType="INTEGER" />
+    <result column="num_mes" property="num_mes" jdbcType="INTEGER" />
+    <result column="num_anio" property="num_anio" jdbcType="INTEGER" />
+    <result column="id_proveedor" property="id_proveedor" jdbcType="INTEGER" />
+    <result column="id_cliente" property="id_cliente" jdbcType="INTEGER" />
+    <result column="id_tipo_mvto_guia" property="id_tipo_mvto_guia" jdbcType="INTEGER" />
+    <result column="id_tipo_producto" property="id_tipo_producto" jdbcType="INTEGER" />
+    <result column="total_peso_bruto" property="total_peso_bruto" jdbcType="NUMERIC" />
+    <result column="total_peso_tara" property="total_peso_tara" jdbcType="NUMERIC" />
+    <result column="total_peso_devolucion" property="total_peso_devolucion" jdbcType="NUMERIC" />
+    <result column="total_peso_neto" property="total_peso_neto" jdbcType="NUMERIC" />
+    <result column="precio_aplicado" property="precio_aplicado" jdbcType="NUMERIC" />
+    <result column="id_moneda_local" property="id_moneda_local" jdbcType="INTEGER" />
+    <result column="total_importe" property="total_importe" jdbcType="NUMERIC" />
+    <result column="id_estado" property="id_estado" jdbcType="INTEGER" />
+    <result column="id_usuario_reg" property="id_usuario_reg" jdbcType="INTEGER" />
+    <result column="fecha_registro" property="fecha_registro" jdbcType="TIMESTAMP" />
+    <result column="id_usuario_mod" property="id_usuario_mod" jdbcType="INTEGER" />
+    <result column="fecha_modificacion" property="fecha_modificacion" jdbcType="TIMESTAMP" />
+    <result column="id_guia_referencia" property="id_guia_referencia" jdbcType="INTEGER" />
+    <result column="id_tipo_guia" property="id_tipo_guia" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id_guia, num_dia, num_mes, num_anio, id_proveedor, id_cliente, id_tipo_mvto_guia, 
+    id_tipo_producto, total_peso_bruto, total_peso_tara, total_peso_devolucion, total_peso_neto, 
+    precio_aplicado, id_moneda_local, total_importe, id_estado, id_usuario_reg, fecha_registro, 
+    id_usuario_mod, fecha_modificacion, id_guia_referencia, id_tipo_guia
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.acme.domain.mybatis.model.GuiaExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from inavi.guia
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="pe.com.acme.domain.mybatis.model.GuiaKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from inavi.guia
+    where id_guia = #{id_guia,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="pe.com.acme.domain.mybatis.model.GuiaKey" >
+    delete from inavi.guia
+    where id_guia = #{id_guia,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="pe.com.acme.domain.mybatis.model.GuiaExample" >
+    delete from inavi.guia
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.acme.domain.mybatis.model.Guia" useGeneratedKeys="true" keyProperty="id_guia" >
+    insert into inavi.guia (num_dia, num_mes, num_anio, 
+      id_proveedor, id_cliente, id_tipo_mvto_guia, 
+      id_tipo_producto, total_peso_bruto, total_peso_tara, 
+      total_peso_devolucion, total_peso_neto, 
+      precio_aplicado, id_moneda_local, total_importe, 
+      id_estado, id_usuario_reg, fecha_registro, 
+      id_usuario_mod, fecha_modificacion, id_guia_referencia, 
+      id_tipo_guia)
+    values (#{num_dia,jdbcType=INTEGER}, #{num_mes,jdbcType=INTEGER}, #{num_anio,jdbcType=INTEGER}, 
+      #{id_proveedor,jdbcType=INTEGER}, #{id_cliente,jdbcType=INTEGER}, #{id_tipo_mvto_guia,jdbcType=INTEGER}, 
+      #{id_tipo_producto,jdbcType=INTEGER}, #{total_peso_bruto,jdbcType=NUMERIC}, #{total_peso_tara,jdbcType=NUMERIC}, 
+      #{total_peso_devolucion,jdbcType=NUMERIC}, #{total_peso_neto,jdbcType=NUMERIC}, 
+      #{precio_aplicado,jdbcType=NUMERIC}, #{id_moneda_local,jdbcType=INTEGER}, #{total_importe,jdbcType=NUMERIC}, 
+      #{id_estado,jdbcType=INTEGER}, #{id_usuario_reg,jdbcType=INTEGER}, #{fecha_registro,jdbcType=TIMESTAMP}, 
+      #{id_usuario_mod,jdbcType=INTEGER}, #{fecha_modificacion,jdbcType=TIMESTAMP}, #{id_guia_referencia,jdbcType=INTEGER}, 
+      #{id_tipo_guia,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.acme.domain.mybatis.model.Guia" useGeneratedKeys="true" keyProperty="id_guia" >
+    insert into inavi.guia
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="num_dia != null" >
+        num_dia,
+      </if>
+      <if test="num_mes != null" >
+        num_mes,
+      </if>
+      <if test="num_anio != null" >
+        num_anio,
+      </if>
+      <if test="id_proveedor != null" >
+        id_proveedor,
+      </if>
+      <if test="id_cliente != null" >
+        id_cliente,
+      </if>
+      <if test="id_tipo_mvto_guia != null" >
+        id_tipo_mvto_guia,
+      </if>
+      <if test="id_tipo_producto != null" >
+        id_tipo_producto,
+      </if>
+      <if test="total_peso_bruto != null" >
+        total_peso_bruto,
+      </if>
+      <if test="total_peso_tara != null" >
+        total_peso_tara,
+      </if>
+      <if test="total_peso_devolucion != null" >
+        total_peso_devolucion,
+      </if>
+      <if test="total_peso_neto != null" >
+        total_peso_neto,
+      </if>
+      <if test="precio_aplicado != null" >
+        precio_aplicado,
+      </if>
+      <if test="id_moneda_local != null" >
+        id_moneda_local,
+      </if>
+      <if test="total_importe != null" >
+        total_importe,
+      </if>
+      <if test="id_estado != null" >
+        id_estado,
+      </if>
+      <if test="id_usuario_reg != null" >
+        id_usuario_reg,
+      </if>
+      <if test="fecha_registro != null" >
+        fecha_registro,
+      </if>
+      <if test="id_usuario_mod != null" >
+        id_usuario_mod,
+      </if>
+      <if test="fecha_modificacion != null" >
+        fecha_modificacion,
+      </if>
+      <if test="id_guia_referencia != null" >
+        id_guia_referencia,
+      </if>
+      <if test="id_tipo_guia != null" >
+        id_tipo_guia,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="num_dia != null" >
+        #{num_dia,jdbcType=INTEGER},
+      </if>
+      <if test="num_mes != null" >
+        #{num_mes,jdbcType=INTEGER},
+      </if>
+      <if test="num_anio != null" >
+        #{num_anio,jdbcType=INTEGER},
+      </if>
+      <if test="id_proveedor != null" >
+        #{id_proveedor,jdbcType=INTEGER},
+      </if>
+      <if test="id_cliente != null" >
+        #{id_cliente,jdbcType=INTEGER},
+      </if>
+      <if test="id_tipo_mvto_guia != null" >
+        #{id_tipo_mvto_guia,jdbcType=INTEGER},
+      </if>
+      <if test="id_tipo_producto != null" >
+        #{id_tipo_producto,jdbcType=INTEGER},
+      </if>
+      <if test="total_peso_bruto != null" >
+        #{total_peso_bruto,jdbcType=NUMERIC},
+      </if>
+      <if test="total_peso_tara != null" >
+        #{total_peso_tara,jdbcType=NUMERIC},
+      </if>
+      <if test="total_peso_devolucion != null" >
+        #{total_peso_devolucion,jdbcType=NUMERIC},
+      </if>
+      <if test="total_peso_neto != null" >
+        #{total_peso_neto,jdbcType=NUMERIC},
+      </if>
+      <if test="precio_aplicado != null" >
+        #{precio_aplicado,jdbcType=NUMERIC},
+      </if>
+      <if test="id_moneda_local != null" >
+        #{id_moneda_local,jdbcType=INTEGER},
+      </if>
+      <if test="total_importe != null" >
+        #{total_importe,jdbcType=NUMERIC},
+      </if>
+      <if test="id_estado != null" >
+        #{id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="id_usuario_reg != null" >
+        #{id_usuario_reg,jdbcType=INTEGER},
+      </if>
+      <if test="fecha_registro != null" >
+        #{fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+      <if test="id_usuario_mod != null" >
+        #{id_usuario_mod,jdbcType=INTEGER},
+      </if>
+      <if test="fecha_modificacion != null" >
+        #{fecha_modificacion,jdbcType=TIMESTAMP},
+      </if>
+      <if test="id_guia_referencia != null" >
+        #{id_guia_referencia,jdbcType=INTEGER},
+      </if>
+      <if test="id_tipo_guia != null" >
+        #{id_tipo_guia,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.acme.domain.mybatis.model.GuiaExample" resultType="java.lang.Integer" >
+    select count(*) from inavi.guia
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update inavi.guia
+    <set >
+      <if test="record.id_guia != null" >
+        id_guia = #{record.id_guia,jdbcType=INTEGER},
+      </if>
+      <if test="record.num_dia != null" >
+        num_dia = #{record.num_dia,jdbcType=INTEGER},
+      </if>
+      <if test="record.num_mes != null" >
+        num_mes = #{record.num_mes,jdbcType=INTEGER},
+      </if>
+      <if test="record.num_anio != null" >
+        num_anio = #{record.num_anio,jdbcType=INTEGER},
+      </if>
+      <if test="record.id_proveedor != null" >
+        id_proveedor = #{record.id_proveedor,jdbcType=INTEGER},
+      </if>
+      <if test="record.id_cliente != null" >
+        id_cliente = #{record.id_cliente,jdbcType=INTEGER},
+      </if>
+      <if test="record.id_tipo_mvto_guia != null" >
+        id_tipo_mvto_guia = #{record.id_tipo_mvto_guia,jdbcType=INTEGER},
+      </if>
+      <if test="record.id_tipo_producto != null" >
+        id_tipo_producto = #{record.id_tipo_producto,jdbcType=INTEGER},
+      </if>
+      <if test="record.total_peso_bruto != null" >
+        total_peso_bruto = #{record.total_peso_bruto,jdbcType=NUMERIC},
+      </if>
+      <if test="record.total_peso_tara != null" >
+        total_peso_tara = #{record.total_peso_tara,jdbcType=NUMERIC},
+      </if>
+      <if test="record.total_peso_devolucion != null" >
+        total_peso_devolucion = #{record.total_peso_devolucion,jdbcType=NUMERIC},
+      </if>
+      <if test="record.total_peso_neto != null" >
+        total_peso_neto = #{record.total_peso_neto,jdbcType=NUMERIC},
+      </if>
+      <if test="record.precio_aplicado != null" >
+        precio_aplicado = #{record.precio_aplicado,jdbcType=NUMERIC},
+      </if>
+      <if test="record.id_moneda_local != null" >
+        id_moneda_local = #{record.id_moneda_local,jdbcType=INTEGER},
+      </if>
+      <if test="record.total_importe != null" >
+        total_importe = #{record.total_importe,jdbcType=NUMERIC},
+      </if>
+      <if test="record.id_estado != null" >
+        id_estado = #{record.id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="record.id_usuario_reg != null" >
+        id_usuario_reg = #{record.id_usuario_reg,jdbcType=INTEGER},
+      </if>
+      <if test="record.fecha_registro != null" >
+        fecha_registro = #{record.fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.id_usuario_mod != null" >
+        id_usuario_mod = #{record.id_usuario_mod,jdbcType=INTEGER},
+      </if>
+      <if test="record.fecha_modificacion != null" >
+        fecha_modificacion = #{record.fecha_modificacion,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.id_guia_referencia != null" >
+        id_guia_referencia = #{record.id_guia_referencia,jdbcType=INTEGER},
+      </if>
+      <if test="record.id_tipo_guia != null" >
+        id_tipo_guia = #{record.id_tipo_guia,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update inavi.guia
+    set id_guia = #{record.id_guia,jdbcType=INTEGER},
+      num_dia = #{record.num_dia,jdbcType=INTEGER},
+      num_mes = #{record.num_mes,jdbcType=INTEGER},
+      num_anio = #{record.num_anio,jdbcType=INTEGER},
+      id_proveedor = #{record.id_proveedor,jdbcType=INTEGER},
+      id_cliente = #{record.id_cliente,jdbcType=INTEGER},
+      id_tipo_mvto_guia = #{record.id_tipo_mvto_guia,jdbcType=INTEGER},
+      id_tipo_producto = #{record.id_tipo_producto,jdbcType=INTEGER},
+      total_peso_bruto = #{record.total_peso_bruto,jdbcType=NUMERIC},
+      total_peso_tara = #{record.total_peso_tara,jdbcType=NUMERIC},
+      total_peso_devolucion = #{record.total_peso_devolucion,jdbcType=NUMERIC},
+      total_peso_neto = #{record.total_peso_neto,jdbcType=NUMERIC},
+      precio_aplicado = #{record.precio_aplicado,jdbcType=NUMERIC},
+      id_moneda_local = #{record.id_moneda_local,jdbcType=INTEGER},
+      total_importe = #{record.total_importe,jdbcType=NUMERIC},
+      id_estado = #{record.id_estado,jdbcType=INTEGER},
+      id_usuario_reg = #{record.id_usuario_reg,jdbcType=INTEGER},
+      fecha_registro = #{record.fecha_registro,jdbcType=TIMESTAMP},
+      id_usuario_mod = #{record.id_usuario_mod,jdbcType=INTEGER},
+      fecha_modificacion = #{record.fecha_modificacion,jdbcType=TIMESTAMP},
+      id_guia_referencia = #{record.id_guia_referencia,jdbcType=INTEGER},
+      id_tipo_guia = #{record.id_tipo_guia,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.acme.domain.mybatis.model.Guia" >
+    update inavi.guia
+    <set >
+      <if test="num_dia != null" >
+        num_dia = #{num_dia,jdbcType=INTEGER},
+      </if>
+      <if test="num_mes != null" >
+        num_mes = #{num_mes,jdbcType=INTEGER},
+      </if>
+      <if test="num_anio != null" >
+        num_anio = #{num_anio,jdbcType=INTEGER},
+      </if>
+      <if test="id_proveedor != null" >
+        id_proveedor = #{id_proveedor,jdbcType=INTEGER},
+      </if>
+      <if test="id_cliente != null" >
+        id_cliente = #{id_cliente,jdbcType=INTEGER},
+      </if>
+      <if test="id_tipo_mvto_guia != null" >
+        id_tipo_mvto_guia = #{id_tipo_mvto_guia,jdbcType=INTEGER},
+      </if>
+      <if test="id_tipo_producto != null" >
+        id_tipo_producto = #{id_tipo_producto,jdbcType=INTEGER},
+      </if>
+      <if test="total_peso_bruto != null" >
+        total_peso_bruto = #{total_peso_bruto,jdbcType=NUMERIC},
+      </if>
+      <if test="total_peso_tara != null" >
+        total_peso_tara = #{total_peso_tara,jdbcType=NUMERIC},
+      </if>
+      <if test="total_peso_devolucion != null" >
+        total_peso_devolucion = #{total_peso_devolucion,jdbcType=NUMERIC},
+      </if>
+      <if test="total_peso_neto != null" >
+        total_peso_neto = #{total_peso_neto,jdbcType=NUMERIC},
+      </if>
+      <if test="precio_aplicado != null" >
+        precio_aplicado = #{precio_aplicado,jdbcType=NUMERIC},
+      </if>
+      <if test="id_moneda_local != null" >
+        id_moneda_local = #{id_moneda_local,jdbcType=INTEGER},
+      </if>
+      <if test="total_importe != null" >
+        total_importe = #{total_importe,jdbcType=NUMERIC},
+      </if>
+      <if test="id_estado != null" >
+        id_estado = #{id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="id_usuario_reg != null" >
+        id_usuario_reg = #{id_usuario_reg,jdbcType=INTEGER},
+      </if>
+      <if test="fecha_registro != null" >
+        fecha_registro = #{fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+      <if test="id_usuario_mod != null" >
+        id_usuario_mod = #{id_usuario_mod,jdbcType=INTEGER},
+      </if>
+      <if test="fecha_modificacion != null" >
+        fecha_modificacion = #{fecha_modificacion,jdbcType=TIMESTAMP},
+      </if>
+      <if test="id_guia_referencia != null" >
+        id_guia_referencia = #{id_guia_referencia,jdbcType=INTEGER},
+      </if>
+      <if test="id_tipo_guia != null" >
+        id_tipo_guia = #{id_tipo_guia,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id_guia = #{id_guia,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.acme.domain.mybatis.model.Guia" >
+    update inavi.guia
+    set num_dia = #{num_dia,jdbcType=INTEGER},
+      num_mes = #{num_mes,jdbcType=INTEGER},
+      num_anio = #{num_anio,jdbcType=INTEGER},
+      id_proveedor = #{id_proveedor,jdbcType=INTEGER},
+      id_cliente = #{id_cliente,jdbcType=INTEGER},
+      id_tipo_mvto_guia = #{id_tipo_mvto_guia,jdbcType=INTEGER},
+      id_tipo_producto = #{id_tipo_producto,jdbcType=INTEGER},
+      total_peso_bruto = #{total_peso_bruto,jdbcType=NUMERIC},
+      total_peso_tara = #{total_peso_tara,jdbcType=NUMERIC},
+      total_peso_devolucion = #{total_peso_devolucion,jdbcType=NUMERIC},
+      total_peso_neto = #{total_peso_neto,jdbcType=NUMERIC},
+      precio_aplicado = #{precio_aplicado,jdbcType=NUMERIC},
+      id_moneda_local = #{id_moneda_local,jdbcType=INTEGER},
+      total_importe = #{total_importe,jdbcType=NUMERIC},
+      id_estado = #{id_estado,jdbcType=INTEGER},
+      id_usuario_reg = #{id_usuario_reg,jdbcType=INTEGER},
+      fecha_registro = #{fecha_registro,jdbcType=TIMESTAMP},
+      id_usuario_mod = #{id_usuario_mod,jdbcType=INTEGER},
+      fecha_modificacion = #{fecha_modificacion,jdbcType=TIMESTAMP},
+      id_guia_referencia = #{id_guia_referencia,jdbcType=INTEGER},
+      id_tipo_guia = #{id_tipo_guia,jdbcType=INTEGER}
+    where id_guia = #{id_guia,jdbcType=INTEGER}
+  </update>
+  <select resultMap="BaseResultMap" parameterType="pe.com.acme.domain.mybatis.model.GuiaExample" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from inavi.guia
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

@@ -1,0 +1,6 @@
+{
+	"nameCrud": "Pais",
+	"path": "paises",
+	"nameRepository": "TPaisRepository",
+	"nameModelXml": "PaisModel.xml"
+}

@@ -1,0 +1,49 @@
+@CHARSET "UTF-8";
+
+ html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    }
+ 
+body {
+    font: 100% Georgia, serif;
+    background-color: #fefefe;
+    color: #333;
+    }
+ 
+
+
+ 
+#DivBody {
+    display: table;
+    height: 100%;
+    width: 100%;
+    margin: 0;fiis
+    
+    }
+ 
+#DivMain {
+    display: table-cell;
+    vertical-align: middle;
+    position: relative;
+    }
+ 
+#DivCentradoPrincipal {
+    border: 1px solid #ccc;
+    height:600px;
+    margin: 0 auto;
+    padding: 0 20px;
+    }
+ 
+/* \*/
+* html #DivMain {
+    top: 50%;
+    left: 0;
+    height: 1px;
+    }
+ 
+* html #DivMain #DivCentradoPrincipal {
+    position: relative;
+    top: -50%;
+    }

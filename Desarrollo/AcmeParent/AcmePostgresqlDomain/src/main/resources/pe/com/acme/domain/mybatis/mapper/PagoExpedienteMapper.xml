@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pe.com.acme.domain.mybatis.mapper.PagoExpedienteMapper" >
+  <resultMap id="BaseResultMap" type="pe.com.acme.domain.mybatis.model.PagoExpediente" >
+    <id column="id_pago_expediente" property="id_pago_expediente" jdbcType="INTEGER" />
+    <result column="id_expediente" property="id_expediente" jdbcType="INTEGER" />
+    <result column="id_tipo_pago" property="id_tipo_pago" jdbcType="INTEGER" />
+    <result column="fecha_informe" property="fecha_informe" jdbcType="DATE" />
+    <result column="fecha_pago" property="fecha_pago" jdbcType="DATE" />
+    <result column="consolidado" property="consolidado" jdbcType="VARCHAR" />
+    <result column="id_estado" property="id_estado" jdbcType="INTEGER" />
+    <result column="id_usuario_reg" property="id_usuario_reg" jdbcType="INTEGER" />
+    <result column="fecha_registro" property="fecha_registro" jdbcType="TIMESTAMP" />
+    <result column="id_usuario_mod" property="id_usuario_mod" jdbcType="INTEGER" />
+    <result column="fecha_modificacion" property="fecha_modificacion" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id_pago_expediente, id_expediente, id_tipo_pago, fecha_informe, fecha_pago, consolidado, 
+    id_estado, id_usuario_reg, fecha_registro, id_usuario_mod, fecha_modificacion
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.acme.domain.mybatis.model.PagoExpedienteExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tramdoc.pago_expediente
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="pe.com.acme.domain.mybatis.model.PagoExpedienteKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from tramdoc.pago_expediente
+    where id_pago_expediente = #{id_pago_expediente,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="pe.com.acme.domain.mybatis.model.PagoExpedienteKey" >
+    delete from tramdoc.pago_expediente
+    where id_pago_expediente = #{id_pago_expediente,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="pe.com.acme.domain.mybatis.model.PagoExpedienteExample" >
+    delete from tramdoc.pago_expediente
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.acme.domain.mybatis.model.PagoExpediente" useGeneratedKeys="true" keyProperty="id_pago_expediente" >
+    insert into tramdoc.pago_expediente (id_expediente, id_tipo_pago, fecha_informe, 
+      fecha_pago, consolidado, id_estado, 
+      id_usuario_reg, fecha_registro, id_usuario_mod, 
+      fecha_modificacion)
+    values (#{id_expediente,jdbcType=INTEGER}, #{id_tipo_pago,jdbcType=INTEGER}, #{fecha_informe,jdbcType=DATE}, 
+      #{fecha_pago,jdbcType=DATE}, #{consolidado,jdbcType=VARCHAR}, #{id_estado,jdbcType=INTEGER}, 
+      #{id_usuario_reg,jdbcType=INTEGER}, #{fecha_registro,jdbcType=TIMESTAMP}, #{id_usuario_mod,jdbcType=INTEGER}, 
+      #{fecha_modificacion,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.acme.domain.mybatis.model.PagoExpediente" useGeneratedKeys="true" keyProperty="id_pago_expediente" >
+    insert into tramdoc.pago_expediente
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id_expediente != null" >
+        id_expediente,
+      </if>
+      <if test="id_tipo_pago != null" >
+        id_tipo_pago,
+      </if>
+      <if test="fecha_informe != null" >
+        fecha_informe,
+      </if>
+      <if test="fecha_pago != null" >
+        fecha_pago,
+      </if>
+      <if test="consolidado != null" >
+        consolidado,
+      </if>
+      <if test="id_estado != null" >
+        id_estado,
+      </if>
+      <if test="id_usuario_reg != null" >
+        id_usuario_reg,
+      </if>
+      <if test="fecha_registro != null" >
+        fecha_registro,
+      </if>
+      <if test="id_usuario_mod != null" >
+        id_usuario_mod,
+      </if>
+      <if test="fecha_modificacion != null" >
+        fecha_modificacion,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id_expediente != null" >
+        #{id_expediente,jdbcType=INTEGER},
+      </if>
+      <if test="id_tipo_pago != null" >
+        #{id_tipo_pago,jdbcType=INTEGER},
+      </if>
+      <if test="fecha_informe != null" >
+        #{fecha_informe,jdbcType=DATE},
+      </if>
+      <if test="fecha_pago != null" >
+        #{fecha_pago,jdbcType=DATE},
+      </if>
+      <if test="consolidado != null" >
+        #{consolidado,jdbcType=VARCHAR},
+      </if>
+      <if test="id_estado != null" >
+        #{id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="id_usuario_reg != null" >
+        #{id_usuario_reg,jdbcType=INTEGER},
+      </if>
+      <if test="fecha_registro != null" >
+        #{fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+      <if test="id_usuario_mod != null" >
+        #{id_usuario_mod,jdbcType=INTEGER},
+      </if>
+      <if test="fecha_modificacion != null" >
+        #{fecha_modificacion,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.acme.domain.mybatis.model.PagoExpedienteExample" resultType="java.lang.Integer" >
+    select count(*) from tramdoc.pago_expediente
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tramdoc.pago_expediente
+    <set >
+      <if test="record.id_pago_expediente != null" >
+        id_pago_expediente = #{record.id_pago_expediente,jdbcType=INTEGER},
+      </if>
+      <if test="record.id_expediente != null" >
+        id_expediente = #{record.id_expediente,jdbcType=INTEGER},
+      </if>
+      <if test="record.id_tipo_pago != null" >
+        id_tipo_pago = #{record.id_tipo_pago,jdbcType=INTEGER},
+      </if>
+      <if test="record.fecha_informe != null" >
+        fecha_informe = #{record.fecha_informe,jdbcType=DATE},
+      </if>
+      <if test="record.fecha_pago != null" >
+        fecha_pago = #{record.fecha_pago,jdbcType=DATE},
+      </if>
+      <if test="record.consolidado != null" >
+        consolidado = #{record.consolidado,jdbcType=VARCHAR},
+      </if>
+      <if test="record.id_estado != null" >
+        id_estado = #{record.id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="record.id_usuario_reg != null" >
+        id_usuario_reg = #{record.id_usuario_reg,jdbcType=INTEGER},
+      </if>
+      <if test="record.fecha_registro != null" >
+        fecha_registro = #{record.fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.id_usuario_mod != null" >
+        id_usuario_mod = #{record.id_usuario_mod,jdbcType=INTEGER},
+      </if>
+      <if test="record.fecha_modificacion != null" >
+        fecha_modificacion = #{record.fecha_modificacion,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tramdoc.pago_expediente
+    set id_pago_expediente = #{record.id_pago_expediente,jdbcType=INTEGER},
+      id_expediente = #{record.id_expediente,jdbcType=INTEGER},
+      id_tipo_pago = #{record.id_tipo_pago,jdbcType=INTEGER},
+      fecha_informe = #{record.fecha_informe,jdbcType=DATE},
+      fecha_pago = #{record.fecha_pago,jdbcType=DATE},
+      consolidado = #{record.consolidado,jdbcType=VARCHAR},
+      id_estado = #{record.id_estado,jdbcType=INTEGER},
+      id_usuario_reg = #{record.id_usuario_reg,jdbcType=INTEGER},
+      fecha_registro = #{record.fecha_registro,jdbcType=TIMESTAMP},
+      id_usuario_mod = #{record.id_usuario_mod,jdbcType=INTEGER},
+      fecha_modificacion = #{record.fecha_modificacion,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.acme.domain.mybatis.model.PagoExpediente" >
+    update tramdoc.pago_expediente
+    <set >
+      <if test="id_expediente != null" >
+        id_expediente = #{id_expediente,jdbcType=INTEGER},
+      </if>
+      <if test="id_tipo_pago != null" >
+        id_tipo_pago = #{id_tipo_pago,jdbcType=INTEGER},
+      </if>
+      <if test="fecha_informe != null" >
+        fecha_informe = #{fecha_informe,jdbcType=DATE},
+      </if>
+      <if test="fecha_pago != null" >
+        fecha_pago = #{fecha_pago,jdbcType=DATE},
+      </if>
+      <if test="consolidado != null" >
+        consolidado = #{consolidado,jdbcType=VARCHAR},
+      </if>
+      <if test="id_estado != null" >
+        id_estado = #{id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="id_usuario_reg != null" >
+        id_usuario_reg = #{id_usuario_reg,jdbcType=INTEGER},
+      </if>
+      <if test="fecha_registro != null" >
+        fecha_registro = #{fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+      <if test="id_usuario_mod != null" >
+        id_usuario_mod = #{id_usuario_mod,jdbcType=INTEGER},
+      </if>
+      <if test="fecha_modificacion != null" >
+        fecha_modificacion = #{fecha_modificacion,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id_pago_expediente = #{id_pago_expediente,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.acme.domain.mybatis.model.PagoExpediente" >
+    update tramdoc.pago_expediente
+    set id_expediente = #{id_expediente,jdbcType=INTEGER},
+      id_tipo_pago = #{id_tipo_pago,jdbcType=INTEGER},
+      fecha_informe = #{fecha_informe,jdbcType=DATE},
+      fecha_pago = #{fecha_pago,jdbcType=DATE},
+      consolidado = #{consolidado,jdbcType=VARCHAR},
+      id_estado = #{id_estado,jdbcType=INTEGER},
+      id_usuario_reg = #{id_usuario_reg,jdbcType=INTEGER},
+      fecha_registro = #{fecha_registro,jdbcType=TIMESTAMP},
+      id_usuario_mod = #{id_usuario_mod,jdbcType=INTEGER},
+      fecha_modificacion = #{fecha_modificacion,jdbcType=TIMESTAMP}
+    where id_pago_expediente = #{id_pago_expediente,jdbcType=INTEGER}
+  </update>
+  <select resultMap="BaseResultMap" parameterType="pe.com.acme.domain.mybatis.model.PagoExpedienteExample" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tramdoc.pago_expediente
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

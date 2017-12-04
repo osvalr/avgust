@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.ResponsableSernanpQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.ResponsableSernanpQuery" parameterType="sernanp.app.dao.query.domain.ResponsableSernanpQueryCriteria"> 
+<![CDATA[
+
+	      
+	      
+			select 
+			
+				rs.srl_id_resp_sernanp ,
+				rs.idpersonal ,
+				rs.int_id_tipo_responsable ,
+				rs.int_id_estado ,
+				rs.tsp_fecha_inicio_ejercicio ,
+				rs.tsp_fecha_fin_ejercicio ,
+				rs.int_tipo_trato 
+			
+			from sernanp.t_responsable_sernanp rs
+			where 
+			
+				rs.tsp_fecha_inicio_ejercicio = (select max(rs.tsp_fecha_inicio_ejercicio) from sernanp.t_responsable_sernanp rs 
+								where rs.tsp_fecha_inicio_ejercicio <= #{tsp_fecha_inicio_ejercicio} and 
+								rs.int_id_estado = 1)
+			
+		  
+	      
+]]>
+</select> 
+</mapper> 

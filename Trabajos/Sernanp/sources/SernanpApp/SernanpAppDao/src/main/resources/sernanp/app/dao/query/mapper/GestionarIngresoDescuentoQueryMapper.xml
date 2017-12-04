@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.GestionarIngresoDescuentoQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+ 
+  idp.srl_id_ingreso_descuento_planilla,
+  idp.int_id_tipo_ingreso_descuento,
+  vtidp.destablatipo AS descrip_tipo_ingreso_descuento,
+  idp.int_id_subtipo_ingreso_descuento,
+  vstidp.destablatipo AS descrip_subtipo_ingreso_descuento,
+  idp.var_cod_ingreso_descuento,
+  idp.var_descrip_ingreso_descuento,
+  idp.var_descrip_corto_ingreso_descuento,
+  idp.var_cod_pdt,
+  idp.var_cod_mef,
+  idp.srl_id_afp,
+  afp.var_cod_afp,
+  afp.var_nombre_afp,
+
+  idp.int_id_tipo_monto,
+  vtm.destablatipo AS descrip_tipo_monto,
+  idp.dec_monto_ingreso_descuento,
+  idp.int_id_estado,
+  vteg.destablatipo AS descrip_estado,
+  to_char(idp.tsp_fecha_registro,'dd/mm/yyyy') as tsp_fecha_registro
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+  sernanp.t_ingreso_descuento_planilla idp
+  LEFT JOIN sernanp.t_afp afp ON (idp.srl_id_afp = afp.srl_id_afp)
+  LEFT JOIN sernanp.vw_tipo_monto vtm ON (idp.int_id_tipo_monto = vtm.codinttablatipo)
+  LEFT JOIN sernanp.vw_estado_generico vteg ON (idp.int_id_estado = vteg.codinttablatipo)
+  LEFT JOIN sernanp.vw_ingreso_descuento_planilla vtidp ON (idp.int_id_tipo_ingreso_descuento = vtidp.codinttablatipo)
+  LEFT JOIN sernanp.vw_sub_tipo_ingreso_descuento_planilla vstidp ON (idp.int_id_subtipo_ingreso_descuento = vstidp.codinttablatipo)
+
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+
+idp.srl_id_ingreso_descuento_planilla = COALESCE(#{srl_id_ingreso_descuento_planilla},idp.srl_id_ingreso_descuento_planilla) AND
+idp.var_cod_ingreso_descuento like COALESCE('%' || #{var_cod_ingreso_descuento} || '%',idp.var_cod_ingreso_descuento) and
+idp.var_descrip_corto_ingreso_descuento like COALESCE('%' || #{var_descrip_corto_ingreso_descuento} || '%',idp.var_descrip_corto_ingreso_descuento) and
+idp.var_cod_pdt like COALESCE('%' || #{var_cod_pdt} || '%',idp.var_cod_pdt) and
+COALESCE(idp.var_cod_mef,'') like COALESCE('%' || #{var_cod_mef} || '%',COALESCE(idp.var_cod_mef,'')) and
+idp.int_id_tipo_ingreso_descuento = COALESCE(#{int_id_tipo_ingreso_descuento},idp.int_id_tipo_ingreso_descuento) and
+idp.int_id_subtipo_ingreso_descuento = COALESCE(#{int_id_subtipo_ingreso_descuento},idp.int_id_subtipo_ingreso_descuento) and
+idp.int_id_estado = COALESCE(#{int_id_estado},idp.int_id_estado)
+
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.GestionarIngresoDescuentoQuery" parameterType="sernanp.app.dao.query.domain.GestionarIngresoDescuentoQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.GestionarIngresoDescuentoQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.GestionarIngresoDescuentoQuery" parameterType="sernanp.app.dao.query.domain.GestionarIngresoDescuentoQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.GestionarIngresoDescuentoQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.GestionarIngresoDescuentoQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

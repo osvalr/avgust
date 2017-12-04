@@ -1,0 +1,7 @@
+{
+	"titleCrud": "Instituciones Académicas",
+	"nameCrud": "InstitucionAcademica",
+	"constUrlApi": "INSTITUCIONES_ACADEMICAS_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "InstitucionAcademicaModel.xml"
+}

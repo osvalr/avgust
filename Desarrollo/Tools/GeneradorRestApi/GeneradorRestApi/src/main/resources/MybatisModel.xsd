@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.jrtotem.com.pe"
+            targetNamespace="http://www.jrtotem.com.pe" elementFormDefault="qualified">
+  <xsd:element name="model" type="ModelType">
+    <xsd:annotation>
+      <xsd:documentation>A sample element</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="ModelType">
+    <xsd:sequence>
+      <xsd:element name="name" type="xsd:string"/>
+      <xsd:element name="mainPath" type="xsd:string"/>
+      <xsd:element name="modelPath" type="xsd:string"/>
+      <xsd:element name="criteriaPath" type="xsd:string"/>
+      <xsd:element name="mapperPath" type="xsd:string"/>
+      <xsd:element name="xmlMapperPath" type="xsd:string"/>
+      
+      <xsd:element name="nameModel" type="xsd:string"/>
+      <xsd:element name="nameCriteria" type="xsd:string"/>
+      <xsd:element name="nameMapper" type="xsd:string"/>
+      <xsd:element name="nameXmlMapper" type="xsd:string"/>
+      
+      <xsd:element name="namespaceModel" type="xsd:string"/>
+      <xsd:element name="namespaceCriteria" type="xsd:string"/>
+      <xsd:element name="namespaceMapper" type="xsd:string"/>
+      <xsd:element name="namespaceXmlMapper" type="xsd:string"/>
+      
+      <xsd:element name="packageModel" type="xsd:string"/>
+      <xsd:element name="packageCriteria" type="xsd:string"/>
+      <xsd:element name="packageMapper" type="xsd:string"/>
+      <xsd:element name="packageXmlMapper" type="xsd:string"/>
+      
+      <xsd:element name="outputProperties" type="PropertiesType"/>
+      <xsd:element name="inputProperties" type="PropertiesType"/>
+      <xsd:element name="subModels" type="SubModelsType" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PropertyType">
+    <xsd:sequence>
+      <xsd:element name="name" type="xsd:string"/>
+      <xsd:element name="dataType" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SubModelType">
+    <xsd:sequence>
+      <xsd:element name="model" type="ModelType"/>
+      <xsd:element name="order" type="xsd:integer"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PropertiesType">
+    <xsd:sequence>
+      <xsd:element name="property" type="PropertyType" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SubModelsType">
+    <xsd:sequence>
+      <xsd:element name="subModel" type="ModelType" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

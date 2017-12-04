@@ -1,0 +1,70 @@
+
+/* CSS Mini Reset */
+
+.ui-tabs .ui-tabs-panel { display: block; border-width: 0; padding: 1em 1.4em; background: none; }
+
+.cboRegRecInf, .cboBuscarRecInf {
+text-transform: uppercase;
+font-size: 11px;
+}
+
+.rowlistbiblio {
+text-transform: uppercase;
+font-size: 9px;
+}
+
+
+.lblReg{
+	font-size: 9px;
+	color:black;
+}
+
+.fsMarco{
+	 padding:5px 20px; 
+	 background:#fff;
+	 margin-bottom:20px;
+}
+.fsMarco textarea{
+	padding:3px;
+}
+.fsMarco a{text-decoration:none;}
+.fsMarco label{font:bold 10px Verdana;text-transform:uppercase;}
+.fsMarco th label{font-size:8px}
+.lgMarco{
+ padding-top:0.2px; 
+ font-size:16px;
+}
+.ui-widget .ui-dialog-titlebar{display:none;}
+
+
+.rowReg {
+  margin: .4em 0;
+}
+
+.etqReg {
+  display: block;
+  margin: .5em 0 0 0;
+  width: 16%;
+  float: left;
+}
+
+.quitArchRecInf{background-image:url(../img/eliminar.png);}
+
+
+#filters .row{border-bottom:1px solid #ddd;overflow:hidden;}
+#filters select{width:95%;}
+
+.reset{border:none;cursor:pointer;font-weight:bold;}
+.reset:hover{text-decoration:uppercase;}
+.totalresults{font-weight:bold;font-size:11px;padding:0 10px;}
+#exportar{font-weight:bold;}
+#exportar * {vertical-align:middle;}
+#exportar span{padding-right:10px;}
+#exportar a{font:bold 13px Verdana;text-transform:uppercase;color:#999;}
+#exportar a:hover{color:#000;}
+
+
+
+
+
+

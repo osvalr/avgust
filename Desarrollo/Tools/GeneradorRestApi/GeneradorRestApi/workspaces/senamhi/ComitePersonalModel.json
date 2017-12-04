@@ -1,0 +1,6 @@
+{
+	"nameCrud": "ComitePersonalModel",
+	"path": "comites-evaluacion-personal",
+	"nameRepository": "TComitePersonalRepository",
+	"nameModelXml": "ComitePersonalModel.xml"
+}

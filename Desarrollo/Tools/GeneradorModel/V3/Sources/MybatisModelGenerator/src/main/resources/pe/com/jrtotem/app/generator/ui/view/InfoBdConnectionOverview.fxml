@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pe.com.jrtotem.app.generator.ui.controller.InfoDbConnectionOverviewController">
+   <children>
+      <BorderPane prefHeight="260.0" prefWidth="803.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+         <center>
+            <GridPane BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="152.0" minHeight="25.0" prefHeight="39.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="235.0" minHeight="10.0" prefHeight="221.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <HBox prefHeight="41.0" prefWidth="803.0">
+                     <children>
+                        <Button fx:id="btnNew" mnemonicParsing="false" onAction="#handleNew" prefWidth="90.0" text="New">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin></Button>
+                        <Button fx:id="btnEdit" mnemonicParsing="false" onAction="#handleEdit" prefWidth="90.0" text="Edit">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin></Button>
+                        <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#handleDelete" prefWidth="90.0" text="Delete">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <GridPane.margin>
+                        <Insets top="5.0" />
+                     </GridPane.margin>
+                  </HBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
+                     <children>
+                        <TableView fx:id="table">
+                          <columns>
+                            <TableColumn fx:id="c_id_info_db_connection" prefWidth="37.0" text="Id" />
+                              <TableColumn fx:id="c_name" prefWidth="113.0" text="Name" />
+                              <TableColumn fx:id="c_engine" prefWidth="105.0" text="Engine" />
+                              <TableColumn fx:id="c_url" prefWidth="247.0" text="Url" />
+                              <TableColumn fx:id="c_jdbc_class" prefWidth="208.0" text="Class" />
+                              <TableColumn fx:id="c_date_record" maxWidth="900.0" minWidth="0.0" prefWidth="92.0" text="Date Record" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </VBox>
+               </children>
+            </GridPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

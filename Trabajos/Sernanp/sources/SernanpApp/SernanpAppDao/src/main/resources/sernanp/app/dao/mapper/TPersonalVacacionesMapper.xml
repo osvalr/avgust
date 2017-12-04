@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sernanp.app.dao.mapper.TPersonalVacacionesMapper" >
+  <resultMap id="BaseResultMap" type="sernanp.app.dao.domain.TPersonalVacaciones" >
+    <id column="srl_id_pers_vac" property="srl_id_pers_vac" jdbcType="INTEGER" />
+    <result column="int_periodo_vac" property="int_periodo_vac" jdbcType="INTEGER" />
+    <result column="dte_fec_inicio_programacion_vac" property="dte_fec_inicio_programacion_vac" jdbcType="DATE" />
+    <result column="int_est_vacaciones" property="int_est_vacaciones" jdbcType="INTEGER" />
+    <result column="tsp_fec_sys_crea" property="tsp_fec_sys_crea" jdbcType="TIMESTAMP" />
+    <result column="tsp_fec_sys_mod" property="tsp_fec_sys_mod" jdbcType="TIMESTAMP" />
+    <result column="idpersonal" property="idpersonal" jdbcType="INTEGER" />
+    <result column="int_dias_vac_corresponde" property="int_dias_vac_corresponde" jdbcType="INTEGER" />
+    <result column="int_dias_vac_goce" property="int_dias_vac_goce" jdbcType="INTEGER" />
+    <result column="int_dias_vac_truncas" property="int_dias_vac_truncas" jdbcType="NUMERIC" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    srl_id_pers_vac, int_periodo_vac, dte_fec_inicio_programacion_vac, int_est_vacaciones, 
+    tsp_fec_sys_crea, tsp_fec_sys_mod, idpersonal, int_dias_vac_corresponde, int_dias_vac_goce, 
+    int_dias_vac_truncas
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TPersonalVacacionesExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sernanp.t_personal_vacaciones
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TPersonalVacacionesKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from sernanp.t_personal_vacaciones
+    where srl_id_pers_vac = #{srl_id_pers_vac,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="sernanp.app.dao.domain.TPersonalVacacionesKey" >
+    delete from sernanp.t_personal_vacaciones
+    where srl_id_pers_vac = #{srl_id_pers_vac,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sernanp.app.dao.domain.TPersonalVacacionesExample" >
+    delete from sernanp.t_personal_vacaciones
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sernanp.app.dao.domain.TPersonalVacaciones" useGeneratedKeys="true" keyProperty="srl_id_pers_vac" >
+    insert into sernanp.t_personal_vacaciones (int_periodo_vac, dte_fec_inicio_programacion_vac, 
+      int_est_vacaciones, tsp_fec_sys_crea, 
+      tsp_fec_sys_mod, idpersonal, int_dias_vac_corresponde, 
+      int_dias_vac_goce, int_dias_vac_truncas
+      )
+    values (#{int_periodo_vac,jdbcType=INTEGER}, #{dte_fec_inicio_programacion_vac,jdbcType=DATE}, 
+      #{int_est_vacaciones,jdbcType=INTEGER}, #{tsp_fec_sys_crea,jdbcType=TIMESTAMP}, 
+      #{tsp_fec_sys_mod,jdbcType=TIMESTAMP}, #{idpersonal,jdbcType=INTEGER}, #{int_dias_vac_corresponde,jdbcType=INTEGER}, 
+      #{int_dias_vac_goce,jdbcType=INTEGER}, #{int_dias_vac_truncas,jdbcType=NUMERIC}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="sernanp.app.dao.domain.TPersonalVacaciones" useGeneratedKeys="true" keyProperty="srl_id_pers_vac" >
+    insert into sernanp.t_personal_vacaciones
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="int_periodo_vac != null" >
+        int_periodo_vac,
+      </if>
+      <if test="dte_fec_inicio_programacion_vac != null" >
+        dte_fec_inicio_programacion_vac,
+      </if>
+      <if test="int_est_vacaciones != null" >
+        int_est_vacaciones,
+      </if>
+      <if test="tsp_fec_sys_crea != null" >
+        tsp_fec_sys_crea,
+      </if>
+      <if test="tsp_fec_sys_mod != null" >
+        tsp_fec_sys_mod,
+      </if>
+      <if test="idpersonal != null" >
+        idpersonal,
+      </if>
+      <if test="int_dias_vac_corresponde != null" >
+        int_dias_vac_corresponde,
+      </if>
+      <if test="int_dias_vac_goce != null" >
+        int_dias_vac_goce,
+      </if>
+      <if test="int_dias_vac_truncas != null" >
+        int_dias_vac_truncas,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="int_periodo_vac != null" >
+        #{int_periodo_vac,jdbcType=INTEGER},
+      </if>
+      <if test="dte_fec_inicio_programacion_vac != null" >
+        #{dte_fec_inicio_programacion_vac,jdbcType=DATE},
+      </if>
+      <if test="int_est_vacaciones != null" >
+        #{int_est_vacaciones,jdbcType=INTEGER},
+      </if>
+      <if test="tsp_fec_sys_crea != null" >
+        #{tsp_fec_sys_crea,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tsp_fec_sys_mod != null" >
+        #{tsp_fec_sys_mod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idpersonal != null" >
+        #{idpersonal,jdbcType=INTEGER},
+      </if>
+      <if test="int_dias_vac_corresponde != null" >
+        #{int_dias_vac_corresponde,jdbcType=INTEGER},
+      </if>
+      <if test="int_dias_vac_goce != null" >
+        #{int_dias_vac_goce,jdbcType=INTEGER},
+      </if>
+      <if test="int_dias_vac_truncas != null" >
+        #{int_dias_vac_truncas,jdbcType=NUMERIC},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sernanp.app.dao.domain.TPersonalVacacionesExample" resultType="java.lang.Integer" >
+    select count(*) from sernanp.t_personal_vacaciones
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sernanp.t_personal_vacaciones
+    <set >
+      <if test="record.srl_id_pers_vac != null" >
+        srl_id_pers_vac = #{record.srl_id_pers_vac,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_periodo_vac != null" >
+        int_periodo_vac = #{record.int_periodo_vac,jdbcType=INTEGER},
+      </if>
+      <if test="record.dte_fec_inicio_programacion_vac != null" >
+        dte_fec_inicio_programacion_vac = #{record.dte_fec_inicio_programacion_vac,jdbcType=DATE},
+      </if>
+      <if test="record.int_est_vacaciones != null" >
+        int_est_vacaciones = #{record.int_est_vacaciones,jdbcType=INTEGER},
+      </if>
+      <if test="record.tsp_fec_sys_crea != null" >
+        tsp_fec_sys_crea = #{record.tsp_fec_sys_crea,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.tsp_fec_sys_mod != null" >
+        tsp_fec_sys_mod = #{record.tsp_fec_sys_mod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.idpersonal != null" >
+        idpersonal = #{record.idpersonal,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_dias_vac_corresponde != null" >
+        int_dias_vac_corresponde = #{record.int_dias_vac_corresponde,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_dias_vac_goce != null" >
+        int_dias_vac_goce = #{record.int_dias_vac_goce,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_dias_vac_truncas != null" >
+        int_dias_vac_truncas = #{record.int_dias_vac_truncas,jdbcType=NUMERIC},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sernanp.t_personal_vacaciones
+    set srl_id_pers_vac = #{record.srl_id_pers_vac,jdbcType=INTEGER},
+      int_periodo_vac = #{record.int_periodo_vac,jdbcType=INTEGER},
+      dte_fec_inicio_programacion_vac = #{record.dte_fec_inicio_programacion_vac,jdbcType=DATE},
+      int_est_vacaciones = #{record.int_est_vacaciones,jdbcType=INTEGER},
+      tsp_fec_sys_crea = #{record.tsp_fec_sys_crea,jdbcType=TIMESTAMP},
+      tsp_fec_sys_mod = #{record.tsp_fec_sys_mod,jdbcType=TIMESTAMP},
+      idpersonal = #{record.idpersonal,jdbcType=INTEGER},
+      int_dias_vac_corresponde = #{record.int_dias_vac_corresponde,jdbcType=INTEGER},
+      int_dias_vac_goce = #{record.int_dias_vac_goce,jdbcType=INTEGER},
+      int_dias_vac_truncas = #{record.int_dias_vac_truncas,jdbcType=NUMERIC}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sernanp.app.dao.domain.TPersonalVacaciones" >
+    update sernanp.t_personal_vacaciones
+    <set >
+      <if test="int_periodo_vac != null" >
+        int_periodo_vac = #{int_periodo_vac,jdbcType=INTEGER},
+      </if>
+      <if test="dte_fec_inicio_programacion_vac != null" >
+        dte_fec_inicio_programacion_vac = #{dte_fec_inicio_programacion_vac,jdbcType=DATE},
+      </if>
+      <if test="int_est_vacaciones != null" >
+        int_est_vacaciones = #{int_est_vacaciones,jdbcType=INTEGER},
+      </if>
+      <if test="tsp_fec_sys_crea != null" >
+        tsp_fec_sys_crea = #{tsp_fec_sys_crea,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tsp_fec_sys_mod != null" >
+        tsp_fec_sys_mod = #{tsp_fec_sys_mod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idpersonal != null" >
+        idpersonal = #{idpersonal,jdbcType=INTEGER},
+      </if>
+      <if test="int_dias_vac_corresponde != null" >
+        int_dias_vac_corresponde = #{int_dias_vac_corresponde,jdbcType=INTEGER},
+      </if>
+      <if test="int_dias_vac_goce != null" >
+        int_dias_vac_goce = #{int_dias_vac_goce,jdbcType=INTEGER},
+      </if>
+      <if test="int_dias_vac_truncas != null" >
+        int_dias_vac_truncas = #{int_dias_vac_truncas,jdbcType=NUMERIC},
+      </if>
+    </set>
+    where srl_id_pers_vac = #{srl_id_pers_vac,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sernanp.app.dao.domain.TPersonalVacaciones" >
+    update sernanp.t_personal_vacaciones
+    set int_periodo_vac = #{int_periodo_vac,jdbcType=INTEGER},
+      dte_fec_inicio_programacion_vac = #{dte_fec_inicio_programacion_vac,jdbcType=DATE},
+      int_est_vacaciones = #{int_est_vacaciones,jdbcType=INTEGER},
+      tsp_fec_sys_crea = #{tsp_fec_sys_crea,jdbcType=TIMESTAMP},
+      tsp_fec_sys_mod = #{tsp_fec_sys_mod,jdbcType=TIMESTAMP},
+      idpersonal = #{idpersonal,jdbcType=INTEGER},
+      int_dias_vac_corresponde = #{int_dias_vac_corresponde,jdbcType=INTEGER},
+      int_dias_vac_goce = #{int_dias_vac_goce,jdbcType=INTEGER},
+      int_dias_vac_truncas = #{int_dias_vac_truncas,jdbcType=NUMERIC}
+    where srl_id_pers_vac = #{srl_id_pers_vac,jdbcType=INTEGER}
+  </update>
+  <select resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TPersonalVacacionesExample" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sernanp.t_personal_vacaciones
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

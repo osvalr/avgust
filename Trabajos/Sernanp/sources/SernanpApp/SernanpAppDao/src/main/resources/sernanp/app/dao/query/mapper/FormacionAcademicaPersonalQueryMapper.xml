@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.FormacionAcademicaPersonalQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.FormacionAcademicaPersonalQuery" parameterType="sernanp.app.dao.query.domain.FormacionAcademicaPersonalQueryCriteria"> 
+<![CDATA[
+
+	      
+	      
+				select
+						  pf.srl_id_personanatural_formacion,
+     					  pl.idpersonal ,
+      					  p.idpersona ,
+      					  pn.idpersonanatural ,
+					      pf.srl_id_grupo_ocupacional ,
+					      (select x.var_desc_grupo_ocupacional from sernanp.t_grupo_ocupacional x where x.srl_id_grupo_ocupacional = pf.srl_id_grupo_ocupacional) as "descrip_grupo_ocupacional",
+					      pf.srl_id_nivel_estudio ,
+					      (select x.var_descripcion_nivel_estudio from sernanp.t_nivel_estudio x where x.srl_id_nivel_estudio = pf.srl_id_nivel_estudio) as "descrip_nivel_estudio",
+					      pf.srl_id_tipo_profesion ,
+					      (select x.var_descripcion_tipo_profesion from sernanp.t_tipo_profesion x where x.srl_id_tipo_profesion = pf.srl_id_tipo_profesion) as "descrip_tipo_profesion",
+					      pf.srl_id_profesion ,
+					      (select x.var_descripcion_profesion from sernanp.t_profesion x where x.srl_id_profesion = pf.srl_id_profesion) as "descrip_profesion",
+					      pf.int_tipo_formacion ,
+					      (select x.destablatipo from sernanp.tablatipo x where x.idtabla = 37 and x.ordtablatipo = pf.int_tipo_formacion)as "descrip_tipo_formacion",
+					      pf.var_descripcion_institucion,
+					      pf.idpais ,
+					      (select x.nompais from sernanp.pais x where x.idpais = pf.idpais) as "descrip_pais",
+					      to_char(pf.dte_fecha_ingreso, 'DD/MM/YYYY') as "dte_fecha_ingreso",
+					      to_char(pf.dte_fecha_culminacion, 'DD/MM/YYYY') as "dte_fecha_culminacion",
+					      pf.int_sigue_estudios 
+					
+				from
+					     sernanp.persona p inner join
+					     sernanp.personanatural pn on p.idpersona = pn.idpersona inner join
+					     sernanp.personal pl on pn.idpersonanatural = pl.idpersonanatural inner join
+					     sernanp.t_personanatural_formacion pf on pn.idpersonanatural = pf.idpersonanatural 
+				where
+				 
+					     p.idpersona = COALESCE(#{idpersona},p.idpersona)   and
+					     pn.idpersonanatural = COALESCE(#{idpersonanatural}, pn.idpersonanatural)   and
+					     pl.idpersonal = COALESCE(#{idpersonal}, pl.idpersonal) and
+					     pf.srl_id_personanatural_formacion =  COALESCE(#{srl_id_personanatural_formacion}, pf.srl_id_personanatural_formacion);      
+					
+				
+		  
+	      
+]]>
+</select> 
+</mapper> 

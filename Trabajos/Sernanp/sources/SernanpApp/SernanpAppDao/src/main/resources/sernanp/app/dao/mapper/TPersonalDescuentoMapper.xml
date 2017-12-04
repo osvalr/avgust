@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sernanp.app.dao.mapper.TPersonalDescuentoMapper" >
+  <resultMap id="BaseResultMap" type="sernanp.app.dao.domain.TPersonalDescuento" >
+    <id column="srl_id_pers_desc" property="srl_id_pers_desc" jdbcType="INTEGER" />
+    <result column="int_periodo_desc" property="int_periodo_desc" jdbcType="INTEGER" />
+    <result column="int_mes_desc" property="int_mes_desc" jdbcType="INTEGER" />
+    <result column="num_monto_desc" property="num_monto_desc" jdbcType="NUMERIC" />
+    <result column="tsp_fec_pers_desc" property="tsp_fec_pers_desc" jdbcType="TIMESTAMP" />
+    <result column="idpersonal" property="idpersonal" jdbcType="INTEGER" />
+    <result column="idtablatipo" property="idtablatipo" jdbcType="INTEGER" />
+    <result column="int_minutos_tardanza" property="int_minutos_tardanza" jdbcType="INTEGER" />
+    <result column="int_cant_inasistencias" property="int_cant_inasistencias" jdbcType="INTEGER" />
+    <result column="int_cant_dias_permiso" property="int_cant_dias_permiso" jdbcType="INTEGER" />
+    <result column="int_cant_dias_licencias_sgh" property="int_cant_dias_licencias_sgh" jdbcType="INTEGER" />
+    <result column="hor_cant_permiso" property="hor_cant_permiso" jdbcType="TIME" />
+    <result column="int_flag_ubicacion" property="int_flag_ubicacion" jdbcType="INTEGER" />
+    <result column="int_id_reg_contractual" property="int_id_reg_contractual" jdbcType="INTEGER" />
+    <result column="int_id_sede" property="int_id_sede" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    srl_id_pers_desc, int_periodo_desc, int_mes_desc, num_monto_desc, tsp_fec_pers_desc, 
+    idpersonal, idtablatipo, int_minutos_tardanza, int_cant_inasistencias, int_cant_dias_permiso, 
+    int_cant_dias_licencias_sgh, hor_cant_permiso, int_flag_ubicacion, int_id_reg_contractual, 
+    int_id_sede
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TPersonalDescuentoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sernanp.t_personal_descuento
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TPersonalDescuentoKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from sernanp.t_personal_descuento
+    where srl_id_pers_desc = #{srl_id_pers_desc,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="sernanp.app.dao.domain.TPersonalDescuentoKey" >
+    delete from sernanp.t_personal_descuento
+    where srl_id_pers_desc = #{srl_id_pers_desc,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sernanp.app.dao.domain.TPersonalDescuentoExample" >
+    delete from sernanp.t_personal_descuento
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sernanp.app.dao.domain.TPersonalDescuento" useGeneratedKeys="true" keyProperty="srl_id_pers_desc" >
+    insert into sernanp.t_personal_descuento (int_periodo_desc, int_mes_desc, num_monto_desc, 
+      tsp_fec_pers_desc, idpersonal, idtablatipo, 
+      int_minutos_tardanza, int_cant_inasistencias, 
+      int_cant_dias_permiso, int_cant_dias_licencias_sgh, 
+      hor_cant_permiso, int_flag_ubicacion, int_id_reg_contractual, 
+      int_id_sede)
+    values (#{int_periodo_desc,jdbcType=INTEGER}, #{int_mes_desc,jdbcType=INTEGER}, #{num_monto_desc,jdbcType=NUMERIC}, 
+      #{tsp_fec_pers_desc,jdbcType=TIMESTAMP}, #{idpersonal,jdbcType=INTEGER}, #{idtablatipo,jdbcType=INTEGER}, 
+      #{int_minutos_tardanza,jdbcType=INTEGER}, #{int_cant_inasistencias,jdbcType=INTEGER}, 
+      #{int_cant_dias_permiso,jdbcType=INTEGER}, #{int_cant_dias_licencias_sgh,jdbcType=INTEGER}, 
+      #{hor_cant_permiso,jdbcType=TIME}, #{int_flag_ubicacion,jdbcType=INTEGER}, #{int_id_reg_contractual,jdbcType=INTEGER}, 
+      #{int_id_sede,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="sernanp.app.dao.domain.TPersonalDescuento" useGeneratedKeys="true" keyProperty="srl_id_pers_desc" >
+    insert into sernanp.t_personal_descuento
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="int_periodo_desc != null" >
+        int_periodo_desc,
+      </if>
+      <if test="int_mes_desc != null" >
+        int_mes_desc,
+      </if>
+      <if test="num_monto_desc != null" >
+        num_monto_desc,
+      </if>
+      <if test="tsp_fec_pers_desc != null" >
+        tsp_fec_pers_desc,
+      </if>
+      <if test="idpersonal != null" >
+        idpersonal,
+      </if>
+      <if test="idtablatipo != null" >
+        idtablatipo,
+      </if>
+      <if test="int_minutos_tardanza != null" >
+        int_minutos_tardanza,
+      </if>
+      <if test="int_cant_inasistencias != null" >
+        int_cant_inasistencias,
+      </if>
+      <if test="int_cant_dias_permiso != null" >
+        int_cant_dias_permiso,
+      </if>
+      <if test="int_cant_dias_licencias_sgh != null" >
+        int_cant_dias_licencias_sgh,
+      </if>
+      <if test="hor_cant_permiso != null" >
+        hor_cant_permiso,
+      </if>
+      <if test="int_flag_ubicacion != null" >
+        int_flag_ubicacion,
+      </if>
+      <if test="int_id_reg_contractual != null" >
+        int_id_reg_contractual,
+      </if>
+      <if test="int_id_sede != null" >
+        int_id_sede,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="int_periodo_desc != null" >
+        #{int_periodo_desc,jdbcType=INTEGER},
+      </if>
+      <if test="int_mes_desc != null" >
+        #{int_mes_desc,jdbcType=INTEGER},
+      </if>
+      <if test="num_monto_desc != null" >
+        #{num_monto_desc,jdbcType=NUMERIC},
+      </if>
+      <if test="tsp_fec_pers_desc != null" >
+        #{tsp_fec_pers_desc,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idpersonal != null" >
+        #{idpersonal,jdbcType=INTEGER},
+      </if>
+      <if test="idtablatipo != null" >
+        #{idtablatipo,jdbcType=INTEGER},
+      </if>
+      <if test="int_minutos_tardanza != null" >
+        #{int_minutos_tardanza,jdbcType=INTEGER},
+      </if>
+      <if test="int_cant_inasistencias != null" >
+        #{int_cant_inasistencias,jdbcType=INTEGER},
+      </if>
+      <if test="int_cant_dias_permiso != null" >
+        #{int_cant_dias_permiso,jdbcType=INTEGER},
+      </if>
+      <if test="int_cant_dias_licencias_sgh != null" >
+        #{int_cant_dias_licencias_sgh,jdbcType=INTEGER},
+      </if>
+      <if test="hor_cant_permiso != null" >
+        #{hor_cant_permiso,jdbcType=TIME},
+      </if>
+      <if test="int_flag_ubicacion != null" >
+        #{int_flag_ubicacion,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_reg_contractual != null" >
+        #{int_id_reg_contractual,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_sede != null" >
+        #{int_id_sede,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sernanp.app.dao.domain.TPersonalDescuentoExample" resultType="java.lang.Integer" >
+    select count(*) from sernanp.t_personal_descuento
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sernanp.t_personal_descuento
+    <set >
+      <if test="record.srl_id_pers_desc != null" >
+        srl_id_pers_desc = #{record.srl_id_pers_desc,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_periodo_desc != null" >
+        int_periodo_desc = #{record.int_periodo_desc,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_mes_desc != null" >
+        int_mes_desc = #{record.int_mes_desc,jdbcType=INTEGER},
+      </if>
+      <if test="record.num_monto_desc != null" >
+        num_monto_desc = #{record.num_monto_desc,jdbcType=NUMERIC},
+      </if>
+      <if test="record.tsp_fec_pers_desc != null" >
+        tsp_fec_pers_desc = #{record.tsp_fec_pers_desc,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.idpersonal != null" >
+        idpersonal = #{record.idpersonal,jdbcType=INTEGER},
+      </if>
+      <if test="record.idtablatipo != null" >
+        idtablatipo = #{record.idtablatipo,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_minutos_tardanza != null" >
+        int_minutos_tardanza = #{record.int_minutos_tardanza,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_cant_inasistencias != null" >
+        int_cant_inasistencias = #{record.int_cant_inasistencias,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_cant_dias_permiso != null" >
+        int_cant_dias_permiso = #{record.int_cant_dias_permiso,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_cant_dias_licencias_sgh != null" >
+        int_cant_dias_licencias_sgh = #{record.int_cant_dias_licencias_sgh,jdbcType=INTEGER},
+      </if>
+      <if test="record.hor_cant_permiso != null" >
+        hor_cant_permiso = #{record.hor_cant_permiso,jdbcType=TIME},
+      </if>
+      <if test="record.int_flag_ubicacion != null" >
+        int_flag_ubicacion = #{record.int_flag_ubicacion,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_id_reg_contractual != null" >
+        int_id_reg_contractual = #{record.int_id_reg_contractual,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_id_sede != null" >
+        int_id_sede = #{record.int_id_sede,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sernanp.t_personal_descuento
+    set srl_id_pers_desc = #{record.srl_id_pers_desc,jdbcType=INTEGER},
+      int_periodo_desc = #{record.int_periodo_desc,jdbcType=INTEGER},
+      int_mes_desc = #{record.int_mes_desc,jdbcType=INTEGER},
+      num_monto_desc = #{record.num_monto_desc,jdbcType=NUMERIC},
+      tsp_fec_pers_desc = #{record.tsp_fec_pers_desc,jdbcType=TIMESTAMP},
+      idpersonal = #{record.idpersonal,jdbcType=INTEGER},
+      idtablatipo = #{record.idtablatipo,jdbcType=INTEGER},
+      int_minutos_tardanza = #{record.int_minutos_tardanza,jdbcType=INTEGER},
+      int_cant_inasistencias = #{record.int_cant_inasistencias,jdbcType=INTEGER},
+      int_cant_dias_permiso = #{record.int_cant_dias_permiso,jdbcType=INTEGER},
+      int_cant_dias_licencias_sgh = #{record.int_cant_dias_licencias_sgh,jdbcType=INTEGER},
+      hor_cant_permiso = #{record.hor_cant_permiso,jdbcType=TIME},
+      int_flag_ubicacion = #{record.int_flag_ubicacion,jdbcType=INTEGER},
+      int_id_reg_contractual = #{record.int_id_reg_contractual,jdbcType=INTEGER},
+      int_id_sede = #{record.int_id_sede,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sernanp.app.dao.domain.TPersonalDescuento" >
+    update sernanp.t_personal_descuento
+    <set >
+      <if test="int_periodo_desc != null" >
+        int_periodo_desc = #{int_periodo_desc,jdbcType=INTEGER},
+      </if>
+      <if test="int_mes_desc != null" >
+        int_mes_desc = #{int_mes_desc,jdbcType=INTEGER},
+      </if>
+      <if test="num_monto_desc != null" >
+        num_monto_desc = #{num_monto_desc,jdbcType=NUMERIC},
+      </if>
+      <if test="tsp_fec_pers_desc != null" >
+        tsp_fec_pers_desc = #{tsp_fec_pers_desc,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idpersonal != null" >
+        idpersonal = #{idpersonal,jdbcType=INTEGER},
+      </if>
+      <if test="idtablatipo != null" >
+        idtablatipo = #{idtablatipo,jdbcType=INTEGER},
+      </if>
+      <if test="int_minutos_tardanza != null" >
+        int_minutos_tardanza = #{int_minutos_tardanza,jdbcType=INTEGER},
+      </if>
+      <if test="int_cant_inasistencias != null" >
+        int_cant_inasistencias = #{int_cant_inasistencias,jdbcType=INTEGER},
+      </if>
+      <if test="int_cant_dias_permiso != null" >
+        int_cant_dias_permiso = #{int_cant_dias_permiso,jdbcType=INTEGER},
+      </if>
+      <if test="int_cant_dias_licencias_sgh != null" >
+        int_cant_dias_licencias_sgh = #{int_cant_dias_licencias_sgh,jdbcType=INTEGER},
+      </if>
+      <if test="hor_cant_permiso != null" >
+        hor_cant_permiso = #{hor_cant_permiso,jdbcType=TIME},
+      </if>
+      <if test="int_flag_ubicacion != null" >
+        int_flag_ubicacion = #{int_flag_ubicacion,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_reg_contractual != null" >
+        int_id_reg_contractual = #{int_id_reg_contractual,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_sede != null" >
+        int_id_sede = #{int_id_sede,jdbcType=INTEGER},
+      </if>
+    </set>
+    where srl_id_pers_desc = #{srl_id_pers_desc,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sernanp.app.dao.domain.TPersonalDescuento" >
+    update sernanp.t_personal_descuento
+    set int_periodo_desc = #{int_periodo_desc,jdbcType=INTEGER},
+      int_mes_desc = #{int_mes_desc,jdbcType=INTEGER},
+      num_monto_desc = #{num_monto_desc,jdbcType=NUMERIC},
+      tsp_fec_pers_desc = #{tsp_fec_pers_desc,jdbcType=TIMESTAMP},
+      idpersonal = #{idpersonal,jdbcType=INTEGER},
+      idtablatipo = #{idtablatipo,jdbcType=INTEGER},
+      int_minutos_tardanza = #{int_minutos_tardanza,jdbcType=INTEGER},
+      int_cant_inasistencias = #{int_cant_inasistencias,jdbcType=INTEGER},
+      int_cant_dias_permiso = #{int_cant_dias_permiso,jdbcType=INTEGER},
+      int_cant_dias_licencias_sgh = #{int_cant_dias_licencias_sgh,jdbcType=INTEGER},
+      hor_cant_permiso = #{hor_cant_permiso,jdbcType=TIME},
+      int_flag_ubicacion = #{int_flag_ubicacion,jdbcType=INTEGER},
+      int_id_reg_contractual = #{int_id_reg_contractual,jdbcType=INTEGER},
+      int_id_sede = #{int_id_sede,jdbcType=INTEGER}
+    where srl_id_pers_desc = #{srl_id_pers_desc,jdbcType=INTEGER}
+  </update>
+</mapper>

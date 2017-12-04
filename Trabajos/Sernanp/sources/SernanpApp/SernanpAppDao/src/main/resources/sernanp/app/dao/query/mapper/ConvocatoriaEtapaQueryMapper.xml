@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.ConvocatoriaEtapaQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+       cfec.srl_id_conv_fecha_etapa_config,
+       c.srl_id_convocatoria,
+       cfec.srl_id_subetapa_proceso_seleccion,
+       sps.var_descrip_subetapa,
+       TO_CHAR(cfec.dte_fecha_inicio,'DD/MM/YYYY') as dte_fecha_inicio,
+       TO_CHAR(cfec.dte_fecha_termino,'DD/MM/YYYY') as dte_fecha_termino,
+       sps.srl_id_etapa_proceso_seleccion,
+       eps.var_nombre_etapa,
+       sps.idarea,
+       ao.desarea,
+       sps.idunidad,
+       uo.nomunidad,
+       cfec.int_id_estado       
+  
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+ 
+       personal.t_conv_fecha_etapa_config cfec
+       LEFT JOIN sernanp.t_convocatoria c ON cfec.srl_id_convocatoria = c.srl_id_convocatoria
+       LEFT JOIN personal.t_subetapa_proceso_seleccion sps ON cfec.srl_id_subetapa_proceso_seleccion = sps.srl_id_subetapa_proceso_seleccion
+       LEFT JOIN personal.t_etapa_proceso_seleccion eps ON sps.srl_id_etapa_proceso_seleccion = eps.srl_id_etapa_proceso_seleccion
+       left join sernanp.areaorganica ao on sps.idarea = ao.idarea
+       left join sernanp.unidadoperativa uo on sps.idunidad = uo.idunidad
+  
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+
+       COALESCE(cfec.srl_id_conv_fecha_etapa_config,0) = COALESCE(#{srl_id_conv_fecha_etapa_config},COALESCE(cfec.srl_id_conv_fecha_etapa_config,0))   AND
+       COALESCE(c.srl_id_convocatoria,0) = COALESCE(#{srl_id_convocatoria},COALESCE(c.srl_id_convocatoria,0)) 
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.ConvocatoriaEtapaQuery" parameterType="sernanp.app.dao.query.domain.ConvocatoriaEtapaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.ConvocatoriaEtapaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.ConvocatoriaEtapaQuery" parameterType="sernanp.app.dao.query.domain.ConvocatoriaEtapaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.ConvocatoriaEtapaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.ConvocatoriaEtapaQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

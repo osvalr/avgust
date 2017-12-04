@@ -1,0 +1,14 @@
+{
+	"titleCrud": "Plantillas de Documentos",
+	"nameCrud": "PlantillaDocumento",
+	"constUrlApi": "PLANTILLA_DOCUMENTO_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "PlantillaDocumentoModel.xml",
+	"subModels": [
+		{
+			"nameModel": "PlantillaDocumentoArchivoModel",
+			"nameCrud": "PlantillaDocumentoArchivo",
+			"autoIdentityPrimaryKey": true
+		}
+	]
+}

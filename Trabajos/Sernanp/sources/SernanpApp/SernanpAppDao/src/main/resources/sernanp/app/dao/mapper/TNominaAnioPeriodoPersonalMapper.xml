@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sernanp.app.dao.mapper.TNominaAnioPeriodoPersonalMapper" >
+  <resultMap id="BaseResultMap" type="sernanp.app.dao.domain.TNominaAnioPeriodoPersonal" >
+    <id column="srl_id_nomina_anio_periodo_personal" property="srl_id_nomina_anio_periodo_personal" jdbcType="INTEGER" />
+    <result column="idpersonal" property="idpersonal" jdbcType="INTEGER" />
+    <result column="srl_id_contrato" property="srl_id_contrato" jdbcType="INTEGER" />
+    <result column="srl_id_anio_periodo_planilla" property="srl_id_anio_periodo_planilla" jdbcType="INTEGER" />
+    <result column="int_id_estado" property="int_id_estado" jdbcType="INTEGER" />
+    <result column="dec_total_ingresos" property="dec_total_ingresos" jdbcType="NUMERIC" />
+    <result column="dec_total_descuentos" property="dec_total_descuentos" jdbcType="NUMERIC" />
+    <result column="dec_total_aportes" property="dec_total_aportes" jdbcType="NUMERIC" />
+    <result column="dec_total_neto" property="dec_total_neto" jdbcType="NUMERIC" />
+    <result column="tsp_fecha_registro" property="tsp_fecha_registro" jdbcType="TIMESTAMP" />
+    <result column="c_meta" property="c_meta" jdbcType="VARCHAR" />
+    <result column="c_fte_fto" property="c_fte_fto" jdbcType="VARCHAR" />
+    <result column="srl_id_regimen_contractual" property="srl_id_regimen_contractual" jdbcType="INTEGER" />
+    <result column="int_id_tipo_registro" property="int_id_tipo_registro" jdbcType="INTEGER" />
+    <result column="idpersonanatural" property="idpersonanatural" jdbcType="INTEGER" />
+    <result column="srl_id_regimen_pensionario" property="srl_id_regimen_pensionario" jdbcType="INTEGER" />
+    <result column="var_ubicacion_fisica" property="var_ubicacion_fisica" jdbcType="VARCHAR" />
+    <result column="srl_id_afp" property="srl_id_afp" jdbcType="INTEGER" />
+    <result column="int_id_tipo_comision" property="int_id_tipo_comision" jdbcType="INTEGER" />
+    <result column="srl_id_entidad_bancaria" property="srl_id_entidad_bancaria" jdbcType="INTEGER" />
+    <result column="var_numero_cuenta_bancaria" property="var_numero_cuenta_bancaria" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    srl_id_nomina_anio_periodo_personal, idpersonal, srl_id_contrato, srl_id_anio_periodo_planilla, 
+    int_id_estado, dec_total_ingresos, dec_total_descuentos, dec_total_aportes, dec_total_neto, 
+    tsp_fecha_registro, c_meta, c_fte_fto, srl_id_regimen_contractual, int_id_tipo_registro, 
+    idpersonanatural, srl_id_regimen_pensionario, var_ubicacion_fisica, srl_id_afp, int_id_tipo_comision, 
+    srl_id_entidad_bancaria, var_numero_cuenta_bancaria
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TNominaAnioPeriodoPersonalExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from personal.t_nomina_anio_periodo_personal
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TNominaAnioPeriodoPersonalKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from personal.t_nomina_anio_periodo_personal
+    where srl_id_nomina_anio_periodo_personal = #{srl_id_nomina_anio_periodo_personal,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="sernanp.app.dao.domain.TNominaAnioPeriodoPersonalKey" >
+    delete from personal.t_nomina_anio_periodo_personal
+    where srl_id_nomina_anio_periodo_personal = #{srl_id_nomina_anio_periodo_personal,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sernanp.app.dao.domain.TNominaAnioPeriodoPersonalExample" >
+    delete from personal.t_nomina_anio_periodo_personal
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sernanp.app.dao.domain.TNominaAnioPeriodoPersonal" useGeneratedKeys="true" keyProperty="srl_id_nomina_anio_periodo_personal" >
+    insert into personal.t_nomina_anio_periodo_personal (idpersonal, srl_id_contrato, srl_id_anio_periodo_planilla, 
+      int_id_estado, dec_total_ingresos, dec_total_descuentos, 
+      dec_total_aportes, dec_total_neto, tsp_fecha_registro, 
+      c_meta, c_fte_fto, srl_id_regimen_contractual, 
+      int_id_tipo_registro, idpersonanatural, 
+      srl_id_regimen_pensionario, var_ubicacion_fisica, 
+      srl_id_afp, int_id_tipo_comision, srl_id_entidad_bancaria, 
+      var_numero_cuenta_bancaria)
+    values (#{idpersonal,jdbcType=INTEGER}, #{srl_id_contrato,jdbcType=INTEGER}, #{srl_id_anio_periodo_planilla,jdbcType=INTEGER}, 
+      #{int_id_estado,jdbcType=INTEGER}, #{dec_total_ingresos,jdbcType=NUMERIC}, #{dec_total_descuentos,jdbcType=NUMERIC}, 
+      #{dec_total_aportes,jdbcType=NUMERIC}, #{dec_total_neto,jdbcType=NUMERIC}, #{tsp_fecha_registro,jdbcType=TIMESTAMP}, 
+      #{c_meta,jdbcType=VARCHAR}, #{c_fte_fto,jdbcType=VARCHAR}, #{srl_id_regimen_contractual,jdbcType=INTEGER}, 
+      #{int_id_tipo_registro,jdbcType=INTEGER}, #{idpersonanatural,jdbcType=INTEGER}, 
+      #{srl_id_regimen_pensionario,jdbcType=INTEGER}, #{var_ubicacion_fisica,jdbcType=VARCHAR}, 
+      #{srl_id_afp,jdbcType=INTEGER}, #{int_id_tipo_comision,jdbcType=INTEGER}, #{srl_id_entidad_bancaria,jdbcType=INTEGER}, 
+      #{var_numero_cuenta_bancaria,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="sernanp.app.dao.domain.TNominaAnioPeriodoPersonal" useGeneratedKeys="true" keyProperty="srl_id_nomina_anio_periodo_personal" >
+    insert into personal.t_nomina_anio_periodo_personal
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="idpersonal != null" >
+        idpersonal,
+      </if>
+      <if test="srl_id_contrato != null" >
+        srl_id_contrato,
+      </if>
+      <if test="srl_id_anio_periodo_planilla != null" >
+        srl_id_anio_periodo_planilla,
+      </if>
+      <if test="int_id_estado != null" >
+        int_id_estado,
+      </if>
+      <if test="dec_total_ingresos != null" >
+        dec_total_ingresos,
+      </if>
+      <if test="dec_total_descuentos != null" >
+        dec_total_descuentos,
+      </if>
+      <if test="dec_total_aportes != null" >
+        dec_total_aportes,
+      </if>
+      <if test="dec_total_neto != null" >
+        dec_total_neto,
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        tsp_fecha_registro,
+      </if>
+      <if test="c_meta != null" >
+        c_meta,
+      </if>
+      <if test="c_fte_fto != null" >
+        c_fte_fto,
+      </if>
+      <if test="srl_id_regimen_contractual != null" >
+        srl_id_regimen_contractual,
+      </if>
+      <if test="int_id_tipo_registro != null" >
+        int_id_tipo_registro,
+      </if>
+      <if test="idpersonanatural != null" >
+        idpersonanatural,
+      </if>
+      <if test="srl_id_regimen_pensionario != null" >
+        srl_id_regimen_pensionario,
+      </if>
+      <if test="var_ubicacion_fisica != null" >
+        var_ubicacion_fisica,
+      </if>
+      <if test="srl_id_afp != null" >
+        srl_id_afp,
+      </if>
+      <if test="int_id_tipo_comision != null" >
+        int_id_tipo_comision,
+      </if>
+      <if test="srl_id_entidad_bancaria != null" >
+        srl_id_entidad_bancaria,
+      </if>
+      <if test="var_numero_cuenta_bancaria != null" >
+        var_numero_cuenta_bancaria,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="idpersonal != null" >
+        #{idpersonal,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_contrato != null" >
+        #{srl_id_contrato,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_anio_periodo_planilla != null" >
+        #{srl_id_anio_periodo_planilla,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_estado != null" >
+        #{int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="dec_total_ingresos != null" >
+        #{dec_total_ingresos,jdbcType=NUMERIC},
+      </if>
+      <if test="dec_total_descuentos != null" >
+        #{dec_total_descuentos,jdbcType=NUMERIC},
+      </if>
+      <if test="dec_total_aportes != null" >
+        #{dec_total_aportes,jdbcType=NUMERIC},
+      </if>
+      <if test="dec_total_neto != null" >
+        #{dec_total_neto,jdbcType=NUMERIC},
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+      <if test="c_meta != null" >
+        #{c_meta,jdbcType=VARCHAR},
+      </if>
+      <if test="c_fte_fto != null" >
+        #{c_fte_fto,jdbcType=VARCHAR},
+      </if>
+      <if test="srl_id_regimen_contractual != null" >
+        #{srl_id_regimen_contractual,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_tipo_registro != null" >
+        #{int_id_tipo_registro,jdbcType=INTEGER},
+      </if>
+      <if test="idpersonanatural != null" >
+        #{idpersonanatural,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_regimen_pensionario != null" >
+        #{srl_id_regimen_pensionario,jdbcType=INTEGER},
+      </if>
+      <if test="var_ubicacion_fisica != null" >
+        #{var_ubicacion_fisica,jdbcType=VARCHAR},
+      </if>
+      <if test="srl_id_afp != null" >
+        #{srl_id_afp,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_tipo_comision != null" >
+        #{int_id_tipo_comision,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_entidad_bancaria != null" >
+        #{srl_id_entidad_bancaria,jdbcType=INTEGER},
+      </if>
+      <if test="var_numero_cuenta_bancaria != null" >
+        #{var_numero_cuenta_bancaria,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sernanp.app.dao.domain.TNominaAnioPeriodoPersonalExample" resultType="java.lang.Integer" >
+    select count(*) from personal.t_nomina_anio_periodo_personal
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update personal.t_nomina_anio_periodo_personal
+    <set >
+      <if test="record.srl_id_nomina_anio_periodo_personal != null" >
+        srl_id_nomina_anio_periodo_personal = #{record.srl_id_nomina_anio_periodo_personal,jdbcType=INTEGER},
+      </if>
+      <if test="record.idpersonal != null" >
+        idpersonal = #{record.idpersonal,jdbcType=INTEGER},
+      </if>
+      <if test="record.srl_id_contrato != null" >
+        srl_id_contrato = #{record.srl_id_contrato,jdbcType=INTEGER},
+      </if>
+      <if test="record.srl_id_anio_periodo_planilla != null" >
+        srl_id_anio_periodo_planilla = #{record.srl_id_anio_periodo_planilla,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_id_estado != null" >
+        int_id_estado = #{record.int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="record.dec_total_ingresos != null" >
+        dec_total_ingresos = #{record.dec_total_ingresos,jdbcType=NUMERIC},
+      </if>
+      <if test="record.dec_total_descuentos != null" >
+        dec_total_descuentos = #{record.dec_total_descuentos,jdbcType=NUMERIC},
+      </if>
+      <if test="record.dec_total_aportes != null" >
+        dec_total_aportes = #{record.dec_total_aportes,jdbcType=NUMERIC},
+      </if>
+      <if test="record.dec_total_neto != null" >
+        dec_total_neto = #{record.dec_total_neto,jdbcType=NUMERIC},
+      </if>
+      <if test="record.tsp_fecha_registro != null" >
+        tsp_fecha_registro = #{record.tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.c_meta != null" >
+        c_meta = #{record.c_meta,jdbcType=VARCHAR},
+      </if>
+      <if test="record.c_fte_fto != null" >
+        c_fte_fto = #{record.c_fte_fto,jdbcType=VARCHAR},
+      </if>
+      <if test="record.srl_id_regimen_contractual != null" >
+        srl_id_regimen_contractual = #{record.srl_id_regimen_contractual,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_id_tipo_registro != null" >
+        int_id_tipo_registro = #{record.int_id_tipo_registro,jdbcType=INTEGER},
+      </if>
+      <if test="record.idpersonanatural != null" >
+        idpersonanatural = #{record.idpersonanatural,jdbcType=INTEGER},
+      </if>
+      <if test="record.srl_id_regimen_pensionario != null" >
+        srl_id_regimen_pensionario = #{record.srl_id_regimen_pensionario,jdbcType=INTEGER},
+      </if>
+      <if test="record.var_ubicacion_fisica != null" >
+        var_ubicacion_fisica = #{record.var_ubicacion_fisica,jdbcType=VARCHAR},
+      </if>
+      <if test="record.srl_id_afp != null" >
+        srl_id_afp = #{record.srl_id_afp,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_id_tipo_comision != null" >
+        int_id_tipo_comision = #{record.int_id_tipo_comision,jdbcType=INTEGER},
+      </if>
+      <if test="record.srl_id_entidad_bancaria != null" >
+        srl_id_entidad_bancaria = #{record.srl_id_entidad_bancaria,jdbcType=INTEGER},
+      </if>
+      <if test="record.var_numero_cuenta_bancaria != null" >
+        var_numero_cuenta_bancaria = #{record.var_numero_cuenta_bancaria,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update personal.t_nomina_anio_periodo_personal
+    set srl_id_nomina_anio_periodo_personal = #{record.srl_id_nomina_anio_periodo_personal,jdbcType=INTEGER},
+      idpersonal = #{record.idpersonal,jdbcType=INTEGER},
+      srl_id_contrato = #{record.srl_id_contrato,jdbcType=INTEGER},
+      srl_id_anio_periodo_planilla = #{record.srl_id_anio_periodo_planilla,jdbcType=INTEGER},
+      int_id_estado = #{record.int_id_estado,jdbcType=INTEGER},
+      dec_total_ingresos = #{record.dec_total_ingresos,jdbcType=NUMERIC},
+      dec_total_descuentos = #{record.dec_total_descuentos,jdbcType=NUMERIC},
+      dec_total_aportes = #{record.dec_total_aportes,jdbcType=NUMERIC},
+      dec_total_neto = #{record.dec_total_neto,jdbcType=NUMERIC},
+      tsp_fecha_registro = #{record.tsp_fecha_registro,jdbcType=TIMESTAMP},
+      c_meta = #{record.c_meta,jdbcType=VARCHAR},
+      c_fte_fto = #{record.c_fte_fto,jdbcType=VARCHAR},
+      srl_id_regimen_contractual = #{record.srl_id_regimen_contractual,jdbcType=INTEGER},
+      int_id_tipo_registro = #{record.int_id_tipo_registro,jdbcType=INTEGER},
+      idpersonanatural = #{record.idpersonanatural,jdbcType=INTEGER},
+      srl_id_regimen_pensionario = #{record.srl_id_regimen_pensionario,jdbcType=INTEGER},
+      var_ubicacion_fisica = #{record.var_ubicacion_fisica,jdbcType=VARCHAR},
+      srl_id_afp = #{record.srl_id_afp,jdbcType=INTEGER},
+      int_id_tipo_comision = #{record.int_id_tipo_comision,jdbcType=INTEGER},
+      srl_id_entidad_bancaria = #{record.srl_id_entidad_bancaria,jdbcType=INTEGER},
+      var_numero_cuenta_bancaria = #{record.var_numero_cuenta_bancaria,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sernanp.app.dao.domain.TNominaAnioPeriodoPersonal" >
+    update personal.t_nomina_anio_periodo_personal
+    <set >
+      <if test="idpersonal != null" >
+        idpersonal = #{idpersonal,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_contrato != null" >
+        srl_id_contrato = #{srl_id_contrato,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_anio_periodo_planilla != null" >
+        srl_id_anio_periodo_planilla = #{srl_id_anio_periodo_planilla,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_estado != null" >
+        int_id_estado = #{int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="dec_total_ingresos != null" >
+        dec_total_ingresos = #{dec_total_ingresos,jdbcType=NUMERIC},
+      </if>
+      <if test="dec_total_descuentos != null" >
+        dec_total_descuentos = #{dec_total_descuentos,jdbcType=NUMERIC},
+      </if>
+      <if test="dec_total_aportes != null" >
+        dec_total_aportes = #{dec_total_aportes,jdbcType=NUMERIC},
+      </if>
+      <if test="dec_total_neto != null" >
+        dec_total_neto = #{dec_total_neto,jdbcType=NUMERIC},
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        tsp_fecha_registro = #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+      <if test="c_meta != null" >
+        c_meta = #{c_meta,jdbcType=VARCHAR},
+      </if>
+      <if test="c_fte_fto != null" >
+        c_fte_fto = #{c_fte_fto,jdbcType=VARCHAR},
+      </if>
+      <if test="srl_id_regimen_contractual != null" >
+        srl_id_regimen_contractual = #{srl_id_regimen_contractual,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_tipo_registro != null" >
+        int_id_tipo_registro = #{int_id_tipo_registro,jdbcType=INTEGER},
+      </if>
+      <if test="idpersonanatural != null" >
+        idpersonanatural = #{idpersonanatural,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_regimen_pensionario != null" >
+        srl_id_regimen_pensionario = #{srl_id_regimen_pensionario,jdbcType=INTEGER},
+      </if>
+      <if test="var_ubicacion_fisica != null" >
+        var_ubicacion_fisica = #{var_ubicacion_fisica,jdbcType=VARCHAR},
+      </if>
+      <if test="srl_id_afp != null" >
+        srl_id_afp = #{srl_id_afp,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_tipo_comision != null" >
+        int_id_tipo_comision = #{int_id_tipo_comision,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_entidad_bancaria != null" >
+        srl_id_entidad_bancaria = #{srl_id_entidad_bancaria,jdbcType=INTEGER},
+      </if>
+      <if test="var_numero_cuenta_bancaria != null" >
+        var_numero_cuenta_bancaria = #{var_numero_cuenta_bancaria,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where srl_id_nomina_anio_periodo_personal = #{srl_id_nomina_anio_periodo_personal,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sernanp.app.dao.domain.TNominaAnioPeriodoPersonal" >
+    update personal.t_nomina_anio_periodo_personal
+    set idpersonal = #{idpersonal,jdbcType=INTEGER},
+      srl_id_contrato = #{srl_id_contrato,jdbcType=INTEGER},
+      srl_id_anio_periodo_planilla = #{srl_id_anio_periodo_planilla,jdbcType=INTEGER},
+      int_id_estado = #{int_id_estado,jdbcType=INTEGER},
+      dec_total_ingresos = #{dec_total_ingresos,jdbcType=NUMERIC},
+      dec_total_descuentos = #{dec_total_descuentos,jdbcType=NUMERIC},
+      dec_total_aportes = #{dec_total_aportes,jdbcType=NUMERIC},
+      dec_total_neto = #{dec_total_neto,jdbcType=NUMERIC},
+      tsp_fecha_registro = #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      c_meta = #{c_meta,jdbcType=VARCHAR},
+      c_fte_fto = #{c_fte_fto,jdbcType=VARCHAR},
+      srl_id_regimen_contractual = #{srl_id_regimen_contractual,jdbcType=INTEGER},
+      int_id_tipo_registro = #{int_id_tipo_registro,jdbcType=INTEGER},
+      idpersonanatural = #{idpersonanatural,jdbcType=INTEGER},
+      srl_id_regimen_pensionario = #{srl_id_regimen_pensionario,jdbcType=INTEGER},
+      var_ubicacion_fisica = #{var_ubicacion_fisica,jdbcType=VARCHAR},
+      srl_id_afp = #{srl_id_afp,jdbcType=INTEGER},
+      int_id_tipo_comision = #{int_id_tipo_comision,jdbcType=INTEGER},
+      srl_id_entidad_bancaria = #{srl_id_entidad_bancaria,jdbcType=INTEGER},
+      var_numero_cuenta_bancaria = #{var_numero_cuenta_bancaria,jdbcType=VARCHAR}
+    where srl_id_nomina_anio_periodo_personal = #{srl_id_nomina_anio_periodo_personal,jdbcType=INTEGER}
+  </update>
+</mapper>

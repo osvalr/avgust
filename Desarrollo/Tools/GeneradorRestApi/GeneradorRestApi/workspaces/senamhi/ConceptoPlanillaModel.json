@@ -1,0 +1,6 @@
+{
+	"nameCrud": "ConceptoPlanilla",
+	"path": "conceptos-planilla",
+	"nameRepository": "TConceptoPlanillaRepository",
+	"nameModelXml": "ConceptoPlanillaModel.xml"
+}

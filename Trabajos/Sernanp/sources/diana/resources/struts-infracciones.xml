@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="infraccion" namespace="/" extends="struts-default,proyecto,json-default,jfreechart-default">
+				
+	<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+	</result-types>
+	
+	<interceptors>
+			<interceptor-stack name="fileUploadStack">
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="i18n" />
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="debugging" />
+				<interceptor-ref name="profiling" />
+				<interceptor-ref name="scopedModelDriven" />
+				<interceptor-ref name="modelDriven" />
+				<interceptor-ref name="fileUpload">
+					<param name="maximumSize">15000000</param>
+					<param name="allowedTypes">application/pdf</param>
+					<!-- <param name="allowedTypes">image/jpeg,image/gif,image/png</param> -->
+				</interceptor-ref>
+				<interceptor-ref name="checkbox" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="actionMappingParams" />
+				<interceptor-ref name="params">
+					<param name="excludeParams"> dojo\..*,^struts\..*</param>
+				</interceptor-ref>
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="excludeMethods"> input,back,cancel,browse</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods"> input,back,cancel,browse</param>
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		
+
+<!-- navegacion -->
+	<action name="nuevoInfractor" class="proyecto.action.InfractorAction" method="nuevoInfractor" >
+	<result name="success" type="tiles">registro.infractor</result>
+	<interceptor-ref name="general" />  
+	<interceptor-ref name="usuario-logeado" />  
+	<interceptor-ref name="basicStack" />  
+	</action>
+	
+ 	<action name="moduloListado" class="proyecto.action.InfractorAction" method="moduloListado" >
+	<result name="success" type="tiles">modulo.listado.infractor</result>
+	<interceptor-ref name="general" />  
+	<interceptor-ref name="usuario-logeado" />  
+	<interceptor-ref name="basicStack" />  
+	</action>
+	
+	
+	<action name="listaInfractoresxanp" class="proyecto.action.InfractorAction" method="listarInfractoresxAnp" >
+	<result name="success" type="tiles">modulo.listadoxanp.infractor</result>
+	<interceptor-ref name="general" />
+	<interceptor-ref name="usuario-logeado" />
+	<interceptor-ref name="basicStack" />
+	<interceptor-ref name="defaultStack" />
+	</action>
+	
+	<action name="listarInfractoresxanp_" class="proyecto.action.InfractorAction" method="listarInfractoresxAnp" >
+	<result name="success" >/infraccion/ajax.infractores.anp.jsp</result>
+	<interceptor-ref name="general" />
+	<interceptor-ref name="usuario-logeado" />
+	<interceptor-ref name="basicStack" />
+	<interceptor-ref name="defaultStack" />	
+	</action>	
+	
+		
+	
+	
+<!-- 	edicion -->
+	<action name="mostrarEditarExpediente" class="proyecto.action.InfractorAction" 
+	method="mostrarEditarExpediente" >
+	<result name="success" type="tiles">actualiza.infractor</result>
+	<interceptor-ref name="general" />  
+	<interceptor-ref name="usuario-logeado" />  
+	<interceptor-ref name="basicStack" />  
+	</action>
+	
+	<!-- guardar expediente  registrarInfractorTrx JCEV 29-10-2012  -->
+	<action name="registraInfractor" class="proyecto.action.InfractorAction" method="registrarInfractorTrx" >
+<!--         <result type="json"><param name="root">datos</param></result> -->
+		<result name="success" >/infraccion/success.registrar.jsp</result>
+		<result name="error" >/infraccion/error.registrar.jsp</result>
+		<result name="input" >/infraccion/error.registrar.jsp</result>
+		
+		<interceptor-ref name="fileUploadStack" />
+<!-- 		<interceptor-ref name="fileUpload" />  -->
+		<interceptor-ref name="basicStack" /> 
+		<interceptor-ref name="general" />  
+		<interceptor-ref name="usuario-logeado" /> 
+	</action>
+
+	
+	<!-- guardar expediente  registrarInfractorTrx -->
+	<action name="oldregistraInfractor" class="proyecto.action.InfractorAction" method="registrarInfractor" >
+		<!-- 
+		JCEV - 24-10-2012, No debe ir al Listado sino indicar si tuvo exito o no la Grabación
+		<result name="success" type="redirect">moduloListado</result>
+		-->
+		
+		<result type="json">
+            	<param name="root">datos</param>
+        </result>
+		
+		
+		<!-- JCEV 24-10-2012 -->
+<!-- 		<result name="success" >/infraccion/success.registrar.jsp</result> -->
+<!-- 		<result name="error" >/infraccion/error.registrar.jsp</result> -->
+	
+		<interceptor-ref name="fileUpload" /> 
+		<interceptor-ref name="basicStack" /> 
+		<interceptor-ref name="general" />  
+		<interceptor-ref name="usuario-logeado" /> 
+	</action>
+
+	
+<!-- ACTUALIZAR expediente-->
+	<action name="actualizarInfractor" class="proyecto.action.InfractorAction" method="actualizarInfractor"	>
+	<result name="success" type="tiles">modulo.listado.infractor</result>
+	<interceptor-ref name="fileUpload" /> 
+	<interceptor-ref name="basicStack" /> 
+	<interceptor-ref name="general" />
+	<interceptor-ref name="defaultStack" />
+	<interceptor-ref name="usuario-logeado" />	 
+	</action>
+
+	<!-- para el modal de infracciones -->
+	<action name="listaInfracciones" class="proyecto.action.InfractorAction" method="listarInfracciones"	>
+	<result name="success" >/infraccion/modal.infraccion.jsp</result>
+	<interceptor-ref name="general" />
+	<interceptor-ref name="usuario-logeado" />
+	<interceptor-ref name="defaultStack" />
+	</action>
+
+	<action name="inicioInfraccion" class="proyecto.action.InfraccionAction" method="iniciarInfracciones" >
+	<result name="success" type="tiles">inicio.infraccion</result>
+
+	<interceptor-ref name="general" />  
+	<interceptor-ref name="usuario-logeado" />   
+	</action>
+	
+	<action name="nuevaInfraccion" class="proyecto.action.InfraccionAction" 
+	method="nuevaInfraccion" >
+	<result name="success" type="tiles">nuevo.infraccion</result>
+
+	<interceptor-ref name="general" />  
+	<interceptor-ref name="usuario-logeado" />   
+	</action>	
+	
+<!-- 	metodo para la verificacion -->
+	<action name="verificaInfractorEnSistema" class="proyecto.action.InfractorAction" method="verificaInfractorEnSistema">
+	    	<result type="json">
+            	<param name="root">datos</param>
+            </result>
+            <interceptor-ref name="general" />
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="defaultStack" />
+	</action>    
+<!-- 	metodo para reficicacion de reincidencias de infracciones -->
+	<action name="verificaReincidenciaInfracciones" class="proyecto.action.InfractorAction" method="verificaReincidenciaInfracciones">
+	    	<result type="json">
+            	<param name="root">datosInfracciones</param>
+            </result>
+            <interceptor-ref name="general" />
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="defaultStack" />
+	</action>
+	
+	
+ 	<action name="listarInfractores" class="proyecto.action.InfractorAction" method="listarInfractores"	>
+	<result name="success" >/infraccion/ajax.infractores.jsp</result>
+	<interceptor-ref name="general" />
+	<interceptor-ref name="usuario-logeado" />
+	<interceptor-ref name="defaultStack" />
+	
+	</action>	
+
+	<action name="listarInfractoresXDocumento" class="proyecto.action.InfractorAction" method="listarInfractoresXDocumento"	>
+	<result name="success" >/infraccion/ajax.infractores.jsp</result>
+	<interceptor-ref name="general" />
+	<interceptor-ref name="basicStack" /> 
+	<interceptor-ref name="usuario-logeado" />
+	<interceptor-ref name="defaultStack" />
+		
+	</action>
+		
+	<!-- JCEV 17-10-2012 Actualiza el Flag de Morosidad	 -->
+	<action name="updateMorosidad" class="proyecto.action.InfractorAction" method="updateFlagMorosidadExpediente">
+		<result name="success" >/infraccion/success.morosidad.jsp</result>
+		<result name="error" >/infraccion/error.morosidad.jsp</result>
+		<interceptor-ref name="general" />
+		<interceptor-ref name="basicStack" /> 
+		<interceptor-ref name="usuario-logeado" />
+		<interceptor-ref name="defaultStack" />		
+	</action>
+	
+	<!-- JCEV 19-10-2012 Actualiza el Pago	 -->
+	<action name="actualizaPagoMoroso" class="proyecto.action.InfractorAction" method="updatePagos">
+<!-- 		
+		<result name="success" >/infraccion/success.pagos.jsp</result>
+		<result name="error" >/infraccion/error.pagos.jsp</result>
+		<interceptor-ref name="general" />
+		<interceptor-ref name="basicStack" /> 
+		<interceptor-ref name="usuario-logeado" />
+		<interceptor-ref name="defaultStack" />
+-->
+		<result name="success" >/infraccion/success.registrar.jsp</result>
+		<result name="error" >/infraccion/error.registrar.jsp</result>
+		<result name="input" >/infraccion/error.registrar.jsp</result>
+		
+		<interceptor-ref name="fileUploadStack" />
+		<interceptor-ref name="basicStack" /> 
+		<interceptor-ref name="general" />  
+		<interceptor-ref name="usuario-logeado" />
+		<interceptor-ref name="defaultStack" />
+				
+	</action>    
+	
+	<!-- JCEV 19-10-2012 Actualiza el Pago	 -->
+	<action name="actualizaEstadoExpediente" class="proyecto.action.InfractorAction" method="updateStatusFile">
+		<result name="success" >/infraccion/success.estadoespediente.jsp</result>
+		<result name="error" >/infraccion/error.estadoespediente.jsp</result>
+		<interceptor-ref name="general" />
+		<interceptor-ref name="basicStack" /> 
+		<interceptor-ref name="usuario-logeado" />
+		<interceptor-ref name="defaultStack" />		
+	</action>    
+	
+	<action name="descargaArchivoExpediente" class="proyecto.action.InfractorAction" method="descargaArchivoExpediente"	>
+	
+	<result name="success" type="stream">
+	  <param name="contentType">${fileContentType}</param>
+	  <param name="inputName">fileInputStream</param>
+	  <param name="contentDisposition">attachment;filename=${fileFileName}</param>
+	  <param name="bufferSize">1024</param>
+	</result>
+	
+	<interceptor-ref name="general" />
+	<interceptor-ref name="basicStack" /> 
+	<interceptor-ref name="usuario-logeado" />
+	<interceptor-ref name="defaultStack" />
+		
+	</action>		
+	
+	</package>
+
+</struts>

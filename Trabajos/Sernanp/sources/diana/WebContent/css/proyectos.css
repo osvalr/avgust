@@ -1,0 +1,162 @@
+
+/* CSS Mini Reset */
+
+
+
+#chartsp .chart{margin:auto;padding-bottom:40px;margin-bottom:50px;border-bottom:1px solid #ccc;}
+#chartsp .chart div{margin:auto;text-align: center;}
+#chartsp h4 strong{font-size:18px;color:#333;display:block;}
+#chartsp h4{text-align:center;font-size:12px;color:#666;}
+#chartsp table{margin-top:30px;}
+#chartsp .chart_div{margin:auto;padding-bottom:40px;margin-bottom:50px;border-bottom:1px solid #ccc;}
+
+
+/*
+.tablaRepProy{border:2px solid #eee;margin:5px 0;}
+.tablaRepProy thead th{vertical-align:middle;padding:5px;font-weight:bold;font-size:13px;background:#EEEEEE;border-bottom:2px solid #CCCCCC;}
+.tablaRepProy thead tr{}
+.tablaRepProy .row td{border-bottom:2px solid #eee;padding:5px;vertical-align:middle;background:#fcfcfc;}
+.tablaRepProy .odd td{background:#fff;}
+*/
+
+
+#tableProy {
+text-align:center;	
+width: 1200px;
+margin-left: auto;
+margin-right: auto;
+}
+
+#fteftoProy {
+text-align:center;	
+width: 800px;
+margin-left: auto;
+margin-right: auto;
+}
+
+#table_div tr:last-child td{font-weight:bold;font-size:14px;background:#eee;padding-top:5px}
+
+
+.cboRegProyecto , .tipobusquedaejecfin , 
+.tipobusquedaejectec, .tipobusquedaftefto, 
+.idmonedaftefto, .idtipocambioftefto{
+text-transform: uppercase;
+font-size: 11px;
+}
+
+
+
+
+.titRep{
+text-align: center;
+font-weight: bold;
+}
+
+.grafico{
+  text-align: center;
+}
+
+.tablaRep {
+  text-align: center;
+}
+
+
+tablaList tr .novig td {
+color: red;
+}
+
+tablaList tr .vig td {
+color: black;
+}
+
+
+.imgProy{
+	/*
+height: 20px;
+width: 25px;  
+*/
+}
+.cboBuscarProyectos{
+font-size: 11px;
+text-transform: uppercase;
+
+}
+.lblReg{
+	font-size: 9px;
+	color:black;
+}
+
+.fsMarco{
+	 padding:5px 20px; 
+	 background:#fff;
+	 margin-bottom:20px;
+}
+.fsMarco textarea{
+	padding:3px;
+}
+.fsMarco a{text-decoration:none;}
+.fsMarco label{font:bold 10px Verdana;text-transform:uppercase;}
+.fsMarco th label{font-size:8px}
+.lgMarco{
+ padding-top:0.2px; 
+ font-size:16px;
+}
+.ui-widget .ui-dialog-titlebar{display:none;}
+.linkPagProy {
+	
+	background-color: #E5E5FF;
+}
+
+.cbdBuscarProyectos {
+	
+	background-color: #E5E5FF;
+}
+
+.rowReg {
+  margin: .4em 0;
+}
+
+.etqReg {
+  display: block;
+  margin: .5em 0 0 0;
+  width: 16%;
+  float: left;
+}
+
+
+ul .listaModal{
+  margin: 0;
+  border: 0 none;
+  padding: 0;
+  list-style: none;
+  height: 24px;
+  list-style-type: square;
+  
+}
+
+ul .listaModal li {
+  list-style: none;
+ }
+.ui-autocomplete {
+		max-height: 100px;
+		overflow-y: auto;
+}
+
+
+.detListaModal{
+list-style-type: square;
+}
+
+#filters .row{border-bottom:1px solid #ddd;overflow:hidden;}
+#filters select{width:95%;}
+#divPagProy a{text-decoration:none;}
+.reset{border:none;cursor:pointer;font-weight:bold;}
+.reset:hover{text-decoration:uppercase;}
+.totalresults{font-weight:bold;font-size:11px;padding:0 10px;}
+#exportar{font-weight:bold;}
+#exportar * {vertical-align:middle;}
+#exportar span{padding-right:10px;}
+#exportar a{font:bold 13px Verdana;text-transform:uppercase;color:#999;}
+#exportar a:hover{color:#000;}
+
+#divListaAnpSel{margin:0 30px 0 0;padding:10px;background:#f5f5f5;}

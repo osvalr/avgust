@@ -1,0 +1,13 @@
+{
+	"nameCrud": "ConfigEtapa",
+	"path": "config-etapa",
+	"nameRepository": "TConfiguracionEvaluacionRepository",
+	"nameModelXml": "ConfigEtapaModel.xml",
+	"subModels": [
+		{
+			"nameRepository": "TConfiguracionEtapaRepository",
+			"nameCrud": "ConfigSubEtapa",
+			"nameSubModel": "ConfigSubEtapaModel"
+		}
+	]
+}

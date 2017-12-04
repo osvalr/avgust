@@ -1,0 +1,13 @@
+{
+	"nameCrud": "AnioEjercicioModel",
+	"path": "anios-ejercicios",
+	"nameRepository": "TAnioEjercicioRepository",
+	"nameModelXml": "AnioEjercicioModel.xml",
+		"subModels": [
+		{
+			"nameRepository": "TMesEjercicioRepository",
+			"nameCrud": "MesEjercicio",
+			"nameSubModel": "MesEjercicioModel"
+		}
+	]
+}

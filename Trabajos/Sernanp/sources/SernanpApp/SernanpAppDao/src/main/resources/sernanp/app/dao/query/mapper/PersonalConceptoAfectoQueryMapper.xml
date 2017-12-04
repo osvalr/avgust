@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.PersonalConceptoAfectoQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+
+pca.srl_id_personal_concepto_afecto,
+pca.srl_id_personal_concepto,
+cp.int_id_tipo_concepto,
+tcp.destablatipo as descrip_tipo_concepto,
+cp.int_id_sub_tipo_concepto,
+stcp.destablatipo as descrip_sub_tipo_concepto,
+pca.srl_id_concepto_planilla,
+cp.var_descrip_concepto,
+pca.int_id_estado,
+eg.destablatipo as descrip_estado,
+to_char(pca.tsp_fecha_registro,'dd/mm/yyyy') as tsp_fecha_registro
+
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+
+personal.t_personal_concepto_afecto pca 
+inner join personal.t_concepto_planilla cp on pca.srl_id_concepto_planilla = cp.srl_id_concepto_planilla
+inner JOIN sernanp.vw_estado_generico eg on pca.int_id_estado = eg.codinttablatipo
+INNER JOIN sernanp.vw_concepto_planilla tcp ON (cp.int_id_tipo_concepto = tcp.codinttablatipo)
+INNER JOIN sernanp.vw_sub_tipo_concepto_planilla stcp ON (cp.int_id_sub_tipo_concepto = stcp.codinttablatipo)
+
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+
+pca.srl_id_personal_concepto_afecto = coalesce(#{srl_id_personal_concepto_afecto},pca.srl_id_personal_concepto_afecto) and
+pca.srl_id_personal_concepto = coalesce(#{srl_id_personal_concepto},pca.srl_id_personal_concepto)
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.PersonalConceptoAfectoQuery" parameterType="sernanp.app.dao.query.domain.PersonalConceptoAfectoQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.PersonalConceptoAfectoQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.PersonalConceptoAfectoQuery" parameterType="sernanp.app.dao.query.domain.PersonalConceptoAfectoQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.PersonalConceptoAfectoQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.PersonalConceptoAfectoQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteEmitirNominaxMesRegimenCAS" columnCount="10" printOrder="Horizontal" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="80" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e71672e3-639b-4de0-af6f-4559b94c1ce3">
+	<property name="ireport.zoom" value="1.2396694214876034"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.export.xls.ignore.cell.background" value="false"/>
+	<property name="net.sf.jasperreports.export.xls.white.page.background" value="false"/>
+	<property name="net.sf.jasperreports.default.font.sizenet.sf.jasperreports.export.xls.remove.empty.space.between.columns" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.detect.cell.type" value="true"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\GITHUB\\sernanp\\Consultoria_planillas_seleccion_personal\\Desarrollo\\SernanpApp\\SernanpAppRrhhWeb\\src\\main\\webapp\\jasper\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="int_anio" class="java.lang.Integer"/>
+	<field name="var_rubro_fte_fto" class="java.lang.String"/>
+	<field name="var_nombre_afp" class="java.lang.String"/>
+	<field name="fte_fto_meta_ubicacion" class="java.lang.String"/>
+	<field name="descrip_periodo" class="java.lang.String"/>
+	<field name="var_codigo_afiliacion" class="java.lang.String"/>
+	<field name="nombre_completo" class="java.lang.String"/>
+	<field name="seguro_invalidez" class="java.lang.Double"/>
+	<field name="comision_variable" class="java.lang.Double"/>
+	<field name="sub_total_retencion" class="java.lang.Double"/>
+	<field name="total" class="java.lang.Double"/>
+	<field name="sueldo" class="java.lang.Double"/>
+	<field name="numerodoc" class="java.lang.String"/>
+	<field name="var_nom_cargo" class="java.lang.String"/>
+	<field name="ubicacion" class="java.lang.String"/>
+	<field name="var_descrip_concepto" class="java.lang.String"/>
+	<field name="dec_monto_calculado" class="java.lang.Double"/>
+	<field name="num_sueldo" class="java.lang.Double"/>
+	<field name="var_num_operacion" class="java.lang.String"/>
+	<field name="dec_total_ingresos" class="java.lang.Double"/>
+	<field name="dec_total_descuentos" class="java.lang.Double"/>
+	<field name="dec_total_aportes" class="java.lang.Double"/>
+	<field name="dec_total_neto" class="java.lang.Double"/>
+	<field name="ruc" class="java.lang.String"/>
+	<field name="c_fte_fto" class="java.lang.String"/>
+	<field name="c_meta" class="java.lang.String"/>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="var_nivel_regimen_contractual" class="java.lang.String"/>
+	<field name="dias" class="java.lang.String"/>
+	<field name="var_descripcion_regimen_contractual" class="java.lang.String"/>
+	<field name="neto_pagar" class="java.lang.Double"/>
+	<field name="var_descrip_corto_concepto" class="java.lang.String"/>
+	<field name="descrip_tipo_concepto" class="java.lang.String"/>
+	<field name="srl_id_regimen_contractual" class="java.lang.Integer"/>
+	<field name="int_id_tipo_concepto" class="java.lang.Integer"/>
+	<variable name="NUMERODOC_COUNT" class="java.lang.Integer" resetType="Group" resetGroup="numerodoc" calculation="Count">
+		<variableExpression><![CDATA[$F{numerodoc}.toString()]]></variableExpression>
+		<initialValueExpression><![CDATA[1]]></initialValueExpression>
+	</variable>
+	<variable name="total_dec_monto_calculado" class="java.lang.Double" resetType="Group" resetGroup="idconcepto" calculation="Sum">
+		<variableExpression><![CDATA[$F{dec_monto_calculado}]]></variableExpression>
+	</variable>
+	<group name="fte_fto_meta_ubicacion" keepTogether="true">
+		<groupExpression><![CDATA[$F{fte_fto_meta_ubicacion}]]></groupExpression>
+		<groupHeader>
+			<band height="28"/>
+		</groupHeader>
+	</group>
+	<group name="numerodoc" keepTogether="true">
+		<groupExpression><![CDATA[$F{numerodoc}]]></groupExpression>
+	</group>
+	<group name="idconcepto">
+		<groupExpression><![CDATA[$F{descrip_tipo_concepto}]]></groupExpression>
+		<groupHeader>
+			<band height="25" splitType="Immediate">
+				<elementGroup/>
+				<textField>
+					<reportElement x="234" y="0" width="111" height="11" uuid="48967980-d329-4d85-9e03-9ec0973be452"/>
+					<textElement>
+						<font fontName="DejaVu Sans" size="6"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dec_monto_calculado}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="12" splitType="Prevent">
+			<textField>
+				<reportElement x="84" y="0" width="76" height="12" uuid="c5ad7371-79e2-4f43-b41c-55e541c0a60d"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="DejaVu Sans" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{var_descrip_corto_concepto}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="15" splitType="Immediate">
+			<textField>
+				<reportElement isPrintRepeatedValues="false" x="25" y="2" width="49" height="9" uuid="94d0b090-50f5-4acc-b44b-2f50dbbe57eb"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="6" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descrip_tipo_concepto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="84" y="2" width="76" height="12" uuid="1a51d8ea-500b-4e40-a24b-f811dab60675"/>
+				<textFieldExpression><![CDATA[$V{total_dec_monto_calculado}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="50"/>
+	</detail>
+</jasperReport>

@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sernanp.app.dao.mapper.TClasificadorMapper" >
+  <resultMap id="BaseResultMap" type="sernanp.app.dao.domain.TClasificador" >
+    <id column="srl_id_clasificador" property="srl_id_clasificador" jdbcType="INTEGER" />
+    <result column="srl_id_generica_gasto" property="srl_id_generica_gasto" jdbcType="INTEGER" />
+    <result column="int_tipo_transaccion" property="int_tipo_transaccion" jdbcType="INTEGER" />
+    <result column="int_cod_generica_gasto" property="int_cod_generica_gasto" jdbcType="INTEGER" />
+    <result column="int_generica_nivel_i" property="int_generica_nivel_i" jdbcType="INTEGER" />
+    <result column="int_generica_nivel_ii" property="int_generica_nivel_ii" jdbcType="INTEGER" />
+    <result column="int_especifica_nivel_i" property="int_especifica_nivel_i" jdbcType="INTEGER" />
+    <result column="int_especifica_nivel_ii" property="int_especifica_nivel_ii" jdbcType="INTEGER" />
+    <result column="var_descrip_clasificador" property="var_descrip_clasificador" jdbcType="VARCHAR" />
+    <result column="var_detalle_clasificador" property="var_detalle_clasificador" jdbcType="VARCHAR" />
+    <result column="int_id_estado" property="int_id_estado" jdbcType="INTEGER" />
+    <result column="tsp_fecha_registro" property="tsp_fecha_registro" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    srl_id_clasificador, srl_id_generica_gasto, int_tipo_transaccion, int_cod_generica_gasto, 
+    int_generica_nivel_i, int_generica_nivel_ii, int_especifica_nivel_i, int_especifica_nivel_ii, 
+    var_descrip_clasificador, var_detalle_clasificador, int_id_estado, tsp_fecha_registro
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TClasificadorExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from mpp.t_clasificador
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TClasificadorKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from mpp.t_clasificador
+    where srl_id_clasificador = #{srl_id_clasificador,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="sernanp.app.dao.domain.TClasificadorKey" >
+    delete from mpp.t_clasificador
+    where srl_id_clasificador = #{srl_id_clasificador,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sernanp.app.dao.domain.TClasificadorExample" >
+    delete from mpp.t_clasificador
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sernanp.app.dao.domain.TClasificador" useGeneratedKeys="true" keyProperty="srl_id_clasificador" >
+    insert into mpp.t_clasificador (srl_id_generica_gasto, int_tipo_transaccion, 
+      int_cod_generica_gasto, int_generica_nivel_i, 
+      int_generica_nivel_ii, int_especifica_nivel_i, 
+      int_especifica_nivel_ii, var_descrip_clasificador, 
+      var_detalle_clasificador, int_id_estado, 
+      tsp_fecha_registro)
+    values (#{srl_id_generica_gasto,jdbcType=INTEGER}, #{int_tipo_transaccion,jdbcType=INTEGER}, 
+      #{int_cod_generica_gasto,jdbcType=INTEGER}, #{int_generica_nivel_i,jdbcType=INTEGER}, 
+      #{int_generica_nivel_ii,jdbcType=INTEGER}, #{int_especifica_nivel_i,jdbcType=INTEGER}, 
+      #{int_especifica_nivel_ii,jdbcType=INTEGER}, #{var_descrip_clasificador,jdbcType=VARCHAR}, 
+      #{var_detalle_clasificador,jdbcType=VARCHAR}, #{int_id_estado,jdbcType=INTEGER}, 
+      #{tsp_fecha_registro,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="sernanp.app.dao.domain.TClasificador" useGeneratedKeys="true" keyProperty="srl_id_clasificador" >
+    insert into mpp.t_clasificador
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="srl_id_generica_gasto != null" >
+        srl_id_generica_gasto,
+      </if>
+      <if test="int_tipo_transaccion != null" >
+        int_tipo_transaccion,
+      </if>
+      <if test="int_cod_generica_gasto != null" >
+        int_cod_generica_gasto,
+      </if>
+      <if test="int_generica_nivel_i != null" >
+        int_generica_nivel_i,
+      </if>
+      <if test="int_generica_nivel_ii != null" >
+        int_generica_nivel_ii,
+      </if>
+      <if test="int_especifica_nivel_i != null" >
+        int_especifica_nivel_i,
+      </if>
+      <if test="int_especifica_nivel_ii != null" >
+        int_especifica_nivel_ii,
+      </if>
+      <if test="var_descrip_clasificador != null" >
+        var_descrip_clasificador,
+      </if>
+      <if test="var_detalle_clasificador != null" >
+        var_detalle_clasificador,
+      </if>
+      <if test="int_id_estado != null" >
+        int_id_estado,
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        tsp_fecha_registro,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="srl_id_generica_gasto != null" >
+        #{srl_id_generica_gasto,jdbcType=INTEGER},
+      </if>
+      <if test="int_tipo_transaccion != null" >
+        #{int_tipo_transaccion,jdbcType=INTEGER},
+      </if>
+      <if test="int_cod_generica_gasto != null" >
+        #{int_cod_generica_gasto,jdbcType=INTEGER},
+      </if>
+      <if test="int_generica_nivel_i != null" >
+        #{int_generica_nivel_i,jdbcType=INTEGER},
+      </if>
+      <if test="int_generica_nivel_ii != null" >
+        #{int_generica_nivel_ii,jdbcType=INTEGER},
+      </if>
+      <if test="int_especifica_nivel_i != null" >
+        #{int_especifica_nivel_i,jdbcType=INTEGER},
+      </if>
+      <if test="int_especifica_nivel_ii != null" >
+        #{int_especifica_nivel_ii,jdbcType=INTEGER},
+      </if>
+      <if test="var_descrip_clasificador != null" >
+        #{var_descrip_clasificador,jdbcType=VARCHAR},
+      </if>
+      <if test="var_detalle_clasificador != null" >
+        #{var_detalle_clasificador,jdbcType=VARCHAR},
+      </if>
+      <if test="int_id_estado != null" >
+        #{int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sernanp.app.dao.domain.TClasificadorExample" resultType="java.lang.Integer" >
+    select count(*) from mpp.t_clasificador
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update mpp.t_clasificador
+    <set >
+      <if test="record.srl_id_clasificador != null" >
+        srl_id_clasificador = #{record.srl_id_clasificador,jdbcType=INTEGER},
+      </if>
+      <if test="record.srl_id_generica_gasto != null" >
+        srl_id_generica_gasto = #{record.srl_id_generica_gasto,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_tipo_transaccion != null" >
+        int_tipo_transaccion = #{record.int_tipo_transaccion,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_cod_generica_gasto != null" >
+        int_cod_generica_gasto = #{record.int_cod_generica_gasto,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_generica_nivel_i != null" >
+        int_generica_nivel_i = #{record.int_generica_nivel_i,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_generica_nivel_ii != null" >
+        int_generica_nivel_ii = #{record.int_generica_nivel_ii,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_especifica_nivel_i != null" >
+        int_especifica_nivel_i = #{record.int_especifica_nivel_i,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_especifica_nivel_ii != null" >
+        int_especifica_nivel_ii = #{record.int_especifica_nivel_ii,jdbcType=INTEGER},
+      </if>
+      <if test="record.var_descrip_clasificador != null" >
+        var_descrip_clasificador = #{record.var_descrip_clasificador,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_detalle_clasificador != null" >
+        var_detalle_clasificador = #{record.var_detalle_clasificador,jdbcType=VARCHAR},
+      </if>
+      <if test="record.int_id_estado != null" >
+        int_id_estado = #{record.int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="record.tsp_fecha_registro != null" >
+        tsp_fecha_registro = #{record.tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update mpp.t_clasificador
+    set srl_id_clasificador = #{record.srl_id_clasificador,jdbcType=INTEGER},
+      srl_id_generica_gasto = #{record.srl_id_generica_gasto,jdbcType=INTEGER},
+      int_tipo_transaccion = #{record.int_tipo_transaccion,jdbcType=INTEGER},
+      int_cod_generica_gasto = #{record.int_cod_generica_gasto,jdbcType=INTEGER},
+      int_generica_nivel_i = #{record.int_generica_nivel_i,jdbcType=INTEGER},
+      int_generica_nivel_ii = #{record.int_generica_nivel_ii,jdbcType=INTEGER},
+      int_especifica_nivel_i = #{record.int_especifica_nivel_i,jdbcType=INTEGER},
+      int_especifica_nivel_ii = #{record.int_especifica_nivel_ii,jdbcType=INTEGER},
+      var_descrip_clasificador = #{record.var_descrip_clasificador,jdbcType=VARCHAR},
+      var_detalle_clasificador = #{record.var_detalle_clasificador,jdbcType=VARCHAR},
+      int_id_estado = #{record.int_id_estado,jdbcType=INTEGER},
+      tsp_fecha_registro = #{record.tsp_fecha_registro,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sernanp.app.dao.domain.TClasificador" >
+    update mpp.t_clasificador
+    <set >
+      <if test="srl_id_generica_gasto != null" >
+        srl_id_generica_gasto = #{srl_id_generica_gasto,jdbcType=INTEGER},
+      </if>
+      <if test="int_tipo_transaccion != null" >
+        int_tipo_transaccion = #{int_tipo_transaccion,jdbcType=INTEGER},
+      </if>
+      <if test="int_cod_generica_gasto != null" >
+        int_cod_generica_gasto = #{int_cod_generica_gasto,jdbcType=INTEGER},
+      </if>
+      <if test="int_generica_nivel_i != null" >
+        int_generica_nivel_i = #{int_generica_nivel_i,jdbcType=INTEGER},
+      </if>
+      <if test="int_generica_nivel_ii != null" >
+        int_generica_nivel_ii = #{int_generica_nivel_ii,jdbcType=INTEGER},
+      </if>
+      <if test="int_especifica_nivel_i != null" >
+        int_especifica_nivel_i = #{int_especifica_nivel_i,jdbcType=INTEGER},
+      </if>
+      <if test="int_especifica_nivel_ii != null" >
+        int_especifica_nivel_ii = #{int_especifica_nivel_ii,jdbcType=INTEGER},
+      </if>
+      <if test="var_descrip_clasificador != null" >
+        var_descrip_clasificador = #{var_descrip_clasificador,jdbcType=VARCHAR},
+      </if>
+      <if test="var_detalle_clasificador != null" >
+        var_detalle_clasificador = #{var_detalle_clasificador,jdbcType=VARCHAR},
+      </if>
+      <if test="int_id_estado != null" >
+        int_id_estado = #{int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        tsp_fecha_registro = #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where srl_id_clasificador = #{srl_id_clasificador,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sernanp.app.dao.domain.TClasificador" >
+    update mpp.t_clasificador
+    set srl_id_generica_gasto = #{srl_id_generica_gasto,jdbcType=INTEGER},
+      int_tipo_transaccion = #{int_tipo_transaccion,jdbcType=INTEGER},
+      int_cod_generica_gasto = #{int_cod_generica_gasto,jdbcType=INTEGER},
+      int_generica_nivel_i = #{int_generica_nivel_i,jdbcType=INTEGER},
+      int_generica_nivel_ii = #{int_generica_nivel_ii,jdbcType=INTEGER},
+      int_especifica_nivel_i = #{int_especifica_nivel_i,jdbcType=INTEGER},
+      int_especifica_nivel_ii = #{int_especifica_nivel_ii,jdbcType=INTEGER},
+      var_descrip_clasificador = #{var_descrip_clasificador,jdbcType=VARCHAR},
+      var_detalle_clasificador = #{var_detalle_clasificador,jdbcType=VARCHAR},
+      int_id_estado = #{int_id_estado,jdbcType=INTEGER},
+      tsp_fecha_registro = #{tsp_fecha_registro,jdbcType=TIMESTAMP}
+    where srl_id_clasificador = #{srl_id_clasificador,jdbcType=INTEGER}
+  </update>
+</mapper>

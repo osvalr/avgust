@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.focus.sakerk.repository.custom.mapper.PersonaNaturalQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+				
+					p.id_persona ,
+					pn.id_persona_natural ,
+					ug.id_ubicacion_geografica,
+					pna.id_archivo,
+					concat(pn.nombres,' ',pn.ape_pater,' ',pn.ape_mater) as "nombres_completos",
+					pn.nombres,
+					pn.ape_pater,
+					pn.ape_mater,
+					p.email,
+					p.id_pais ,
+					ps.nombre_pais,
+					to_char(pn.fecha_nacimiento, 'DD/MM/YYYY') as "fecha_nacimiento",
+					pn.id_tipo_documento ,
+					tdi.descrip_tipo_documento,
+					pn.numero_documento,
+					pn.id_estado_civil ,
+					tec.descrip_estado_civil,
+					pn.id_genero ,
+					tgp.descrip_genero,
+					u.cod_depto,
+					u.descrip_depto,
+					u.cod_prov,
+					u.descrip_prov,
+					ug.id_ubigeo ,
+					u.descrip_ubigeo,
+
+					ug.direccion,
+					ug.cor_x,
+					ug.cor_y,
+
+					cgp.id_congregacion_general as "id_congregacion_general_padre",
+					cgp.nombre_congregacion as "nombre_congregacion_padre",
+					cg.id_congregacion_general as "id_congregacion_general_distrito",
+					cg.nombre_congregacion as "nombre_congregacion_distrito",
+					pj.id_persona_juridica as "id_persona_pertenece",
+					pj.razon_social as "nombre_congregacion_local",
+					pn.nombre_usuario,
+					pn.clave_usuario,
+					p.id_estado ,
+					e.descrip_estado_generico as "descrip_estado",
+					to_char(p.fecha_registro, 'DD/MM/YYYY HH24:MI:ss') as "fecha_registro"
+				
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+				general.persona p 
+				inner join general.persona_natural pn
+				on p.id_persona = pn.id_persona_natural 
+				inner join general.pais ps
+				on p.id_pais = ps.id_pais
+				inner join 
+				vw_tipo_genero_persona tgp
+				on pn.id_genero = tgp.id_genero
+				inner join 
+				vw_tipo_estado_civil tec
+				on pn.id_estado_civil = tec.id_estado_civil
+				inner join 
+				vw_tipo_documento tdi
+				on pn.id_tipo_documento = tdi.id_tipo_documento
+				inner join 
+				vw_estado_generico e
+				on p.id_estado = e.id_estado_generico
+				inner join
+				general.persona_ubicacion_geografica pug
+				on p.id_persona = pug.id_persona
+				inner join general.ubicacion_geografica ug
+				on pug.id_ubicacion_geografica = ug.id_ubicacion_geografica
+				inner join 
+				(
+				select 
+
+				u.id_ubigeo, 
+				d.cod_depto,
+				d.nombre_ubicacion as "descrip_depto",
+				p.cod_prov,
+				p.nombre_ubicacion as "descrip_prov",
+				u.cod_dist,
+				u.nombre_ubicacion as "descrip_ubigeo"
+
+				from 
+				vw_departamentos d
+				inner join vw_provincias p
+				on d.cod_depto = p.cod_depto
+				inner join general.ubigeo u
+				on p.cod_prov = u.cod_prov and u.cod_depto = d.cod_depto and u.cod_dist <> '00' and u.cod_prov <> '00'
+				) u
+				on ug.id_ubigeo = u.id_ubigeo
+				inner join 
+				general.persona_juridica pj
+				on p.id_persona_pertenece = pj.id_persona_juridica
+				inner join
+				sakerk.congregacion_local cl
+				on cl.id_congregacion_local = pj.id_persona_juridica
+				inner join
+				sakerk.congregacion_general cg
+				on cl.id_congregacion_general = cg.id_congregacion_general
+				inner join
+				sakerk.congregacion_general cgp
+				on cg.id_congregacion_padre = cgp.id_congregacion_general
+				left join
+				general.persona_natural_archivo pna
+				on pn.id_persona_natural = pna.id_persona_natural
+				left join
+				general.archivo ach
+				on pna.id_archivo = ach.id_archivo
+				
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+					p.id_persona = COALESCE(#{id_persona},p.id_persona) and
+					(pn.nombres || ' ' || pn.ape_pater || ' ' || pn.ape_mater) like COALESCE(('%' || #{nombres_completos} || '%'),(pn.nombres || ' ' || pn.ape_pater || ' ' || pn.ape_mater)) and
+					pn.id_tipo_documento = COALESCE(#{id_tipo_documento},pn.id_tipo_documento) and
+					pn.numero_documento like COALESCE(('%' || #{numero_documento} || '%'),pn.numero_documento) and
+					pn.id_genero = COALESCE(#{id_genero},pn.id_genero) and
+					p.id_pais = COALESCE(#{id_pais},p.id_pais) and
+					u.cod_depto = COALESCE(#{cod_depto},u.cod_depto) and
+					u.cod_prov = COALESCE(#{cod_prov},u.cod_prov) and
+					ug.id_ubigeo = COALESCE(#{id_ubigeo},ug.id_ubigeo) and
+					cgp.id_congregacion_general = COALESCE(#{id_congregacion_general_padre},cgp.id_congregacion_general) and
+					cg.id_congregacion_general = COALESCE(#{id_congregacion_general_distrito},cg.id_congregacion_general) and
+					pj.id_persona_juridica = COALESCE(#{id_persona_pertenece},pj.id_persona_juridica) and
+					p.id_estado = COALESCE(#{id_estado},p.id_estado)
+				
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.focus.sakerk.repository.custom.model.PersonaNaturalQuery" parameterType="pe.com.focus.sakerk.repository.custom.model.PersonaNaturalQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.focus.sakerk.repository.custom.model.PersonaNaturalQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.focus.sakerk.repository.custom.model.PersonaNaturalQuery" parameterType="pe.com.focus.sakerk.repository.custom.model.PersonaNaturalQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.focus.sakerk.repository.custom.model.PersonaNaturalQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.focus.sakerk.repository.custom.model.PersonaNaturalQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteProyeccionPlanillaFF_Detalle_Subtotal" language="groovy" columnCount="10" pageWidth="1140" pageHeight="555" orientation="Landscape" columnWidth="114" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="b225c9c9-a581-45ce-a9a1-67d9db9feb44">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\GITHUB\\Consultoria_planillas_seleccion_personal\\Desarrollo\\SernanpApp\\SernanpAppRrhhWeb\\src\\main\\webapp\\jasper\\planillas\\"]]></defaultValueExpression>
+	</parameter>
+	<field name="strValor" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<textField pattern="#,##0.00">
+				<reportElement x="0" y="0" width="115" height="16" uuid="573899a3-46c7-4229-983c-79236064279e"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{strValor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,13 @@
+{
+	"nameCrud": "PlazaPostulante",
+	"path": "plaza-postulantes",
+	"nameRepository": "TPlazaPostulanteRepository",
+	"nameModelXml": "PlazaPostulanteModel.xml",
+		"subModels": [
+		{
+			"nameRepository": "TPostulantePuntajeRepository",
+			"nameCrud": "PostulantePuntaje",
+			"nameSubModel": "PostulantePuntajeModel"
+		}
+	]
+}

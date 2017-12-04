@@ -1,0 +1,201 @@
+@CHARSET "UTF-8";
+
+h1 span{font-size:12px;}
+
+#formRegistroFicharegistro legend , 
+#formEditarFicharegistro legend, 
+#formularioFichaAprob legend, 
+#formularioFichaConsolid legend{
+font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+display: block;
+padding: 10px;
+font-weight:bold;
+text-transform:none;
+font-size: 120%;
+}
+label{
+	display: inline-block;
+	color: #333;
+}
+
+.de_1{
+	width: 90px;
+}
+
+.de_2{
+	width: 130px;
+}
+
+.de_3{
+	width: 130px;
+	text-align: right;
+	/*vertical-align: 150%;*/
+}
+
+.dv_2{
+	margin-left: 30px;
+}
+
+.dv_3{
+	margin-left: 100px;
+}
+
+.de_4{
+	width: 190px;
+	margin-top: 15px;
+}
+
+.del_3{
+	vertical-align: top;
+}
+
+#hor-minimalist-a
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	/*background: #fff;*/
+	margin-top: 10px;
+	border-collapse: collapse;
+	text-align: left;
+}
+#hor-minimalist-a th
+{
+	font-size: 14px;
+	font-weight: normal;
+	font-weight: bold;
+	padding: 10px 5px;
+	
+	border-top: 1px solid #333;
+	border-bottom: 1px solid #333;
+}
+#hor-minimalist-a td
+{
+	color: #333;
+	padding: 3px 5px;
+}
+/*
+#hor-minimalist-a tbody tr:hover td
+{
+	color: #000;
+}
+*/
+
+
+.hor-minimalist-a
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	/*background: #fff;*/
+	margin-top: 10px;
+	border-collapse: collapse;
+	text-align: left;
+}
+.hor-minimalist-a th
+{
+	font-size: 14px;
+	font-weight: normal;
+	font-weight: bold;
+	padding: 10px 5px;
+	
+	border-top: 1px solid #333;
+	border-bottom: 1px solid #333;
+}
+.hor-minimalist-a td
+{
+	color: #333;
+	padding: 3px 5px;
+}
+
+.divBtnEnviar{
+	text-align: center;
+}
+
+.divBtnMant{
+	text-align: left;	
+}
+
+.divList{
+	min-height: 100px;
+}
+
+.divaddper label{
+	display: block;
+	font-weight: bold;
+	color: #666;
+}
+
+.divaddper{
+	margin-top:5px;
+	/*border: 1px solid #ccc;*/
+	min-height: 60px;
+	display: block;
+}
+
+.divaddper_ label{
+	display: block;
+	font-weight: bold;
+	color: #666;
+}
+
+.divaddper_{
+	margin-top:5px;
+	border: 1px solid #ccc;
+	min-height: 60px;
+	display: none;
+}
+
+#divModalImportarArchivo, #divModalPersonalRegistro, #divModalDesAprobFicha{
+	display: none;
+}
+
+#divModalImportarArchivo legend {
+font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+display: block;
+padding: 10px;
+font-weight:bold;
+text-transform:none;
+font-size: 120%;
+}
+
+#divContentUpload .divList{
+	display: block;
+	overflow: auto;
+	height: 400px;	
+}
+
+.divCodF{	
+	float: right;
+	font-size: 120%;	
+}
+
+#divContentPersonalReg .divCPR{
+	border: 1px solid #ccc;	
+}
+
+#divContentPersonalReg .divCPR div{	
+	padding:3px;
+}
+
+#divContentPersonalReg .submit2{
+	float: right;
+	
+	}
+
+#divContentPersonalReg label{
+	width: 90px;	
+}
+
+.coment{font-weight: bold; font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;}
+.coment div{
+	float: left;
+	margin: 2px;
+}
+.coment .c1{
+	margin-top: 10px;
+
+	}
+	
+.anp{width:30%;margin:2px;}
+.anp a{border:2px solid #eee;display:block;padding:10px;color:#666;text-decoration:none;font-size:11px;font-weight:bold;}
+.anp a:hover{border-color:#333;color:#333;}
+.anp strong{display:block;font-size:16px;color:#FF8E00;}

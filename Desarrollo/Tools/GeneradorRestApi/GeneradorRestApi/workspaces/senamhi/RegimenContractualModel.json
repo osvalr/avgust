@@ -1,0 +1,13 @@
+{
+	"nameCrud": "RegimenContractual",
+	"path": "regimen-contractual",
+	"nameRepository": "TRegimenContractualRepository",
+	"nameModelXml": "RegimenContractualModel.xml",
+	"subModels": [
+		{
+			"nameRepository": "TRegimenModalidadRepository",
+			"nameCrud": "RegimenModalidad",
+			"nameSubModel": "RegimenModalidadModel"
+		}
+	]
+}

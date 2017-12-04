@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.IngresoDescuentoFrecuenciaQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+ 
+
+fid.srl_id_frecuencia_ingreso_descuento,
+fid.srl_id_ingreso_descuento_planilla,
+fid.int_id_mes,
+m.destablatipo AS descrip_mes,
+fid.int_id_estado,
+eg.destablatipo AS descrip_estado,
+to_char(fid.tsp_fecha_registro, 'dd/mm/yyyy') AS tsp_fecha_registro
+
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+
+sernanp.t_frecuencia_ingreso_descuento fid
+INNER JOIN sernanp.vw_meses m ON (fid.int_id_mes = m.codinttablatipo)
+INNER JOIN sernanp.vw_estado_generico eg ON (fid.int_id_estado = eg.codinttablatipo)
+
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+
+fid.srl_id_frecuencia_ingreso_descuento = COALESCE(#{srl_id_frecuencia_ingreso_descuento},fid.srl_id_frecuencia_ingreso_descuento) and 
+fid.srl_id_ingreso_descuento_planilla = COALESCE(#{srl_id_ingreso_descuento_planilla},fid.srl_id_ingreso_descuento_planilla) 
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.IngresoDescuentoFrecuenciaQuery" parameterType="sernanp.app.dao.query.domain.IngresoDescuentoFrecuenciaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.IngresoDescuentoFrecuenciaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.IngresoDescuentoFrecuenciaQuery" parameterType="sernanp.app.dao.query.domain.IngresoDescuentoFrecuenciaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.IngresoDescuentoFrecuenciaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.IngresoDescuentoFrecuenciaQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

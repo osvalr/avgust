@@ -1,0 +1,7 @@
+{
+	"titleCrud": "Profesiones",
+	"nameCrud": "Profesion",
+	"constUrlApi": "PROFESIONES_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "ProfesionModel.xml"
+}

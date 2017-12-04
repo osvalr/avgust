@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.ReporteVacantesPublicasQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+--rp.var_denominacion_requerimiento,
+CASE WHEN rp.int_cantidad_requerida < 10 THEN
+	initcap(rp.var_denominacion_requerimiento) || ' (0' ||rp.int_cantidad_requerida || ')'
+ELSE
+	initcap(rp.var_denominacion_requerimiento) || ' (' ||rp.int_cantidad_requerida || ')'
+END AS var_denominacion_requerimiento,
+
+--rp.int_cantidad_requerida
+cao.int_num_puestos as int_cantidad_requerida
+,
+(
+	SELECT 		
+	'CONVOCATORIA CAS N° ' || (select a[2] || '-' || a[3] from (select regexp_split_to_array(cx.var_num_convocatoria, '-')) as dt(a))  || ' - SERNANP'		
+	FROM sernanp.t_convocatoria_area_org caox 
+	LEFT JOIN sernanp.t_convocatoria cx ON cx.srl_id_convocatoria = caox.srl_id_convocatoria
+	WHERE (caox.srl_id_convocatoria NOT IN (c.srl_id_convocatoria) 
+	--AND caox.int_id_estado = 1
+	)		
+	AND caox.srl_id_requerimiento_personal = rp.srl_id_requerimiento_personal	ORDER BY caox.srl_id_convocatoria DESC
+	LIMIT 1
+)AS ultimo_lanzamiento_convocatoria
+,
+(
+	SELECT 		
+	' Código : ' || caox.var_codigo_postulacion
+	FROM sernanp.t_convocatoria_area_org caox 
+	LEFT JOIN sernanp.t_convocatoria cx ON cx.srl_id_convocatoria = caox.srl_id_convocatoria
+	WHERE (caox.srl_id_convocatoria NOT IN (c.srl_id_convocatoria) 
+	--AND caox.int_id_estado = 2
+	)		
+	AND caox.srl_id_requerimiento_personal = rp.srl_id_requerimiento_personal
+	ORDER BY caox.srl_id_convocatoria DESC
+	LIMIT 1
+)AS ultimo_lanzamiento_cod_postulacion
+,
+c.int_num_activacion AS lanzamientos_convocatoria
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+personal.t_requerimiento_personal rp
+LEFT JOIN sernanp.t_convocatoria_area_org cao  	ON cao.srl_id_requerimiento_personal = rp.srl_id_requerimiento_personal
+LEFT JOIN sernanp.t_convocatoria c 				ON cao.srl_id_convocatoria = c.srl_id_convocatoria 
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+rp.int_id_estado = COALESCE(#{int_id_estado},rp.int_id_estado)
+AND c.srl_id_convocatoria = COALESCE(#{srl_id_convocatoria}, c.srl_id_convocatoria)
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY rp.srl_id_requerimiento_personal
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.ReporteVacantesPublicasQuery" parameterType="sernanp.app.dao.query.domain.ReporteVacantesPublicasQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.ReporteVacantesPublicasQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.ReporteVacantesPublicasQuery" parameterType="sernanp.app.dao.query.domain.ReporteVacantesPublicasQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.ReporteVacantesPublicasQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.ReporteVacantesPublicasQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

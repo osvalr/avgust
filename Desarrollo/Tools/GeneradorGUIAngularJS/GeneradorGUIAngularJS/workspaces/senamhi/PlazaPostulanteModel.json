@@ -1,0 +1,14 @@
+{
+	"titleCrud": "Evaluaciones - Ingreso de Notas",
+	"nameCrud": "PlazaPostulante",
+	"constUrlApi": "PLAZA_POSTULANTE_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "PlazaPostulanteModel.xml",
+	"subModels": [
+		{
+			"nameModel": "PostulantePuntajeModel",
+			"nameCrud": "PostulantePuntaje",
+			"autoIdentityPrimaryKey": true
+		}
+	]
+}

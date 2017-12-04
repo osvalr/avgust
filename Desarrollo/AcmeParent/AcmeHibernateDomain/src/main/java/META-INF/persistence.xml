@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="AcmeHibernateDomain">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>pe.com.acme.hibernate.domain.SerieNumeroDoc</class>
+    <class>pe.com.acme.hibernate.domain.Articulo</class>
+    <class>pe.com.acme.hibernate.domain.Jornada</class>
+    <class>pe.com.acme.hibernate.domain.LogInHistorico</class>
+    <class>pe.com.acme.hibernate.domain.GuiaRemision</class>
+    <class>pe.com.acme.hibernate.domain.Perfil</class>
+    <class>pe.com.acme.hibernate.domain.PersonaTipo</class>
+    <class>pe.com.acme.hibernate.domain.UsuarioRol</class>
+    <class>pe.com.acme.hibernate.domain.RolAplicacion</class>
+    <class>pe.com.acme.hibernate.domain.CatalogoItem</class>
+    <class>pe.com.acme.hibernate.domain.MonedaCambio</class>
+    <class>pe.com.acme.hibernate.domain.UsuarioPerfil</class>
+    <class>pe.com.acme.hibernate.domain.FuncionalidadRol</class>
+    <class>pe.com.acme.hibernate.domain.Persona</class>
+    <class>pe.com.acme.hibernate.domain.Guia</class>
+    <class>pe.com.acme.hibernate.domain.Aplicacion</class>
+    <class>pe.com.acme.hibernate.domain.GuiaRemisionItem</class>
+    <class>pe.com.acme.hibernate.domain.GuiaSaldo</class>
+    <class>pe.com.acme.hibernate.domain.Funcionalidad</class>
+    <class>pe.com.acme.hibernate.domain.ComprobantePago</class>
+    <class>pe.com.acme.hibernate.domain.ComprobanteItem</class>
+    <class>pe.com.acme.hibernate.domain.GuiaPeso</class>
+    <class>pe.com.acme.hibernate.domain.Catalogo</class>
+    <class>pe.com.acme.hibernate.domain.CuentaXCobrar</class>
+    <class>pe.com.acme.hibernate.domain.Moneda</class>
+    <class>pe.com.acme.hibernate.domain.CuentaAmortizacion</class>
+    <class>pe.com.acme.hibernate.domain.Usuario</class>
+    <class>pe.com.acme.hibernate.domain.PerfilAplicacion</class>
+  </persistence-unit>
+</persistence>

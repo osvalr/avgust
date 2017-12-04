@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>    
+    <constant name="struts.i18n.encoding" value="UTF-8"/>
+	<package name="registro" namespace="/registro" extends="proyecto,json-default,jasperreports-default">
+
+<interceptors>
+			<interceptor-stack name="fileUploadStack">
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="i18n" />
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="debugging" />
+				<interceptor-ref name="profiling" />
+				<interceptor-ref name="scopedModelDriven" />
+				<interceptor-ref name="modelDriven" />
+				<interceptor-ref name="fileUpload">
+<!-- 					<param name="maximumSize">10240</param> -->
+<!-- 					<param name="allowedTypes"> image/jpeg,image/gif,image/png</param> -->
+					<param name="allowedTypes">application/vnd.ms-excel</param>
+				</interceptor-ref>
+				<interceptor-ref name="checkbox" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="actionMappingParams" />
+				<interceptor-ref name="params">
+					<param name="excludeParams"> dojo\..*,^struts\..*</param>
+				</interceptor-ref>
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="excludeMethods"> input,back,cancel,browse</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods"> input,back,cancel,browse</param>
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+
+
+	<action name="anpreg" class="proyecto.action.RegistroAction" method="irAreaNaturalConRegistro" >
+			<result name="success" type="tiles" >opciones.modulo</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+	</action>
+
+	<action name="listarAreaRegIng" class="proyecto.action.RegistroAction" method="listarAreasNaturalesRegistroIngreso">
+			<result name="success" type="tiles" >lista.anp.registro</result>
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="general" /> 
+	</action> 
+	
+
+
+	 <action name="listadoformulariosempresas" class="proyecto.action.RegistroAction" method="listadoFormularioEnvioxArea" >
+			<result name="success" type="tiles" >listado.formAreaNatural</result>
+			<interceptor-ref name="general" />
+			<interceptor-ref name="usuario-logeado" />
+	</action>
+	
+	<action name="consolidarformularios" class="proyecto.action.RegistroAction" method="listadoFormularioAprobEnvioxArea" >
+			<result name="success" type="tiles" >listado.consolidaformAreaNatural</result>
+			<interceptor-ref name="general" />
+			<interceptor-ref name="usuario-logeado" />
+	</action>	
+	
+	<action name="inicioregistro" class="proyecto.action.RegistroAction" method="ingresoComoExterno">
+			<result name="success" type="tiles" >opciones.modulo</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+	</action>
+	
+	<action name="registroformulario" class="proyecto.action.RegistroAction" method="registroFormulario">
+			<result name="success" type="tiles" >formulario.registro</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="basicStack" />
+			
+	</action>
+	
+	<action name="registrofichaformulario" class="proyecto.action.RegistroAction" method="mostrarFichaFormulario">
+			<result name="success" type="tiles" >formularioficha.mostrar</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="basicStack" />
+	</action>
+	
+	<action name="registrofichaformularioAprob" class="proyecto.action.RegistroAction" method="mostrarFichaFormularioAprob">
+			<result name="success" type="tiles" >formulariofichaAprob.mostrar</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="basicStack" />
+	</action>
+	
+	<action name="muestrafichaformularioConsolida" class="proyecto.action.RegistroAction" method="mostrarFichaFormularioAprob">
+			<result name="success" type="tiles" >formulariofichaConsolida.mostrar</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="basicStack" />
+	</action>
+	
+	<action name="aprobarfichaformulario" class="proyecto.action.RegistroAction" method="aprobarFichaFormulario">
+			<result name="success" type="tiles" >fichaAprobada.mostrar</result>
+			<result name="error" type="tiles" >mensaje.error.ficha</result>
+			
+			<interceptor-ref name="general" />			
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="verificaActualizacionAprobacionFormulario" />
+			<interceptor-ref name="basicStack" />
+	</action>
+	
+	<action name="desaprobarfichaformulario" class="proyecto.action.RegistroAction" method="desaprobarFichaFormulario">
+			<result name="success" type="tiles" >fichaDesaprobada.mostrar</result>
+			<result name="error" type="tiles" >mensaje.error.ficha</result>
+			
+			<interceptor-ref name="general" />			
+			<interceptor-ref name="usuario-logeado" />
+			<!-- <interceptor-ref name="verificaActualizacionAprobacionFormulario" /> -->
+			<interceptor-ref name="basicStack" />
+	</action>
+			
+	<action name="mantenimientopersona" class="proyecto.action.RegistroAction" method="mantenimientoPersonal">
+			<result name="success" type="tiles" >formulario.persona</result>
+			<interceptor-ref name="general" />
+			<interceptor-ref name="usuario-logeado" />
+	</action>
+	
+	<action name="buscarPersonaRegistro" class="proyecto.action.RegistroAction" method="buscarPersona">
+			<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="defaultStack" />
+   </action>
+   
+   <action name="listadoformulario" class="proyecto.action.RegistroAction" method="listadoFormularioEnvio">
+			<result name="success" type="tiles" >listado.envio</result>
+			<interceptor-ref name="general" />
+			<interceptor-ref name="usuario-logeado" />
+	</action>   
+   
+   <action name="upload" method="uploadFileToMyFolder" class="proyecto.action.UploadAction">
+<!--             <interceptor-ref name="fileUpload"> -->
+<!--                <param name="maximumSize">2097152</param> -->
+<!-- 				<param name="allowedTypes"> -->
+<!-- 					application/vnd.ms-excel -->
+<!--                 </param> -->
+<!--             </interceptor-ref> -->
+<!--             <interceptor-ref name="defaultStack" /> -->
+			
+			<interceptor-ref name="fileUploadStack" />
+                        
+            <result type="json"><param name="root">datos</param></result>
+            <result name="input" type="json">/registro/upload.form.jsp</result>
+	</action>
+   
+	<action name="formularioupload" class="proyecto.action.RegistroAction">
+			
+			<result name="success" type="tiles" >upload.form</result>
+			<interceptor-ref name="general" />
+			<interceptor-ref name="usuario-logeado" />
+	
+<!-- 			<result name="success">/registro/upload.form.jsp</result> -->
+<!-- 			<interceptor-ref name="general" /> -->
+<!-- 			<interceptor-ref name="usuario-logeado" /> -->
+	</action>
+	
+	<action name="registrarpersonal" class="proyecto.action.RegistroAction" method="insertarPersonalExcel">
+			<result name="success" type="redirect" >mantenimientopersona</result>
+			<result name="error" type="tiles" >mensaje.ficha</result>
+			
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="basicStack" />
+	</action>
+	
+	<action name="eliminarpersonal" class="proyecto.action.RegistroAction" method="eliminarPersonalRegistro">
+			<result name="success" type="redirect" >mantenimientopersona</result>
+			<result name="error" type="tiles" >mensaje.error.ficha</result>
+			
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="validaExisteFichaRegistro" />
+			<interceptor-ref name="basicStack" />
+			
+	</action>	
+	
+	<action name="registrarficha" class="proyecto.action.RegistroAction" method="registrarFicha">
+			<result name="success" type="tiles" >mensaje.ficha</result>
+			<result name="error" type="tiles" >mensaje.error.ficha</result>
+						
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />			
+			<interceptor-ref name="basicStack" />
+	</action>
+	
+	<action name="actualizaficha" class="proyecto.action.RegistroAction" method="actualizarFicha">
+			<result name="success" type="tiles" >mensaje.ficha</result>
+			<result name="error" type="tiles" >mensaje.error.ficha</result>
+			
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="verificaActualizacionAprobacionFormulario" />
+			<interceptor-ref name="basicStack" />
+	</action>
+	
+	<action name="consolidaficha" class="proyecto.action.RegistroAction" method="consolidarFicha">
+			<result name="success" type="tiles" >mensaje.ficha</result>
+			<result name="error" type="tiles" >mensaje.error.ficha</result>
+			
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />			
+			<interceptor-ref name="basicStack" />
+	</action>		
+	
+	<action name="formularioagregarPersonalRegistro" class="proyecto.action.RegistroAction" method="agregarPersonalRegistro">
+			<result name="success">/registro/form.agrega.person.jsp</result>
+			
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="basicStack" />
+	</action>
+	
+	<action name="formularioagregarPersonalRegistroForm" class="proyecto.action.RegistroAction" method="agregarPersonalRegistro">
+			<result name="success">/registro/reg.agrega.person.jsp</result>
+			
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="basicStack" />
+	</action>
+	
+	<action name="formularioeditarPersonalRegistro" class="proyecto.action.RegistroAction" method="editarPersonalRegistro">
+			<result name="success">/registro/form.edita.person.jsp</result>
+			
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="basicStack" />
+	</action>	
+	
+	<action name="insertarpersonalregistro" class="proyecto.action.RegistroAction" method="insertarPersonalRegistro">
+			<result name="success" type="redirect" >mantenimientopersona</result>
+			<result name="error" type="tiles" >mensaje.ficha</result>
+			
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="verificaExisteDocumento" />
+			<interceptor-ref name="basicStack" />
+	</action>
+	
+	<action name="insertarpersonalregistroform" class="proyecto.action.RegistroAction" method="insertarPersonalRegistroForm">
+			<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<result name="error">/registro/mensajes.error.ficha.jsp</result>
+						
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="verificaExisteDocumento" />
+			<interceptor-ref name="basicStack" />
+	</action>
+	
+	<action name="actualizarpersonalregistro" class="proyecto.action.RegistroAction" method="actualizarPersonalRegistro">
+			<result name="success" type="redirect" >mantenimientopersona</result>
+			<result name="error" type="tiles" >mensaje.error.ficha</result>
+			
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="validaExisteFichaRegistro" />
+			<interceptor-ref name="verificaExisteDocumentoUpd" />
+			<interceptor-ref name="basicStack" />
+	</action>
+	
+	<action name="descargafichaformularioAprob" class="proyecto.action.RegistroAction" method="descargaFichaFormularioAprob">
+			<result name="success" type="stream">
+				<param name="contentType">application/octet-stream</param>
+				<param name="inputName">inputStream</param>
+				<param name="contentDisposition">attachment;filename="${ficharegistro.nombrearchivo}"</param>
+				<param name="bufferSize">1024</param>
+				
+			</result>
+			
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="basicStack" />
+	</action>
+	
+	
+	<action name="formulariodesaprobarficha" class="proyecto.action.RegistroAction" >
+			<result name="success" >/registro/desaprobficha.form.jsp</result>
+						
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />			
+			<interceptor-ref name="basicStack" />
+	</action>	
+	
+	</package>
+</struts>

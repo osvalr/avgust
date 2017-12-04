@@ -1,0 +1,74 @@
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\ws_ServiceCentral\bin\ws_ServiceCentral.dll
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\ws_ServiceCentral\bin\ws_ServiceCentral.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\ws_ServiceCentral\bin\Entidades.dll
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\ws_ServiceCentral\bin\LogicaNegocio.dll
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\ws_ServiceCentral\bin\Utilitarios.dll
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\ws_ServiceCentral\bin\AccesoDatos.dll
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\ws_ServiceCentral\bin\UtilitarioJO.dll
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\ws_ServiceCentral\bin\Entidades.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\ws_ServiceCentral\bin\LogicaNegocio.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\ws_ServiceCentral\bin\Utilitarios.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\ws_ServiceCentral\bin\AccesoDatos.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\ws_ServiceCentral\obj\Debug\ws_ServiceCentral.csprojResolveAssemblyReference.cache
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\ws_ServiceCentral\obj\Debug\ws_ServiceCentral.dll
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\ws_ServiceCentral\obj\Debug\ws_ServiceCentral.pdb
+C:\Users\nfire\Desktop\Aplicaiones\Service_Vida_Ley\ws_ServiceCentral\bin\ws_ServiceCentral.dll
+C:\Users\nfire\Desktop\Aplicaiones\Service_Vida_Ley\ws_ServiceCentral\bin\ws_ServiceCentral.pdb
+C:\Users\nfire\Desktop\Aplicaiones\Service_Vida_Ley\ws_ServiceCentral\bin\Entidades.dll
+C:\Users\nfire\Desktop\Aplicaiones\Service_Vida_Ley\ws_ServiceCentral\bin\LogicaNegocio.dll
+C:\Users\nfire\Desktop\Aplicaiones\Service_Vida_Ley\ws_ServiceCentral\bin\Utilitarios.dll
+C:\Users\nfire\Desktop\Aplicaiones\Service_Vida_Ley\ws_ServiceCentral\bin\AccesoDatos.dll
+C:\Users\nfire\Desktop\Aplicaiones\Service_Vida_Ley\ws_ServiceCentral\bin\UtilitarioJO.dll
+C:\Users\nfire\Desktop\Aplicaiones\Service_Vida_Ley\ws_ServiceCentral\bin\Entidades.pdb
+C:\Users\nfire\Desktop\Aplicaiones\Service_Vida_Ley\ws_ServiceCentral\bin\LogicaNegocio.pdb
+C:\Users\nfire\Desktop\Aplicaiones\Service_Vida_Ley\ws_ServiceCentral\bin\Utilitarios.pdb
+C:\Users\nfire\Desktop\Aplicaiones\Service_Vida_Ley\ws_ServiceCentral\bin\AccesoDatos.pdb
+C:\Users\nfire\Desktop\Aplicaiones\Service_Vida_Ley\ws_ServiceCentral\obj\Debug\ws_ServiceCentral.csprojResolveAssemblyReference.cache
+C:\Users\nfire\Desktop\Aplicaiones\Service_Vida_Ley\ws_ServiceCentral\obj\Debug\ws_ServiceCentral.dll
+C:\Users\nfire\Desktop\Aplicaiones\Service_Vida_Ley\ws_ServiceCentral\obj\Debug\ws_ServiceCentral.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\ws_ServiceCentral\bin\PdfSharp.dll
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\ws_ServiceCentral\bin\ws_ServiceCentral.dll
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\ws_ServiceCentral\bin\ws_ServiceCentral.pdb
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\ws_ServiceCentral\bin\Entidades.dll
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\ws_ServiceCentral\bin\LogicaNegocio.dll
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\ws_ServiceCentral\bin\Utilitarios.dll
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\ws_ServiceCentral\bin\AccesoDatos.dll
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\ws_ServiceCentral\bin\PdfSharp.dll
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\ws_ServiceCentral\bin\UtilitarioJO.dll
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\ws_ServiceCentral\bin\Entidades.pdb
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\ws_ServiceCentral\bin\LogicaNegocio.pdb
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\ws_ServiceCentral\bin\Utilitarios.pdb
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\ws_ServiceCentral\bin\AccesoDatos.pdb
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\ws_ServiceCentral\obj\Debug\ws_ServiceCentral.csprojResolveAssemblyReference.cache
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\ws_ServiceCentral\obj\Debug\ws_ServiceCentral.dll
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\ws_ServiceCentral\obj\Debug\ws_ServiceCentral.pdb
+C:\Users\nfire\Desktop\APLICACIONES\Service_Vida_Ley\ws_ServiceCentral\bin\ws_ServiceCentral.dll
+C:\Users\nfire\Desktop\APLICACIONES\Service_Vida_Ley\ws_ServiceCentral\bin\ws_ServiceCentral.pdb
+C:\Users\nfire\Desktop\APLICACIONES\Service_Vida_Ley\ws_ServiceCentral\bin\Entidades.dll
+C:\Users\nfire\Desktop\APLICACIONES\Service_Vida_Ley\ws_ServiceCentral\bin\LogicaNegocio.dll
+C:\Users\nfire\Desktop\APLICACIONES\Service_Vida_Ley\ws_ServiceCentral\bin\Utilitarios.dll
+C:\Users\nfire\Desktop\APLICACIONES\Service_Vida_Ley\ws_ServiceCentral\bin\AccesoDatos.dll
+C:\Users\nfire\Desktop\APLICACIONES\Service_Vida_Ley\ws_ServiceCentral\bin\PdfSharp.dll
+C:\Users\nfire\Desktop\APLICACIONES\Service_Vida_Ley\ws_ServiceCentral\bin\UtilitarioJO.dll
+C:\Users\nfire\Desktop\APLICACIONES\Service_Vida_Ley\ws_ServiceCentral\bin\Entidades.pdb
+C:\Users\nfire\Desktop\APLICACIONES\Service_Vida_Ley\ws_ServiceCentral\bin\LogicaNegocio.pdb
+C:\Users\nfire\Desktop\APLICACIONES\Service_Vida_Ley\ws_ServiceCentral\bin\Utilitarios.pdb
+C:\Users\nfire\Desktop\APLICACIONES\Service_Vida_Ley\ws_ServiceCentral\bin\AccesoDatos.pdb
+C:\Users\nfire\Desktop\APLICACIONES\Service_Vida_Ley\ws_ServiceCentral\obj\Debug\ws_ServiceCentral.csprojResolveAssemblyReference.cache
+C:\Users\nfire\Desktop\APLICACIONES\Service_Vida_Ley\ws_ServiceCentral\obj\Debug\ws_ServiceCentral.dll
+C:\Users\nfire\Desktop\APLICACIONES\Service_Vida_Ley\ws_ServiceCentral\obj\Debug\ws_ServiceCentral.pdb
+D:\JRaffo\Service_Vida_Ley 20150422\Service_Vida_Ley\ws_ServiceCentral\bin\ws_ServiceCentral.dll
+D:\JRaffo\Service_Vida_Ley 20150422\Service_Vida_Ley\ws_ServiceCentral\bin\ws_ServiceCentral.pdb
+D:\JRaffo\Service_Vida_Ley 20150422\Service_Vida_Ley\ws_ServiceCentral\bin\Entidades.dll
+D:\JRaffo\Service_Vida_Ley 20150422\Service_Vida_Ley\ws_ServiceCentral\bin\LogicaNegocio.dll
+D:\JRaffo\Service_Vida_Ley 20150422\Service_Vida_Ley\ws_ServiceCentral\bin\Utilitarios.dll
+D:\JRaffo\Service_Vida_Ley 20150422\Service_Vida_Ley\ws_ServiceCentral\bin\AccesoDatos.dll
+D:\JRaffo\Service_Vida_Ley 20150422\Service_Vida_Ley\ws_ServiceCentral\bin\PdfSharp.dll
+D:\JRaffo\Service_Vida_Ley 20150422\Service_Vida_Ley\ws_ServiceCentral\bin\UtilitarioJO.dll
+D:\JRaffo\Service_Vida_Ley 20150422\Service_Vida_Ley\ws_ServiceCentral\bin\Entidades.pdb
+D:\JRaffo\Service_Vida_Ley 20150422\Service_Vida_Ley\ws_ServiceCentral\bin\LogicaNegocio.pdb
+D:\JRaffo\Service_Vida_Ley 20150422\Service_Vida_Ley\ws_ServiceCentral\bin\Utilitarios.pdb
+D:\JRaffo\Service_Vida_Ley 20150422\Service_Vida_Ley\ws_ServiceCentral\bin\AccesoDatos.pdb
+D:\JRaffo\Service_Vida_Ley 20150422\Service_Vida_Ley\ws_ServiceCentral\obj\Debug\ws_ServiceCentral.csprojResolveAssemblyReference.cache
+D:\JRaffo\Service_Vida_Ley 20150422\Service_Vida_Ley\ws_ServiceCentral\obj\Debug\ws_ServiceCentral.dll
+D:\JRaffo\Service_Vida_Ley 20150422\Service_Vida_Ley\ws_ServiceCentral\obj\Debug\ws_ServiceCentral.pdb

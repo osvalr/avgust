@@ -1,0 +1,6 @@
+{
+	"nameCrud": "PersonCrud",
+	"path": "persons",
+	"nameRepository": "PersonRepository",
+	"nameModelXml": "PersonModel.xml"
+}

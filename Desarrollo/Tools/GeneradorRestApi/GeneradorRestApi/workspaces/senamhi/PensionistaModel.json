@@ -1,0 +1,6 @@
+{
+	"nameCrud": "Pensionista",
+	"path": "pensionistas",
+	"nameRepository": "TPensionistaRepository",
+	"nameModelXml": "PensionistaModel.xml"
+}

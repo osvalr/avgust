@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+   
+    <package name="admin-usuario" namespace="/admin" extends="proyecto">
+    
+    	<action name="UsuariosMantener" class="proyecto.action.UsuariosMantenerAction" method="buscar">
+	    	<result name="success">/admin/usuarios_buscar.jsp</result>
+	    	
+	    	<interceptor-ref name="params"></interceptor-ref>
+		  	<interceptor-ref name="servlet-config"></interceptor-ref>
+		  	
+			<interceptor-ref name="rol-administrador"></interceptor-ref>
+    	</action>
+ 
+     	<action name="UsuariosEditar" class="proyecto.action.UsuariosMantenerAction" method="editar">
+	    	<result name="success">/admin/usuarios_editar.jsp</result>
+			<interceptor-ref name="rol-administrador"></interceptor-ref>	    	
+    	</action>
+    	
+    	<action name="UsuariosActualizar" class="proyecto.action.UsuariosMantenerAction" method="actualizar">
+	    	<result name="success" type="redirect-action">UsuariosMantener</result>
+			<interceptor-ref name="rol-administrador"></interceptor-ref>	    	
+    	</action>
+
+     	<action name="UsuariosEliminar" class="proyecto.action.UsuariosMantenerAction" method="eliminar">
+	    	<result name="success" type="redirect-action">UsuariosMantener</result>
+			<interceptor-ref name="rol-administrador"></interceptor-ref>
+    	</action>
+
+     	<action name="UsuariosNuevo" class="proyecto.action.UsuariosMantenerAction" method="nuevo">
+	    	<result name="success">/admin/usuarios_nuevo.jsp</result>
+			<interceptor-ref name="rol-administrador"></interceptor-ref>	    	
+    	</action>
+    	
+     	<action name="UsuariosInsertar" class="proyecto.action.UsuariosMantenerAction" method="insertar">
+	    	<result name="success" type="redirect-action">UsuariosMantener</result>
+			<interceptor-ref name="rol-administrador"></interceptor-ref>	    	
+    	</action>
+    	
+    	    	    	
+    </package>
+
+</struts>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.RpNomina728MesAnioFuenteMetaQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+ 
+			napp.srl_id_nomina_anio_periodo_personal,
+			ms.destablatipo AS descrip_periodo,
+			ap.int_anio,
+			(COALESCE(pn.apepat,'')||' '||COALESCE(pn.apemat,'')||' '||COALESCE(pn.nombre,'')) AS nombre_completo,
+			pn.numerodoc,
+			rc.var_descripcion_regimen_contractual,
+	    (COALESCE(ca.descategoriaanp,'')|| ' ' || COALESCE(an.desareanatural,'')) as "ubicacion",
+	    ff.var_rubro_fte_fto,
+	    mp.var_cod_meta_presupuestaria,
+	    c.var_nom_cargo,
+      pc.var_nivel_regimen_contractual,
+			napp.dec_total_ingresos,
+			napp.dec_total_descuentos,
+			napp.dec_total_aportes,
+			napp.dec_total_neto
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+
+			sernanp.persona p 
+			inner join sernanp.personanatural pn on p.idpersona = pn.idpersona
+			inner join sernanp.personal ps on ps.idpersonanatural = pn.idpersonanatural
+			inner join personal.t_nomina_anio_periodo_personal napp on napp.idpersonal = ps.idpersonal
+			inner join personal.t_anio_periodo_planilla app on napp.srl_id_anio_periodo_planilla = app.srl_id_anio_periodo_planilla
+			inner join personal.t_anio_planilla ap on app.srl_id_anio_planilla = ap.srl_id_anio_planilla
+			inner join sernanp.t_personal_contrato pc on napp.srl_id_contrato = pc.srl_id_contrato
+			left join sernanp.t_personal_contrato ad on pc.srl_id_contrato = ad.srl_id_contrato_padre
+			left join sernanp.t_cargo c on pc.srl_id_cargo = c.srl_id_cargo
+			left join sernanp.t_regimen_contractual rc on pc.srl_id_regimen_contractual = rc.srl_id_regimen_contractual
+			left join sernanp.sede s on pc.srl_id_sede_pres = s.idsede
+			left join sernanp.areanatural an on s.idareanatural = an.idareanatural
+			left join sernanp.categoriaanp ca on an.idcategoriaanp = ca.idcategoriaanp
+			left join sernanp.areaorganica ao on pc.idarea = ao.idarea
+			left join mpp.t_meta_fuente_generica mfg on pc.srl_id_meta_fuente_generica = mfg.srl_id_meta_fuente_generica
+			left join mpp.t_meta_presupuestaria mp on mfg.srl_id_meta_presupuestaria = mp.srl_id_meta_presupuestaria
+			left join mpp.t_fuente_financiamiento ff on mfg.srl_id_fuente_financiamiento = ff.srl_id_fuente_financiamiento
+			left join sernanp.vw_meses ms on ms.codinttablatipo = app.int_id_periodo_mes
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+   
+			COALESCE(pc.srl_id_regimen_contractual,0)=COALESCE(1,COALESCE(pc.srl_id_regimen_contractual,0))and
+			COALESCE(app.int_id_periodo_mes,0) = COALESCE(#{int_id_periodo_mes},COALESCE(app.int_id_periodo_mes,0)) and
+			COALESCE(app.srl_id_anio_periodo_planilla,0) = COALESCE(#{srl_id_anio_periodo_planilla},COALESCE(app.srl_id_anio_periodo_planilla,0)) and
+			ap.int_anio = COALESCE(#{int_anio},ap.int_anio) and
+			pc.dte_fec_inicio=(select MAX(dte_fec_inicio) from sernanp.t_personal_contrato where idpersonal=pc.idpersonal) and
+			coalesce(to_char(ad.dte_fec_inicio,'DD/MM/YYYY'),'') = coalesce(to_char((select MAX(dte_fec_inicio) from sernanp.t_personal_contrato where srl_id_contrato_padre = pc.srl_id_contrato),'DD/MM/YYYY'),coalesce(to_char(ad.dte_fec_inicio,'DD/MM/YYYY'),''))
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.RpNomina728MesAnioFuenteMetaQuery" parameterType="sernanp.app.dao.query.domain.RpNomina728MesAnioFuenteMetaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.RpNomina728MesAnioFuenteMetaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.RpNomina728MesAnioFuenteMetaQuery" parameterType="sernanp.app.dao.query.domain.RpNomina728MesAnioFuenteMetaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.RpNomina728MesAnioFuenteMetaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.RpNomina728MesAnioFuenteMetaQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

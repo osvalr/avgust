@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.InfoAdendaQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.InfoAdendaQuery" parameterType="sernanp.app.dao.query.domain.InfoAdendaQueryCriteria"> 
+<![CDATA[
+
+	      
+	      
+select 
+
+	pc.srl_id_contrato ,
+	pc.srl_id_contrato_padre ,
+	(select a[2] || '-' || a[3] from (select regexp_split_to_array(pc.var_num_contrato, '-')) as dt(a)) as "var_num_contrato",
+	pc.srl_id_resp_unid_oper ,
+	pc.dte_fec_suscrip ,
+	pc.dte_fec_inicio ,
+	pc.dte_fec_termino,
+	pc.srl_id_plantilla_documento_archivo
+
+from 
+	sernanp.t_personal_contrato pc 
+where 
+
+	pc.srl_id_contrato_padre is not null and 
+	pc.int_id_estado <> 4 and 
+	pc.srl_id_contrato = #{srl_id_contrato}  
+	
+order by pc.dte_fec_suscrip desc;
+
+		  
+	      
+]]>
+</select> 
+</mapper> 

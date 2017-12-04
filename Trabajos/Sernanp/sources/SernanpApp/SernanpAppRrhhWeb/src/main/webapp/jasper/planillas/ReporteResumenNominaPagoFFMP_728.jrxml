@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteResumenNominaPagoFFMP_728" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty" uuid="bffb1102-55f1-4fc8-afa3-a4c00f21fa76">
+	<property name="ireport.zoom" value="1.3310000000000044"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="listLiquidacion_DS" uuid="0c437c40-398b-4b41-93c7-dfe09732d195">
+		<field name="var_descrip_concepto" class="java.lang.String"/>
+		<field name="dec_monto_calculado" class="java.lang.Double"/>
+		<field name="var_nombre_afp" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="listApertura_DS" uuid="ca3a21e2-2ed1-4296-936a-f14d73942aeb">
+		<field name="var_descrip_concepto" class="java.lang.String"/>
+		<field name="dec_monto_calculado" class="java.lang.Double"/>
+	</subDataset>
+	<parameter name="parametros.SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\GITHUB\\Consultoria_planillas_seleccion_personal\\Desarrollo\\SernanpApp\\SernanpAppRrhhWeb\\src\\main\\webapp\\jasper\\planillas\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="parametros.listLiquidacion_DS" class="java.lang.Object"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\GITHUB\\sernanp\\Consultoria_planillas_seleccion_personal\\Desarrollo\\SernanpApp\\SernanpAppRrhhWeb\\src\\main\\webapp\\jasper\\planillas\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="parametros.listApertura_DS" class="java.lang.Object"/>
+	<field name="descrip_periodo" class="java.lang.String"/>
+	<field name="c_meta" class="java.lang.String"/>
+	<field name="c_fte_fto" class="java.lang.String"/>
+	<field name="int_anio" class="java.lang.Integer"/>
+	<field name="remuneracion" class="java.lang.Double"/>
+	<field name="srl_id_regimen_contractual" class="java.lang.Integer"/>
+	<field name="obligaciones" class="java.lang.Double"/>
+	<field name="bonificacion" class="java.lang.Double"/>
+	<group name="idmeta" isReprintHeaderOnEachPage="true">
+		<groupExpression><![CDATA[$F{c_meta}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<summary>
+		<band height="516">
+			<subreport isUsingCache="false">
+				<reportElement x="255" y="0" width="300" height="516" uuid="8185b6de-6fc1-4471-aa2c-023cb40a83a7"/>
+				<dataSourceExpression><![CDATA[$P{parametros.listLiquidacion_DS}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ReporteResumenNominaPagoFFMP_728_Liquidacion.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport isUsingCache="false">
+				<reportElement x="0" y="0" width="255" height="516" uuid="1fe7a66d-3bd2-4abd-8b69-4d38f4ce6b64"/>
+				<dataSourceExpression><![CDATA[$P{parametros.listApertura_DS}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ReporteResumenNominaPagoFFMP_728_apertura.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</summary>
+</jasperReport>

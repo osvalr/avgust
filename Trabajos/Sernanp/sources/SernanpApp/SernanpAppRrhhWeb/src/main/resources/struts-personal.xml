@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>    
+   
+<package name="personal" namespace="/" extends="principal">
+
+
+ 	
+<!--
+**************************************************************************
+PERSONA - (PERSONAL - POSTULANTE)       
+**************************************************************************                            
+-->
+    <action name="registrar-editar-postulante"> 
+ 		<result name="success" type="tiles">registrar_editar_postulante</result> 	
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />	
+			<interceptor-ref name="defaultStack" />	  	 		 
+ 	</action>
+		
+	<action name="listar-resumen-postulaciones" class="sernanp.rrhh.web.action.persona.BuscarPersonaAction" method="listarResumenPostulaciones">
+		
+		<result name="json" type="json" />
+
+		<result name="pdf" type="jasper">
+			<param name="location">/jasper/ConsultaPostulaciones.jasper</param>
+			<param name="dataSource">listResult</param>
+			<param name="format">PDF</param>
+			<param name="URL_LOGO">/img/logo.sernanp.reporte.png</param>
+		</result>
+		
+	</action>
+	
+	<action name="listar-postulante-ganador" class="sernanp.rrhh.web.action.persona.BuscarPersonaAction" method="listarPostulanteGanador">
+		<result name="json" type="json" />
+	</action>
+	
+	<action name="obtener-detalle-postulacion" class="sernanp.rrhh.web.action.persona.BuscarPersonaAction" method="obtenerDetallePostulacion">
+		<result name="json" type="json" />
+
+		<result name="pdf" type="jasper">
+			<param name="location">/jasper/DetallePostulacion.jasper</param>
+			<param name="record">record</param>
+			<param name="dataSource">listResult</param>
+			<param name="format">PDF</param>
+		</result>
+	</action>
+		
+	<action name="grabar-postulante" class="sernanp.rrhh.web.action.persona.GestionarPostulacionAction" method="grabarPostulante">
+		<result type="json" />
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />	
+			<interceptor-ref name="defaultStack" />	 
+	</action>
+	
+	
+<!--
+**************************************************************************
+FIN                
+**************************************************************************                            
+-->
+
+<!--
+**************************************************************************
+CONVOCATORIAS       
+**************************************************************************                            
+-->
+	<action name="registrar-convocatoria-postulacion" class="sernanp.rrhh.web.action.convocatoria.GestionarConvocatoriaAction"
+		method="registrarConvocatoriaConCodPostulacion">
+		<result type="json" />
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />	
+			<interceptor-ref name="defaultStack" />	 
+	</action>
+
+	<action name="registrar-codigo-postulacion" class="sernanp.rrhh.web.action.convocatoria.GestionarConvocatoriaAction"
+		method="registrarCodigoPostulacion">
+		<result type="json" />
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />	
+			<interceptor-ref name="defaultStack" />	 
+	</action>
+<!--
+**************************************************************************
+FIN                
+**************************************************************************                            
+-->		
+
+<!--
+**************************************************************************
+LEGAJOS PERSONAL     
+**************************************************************************                            
+-->
+
+	<action name="gestionar-personal-filtro" class="sernanp.rrhh.web.action.persona.BuscarPersonalAction" method="cargarCriterioBusqueda"> 
+ 		<result name="success" type="tiles">gestionar_personal_filtro</result> 	
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />	
+			<interceptor-ref name="defaultStack" />	  	 		 
+ 	</action>
+ 	
+ 	<action name="gestionar-personal-filtro-reporte" class="sernanp.rrhh.web.action.persona.BuscarPersonalAction" method="cargarCriterioBusquedaReporte"> 
+ 		<result name="success" type="tiles">gestionar_personal_filtro_reporte</result> 	
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />	
+			<interceptor-ref name="defaultStack" />	  	 		 
+ 	</action>
+ 	
+ 	<action name="listar-resumen-personal" class="sernanp.rrhh.web.action.persona.BuscarPersonalAction" method="listarResumenPersonal">
+		<result name="success" type="json" />
+    </action>
+    
+    <action name="listar-resumen-personal-reporte" class="sernanp.rrhh.web.action.persona.BuscarPersonalAction" method="listarResumenPersonalReporte">
+		<result name="success" type="json" />
+    </action>
+    
+    <action name="buscar-legajo-por-persona" class="sernanp.rrhh.web.action.legajo.BuscarLegajoAction" method="buscarLegajoPorPersona">
+		<result name="success" type="json" />
+    </action>
+    
+    <action name="obtener-detalle-legajo" class="sernanp.rrhh.web.action.legajo.BuscarLegajoAction" method="obtenerDetalleLegajo">
+		<result name="success" type="json" />
+    </action>
+    
+     <action name="obtener-detalle-desvinculacion" class="sernanp.rrhh.web.action.desvinculacion.BuscarDesvinculacionAction" method="obtenerDetalleDesvinculacion">
+		<result name="success" type="json" />
+    </action>
+    
+     <action name="grabar-legajo" class="sernanp.rrhh.web.action.legajo.GestionarLegajoAction" method="grabar"> 
+		<result name="success" type="json"/>
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />	
+			<interceptor-ref name="defaultStack" />	  	 		 
+ 	</action>
+    
+    <action name="grabar-personal" class="sernanp.rrhh.web.action.persona.GestionarPersonalAction" method="grabarPersonal">
+		<result type="json" />
+		<result name="input" >index.html</result>
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />	
+			<interceptor-ref name="defaultStack" />	 
+	</action>
+	
+	<action name="grabar-desvinculacion" class="sernanp.rrhh.web.action.desvinculacion.GestionarDesvinculacionAction" method="grabarDesvinculacion" >
+		<result type="json" />
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />	
+			<interceptor-ref name="defaultStack" />	 
+	</action>
+	
+	
+	<action name="gestionar-personal-legajo-filtro" class="sernanp.rrhh.web.action.legajo.BuscarLegajoAction" method="obtenerDatosBasicosPersonal"> 
+ 		<result name="success" type="tiles">gestionar_personal_legajo_filtro</result>
+ 		<result name="error" type="redirectAction">gestionar-personal-filtro</result> 	
+ 	</action>	
+ 	
+	 <action name="registrar-editar-personal" class="sernanp.rrhh.web.action.persona.GestionarPersonalAction" method="gestionarPersonal"> 
+ 		<result name="success" type="tiles">registrar_editar_personal</result> 
+ 		<result name="error" type="redirectAction">gestionar-personal-filtro</result> 	
+ 		<result name="error" type="tiles">registrar_editar_personal</result> 
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />	
+			<interceptor-ref name="defaultStack" />	  	  
+ 	</action>
+ 	
+ 	 <action name="gestionar-desvinculacion-personal" class="sernanp.rrhh.web.action.desvinculacion.BuscarDesvinculacionAction" method="obtenerDatosBasicosPersonal"> 
+ 		<result name="success" type="tiles">gestionar_desvinculacion_personal</result> 
+ 		<result name="error" type="redirectAction">registrar-editar-personal</result> 	
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />	
+			<interceptor-ref name="defaultStack" />	  	 		 
+ 	</action>
+ 	 
+ 	<action name="gestionar-personal-legajo" class="sernanp.rrhh.web.action.persona.GestionarPersonalAction" method="gestionarPersonalLegajo"> 
+ 		<result name="success" type="tiles">gestionar_personal_legajo</result> 	
+ 		<result name="error" type="redirectAction">gestionar-personal-legajo-filtro</result> 
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />	 
+			<interceptor-ref name="defaultStack" />	  	 		 
+ 	</action>
+ 	
+	<action name="listar-resumen-desvinculacion" class="sernanp.rrhh.web.action.desvinculacion.BuscarDesvinculacionAction" method="listarResumenDesvinculacion">
+		<result name="success" type="json" />
+    </action> 	
+    
+    <action name="buscar-desvinculacion-por-persona" class="sernanp.rrhh.web.action.desvinculacion.BuscarDesvinculacionAction" method="buscarDesvinculacionPorPersona">
+		<result name="success" type="json" />
+    </action>
+ 	
+ 	
+ 	 <action name="agregar-estudio" class="sernanp.rrhh.web.action.persona.GestionarPersonalAction" method="agregarEstudio"> 
+ 		<result name="success" type="json"/>
+ 	 </action>
+ 	 
+ 	 <action name="eliminar-estudio" class="sernanp.rrhh.web.action.persona.GestionarPersonalAction" method="eliminarEstudio"> 
+ 		<result name="success" type="json"/>
+ 	 </action>
+ 	 
+ 	 <action name="listar-estudios" class="sernanp.rrhh.web.action.persona.GestionarPersonalAction" method="listarEstudios"> 
+ 		<result name="success" type="json"/>
+ 	 </action>
+ 	 
+ 	  <action name="editar-estudios" class="sernanp.rrhh.web.action.persona.GestionarPersonalAction" method="editarEstudios"> 
+ 		<result name="success" type="json"/>
+ 	 </action>
+ 	 
+ 	 <action name="agregar-entidad-bancaria" class="sernanp.rrhh.web.action.persona.GestionarPersonalAction" method="agregarEntidadBancaria"> 
+ 		<result name="success" type="json"/>
+ 	 </action>
+ 	 
+ 	 <action name="listar-entidad-bancaria" class="sernanp.rrhh.web.action.persona.GestionarPersonalAction" method="listarEntidadBancaria"> 
+ 		<result name="success" type="json"/>
+ 	 </action>
+ 	 
+ 	 <action name="agregar-tipo-legajo" class="sernanp.rrhh.web.action.persona.GestionarPersonalAction" method="agregarTipoLegajo"> 
+ 		<result name="success" type="json"/>
+ 	 </action>
+ 	 
+ 	 <action name="listar-tipo-legajo" class="sernanp.rrhh.web.action.persona.GestionarPersonalAction" method="listarTipoLegajo"> 
+ 		<result name="success" type="json"/>
+ 	 </action>
+ 	 
+ 	<action name="grabar-personal" class="sernanp.rrhh.web.action.persona.GestionarPersonalAction" method="grabarPersonal">
+		<result name="success" type="json" />
+	</action>
+
+	<action name="descargar-legajo" class="sernanp.rrhh.web.action.legajo.GestionarLegajoAction" method="decargarLegajo">
+        <result name="success" type="stream">
+                <param name="contentDisposition">attachment;filename=${fileName}</param>
+                <param name="contentType">${contentType}</param>
+                <param name="inputName">fileInputStream</param>
+                <param name="bufferSize">102400</param>
+        </result>
+    </action>
+    
+    <action name="anular-legajo" class="sernanp.rrhh.web.action.legajo.GestionarLegajoAction" method="anularLegajo">
+		<result name="success" type="json" />
+	</action>
+	
+	<action name="grabar-foto-personal" class="sernanp.rrhh.web.action.legajo.GestionarLegajoAction" method="grabarFotoPersonal"> 
+		<result name="success" type="json"/>
+ 	</action>
+ 	
+ 	<action name="obtener-foto-personal" class="sernanp.rrhh.web.action.legajo.GestionarLegajoAction" method="obtenerFotoPersonal"> 
+		<result name="success" type="json"/>
+ 	</action>
+ 	
+ 	<action name="eliminar-desvinculacion" class="sernanp.rrhh.web.action.desvinculacion.GestionarDesvinculacionAction" method="eliminar"> 
+		<result name="success" type="json"/>
+ 	</action>
+ 	
+ 	<action name="reporte-personal" class="sernanp.rrhh.web.action.persona.BuscarPersonalAction" method="reportePersonal">
+		<result name="success" type="jasper">
+			<param name="location">/jasper/ReportePersonal.jasper</param>
+			<param name="dataSource">listResult</param>
+			<param name="format">${format}</param>
+		</result>
+	</action>
+	
+	<action name="generar-constancia" class="sernanp.rrhh.web.action.legajo.GestionarLegajoAction" method="generarConstancia">
+        <result name="success" type="stream">
+                <param name="contentDisposition">attachment;filename=constancia.docx</param>
+                <param name="contentType">application/vnd.openxmlformats-officedocument.wordprocessingml.document</param>
+                <param name="inputName">fileInputStream</param>
+                <param name="bufferSize">102400</param>
+        </result>
+    </action>
+	
+
+<!--
+**************************************************************************
+FIN                
+**************************************************************************                            
+-->
+
+<!--
+**************************************************************************
+CONTRATO ADENDA    
+**************************************************************************                            
+-->
+<action name="gestionar-contrato-filtro" class="sernanp.rrhh.web.action.contrato.GestionarContratoAction" method="gestionarContratoFiltro"> 
+ 		<result name="success" type="tiles">gestionar_contrato_filtro</result>
+ 			
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />	
+			<interceptor-ref name="defaultStack" />	  	 		 
+ </action>
+ 
+<action name="gestionar-contrato-personal-filtro" class="sernanp.rrhh.web.action.contrato.GestionarContratoAction" method="gestionarContratoFiltro"> 
+ 		<result name="success" type="tiles">gestionar_contrato_personal_filtro</result>
+ 			
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />	
+			<interceptor-ref name="defaultStack" />	  	 		 
+ </action>
+
+<action name="gestionar-contrato" class="sernanp.rrhh.web.action.contrato.GestionarContratoAction" method="gestionarContrato"> 
+ 		<result name="success" type="tiles">gestionar_contrato</result> 	
+ 		<result name="error" type="redirectAction">gestionar-contrato-filtro</result> 
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />	
+			<interceptor-ref name="defaultStack" />	  	 		 
+ </action>
+ 	
+<action name="registrar-editar-contrato" class="sernanp.rrhh.web.action.contrato.GestionarContratoAction" method="edicionContrato"> 
+ 		<result name="success" type="tiles">registrar_editar_contrato</result> 	
+ 		<result name="error" type="redirectAction">gestionar-contrato-filtro</result>
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />	
+			<interceptor-ref name="defaultStack" />	  	 		 
+ </action>
+ 
+ <action name="grabar-contrato" class="sernanp.rrhh.web.action.contrato.GestionarContratoAction" method="grabar"> 
+		<result name="success" type="json"/>
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />	
+			<interceptor-ref name="defaultStack" />	  	 		 
+ </action>
+ 
+ <action name="buscar-contrato-por-persona" class="sernanp.rrhh.web.action.contrato.BuscarContratoAction" method="buscarContratoPorPersona"> 
+ 		<result name="success" type="json"/> 	
+ </action>
+ 
+  <action name="buscar-adenda-por-contrato" class="sernanp.rrhh.web.action.contrato.BuscarContratoAction" method="buscarAdendaPorContrato"> 
+ 		<result name="success" type="json"/> 	
+ </action>
+ 
+  <action name="generar-contrato-pdf" class="sernanp.rrhh.web.action.contrato.GestionarContratoAction" method="generarContratoPdf"> 
+ 		<result name="success" type="stream">
+	  <param name="contentType">application/pdf</param>
+	  <param name="inputName">contratoIs</param>
+	  <param name="contentDisposition">attachment;filename="contrato.pdf"</param>
+	  <param name="bufferSize">4096</param>
+	</result>	
+ </action>
+ 
+   <action name="generar-contrato-word" class="sernanp.rrhh.web.action.contrato.GestionarContratoAction" method="generarContratoWord"> 
+ 		<result name="success" type="stream">
+	  <param name="contentType">application/vnd.openxmlformats-officedocument.wordprocessingml.document</param>
+	  <param name="inputName">contratoIs</param>
+	  <param name="contentDisposition">attachment;filename="contrato.docx"</param>
+	  <param name="bufferSize">4096</param>
+	</result>	
+ </action>
+ 
+   <action name="generar-adenda-pdf" class="sernanp.rrhh.web.action.contrato.GestionarContratoAction" method="generarAdendaPdf"> 
+ 		<result name="success" type="stream">
+	  <param name="contentType">application/pdf</param>
+	  <param name="inputName">contratoIs</param>
+	  <param name="contentDisposition">attachment;filename="adenda.pdf"</param>
+	  <param name="bufferSize">4096</param>
+	</result>	
+ </action>
+ 
+    <action name="generar-adenda-word" class="sernanp.rrhh.web.action.contrato.GestionarContratoAction" method="generarAdendaWord"> 
+ 		<result name="success" type="stream">
+	  <param name="contentType">application/vnd.openxmlformats-officedocument.wordprocessingml.document</param>
+	  <param name="inputName">contratoIs</param>
+	  <param name="contentDisposition">attachment;filename="adenda.docx"</param>
+	  <param name="bufferSize">4096</param>
+	</result>	
+ </action>
+ 
+   <action name="buscar-personal-contrato" class="sernanp.rrhh.web.action.persona.BuscarPersonaAction" method="buscarPersonalContrato"> 
+ 		<result name="success" type="json"/> 	
+ </action>
+ 
+  <action name="generar-pdf"> 
+		<result name="success" type="tiles">generar_contrato_pdf</result>
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />	
+			<interceptor-ref name="defaultStack" />	  	 		 
+ </action>
+ 
+ <action name="buscar-contratos-generados" class="sernanp.rrhh.web.action.contrato.BuscarContratoAction" method="buscarContratosGenerados"> 
+ 		<result name="success" type="json"/> 	
+ </action>
+ 
+ <action name="busca-adendas-generadas" class="sernanp.rrhh.web.action.contrato.BuscarContratoAction" method="buscarAdendasGeneradas"> 
+ 		<result name="success" type="json"/> 	
+ </action>
+ 
+   <action name="generar-contratos-masivo-pdf" class="sernanp.rrhh.web.action.contrato.GestionarContratoAction" method="generarContratosMasivosPdf"> 
+ 	<result name="success" type="stream">
+	  <param name="contentType">application/pdf</param>
+	  <param name="inputName">contratoIs</param>
+	  <param name="contentDisposition">attachment;filename="doc_contrato(s).pdf"</param>
+	  <param name="bufferSize">10240</param>
+	</result>	
+ </action>
+ 
+  <action name="generar-adendas-masivo-pdf" class="sernanp.rrhh.web.action.contrato.GestionarContratoAction" method="generarAdendasMasivoPdf"> 
+ 	<result name="success" type="stream">
+	  <param name="contentType">application/pdf</param>
+	  <param name="inputName">contratoIs</param>
+	  <param name="contentDisposition">attachment;filename="doc_adenda(s).pdf"</param>
+	  <param name="bufferSize">10240</param>
+	</result>	
+ </action>
+ 
+  <action name="suscribir-contratos-masivos" class="sernanp.rrhh.web.action.contrato.GestionarContratoAction" method="suscribirContratosMasivos"> 
+ 		<result name="success" type="json"/> 	
+ </action>
+ 
+  <action name="suscribir-adendas-masivos" class="sernanp.rrhh.web.action.contrato.GestionarContratoAction" method="suscribirAdendasMasivos"> 
+ 		<result name="success" type="json"/> 	
+  </action>
+  
+ <action name="contratos-vencimiento" class="sernanp.rrhh.web.action.contrato.BuscarContratoAction" method="contratosVencimiento"> 
+ 		<result name="success" type="json"/> 	
+ </action>
+ 
+ <action name="adendas-vencimiento" class="sernanp.rrhh.web.action.contrato.BuscarContratoAction" method="adendasVencimiento"> 
+ 		<result name="success" type="json"/> 	
+ </action>
+ 
+ 
+ <action name="contrato-adenda-vencimiento"> 
+		<result name="success" type="tiles">contrato_adenda_vencimiento</result>
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />	
+			<interceptor-ref name="defaultStack" />	  	 		 
+ </action>
+ 
+ <action name="contrato-adenda-vencimiento-new" class="sernanp.rrhh.web.action.contrato.BuscarContratoAction" method="adendasContratosVencimiento"> 
+		<result name="success" type="tiles">contrato_adenda_vencimiento</result>
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />	
+			<interceptor-ref name="defaultStack" />	  	 		 
+ </action>
+ 
+<!-- Start Actions GestionarPostulante -->
+<action name="GestionarPostulanteView" class="sernanp.rrhh.web.action.persona.GestionarPostulanteAction" method="view">
+		<result type="json" />
+</action>
+
+<action name="GestionarPostulanteCreate" class="sernanp.rrhh.web.action.persona.GestionarPostulanteAction" method="create">
+		<result type="json" />
+</action>
+
+<action name="GestionarPostulanteSave" class="sernanp.rrhh.web.action.persona.GestionarPostulanteAction" method="save">
+		<result type="json" />
+</action>
+
+<action name="GestionarPostulanteRemove" class="sernanp.rrhh.web.action.persona.GestionarPostulanteAction" method="remove">
+		<result type="json" />
+</action>
+<!-- End Actions GestionarPostulante -->
+ 
+<!--
+**************************************************************************
+FIN                
+**************************************************************************                            
+-->
+
+
+	
+
+<!--
+**************************************************************************
+PLANILLAS CONSULTA PERSONAL     
+**************************************************************************                            
+-->
+
+	<action name="consulta-personal" class="sernanp.rrhh.web.action.persona.BuscarPersonalAction" method="cargarCriterioBusqueda"> 
+ 		<result name="success" type="tiles">consulta_personal</result> 	
+<!-- 			<interceptor-ref name="basicStack" />   -->
+<!-- 			<interceptor-ref name="general" />  -->
+<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+ 	</action>
+ 	
+ 	<action name="consulta-personal-reporte" class="sernanp.rrhh.web.action.persona.BuscarPersonalAction" method="cargarCriterioBusquedaReporte"> 
+ 		<result name="success" type="tiles">consulta_personal_reporte</result> 	
+<!-- 			<interceptor-ref name="basicStack" />   -->
+<!-- 			<interceptor-ref name="general" />  -->
+<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+ 	</action>
+ 	
+ 	<action name="consulta-personal-detalle" class="sernanp.rrhh.web.action.persona.GestionarPersonalAction" method="gestionarPersonal"> 
+ 		<result name="success" type="tiles">consulta_personal_detalle</result> 
+ 		<result name="error" type="redirectAction">consulta-personal</result>
+<!-- 			<interceptor-ref name="basicStack" />   -->
+<!-- 			<interceptor-ref name="general" />  -->
+<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+<!-- 			<interceptor-ref name="defaultStack" />	  	   -->
+ 	</action>
+
+<!--
+**************************************************************************
+FIN                
+**************************************************************************                            
+-->	
+
+
+<!-- 	ADD 12-08-2015 DAVID -->
+
+
+ 	<action name="reporteContratosVencimientopdf" class="sernanp.rrhh.web.action.contrato.BuscarContratoAction" method="listaContratosPersonalVencimiento">
+		<result name="success" type="jasper">
+			<param name="location">/jasper/ReporteContratosPersonalVencimiento.jasper</param>
+			<param name="dataSource">listResult</param>
+			<param name="format">PDF</param>
+			<param name="documentName">Reporte_Contratos_Vencimiento</param>
+            <param name="contentDisposition">attachment</param>
+            <param name="reportParameters">reportParams</param>
+		</result>
+		
+		<result name="error" type="jasper">/Error.jsp</result>
+        
+        <interceptor-ref name="usuario-logeado" />
+		<interceptor-ref name="basicStack" />
+	</action>
+
+ 	<action name="reporteContratosVencimientoxls" class="sernanp.rrhh.web.action.contrato.BuscarContratoAction" method="listaContratosPersonalVencimiento">
+		<result name="success" type="jasper">
+			<param name="location">/jasper/ReporteContratosPersonalVencimiento_xls.jasper</param>
+			<param name="dataSource">listResult</param>
+			<param name="format">XLS</param>
+			<param name="documentName">Reporte_Contratos_Vencimiento</param>
+            <param name="contentDisposition">attachment</param>
+            <param name="reportParameters">reportParams</param>
+		</result>
+		
+		<result name="error" type="jasper">/Error.jsp</result>
+        
+        <interceptor-ref name="usuario-logeado" />
+		<interceptor-ref name="basicStack" />
+	</action>
+	
+	
+	<action name="reporteAdendasGeneradasxls" class="sernanp.rrhh.web.action.contrato.BuscarContratoAction" method="downloadListaAdendasGeneradas">
+		<result name="success" type="jasper">
+			<param name="location">/jasper/ReporteAdendasGeneradas_xls.jasper</param>
+			<param name="dataSource">listResult</param>
+			<param name="format">XLS</param>
+			<param name="documentName">Reporte_Adendas_Generadas</param>
+            <param name="contentDisposition">attachment</param>
+            <param name="reportParameters">reportParams</param>
+		</result>
+		
+		<result name="error" type="jasper">/Error.jsp</result>
+        
+        <interceptor-ref name="usuario-logeado" />
+		<interceptor-ref name="basicStack" />
+	</action>
+
+<!-- END -->
+
+	</package>
+	
+	
+  
+</struts>

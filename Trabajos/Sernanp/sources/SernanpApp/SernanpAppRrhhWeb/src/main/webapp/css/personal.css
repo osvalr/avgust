@@ -1,0 +1,301 @@
+@CHARSET "UTF-8";
+h1 span{font-size:12px;}
+
+#formRegistroPapeletas .myFieldSet{
+	width:250px;
+	float:left;	
+}
+
+
+
+#formRegistroMarcaciones legend, #formEdicionMarcacion legend, #formRegistroPapeletas legend, #formEdicionPersonal legend, #formFiltroPersonal legend,
+#formRegistroVacaciones legend, #formEdicionVacaciones legend, #divListaVacaciones legend, #formUpdateFIPVacaciones legend{
+	display: block;
+	font-size: 12px;
+}
+
+#formRegistroMarcaciones label, #formEdicionMarcacion label, #formRegistroPapeletas label, #formEdicionPersonallabel, #formRegistroVacaciones label{
+	display: inline;
+}
+
+#formRegistroMarcaciones .lb_1, #formEdicionMarcacion .lb_1, #formRegistroPapeletas .lb_1, #formEdicionPersonal .lb_1, #formRegistroVacaciones .lb_1 {
+	width: 155px;
+}
+
+#formEdicionMarcacion .lb_e, #formRegistroPapeletas .lb_e {
+	width: 120px;
+}
+
+#formRegistroMarcaciones .lb_2, #formEdicionMarcacion .lb_2, #formRegistroPapeletas .lb_2, #formEdicionPersonal .lb_2, #formRegistroVacaciones .lb_2 {
+	width: 170px;
+}
+
+
+#formRegistroMarcaciones .lb_21, #formEdicionMarcacion .lb_21, #formRegistroPapeletas .lb_21, #formEdicionPersonal .lb_21 {
+	width: 250px;
+}
+
+#formRegistroMarcaciones .lb_3, #formEdicionMarcacion .lb_3, #formRegistroPapeletas .lb_3, #formEdicionPersonal .lb_3 {
+	width: 20px;
+}
+
+
+#formRegistroMarcaciones .lb_4, #formEdicionMarcacion .lb_4, #formRegistroPapeletas .lb_4, #formEdicionPersonal .lb_4 {
+	width: 40px;
+}
+
+
+#formRegistroMarcaciones .lb_5, #formEdicionMarcacion .lb_5, #formRegistroPapeletas .lb_5, #formEdicionPersonal .lb_5 {
+	width: 100px;
+}
+
+#formRegistroMarcaciones .lb_6, #formEdicionMarcacion .lb_6, #formRegistroPapeletas .lb_6, #formEdicionPersonal .lb_6 {
+	width: 400px;
+	margin: 0px 10px;
+}
+
+#formRegistroMarcaciones .txtArea, #formEdicionMarcacion .txtArea, #formRegistroPapeletas .txtArea, #formEdicionPersonal .txtArea{
+	width: 400px;
+	height: 30px;
+}
+
+
+/* 09-07-2014 D.V.R */
+
+#formRegistroLicencias .txtArea, #formEdicionMarcacion .txtArea, #formRegistroPapeletas .txtArea, #formEdicionPersonal .txtArea{
+	width: 400px;
+	height: 30px;
+}
+
+#formRegistroLicencias .lb_li{
+	width: 100px;
+	height: 50px;
+}
+
+/*FIN*/
+
+
+#formRegistroMarcaciones .ContentDP div, #formEdicionMarcacion .ContentDP div, 
+#formRegistroPapeletas .ContentDP div, #formEdicionPersonal .ContentDP div{
+	padding: 1px;	
+}
+
+#formEdicionMarcacion, #formRegistroMarcaciones,  #formRegistroPapeletas, #formEdicionPersonal {
+	overflow: auto;
+}
+
+/* #formRegistroMarcaciones { */
+/* 	overflow: auto; */
+/* } */
+
+/* #formEdicionMarcacion { */
+/* 	overflow: auto; */
+/* } */
+
+#formRegistroMarcaciones .fls_btn, #formEdicionMarcacion .fls_btn, #formRegistroPapeletas .fls_btn, #formEdicionPersonal .fls_btn {
+	width: 590px;
+	text-align: center;
+}
+
+.info, .exitomsg, .alertamsg, .errormsg {
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:15px;
+    border: 1px solid;
+    margin: 10px 0px;
+    padding:20px 15px 20px 55px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    position:relative;
+    display: none;    
+}
+.info {
+    color: #00529B;
+    background-color: #BDE5F8;
+    background-image: url('../img/iconsmsg/info.png');
+}
+.exitomsg {
+	/*width: 100%;*/
+    color: #4F8A10;
+    background-color: #DFF2BF;
+    background-image:url('../img/iconsmsg/exito.png');        
+}
+
+
+
+.alertamsg {
+    color: #9F6000;
+    background-color: #FEEFB3;
+    background-image: url('../img/iconsmsg/alerta.png');
+}
+
+.errormsg {
+    color: #D8000C;
+    background-color: #FFBABA;
+    background-image: url('../img/iconsmsg/error.png');
+}
+
+.divBtnReg{
+	width:55%;
+	text-align: right;
+}
+
+.divTotReg{
+	border:1px solid #ccc;
+	width:30%;
+	font-size: 150%;
+	font-weight: bold;
+	font-style: italic;
+	color: #333;
+	text-align: center;
+	padding: 5px;
+	
+}
+
+.hor-minimalist-a
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	/*background: #fff;*/
+	margin-top: 10px;
+	border-collapse: collapse;
+	text-align: left;
+	width: 100%;
+}
+.hor-minimalist-a th
+{
+	font-size: 14px;
+	font-weight: normal;
+	font-weight: bold;
+	padding: 10px 5px;
+	
+	border-top: 1px solid #333;
+	border-bottom: 1px solid #333;
+}
+.hor-minimalist-a td
+{
+	color: #333;
+	padding: 3px 5px;
+	border-bottom: 1px solid #ccc;
+}
+
+#divModalContenedor, #dialog-form, #dialog-form-wait, #divModalImportarArchivo{
+	display: none;
+}
+
+.fltrMBtn{
+	float: right;
+	background: #666;
+	color: #ccc;
+	padding: 2px;
+	width: 95px;
+	height: 20px;
+	font-size: 115%;
+	text-align: center;
+	margin: 2px;
+	border-bottom: 2px solid #555;
+	border-top: 2px solid #555;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+
+.fltrCombo{
+	float: right;
+	/*background: #666;
+	color: #ccc;*/
+	padding: 1px;
+	width: 120px;
+	height: 20px;
+	font-size: 115%;
+	text-align: center;
+	margin: 1px;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+
+.fltrTxt{
+	float: right;
+	padding: 1px;
+	width: 120px;
+	height: 20px;
+	font-size: 120%;
+	text-align: right;
+	margin: 1px;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.fltrTxtV{
+	float: right;
+	padding: 1px;
+	width: auto;
+	height: 20px;
+	font-size: 120%;
+	text-align: right;
+	margin: 1px;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+
+.fltrAsistdate{
+	float: right;
+	padding: 1px;
+	width: 130px;
+	height: 20px;
+	font-size: 115%;
+	text-align: center;
+	margin: 1px;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+
+.incidenciasExiste{
+	float: center;
+ 	/*background: #666; 
+	color: #ccc;*/
+	padding: 1px;
+	width: 500px;
+	height: 10px;
+	font-size: 105%;
+	color:#FF0000;
+	text-align: center;
+	margin: 2px;
+/* 	border-bottom: 2px solid #555; 
+	border-top: 2px solid #555; 
+	cursor: pointer;*/
+	font-weight: bold;
+}
+
+
+.incidenciasNoExiste{
+	float: right;
+ 	/*background: #666; 
+	color: #ccc;*/
+	padding: 1px;
+	width: 500px;
+	height: 10px;
+	font-size: 105%;
+	color:#008000;
+	text-align: center;
+	margin: 2px;
+/* 	border-bottom: 2px solid #555; 
+	border-top: 2px solid #555; 
+	cursor: pointer;*/
+	font-weight: bold;
+}
+
+/*Jquery UI*/
+.ui-widget{font-size:0.9em;}
+.ui-widget .ui-widget{font-size:0.9em;}
+.ui-widget-content label{display:inline-block;}
+/*.ui-dialog .ui-dialog-buttonpane button{margin:0.1em 0.1em 0.5em 0} */
+.ui-dialog .ui-dialog-buttonpane button{margin:0.1em 10px 0.5em 0;border:1px solid #BECBCD;padding:2px 10px}
+.ui-dialog-buttonpane {border:none;}
+
+/*Validator*/
+.v_label{font-size:9px;color:#FF7100;}
+.v_label2{font-size:10px;color:#FF7100;}
+.v_invalid{border:1px solid #FF7100;}

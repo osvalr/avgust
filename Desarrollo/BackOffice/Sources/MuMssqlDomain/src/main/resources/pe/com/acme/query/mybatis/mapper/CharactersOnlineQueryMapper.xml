@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.acme.query.mybatis.mapper.CharactersOnlineQueryMapper">
+
+<sql id="outs"> 
+<![CDATA[
+
+x.memb___id,
+ac.GameIDC,
+cc.descrip_clazz,
+c.cLevel,
+c.Resets,
+c.MapNumber,
+mi.descrip_map,
+c.MapPosX,
+c.MapPosY,
+c.CtlCode,
+CASE c.CtlCode 
+  WHEN 32 THEN 'Game Master'
+  ELSE null 
+END as descrip_CtlCode 
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+@RtnValue x 
+inner join dbo.AccountCharacter ac on x.memb___id = ac.id
+inner join dbo.Character c on c.Name = ac.GameIDC
+left join map_info mi on mi.cod_map = c.MapNumber
+left join  character_clazz cc on c.Class = cc.cod_clazz
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+x.memb___id = x.memb___id
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${order_column} ${order_direction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.acme.query.mybatis.model.CharactersOnlineQuery" parameterType="pe.com.acme.query.mybatis.model.CharactersOnlineQueryCriteria">
+
+DECLARE @RtnValue table
+(
+    memb___id VARCHAR(50),
+    ConnectStat int
+)
+
+insert into  @RtnValue
+select distinct
+cast(ms.memb___id as varchar(100)) memb___id,
+ms.ConnectStat
+from dbo.MEMB_STAT ms
+where ms.ConnectStat = 1
+
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.acme.query.mybatis.model.CharactersOnlineQuery" parameterType="java.util.Map">
+
+DECLARE @RtnValue table
+(
+    memb___id VARCHAR(50),
+    ConnectStat int
+)
+
+insert into  @RtnValue
+select distinct
+cast(ms.memb___id as varchar(100)) memb___id,
+ms.ConnectStat
+from dbo.MEMB_STAT ms
+where ms.ConnectStat = 1
+
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.acme.query.mybatis.model.CharactersOnlineQuery" parameterType="pe.com.acme.query.mybatis.model.CharactersOnlineQueryCriteria">
+
+DECLARE @RtnValue table
+(
+    memb___id VARCHAR(50),
+    ConnectStat int
+)
+
+insert into  @RtnValue
+select distinct
+cast(ms.memb___id as varchar(100)) memb___id,
+ms.ConnectStat
+from dbo.MEMB_STAT ms
+where ms.ConnectStat = 1
+
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.acme.query.mybatis.model.CharactersOnlineQuery" parameterType="java.util.Map">
+
+DECLARE @RtnValue table
+(
+    memb___id VARCHAR(50),
+    ConnectStat int
+)
+
+insert into  @RtnValue
+select distinct
+cast(ms.memb___id as varchar(100)) memb___id,
+ms.ConnectStat
+from dbo.MEMB_STAT ms
+where ms.ConnectStat = 1
+
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.acme.query.mybatis.model.CharactersOnlineQueryCriteria">
+
+DECLARE @RtnValue table
+(
+    memb___id VARCHAR(50),
+    ConnectStat int
+)
+
+insert into  @RtnValue
+select distinct
+cast(ms.memb___id as varchar(100)) memb___id,
+ms.ConnectStat
+from dbo.MEMB_STAT ms
+where ms.ConnectStat = 1
+
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+
+DECLARE @RtnValue table
+(
+    memb___id VARCHAR(50),
+    ConnectStat int
+)
+
+insert into  @RtnValue
+select distinct
+cast(ms.memb___id as varchar(100)) memb___id,
+ms.ConnectStat
+from dbo.MEMB_STAT ms
+where ms.ConnectStat = 1
+
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

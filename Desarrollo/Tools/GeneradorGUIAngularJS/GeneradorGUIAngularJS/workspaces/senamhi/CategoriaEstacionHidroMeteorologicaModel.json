@@ -1,0 +1,7 @@
+{
+	"titleCrud": "Categorias Estación Meteorologica",
+	"nameCrud": "CategoriaEstacionHidroMeteorologica",
+	"constUrlApi": "CATEGORIA_ESTACION_HIDROMETEOROLOGICA_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "CategoriaEstacionHidroMeteorologicaModel.xml"
+}

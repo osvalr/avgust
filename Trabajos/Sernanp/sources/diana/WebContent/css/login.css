@@ -1,0 +1,28 @@
+body{padding:30px 0;}
+#content{width:940px;}
+/*Login*/
+#modules{width:578px;background:#999;margin-left:4px;padding:2px;}
+.module{border:1px solid #888;margin: 7px 6px ;padding:8px 10px;width:110px;overflow:hidden;
+	font:bold 8pt Helvetica;float:right;height:150px;color:#666;background:#fff;
+	text-align:center;line-height:10pt;}
+.title{font:14pt 'Yanone Kaffeesatz';color:#333;margin-bottom:5px;}
+#loginLogo{font:22pt 'Yanone Kaffeesatz';height:50px;}
+#loginLogo img{width:150px;vertical-align:middle;}
+#loginPanel{width:285px;color:#fff;padding: 15px 25px; height:335px;
+	margin-top:0px;border:2px solid #666;}
+#loginPanel,.submit{background:#F5A021;
+	background-image: -moz-linear-gradient(100% 100% 90deg, #F5A021, #DE4E13);
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F5A021), to(#DE4E13));}
+#loginPanel h1{margin:40px 0px 10px 0px;}
+#loginPanel table{margin:auto;width:100%;}
+#loginPanel label{color:#fff;}
+td{color:#fff;padding:2px 5px;text-transform:uppercase;vertical-align:middle;}
+input{vertical-align:middle}
+.buttons{text-align:right;}
+.submit{background:#333}
+.forget{text-transform:inherit;text-align:right;font:8pt Verdana;margin-top:110px;}
+.forget a{color:#eee;}
+
+
+ /**********ie6*****************/
+* html .module{display:inline;}

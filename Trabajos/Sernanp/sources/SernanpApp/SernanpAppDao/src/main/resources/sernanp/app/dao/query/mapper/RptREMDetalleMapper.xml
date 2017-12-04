@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.RptREMDetalleMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+ 
+  lpad(cast(pn.idtipodocumento as varchar), 2, '0') idtipodocumento,
+  pn.numerodoc,
+  cp.var_cod_pdt_concepto,
+  SUM(nc.dec_monto_calculado) as dec_monto_calculado
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+personal.t_nomina_anio_periodo_personal napp
+inner join personal.t_anio_periodo_planilla app on napp.srl_id_anio_periodo_planilla = app.srl_id_anio_periodo_planilla
+inner join personal.t_anio_planilla ap on app.srl_id_anio_planilla = ap.srl_id_anio_planilla
+inner join sernanp.personal ps on napp.idpersonal = ps.idpersonal
+inner join sernanp.personanatural pn on ps.idpersonanatural=pn.idpersonanatural
+
+left join personal.t_anio_meta am on napp.c_meta = am.cod_meta and ap.srl_id_anio_planilla = am.srl_id_anio_planilla
+left join sernanp.t_personal_contrato pc on napp.srl_id_contrato=pc.srl_id_contrato
+left join personal.t_nomina_concepto nc on nc.srl_id_nomina_anio_periodo_personal = napp.srl_id_nomina_anio_periodo_personal
+left join personal.t_concepto_planilla cp on nc.srl_id_concepto_planilla = cp.srl_id_concepto_planilla
+left join sernanp.t_regimen_pensionario rp on napp.srl_id_regimen_pensionario = rp.srl_id_regimen_pensionario
+
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+ap.int_anio = COALESCE(#{int_anio},ap.int_anio) and
+app.int_id_periodo_mes = COALESCE(#{int_id_periodo_mes},app.int_id_periodo_mes) and
+napp.srl_id_regimen_contractual= COALESCE(#{srl_id_regimen_contractual},napp.srl_id_regimen_contractual) and
+cp.int_id_tipo_concepto IN (1,2,3) and
+CASE WHEN napp.srl_id_regimen_pensionario = 4 THEN cp.var_cod_pdt_concepto NOT IN ('0100','0200','0300','0400','0500','0600','0603','0604','0607','0610','0612','0613','0700','0800','0802','0804','0806','0808','7878','909090') --IN ('0601','0606','0608','0609')
+     WHEN napp.srl_id_regimen_pensionario = 3 THEN cp.var_cod_pdt_concepto NOT IN ('0100','0200','0300','0400','0500','0600','0603','0604','0607','0610','0612','0700','0800','0802','0804','0806','0808','7878','909090') -- IN ('0613')
+     ELSE cp.var_cod_pdt_concepto NOT IN ('0100','0200','0300','0400','0500','0600','0601','0603','0604','0606','0607','0608','0609','0610','0612','0613','0700','0800','0802','0804','0806','0808','7878','909090')
+END and
+napp.int_id_estado = COALESCE(1,napp.int_id_estado) AND
+var_cod_pdt_concepto <> '' and
+dec_monto_calculado > 0 and
+cp.int_id_estado = 1
+ 
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+
+GROUP BY 
+
+numerodoc,
+var_cod_pdt_concepto,
+idtipodocumento
+
+
+
+ORDER BY 
+
+var_cod_pdt_concepto DESC, numerodoc 
+
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.RptREMDetalle" parameterType="sernanp.app.dao.query.domain.RptREMDetalleCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.RptREMDetalle" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.RptREMDetalle" parameterType="sernanp.app.dao.query.domain.RptREMDetalleCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.RptREMDetalle" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.RptREMDetalleCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

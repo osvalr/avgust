@@ -1,0 +1,144 @@
+/**
+* Copyright «©» ${anho}, FOCUS CONSULTORES ASOCIADOS SAC. All rights reserved.
+*
+* This file is part of ${nameApp}.
+*
+* ${nameApp} is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* ${nameApp} is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with ${nameApp}.  If not, see <http://www.gnu.org/licenses/>.
+*/	 
+
+/**
+* GENERATOR CRUD EXT JS 5            
+* BY FOCUS CONSULTORES ASOCIADOS SAC  
+* DATE CREATE : ${datetimeCreate}
+* VERSION : 1.0 
+*/
+
+package ${packageController};
+
+import java.util.List;
+import java.util.Map;
+
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Namespace;
+import org.apache.struts2.convention.annotation.Result;
+import org.apache.struts2.convention.annotation.ResultPath;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import pe.com.focus.util.ActionHelper;
+import pe.com.focus.util.BusinessException;
+import pe.com.focus.util.ExtJsStrutsUtil;
+
+import ${packageService}.${nameService}Service;
+import ${classModel};
+import ${classMapperModel};
+
+@Namespace("${module}")
+@ResultPath(value="/")
+public class ${nameController}Action extends ActionHelper {
+
+
+	private static final long serialVersionUID = 1L;
+
+	@Autowired
+	private ${nameService}Service ${varNameService}Service;
+	
+	private ${nameModel} ${nameVarModel};
+	
+	@Action(value="${nameController}View", results={@Result(name="success",type="json")})
+	public String view(){
+		
+		try{
+			
+			int start = this.getIntegerParameter("start");
+			int limit = this.getIntegerParameter("limit");
+			Map<String, Object> paramMap = this.loadParamMap();
+			
+			List<${nameModel}> listModel = ${varNameService}Service.getListByQuery(${nameMapperModel}.class, paramMap,start,limit);
+			int size = ${varNameService}Service.getCountRowsByQuery(${nameMapperModel}.class, paramMap);
+			this.success(listModel,size);
+			
+		}catch(BusinessException e){
+			this.exception(e.getMessage());
+		}
+		
+		return SUCCESS;
+	}
+	
+	@Action(value = "${nameController}Create",results = {@Result(name="success",type = "json")})
+	public String create(){
+		
+		try{
+			
+			${varNameService}Service.create(${nameVarModel});
+			this.success(${nameVarModel}, "Operation Success.");
+			
+		}catch(BusinessException e){
+			this.exception(e.getMessage());
+		}
+		
+		return SUCCESS;
+	}
+	
+	@Action(value = "${nameController}Save",results = {@Result(name="success",type = "json")})
+	public String save(){
+		
+		try{
+			
+			${varNameService}Service.save(${nameVarModel});
+			this.success(${nameVarModel}, "Operation Success.");
+			
+		}catch(BusinessException e){
+			this.exception(e.getMessage());
+		}
+		
+		return SUCCESS;
+	}
+	
+	@Action(value = "${nameController}Remove",results = {@Result(name="success",type = "json")})
+	public String remove(){
+		
+		try{
+			
+			${varNameService}Service.remove(${nameVarModel});
+			this.extjsReturn.setSuccess(true);
+			
+		}catch(BusinessException e){
+			this.exception(e.getMessage());
+		}
+		
+		return SUCCESS;
+	}
+	
+	@Override
+	public ExtJsStrutsUtil getExtjsReturn() {
+		return extjsReturn;
+	}
+	
+	public ${nameService}Service ${nameGetMethodService}Service() {
+		return ${varNameService}Service;
+	}
+
+	public void ${nameSetMethodService}Service(${nameService}Service ${varNameService}Service) {
+		this.${varNameService}Service = ${varNameService}Service;
+	}
+
+	public ${nameModel} ${nameGetMethodModel}() {
+		return ${nameVarModel};
+	}
+
+	public void ${nameSetMethodModel}(${nameModel} ${nameVarModel}) {
+		this.${nameVarModel} = ${nameVarModel};
+	}
+
+}

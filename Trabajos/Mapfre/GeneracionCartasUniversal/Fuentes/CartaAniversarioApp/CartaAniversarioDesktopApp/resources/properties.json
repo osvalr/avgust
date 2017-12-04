@@ -1,0 +1,151 @@
+﻿[
+  {
+    "index": 0,
+    "name": "fechaFinaliza",
+    "typeProperty": 1,
+    "dataType": 4,
+    "formatDate": "dd/MM/yyyy"
+  },
+  {
+    "index": 1,
+    "name": "numeroPoliza",
+    "typeProperty": 1,
+    "dataType": 3
+  },
+  {
+    "index": 2,
+    "name": "fechaDesde",
+    "typeProperty": 1,
+    "dataType": 4,
+    "formatDate": "dd/MM/yyyy"
+  },
+  {
+    "index": 3,
+    "name": "fechaHasta",
+    "typeProperty": 1,
+    "dataType": 4,
+    "formatDate": "dd/MM/yyyy"
+  },
+  {
+    "index": 4,
+    "name": "fechaEfectiva",
+    "typeProperty": 1,
+    "dataType": 4,
+    "formatDate": "dd/MM/yyyy"
+  },
+  {
+    "index": 5,
+    "name": "beneficioMuerteBasico1",
+    "typeProperty": 1,
+    "dataType": 2
+  },
+  {
+    "index": 6,
+    "name": "beneficioMuerteBasico2",
+    "typeProperty": 1,
+    "dataType": 2
+  },
+  {
+    "index": 7,
+    "name": "asegurado",
+    "typeProperty": 1,
+    "dataType": 3
+  },
+  {
+    "index": 8,
+    "name": "agente",
+    "typeProperty": 1,
+    "dataType": 3
+  },
+  {
+    "index": 9,
+    "name": "valorEfectivoAcumulado1",
+    "typeProperty": 1,
+    "dataType": 2
+  },
+  {
+    "index": 10,
+    "name": "valorEfectivoAcumulado2",
+    "typeProperty": 1,
+    "dataType": 2
+  },
+  {
+    "index": 11,
+    "name": "balancePrestamo1",
+    "typeProperty": 1,
+    "dataType": 2
+  },
+  {
+    "index": 12,
+    "name": "balancePrestamo2",
+    "typeProperty": 1,
+    "dataType": 2
+  },
+  {
+    "index": 13,
+    "name": "cargosRescate1",
+    "typeProperty": 1,
+    "dataType": 2
+  },
+  {
+    "index": 14,
+    "name": "cargosRescate2",
+    "typeProperty": 1,
+    "dataType": 2
+  },
+  {
+    "index": 15,
+    "name": "valorEfectivoCorriente1",
+    "typeProperty": 1,
+    "dataType": 2
+  },
+  {
+    "index": 16,
+    "name": "valorEfectivoCorriente2",
+    "typeProperty": 1,
+    "dataType": 2
+  },
+  {
+    "index": 0,
+    "name": "fechaAnterior",
+    "typeProperty": 2,
+    "dataType": 4,
+    "formatDate": "dd/MM/yyyy"
+  },
+  {
+    "index": 1,
+    "name": "primaIngresada",
+    "typeProperty": 2,
+    "dataType": 2
+  },
+  {
+    "index": 2,
+    "name": "cargoAdministrativo",
+    "typeProperty": 2,
+    "dataType": 2
+  },
+  {
+    "index": 3,
+    "name": "costoSeguro",
+    "typeProperty": 2,
+    "dataType": 2
+  },
+  {
+    "index": 4,
+    "name": "interesMonto",
+    "typeProperty": 2,
+    "dataType": 2
+  },
+  {
+    "index": 5,
+    "name": "interesPorcentaje",
+    "typeProperty": 2,
+    "dataType": 2
+  },
+  {
+    "index": 6,
+    "name": "rescateParcialPrestamo",
+    "typeProperty": 2,
+    "dataType": 2
+  }
+]

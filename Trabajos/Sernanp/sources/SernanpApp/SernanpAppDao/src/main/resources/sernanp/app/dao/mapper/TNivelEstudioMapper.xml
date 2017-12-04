@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sernanp.app.dao.mapper.TNivelEstudioMapper" >
+  <resultMap id="BaseResultMap" type="sernanp.app.dao.domain.TNivelEstudio" >
+    <id column="srl_id_nivel_estudio" property="srl_id_nivel_estudio" jdbcType="INTEGER" />
+    <result column="var_descripcion_nivel_estudio" property="var_descripcion_nivel_estudio" jdbcType="VARCHAR" />
+    <result column="var_cod_nivel_estudio" property="var_cod_nivel_estudio" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    srl_id_nivel_estudio, var_descripcion_nivel_estudio, var_cod_nivel_estudio
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TNivelEstudioExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sernanp.t_nivel_estudio
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TNivelEstudioKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from sernanp.t_nivel_estudio
+    where srl_id_nivel_estudio = #{srl_id_nivel_estudio,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="sernanp.app.dao.domain.TNivelEstudioKey" >
+    delete from sernanp.t_nivel_estudio
+    where srl_id_nivel_estudio = #{srl_id_nivel_estudio,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sernanp.app.dao.domain.TNivelEstudioExample" >
+    delete from sernanp.t_nivel_estudio
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sernanp.app.dao.domain.TNivelEstudio" useGeneratedKeys="true" keyProperty="srl_id_nivel_estudio" >
+    insert into sernanp.t_nivel_estudio (var_descripcion_nivel_estudio, var_cod_nivel_estudio
+      )
+    values (#{var_descripcion_nivel_estudio,jdbcType=VARCHAR}, #{var_cod_nivel_estudio,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="sernanp.app.dao.domain.TNivelEstudio" useGeneratedKeys="true" keyProperty="srl_id_nivel_estudio" >
+    insert into sernanp.t_nivel_estudio
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="var_descripcion_nivel_estudio != null" >
+        var_descripcion_nivel_estudio,
+      </if>
+      <if test="var_cod_nivel_estudio != null" >
+        var_cod_nivel_estudio,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="var_descripcion_nivel_estudio != null" >
+        #{var_descripcion_nivel_estudio,jdbcType=VARCHAR},
+      </if>
+      <if test="var_cod_nivel_estudio != null" >
+        #{var_cod_nivel_estudio,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sernanp.app.dao.domain.TNivelEstudioExample" resultType="java.lang.Integer" >
+    select count(*) from sernanp.t_nivel_estudio
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sernanp.t_nivel_estudio
+    <set >
+      <if test="record.srl_id_nivel_estudio != null" >
+        srl_id_nivel_estudio = #{record.srl_id_nivel_estudio,jdbcType=INTEGER},
+      </if>
+      <if test="record.var_descripcion_nivel_estudio != null" >
+        var_descripcion_nivel_estudio = #{record.var_descripcion_nivel_estudio,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_cod_nivel_estudio != null" >
+        var_cod_nivel_estudio = #{record.var_cod_nivel_estudio,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sernanp.t_nivel_estudio
+    set srl_id_nivel_estudio = #{record.srl_id_nivel_estudio,jdbcType=INTEGER},
+      var_descripcion_nivel_estudio = #{record.var_descripcion_nivel_estudio,jdbcType=VARCHAR},
+      var_cod_nivel_estudio = #{record.var_cod_nivel_estudio,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sernanp.app.dao.domain.TNivelEstudio" >
+    update sernanp.t_nivel_estudio
+    <set >
+      <if test="var_descripcion_nivel_estudio != null" >
+        var_descripcion_nivel_estudio = #{var_descripcion_nivel_estudio,jdbcType=VARCHAR},
+      </if>
+      <if test="var_cod_nivel_estudio != null" >
+        var_cod_nivel_estudio = #{var_cod_nivel_estudio,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where srl_id_nivel_estudio = #{srl_id_nivel_estudio,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sernanp.app.dao.domain.TNivelEstudio" >
+    update sernanp.t_nivel_estudio
+    set var_descripcion_nivel_estudio = #{var_descripcion_nivel_estudio,jdbcType=VARCHAR},
+      var_cod_nivel_estudio = #{var_cod_nivel_estudio,jdbcType=VARCHAR}
+    where srl_id_nivel_estudio = #{srl_id_nivel_estudio,jdbcType=INTEGER}
+  </update>
+</mapper>

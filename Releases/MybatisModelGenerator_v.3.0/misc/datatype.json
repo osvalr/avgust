@@ -1,0 +1,44 @@
+[
+	{
+		"nameDataType": "integer",
+		"className": "Integer",
+		"namespace": "java.lang.Integer",
+		"dbDataType":"INTEGER"
+	},
+	{
+		"nameDataType": "double",
+		"className": "Double",
+		"namespace": "java.lang.Double",
+		"dbDataType":"DOUBLE"
+	},
+	{
+		"nameDataType": "string",
+		"className": "String",
+		"namespace": "java.lang.String",
+		"dbDataType":"VARCHAR"
+	},
+	{
+		"nameDataType": "date",
+		"className": "Date",
+		"namespace": "java.util.Date",
+		"dbDataType":"DATE"
+	},
+	{
+		"nameDataType": "long",
+		"className": "Long",
+		"namespace": "java.lang.Long",
+		"dbDataType":"NUMERIC"
+	},
+	{
+		"nameDataType": "bigInteger",
+		"className": "BigInteger",
+		"namespace": "java.math.BigInteger",
+		"dbDataType":"BIGINT"
+	},
+	{
+		"nameDataType": "bigDecimal",
+		"className": "BigDecimal",
+		"namespace": "java.math.BigDecimal",
+		"dbDataType":"NUMERIC"
+	}
+]

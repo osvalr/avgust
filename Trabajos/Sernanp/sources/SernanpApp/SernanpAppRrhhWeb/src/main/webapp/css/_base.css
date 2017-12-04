@@ -1,0 +1,1001 @@
+table { border-collapse: collapse; }
+td { padding: 0.24em; }
+.firsttrue { border-top: 2px solid black; }
+.lasttrue { border-bottom: 2px solid black; }
+.firstfalse { }
+.lastfalse { }
+.row0 { background: #fff; }
+.row1 { background: #aaa; }
+.row2 { background: #555; color: white; }
+.row3 { background: #000; color: white; }
+.link{cursor:pointer;}
+.link:hover{text-decoration:underline;}
+
+
+/* CSS Mini Reset */
+
+html, body, div, form, fieldset, legend, label{	margin: 0; padding: 0; }
+table{ border-collapse: collapse; border-spacing: 0;}
+th, td{ text-align: left; vertical-align: top; font-weight: bold;}
+h1, h2, h3, h4, h5, h6, th, td, caption { font-weight:normal; }
+img { border: 0; }
+
+
+/*Jquery UI*/
+.ui-widget{font-size:0.9em;}
+.ui-widget .ui-widget{font-size:0.9em;}
+.ui-widget-content label{display:inline-block;}
+/*.ui-dialog .ui-dialog-buttonpane button{margin:0.1em 0.1em 0.5em 0} */
+.ui-dialog .ui-dialog-buttonpane button{margin:0.1em 10px 0.5em 0;border:1px solid #BECBCD;padding:2px 10px}
+.ui-dialog-buttonpane {border:none;}
+/*.ui-tabs-panel table *{padding:5px 10px;}*/
+/*.ui-tabs-panel thead th{font-size:14px;border-bottom:2px solid #666;}*/
+/*.ui-tabs-panel th{font-weight:bold;font-size:12px;text-transform:uppercase;}*/
+/*Chart Table*/
+#chart_div{text-align:center;} 
+.chart{margin:10px 0;overflow:hidden;min-height:500px;}
+.chartdata{margin-bottom:70px;text-align:center;text-align:center;border:1px solid #ccc;
+	border-width:1px 0 1px 0;margin-bottom:30px 0;}
+.showchartdata{cursor:pointer;font-weight:bold;font-size:10px;
+	display:inline-block;padding:2px 5px;border:2px solid #444;}
+.chartdata table{margin:20px auto;}
+.chartdata thead th{font-size:16px;padding:5px 10px;border-bottom:2px solid #444;}
+.chartdata tbody td{border-bottom:1px solid #999;padding:2px 10px;text-align:center;font-size:9px}
+.chartdata tr.odd td{background:#f5f5f5;}
+/*Data Table*/
+.headerRow td{background:#FF8B1A;font:bold 12px Helvetica;}
+.oddTableRow td{background:#fcfcfc;}
+/*Validator*/
+.v_label{font-size:9px;color:#FF7100;}
+.v_label2{font-size:10px;color:#FF7100;}
+.v_invalid{border:1px solid #FF7100;}
+/*App CSS*/
+html,table,td,input,textarea,select{font:10pt Helvetica;color:#333;}
+body{/*border-bottom:10px solid #FF9934;*/}
+.opaque{opacity: .5;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";filter: alpha(opacity=50);}
+
+.period{text-align:center;}
+.icons{line-height:10px;}
+.icons *{vertical-align:middle;}
+
+.note{color:#999;font-size:10px;line-height:10px;}
+#header {background:#ff9934;overflow:hidden;}  
+
+/*#filters{padding:10px 20px; overflow:hidden;border:1px solid #ccc;background:#eee;margin:0 0 10px 0;  }*/
+#filters{padding:10px 20px; overflow:hidden;border:1px solid #BECBCD;margin:0 0 10px 0;  }
+#filters .submit{margin-top:10px;}
+#filters label{text-transform:uppercase;font-size:10px;font-weight:bold;color:#333;line-height:14px;padding-left:3px;}
+#filters div{margin-bottom:5px;}
+#logo{font:bold 140% Helvetica;text-transform:uppercase;height:40px;float:left;color:#fff; }
+#logo img{width:120px;vertical-align:middle;}
+#logo a{color:#000;text-decoration:none;}
+.pagination{text-align:right;} 
+.pagination a{padding:0px 5px;margin:0 1px;border-bottom:3px solid #f5f5f5;color:#666;text-decoration:none;font-weight:bold;font-size:11px;}
+.pagination a:hover, .pagination a.active{border-color:#F5A021;color:#000;}
+/*Tabla para mostrar Datos */
+.tablaList{border:2px solid #eee;margin:5px 0;}
+.tablaList thead th{vertical-align:middle;padding:5px;font-weight:bold;font-size:13px;background:#EEEEEE;border-bottom:2px solid #CCCCCC;}
+.tablaList thead tr{}
+.tablaList .row td{border-bottom:2px solid #eee;padding:5px;vertical-align:middle;background:#fcfcfc;}
+.tablaList .odd td{background:#fff;}
+
+*/
+#wrap {
+  overflow:hidden;
+  position:relative;  
+}
+
+#content {
+  line-height:1.6em;
+  padding:15px;
+  text-align:left;
+  min-height: 400px;
+  overflow:hidden;
+  margin:0 auto;
+  border:2px solid #ccc;
+  /*max-width:980px;*/
+  /*max-width:1250px;*/  
+  background:#fff;
+}
+
+#sidebar {
+  display:inline;
+  float:right;
+  line-height:1.5em;
+  margin:15px;
+  padding:5px;
+  width:285px;
+  border:1px solid blue;
+  min-height: 500px;
+}
+
+#footer {
+  clear:both;
+  height:60px;
+  margin:0 auto;
+  padding:10px 0 25px 0 ;
+  text-align:center;
+  width:980px;
+}
+
+#home #content{border:none;}
+#head{}
+#session{color:#fff;margin-right:10px;text-align:right;margin-top:10px;font-size:10pt;}
+#session a{color:#fff;}
+
+/*Nav Menu*/
+/* Root = Horizontal, Secondary = Vertical */
+#headerMenu{
+	clear:both;
+	background: #666;   
+	overflow:hidden;
+}
+
+
+#headerMenu div{
+	margin: 0 5px;	
+	font-weight: bold;
+	text-decoration: underline;
+	font-family: Arial;
+	cursor: pointer;
+}
+
+#headerMenu .divsep{
+height: 18px;
+width: 1px;
+background: #fff;
+}
+
+
+
+ul#navmenu-h {
+  margin: 0;
+  border: 0 none;
+  padding: 0;
+  list-style: none;
+  height: 24px;
+}
+
+ul#navmenu-h li {
+  margin: 0;
+  border: 0 none;
+  padding: 0;
+  float: left; /*For Gecko*/
+  display: inline;
+  list-style: none;
+  position: relative;
+  height: 26px;
+}
+
+ul#navmenu-h ul {
+  margin: 0;
+  border: 0 none;
+  padding: 0;
+  width: 160px;
+  list-style: none;
+  display: none;
+  position: absolute;
+  top: 24px;
+  left: 0;
+}
+
+ul#navmenu-h ul:after /*From IE 7 lack of compliance*/{
+  clear: both;
+  display: block;
+  font: 1px/0px serif;
+  content: ".";
+  height: 0;
+  visibility: hidden;
+}
+
+ul#navmenu-h ul li {
+  width: 160px;
+  float: left; /*For IE 7 lack of compliance*/
+  display: block !important;
+  display: inline; /*For IE*/
+}
+
+/* Root Menu */
+ul#navmenu-h a {
+  border-right:1px solid #888;
+  padding: 0 15px;
+  float: none !important; /*For Opera*/
+  float: left; /*For IE*/
+  display: block;
+  background: #666; 
+  color: #ccc;
+  font: bold 11px/22px  Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  height: auto !important; 
+  height: 1%; /*For IE*/
+  text-transform:uppercase;
+  border-bottom:2px solid #555;
+  border-top:2px solid #555;
+}
+
+/* Root Menu Hover Persistence */
+ul#navmenu-h a:hover,
+ul#navmenu-h li:hover a,
+ul#navmenu-h li.iehover a {
+  background: #555;  
+  color: #fff;
+  border-bottom:2px solid #222;
+}
+
+/* 2nd Menu */
+ul#navmenu-h li:hover li a,
+ul#navmenu-h li.iehover li a {
+  float: none;
+  background: #EEE;
+  color: #666;
+}
+
+/* 2nd Menu Hover Persistence */
+ul#navmenu-h li:hover li a:hover,
+ul#navmenu-h li:hover li:hover a,
+ul#navmenu-h li.iehover li a:hover,
+ul#navmenu-h li.iehover li.iehover a {
+  background: #CCC;
+  color: #FFF;
+}
+
+/* 3rd Menu */
+ul#navmenu-h li:hover li:hover li a,
+ul#navmenu-h li.iehover li.iehover li a {
+  background: #EEE;
+  color: #666;
+}
+
+/* 3rd Menu Hover Persistence */
+ul#navmenu-h li:hover li:hover li a:hover,
+ul#navmenu-h li:hover li:hover li:hover a,
+ul#navmenu-h li.iehover li.iehover li a:hover,
+ul#navmenu-h li.iehover li.iehover li.iehover a {
+  background: #CCC;
+  color: #FFF;
+}
+
+/* 4th Menu */
+ul#navmenu-h li:hover li:hover li:hover li a,
+ul#navmenu-h li.iehover li.iehover li.iehover li a {
+  background: #EEE;
+  color: #666;
+}
+
+/* 4th Menu Hover */
+ul#navmenu-h li:hover li:hover li:hover li a:hover,
+ul#navmenu-h li.iehover li.iehover li.iehover li a:hover {
+  background: #CCC;
+  color: #FFF;
+}
+
+ul#navmenu-h ul ul,
+ul#navmenu-h ul ul ul {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 160px;
+}
+
+/* Do Not Move - Must Come Before display:block for Gecko */
+ul#navmenu-h li:hover ul ul,
+ul#navmenu-h li:hover ul ul ul,
+ul#navmenu-h li.iehover ul ul,
+ul#navmenu-h li.iehover ul ul ul {
+  display: none;
+}
+
+ul#navmenu-h li:hover ul,
+ul#navmenu-h ul li:hover ul,
+ul#navmenu-h ul ul li:hover ul,
+ul#navmenu-h li.iehover ul,
+ul#navmenu-h ul li.iehover ul,
+ul#navmenu-h ul ul li.iehover ul {
+  display: block;
+}
+
+
+/*
+#nav{text-align:center;background:#444;padding:7px 10px;border-bottom:1px solid #000;border-top:1px solid #666;}
+#nav a{text-decoration:none;font:bold 8pt Verdana;text-transform:uppercase;color:#ddd;padding:2px 10px;}
+#nav a:hover{border-bottom:2px solid #ccc;color:#fff;}
+*/
+/**********************/
+
+/*Welcome*/
+#welcome .panel{width:700px;}
+.shortcuts{text-align:center;} 
+.shortcuts a{border:2px solid #ccc;background:#fff;display:inline-block;width:150px;margin:5px;
+	text-align:center;font:bold 11pt Verdana;text-transform:uppercase;padding-bottom:5px;
+	text-decoration:none;color:#999;cursor:pointer;}
+.shortcuts a:hover{color:#000;background:#f5f5f5;border-color:#000;}	 
+.shortcuts a.smaller{font-size:11px;}  
+.user{border:2px solid #ccc;width:200px;padding:20px;}
+.user img{border:1px solid #ccc;margin:5px auto;} 
+.user strong{display:block;margin-top:10px;}
+.user div{line-height:13pt;}
+.tasks{padding:20px;margin:10px;border-top:1px solid #eee;}
+.tasks h5{margin:10px 0 0 0;font-weight:bold;font-size:12pt;}
+.tasks p{margin:0;}
+
+
+/*Forms*/
+#noExpediente{font-size:14pt;position:absolute;right:10px;top:0;background:#333;padding:5px 10px;
+	display:inline-block;color:#eee;border:2px solid #999;}
+.details legend{cursor:pointer;}
+.details legend:hover{color:#999;}
+/**Lists**/
+.scan{text-align:center;cursor:pointer;}
+.scan span{display:inline-block;width:16px;height:16px;background:url(../img/page_go.png) no-repeat center center;}
+
+/*General Classes*/ 
+h1,h2,h3,h4{font-family: "Times";clear:both;}
+h1 span{color:#999;}
+#numeroficha h1 span{color:#333;}
+h1{font-size:28px;}
+h2{font-size:24px;}
+h3{font-size:20px;} 
+h4{font:bold 12px Verdana;margin:10px 0;}
+h1 a{font:bold 9pt Verdana;text-transform:uppercase;}
+.r{border-radius:4px;-moz-border-radius:4px}
+.h{display:none;}
+.l{float:left;margin-right:5px;}
+.right{float:right;}
+input,select,textarea,fieldset{border-radius:2px;-moz-border-radius:2px;padding:1px;border:1px solid #333;}
+input[type=radio],input[type=checkbox]{border:none;}
+input[type=radio],input[type=checkbox]{margin:0;}
+label{display:block;padding:0 3px;color:#888;}
+.radios label,.checkboxes label{display:inline;}
+.checkboxes label{clear:right;}
+fieldset{margin:0 10px 5px 10px;padding:10px;border-color:#ccc;position:relative;}
+fieldset td{padding:5px;}
+fieldset td .input,fieldset td textarea{width:500px}
+fieldset td .input_medium{width:317px;}
+legend{padding: 10px;font:bold 9px Verdana; text-transform:uppercase;}
+.ui-datepicker-trigger{vertical-align:middle;}
+.submit{color:#fff;font:bold 12pt Verdana;text-transform:uppercase;padding:5px 10px;cursor:pointer;background:#FF9934;}
+.submit2{color:#fff;font-weight:bold;text-transform:uppercase;padding:3px 6px;cursor:pointer;background:#FF9934;}
+.submit3{color:#fff;font:bold 12pt Verdana;text-transform:uppercase;padding:5px 10px;cursor:pointer;background:#69A74E;}
+.submit4{color:#fff;font:bold 12pt Verdana;text-transform:uppercase;padding:5px 10px;cursor:pointer;background:#F07B87;}
+
+
+.addnew{background:#666;}    
+.button{vertical-align:top;cursor:pointer;} 
+.row{clear:both;}
+.buttons{}
+.new{display:inline-block;vertical-align:bottom;padding:5px 5px 5px 20px;color:#fff; float:right;
+	background:#666 url(../img/add.png) no-repeat 2px center;text-decoration:none;border:2px solid #777;}
+.new:hover{background-color:#333;border-color:#555;}
+
+/*Icons*/
+.icons{min-height:20px;line-height:16px;padding:5px 0;font-size:9px;text-transform:uppercase;}
+.i{background-position:center center;background-repeat:no-repeat;display:inline-block;
+	width:16px;height:16px;cursor:pointer;}
+.i_remove{background-image:url(../img/cancel.png);}
+.i_add{background-image:url(../img/add.png);}
+.i_info{background-image:url(../img/comment.png);}
+/*---- ADD (D. V. R 29-10-2013)*/
+.i_info1{background-image:url(../img/comment.png);width:16px;height:16px;cursor:pointer;}
+/*-----FIN----*/
+.i_print{background-image:url(../img/16x16/devices/printer.png);} 
+.i_attach{background-image:url(../img/16x16/devices/page_attach.png);} 
+.i_supr{background-image:url(../img/16x16/actions/list-remove.png);}
+.i_edit{background-image:url(../img/editar.png);}
+.i_quit{background-image:url(../img/eliminar.png);}
+.i_pdf{background-image:url(../img/pdf.png);}
+
+/*
+ *  File:         demo_table.css
+ *  CVS:          $Id$
+ *  Description:  CSS descriptions for DataTables demo pages
+ *  Author:       Allan Jardine
+ *  Created:      Tue May 12 06:47:22 BST 2009
+ *  Modified:     $Date$ by $Author$
+ *  Language:     CSS
+ *  Project:      DataTables
+ *
+ *  Copyright 2009 Allan Jardine. All Rights Reserved.
+ *
+ * ***************************************************************************
+ * DESCRIPTION
+ *
+ * The styles given here are suitable for the demos that are used with the standard DataTables
+ * distribution (see www.datatables.net). You will most likely wish to modify these styles to
+ * meet the layout requirements of your site.
+ *
+ * Common issues:
+ *   'full_numbers' pagination - I use an extra selector on the body tag to ensure that there is
+ *     no conflict between the two pagination types. If you want to use full_numbers pagination
+ *     ensure that you either have "example_alt_pagination" as a body class name, or better yet,
+ *     modify that selector.
+ *   Note that the path used for Images is relative. All images are by default located in
+ *     ../images/ - relative to this CSS file.
+ */
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * DataTables features
+ */
+
+.dataTables_wrapper {
+	position: relative;
+	min-height: 302px;
+	clear: both;
+	_height: 302px;
+	zoom: 1; /* Feeling sorry for IE */
+}
+
+.dataTables_processing {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 250px;
+	height: 30px;
+	margin-left: -125px;
+	margin-top: -15px;
+	padding: 14px 0 2px 0;
+	border: 1px solid #ddd;
+	text-align: center;
+	color: #999;
+	font-size: 14px;
+	background-color: white;
+}
+
+.dataTables_length {
+	width: 40%;
+	float: left;
+	margin-bottom:10px;
+}
+
+.dataTables_filter {
+	width: 50%;
+	float: right;
+	text-align: right;
+}
+
+.dataTables_info {
+	width: 60%;
+	float: left;
+	font-size:9px;
+	font-weight:bold;
+	text-transform:uppercase;
+}
+
+.dataTables_paginate {
+	width: 44px;
+	* width: 50px;
+	float: right;
+	text-align: right;
+}
+
+/* Pagination nested */
+.paginate_disabled_previous, .paginate_enabled_previous, .paginate_disabled_next, .paginate_enabled_next {
+	height: 19px;
+	width: 19px;
+	margin-left: 3px;
+	float: left;
+	background-repeat:no-repeat;
+	background-position:center center;
+}
+
+.paginate_disabled_previous {
+	background-image: url('../img/control_rewind.png');
+}
+
+.paginate_enabled_previous {
+	background-image: url('../img/control_rewind_blue.png');
+	cursor:pointer;
+}
+
+.paginate_disabled_next {
+	background-image: url('../img/control_fastforward.png');
+}
+
+.paginate_enabled_next {
+	background-image: url('../img/control_fastforward_blue.png');
+	cursor:pointer;
+}
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * DataTables display
+ */
+table.display {
+	margin: 5px auto;
+	clear: both;
+	width: 100%;
+	border:1px solid #333;
+	border-collapse:collapse;
+	
+	/* Note Firefox 3.5 and before have a bug with border-collapse
+	 * ( https://bugzilla.mozilla.org/show%5Fbug.cgi?id=155955 ) 
+	 * border-spacing: 0; is one possible option. Conditional-css.com is
+	 * useful for this kind of thing
+	 *
+	 * Further note IE 6/7 has problems when calculating widths with border width.
+	 * It subtracts one px relative to the other browsers from the first column, and
+	 * adds one to the end...
+	 *
+	 * If you want that effect I'd suggest setting a border-top/left on th/td's and 
+	 * then filling in the gaps with other borders.
+	 */
+}
+table.display .actions{text-align:center;}
+table.display .i{margin:0 2px;}
+
+table.display thead th {
+	/*padding: 23px 5px 3px 5px;*/
+	border-bottom: 1px solid black;
+	font-weight: bold;
+}
+
+table.display tfoot th {
+	padding: 3px 18px 3px 10px;
+	border-top: 1px solid black;
+	font-weight: bold;
+}
+
+table.display tr.heading2 td {
+	border-bottom: 1px solid #aaa;
+
+}
+
+table.display td {
+	padding: 5px 5px;
+	color:#333;
+}
+
+table.display a{
+	color:inherit;
+	text-decoration:none;
+}
+
+table.display td.center {
+	text-align: center;
+}
+
+/*********** Dynamic Table *********/
+#dynamic{margin:20px 0;}
+#dynamic td{font-size:10px;}
+#dynamic table{}
+#dynamic input, #dynamic select{padding:0;}
+
+#ficha{border:2px solid #666;margin:20px;padding:30px;position:relative;}
+#numeroficha{float:right;}
+#print{right:30px;top:80px;text-decoration:none;font-weight:bold;}
+#btnExportPDF{text-decoration:none;font-weight:bold;}
+/**
+#print{position:absolute;right:30px;top:80px;text-decoration:none;font-weight:bold;}
+**/
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * DataTables sorting
+ */
+
+.sorting_asc {
+	background: url('../img/sort_asc.png') no-repeat bottom right;
+}
+
+.sorting_desc {
+	background: url('../img/sort_desc.png') no-repeat bottom right;
+}
+
+.sorting {
+	background: url('../img/sort_both.png') no-repeat bottom right;
+}
+
+.sorting_asc_disabled {
+	background: url('../img/sort_asc_disabled.png') no-repeat bottom right;
+}
+
+.sorting_desc_disabled {
+	background: url('../img/sort_desc_disabled.png') no-repeat bottom right;
+}
+
+
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * DataTables row classes
+ */
+table.display tr.odd.gradeA {
+	background-color: #ddffdd;
+}
+
+table.display tr.even.gradeA {
+	background-color: #eeffee;
+}
+
+table.display tr.odd.gradeC {
+	background-color: #ddddff;
+}
+
+table.display tr.even.gradeC {
+	background-color: #eeeeff;
+}
+
+table.display tr.odd.gradeX {
+	background-color: #ffdddd;
+}
+
+table.display tr.even.gradeX {
+	background-color: #ffeeee;
+}
+
+table.display tr.odd.gradeU {
+	background-color: #ddd;
+}
+
+table.display tr.even.gradeU {
+	background-color: #fcfcfc;
+}
+
+
+
+/*tr.odd {*/
+/*	background-color: #f9f9f9;*/
+/*}*/
+/*tr.odd td{*/
+/*	border-bottom:1px solid #eee;*/
+/*}*/
+/*tr.even {*/
+/*	background-color: #fff;*/
+/*}*/
+/**/
+/*tr.even td{*/
+/*	border-bottom:1px solid #ddd;*/
+/*}*/
+/**/
+/*tr.odd:hover td,tr.even:hover td{*/
+/*	color:#000;*/
+/*	background:#fff;*/
+/*	border-bottom:1px solid #333;*/
+/*	border-top:1px solid #999;*/
+/*} */
+/*tr.gridFail td{color:#f00;}*/
+/*tr.gridWarning td{color:#F1A51B;}*/
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * Misc
+ */
+.dataTables_scroll {
+	clear: both;
+}
+
+.dataTables_scrollBody {
+	*margin-top: -1px;
+}
+
+.top, .bottom {
+	padding: 15px;
+	background-color: #F5F5F5;
+	border: 1px solid #CCCCCC;
+}
+
+.top .dataTables_info {
+	float: none;
+}
+
+.clear {
+	clear: both;
+}
+
+.dataTables_empty {
+	text-align: center;
+}
+
+tfoot input {
+	margin: 0.5em 0;
+	width: 100%;
+	color: #444;
+}
+
+tfoot input.search_init {
+	color: #999;
+}
+
+td.group {
+	background-color: #d1cfd0;
+	border-bottom: 2px solid #A19B9E;
+	border-top: 2px solid #A19B9E;
+}
+
+td.details {
+	background-color: #d1cfd0;
+	border: 2px solid #A19B9E;
+}
+
+
+.example_alt_pagination div.dataTables_info {
+	width: 40%;
+}
+
+.paging_full_numbers {
+	width: 400px;
+	height: 22px;
+	line-height: 22px;
+}
+
+.paging_full_numbers span.paginate_button,
+ 	.paging_full_numbers span.paginate_active {
+	border: 1px solid #aaa;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	padding: 2px 5px;
+	margin: 0 3px;
+	cursor: pointer;
+	*cursor: hand;
+}
+
+.paging_full_numbers span.paginate_button {
+	background-color: #ddd;
+}
+
+.paging_full_numbers span.paginate_button:hover {
+	background-color: #ccc;
+}
+
+.paging_full_numbers span.paginate_active {
+	background-color: #99B3FF;
+}
+
+table.display tr.even.row_selected td {
+	background-color: #B0BED9;
+}
+
+table.display tr.odd.row_selected td {
+	background-color: #9FAFD1;
+}
+
+
+/*
+ * Sorting classes for columns
+ */
+/* For the standard odd/even */
+tr.odd td.sorting_1 {
+	background-color: #eee;
+}
+
+tr.odd td.sorting_2 {
+	background-color: #DADCFF;
+}
+
+tr.odd td.sorting_3 {
+	background-color: #E0E2FF;
+}
+
+tr.even td.sorting_1 {
+	background-color: #f9f9f9;
+}
+
+tr.even td.sorting_2 {
+	background-color: #F2F3FF;
+}
+
+tr.even td.sorting_3 {
+	background-color: #F9F9FF;
+}
+
+
+/* For the Conditional-CSS grading rows */
+/*
+ 	Colour calculations (based off the main row colours)
+  Level 1:
+		dd > c4
+		ee > d5
+	Level 2:
+	  dd > d1
+	  ee > e2
+ */
+tr.odd.gradeA td.sorting_1 {
+	background-color: #c4ffc4;
+}
+
+tr.odd.gradeA td.sorting_2 {
+	background-color: #d1ffd1;
+}
+
+tr.odd.gradeA td.sorting_3 {
+	background-color: #d1ffd1;
+}
+
+tr.even.gradeA td.sorting_1 {
+	background-color: #d5ffd5;
+}
+
+tr.even.gradeA td.sorting_2 {
+	background-color: #e2ffe2;
+}
+
+tr.even.gradeA td.sorting_3 {
+	background-color: #e2ffe2;
+}
+
+tr.odd.gradeC td.sorting_1 {
+	background-color: #c4c4ff;
+}
+
+tr.odd.gradeC td.sorting_2 {
+	background-color: #d1d1ff;
+}
+
+tr.odd.gradeC td.sorting_3 {
+	background-color: #d1d1ff;
+}
+
+tr.even.gradeC td.sorting_1 {
+	background-color: #d5d5ff;
+}
+
+tr.even.gradeC td.sorting_2 {
+	background-color: #e2e2ff;
+}
+
+tr.even.gradeC td.sorting_3 {
+	background-color: #e2e2ff;
+}
+
+tr.odd.gradeX td.sorting_1 {
+	background-color: #ffc4c4;
+}
+
+tr.odd.gradeX td.sorting_2 {
+	background-color: #ffd1d1;
+}
+
+tr.odd.gradeX td.sorting_3 {
+	background-color: #ffd1d1;
+}
+
+tr.even.gradeX td.sorting_1 {
+	background-color: #ffd5d5;
+}
+
+tr.even.gradeX td.sorting_2 {
+	background-color: #ffe2e2;
+}
+
+tr.even.gradeX td.sorting_3 {
+	background-color: #ffe2e2;
+}
+
+tr.odd.gradeU td.sorting_1 {
+	background-color: #c4c4c4;
+}
+
+tr.odd.gradeU td.sorting_2 {
+	background-color: #d1d1d1;
+}
+
+tr.odd.gradeU td.sorting_3 {
+	background-color: #d1d1d1;
+}
+
+tr.even.gradeU td.sorting_1 {
+	background-color: #d5d5d5;
+}
+
+tr.even.gradeU td.sorting_2 {
+	background-color: #e2e2e2;
+}
+
+tr.even.gradeU td.sorting_3 {
+	background-color: #e2e2e2;
+}
+
+/*
+ * Row highlighting example
+ */
+.ex_highlight #example tbody tr.even:hover, #example tbody tr.even td.highlighted {
+	background-color: #ECFFB3;
+}
+
+.ex_highlight #example tbody tr.odd:hover, #example tbody tr.odd td.highlighted {
+	background-color: #E6FF99;
+}
+
+.ex_highlight_row #example tr.even:hover {
+	background-color: #ECFFB3;
+}
+
+.ex_highlight_row #example tr.even:hover td.sorting_1 {
+	background-color: #DDFF75;
+}
+
+.ex_highlight_row #example tr.even:hover td.sorting_2 {
+	background-color: #E7FF9E;
+}
+
+.ex_highlight_row #example tr.even:hover td.sorting_3 {
+	background-color: #E2FF89;
+}
+
+.ex_highlight_row #example tr.odd:hover {
+	background-color: #E6FF99;
+}
+
+.ex_highlight_row #example tr.odd:hover td.sorting_1 {
+	background-color: #D6FF5C;
+}
+
+.ex_highlight_row #example tr.odd:hover td.sorting_2 {
+	background-color: #E0FF84;
+}
+
+.ex_highlight_row #example tr.odd:hover td.sorting_3 {
+	background-color: #DBFF70;
+}
+
+
+/*
+ * KeyTable
+ */
+table.KeyTable td {
+	border: 3px solid transparent;
+}
+
+table.KeyTable td.focus {
+	border: 3px solid #3366FF;
+}
+
+table.display tr.gradeA {
+	background-color: #eeffee;
+}
+
+table.display tr.gradeC {
+	background-color: #ddddff;
+}
+
+table.display tr.gradeX {
+	background-color: #ffdddd;
+}
+
+table.display tr.gradeU {
+	background-color: #ddd;
+}
+
+div.box {
+	height: 100px;
+	padding: 10px;
+	overflow: auto;
+	border: 1px solid #8080FF;
+	background-color: #E5E5FF;
+}
+ 
+.shadow {
+		-moz-box-shadow: 3px 3px 4px #000;
+		-webkit-box-shadow: 3px 3px 4px #000;
+		box-shadow: 3px 3px 4px #000;
+		/* For IE 8 */
+		-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=90, Color='#000000')";
+		/* For IE 5.5 - 7 */
+		filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=90, Color='#000000');
+	}
+
+
+.upperlbl{
+text-transform: uppercase;
+font-size: 11px;
+}	
+
+.upperlbl12{
+text-transform: uppercase;
+font-size: 12px;
+}
+
+
+/*MODIF. EDGAR*/
+.chartdata2{margin-bottom:70px;text-align:center;text-align:center;border:1px solid #ccc;
+	border-width:1px 0 1px 0;margin-bottom:30px 0;}
+.showchartdata2{cursor:pointer;font-weight:bold;font-size:10px;
+	display:inline-block;padding:2px 5px;border:2px solid #444;}
+.chartdata2 table{margin:20px auto;}
+.chartdata2 thead th{font-size:16px;padding:5px 10px;border-bottom:2px solid #444;}
+.chartdata2 tbody td{border-bottom:1px solid #999;padding:2px 10px;text-align:center;font-size:9px}
+.chartdata2 tr.odd td{background:#f5f5f5;}
+
+.mostrarAnio{color:#fff;font:bold 7pt Verdana;text-transform:uppercase;padding:10px auto 10px auto;cursor:pointer;background:#FF9934;margin-left:-130px;width:160px;}
+.mostrarAnio:hover{
+background:#FFB873;
+}

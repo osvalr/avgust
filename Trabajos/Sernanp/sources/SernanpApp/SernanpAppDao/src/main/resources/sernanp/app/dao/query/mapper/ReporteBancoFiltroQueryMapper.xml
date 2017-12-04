@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.ReporteBancoFiltroQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+ 
+  ps.idpersonal,
+  (COALESCE(pn.apepat,'')||' '||COALESCE(pn.apemat,'')||' '||COALESCE(pn.nombre,''))as"nombre_completo",
+  pn.nombre, 
+  pn.apepat, 
+  pn.apemat, 
+  ap.int_anio,
+  ms.destablatipo as descrip_periodo,
+  napp.var_numero_cuenta_bancaria, 
+  pn.idtipodocumento, 
+  pn.numerodoc, 
+  napp.dec_total_neto, 
+  napp.c_fte_fto,
+  napp.c_meta,
+  napp.srl_id_regimen_contractual,
+  napp.int_id_estado
+    
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+ 
+
+personal.t_nomina_anio_periodo_personal napp
+inner join personal.t_anio_periodo_planilla app on napp.srl_id_anio_periodo_planilla = app.srl_id_anio_periodo_planilla
+inner join personal.t_anio_planilla ap on app.srl_id_anio_planilla = ap.srl_id_anio_planilla
+inner join sernanp.vw_meses ms on ms.codinttablatipo = app.int_id_periodo_mes
+inner join sernanp.t_regimen_contractual rc on napp.srl_id_regimen_contractual=rc.srl_id_regimen_contractual
+inner join sernanp.personal ps on napp.idpersonal = ps.idpersonal
+inner join sernanp.personanatural pn on ps.idpersonanatural=pn.idpersonanatural
+left join sernanp.t_personal_contrato pc on napp.srl_id_contrato=pc.srl_id_contrato
+
+
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+napp.srl_id_regimen_contractual = COALESCE(#{srl_id_regimen_contractual},napp.srl_id_regimen_contractual) and 
+napp.c_fte_fto = COALESCE(#{c_fte_fto}, napp.c_fte_fto) AND
+napp.c_meta  IN (${c_meta}) and
+ap.int_anio = COALESCE(#{int_anio},ap.int_anio) and
+app.int_id_periodo_mes = COALESCE(#{int_id_periodo_mes},app.int_id_periodo_mes) and
+napp.int_id_estado = COALESCE(1,napp.int_id_estado)
+
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+
+GROUP BY
+
+ ps.idpersonal,
+  
+  pn.nombre, 
+  pn.apepat, 
+  pn.apemat, 
+  ap.int_anio,
+  ms.destablatipo,
+  napp.var_numero_cuenta_bancaria, 
+  pn.idtipodocumento, 
+  pn.numerodoc, 
+  napp.dec_total_neto, 
+  napp.c_fte_fto,
+  napp.c_meta,
+  napp.srl_id_regimen_contractual,
+  napp.int_id_estado
+  
+order by
+c_fte_fto,
+pn.apepat,
+pn.apemat,
+pn.nombre
+
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.ReporteBancoFiltroQuery" parameterType="sernanp.app.dao.query.domain.ReporteBancoFiltroQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.ReporteBancoFiltroQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.ReporteBancoFiltroQuery" parameterType="sernanp.app.dao.query.domain.ReporteBancoFiltroQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.ReporteBancoFiltroQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.ReporteBancoFiltroQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

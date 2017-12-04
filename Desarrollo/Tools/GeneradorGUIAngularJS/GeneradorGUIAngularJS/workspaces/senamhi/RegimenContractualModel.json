@@ -1,0 +1,14 @@
+{
+	"titleCrud": "Regimen Contractual",
+	"nameCrud": "RegimenContractual",
+	"constUrlApi": "REGIMEN_CONTRACTUAL_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "RegimenContractualModel.xml",
+		"subModels": [
+		{
+			"nameModel": "RegimenModalidadModel",
+			"nameCrud": "RegimenModalidad",
+			"autoIdentityPrimaryKey": false
+		}
+	]
+}

@@ -1,0 +1,735 @@
+h1 span{font-size:12px;}
+ul li a{text-decoration:none;font-size:10px;color:#DE4E13}
+ul li a:hover{color:#666;}
+legend strong{font-size:22px;color:#FF8E00;}
+fieldset hr{margin:10px;}
+.searchterm{padding:5px 20px 5px 5px;}
+.loading{background:url(loading.gif) 97% center no-repeat;}
+.active .waiting{display:none;}
+input.loading{background-position:center no-repeat;color:#999;}
+.disabled{background:#ccc;color:#fff;cursor:default;border:1px solid #ddd;} 
+.toRemove td{color:#ccc !important;}
+.pax{border-bottom:1px solid #eee;padding:5px;overflow:hidden;font-size:11px;}
+	.pax label{line-height:15px;}
+	.pax select{font-size:10px;}
+	.pax input[type=text]{font-size:11px !important;text-transform:uppercase;}
+	.pax .row{padding-bottom:5px;overflow:hidden;}
+.index{width:35px;}
+.number{font:bold 16px/50px Verdana;vertical-align:middle;min-height:50px;}
+table .num{text-align:right;}
+table .total strong{font-size:16px;}
+.overlay{display:none;}
+.block{position:relative;}
+.block *{color:#ccc;}  
+.block .overlay{display:block;position:absolute;width:98%;min-height:75px;top:30px;background:#fff;
+	z-index:1;opacity:0.6;}
+
+/*#closeficha{position:absolute;left:10px;top:10px;}*/
+#closeficha{left:10px;top:10px;}
+#closeficha * {vertical-align:middle;display:inline-block;color:#f00;cursor:pointer;
+	font-weight:bold;font-size:10px;text-transform:uppercase;}
+#step3 .overlay{min-height:280px;}
+#numeroficha small{font-size:24px;} 
+#charts .chart{margin:auto;padding-bottom:40px;margin-bottom:50px;border-bottom:1px solid #ccc;text-align:center;}  
+#charts .chart div{margin:auto;}
+#charts h4 strong{font-size:18px;color:#333;display:block;}
+#charts h4{text-align:center;font-size:12px;color:#666;} 
+#charts table{margin-top:30px;}
+#area_div tr:last-child td{font-weight:bold;font-size:14px;background:#eee;padding-top:5px}
+
+.anp{width:30%;margin:2px;}
+.anp a{border:2px solid #eee;display:block;padding:10px;color:#666;text-decoration:none;font-size:11px;font-weight:bold;}
+.anp a:hover{border-color:#333;color:#333;}
+.anp strong{display:block;font-size:16px;color:#FF8E00;}
+#menuturismo{text-align:center;}
+.shortcuts a{font-size:11px;width:170px;}
+.inputs label{width:100px;display:inline-block;}
+.addlink{font-size:9px;text-transform:uppercase;text-decoration:none;margin:0 10px}
+.secBoletoRow{border:1px solid #ccc;overflow:hidden;padding:5px;margin:1px 0;background:#ddd;position:relative}
+.secBoletoRow .i_remove{position:absolute;right:5px;top:5px;}
+#secFichaDetalle strong {margin-left:10px;}
+/************ IE6 *************/
+* html #header{height:1%;}
+* html .radios input, * html .checkboxes input{border:none}
+
+.divlinkpaginacion{text-align:right;margin-bottom:8px } 
+.divlinkpaginacion a{padding:0px 5px;margin:0 1px;border-bottom:3px solid #f5f5f5;color:#666;text-decoration:none;font-weight:bold;font-size:11px;}
+.divlinkpaginacion a:hover, .divlinkpaginacion a.active{border-color:#F5A021;color:#000;}
+.totalresults{font-weight:bold;font-size:11px;padding:0 10px;}
+.rowReg {
+  margin: .4em 0;
+}
+
+.etqReg {
+  display: block;
+  margin: .5em 0 0 0;
+  width: 16%;
+  float: left;
+}
+
+.tdatgenficha{
+border-collapse: collapse;
+margin-top:0.7px;
+margin-bottom:0.6px;
+border-color:#000000;
+}
+
+.tboleto{
+border-collapse: collapse;
+table-layout: fixed;
+width:100%;
+margin: 0.1px;
+border-color:#000000;
+border: 1px solid;
+}
+
+.tboleto th{
+  border: 1px solid;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 12px; 
+}
+
+
+
+.tboleto .cleft{
+text-align: left;
+}
+.tboleto td{
+ border: 1px solid;
+ text-align: center;
+ font-size: 14px;
+}
+
+#search select{
+ text-transform: uppercase;
+ font-size: 9px;
+}
+
+
+
+.tboleto .c1{
+width:14px;
+}
+.tboleto .c2{
+width:130px;
+}
+.tboleto .c3{
+width:80px;
+}
+.tboleto .c4{
+width:50px;
+}
+.tboleto .c5{
+width:50px;
+}
+.tboleto .c6{
+width:25px;
+}
+.tboleto .c7{
+width:25px;
+}
+.tboleto .c8{
+width:25px;
+}
+
+
+/*#tboleto .ch1{*/
+/*width:14px;*/
+/*}*/
+/*#tboleto .ch2{*/
+/*width:350px;*/
+/*}*/
+/*#tboleto .ch3{*/
+/*width:130px;*/
+/*}*/
+/*#tboleto .ch4{*/
+/*width:80px;*/
+/*}*/
+/*#tboleto .ch5{*/
+/*width:90px;*/
+/*}*/
+/*#tboleto .ch6{*/
+/*width:60px;*/
+/*}*/
+/*#tboleto .ch7{*/
+/*width:50px;*/
+/*}*/
+/*#tboleto .ch8{*/
+/*width:50px;*/
+/*}*/
+
+
+
+#tboleto .ce7{
+width:8px;
+}
+#tboleto .ce8{
+width:8px;
+}
+
+
+
+.regmarco .creg{
+float: left;
+margin:0px 9px;  
+}
+
+.creg select{
+font-size: 10px;
+}
+
+#tboleto .chleft{
+text-align: center;
+border-left-style: hidden;
+border-top-style: hidden;
+}
+#tboleto .chcenter{
+text-align: center;
+border-top-style: hidden;
+}
+#tboleto .chright{
+text-align: center;
+border-right-style: hidden;
+border-top-style: hidden;
+}
+#tboleto .csubleft{
+border-left-style: hidden;
+border-right-style:hidden;
+border-bottom-style: hidden;
+}
+#tboleto .csubcenter{
+border-left-style: hidden;
+border-right-style:hidden;
+border-bottom-style: hidden;
+}
+#tboleto .csubright{
+border-left-style: hidden;
+border-right-style:hidden;
+border-bottom-style: hidden;
+}
+
+#numeroficha{
+ border:1px solid ;
+ padding:5px;
+}
+
+#numeroficha .divnum{
+ border:1px solid ;
+ padding:2px;
+ margin: 10px 5px
+}
+#numeroficha .hnum{
+ margin:2px 1px;
+ color: #333;
+}
+
+#divctotalboleto{
+/*border:1px solid #ffaa00;*/
+margin: 8px 0px;
+}
+
+#divctotalboleto .ttotalboleto{
+/*border-style: hidden;*/
+margin:0.8px;
+}
+
+
+#divcdatosficha{
+border:1px solid ;padding: 0px;
+}
+
+
+/*#tdatosficha{*/
+/*margin: 5px auto;*/
+/*	clear: both;*/
+/*	width: 100%;*/
+/*	border-width:0.5px;*/
+/*	border-color:#000000;*/
+/*	border-collapse:separate;*/
+/*}*/
+/**/
+/**/
+/*#tdatosficha td{*/
+/*	border-width:0.5px;*/
+/*	border-color:#000000;	*/
+/*}*/
+
+
+#tboleto{
+border-color: #000000;
+
+} 
+/**/
+#tboleto td{
+	border-color:#000000;	
+}
+
+#tboleto th{
+	border-color:#000000;	
+	text-align: center;
+}
+
+#divcdatosficha .tdatosficha{
+border-collapse: collapse;
+margin-top:0.7px;
+margin-bottom:0.6px;
+border-color:#000000;
+}
+
+#divcdatosficha .tdatosficha{
+border-collapse: collapse;
+margin-top:0.7px;
+margin-bottom:0.6px;
+border-color:#000000;
+}
+
+#divcdatosficha .tdatosficha .csupleft{
+border-top-style: hidden;
+border-left-style: hidden;
+}
+
+#divcdatosficha .tdatosficha .csupright{
+border-top-style: hidden;
+border-right-style: hidden;
+}
+#divcdatosficha .tdatosficha .ccenterleft{
+border-right-style: hidden;
+}
+
+#divcdatosficha .tdatosficha .cinfleft{
+border-bottom-style: hidden;
+border-left-style: hidden;
+}
+
+#divcdatosficha .tdatosficha .cinfright{
+border-bottom-style: hidden;
+border-right-style: hidden;
+}
+
+#ui-datepicker-div { display: none; }
+
+
+#divDetallePagoFichaturismo{
+border:2px solid #666;
+margin:20px;padding:15px;
+position:relative;
+}
+
+
+
+.divregfichatur label{
+float: left;
+clear: left;
+width: 30%;
+}
+
+.divregfichatur span{
+float: left;
+}
+
+
+.msgestadopago{
+	font-size:12;
+	text-transform:uppercase;
+}
+
+
+.ttur{
+  border-collapse: collapse;
+  border: 1px solid;
+  margin: auto; 
+}
+
+.ttur th{
+  border: 1px solid;
+/*  background-color: #EEEEEE;*/
+  background-color:#BECBCD;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 10px;
+  
+}
+
+.ttur .colleft{
+text-align:left;
+font-size: 10px;
+}
+
+.ttur td{
+  border: 1px solid;
+  text-align: center;
+  font-size: 10px;
+}
+
+.ttur  .odd {
+	background-color: #F8F8F8;
+}
+
+.ttur  .even {
+	background-color: #E7EBED ; /*#9DB0B4;*/
+}
+
+
+
+.ttur12{
+width: 100%;
+}
+
+.ttur12 th,.ttur12 td{
+font-size: 12px;
+text-align: center;
+text-transform: uppercase;
+}
+
+
+.ttur11{
+width: 100%;
+}
+
+.ttur11 th,.ttur11 td{
+font-size: 11px;
+text-align: center;
+text-transform: uppercase;
+}
+
+
+/*.ttur .row td{background:#fcfcfc;}*/
+/*.ttur .odd td{background:#fff;}*/
+
+
+
+/*.ttur tr.even td{*/
+/*	border-bottom:1px solid #ddd;*/
+/*}*/
+/**/
+/*.ttur tr.odd:hover td,.ttur tr.even:hover td{*/
+/*	color:#000;*/
+/*	background:#fff;*/
+/*	border-bottom:1px solid #333;*/
+/*	border-top:1px solid #999;*/
+/*} */
+/**/
+/*.ttur tr.gridFail td{color:#f00;}*/
+/*.ttur tr.gridWarning td{color:#F1A51B;}*/
+
+
+.chart_div{
+margin:auto;
+width:100%;
+height:50%;
+}
+
+#divBusqDetFich .cfecha{
+float: left;
+margin-right:30px ;
+}
+
+.divRegistroModal{
+/*border:2px solid #666;*/
+border:2px solid #BECBCD;
+margin:20px;
+padding-bottom: 15px;
+/*padding:15px;*/
+position:relative;
+}
+
+
+
+
+
+.divContenido{
+border:1px solid #BECBCD;
+padding: 10px;
+}
+
+.divContenedorFicha{
+border:2px solid #666;
+padding: 20px;
+}
+
+.divRegistroModal2{
+border:2px solid #666;
+margin:20px;
+padding-bottom: 15px;
+padding:15px;
+position:relative;
+}
+
+
+#linkClose{
+float:right;
+display:none;
+clear: both;
+}
+
+#formRegVisitante input[type=text]{
+text-transform: uppercase;
+font-size: 11px;
+}
+
+#formRegOperadorTurismo input[type=text]{
+font-size: 11px;
+}
+#formRegOperadorTurismo .uc{
+text-transform: uppercase;
+}
+
+#formRegGuiaTurismo input[type=text]{
+font-size: 11px;
+}
+#formRegGuiaTurismo .uc{
+text-transform: uppercase;
+}
+/*#formRegOperadorTurismo .mail{*/
+/*text-transform: lowercase;*/
+/*}*/
+/**/
+/*#formRegGuiaTurismo .mail{*/
+/*text-transform: lowercase;*/
+/**/
+/*}*/
+
+
+
+.btntur10{
+color:#fff;font:bold 10pt Verdana;
+text-transform:uppercase;
+padding:2px 7px;
+cursor:pointer;
+background:#FF9934;
+}
+
+.divbtn{
+margin: auto;
+}
+
+.msg{
+color:#FF7100;
+clear:both;
+font-size:12px;
+display: none;
+margin: 0px auto;
+}
+
+.divCabecera{
+background:#BECBCD;
+height:20px; 
+font: normal 80%/1.3 Verdana,sans-serif;
+text-transform:uppercase;
+padding: 3px 5px;
+text-align:left;
+color: #fff;
+}
+
+
+.regtur label{
+float: left;
+clear: left;
+width: 35%;
+}
+
+.regtur span{
+float: left;
+}
+
+.regtur input, .regtur select, .regtur textarea{
+margin: 0px 0px 10px 0px;
+}
+
+
+#tdatosgenficha{
+width: 100%;
+/*border: 1px solid; */
+}
+
+#tdatosgenficha td{
+width:50%;
+border: 1px solid;
+}
+
+#tfcpagos{
+width: 100%;
+margin-left: 0px;
+border: 1px solid;
+border-collapse: collapse;
+
+}
+#tfcpagos th{
+   font-size: 12px;
+   font-weight:bold;
+   border: 1px solid;
+   text-transform: uppercase;
+   text-align: center;
+}
+#tfcpagos td{
+   font-size: 14px;
+   border: 1px solid;
+   text-align: center;
+}
+
+.pietot{
+font-weight: bold;
+font-size:12px
+}
+
+
+.divmontoficha{
+   border: 1px solid;
+   padding: 1px;
+  font-size: 16px;
+  font-weight: bold;
+}
+.divmontoficha .lbl{
+margin-left:1px;	
+float: left;
+}
+.divmontoficha .total{
+margin-right:1px;	
+float: right;
+}
+
+.divsubmontoficha{
+  border: 1px solid;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px;
+}
+
+.divsubmontoficha .c1{
+margin: 0px 150px 0px 30px;
+}
+.divsubmontoficha .c2{
+margin: 0px 120px 0px 0px;
+}
+.divsubmontoficha .c3{
+margin: 0px 120px 0px 0px;
+}
+
+#divmontototalficha,#divpagototalficha{
+background: #BECBCD;
+}
+
+#tfcpagos .c1,#tabContRowPagoft .c1{
+width: 25px;
+}
+#tfcpagos .c2,#tabContRowPagoft .c2{
+width: 80px;
+}
+#tfcpagos .c3,#tabContRowPagoft .c3{
+width: 80px;
+}
+#tfcpagos .c4,#tabContRowPagoft .c4{
+width: 80px;
+}
+#tfcpagos .c5,#tabContRowPagoft .c5{
+width: 20px;
+}
+
+
+#divScrollListaVisitante{
+overflow: scroll;
+height: 250px;
+
+}
+
+#tabListaVisitante{
+width: 100%;
+}
+
+#tabhistficha{
+width:50%;
+border: 1px solid;
+border-collapse: collapse;
+}
+
+#tabhistficha th{
+ font-size: 12px;
+   font-weight:bold;
+   border: 1px solid;
+   text-transform: uppercase;
+   text-align: center;
+}
+
+#tabhistficha td{
+	 font-size: 14px;
+   border: 1px solid;
+   text-align: center;
+}
+
+#formRegistroFichaTurismo legend{
+display: block;
+}
+
+.tsum th{
+padding: 3px;
+}
+
+.cb{
+clear: both;
+}
+
+
+/*#divdatosgenficha{*/
+/* width: 100%;*/
+/* margin-top: 5px;*/
+/* margin-bottom: 10px;*/
+/* border-right: 1px solid;*/
+/*}*/
+/**/
+/*#divdatosgenficha .lc{*/
+/*float: left;*/
+/*clear: left;*/
+/*width: 50%;*/
+/*text-transform: uppercase;*/
+/*padding:1px;*/
+/*border-left:1px solid;*/
+/*border-top:1px solid;*/
+/*border-right: 1px solid;*/
+/*}*/
+/**/
+/*#divdatosgenficha .rc{*/
+/*float: left;*/
+/*text-transform: uppercase;*/
+/*padding:1px;*/
+/*border-top: 1px solid;*/
+/*}*/
+
+/*style="border-left-style: hidden;border-right-style:hidden;border-bottom-style: hidden;"*/
+
+/*style="text-align: center;border-left-style: hidden;"*/
+/*style="text-transform: capitalize;"*/
+
+/*style="text-align: center;border-left-style: hidden;border-top-style: hidden; margin: 1px"*/
+
+/**/
+/*style="text-align: center;border-top-style: hidden;"*/
+
+/*#tboleto thead*/
+/*style="padding: 1px;margin: 1px;"*/
+
+
+
+/*.divf1{*/
+/*	border:1px solid;padding:5px;*/
+/*}*/
+/*.divf2{*/
+/*	border:1px solid;padding:2px;margin: 10px 5px */
+/*}*/
+/*.hf{*/
+/*	margin:2px 1px;*/
+/*}*/
+@media print {
+	#secc1,#secc2,#linkpdf,#logo,#linkimprimir,#closeficha{
+		visibility: hidden;
+		display: none;
+	}	
+}
+
+
+
+
+
+

@@ -1,0 +1,19 @@
+{
+	"titleCrud": "Gestionar Plazas",
+	"nameCrud": "GestionarPlaza",
+	"constUrlApi": "GESTIONAR_PLAZAS_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "GestionarPlazaModel.xml",
+	"subModels": [
+		{
+			"nameModel": "PlazaSubetapaComiteModel",
+			"nameCrud": "PlazaSubetapaComite",
+			"autoIdentityPrimaryKey": true
+		},
+		{
+			"nameModel": "PlazaSubetapaArchivoModel",
+			"nameCrud": "PlazaSubetapaArchivo",
+			"autoIdentityPrimaryKey": true
+		}
+	]
+}

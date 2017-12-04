@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.SubEtapaProcesoSelecionQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+
+sps.srl_id_subetapa_proceso_seleccion,
+sps.srl_id_etapa_proceso_seleccion,
+sps.idarea,
+ao.desarea,
+sps.idunidad,
+uo.nomunidad,
+sps.var_descrip_subetapa,
+sps.var_detalle_subetapa,
+sps.int_id_estado,
+eg.destablatipo as descrip_estado,
+to_char(sps.tsp_fecha_registro,'dd/mm/yyyy') tsp_fecha_registro
+
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+
+personal.t_subetapa_proceso_seleccion sps
+left join sernanp.areaorganica ao on sps.idarea = ao.idarea
+left join sernanp.unidadoperativa uo on sps.idunidad = uo.idunidad
+left join sernanp.vw_estado_generico eg on sps.int_id_estado = eg.codinttablatipo
+
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+
+SPS.srl_id_subetapa_proceso_seleccion = COALESCE(#{srl_id_subetapa_proceso_seleccion},sps.srl_id_subetapa_proceso_seleccion) and
+sps.srl_id_etapa_proceso_seleccion = coalesce(#{srl_id_etapa_proceso_seleccion},sps.srl_id_etapa_proceso_seleccion)
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.SubEtapaProcesoSelecionQuery" parameterType="sernanp.app.dao.query.domain.SubEtapaProcesoSelecionQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.SubEtapaProcesoSelecionQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.SubEtapaProcesoSelecionQuery" parameterType="sernanp.app.dao.query.domain.SubEtapaProcesoSelecionQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.SubEtapaProcesoSelecionQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.SubEtapaProcesoSelecionQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

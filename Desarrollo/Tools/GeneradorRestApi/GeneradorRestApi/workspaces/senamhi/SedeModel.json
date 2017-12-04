@@ -1,0 +1,13 @@
+{
+	"nameCrud": "Sede",
+	"path": "sedes",
+	"nameRepository": "TAreaOrganicaRepository",
+	"nameModelXml": "SedeModel.xml",
+	"subModels": [
+		{
+			"nameRepository": "TAreaOrganicaDireccionRepository",
+			"nameCrud": "SedeDireccion",
+			"nameSubModel": "SedeDireccionModel"
+		}
+	]
+}

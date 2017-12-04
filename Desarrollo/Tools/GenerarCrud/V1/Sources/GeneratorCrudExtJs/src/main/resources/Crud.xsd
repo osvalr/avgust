@@ -1,0 +1,201 @@
+<?xml version="1.0"?>
+<!-- To change this license header, choose License Headers in Project Properties. 
+	To change this template file, choose Tools | Templates and open the template 
+	in the editor. -->
+
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://www.focus.com.pe/generator/crud/extjs"
+	xmlns:xsd="http://www.focus.com.pe/generator/crud/extjs"
+	elementFormDefault="qualified">
+
+	<complexType name="Crud">
+		<sequence>
+			<element type="string" name="name" />
+   <element name="titleCrud" type="string" minOccurs="0"/>
+   <element name="type" type="string" minOccurs="0"/>
+   <element name="prefix" minOccurs="0" type="string"/>
+   <element name="pathTemplate" minOccurs="0" type="string"/>
+   <element name="pathAppExtJs" type="string"/>
+   <element name="nameApp" type="string"/>
+   <element name="model" type="xsd:Model"/>
+   <element name="typePersitence" type="string"/>
+   <element name="generateServiceBackEnd" type="boolean"/>
+   <element name="generateControllerBackEnd" type="boolean"/>
+   <element name="generateControllerFrontEnd" type="boolean"/>
+   <element name="generateStoreFrontEnd" type="boolean"/>
+   <element name="generateModelFrontEnd" type="boolean"/>
+  </sequence>
+	</complexType>
+
+ <complexType name="BackEnd">
+  <sequence>
+   <element name="service" type="xsd:Service"/>
+   <element name="controller" type="xsd:Controller"/>
+   <element name="pathBackEnd" type="string" minOccurs="0"/>
+  </sequence>
+ </complexType>
+ <complexType name="Field">
+  <sequence>
+   <element name="name" type="string"/>
+   <element name="xtype" type="string" minOccurs="0"/>
+   <element name="vtype" type="string" minOccurs="0"/>
+   <element name="format" minOccurs="0" type="string"/>
+   <element name="fieldLabel" type="string" minOccurs="0"/>
+   <element name="fieldLabelForm" type="string" minOccurs="0"/>
+   <element name="fieldLabelList" minOccurs="0" type="string"/>
+   <element name="fieldLabelFilter" type="string" minOccurs="0"/>
+   <element name="allowBlank" type="string" minOccurs="0"/>
+   <element name="emptyText" type="string" minOccurs="0"/>
+   <element name="minLength" type="integer" minOccurs="0"/>
+   <element name="maxLength" type="integer" minOccurs="0"/>
+   <element name="queryMode" type="string" minOccurs="0"/>
+   <element name="displayField" type="string" minOccurs="0"/>
+   <element name="valueField" type="string" minOccurs="0"/>
+   <element name="editable" type="string" minOccurs="0"/>
+   <element name="disabled" type="string" minOccurs="0"/>
+   <element name="id" type="string" minOccurs="0"/>
+   <element name="showInForm" type="string" minOccurs="0" default="true"/>
+   <element name="showInList" type="string" minOccurs="0" default="true"/>
+   <element name="ignoreInForm" type="string" minOccurs="0"/>
+   <element name="ignoreInList" type="string" minOccurs="0"/>
+   <element name="ignoreInFilter" minOccurs="0" type="string"/>
+   <element name="descrip" type="string" minOccurs="0"/>
+   <element name="value" minOccurs="0" type="string"/>
+   <element name="hidden" minOccurs="0" type="string"/>
+   <element name="readOnly" minOccurs="0" type="string"/>
+   <element name="flexGridColumn" minOccurs="0" type="string"/>
+   <element name="store" type="xsd:Store" minOccurs="0" maxOccurs="1"/>
+   <element name="listeners" type="xsd:Listeners" minOccurs="0"/>
+  </sequence>
+ </complexType>
+ <complexType name="Fields">
+  <sequence>
+   <element name="field" type="xsd:Field" minOccurs="0" maxOccurs="unbounded"/>
+  </sequence>
+ </complexType>
+ <complexType name="Service">
+		<sequence>
+   <element name="nameService" type="string" minOccurs="0"/>
+   <element type="string" name="packageService" />
+   <element name="nameServiceImpl" type="string" minOccurs="0"/>
+   <element type="string" name="packageServiceImpl" />
+   <element type="string" name="pathProject" minOccurs="0"/>
+  </sequence>
+	</complexType>
+        
+        <complexType name="Controller">
+		<sequence>
+			<element name="module" type="string" minOccurs="0"/>
+   			<element name="nameController" type="string" minOccurs="0"/>
+   			<element type="string" name="packageController" />
+			<element type="string" name="pathProject" minOccurs="0"/>
+   <element name="typeFw" type="string" minOccurs="0"/>
+  </sequence>
+	</complexType>
+ <complexType name="ParameterStore">
+  <sequence>
+   <element name="nameParameter" type="string"/>
+   <element name="idFieldValue" type="string"/>
+   <element name="dataType" type="string" minOccurs="0"/>
+  </sequence>
+ </complexType>
+ <complexType name="Listener">
+  <sequence>
+   <element name="type" type="string"/>
+   <element name="onIdField" type="string"/>
+   <element name="parameters" type="xsd:Parameters"/>
+  </sequence>
+ </complexType>
+ <complexType name="Listeners">
+  <sequence>
+   <element name="listener" type="xsd:Listener" maxOccurs="unbounded"/>
+  </sequence>
+ </complexType>
+ <complexType name="Parameters">
+  <sequence>
+   <element name="parameterStore" type="xsd:ParameterStore" maxOccurs="unbounded"/>
+  </sequence>
+ </complexType>
+ <complexType name="Store">
+  <sequence>
+   <element name="fields" type="string"/>
+   <element name="url" type="string" minOccurs="0"/>
+   <element name="rootProperty" type="string" minOccurs="0"/>
+   <element name="data" type="string" minOccurs="0"/>
+   <element name="autoLoad" type="string" minOccurs="0"/>
+   <element name="typeProxy" type="string" minOccurs="0"/>
+   <element name="typeReader" type="string" minOccurs="0"/>
+  </sequence>
+ </complexType>
+ 
+  <complexType name="Model">
+  <sequence>
+   <element name="nameModel" minOccurs="0" type="string"/>
+   <element name="titleModel" type="string" minOccurs="0"/>
+   <element name="widthWindows" type="string" minOccurs="0"/>
+   <element name="classModel" type="string"/>
+   <element name="classMapperModel" type="string" minOccurs="1"/>
+   <element name="pathModel" type="string" minOccurs="0"/>
+   <element name="classModelCriteria" type="string" minOccurs="0"/>
+   <element name="idProperty" type="string"/>
+   <element name="entities" type="xsd:Entities"/>
+   <element name="backend" type="xsd:BackEnd" minOccurs="1"/>
+   <element name="tables" type="string" minOccurs="0"/>
+   <element name="fields" type="xsd:Fields" minOccurs="0"/>
+   <element name="fieldsCriteria" type="xsd:Fields" minOccurs="0"/>
+   <element name="SubModels" type="xsd:SubModels" minOccurs="0" maxOccurs="1"/>
+  </sequence>
+ </complexType>
+ 
+ <complexType name="SubModel">
+  <sequence>
+   <element name="nameModel" minOccurs="0" type="string"/>
+   <element name="titleModel" type="string" minOccurs="0"/>
+   <element name="widthWindows" type="string" minOccurs="0"/>
+   <element name="empty" minOccurs="0" type="string"/>
+   <element name="classModel" type="string"/>
+   <element name="classMapperModel" type="string"/>
+   <element name="classModelCriteria" type="string" minOccurs="0"/>
+   <element name="idProperty" type="string"/>
+   <element name="joinProperty" type="string"/>
+   <element name="entities" type="xsd:Entities"/>
+   <element name="tables" type="string" minOccurs="0"/>
+   <element name="fields" type="xsd:Fields" minOccurs="0"/>
+  </sequence>
+ </complexType>
+ <complexType name="SubModels">
+  <sequence>
+   <element name="subModel" type="xsd:SubModel" minOccurs="1" maxOccurs="unbounded"/>
+  </sequence>
+ </complexType>
+ <complexType name="Entity">
+  <sequence>
+   <element name="classEntity" type="string"/>
+   <element name="primaryKey" type="string"/>
+   <element name="classMapper" type="string" minOccurs="0"/>
+   <element name="joinProperty" type="string" minOccurs="0"/>
+   <element name="returnProperty" type="string" minOccurs="0"/>
+   <element name="otherProperties" type="xsd:Properties" minOccurs="0"/>
+   <element name="entities" type="xsd:Entities" minOccurs="0"/>
+  </sequence>
+ </complexType>
+ <complexType name="Entities">
+  <sequence>
+   <element name="entity" type="xsd:Entity" minOccurs="1" maxOccurs="unbounded"/>
+  </sequence>
+ </complexType>
+ <complexType name="Properties">
+  <sequence>
+   <element name="property" maxOccurs="unbounded" minOccurs="1" type="xsd:Property"/>
+  </sequence>
+ </complexType>
+ <complexType name="Property">
+  <sequence>
+   <element name="name" type="string"/>
+   <element name="value" type="string" minOccurs="0"/>
+   <element name="targetProperty" type="string" minOccurs="0"/>
+  </sequence>
+ </complexType>
+ <element name="crud" type="xsd:Crud" />
+
+</schema>

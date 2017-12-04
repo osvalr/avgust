@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>    
+   
+<package name="test-extjs" namespace="/" extends="principal-extjs">
+
+
+
+	<action name="asignar-concepto">
+			<result name="success">pages/planilla/gestionarAsignarConcepto.jsp</result>
+	</action>
+	
+	<!-- Start Actions GestionarAsignarConcepto -->
+	<action name="GestionarAsignarConceptoView" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="view">
+			<result type="json" />
+	</action>
+	
+	<action name="GestionarAsignarConceptoSave" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="save">
+			<result type="json" />
+	</action>
+	
+	<!-- Start Sub Model ConceptoPersonalQuery Actions -->
+	<action name="ConceptoPersonalQueryList" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="ConceptoPersonalQueryList">
+			<result type="json" />
+	</action>
+	
+	<action name="ConceptoPersonalQueryAdd" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="ConceptoPersonalQueryAdd">
+			<result type="json" />
+	</action>
+	
+	<action name="ConceptoPersonalQueryUpdate" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="ConceptoPersonalQueryUpdate">
+			<result type="json" />
+	</action>
+	
+	<action name="ConceptoPersonalQueryDelete" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="ConceptoPersonalQueryDelete">
+			<result type="json" />
+	</action>
+	<!-- End Sub Model ConceptoPersonalQuery Actions -->
+	<!-- Start Sub Model PersonalConceptoFrecuenciaQuery Actions -->
+	<action name="PersonalConceptoFrecuenciaQueryList" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="PersonalConceptoFrecuenciaQueryList">
+			<result type="json" />
+	</action>
+	
+	<action name="PersonalConceptoFrecuenciaQueryAdd" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="PersonalConceptoFrecuenciaQueryAdd">
+			<result type="json" />
+	</action>
+	
+	<action name="PersonalConceptoFrecuenciaQueryUpdate" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="PersonalConceptoFrecuenciaQueryUpdate">
+			<result type="json" />
+	</action>
+	
+	<action name="PersonalConceptoFrecuenciaQueryDelete" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="PersonalConceptoFrecuenciaQueryDelete">
+			<result type="json" />
+	</action>
+	<!-- End Sub Model PersonalConceptoFrecuenciaQuery Actions -->
+	
+		<!-- Start Sub Model PersonalConceptoAfectoQuery Actions -->
+	<action name="PersonalConceptoAfectoQueryList" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="PersonalConceptoAfectoQueryList">
+			<result type="json" />
+	</action>
+	
+	<action name="PersonalConceptoAfectoQueryAdd" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="PersonalConceptoAfectoQueryAdd">
+			<result type="json" />
+	</action>
+	
+	<action name="PersonalConceptoAfectoQueryUpdate" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="PersonalConceptoAfectoQueryUpdate">
+			<result type="json" />
+	</action>
+	
+	<action name="PersonalConceptoAfectoQueryDelete" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="PersonalConceptoAfectoQueryDelete">
+			<result type="json" />
+	</action>
+	<!-- End Sub Model PersonalConceptoAfectoQuery Actions -->
+	
+	<!-- Start Sub Model SuspensionCuartaCategoriaQuery Actions -->
+	<action name="SuspensionCuartaCategoriaQueryList" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="SuspensionCuartaCategoriaQueryList">
+			<result type="json" />
+	</action>
+	
+	<action name="SuspensionCuartaCategoriaQueryAdd" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="SuspensionCuartaCategoriaQueryAdd">
+			<result type="json" />
+	</action>
+	
+	<action name="SuspensionCuartaCategoriaQueryUpdate" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="SuspensionCuartaCategoriaQueryUpdate">
+			<result type="json" />
+	</action>
+	
+	<action name="SuspensionCuartaCategoriaQueryDelete" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="SuspensionCuartaCategoriaQueryDelete">
+			<result type="json" />
+	</action>
+	<!-- End Sub Model SuspensionCuartaCategoriaQuery Actions -->
+	<!-- Start Sub Model BeneficiarioDescuentoJudicialQuery Actions -->
+	<action name="BeneficiarioDescuentoJudicialQueryList" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="BeneficiarioDescuentoJudicialQueryList">
+			<result type="json" />
+	</action>
+	
+	<action name="BeneficiarioDescuentoJudicialQueryAdd" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="BeneficiarioDescuentoJudicialQueryAdd">
+			<result type="json" />
+	</action>
+	
+	<action name="BeneficiarioDescuentoJudicialQueryUpdate" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="BeneficiarioDescuentoJudicialQueryUpdate">
+			<result type="json" />
+	</action>
+	
+	<action name="BeneficiarioDescuentoJudicialQueryDelete" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="BeneficiarioDescuentoJudicialQueryDelete">
+			<result type="json" />
+	</action>
+	<!-- End Sub Model BeneficiarioDescuentoJudicialQuery Actions -->
+	
+	<action name="PersonalInfoContratoQueryList" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="PersonalInfoContratoQueryList">
+			<result type="json" />
+	</action>
+	
+	<action name="PersonalInfoContratoQueryUpdate" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="PersonalInfoContratoQueryUpdate">
+			<result type="json" />
+	</action>
+	
+	<action name="PersonalInfoFormacionQueryList" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="PersonalInfoFormacionQueryList">
+			<result type="json" />
+	</action>
+	
+	<action name="PersonalInfoAdendasPorContratoQueryList" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="PersonalInfoAdendasPorContratoQueryList">
+			<result type="json" />
+	</action>
+	
+	<!-- End Actions GestionarAsignarConcepto -->
+	
+ 	
+</package>
+  
+</struts>

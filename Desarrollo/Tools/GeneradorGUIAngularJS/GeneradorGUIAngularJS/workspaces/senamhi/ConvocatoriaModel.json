@@ -1,0 +1,24 @@
+{
+	"titleCrud": "Convocatorias",
+	"nameCrud": "Convocatoria",
+	"constUrlApi": "CONVOCATORIA_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "ConvocatoriaModel.xml",
+	"subModels": [
+		{
+			"nameModel": "ConvocatoriaEtapaConfigModel",
+			"nameCrud": "ConvocatoriaEtapaConfig",
+			"autoIdentityPrimaryKey": true
+		},
+		{
+			"nameModel": "ConvocatoriaComiteModel",
+			"nameCrud": "ConvocatoriaComite",
+			"autoIdentityPrimaryKey": true
+		},
+		{
+			"nameModel": "PlazaModel",
+			"nameCrud": "Plaza",
+			"autoIdentityPrimaryKey": true
+		}
+	]
+}

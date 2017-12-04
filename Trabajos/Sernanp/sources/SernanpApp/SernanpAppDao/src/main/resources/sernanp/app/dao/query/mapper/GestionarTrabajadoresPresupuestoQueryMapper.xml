@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.GestionarTrabajadoresPresupuestoQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+
+pn.idpersonanatural,
+ps.idpersonal,
+pmf.srl_id_anio_planilla,
+ap.int_anio,
+pmf.c_meta,
+pmf.c_fte_fto,
+ff.srl_id_fuente_financiamiento,
+ff.var_rubro_fte_fto,
+mp.srl_id_meta_presupuestaria,
+mp.var_cod_meta_presupuestaria,
+pmf.int_id_estado,
+eg.destablatipo as descrip_estado,
+to_char(pmf.tsp_fecha_registro,'DD/MM/YYYY') as tsp_fecha_registro
+
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+
+sernanp.personanatural pn 
+inner join sernanp.personal ps on pn.idpersonanatural = ps.idpersonanatural
+left join personal.t_personal_meta_fte_fto pmf on ps.idpersonal = pmf.idpersonal
+left join mpp.t_fuente_financiamiento ff on pmf.c_fte_fto = ff.var_rubro_fte_fto
+left join mpp.t_meta_presupuestaria mp on pmf.c_meta = mp.var_cod_meta_presupuestaria
+left join personal.t_anio_planilla ap on pmf.srl_id_anio_planilla = ap.srl_id_anio_planilla
+inner join sernanp.vw_estado_generico eg on eg.codinttablatipo = pmf.int_id_estado
+
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+
+pn.idpersonanatural = COALESCE(#{idpersonanatural},pn.idpersonanatural)
+
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.GestionarTrabajadoresPresupuestoQuery" parameterType="sernanp.app.dao.query.domain.GestionarTrabajadoresPresupuestoQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.GestionarTrabajadoresPresupuestoQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.GestionarTrabajadoresPresupuestoQuery" parameterType="sernanp.app.dao.query.domain.GestionarTrabajadoresPresupuestoQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.GestionarTrabajadoresPresupuestoQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.GestionarTrabajadoresPresupuestoQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteConvocatoriaMintra_Postulacion" pageWidth="440" pageHeight="802" columnWidth="440" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="1d80396f-a12f-454b-90f4-ea93b7cfa613">
+	<property name="ireport.zoom" value="1.1000000000000039"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.export.html.wrap.break.word" value="false"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/Datos/DesarrolloSW/Proyectos/SernanpApp/SernanpAppRrhhWeb/src/main/webapp/jasper/seleccion/"]]></defaultValueExpression>
+	</parameter>
+	<field name="var_codigo_postulacion" class="java.lang.String"/>
+	<field name="var_denominacion_requerimiento" class="java.lang.String"/>
+	<field name="descrip_area" class="java.lang.String"/>
+	<group name="codigo_postulacion" keepTogether="true">
+		<groupExpression><![CDATA[$F{var_codigo_postulacion}]]></groupExpression>
+		<groupHeader>
+			<band height="321">
+				<textField>
+					<reportElement x="0" y="129" width="440" height="35" isPrintInFirstWholeBand="true" uuid="704ed273-1fbe-4b61-b671-3013bf530122"/>
+					<textElement markup="html">
+						<font fontName="DejaVu Sans Mono" size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{descrip_area} == null ? "<b>2.- Área Solicitante:</b>" :
+"<b>2.- Área Solicitante:</b><br>" + $F{descrip_area}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="0" y="94" width="440" height="35" isPrintInFirstWholeBand="true" uuid="4c4ef7cb-4a9b-41af-bab3-5ab3713f26bd"/>
+					<textElement markup="html">
+						<font fontName="DejaVu Sans Mono" size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{var_denominacion_requerimiento} == null ? "<b>1.- Objeto de la Convocatoria:</b><br>" :
+"<b>1.- Objeto de la Convocatoria:</b><br>" + $F{var_denominacion_requerimiento} + "<br>"]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="164" width="440" height="35" uuid="d822e300-0dd1-4b90-a233-ac2d7980681c"/>
+					<textElement markup="html">
+						<font fontName="DejaVu Sans Mono"/>
+					</textElement>
+					<text><![CDATA[<b>3.- Dependencia encargada de realizar el proceso de contratación:</b><br>
+La Unidad Operativa Funcional de Recursos Humanos del SERNANP
+]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="0" y="30" width="440" height="32" isPrintInFirstWholeBand="true" forecolor="#FF0000" uuid="c8ad3beb-4dd1-4936-83c1-233053e6fcb3"/>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="DejaVu Sans Mono" size="12" isBold="true" isUnderline="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{var_codigo_postulacion} == null ? "" : "Código " + $F{var_codigo_postulacion}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement x="0" y="0" width="440" height="30" isPrintInFirstWholeBand="true" uuid="84dcf808-efcc-4856-9e7b-f1ad4554d8b1"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+						<font fontName="DejaVu Sans Mono" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Convocatoria para la Contratación Administrativa de Servicios de Un Especialista para la <br>" +
+($F{descrip_area} == null ? "" : $F{descrip_area}) + " y/o en cualquier Área Natural Protegida del Perú, por <br>" +
+"disposición del SERNANP"]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="62" width="440" height="32" isPrintInFirstWholeBand="true" uuid="d361f156-0b6a-46fb-b7af-f02a0d61769d"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="DejaVu Sans Mono" size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[I.- Generalidades]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="199" width="440" height="121" uuid="17a6bf06-a8e3-4a69-9f10-453de8075630"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="DejaVu Sans"/>
+					</textElement>
+					<text><![CDATA[<b>4.- Base legal</b> <br>
+- <b>Decreto Legislativo N° 1057</b>, que regula el Régimen Especial de Contratación Administrativa de
+Servicios (en adelante “régimen CAS”). <br>
+- <b>Reglamento del Decreto Legislativo N° 1057</b> que regula el Régimen Especial de Contratación
+Administrativa de Servicios, el Decreto Supremo Nº 075-2008-PCM, modificado por Decreto Supremo 065-2011-PCM. <br>
+- <b>Ley N° 29849</b>, que establece la eliminación progresiva del Régimen Especial del Decreto
+Legislativo N° 1057 y otorga derechos laborales. <br>
+- Las demás disposiciones que regulen el Contrato Administrativo de Servicios. ]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="50"/>
+	</columnHeader>
+</jasperReport>

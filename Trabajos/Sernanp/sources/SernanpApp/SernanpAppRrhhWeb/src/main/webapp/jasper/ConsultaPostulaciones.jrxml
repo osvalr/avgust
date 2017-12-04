@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ConsultaPostulaciones" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b49ed431-e8a1-46d6-be6c-27d390fb649f">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[]]>
+	</queryString>
+	<field name="tipoDoc" class="java.lang.String"/>
+	<field name="numerodoc" class="java.lang.String"/>
+	<field name="ruc" class="java.lang.String"/>
+	<field name="genero" class="java.lang.String"/>
+	<field name="var_num_convocatoria" class="java.lang.String"/>
+	<field name="var_codigo_postulacion" class="java.lang.String"/>
+	<field name="int_num_activacion" class="java.lang.Integer"/>
+	<field name="estado_descrip" class="java.lang.String"/>
+	<field name="desarea" class="java.lang.String"/>
+	<field name="nomunidad" class="java.lang.String"/>
+	<field name="tsp_fecha_registro" class="java.lang.String"/>
+	<field name="nombre_completo" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="15">
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="0" width="555" height="14" forecolor="#000000" backcolor="#CCCCCC" uuid="1bc1cc4a-1f3d-4ada-9eae-998ba4995450"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="DejaVu Sans Mono" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[SERNANP]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="236" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy HH:mm:ss">
+				<reportElement x="419" y="0" width="136" height="20" uuid="172b06e9-6741-4d77-8f29-348eeecd910a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="43" width="555" height="30" forecolor="#000000" backcolor="#CCCCCC" uuid="20149ed3-d2d1-4612-9411-47a29c8f09c1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="DejaVu Sans Mono" size="24" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[CONSULTA DE POSTULACIONES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="83" width="269" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="3b45617b-ffee-4b5e-9e70-e7fbb5ac4990"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.25" lineStyle="Dashed"/>
+					<topPen lineWidth="0.25" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.25" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.25" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.25" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[SIGLAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="103" width="118" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="d55123c8-dfce-4b5d-921f-0d1ce38e85e0"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.25" lineStyle="Dashed"/>
+					<topPen lineWidth="0.25" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.25" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.25" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.25" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[N.C]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="123" width="118" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="5f118907-7676-447d-bbdc-5e917804c321"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.25" lineStyle="Dashed"/>
+					<topPen lineWidth="0.25" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.25" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.25" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.25" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[C.P]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="143" width="118" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="0d7e2b8f-3336-4f27-b264-12f9e23b3ad8"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.25" lineStyle="Dashed"/>
+					<topPen lineWidth="0.25" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.25" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.25" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.25" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[N.L]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="163" width="118" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="f1bad6bc-fe46-4721-97e4-3cbde6b0e00c"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.25" lineStyle="Dashed"/>
+					<topPen lineWidth="0.25" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.25" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.25" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.25" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[A.O]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="183" width="118" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="55d2c980-1043-467f-9b21-4a8975fdb0e4"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.25" lineStyle="Dashed"/>
+					<topPen lineWidth="0.25" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.25" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.25" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.25" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[U.O]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="203" width="118" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="cdc48155-1f3f-4dfc-96aa-927601d49465"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.25" lineStyle="Dashed"/>
+					<topPen lineWidth="0.25" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.25" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.25" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.25" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[F.R]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="118" y="103" width="151" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="3c21932e-9427-40cc-88c1-d21898e8425c"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.25" lineStyle="Dashed"/>
+					<topPen lineWidth="0.25" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.25" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.25" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.25" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[NÚMERO CONVOCATORIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="118" y="123" width="151" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="2ae3d163-feea-4ea7-b910-b2a2c8580e97"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.25" lineStyle="Dashed"/>
+					<topPen lineWidth="0.25" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.25" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.25" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.25" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[CÓDIGO POSTULACIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="118" y="143" width="151" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="2cee4539-0a8d-4510-953f-167a4b27d60c"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.25" lineStyle="Dashed"/>
+					<topPen lineWidth="0.25" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.25" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.25" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.25" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[NÚMERO LANZAMIENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="118" y="163" width="151" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="e794dd29-6a9d-42c2-aeb0-fd5ce3baf677"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.25" lineStyle="Dashed"/>
+					<topPen lineWidth="0.25" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.25" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.25" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.25" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[ÁREA ORGÁNICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="118" y="183" width="151" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="83e73edf-dcc7-44a7-9969-bd18ab7fc435"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.25" lineStyle="Dashed"/>
+					<topPen lineWidth="0.25" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.25" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.25" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.25" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[UNIDAD OPERATIVA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="118" y="203" width="151" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="2986cc40-327b-40f1-b23f-a25d633e6d98"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.25" lineStyle="Dashed"/>
+					<topPen lineWidth="0.25" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.25" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.25" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.25" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[FECHA REGISTRO]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="55" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="066f7623-0874-45b9-8cd7-a023842f6146"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[DNI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="55" y="0" width="99" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="56813cc4-0ebc-4258-89f5-84279fb4832b"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[NOMBRES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="154" y="0" width="56" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="299172b3-dac4-4482-944c-94abb6d3d526"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[N.C]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="210" y="0" width="80" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="d6ff7cb3-ba56-44c8-836e-d91fed9c425e"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[C.P]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="290" y="0" width="28" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="8d6124e4-17b6-4913-b8b9-e20cd9afc938"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[N.L]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="318" y="0" width="64" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="effc486b-c646-4c9c-aa8a-0019505062ce"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[A.O]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="382" y="0" width="62" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="80b5d596-150d-40aa-a295-6539716744c2"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[U.O]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="444" y="0" width="52" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="6e3e1744-b9fa-4a2d-9f26-1730cc86b267"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[ESTADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="496" y="0" width="59" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="33c746f4-967c-4f4e-bfc1-ef97357de5e2"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[F.R]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="19" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="0" y="0" width="55" height="19" forecolor="#000000" backcolor="#CCCCCC" uuid="960990f9-3af9-45f7-8fff-7fd05cb252de"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.25" lineStyle="Dashed"/>
+					<topPen lineWidth="0.25" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.25" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.25" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.25" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numerodoc}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="154" y="0" width="56" height="19" forecolor="#000000" backcolor="#CCCCCC" uuid="29748f1d-94fb-49e9-ac75-53b5685c352f"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.25" lineStyle="Dashed"/>
+					<topPen lineWidth="0.25" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.25" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.25" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.25" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{var_num_convocatoria}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="444" y="0" width="52" height="19" forecolor="#000000" backcolor="#CCCCCC" uuid="04a42956-366b-4906-b24d-fffef5dc4ad9"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.25" lineStyle="Dashed"/>
+					<topPen lineWidth="0.25" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.25" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.25" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.25" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{estado_descrip}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="55" y="0" width="99" height="19" forecolor="#000000" backcolor="#CCCCCC" uuid="ed95a484-d8ba-4132-9ac5-26c5c2dfe141"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.25" lineStyle="Dashed"/>
+					<topPen lineWidth="0.25" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.25" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.25" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.25" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_completo}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="318" y="0" width="64" height="19" forecolor="#000000" backcolor="#CCCCCC" uuid="b184728f-df94-4cd6-af38-767096aae370"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.25" lineStyle="Dashed"/>
+					<topPen lineWidth="0.25" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.25" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.25" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.25" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{desarea}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="382" y="0" width="62" height="19" forecolor="#000000" backcolor="#CCCCCC" uuid="2756aae3-c44d-4f17-b3de-af00f6f549a0"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.25" lineStyle="Dashed"/>
+					<topPen lineWidth="0.25" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.25" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.25" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.25" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomunidad}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="496" y="0" width="59" height="19" forecolor="#000000" backcolor="#CCCCCC" uuid="cb567b3e-7cd3-49c4-bcb6-c19532fe6d32"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.25" lineStyle="Dashed"/>
+					<topPen lineWidth="0.25" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.25" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.25" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.25" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tsp_fecha_registro}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="210" y="0" width="80" height="19" forecolor="#000000" backcolor="#CCCCCC" uuid="83ff450f-26c9-435e-9c10-0b359518739a"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.25" lineStyle="Dashed"/>
+					<topPen lineWidth="0.25" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.25" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.25" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.25" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{var_codigo_postulacion}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="290" y="0" width="28" height="19" forecolor="#000000" backcolor="#CCCCCC" uuid="b21e3569-e7dc-4ff8-853d-71ae5fe0a06c"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.25" lineStyle="Dashed"/>
+					<topPen lineWidth="0.25" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.25" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.25" lineStyle="Dashed"/>
+					<rightPen lineWidth="0.25" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="DejaVu Sans Mono" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{int_num_activacion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="441" y="0" width="87" height="20" uuid="46b1e12e-bbe5-4eda-9627-f1c21d509ec7"/>
+				<textElement textAlignment="Right">
+					<font fontName="DejaVu Sans Mono" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de "]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="528" y="0" width="27" height="20" uuid="048eafb0-2381-426e-bbaf-d5c451579f22"/>
+				<textElement>
+					<font fontName="DejaVu Sans Mono" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" "+$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

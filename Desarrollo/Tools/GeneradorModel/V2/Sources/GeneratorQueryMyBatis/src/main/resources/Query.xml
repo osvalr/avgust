@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<queryGenerator xmlns="http://www.sakerk.com.pe/query/generator/mybatis" 
+					xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+					xsi:schemaLocation="http://www.sakerk.com.pe/query/generator/mybatis Query.xsd ">
+  <configs>
+    
+	    <target>
+	      <targetPackage>pe.com.focus.sakerk.repository.custom.model</targetPackage>
+<!--  		  <targetProject>/Users/JRaffo/GitHub/FocusConsultoresSAC/sakerkapp/Developement/SakerkApp/SakerkRepositoryApp/src/main/java</targetProject> -->
+	      <targetProject>C:\GITHUB/focuslabs/Generales/Developement/FocusRepositoryMybatisApp/src/main/java</targetProject>
+	      <type>javaModelGenerator</type>
+	    </target>
+	   
+	    <target>
+	      <targetPackage>pe.com.focus.sakerk.repository.custom.mapper</targetPackage>
+<!-- 	      <targetProject>/Users/JRaffo/GitHub/FocusConsultoresSAC/sakerkapp/Developement/SakerkApp/SakerkRepositoryApp/src/main/resources</targetProject> -->
+	      <targetProject>C:/GITHUB/focuslabs/Generales/Developement/FocusRepositoryMybatisApp/src/main/resources</targetProject>
+	      <type>sqlMapGenerator</type>
+	    </target>
+	    
+	    <target>
+	      <targetPackage>pe.com.focus.sakerk.repository.custom.mapper</targetPackage>
+<!-- 	      <targetProject>/Users/JRaffo/GitHub/FocusConsultoresSAC/sakerkapp/Developement/SakerkApp/SakerkRepositoryApp/src/main/java</targetProject> -->
+	      <targetProject>C:/GITHUB/focuslabs/Generales/Developement/FocusRepositoryMybatisApp/src/main/java</targetProject>
+	      <type>javaClientGenerator</type>
+	    </target>
+	    
+    
+  </configs>
+    
+  <querys>
+     
+	   <query>
+	      <name>EstadoQuery</name>
+	      <generate>true</generate>
+	      <sql>
+	      <![CDATA[
+	      
+	      select 
+	      @
+			et.srl_id_estado_tabla #INTEGER,
+			det.srl_id_detalle_estado_tabla #INTEGER,
+			det.var_cod_estado,
+			det.var_nombre_estado,
+			det.tsp_fecha_registro #DATE
+		  @ 
+			from sernanp.t_estado_tabla et
+			inner join sernanp.t_detalle_estado_tabla det
+			on et.srl_id_estado_tabla = det.srl_id_estado_tabla
+			where
+			@
+			et.var_nombre_tabla = #{var_nombre_tabla & #STRING} 
+			@
+			
+		  ]]>
+	      </sql>
+	    </query>
+
+	    
+
+  </querys>
+  
+</queryGenerator>

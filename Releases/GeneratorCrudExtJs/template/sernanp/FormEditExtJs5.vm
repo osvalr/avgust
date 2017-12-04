@@ -1,0 +1,118 @@
+/**
+* Copyright «©» ${anho}, FOCUS CONSULTORES ASOCIADOS SAC. All rights reserved.
+*
+* This file is part of ${nameApp}.
+*
+* ${nameApp} is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* ${nameApp} is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with ${nameApp}.  If not, see <http://www.gnu.org/licenses/>.
+*/	 
+
+/**
+* GENERATOR CRUD EXT JS 5            
+* BY FOCUS CONSULTORES ASOCIADOS SAC  
+* DATE CREATE : ${datetimeCreate}
+* VERSION : 1.0 
+*/
+
+Ext.define('MyApp.view.${name}.Edit', {
+    extend: 'Ext.window.Window',
+    alias : 'widget.${name}Edit',
+
+    requires: ['Ext.form.Panel','Ext.ux.statusbar.StatusBar'],
+
+    layout: 'fit',
+    autoShow: true,
+    modal: true,
+    floating: true,
+    resizable: false,
+    width: ${widthWindows},
+
+    glyph:'xf044@FontAwesome',
+
+    initComponent: function() {
+        this.items = [
+            {
+                xtype: 'tabpanel',
+                activeTab: 0,
+                items: [
+							{
+				                xtype: 'form',
+				                id: 'form_crud_${name}',
+				                padding: '5 5 0 5',
+				                border: false,
+				                style: 'background-color: #fff;',
+				                title: '${titleModel}',
+				                glyph:'xf022@FontAwesome',
+				                
+				                fieldDefaults: {
+					    			anchor: '100%',
+				                    labelAlign: 'left',
+				                    allowBlank: false,
+				                    combineErrors: true,
+				                    msgTarget: 'qtip',
+                    				labelWidth: 125
+			                	},
+
+		                		items: [
+#set($counter = 0)
+#foreach( $e in $fieldsProperty )
+#if($counter==0)
+											{
+											    ${e}
+											}
+#else
+											,{
+											    ${e}
+											}
+#end
+#set($counter = $counter + 1)
+#end
+										]
+							}
+							
+
+#foreach( $e in $detailSubModels )
+							,{
+					    		${e}
+							}
+#end
+
+                ]
+            }
+        ];
+        
+        this.dockedItems = [{
+            xtype: 'toolbar',
+            dock: 'bottom',
+            //id:'buttons',
+            ui: 'footer',
+            items: ['->', {
+            	glyph:'xf0c7@FontAwesome',
+                itemId: 'save',
+                text: 'Grabar',
+                action: 'save'
+            },{
+            	glyph:'xf00d@FontAwesome',
+                text: 'Cancelar',
+                scope: this,
+                handler: this.close
+            }]
+        }, 
+        Ext.create('Ext.ux.StatusBar', {
+            dock: 'bottom',
+            id: 'form_crud_${name}_statusbar'
+        })];
+
+        this.callParent(arguments);      
+    }
+});

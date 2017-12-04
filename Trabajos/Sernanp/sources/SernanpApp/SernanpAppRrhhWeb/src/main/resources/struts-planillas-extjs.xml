@@ -1,0 +1,1540 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>    
+   
+<package name="planillas-extjs" namespace="/" extends="principal-extjs">
+
+
+	<action name="procesar-nomina" class="sernanp.rrhh.web.action.planilla.ProcesarNominaAction" method="procesarNomina">
+			<result type="json" />
+	</action>
+
+	<action name="procesar-nomina-personal" class="sernanp.rrhh.web.action.planilla.ProcesarNominaAction" method="procesarNominaPersonal">
+			<result type="json" />
+	</action>
+	
+	<action name="procesar-decuentos-deplazamiento-asistencia" class="sernanp.rrhh.web.action.planilla.ProcesarNominaAction" method="procesarDecuentosDeplazamientoAsistencia">
+			<result type="json" />
+	</action>
+	
+	<action name="procesar-nomina-extraordinaria" class="sernanp.rrhh.web.action.planilla.ProcesarNominaAction" method="procesarNominaAlterno">
+			<result type="json" />
+	</action>
+		
+	
+		<!-- END ACTION REPORTES -->
+	
+	
+
+	<!-- Begin JRaffo 06/03/2015 -->
+	<action name="gestionar-concepto">
+			<result name="success" type="tiles">gestionar_concepto_planilla</result>
+			<!-- 			<interceptor-ref name="basicStack" />  -->
+			<!-- 			<interceptor-ref name="general" />  -->
+			<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+			<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+	</action>
+	<!-- Start Actions GestionarConcepto -->
+	<action name="GestionarConceptoView" class="sernanp.rrhh.web.action.planilla.GestionarConceptoAction" method="view">
+			<result type="json" />
+	</action>
+
+	<action name="GestionarConceptoCreate" class="sernanp.rrhh.web.action.planilla.GestionarConceptoAction" method="create">
+			<result type="json" />
+	</action>
+
+	<action name="GestionarConceptoSave" class="sernanp.rrhh.web.action.planilla.GestionarConceptoAction" method="save">
+			<result type="json" />
+	</action>
+
+	<action name="GestionarConceptoRemove" class="sernanp.rrhh.web.action.planilla.GestionarConceptoAction" method="remove">
+			<result type="json" />
+	</action>
+
+	<!-- Start Sub Model ConceptoAfectoQuery Actions -->
+	<action name="ConceptoAfectoQueryList" class="sernanp.rrhh.web.action.planilla.GestionarConceptoAction" method="ConceptoAfectoQueryList">
+			<result type="json" />
+	</action>
+
+	<action name="ConceptoAfectoQueryAdd" class="sernanp.rrhh.web.action.planilla.GestionarConceptoAction" method="ConceptoAfectoQueryAdd">
+			<result type="json" />
+	</action>
+
+	<action name="ConceptoAfectoQueryUpdate" class="sernanp.rrhh.web.action.planilla.GestionarConceptoAction" method="ConceptoAfectoQueryUpdate">
+			<result type="json" />
+	</action>
+
+	<action name="ConceptoAfectoQueryDelete" class="sernanp.rrhh.web.action.planilla.GestionarConceptoAction" method="ConceptoAfectoQueryDelete">
+			<result type="json" />
+	</action>
+	<!-- End Sub Model ConceptoAfectoQuery Actions -->
+	<!-- Start Sub Model ConceptoFrecuenciaQuery Actions -->
+	<action name="ConceptoFrecuenciaQueryList" class="sernanp.rrhh.web.action.planilla.GestionarConceptoAction" method="ConceptoFrecuenciaQueryList">
+			<result type="json" />
+	</action>
+
+	<action name="ConceptoFrecuenciaQueryAdd" class="sernanp.rrhh.web.action.planilla.GestionarConceptoAction" method="ConceptoFrecuenciaQueryAdd">
+			<result type="json" />
+	</action>
+
+	<action name="ConceptoFrecuenciaQueryUpdate" class="sernanp.rrhh.web.action.planilla.GestionarConceptoAction" method="ConceptoFrecuenciaQueryUpdate">
+			<result type="json" />
+	</action>
+
+	<action name="ConceptoFrecuenciaQueryDelete" class="sernanp.rrhh.web.action.planilla.GestionarConceptoAction" method="ConceptoFrecuenciaQueryDelete">
+			<result type="json" />
+	</action>
+	<!-- End Sub Model ConceptoFrecuenciaQuery Actions -->
+
+	<!-- End Actions GestionarConcepto -->
+
+	<action name="gestionar-asignar-concepto">
+			<result name="success" type="tiles">gestionar_asignar_concepto</result>
+						<interceptor-ref name="basicStack" /> 
+						<interceptor-ref name="general" /> 
+						<interceptor-ref name="usuario-logeado" />	
+						<interceptor-ref name="defaultStack" />	  	 		 
+	</action>
+	
+	<!-- Start Actions GestionarAsignarConcepto -->
+	<action name="GestionarAsignarConceptoView" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="view">
+			<result type="json" />
+	</action>
+	
+	<action name="GestionarAsignarConceptoSave" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="save">
+			<result type="json" />
+	</action>
+	
+	<!-- Start Sub Model ConceptoPersonalQuery Actions -->
+	<action name="ConceptoPersonalQueryList" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="ConceptoPersonalQueryList">
+			<result type="json" />
+	</action>
+	
+	<action name="ConceptoPersonalQueryAdd" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="ConceptoPersonalQueryAdd">
+			<result type="json" />
+	</action>
+	
+	<action name="ConceptoPersonalQueryUpdate" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="ConceptoPersonalQueryUpdate">
+			<result type="json" />
+	</action>
+	
+	<action name="ConceptoPersonalQueryDelete" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="ConceptoPersonalQueryDelete">
+			<result type="json" />
+	</action>
+	<!-- End Sub Model ConceptoPersonalQuery Actions -->
+	<!-- Start Sub Model PersonalConceptoFrecuenciaQuery Actions -->
+	<action name="PersonalConceptoFrecuenciaQueryList" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="PersonalConceptoFrecuenciaQueryList">
+			<result type="json" />
+	</action>
+	
+	<action name="PersonalConceptoFrecuenciaQueryAdd" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="PersonalConceptoFrecuenciaQueryAdd">
+			<result type="json" />
+	</action>
+	
+	<action name="PersonalConceptoFrecuenciaQueryUpdate" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="PersonalConceptoFrecuenciaQueryUpdate">
+			<result type="json" />
+	</action>
+	
+	<action name="PersonalConceptoFrecuenciaQueryDelete" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="PersonalConceptoFrecuenciaQueryDelete">
+			<result type="json" />
+	</action>
+	<!-- End Sub Model PersonalConceptoFrecuenciaQuery Actions -->
+	
+		<!-- Start Sub Model PersonalConceptoAfectoQuery Actions -->
+	<action name="PersonalConceptoAfectoQueryList" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="PersonalConceptoAfectoQueryList">
+			<result type="json" />
+	</action>
+	
+	<action name="PersonalConceptoAfectoQueryAdd" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="PersonalConceptoAfectoQueryAdd">
+			<result type="json" />
+	</action>
+	
+	<action name="PersonalConceptoAfectoQueryUpdate" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="PersonalConceptoAfectoQueryUpdate">
+			<result type="json" />
+	</action>
+	
+	<action name="PersonalConceptoAfectoQueryDelete" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="PersonalConceptoAfectoQueryDelete">
+			<result type="json" />
+	</action>
+	<!-- End Sub Model PersonalConceptoAfectoQuery Actions -->
+	
+	<!-- Start Sub Model SuspensionCuartaCategoriaQuery Actions -->
+	<action name="SuspensionCuartaCategoriaQueryList" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="SuspensionCuartaCategoriaQueryList">
+			<result type="json" />
+	</action>
+	
+	<action name="SuspensionCuartaCategoriaQueryAdd" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="SuspensionCuartaCategoriaQueryAdd">
+			<result type="json" />
+	</action>
+	
+	<action name="SuspensionCuartaCategoriaQueryUpdate" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="SuspensionCuartaCategoriaQueryUpdate">
+			<result type="json" />
+	</action>
+	
+	<action name="SuspensionCuartaCategoriaQueryDelete" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="SuspensionCuartaCategoriaQueryDelete">
+			<result type="json" />
+	</action>
+	<!-- End Sub Model SuspensionCuartaCategoriaQuery Actions -->
+	<!-- Start Sub Model BeneficiarioDescuentoJudicialQuery Actions -->
+	<action name="BeneficiarioDescuentoJudicialQueryList" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="BeneficiarioDescuentoJudicialQueryList">
+			<result type="json" />
+	</action>
+	
+	<action name="BeneficiarioDescuentoJudicialQueryAdd" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="BeneficiarioDescuentoJudicialQueryAdd">
+			<result type="json" />
+	</action>
+	
+	<action name="BeneficiarioDescuentoJudicialQueryUpdate" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="BeneficiarioDescuentoJudicialQueryUpdate">
+			<result type="json" />
+	</action>
+	
+	<action name="BeneficiarioDescuentoJudicialQueryDelete" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="BeneficiarioDescuentoJudicialQueryDelete">
+			<result type="json" />
+	</action>
+	<!-- End Sub Model BeneficiarioDescuentoJudicialQuery Actions -->
+	
+	<!-- End Actions GestionarAsignarConcepto -->
+
+
+	<action name="gestionar-nomina" class="sernanp.rrhh.web.action.common.CommonAction" method="listarMenuReportes">
+			<result name="success" type="tiles">gestionar_nomina</result>
+						<interceptor-ref name="basicStack" /> 
+						<interceptor-ref name="general" /> 
+						<interceptor-ref name="usuario-logeado" />	
+						<interceptor-ref name="defaultStack" />	  	 		 
+	</action>
+
+	<!-- Start Actions GestionaNomina -->
+	<action name="GestionaNominaView" class="sernanp.rrhh.web.action.planilla.GestionaNominaAction" method="view">
+			<result type="json" />
+	</action>
+	
+	<action name="GestionaNominaTotalesView" class="sernanp.rrhh.web.action.planilla.GestionaNominaAction" method="viewTotales">
+			<result type="json" />
+	</action>
+
+	<action name="GestionaNominaCreate" class="sernanp.rrhh.web.action.planilla.GestionaNominaAction" method="create">
+			<result type="json" />
+	</action>
+
+	<action name="GestionaNominaSave" class="sernanp.rrhh.web.action.planilla.GestionaNominaAction" method="save">
+			<result type="json" />
+	</action>
+
+	<action name="GestionaNominaRemove" class="sernanp.rrhh.web.action.planilla.GestionaNominaAction" method="remove">
+			<result type="json" />
+	</action>
+
+	<!-- Start Sub Model IngresosNominaConceptoQuery Actions -->
+	<action name="IngresosNominaConceptoQueryList" class="sernanp.rrhh.web.action.planilla.GestionaNominaAction" method="IngresosNominaConceptoQueryList">
+			<result type="json" />
+	</action>
+
+	<action name="IngresosNominaConceptoQueryAdd" class="sernanp.rrhh.web.action.planilla.GestionaNominaAction" method="IngresosNominaConceptoQueryAdd">
+			<result type="json" />
+	</action>
+
+	<action name="IngresosNominaConceptoQueryUpdate" class="sernanp.rrhh.web.action.planilla.GestionaNominaAction" method="IngresosNominaConceptoQueryUpdate">
+			<result type="json" />
+	</action>
+
+	<action name="IngresosNominaConceptoQueryDelete" class="sernanp.rrhh.web.action.planilla.GestionaNominaAction" method="IngresosNominaConceptoQueryDelete">
+			<result type="json" />
+	</action>
+	<!-- End Sub Model IngresosNominaConceptoQuery Actions -->
+	<!-- Start Sub Model DescuentosNominaConceptoQuery Actions -->
+	<action name="DescuentosNominaConceptoQueryList" class="sernanp.rrhh.web.action.planilla.GestionaNominaAction" method="DescuentosNominaConceptoQueryList">
+			<result type="json" />
+	</action>
+
+	<action name="DescuentosNominaConceptoQueryAdd" class="sernanp.rrhh.web.action.planilla.GestionaNominaAction" method="DescuentosNominaConceptoQueryAdd">
+			<result type="json" />
+	</action>
+
+	<action name="DescuentosNominaConceptoQueryUpdate" class="sernanp.rrhh.web.action.planilla.GestionaNominaAction" method="DescuentosNominaConceptoQueryUpdate">
+			<result type="json" />
+	</action>
+
+	<action name="DescuentosNominaConceptoQueryDelete" class="sernanp.rrhh.web.action.planilla.GestionaNominaAction" method="DescuentosNominaConceptoQueryDelete">
+			<result type="json" />
+	</action>
+	<!-- End Sub Model DescuentosNominaConceptoQuery Actions -->
+	<!-- Start Sub Model DescuentoJudicialesNominaConceptoQuery Actions -->
+	<action name="DescuentoJudicialesNominaConceptoQueryList" class="sernanp.rrhh.web.action.planilla.GestionaNominaAction" method="DescuentoJudicialesNominaConceptoQueryList">
+			<result type="json" />
+	</action>
+
+	<action name="DescuentoJudicialesNominaConceptoQueryAdd" class="sernanp.rrhh.web.action.planilla.GestionaNominaAction" method="DescuentoJudicialesNominaConceptoQueryAdd">
+			<result type="json" />
+	</action>
+
+	<action name="DescuentoJudicialesNominaConceptoQueryUpdate" class="sernanp.rrhh.web.action.planilla.GestionaNominaAction" method="DescuentoJudicialesNominaConceptoQueryUpdate">
+			<result type="json" />
+	</action>
+
+	<action name="DescuentoJudicialesNominaConceptoQueryDelete" class="sernanp.rrhh.web.action.planilla.GestionaNominaAction" method="DescuentoJudicialesNominaConceptoQueryDelete">
+			<result type="json" />
+	</action>
+	<!-- End Sub Model DescuentoJudicialesNominaConceptoQuery Actions -->
+	<!-- Start Sub Model AportesNominaConceptoQuery Actions -->
+	<action name="AportesNominaConceptoQueryList" class="sernanp.rrhh.web.action.planilla.GestionaNominaAction" method="AportesNominaConceptoQueryList">
+			<result type="json" />
+	</action>
+
+	<action name="AportesNominaConceptoQueryAdd" class="sernanp.rrhh.web.action.planilla.GestionaNominaAction" method="AportesNominaConceptoQueryAdd">
+			<result type="json" />
+	</action>
+
+	<action name="AportesNominaConceptoQueryUpdate" class="sernanp.rrhh.web.action.planilla.GestionaNominaAction" method="AportesNominaConceptoQueryUpdate">
+			<result type="json" />
+	</action>
+
+	<action name="AportesNominaConceptoQueryDelete" class="sernanp.rrhh.web.action.planilla.GestionaNominaAction" method="AportesNominaConceptoQueryDelete">
+			<result type="json" />
+	</action>
+	<!-- End Sub Model AportesNominaConceptoQuery Actions -->
+
+	<!-- End Actions GestionaNomina -->
+
+	
+<!--
+**************************************************************************
+					PLANILLA - (PARAMETROS)
+**************************************************************************
+-->
+
+
+		<action name="gestionar-parametro-planilla">
+			<result name="success" type="tiles">gestionar_parametro_planilla</result>
+			<!-- 			<interceptor-ref name="basicStack" />  -->
+			<!-- 			<interceptor-ref name="general" />  -->
+			<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+			<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+		</action>
+
+
+		<!-- Start Actions GestionarParametroPlanilla -->
+		<action name="GestionarParametroPlanillaView" class="sernanp.rrhh.web.action.planilla.GestionarParametroPlanillaAction" method="view">
+				<result type="json" />
+		</action>
+		
+		<action name="GestionarParametroPlanillaCreate" class="sernanp.rrhh.web.action.planilla.GestionarParametroPlanillaAction" method="create">
+				<result type="json" />
+		</action>
+		
+		<action name="GestionarParametroPlanillaSave" class="sernanp.rrhh.web.action.planilla.GestionarParametroPlanillaAction" method="save">
+				<result type="json" />
+		</action>
+		
+		<action name="GestionarParametroPlanillaRemove" class="sernanp.rrhh.web.action.planilla.GestionarParametroPlanillaAction" method="remove">
+				<result type="json" />
+		</action>
+		<!-- End Actions GestionarParametroPlanilla -->
+
+
+
+<!--
+**************************************************************************
+					PLANILLA - (AFP)
+**************************************************************************
+-->
+		<action name="gestionar-afp-planilla">
+			<result name="success" type="tiles">gestionar_afp_planilla</result>
+			<!-- 			<interceptor-ref name="basicStack" />  -->
+			<!-- 			<interceptor-ref name="general" />  -->
+			<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+			<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+		</action>
+
+		<!-- Start Actions GestionarAfp -->
+		<action name="GestionarAfpView" class="sernanp.rrhh.web.action.planilla.GestionarAfpAction" method="view">
+				<result type="json" />
+		</action>
+		
+		<action name="GestionarAfpCreate" class="sernanp.rrhh.web.action.planilla.GestionarAfpAction" method="create">
+				<result type="json" />
+		</action>
+		
+		<action name="GestionarAfpSave" class="sernanp.rrhh.web.action.planilla.GestionarAfpAction" method="save">
+				<result type="json" />
+		</action>
+		
+		<action name="GestionarAfpRemove" class="sernanp.rrhh.web.action.planilla.GestionarAfpAction" method="remove">
+				<result type="json" />
+		</action>
+		
+		<!-- Start Sub Model GestionarAfpPlanillaComisionQuery Actions -->
+		<action name="GestionarAfpPlanillaComisionQueryList" class="sernanp.rrhh.web.action.planilla.GestionarAfpAction" method="GestionarAfpPlanillaComisionQueryList">
+				<result type="json" />
+		</action>
+		
+		<action name="GestionarAfpPlanillaComisionQueryAdd" class="sernanp.rrhh.web.action.planilla.GestionarAfpAction" method="GestionarAfpPlanillaComisionQueryAdd">
+				<result type="json" />
+		</action>
+		
+		<action name="GestionarAfpPlanillaComisionQueryUpdate" class="sernanp.rrhh.web.action.planilla.GestionarAfpAction" method="GestionarAfpPlanillaComisionQueryUpdate">
+				<result type="json" />
+		</action>
+		
+		<action name="GestionarAfpPlanillaComisionQueryDelete" class="sernanp.rrhh.web.action.planilla.GestionarAfpAction" method="GestionarAfpPlanillaComisionQueryDelete">
+				<result type="json" />
+		</action>
+		<!-- End Sub Model GestionarAfpPlanillaComisionQuery Actions -->
+		
+		<!-- End Actions GestionarAfp -->
+
+<!--
+**************************************************************************
+					PLANILLA - (AÑO)
+**************************************************************************
+-->
+
+	<action name="gestionar-anio-planilla">
+			<result name="success" type="tiles">gestionar_anio_planilla</result>
+			<!-- 			<interceptor-ref name="basicStack" />  -->
+			<!-- 			<interceptor-ref name="general" />  -->
+			<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+			<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+		</action>
+
+
+		
+		<!-- Start Actions GestionarAnioPlanilla -->
+		<action name="GestionarAnioPlanillaView" class="sernanp.rrhh.web.action.planilla.GestionarAnioPlanillaAction" method="view">
+				<result type="json" />
+		</action>
+		
+		<action name="GestionarAnioPlanillaCreate" class="sernanp.rrhh.web.action.planilla.GestionarAnioPlanillaAction" method="create">
+				<result type="json" />
+		</action>
+		
+		<action name="GestionarAnioPlanillaSave" class="sernanp.rrhh.web.action.planilla.GestionarAnioPlanillaAction" method="save">
+				<result type="json" />
+		</action>
+		
+		<action name="GestionarAnioPlanillaRemove" class="sernanp.rrhh.web.action.planilla.GestionarAnioPlanillaAction" method="remove">
+				<result type="json" />
+		</action>
+		
+		<!-- Start Sub Model GestionarAnioParametroPlanillaQuery Actions -->
+		<action name="GestionarAnioParametroPlanillaQueryList" class="sernanp.rrhh.web.action.planilla.GestionarAnioPlanillaAction" method="GestionarAnioParametroPlanillaQueryList">
+				<result type="json" />
+		</action>
+		
+		<action name="GestionarAnioParametroPlanillaQueryAdd" class="sernanp.rrhh.web.action.planilla.GestionarAnioPlanillaAction" method="GestionarAnioParametroPlanillaQueryAdd">
+				<result type="json" />
+		</action>
+		
+		<action name="GestionarAnioParametroPlanillaQueryUpdate" class="sernanp.rrhh.web.action.planilla.GestionarAnioPlanillaAction" method="GestionarAnioParametroPlanillaQueryUpdate">
+				<result type="json" />
+		</action>
+		
+		<action name="GestionarAnioParametroPlanillaQueryDelete" class="sernanp.rrhh.web.action.planilla.GestionarAnioPlanillaAction" method="GestionarAnioParametroPlanillaQueryDelete">
+				<result type="json" />
+		</action>
+		<!-- End Sub Model GestionarAnioParametroPlanillaQuery Actions -->
+		<!-- Start Sub Model GestionarAnioPeriodoPlanillaQuery Actions -->
+		<action name="GestionarAnioPeriodoPlanillaQueryList" class="sernanp.rrhh.web.action.planilla.GestionarAnioPlanillaAction" method="GestionarAnioPeriodoPlanillaQueryList">
+				<result type="json" />
+		</action>
+		
+		<action name="GestionarAnioPeriodoPlanillaQueryAdd" class="sernanp.rrhh.web.action.planilla.GestionarAnioPlanillaAction" method="GestionarAnioPeriodoPlanillaQueryAdd">
+				<result type="json" />
+		</action>
+		
+		<action name="GestionarAnioPeriodoPlanillaQueryUpdate" class="sernanp.rrhh.web.action.planilla.GestionarAnioPlanillaAction" method="GestionarAnioPeriodoPlanillaQueryUpdate">
+				<result type="json" />
+		</action>
+		
+		<action name="GestionarAnioPeriodoPlanillaQueryDelete" class="sernanp.rrhh.web.action.planilla.GestionarAnioPlanillaAction" method="GestionarAnioPeriodoPlanillaQueryDelete">
+				<result type="json" />
+		</action>
+		<!-- End Sub Model GestionarAnioPeriodoPlanillaQuery Actions -->
+		
+		<!-- End Actions GestionarAnioPlanilla -->
+		
+
+		<action name="gestionar-meta-fuente-generica">
+			<result name="success" type="tiles">gestionar_meta_fuente_generica</result>
+			<!-- 			<interceptor-ref name="basicStack" />  -->
+			<!-- 			<interceptor-ref name="general" />  -->
+			<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+			<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+		</action>
+				
+		<!-- Start Actions GestionarMetaFuenteGenerica -->
+		<action name="GestionarMetaFuenteGenericaView" class="sernanp.rrhh.web.action.planilla.GestionarMetaFuenteGenericaAction" method="view">
+				<result type="json" />
+		</action>
+		
+		<action name="GestionarMetaFuenteGenericaCreate" class="sernanp.rrhh.web.action.planilla.GestionarMetaFuenteGenericaAction" method="create">
+				<result type="json" />
+		</action>
+		
+		<action name="GestionarMetaFuenteGenericaSave" class="sernanp.rrhh.web.action.planilla.GestionarMetaFuenteGenericaAction" method="save">
+				<result type="json" />
+		</action>
+		
+		<action name="GestionarMetaFuenteGenericaRemove" class="sernanp.rrhh.web.action.planilla.GestionarMetaFuenteGenericaAction" method="remove">
+				<result type="json" />
+		</action>
+		<!-- End Actions GestionarMetaFuenteGenerica -->
+		
+		<action name="gestionar-trabajadores">
+			<result name="success" type="tiles">gestionar_trabajadores</result>
+			<!-- 			<interceptor-ref name="basicStack" />  -->
+			<!-- 			<interceptor-ref name="general" />  -->
+			<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+			<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+		</action>
+		
+		<!-- Start Actions GestionarTrabajadores -->
+		<action name="GestionarTrabajadoresView" class="sernanp.rrhh.web.action.planilla.GestionarTrabajadoresAction" method="view">
+				<result type="json" />
+		</action>
+		
+		<action name="GestionarTrabajadoresCreate" class="sernanp.rrhh.web.action.planilla.GestionarTrabajadoresAction" method="create">
+				<result type="json" />
+		</action>
+		
+		<action name="GestionarTrabajadoresSave" class="sernanp.rrhh.web.action.planilla.GestionarTrabajadoresAction" method="save">
+				<result type="json" />
+		</action>
+		
+		<action name="GestionarTrabajadoresRemove" class="sernanp.rrhh.web.action.planilla.GestionarTrabajadoresAction" method="remove">
+				<result type="json" />
+		</action>
+		
+		<!-- Start Sub Model GestionarTrabajadoresPresupuestoQuery Actions -->
+		<action name="GestionarTrabajadoresPresupuestoQueryList" class="sernanp.rrhh.web.action.planilla.GestionarTrabajadoresAction" method="GestionarTrabajadoresPresupuestoQueryList">
+				<result type="json" />
+		</action>
+		
+		<action name="GestionarTrabajadoresPresupuestoQueryAdd" class="sernanp.rrhh.web.action.planilla.GestionarTrabajadoresAction" method="GestionarTrabajadoresPresupuestoQueryAdd">
+				<result type="json" />
+		</action>
+		
+		<action name="GestionarTrabajadoresPresupuestoQueryUpdate" class="sernanp.rrhh.web.action.planilla.GestionarTrabajadoresAction" method="GestionarTrabajadoresPresupuestoQueryUpdate">
+				<result type="json" />
+		</action>
+		
+		<action name="GestionarTrabajadoresPresupuestoQueryDelete" class="sernanp.rrhh.web.action.planilla.GestionarTrabajadoresAction" method="GestionarTrabajadoresPresupuestoQueryDelete">
+				<result type="json" />
+		</action>
+		<!-- End Sub Model GestionarTrabajadoresPresupuestoQuery Actions -->
+		
+		<!-- End Actions GestionarTrabajadores -->
+
+<!-- *************************** REPORTES ********************************-->
+
+	<action name="reporte-emitir-nomina-mes-regimen">
+		<result name="success" type="tiles">reporte_emitir_nomina_mes_regimen</result>
+		<!-- 			<interceptor-ref name="basicStack" />  -->
+		<!-- 			<interceptor-ref name="general" />  -->
+		<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+		<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+	</action>
+	
+	<action name="emitir-nomina-mensual-pdf" class="sernanp.rrhh.web.action.planilla.RptEmisionNominaxMesxRCAction" method="listarEmitirDetalleNominaxMesRegimen">
+		
+		<result name="json" type="json" />
+
+		<result name="pdf" type="jasper">
+			<param name="location">/jasper/planillas/ReporteEmitirNominaxMesRegimen.jasper</param>
+			<param name="dataSource">listResult</param>
+			<param name="format">PDF</param>
+			<param name="documentName">Nomina_mensual_por_regimen</param>
+			<param name="contentDisposition">attachment; filename="Nomina_mensual_por_regimen.pdf"</param>
+		</result>
+		
+	</action>
+	
+	<action name="emitir-nomina-mensual-xls" class="sernanp.rrhh.web.action.planilla.RptEmisionNominaxMesxRCAction" method="listarEmitirNominaxMesRegimen">
+		
+		<result name="json" type="json" />
+
+		<result name="xls" type="jasper">
+			<param name="location">/jasper/planillas/ReporteEmitirNominaxMesRegimen_XLS.jasper</param>
+			<param name="dataSource">listResult</param>
+			<param name="format">XLS</param>
+			<param name="documentName">nomina_mensual_por_regimen</param>
+			<param name="contentDisposition">attachment; filename="nomina_mensual_por_regimen.xls"</param>
+		</result>
+		
+	</action>
+
+		
+		<!-- Start Actions RptEmisionNominaxMesxRC -->
+	<action name="RptEmisionNominaxMesxRCView" class="sernanp.rrhh.web.action.planilla.RptEmisionNominaxMesxRCAction" method="view">
+			<result type="json" />
+	</action>
+	
+	<action name="RptEmisionNominaxMesxRCCreate" class="sernanp.rrhh.web.action.planilla.RptEmisionNominaxMesxRCAction" method="create">
+			<result type="json" />
+	</action>
+	
+	<action name="RptEmisionNominaxMesxRCSave" class="sernanp.rrhh.web.action.planilla.RptEmisionNominaxMesxRCAction" method="save">
+			<result type="json" />
+	</action>
+	
+	<action name="RptEmisionNominaxMesxRCRemove" class="sernanp.rrhh.web.action.planilla.RptEmisionNominaxMesxRCAction" method="remove">
+			<result type="json" />
+	</action>
+	<!-- End Actions RptEmisionNominaxMesxRC -->
+ 	
+ <!-- *****************************   reporte_certificado_cuarta_categoria ******************************-->
+ 	
+ 	<action name="reporte-certificado-cuarta-categoria">
+		<result name="success" type="tiles">reporte_certificado_cuarta_categoria</result>
+		<!-- 			<interceptor-ref name="basicStack" />  -->
+		<!-- 			<interceptor-ref name="general" />  -->
+		<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+		<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+	</action>
+	
+	
+	<action name="certificado-cuarta-categoria-pdf" class="sernanp.rrhh.web.action.planilla.ReporteCertificadoCuartaCategoriaAction" method="reporteCertificadoCuartaCategoria">
+		
+		<result name="pdf" type="jasper">
+			<param name="location">/jasper/planillas/ReporteCuartaCategoria.jasper</param>
+			<param name="dataSource">listResult</param>
+			<param name="format">PDF</param>
+			<param name="documentName">certificado_cuarta_categoria</param>
+			<param name="contentDisposition">attachment; filename="certificado_cuarta_categoria.pdf"</param>
+		</result>
+		
+	</action>
+	
+		<action name="certificado-cuarta-categoria-individual" class="sernanp.rrhh.web.action.planilla.ReporteCertificadoCuartaCategoriaAction" method="reporteCertificadoCuartaCategoriaIndividual">
+		
+		<result name="json" type="json" />
+
+		<result name="pdf" type="jasper">
+			<param name="location">/jasper/planillas/ReporteCuartaCategoria.jasper</param>
+			<param name="dataSource">listResult</param>
+			<param name="format">PDF</param>
+			<param name="documentName">certificado_cuarta_categoria_individual</param>
+			<param name="contentDisposition">attachment; filename="certificado_cuarta_categoria_individual.pdf"</param>
+		</result>
+		
+	</action>
+	
+ 	<!-- Start Actions ReporteCertificadoCuartaCategoria -->
+	<action name="ReporteCertificadoCuartaCategoriaView" class="sernanp.rrhh.web.action.planilla.ReporteCertificadoCuartaCategoriaAction" method="view">
+			<result type="json" />
+	</action>
+	
+	<action name="ReporteCertificadoCuartaCategoriaCreate" class="sernanp.rrhh.web.action.planilla.ReporteCertificadoCuartaCategoriaAction" method="create">
+			<result type="json" />
+	</action>
+	
+	<action name="ReporteCertificadoCuartaCategoriaSave" class="sernanp.rrhh.web.action.planilla.ReporteCertificadoCuartaCategoriaAction" method="save">
+			<result type="json" />
+	</action>
+	
+	<action name="ReporteCertificadoCuartaCategoriaRemove" class="sernanp.rrhh.web.action.planilla.ReporteCertificadoCuartaCategoriaAction" method="remove">
+			<result type="json" />
+	</action>
+	<!-- End Actions ReporteCertificadoCuartaCategoria -->
+	
+ <!-- *****************************   reporte_resumen_planilla ******************************-->
+ 	
+ 	<action name="reporte-resumen-general-planilla">
+		<result name="success" type="tiles">reporte_resumen_general_planilla</result>
+		<!-- 			<interceptor-ref name="basicStack" />  -->
+		<!-- 			<interceptor-ref name="general" />  -->
+		<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+		<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+	</action>
+	
+<!-- 	<action name="listar-resumen-general-planilla-pdf" class="sernanp.rrhh.web.action.planilla.ReporteResumenGeneralPlanillaAction" method="listarResumenGeneralPlanilla"> -->
+		
+<!-- 		<result name="json" type="json" /> -->
+
+<!-- 		<result name="pdf" type="jasper"> -->
+<!-- 			<param name="location">/jasper/Planillas/ReporteResumenPlanilla728.jasper</param> -->
+<!-- 			<param name="dataSource">listResult</param> -->
+<!-- 			<param name="format">PDF</param> -->
+			
+<!-- 		</result> -->
+		
+<!-- 	</action>	 -->
+	
+	<action name="listar-resumen-general-planilla-xls" class="sernanp.rrhh.web.action.planilla.ReporteResumenGeneralPlanillaAction" method="listarResumenGeneralPlanilla">
+		
+		<result name="json" type="json" />
+
+		<result name="xls" type="jasper">
+			<param name="location">/jasper/planillas/ReporteResumenGeneralPlanilla_XLS.jasper</param>
+			<param name="dataSource">listResult</param>
+			<param name="format">XLS</param>
+			<param name="documentName">resumen_general_planilla</param>
+			<param name="contentDisposition">attachment; filename="resumen_general_planilla.xls"</param>
+		</result>
+		
+	</action>	
+	
+		<!-- Start Actions ReporteResumenGeneralPlanilla -->
+	<action name="ReporteResumenGeneralPlanillaView" class="sernanp.rrhh.web.action.planilla.ReporteResumenGeneralPlanillaAction" method="view">
+			<result type="json" />
+	</action>
+	
+	<action name="ReporteResumenGeneralPlanillaCreate" class="sernanp.rrhh.web.action.planilla.ReporteResumenGeneralPlanillaAction" method="create">
+			<result type="json" />
+	</action>
+	
+	<action name="ReporteResumenGeneralPlanillaSave" class="sernanp.rrhh.web.action.planilla.ReporteResumenGeneralPlanillaAction" method="save">
+			<result type="json" />
+	</action>
+	
+	<action name="ReporteResumenGeneralPlanillaRemove" class="sernanp.rrhh.web.action.planilla.ReporteResumenGeneralPlanillaAction" method="remove">
+			<result type="json" />
+	</action>
+	<!-- End Actions ReporteResumenGeneralPlanilla -->
+
+
+
+ <!-- *****************************   reporte_nomina cas mes ff mp ******************************-->
+	<action name="reporte-nomina-cas-mes-fuente-meta">
+		<result name="success" type="tiles">reporte_nomina_cas_mes_fuente_meta</result>
+		<!-- 			<interceptor-ref name="basicStack" />  -->
+		<!-- 			<interceptor-ref name="general" />  -->
+		<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+		<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+	</action>
+
+	 
+	<!-- Start Actions RpNominaCASMesAnioFuenteMeta -->
+	<action name="RpNominaCASMesAnioFuenteMetaView" class="sernanp.rrhh.web.action.planilla.RpNominaCASMesAnioFuenteMetaAction" method="view">
+			<result type="json" />
+	</action>
+	
+	<action name="RpNominaCASMesAnioFuenteMetaCreate" class="sernanp.rrhh.web.action.planilla.RpNominaCASMesAnioFuenteMetaAction" method="create">
+			<result type="json" />
+	</action>
+	
+	<action name="RpNominaCASMesAnioFuenteMetaSave" class="sernanp.rrhh.web.action.planilla.RpNominaCASMesAnioFuenteMetaAction" method="save">
+			<result type="json" />
+	</action>
+	
+	<action name="RpNominaCASMesAnioFuenteMetaRemove" class="sernanp.rrhh.web.action.planilla.RpNominaCASMesAnioFuenteMetaAction" method="remove">
+			<result type="json" />
+	</action>
+	<!-- End Actions RpNominaCASMesAnioFuenteMeta -->
+
+ 	<action name="reporte-nomina-728-mes-fuente-meta">
+		<result name="success" type="tiles">reporte_nomina_728_mes_fuente_meta</result>
+		<!-- 			<interceptor-ref name="basicStack" />  -->
+		<!-- 			<interceptor-ref name="general" />  -->
+		<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+		<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+	</action>
+		
+	<!-- Start Actions RpNomina728MesAnioFuenteMeta -->
+	<action name="RpNomina728MesAnioFuenteMetaView" class="sernanp.rrhh.web.action.planilla.RpNomina728MesAnioFuenteMetaAction" method="view">
+			<result type="json" />
+	</action>
+	
+	<action name="RpNomina728MesAnioFuenteMetaCreate" class="sernanp.rrhh.web.action.planilla.RpNomina728MesAnioFuenteMetaAction" method="create">
+			<result type="json" />
+	</action>
+	
+	<action name="RpNomina728MesAnioFuenteMetaSave" class="sernanp.rrhh.web.action.planilla.RpNomina728MesAnioFuenteMetaAction" method="save">
+			<result type="json" />
+	</action>
+	
+	<action name="RpNomina728MesAnioFuenteMetaRemove" class="sernanp.rrhh.web.action.planilla.RpNomina728MesAnioFuenteMetaAction" method="remove">
+			<result type="json" />
+	</action>
+	<!-- End Actions RpNomina728MesAnioFuenteMeta -->
+
+
+ <!-- *****************************   reporte_certificado_quinta_categoria ******************************-->
+
+ 	<action name="reporte-certificado-quinta-categoria">
+			<result name="success" type="tiles">reporte_certificado_quinta_categoria</result>
+			<!-- 			<interceptor-ref name="basicStack" />  -->
+			<!-- 			<interceptor-ref name="general" />  -->
+			<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+			<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+		</action>
+	
+	
+		<action name="certificado-quinta-categoria-pdf" class="sernanp.rrhh.web.action.planilla.ReporteCertificadoQuintaCategoriaAction" method="reporteCertificadoQuintaCategoria">
+		
+		<result name="pdf" type="jasper">
+			<param name="location">/jasper/planillas/ReporteQuintaCategoria.jasper</param>
+			<param name="dataSource">listResult</param>
+			<param name="format">PDF</param>
+			<param name="documentName">certificado_quinta_categoria</param>
+			<param name="contentDisposition">attachment; filename="certificado_quinta_categoria.pdf"</param>
+			
+		</result>
+		
+	</action>
+	
+	
+		<action name="certificado-quinta-categoria-individual" class="sernanp.rrhh.web.action.planilla.ReporteCertificadoQuintaCategoriaAction" method="reporteCertificadoQuintaCategoriaIndividual">
+		
+		<result name="json" type="json" />
+
+		<result name="pdf" type="jasper">
+			<param name="location">/jasper/planillas/ReporteQuintaCategoria.jasper</param>
+			<param name="dataSource">listResult</param>
+			<param name="format">PDF</param>
+			
+		</result>
+		
+	</action>
+	
+<!-- Start Actions ReporteCertificadoQuintaCategoria -->
+<action name="ReporteCertificadoQuintaCategoriaView" class="sernanp.rrhh.web.action.planilla.ReporteCertificadoQuintaCategoriaAction" method="view">
+		<result type="json" />
+</action>
+
+<action name="ReporteCertificadoQuintaCategoriaCreate" class="sernanp.rrhh.web.action.planilla.ReporteCertificadoQuintaCategoriaAction" method="create">
+		<result type="json" />
+</action>
+
+<action name="ReporteCertificadoQuintaCategoriaSave" class="sernanp.rrhh.web.action.planilla.ReporteCertificadoQuintaCategoriaAction" method="save">
+		<result type="json" />
+</action>
+
+<action name="ReporteCertificadoQuintaCategoriaRemove" class="sernanp.rrhh.web.action.planilla.ReporteCertificadoQuintaCategoriaAction" method="remove">
+		<result type="json" />
+</action>
+<!-- End Actions ReporteCertificadoQuintaCategoria -->
+	
+
+<!-- *****************************   reporte_Boletas_personal******************************-->
+
+
+ 		<action name="reporte-boleta-personal">
+			<result name="success" type="tiles">reporte_boleta_personal</result>
+			<!-- 			<interceptor-ref name="basicStack" />  -->
+			<!-- 			<interceptor-ref name="general" />  -->
+			<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+			<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+		</action>
+		
+		<action name="reporte-boleta-pago-pdf" class="sernanp.rrhh.web.action.planilla.ReporteBoletaPersonalAction" method="reporteDetalleBoletaPersonal">
+			<result name="pdf" type="jasper">
+				<param name="location">/jasper/planillas/ReporteBoletaPago.jasper</param>
+				<param name="record">record</param>
+				<param name="dataSource">listResult</param>
+	            <param name="format">PDF</param>
+			    <param name="documentName">boleta_personal</param>
+				<param name="contentDisposition">attachment; filename="boleta_personal.pdf"</param>
+				      
+			</result>
+		</action>
+	
+<!-- Start Actions ReporteBoletaPersonal -->
+<action name="ReporteBoletaPersonalView" class="sernanp.rrhh.web.action.planilla.ReporteBoletaPersonalAction" method="view">
+		<result type="json" />
+</action>
+
+<action name="ReporteBoletaPersonalCreate" class="sernanp.rrhh.web.action.planilla.ReporteBoletaPersonalAction" method="create">
+		<result type="json" />
+</action>
+
+<action name="ReporteBoletaPersonalSave" class="sernanp.rrhh.web.action.planilla.ReporteBoletaPersonalAction" method="save">
+		<result type="json" />
+</action>
+
+<action name="ReporteBoletaPersonalRemove" class="sernanp.rrhh.web.action.planilla.ReporteBoletaPersonalAction" method="remove">
+		<result type="json" />
+</action>
+<!-- End Actions ReporteBoletaPersonal -->
+
+
+<!-- *****************************   reporte_Descuento_Judicial******************************-->
+
+ 		<action name="reporte-descuento-judicial">
+			<result name="success" type="tiles">reporte_descuento_judicial</result>
+			<!-- 			<interceptor-ref name="basicStack" />  -->
+			<!-- 			<interceptor-ref name="general" />  -->
+			<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+			<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+		</action>
+		
+		<action name="descuento-judicial-pdf" class="sernanp.rrhh.web.action.planilla.ReporteDescuentoJudicialAction" method="listarDescuentoJudicial">
+		
+			<result name="json" type="json" />
+	
+			<result name="pdf" type="jasper">
+				<param name="location">/jasper/planillas/ReporteDescuentoJudicial.jasper</param>
+				<param name="dataSource">listResult</param>
+				<param name="format">PDF</param>
+				<param name="documentName">descuento_judicial</param>
+				<param name="contentDisposition">attachment; filename="descuento_judicial.pdf"</param>
+			</result>
+		</action>
+		
+		<action name="descuento-judicial-xls" class="sernanp.rrhh.web.action.planilla.ReporteDescuentoJudicialAction" method="listarDescuentoJudicial">
+		
+			<result name="json" type="json" />
+	
+			<result name="xls" type="jasper">
+				<param name="location">/jasper/planillas/ReporteDescuentoJudicial_XLS.jasper</param>
+				<param name="dataSource">listResult</param>
+				<param name="format">XLS</param>
+				<param name="documentName">descuento_judicial</param>
+				<param name="contentDisposition">attachment; filename="descuento_judicial.xls"</param>
+			</result>
+		</action>
+		
+		<!-- Start Actions ReporteDescuentoJudicial -->
+		<action name="ReporteDescuentoJudicialView" class="sernanp.rrhh.web.action.planilla.ReporteDescuentoJudicialAction" method="view">
+				<result type="json" />
+		</action>
+		
+		<action name="ReporteDescuentoJudicialCreate" class="sernanp.rrhh.web.action.planilla.ReporteDescuentoJudicialAction" method="create">
+				<result type="json" />
+		</action>
+		
+		<action name="ReporteDescuentoJudicialSave" class="sernanp.rrhh.web.action.planilla.ReporteDescuentoJudicialAction" method="save">
+				<result type="json" />
+		</action>
+		
+		<action name="ReporteDescuentoJudicialRemove" class="sernanp.rrhh.web.action.planilla.ReporteDescuentoJudicialAction" method="remove">
+				<result type="json" />
+		</action>
+		<!-- End Actions ReporteDescuentoJudicial -->
+
+<!-- ***************************** Resumen Planilla Pagos AFP - ONP******************************-->
+
+<action name="resumen-nomina-pago-regimen-pensionario">
+			<result name="success" type="tiles">resumen_nomina_pago_regimen_pensionario</result>
+			<!-- 			<interceptor-ref name="basicStack" />  -->
+			<!-- 			<interceptor-ref name="general" />  -->
+			<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+			<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+		</action>
+		
+		<action name="resumen-planilla-pago-afp-pdf" class="sernanp.rrhh.web.action.planilla.ResumenPlanillaPagosAfpAction" method="listarResumenPlanillaPagoAfp">
+		
+			<result name="json" type="json" />
+	
+			<result name="pdf" type="jasper">
+				<param name="location">/jasper/planillas/ReporteResumenPlanillaPagoAFP.jasper</param>
+				<param name="dataSource">listResult</param>
+				<param name="format">PDF</param>
+				<param name="documentName">resumen_planilla_pago_afp</param>
+				<param name="contentDisposition">attachment; filename="resumen_planilla_pago_afp.pdf"</param>
+			</result>
+		</action>
+		
+		<action name="resumen-planilla-pago-afp-xls" class="sernanp.rrhh.web.action.planilla.ResumenPlanillaPagosAfpAction" method="listarResumenPlanillaPagoAfp">
+			
+			<result name="xls" type="jasper">
+				<param name="location">/jasper/planillas/ReporteResumenPlanillaPagoAFP_XLS.jasper</param>
+				<param name="dataSource">listResult</param>
+				<param name="format">XLS</param>
+				<param name="documentName">resumen_planilla_pago_afp</param>
+				<param name="contentDisposition">attachment; filename="resumen_planilla_pago_afp.xls"</param>
+			</result>
+		
+		</action>
+		
+		
+		<action name="planilla-afp-net-pdf" class="sernanp.rrhh.web.action.planilla.ResumenPlanillaPagosAfpAction" method="listarResumenPlanillaPagoAfpNet">
+		
+			<result name="json" type="json" />
+	
+			<result name="pdf" type="jasper">
+				<param name="location">/jasper/planillas/ReporteResumenPlanillaPagoAFP_Net_pdf.jasper</param>
+				<param name="dataSource">listResult</param>
+				<param name="format">PDF</param>
+				<param name="documentName">resumen_planilla_pago_afp_net</param>
+				<param name="reportParam">reportParam</param>
+				<param name="contentDisposition">attachment; filename="resumen_planilla_pago_afp_net.pdf"</param>
+			</result>
+		</action>
+		
+		<action name="planilla-afp-net-xls" class="sernanp.rrhh.web.action.planilla.ResumenPlanillaPagosAfpAction" method="listarResumenPlanillaPagoAfpNet">
+			
+			<result name="xls" type="jasper">
+				<param name="location">/jasper/planillas/ReporteResumenPlanillaPagoAFP_Net_xls.jasper</param>				
+				<param name="dataSource">listResult</param>
+				<param name="format">XLS</param>
+				<param name="reportParam">reportParam</param>
+				<param name="documentName">resumen_planilla_pago_afp_net</param>
+				<param name="contentDisposition">attachment; filename="resumen_planilla_pago_afp_net.xls"</param>
+			</result>
+		
+		</action>
+		
+		
+		
+		<action name="resumen-planilla-pago-onp-pdf" class="sernanp.rrhh.web.action.planilla.ReportePlanillaPagoONPAction" method="listarPlanillaPagoONP">
+		
+			<result name="json" type="json" />
+	
+			<result name="pdf" type="jasper">
+				<param name="location">/jasper/planillas/ReporteResumenPlanillaPagoONP.jasper</param>
+				<param name="dataSource">listResult</param>
+				<param name="format">PDF</param>
+				<param name="documentName">resumen_planilla_pago_onp</param>
+				<param name="contentDisposition">attachment; filename="resumen_planilla_pago_onp.pdf"</param>
+			</result>
+		</action>
+		
+		<action name="resumen-planilla-pago-onp-xls" class="sernanp.rrhh.web.action.planilla.ReportePlanillaPagoONPAction" method="listarPlanillaPagoONP">
+		
+			<result name="json" type="json" />
+	
+			<result name="xls" type="jasper">
+				<param name="location">/jasper/planillas/ReporteResumenPlanillaPagoONP_XLS.jasper</param>
+				<param name="dataSource">listResult</param>
+				<param name="format">XLS</param>
+				<param name="documentName">resumen_planilla_pago_onp</param>
+				<param name="contentDisposition">attachment; filename="resumen_planilla_pago_onp.xls"</param>
+			</result>
+		</action>
+	 
+		 <!-- Start Actions ResumenPlanillaPagosAfp -->
+		<action name="ResumenPlanillaPagosAfpView" class="sernanp.rrhh.web.action.planilla.ResumenPlanillaPagosAfpAction" method="view">
+				<result type="json" />
+		</action>
+		
+		<action name="ResumenPlanillaPagosAfpCreate" class="sernanp.rrhh.web.action.planilla.ResumenPlanillaPagosAfpAction" method="create">
+				<result type="json" />
+		</action>
+		
+		<action name="ResumenPlanillaPagosAfpSave" class="sernanp.rrhh.web.action.planilla.ResumenPlanillaPagosAfpAction" method="save">
+				<result type="json" />
+		</action>
+		
+		<action name="ResumenPlanillaPagosAfpRemove" class="sernanp.rrhh.web.action.planilla.ResumenPlanillaPagosAfpAction" method="remove">
+				<result type="json" />
+		</action>
+		<!-- End Actions ResumenPlanillaPagosAfp -->
+		
+
+ 		
+		 
+		<!-- Start Actions ReportePlanillaPagoONP -->
+		<action name="ReportePlanillaPagoONPView" class="sernanp.rrhh.web.action.planilla.ReportePlanillaPagoONPAction" method="view">
+				<result type="json" />
+		</action>
+		
+		<action name="ReportePlanillaPagoONPCreate" class="sernanp.rrhh.web.action.planilla.ReportePlanillaPagoONPAction" method="create">
+				<result type="json" />
+		</action>
+		
+		<action name="ReportePlanillaPagoONPSave" class="sernanp.rrhh.web.action.planilla.ReportePlanillaPagoONPAction" method="save">
+				<result type="json" />
+		</action>
+		
+		<action name="ReportePlanillaPagoONPRemove" class="sernanp.rrhh.web.action.planilla.ReportePlanillaPagoONPAction" method="remove">
+				<result type="json" />
+		</action>
+		<!-- End Actions ReportePlanillaPagoONP -->
+
+
+<!-- *****************************   reporte_Resumen_afp******************************-->
+ 		
+	
+
+<!-- *****************************   reporteNominaDescuentoPersonal******************************-->
+
+		<action name="reporte-nomina-descuento">
+			<result name="success" type="tiles">reporte_nomina_descuento</result>
+			<!-- 			<interceptor-ref name="basicStack" />  -->
+			<!-- 			<interceptor-ref name="general" />  -->
+			<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+			<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+		</action>
+		
+		<action name="nomina-descuento-regimen-pensionario-pdf" class="sernanp.rrhh.web.action.planilla.ReporteNominaDescuentoAction" method="listarNominaDescuento">
+		
+			<result name="pdf" type="jasper">
+				<param name="location">/jasper/planillas/ReporteNominaDescuento.jasper</param>
+				<param name="dataSource">listResult</param>
+				<param name="format">PDF</param>
+				<param name="documentName">Nomina_descuento</param>
+			    <param name="contentDisposition">attachment; filename="nomina_descuento.pdf"</param>
+				
+			</result>
+		</action>
+		
+		<action name="nomina-descuento-regimen-pensionario-xls" class="sernanp.rrhh.web.action.planilla.ReporteNominaDescuentoAction" method="listarNominaDescuento">
+			
+			<result name="xls" type="jasper">
+				<param name="location">/jasper/planillas/ReporteNominaDescuento_XLS.jasper</param>
+				<param name="dataSource">listResult</param>
+				<param name="format">XLS</param>
+				<param name="documentName">nomina_descuento</param>
+				<param name="contentDisposition">attachment; filename="nomina_descuento.xls"</param>
+			</result>
+		
+		</action>
+		
+		<action name="nomina-descuento-concepto-pdf" class="sernanp.rrhh.web.action.planilla.ReporteNominaDescuentoAction" method="listarNominaDescuentoConcepto">
+		
+			<result name="pdf" type="jasper">
+				<param name="location">/jasper/planillas/ReporteNominaDescuentoConcepto.jasper</param>
+				<param name="dataSource">listResult</param>
+				<param name="format">PDF</param>
+				<param name="documentName">Nomina_descuento_concepto</param>
+			    <param name="contentDisposition">attachment; filename="nomina_descuento_concepto.pdf"</param>
+				
+			</result>
+		</action>
+		
+		<action name="nomina-descuento-concepto-xls" class="sernanp.rrhh.web.action.planilla.ReporteNominaDescuentoAction" method="listarNominaDescuentoConcepto">
+			
+			<result name="xls" type="jasper">
+				<param name="location">/jasper/planillas/ReporteNominaDescuentoConcepto_XLS.jasper</param>
+				<param name="dataSource">listResult</param>
+				<param name="format">XLS</param>
+				<param name="documentName">nomina_descuento_concepto</param>
+				<param name="contentDisposition">attachment; filename="nomina_descuento_concepto.xls"</param>
+			</result>
+		
+		</action>
+		
+		<action name="listar-nomina-detalle-descuento-pdf" class="sernanp.rrhh.web.action.planilla.ReporteNominaDescuentoAction" method="listarNominaDetalleDescuento">
+		
+			<result name="json" type="json" />
+	
+			<result name="pdf" type="jasper">
+				<param name="location">/jasper/planillas/ReporteNominaDetalleDescuento.jasper</param>
+				<param name="dataSource">listResult</param>
+				<param name="format">PDF</param>
+			</result>
+		</action>
+		
+		<action name="listar-nomina-detalle-descuento-xls" class="sernanp.rrhh.web.action.planilla.ReporteNominaDescuentoAction" method="listarNominaDetalleDescuento">
+			
+			<result name="xls" type="jasper">
+				<param name="location">/jasper/planillas/ReporteNominaDetalleDescuento_XLS.jasper</param>
+				<param name="dataSource">listResult</param>
+				<param name="format">XLS</param>
+				<param name="documentName">nomina_detalle_descuento</param>
+				<param name="contentDisposition">attachment; filename="nomina_detalle_descuento.xls"</param>
+			</result>
+		
+		</action>
+	
+		<!-- Start Actions ReporteNominaDescuento -->
+		<action name="ReporteNominaDescuentoView" class="sernanp.rrhh.web.action.planilla.ReporteNominaDescuentoAction" method="view">
+				<result type="json" />
+		</action>
+		
+		<action name="ReporteNominaDescuentoCreate" class="sernanp.rrhh.web.action.planilla.ReporteNominaDescuentoAction" method="create">
+				<result type="json" />
+		</action>
+		
+		<action name="ReporteNominaDescuentoSave" class="sernanp.rrhh.web.action.planilla.ReporteNominaDescuentoAction" method="save">
+				<result type="json" />
+		</action>
+		
+		<action name="ReporteNominaDescuentoRemove" class="sernanp.rrhh.web.action.planilla.ReporteNominaDescuentoAction" method="remove">
+				<result type="json" />
+		</action>
+		<!-- End Actions ReporteNominaDescuento -->
+
+	
+<!-- *****************************   reporte Resumen Planilla Pagos******************************-->
+
+<!-- 		<action name="reporte-resumen-planilla-pago"> -->
+<!-- 			<result name="success" type="tiles">reporte_resumen_planilla_pago</result> -->
+<!-- 					<interceptor-ref name="basicStack" />  --> 
+<!-- 						<interceptor-ref name="general" />  --> 
+<!-- 						<interceptor-ref name="usuario-logeado" />	 --> 
+<!-- 					<interceptor-ref name="defaultStack" />	  	 		  --> 
+<!-- 		</action> -->
+	
+		 <action name="resumen-nomina-pago-regimen-xls" class="sernanp.rrhh.web.action.planilla.ReporteResumenGeneralPlanillaAction" method="listarResumenNominaPago">
+		
+			<result name="xls" type="jasper">
+				<param name="location">/jasper/planillas/ReporteResumenNominaPagoRegimen_XLS.jasper</param>
+				<param name="dataSource">listResult</param>
+				<param name="reportParameters">parametros</param>
+				<param name="format">XLS</param>
+				<param name="documentName">reporte_resumen_nomina_pago_regimen</param>
+				<param name="contentDisposition">attachment; filename="reporte_resumen_nomina_pago_regimen.xls"</param>
+			</result>
+		
+		</action>
+		
+		<action name="resumen-general-planilla-FF-xls" class="sernanp.rrhh.web.action.planilla.ReporteResumenGeneralPlanillaAction" method="listarResumenNominaPago">
+		
+			<result name="xls" type="jasper">
+				<param name="location">/jasper/planillas/ReporteResumenNominaPagoFF_XLS.jasper</param>
+				<param name="dataSource">listResult</param>
+				<param name="reportParameters">parametros</param>
+				<param name="format">XLS</param>
+				<param name="documentName">reporte_resumen_nomina_pagoFF</param>
+				<param name="contentDisposition">attachment; filename="reporte_resumen_nomina_pagoFF.xls"</param>
+			</result>
+		
+		</action>
+		
+		<action name="resumen-general-planilla-FF-MP-728-pdf" class="sernanp.rrhh.web.action.planilla.ReporteResumenGeneralPlanillaAction" method="listarResumenNominaPagoFFMP728">
+		
+			<result name="pdf" type="jasper">
+				<param name="location">/jasper/planillas/ReporteResumenNominaPagoFFMP_728.jasper</param>
+				<param name="dataSource">listResult</param>
+				<param name="reportParameters">parametros</param>
+				<param name="format">PDF</param>
+				<param name="documentName">reporte_resumen_nomina_pagoFF_MP_728</param>
+				<param name="contentDisposition">attachment; filename="reporte_resumen_nomina_pagoFF_MP_728.pdf"</param>
+			</result>
+		
+		</action>
+		
+		<action name="resumen-general-planilla-FF-MP-CAS-pdf" class="sernanp.rrhh.web.action.planilla.ReporteResumenGeneralPlanillaAction" method="listarResumenNominaPagoFFMPCAS">
+		
+			<result name="pdf" type="jasper">
+				<param name="location">/jasper/planillas/ReporteResumenNominaPagoFFMP_CAS.jasper</param>
+				<param name="dataSource">listResult</param>
+				<param name="reportParameters">parametros</param>
+				<param name="format">PDF</param>
+				<param name="documentName">reporte_resumen_nomina_pagoFF_MP_CAS</param>
+				<param name="contentDisposition">attachment; filename="reporte_resumen_nomina_pagoFF_MP_CAS.pdf"</param>
+			</result>
+		
+		</action>
+		
+		<action name="resumen-global-728-pdf" class="sernanp.rrhh.web.action.planilla.ReporteResumenGeneralPlanillaAction" method="listarResumenGlobal728">
+		
+			<result name="pdf" type="jasper">
+				<param name="location">/jasper/planillas/ReporteResumenGlobal728.jasper</param>
+				<param name="dataSource">listResultGlobal728</param>
+				<param name="reportParameters">parametros</param>
+				<param name="format">PDF</param>
+				<param name="documentName">reporte_global_728</param>
+				<param name="contentDisposition">attachment; filename="resumen_global_728.pdf"</param>
+			</result>
+		
+		</action>
+		
+		<action name="resumen-global-CAS-pdf" class="sernanp.rrhh.web.action.planilla.ReporteResumenGeneralPlanillaAction" method="listarResumenGlobalCAS">
+		
+			<result name="pdf" type="jasper">
+				<param name="location">/jasper/planillas/ReporteResumenGlobalCAS.jasper</param>
+				<param name="dataSource">listResultGlobalCAS</param>
+				<param name="reportParameters">parametros</param>
+				<param name="format">PDF</param>
+				<param name="documentName">resumen_global_CAS</param>
+				<param name="contentDisposition">attachment; filename="resumen_global_CAS.pdf"</param>
+			</result>
+		
+		</action>
+		
+		<action name="proyeccion-planilla-FF-MP-xls" class="sernanp.rrhh.web.action.planilla.ReporteResumenGeneralPlanillaAction" method="listarProyeccionPlanillaFFMP">
+		
+			<result name="json" type="json" />
+	
+			<result name="xls" type="jasper">
+				<param name="location">/jasper/planillas/ReporteProyeccionPlanillaFF_XLS.jasper</param>
+				<param name="dataSource">listResult</param>
+				<param name="reportParameters">parametros</param>
+				<param name="format">XLS</param>
+				<param name="documentName">reporte_proyeccion_planilla_FF_MP</param>
+				<param name="contentDisposition">attachment; filename="reporte_proyeccion_planilla_FF_MP.xls"</param>
+			</result>
+		
+		</action>
+		
+		<action name="resumen-planilla-fuente-meta-pdf" class="sernanp.rrhh.web.action.planilla.ReporteResumenGeneralPlanillaAction" method="ResumenPlanillaFuenteMeta">
+		
+			<result name="json" type="json" />
+	
+			<result name="pdf" type="jasper">
+				<param name="location">/jasper/planillas/ResumenPlanillaFuenteMeta.jasper</param>
+				<param name="dataSource">listResult</param>
+				<param name="format">PDF</param>
+				<param name="documentName">resumen_planilla_fuente_meta</param>
+				<param name="contentDisposition">attachment; filename="resumen_planilla_fuente_meta.pdf"</param>
+			</result>
+		
+		</action>
+
+		<action name="resumen-planilla-fuente-meta-xls" class="sernanp.rrhh.web.action.planilla.ReporteResumenGeneralPlanillaAction" method="ResumenPlanillaFuenteMeta">
+		
+			<result name="xls" type="jasper">
+				<param name="location">/jasper/planillas/ResumenPlanillaFuenteMeta_XLS.jasper</param>
+				<param name="dataSource">listResult</param>
+				<param name="format">XLS</param>
+				<param name="documentName">resumen_planilla_fuente_meta</param>
+				<param name="contentDisposition">attachment; filename="resumen_planilla_fuente_meta.xls"</param>
+			</result>
+		
+		</action>
+		
+			
+				
+		<!-- Start Actions ReporteResumenPlanillaPago -->
+		<action name="ReporteResumenPlanillaPagoView" class="sernanp.rrhh.web.action.planilla.ReporteResumenPlanillaPagoAction" method="view">
+				<result type="json" />
+		</action>
+		
+		<action name="ReporteResumenPlanillaPagoCreate" class="sernanp.rrhh.web.action.planilla.ReporteResumenPlanillaPagoAction" method="create">
+				<result type="json" />
+		</action>
+		
+		<action name="ReporteResumenPlanillaPagoSave" class="sernanp.rrhh.web.action.planilla.ReporteResumenPlanillaPagoAction" method="save">
+				<result type="json" />
+		</action>
+		
+		<action name="ReporteResumenPlanillaPagoRemove" class="sernanp.rrhh.web.action.planilla.ReporteResumenPlanillaPagoAction" method="remove">
+				<result type="json" />
+		</action>
+		
+		<!-- Start Sub Model RpResumenPlanillaPagosDetalleQuery Actions -->
+		<action name="RpResumenPlanillaPagosDetalleQueryList" class="sernanp.rrhh.web.action.planilla.ReporteResumenPlanillaPagoAction" method="RpResumenPlanillaPagosDetalleQueryList">
+				<result type="json" />
+		</action>
+		
+		<action name="RpResumenPlanillaPagosDetalleQueryAdd" class="sernanp.rrhh.web.action.planilla.ReporteResumenPlanillaPagoAction" method="RpResumenPlanillaPagosDetalleQueryAdd">
+				<result type="json" />
+		</action>
+		
+		<action name="RpResumenPlanillaPagosDetalleQueryUpdate" class="sernanp.rrhh.web.action.planilla.ReporteResumenPlanillaPagoAction" method="RpResumenPlanillaPagosDetalleQueryUpdate">
+				<result type="json" />
+		</action>
+		
+		<action name="RpResumenPlanillaPagosDetalleQueryDelete" class="sernanp.rrhh.web.action.planilla.ReporteResumenPlanillaPagoAction" method="RpResumenPlanillaPagosDetalleQueryDelete">
+				<result type="json" />
+		</action>
+		<!-- End Sub Model RpResumenPlanillaPagosDetalleQuery Actions -->
+		
+		<!-- End Actions ReporteResumenPlanillaPago -->
+
+ 	
+ 		<action name="generar-plame" class="sernanp.rrhh.web.action.planilla.GenerarPlameAction" method="generarPlame">
+	        <result name="success" type="stream">
+	                <param name="contentDisposition">attachment;filename=${fileName}</param>
+	                <param name="contentType">text/plain</param>
+	                <param name="inputName">fileInputStream</param>
+	                <param name="bufferSize">102400</param>
+	        </result>
+    	</action>
+    	
+<!--     	<action name="reporte-altas-bajas-personal"> -->
+<!-- 			<result name="success" type="tiles">reporte_altas_bajas_personal</result> -->
+<!-- 					<interceptor-ref name="basicStack" />  --> 
+<!-- 					<interceptor-ref name="general" />  --> 
+<!-- 					<interceptor-ref name="usuario-logeado" />	 --> 
+<!-- 					<interceptor-ref name="defaultStack" />	  	 		  --> 
+<!-- 		</action> -->
+		
+<!-- 		<action name="listar-altas-bajas-personal" class="sernanp.rrhh.web.action.planilla.RptResumenPersonalAltasBajasAction" method="listarAltasBajasPersonal"> -->
+		
+<!-- 			<result name="json" type="json" /> -->
+	
+<!-- 			<result name="pdf" type="jasper"> -->
+<!-- 				<param name="location">/jasper/planillas/ReporteAltasBajasPersonal.jasper</param> -->
+<!-- 				<param name="dataSource">listResult</param> -->
+<!-- 				<param name="format">PDF</param> -->
+<!-- 			</result> -->
+			
+<!-- 			<result name="xls" type="jasper"> -->
+<!-- 				<param name="location">/jasper/planillas/ReporteAltasBajasPersonal_XLS.jasper</param> -->
+<!-- 				<param name="dataSource">listResult</param> -->
+<!-- 				<param name="format">XLS</param> -->
+<!-- 				<param name="documentName">altas_bajas</param> -->
+<!-- 				<param name="contentDisposition">attachment; filename="altas_bajas.xls"</param> -->
+<!-- 			</result> -->
+		
+<!-- 		</action> -->
+	
+<!-- 		<action name="listar-altas-bajas-personal-xls" class="sernanp.rrhh.web.action.planilla.RptResumenPersonalAltasBajasAction" method="listarAltasBajasPersonalXLS"> -->
+		
+<!-- 		<result name="json" type="json" /> -->
+
+<!-- 		<result name="xls" type="jasper"> -->
+<!-- 			<param name="location">/jasper/planillas/ReporteAltasBajasPersonal.jasper</param> -->
+<!-- 			<param name="dataSource">listResult</param> -->
+<!-- 			<param name="format">tipo_formato</param> -->
+<!-- 		</result> -->
+		
+<!-- 		</action> -->
+    	
+    	<!-- Start Actions RptResumenPersonalAltasBajas -->
+		<action name="RptResumenPersonalAltasBajasView" class="sernanp.rrhh.web.action.planilla.RptResumenPersonalAltasBajasAction" method="view">
+				<result type="json" />
+		</action>
+		
+		<action name="RptResumenPersonalAltasBajasCreate" class="sernanp.rrhh.web.action.planilla.RptResumenPersonalAltasBajasAction" method="create">
+				<result type="json" />
+		</action>
+		
+		<action name="RptResumenPersonalAltasBajasSave" class="sernanp.rrhh.web.action.planilla.RptResumenPersonalAltasBajasAction" method="save">
+				<result type="json" />
+		</action>
+		
+		<action name="RptResumenPersonalAltasBajasRemove" class="sernanp.rrhh.web.action.planilla.RptResumenPersonalAltasBajasAction" method="remove">
+				<result type="json" />
+		</action>
+		<!-- End Actions RptResumenPersonalAltasBajas -->
+		
+	<action name="reporte-resumen-altas-bajas">
+			<result name="success" type="tiles">reporte_resumen_altas_bajas</result>
+			<!-- 			<interceptor-ref name="basicStack" />  -->
+			<!-- 			<interceptor-ref name="general" />  -->
+			<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+			<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+	</action>
+
+	
+	<action name="listar-resumen-altas-bajas" class="sernanp.rrhh.web.action.planilla.ReporteResumenAltasBajasAction" method="reporteResumenAltasBajas">
+		
+			<result name="json" type="json" />
+	
+			<result name="xls" type="jasper">
+				<param name="location">/jasper/planillas/ReporteResumenAltasBajas.jasper</param>
+				<param name="dataSource">listResult</param>
+				<param name="format">XLS</param>
+				<param name="documentName">resumen_altas_bajas</param>
+				<param name="contentDisposition">attachment; filename="resumen_altas_bajas.xls"</param>
+			</result>
+		
+		</action>
+ 	
+ 		
+		<!-- Start Actions ReporteResumenAltasBajas -->
+		<action name="ReporteResumenAltasBajasView" class="sernanp.rrhh.web.action.planilla.ReporteResumenAltasBajasAction" method="view">
+				<result type="json" />
+		</action>
+		
+		<action name="ReporteResumenAltasBajasCreate" class="sernanp.rrhh.web.action.planilla.ReporteResumenAltasBajasAction" method="create">
+				<result type="json" />
+		</action>
+		
+		<action name="ReporteResumenAltasBajasSave" class="sernanp.rrhh.web.action.planilla.ReporteResumenAltasBajasAction" method="save">
+				<result type="json" />
+		</action>
+		
+		<action name="ReporteResumenAltasBajasRemove" class="sernanp.rrhh.web.action.planilla.ReporteResumenAltasBajasAction" method="remove">
+				<result type="json" />
+		</action>
+		<!-- End Actions ReporteResumenAltasBajas -->
+		
+		
+	
+	<action name="gestionar-meta-anho">
+			<result name="success" type="tiles">gestionar_meta_anho</result>
+			<!-- 			<interceptor-ref name="basicStack" />  -->
+			<!-- 			<interceptor-ref name="general" />  -->
+			<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+			<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+	</action>
+ 	
+ 	<!-- Start Actions GestionarAnhoMeta -->
+	<action name="GestionarAnhoMetaView" class="sernanp.rrhh.web.action.planilla.GestionarAnhoMetaAction" method="view">
+			<result type="json" />
+	</action>
+	
+	<action name="GestionarAnhoMetaCreate" class="sernanp.rrhh.web.action.planilla.GestionarAnhoMetaAction" method="create">
+			<result type="json" />
+	</action>
+	
+	<action name="GestionarAnhoMetaSave" class="sernanp.rrhh.web.action.planilla.GestionarAnhoMetaAction" method="save">
+			<result type="json" />
+	</action>
+	
+	<action name="GestionarAnhoMetaRemove" class="sernanp.rrhh.web.action.planilla.GestionarAnhoMetaAction" method="remove">
+			<result type="json" />
+	</action>
+	<!-- End Actions GestionarAnhoMeta -->
+	
+	<action name="generar-jor" class="sernanp.rrhh.web.action.planilla.ReporteResumenGeneralPlanillaAction" method="generarJOR">
+	        <result name="success" type="stream">
+	                <param name="contentDisposition">attachment;filename=${fileName}</param>
+	                <param name="contentType">text/plain</param>
+	                <param name="inputName">fileInputStream</param>
+	                <param name="bufferSize">102400</param>
+	        </result>
+   	</action>
+    
+    
+    <action name="generar-rem" class="sernanp.rrhh.web.action.planilla.ReporteResumenGeneralPlanillaAction" method="generarREM">
+	        <result name="success" type="stream">
+	                <param name="contentDisposition">attachment;filename=${fileName}</param>
+	                <param name="contentType">text/plain</param>
+	                <param name="inputName">fileInputStream</param>
+	                <param name="bufferSize">102400</param>
+	        </result>
+    </action>
+    
+    <action name="reporte-abono-banco">
+			<result name="success" type="tiles">reporte_banco</result>
+			<!-- 			<interceptor-ref name="basicStack" />  -->
+			<!-- 			<interceptor-ref name="general" />  -->
+			<!-- 			<interceptor-ref name="usuario-logeado" />	 -->
+			<!-- 			<interceptor-ref name="defaultStack" />	  	 		  -->
+	</action>
+	
+	<action name="reporte-banco-pdf" class="sernanp.rrhh.web.action.planilla.ReporteBancoAction" method="listarReporteBanco">
+		
+			<result name="json" type="json" />
+	
+			<result name="pdf" type="jasper">
+				<param name="location">/jasper/planillas/ReporteBanco.jasper</param>
+				<param name="dataSource">listResult</param>
+				<param name="format">PDF</param>
+				<param name="documentName">reporte_banco</param>
+				<param name="contentDisposition">attachment; filename="reporte_banco.pdf"</param>
+			</result>
+		
+	</action>
+	
+	<action name="reporte-banco-xls" class="sernanp.rrhh.web.action.planilla.ReporteBancoAction" method="listarReporteBanco">
+		
+			<result name="json" type="json" />
+	
+			<result name="xls" type="jasper">
+				<param name="location">/jasper/planillas/ReporteBanco_XLS.jasper</param>
+				<param name="dataSource">listResult</param>
+				<param name="format">XLS</param>
+				<param name="documentName">reporte_banco</param>
+				<param name="contentDisposition">attachment; filename="reporte_banco.xls"</param>
+			</result>
+		
+	</action>
+    
+    <!-- Start Actions ReporteBanco -->
+	<action name="ReporteBancoView" class="sernanp.rrhh.web.action.planilla.ReporteBancoAction" method="view">
+			<result type="json" />
+	</action>
+	
+	<action name="ReporteBancoCreate" class="sernanp.rrhh.web.action.planilla.ReporteBancoAction" method="create">
+			<result type="json" />
+	</action>
+	
+	<action name="ReporteBancoSave" class="sernanp.rrhh.web.action.planilla.ReporteBancoAction" method="save">
+			<result type="json" />
+	</action>
+	
+	<action name="ReporteBancoRemove" class="sernanp.rrhh.web.action.planilla.ReporteBancoAction" method="remove">
+			<result type="json" />
+	</action>
+	<!-- End Actions ReporteBanco -->
+	
+	<action name="PersonalInfoContratoQueryList" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="PersonalInfoContratoQueryList">
+			<result type="json" />
+	</action>
+	
+	<action name="PersonalInfoContratoQueryUpdate" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="PersonalInfoContratoQueryUpdate">
+			<result type="json" />
+	</action>
+	
+	<action name="PersonalInfoFormacionQueryList" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="PersonalInfoFormacionQueryList">
+			<result type="json" />
+	</action>
+	
+	<action name="PersonalInfoAdendasPorContratoQueryList" class="sernanp.rrhh.web.action.planilla.GestionarAsignarConceptoAction" method="PersonalInfoAdendasPorContratoQueryList">
+			<result type="json" />
+	</action>
+ 	
+</package>
+  
+</struts>

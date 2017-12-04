@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sernanp.app.dao.mapper.TBeneficiarioDescuentoJudicialMapper" >
+  <resultMap id="BaseResultMap" type="sernanp.app.dao.domain.TBeneficiarioDescuentoJudicial" >
+    <id column="srl_id_beneficiario_descuento_judicial" property="srl_id_beneficiario_descuento_judicial" jdbcType="INTEGER" />
+    <result column="idpersonal" property="idpersonal" jdbcType="INTEGER" />
+    <result column="var_descripcion_descuento" property="var_descripcion_descuento" jdbcType="VARCHAR" />
+    <result column="int_id_tipo_documento" property="int_id_tipo_documento" jdbcType="INTEGER" />
+    <result column="var_numero_doc" property="var_numero_doc" jdbcType="VARCHAR" />
+    <result column="var_nombres" property="var_nombres" jdbcType="VARCHAR" />
+    <result column="var_ape_pater" property="var_ape_pater" jdbcType="VARCHAR" />
+    <result column="var_ape_mater" property="var_ape_mater" jdbcType="VARCHAR" />
+    <result column="var_numero_cuenta" property="var_numero_cuenta" jdbcType="VARCHAR" />
+    <result column="int_id_estado" property="int_id_estado" jdbcType="INTEGER" />
+    <result column="tsp_fecha_registro" property="tsp_fecha_registro" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    srl_id_beneficiario_descuento_judicial, idpersonal, var_descripcion_descuento, int_id_tipo_documento, 
+    var_numero_doc, var_nombres, var_ape_pater, var_ape_mater, var_numero_cuenta, int_id_estado, 
+    tsp_fecha_registro
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TBeneficiarioDescuentoJudicialExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from personal.t_beneficiario_descuento_judicial
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TBeneficiarioDescuentoJudicialKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from personal.t_beneficiario_descuento_judicial
+    where srl_id_beneficiario_descuento_judicial = #{srl_id_beneficiario_descuento_judicial,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="sernanp.app.dao.domain.TBeneficiarioDescuentoJudicialKey" >
+    delete from personal.t_beneficiario_descuento_judicial
+    where srl_id_beneficiario_descuento_judicial = #{srl_id_beneficiario_descuento_judicial,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sernanp.app.dao.domain.TBeneficiarioDescuentoJudicialExample" >
+    delete from personal.t_beneficiario_descuento_judicial
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sernanp.app.dao.domain.TBeneficiarioDescuentoJudicial" useGeneratedKeys="true" keyProperty="srl_id_beneficiario_descuento_judicial" >
+    insert into personal.t_beneficiario_descuento_judicial (idpersonal, var_descripcion_descuento, 
+      int_id_tipo_documento, var_numero_doc, 
+      var_nombres, var_ape_pater, var_ape_mater, 
+      var_numero_cuenta, int_id_estado, tsp_fecha_registro
+      )
+    values (#{idpersonal,jdbcType=INTEGER}, #{var_descripcion_descuento,jdbcType=VARCHAR}, 
+      #{int_id_tipo_documento,jdbcType=INTEGER}, #{var_numero_doc,jdbcType=VARCHAR}, 
+      #{var_nombres,jdbcType=VARCHAR}, #{var_ape_pater,jdbcType=VARCHAR}, #{var_ape_mater,jdbcType=VARCHAR}, 
+      #{var_numero_cuenta,jdbcType=VARCHAR}, #{int_id_estado,jdbcType=INTEGER}, #{tsp_fecha_registro,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="sernanp.app.dao.domain.TBeneficiarioDescuentoJudicial" useGeneratedKeys="true" keyProperty="srl_id_beneficiario_descuento_judicial" >
+    insert into personal.t_beneficiario_descuento_judicial
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="idpersonal != null" >
+        idpersonal,
+      </if>
+      <if test="var_descripcion_descuento != null" >
+        var_descripcion_descuento,
+      </if>
+      <if test="int_id_tipo_documento != null" >
+        int_id_tipo_documento,
+      </if>
+      <if test="var_numero_doc != null" >
+        var_numero_doc,
+      </if>
+      <if test="var_nombres != null" >
+        var_nombres,
+      </if>
+      <if test="var_ape_pater != null" >
+        var_ape_pater,
+      </if>
+      <if test="var_ape_mater != null" >
+        var_ape_mater,
+      </if>
+      <if test="var_numero_cuenta != null" >
+        var_numero_cuenta,
+      </if>
+      <if test="int_id_estado != null" >
+        int_id_estado,
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        tsp_fecha_registro,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="idpersonal != null" >
+        #{idpersonal,jdbcType=INTEGER},
+      </if>
+      <if test="var_descripcion_descuento != null" >
+        #{var_descripcion_descuento,jdbcType=VARCHAR},
+      </if>
+      <if test="int_id_tipo_documento != null" >
+        #{int_id_tipo_documento,jdbcType=INTEGER},
+      </if>
+      <if test="var_numero_doc != null" >
+        #{var_numero_doc,jdbcType=VARCHAR},
+      </if>
+      <if test="var_nombres != null" >
+        #{var_nombres,jdbcType=VARCHAR},
+      </if>
+      <if test="var_ape_pater != null" >
+        #{var_ape_pater,jdbcType=VARCHAR},
+      </if>
+      <if test="var_ape_mater != null" >
+        #{var_ape_mater,jdbcType=VARCHAR},
+      </if>
+      <if test="var_numero_cuenta != null" >
+        #{var_numero_cuenta,jdbcType=VARCHAR},
+      </if>
+      <if test="int_id_estado != null" >
+        #{int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sernanp.app.dao.domain.TBeneficiarioDescuentoJudicialExample" resultType="java.lang.Integer" >
+    select count(*) from personal.t_beneficiario_descuento_judicial
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update personal.t_beneficiario_descuento_judicial
+    <set >
+      <if test="record.srl_id_beneficiario_descuento_judicial != null" >
+        srl_id_beneficiario_descuento_judicial = #{record.srl_id_beneficiario_descuento_judicial,jdbcType=INTEGER},
+      </if>
+      <if test="record.idpersonal != null" >
+        idpersonal = #{record.idpersonal,jdbcType=INTEGER},
+      </if>
+      <if test="record.var_descripcion_descuento != null" >
+        var_descripcion_descuento = #{record.var_descripcion_descuento,jdbcType=VARCHAR},
+      </if>
+      <if test="record.int_id_tipo_documento != null" >
+        int_id_tipo_documento = #{record.int_id_tipo_documento,jdbcType=INTEGER},
+      </if>
+      <if test="record.var_numero_doc != null" >
+        var_numero_doc = #{record.var_numero_doc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_nombres != null" >
+        var_nombres = #{record.var_nombres,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_ape_pater != null" >
+        var_ape_pater = #{record.var_ape_pater,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_ape_mater != null" >
+        var_ape_mater = #{record.var_ape_mater,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_numero_cuenta != null" >
+        var_numero_cuenta = #{record.var_numero_cuenta,jdbcType=VARCHAR},
+      </if>
+      <if test="record.int_id_estado != null" >
+        int_id_estado = #{record.int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="record.tsp_fecha_registro != null" >
+        tsp_fecha_registro = #{record.tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update personal.t_beneficiario_descuento_judicial
+    set srl_id_beneficiario_descuento_judicial = #{record.srl_id_beneficiario_descuento_judicial,jdbcType=INTEGER},
+      idpersonal = #{record.idpersonal,jdbcType=INTEGER},
+      var_descripcion_descuento = #{record.var_descripcion_descuento,jdbcType=VARCHAR},
+      int_id_tipo_documento = #{record.int_id_tipo_documento,jdbcType=INTEGER},
+      var_numero_doc = #{record.var_numero_doc,jdbcType=VARCHAR},
+      var_nombres = #{record.var_nombres,jdbcType=VARCHAR},
+      var_ape_pater = #{record.var_ape_pater,jdbcType=VARCHAR},
+      var_ape_mater = #{record.var_ape_mater,jdbcType=VARCHAR},
+      var_numero_cuenta = #{record.var_numero_cuenta,jdbcType=VARCHAR},
+      int_id_estado = #{record.int_id_estado,jdbcType=INTEGER},
+      tsp_fecha_registro = #{record.tsp_fecha_registro,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sernanp.app.dao.domain.TBeneficiarioDescuentoJudicial" >
+    update personal.t_beneficiario_descuento_judicial
+    <set >
+      <if test="idpersonal != null" >
+        idpersonal = #{idpersonal,jdbcType=INTEGER},
+      </if>
+      <if test="var_descripcion_descuento != null" >
+        var_descripcion_descuento = #{var_descripcion_descuento,jdbcType=VARCHAR},
+      </if>
+      <if test="int_id_tipo_documento != null" >
+        int_id_tipo_documento = #{int_id_tipo_documento,jdbcType=INTEGER},
+      </if>
+      <if test="var_numero_doc != null" >
+        var_numero_doc = #{var_numero_doc,jdbcType=VARCHAR},
+      </if>
+      <if test="var_nombres != null" >
+        var_nombres = #{var_nombres,jdbcType=VARCHAR},
+      </if>
+      <if test="var_ape_pater != null" >
+        var_ape_pater = #{var_ape_pater,jdbcType=VARCHAR},
+      </if>
+      <if test="var_ape_mater != null" >
+        var_ape_mater = #{var_ape_mater,jdbcType=VARCHAR},
+      </if>
+      <if test="var_numero_cuenta != null" >
+        var_numero_cuenta = #{var_numero_cuenta,jdbcType=VARCHAR},
+      </if>
+      <if test="int_id_estado != null" >
+        int_id_estado = #{int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        tsp_fecha_registro = #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where srl_id_beneficiario_descuento_judicial = #{srl_id_beneficiario_descuento_judicial,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sernanp.app.dao.domain.TBeneficiarioDescuentoJudicial" >
+    update personal.t_beneficiario_descuento_judicial
+    set idpersonal = #{idpersonal,jdbcType=INTEGER},
+      var_descripcion_descuento = #{var_descripcion_descuento,jdbcType=VARCHAR},
+      int_id_tipo_documento = #{int_id_tipo_documento,jdbcType=INTEGER},
+      var_numero_doc = #{var_numero_doc,jdbcType=VARCHAR},
+      var_nombres = #{var_nombres,jdbcType=VARCHAR},
+      var_ape_pater = #{var_ape_pater,jdbcType=VARCHAR},
+      var_ape_mater = #{var_ape_mater,jdbcType=VARCHAR},
+      var_numero_cuenta = #{var_numero_cuenta,jdbcType=VARCHAR},
+      int_id_estado = #{int_id_estado,jdbcType=INTEGER},
+      tsp_fecha_registro = #{tsp_fecha_registro,jdbcType=TIMESTAMP}
+    where srl_id_beneficiario_descuento_judicial = #{srl_id_beneficiario_descuento_judicial,jdbcType=INTEGER}
+  </update>
+</mapper>

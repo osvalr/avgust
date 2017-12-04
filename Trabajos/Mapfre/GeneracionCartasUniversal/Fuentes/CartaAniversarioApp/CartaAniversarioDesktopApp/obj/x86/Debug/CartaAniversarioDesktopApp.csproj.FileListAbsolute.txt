@@ -1,0 +1,37 @@
+C:\Users\jraffo_w7_app\documents\visual studio 2010\Projects\CartaAniversarioApp\CartaAniversarioDesktopApp\obj\x86\Debug\WindowsFormsApplication1.Form1.resources
+C:\Users\jraffo_w7_app\documents\visual studio 2010\Projects\CartaAniversarioApp\CartaAniversarioDesktopApp\obj\x86\Debug\CartaAniversarioDesktopApp.Properties.Resources.resources
+C:\Users\jraffo_w7_app\documents\visual studio 2010\Projects\CartaAniversarioApp\CartaAniversarioDesktopApp\bin\Debug\CartaAniversarioDesktopApp.exe.config
+C:\Users\jraffo_w7_app\documents\visual studio 2010\Projects\CartaAniversarioApp\CartaAniversarioDesktopApp\bin\Debug\CartaAniversarioDesktopApp.exe
+C:\Users\jraffo_w7_app\documents\visual studio 2010\Projects\CartaAniversarioApp\CartaAniversarioDesktopApp\bin\Debug\CartaAniversarioDesktopApp.pdb
+C:\Users\jraffo_w7_app\documents\visual studio 2010\Projects\CartaAniversarioApp\CartaAniversarioDesktopApp\bin\Debug\CartaAniversarioBusinessApp.dll
+C:\Users\jraffo_w7_app\documents\visual studio 2010\Projects\CartaAniversarioApp\CartaAniversarioDesktopApp\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Users\jraffo_w7_app\documents\visual studio 2010\Projects\CartaAniversarioApp\CartaAniversarioDesktopApp\bin\Debug\CartaAniversarioBusinessApp.pdb
+C:\Users\jraffo_w7_app\documents\visual studio 2010\Projects\CartaAniversarioApp\CartaAniversarioDesktopApp\obj\x86\Debug\CartaAniversarioDesktopApp.exe
+C:\Users\jraffo_w7_app\documents\visual studio 2010\Projects\CartaAniversarioApp\CartaAniversarioDesktopApp\obj\x86\Debug\CartaAniversarioDesktopApp.pdb
+C:\Users\jraffo_w7_app\documents\visual studio 2010\Projects\CartaAniversarioApp\CartaAniversarioDesktopApp\obj\x86\Debug\CartaAniversarioDesktopApp.csprojResolveAssemblyReference.cache
+C:\Users\jraffo_w7_app\documents\visual studio 2010\Projects\CartaAniversarioApp\CartaAniversarioDesktopApp\obj\x86\Debug\CartaAniversarioDesktopApp.csproj.GenerateResource.Cache
+C:\git\mapfre\Proyectos\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioDesktopApp\bin\Debug\CartaAniversarioDesktopApp.exe.config
+C:\git\mapfre\Proyectos\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioDesktopApp\bin\Debug\CartaAniversarioDesktopApp.exe
+C:\git\mapfre\Proyectos\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioDesktopApp\bin\Debug\CartaAniversarioDesktopApp.pdb
+C:\git\mapfre\Proyectos\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioDesktopApp\bin\Debug\CartaAniversarioBusinessApp.dll
+C:\git\mapfre\Proyectos\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioDesktopApp\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\git\mapfre\Proyectos\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioDesktopApp\bin\Debug\CartaAniversarioBusinessApp.pdb
+C:\git\mapfre\Proyectos\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioDesktopApp\obj\x86\Debug\CartaAniversarioDesktopApp.csprojResolveAssemblyReference.cache
+C:\git\mapfre\Proyectos\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioDesktopApp\obj\x86\Debug\WindowsFormsApplication1.Form1.resources
+C:\git\mapfre\Proyectos\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioDesktopApp\obj\x86\Debug\CartaAniversarioDesktopApp.Properties.Resources.resources
+C:\git\mapfre\Proyectos\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioDesktopApp\obj\x86\Debug\CartaAniversarioDesktopApp.csproj.GenerateResource.Cache
+C:\git\mapfre\Proyectos\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioDesktopApp\obj\x86\Debug\CartaAniversarioDesktopApp.exe
+C:\git\mapfre\Proyectos\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioDesktopApp\obj\x86\Debug\CartaAniversarioDesktopApp.pdb
+D:\JRaffo\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioDesktopApp\bin\Debug\CartaAniversarioDesktopApp.exe.config
+D:\JRaffo\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioDesktopApp\bin\Debug\CartaAniversarioDesktopApp.exe
+D:\JRaffo\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioDesktopApp\bin\Debug\CartaAniversarioDesktopApp.pdb
+D:\JRaffo\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioDesktopApp\bin\Debug\CartaAniversarioBusinessApp.dll
+D:\JRaffo\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioDesktopApp\bin\Debug\Oracle.DataAccess.dll
+D:\JRaffo\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioDesktopApp\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\JRaffo\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioDesktopApp\bin\Debug\CartaAniversarioBusinessApp.pdb
+D:\JRaffo\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioDesktopApp\obj\x86\Debug\CartaAniversarioDesktopApp.csprojResolveAssemblyReference.cache
+D:\JRaffo\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioDesktopApp\obj\x86\Debug\WindowsFormsApplication1.Form1.resources
+D:\JRaffo\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioDesktopApp\obj\x86\Debug\CartaAniversarioDesktopApp.Properties.Resources.resources
+D:\JRaffo\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioDesktopApp\obj\x86\Debug\CartaAniversarioDesktopApp.csproj.GenerateResource.Cache
+D:\JRaffo\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioDesktopApp\obj\x86\Debug\CartaAniversarioDesktopApp.exe
+D:\JRaffo\GeneracionCartasUniversal\Fuentes\CartaAniversarioApp\CartaAniversarioDesktopApp\obj\x86\Debug\CartaAniversarioDesktopApp.pdb

@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>    
+    <constant name="struts.i18n.encoding" value="UTF-8"/>
+	<package name="turismo" namespace="/turismo" extends="proyecto,json-default,jasperreports-default">
+	
+	
+	<action name="listanptur" class="proyecto.action.TurismoAction" method="listarAreasNaturalesConTurismo">
+			<result name="success" type="tiles" >lista.anp.turismo</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+	</action>   
+	<action name="anptur" class="proyecto.action.TurismoAction" method="irAreaNaturalConTurismo">
+			<result name="success" type="tiles" >opciones.modulo</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+	</action>   
+	
+	 <action name="listarAreaTurOpe" class="proyecto.action.TurismoAction" method="listarAreasNaturalesConTurismoxOperador">
+			<result name="success" type="tiles" >lista.anp.turismo</result>
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="general" /> 
+	</action> 
+	
+	
+	<action name="guardatempregft" class="proyecto.action.TurismoAction"
+			method="guardarTemporalRegistroFichaTurismo">
+			<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="defaultStack" />
+   </action>
+	
+	
+	<action name="buscaGuiaTurismo" class="proyecto.action.TurismoAction"
+			method="buscarGuiaTurismo">
+			<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="defaultStack" />
+   </action>	
+	
+	
+	<action name="menuOperador" class="proyecto.action.TurismoAction"  method="irMenuOperadorTurismo">
+			<result name="success" type="tiles">turismo.menu</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" /> 
+    </action> 
+    
+    <action name="getImagenLogo" class="proyecto.action.TurismoAction"
+			>
+      		<result name="success" type="stream">
+      		   <param name="inputName">imagenLogo</param>
+      		</result>
+			<interceptor-ref name="general" />
+			 <interceptor-ref name="defaultStack" />
+		</action>
+    
+    <!--  
+	<action name="modificaClaveUserOpTur" class="proyecto.action.TurismoAction"  method="modificarClaveUsuarioOperadorTurismo">
+			<result type="json">
+            	<param name="root">datos</param>  
+            </result>
+            <interceptor-ref name="general" /> 
+			<interceptor-ref name="basicStack" />  
+    </action> 
+	-->
+	
+	
+	
+	
+	
+	 <action name="reporteTurismoArea" class="proyecto.action.TurismoAction"
+			method="consultarReporteTurismoxAreaNatural">
+			<result name="success"  >/turismo/reporte.turismo.area.jsp</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="defaultStack" />
+	</action>
+	
+	
+	<action name="menu" class="proyecto.action.TurismoAction"  method="irMenuTurismo">
+			<result name="success" type="tiles">turismo.menu</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />      
+    </action>   
+	   <!--  
+	   	<action name="menu" class="proyecto.action.TurismoAction" method="ingresarTurismo">
+			<result name="success" type="tiles">turismo.menu</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />      
+		</action>   
+		-->
+		
+		
+		<action name="reporte" class="proyecto.action.TurismoAction" method="reporte">
+			<result name="success" type="tiles">turismo.reporte</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />   
+	    </action>   
+		
+		
+		
+		
+		<action name="estadisticas" class="proyecto.action.TurismoAction" method="estadisticas">
+			<result name="success" type="dispatcher">/turismo/reporte.turismo.area.jsp</result>
+			<interceptor-ref name="general" />       
+			<interceptor-ref name="basicStack" />  
+		</action>     
+		
+		
+
+		 
+		 <action name="guardaregvisitante" class="proyecto.action.TurismoAction" method="guardarRegistroVisitante">
+	    	<result type="json">
+            	<param name="root">datos</param>  
+            </result>
+            <interceptor-ref name="general" /> 
+			<interceptor-ref name="basicStack" />  
+		</action> 
+		 
+		 <action name="quitaregvisitante" class="proyecto.action.TurismoAction" method="quitarRegistroVisitantes">
+	    	<result type="json">
+            	<param name="root">datos</param>  
+            </result>
+            <interceptor-ref name="general" /> 
+			<interceptor-ref name="basicStack" />  
+		</action>
+		 
+		 
+		<action name="boletos" class="proyecto.action.TurismoAction" method="boletos">
+	    	<result type="json">
+            	<param name="root">map</param>  
+            </result>
+            <interceptor-ref name="general" /> 
+			<interceptor-ref name="basicStack" />  
+		</action>    
+		
+		<action name="tiposturismo" class="proyecto.action.TurismoAction" method="tiposturismo">
+	    	<result type="json">
+            	<param name="root">map</param>  
+            </result>
+			<interceptor-ref name="basicStack" />  
+            <interceptor-ref name="general" /> 
+		</action>    
+		
+		<action name="consultaactividadxtipoturismo" class="proyecto.action.TurismoAction"
+		 method="consultarActividadxTipoturismo">
+	    	<result type="json">
+            	<param name="root">datos</param>  
+            </result>
+            <interceptor-ref name="general" /> 
+			<interceptor-ref name="basicStack" />  
+		</action>
+		
+		<action name="rutasturismo" class="proyecto.action.TurismoAction" method="rutasturismo">
+	    	<result type="json">
+            	<param name="root">map</param>  
+            </result>
+            <interceptor-ref name="general" /> 
+			<interceptor-ref name="basicStack" />   
+		</action>     
+		
+		<action name="editFicha" class="proyecto.action.TurismoAction" method="editFicha">
+			<result name="success" type="dispatcher">/turismo/ficha.edit.jsp</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="basicStack" />  
+		</action>  
+		
+		
+		
+		
+		<action name="grabarRuta" class="proyecto.action.TurismoAction" method="grabarRuta">
+	    	 <result type="json">
+            	<param name="root">map</param> 
+            </result>
+		</action> 
+		
+		<action name="checkFicha" class="proyecto.action.TurismoAction" method="checkFicha">
+	    	 <result type="json">
+            	<param name="root">map</param> 
+            </result>
+		</action>
+		
+		<action name="crearFichas" class="proyecto.action.TurismoAction" method="crearFichas">
+	    	 <result type="json">
+            	<param name="root">map</param> 
+            </result>
+		</action>
+		
+		<!-- Usuario ANP -->  
+		<action name="registrar" class="proyecto.action.TurismoAction" method="registrar">
+			<result name="success" type="tiles" >turismo.registro</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" /> 
+		</action> 
+		
+		
+		<action name="consultafichaturismo" class="proyecto.action.TurismoAction" method="consultarFichasTurismo">
+			<result type="tiles" name="inicio">turismo.listar.ficha</result>
+			<result name="lista">/turismo/ajax.fichas.jsp</result>
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="defaultStack" />
+			<interceptor-ref name="usuario-logeado" /> 
+		</action> 
+		
+		
+		<action name="consultapagosfichaturismo" class="proyecto.action.TurismoAction" method="consultarPagosFichaTurismo">
+			<result type="tiles" name="inicio">turismo.inicio.pago.fichaturismo</result>
+			<result name="lista">/turismo/lista.pago.fichaturismo.jsp</result>
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="defaultStack" /> 
+			<interceptor-ref name="usuario-logeado" /> 
+		</action>  
+		
+		
+		
+		<action name="consultapagosbancofichaturismo" class="proyecto.action.TurismoAction" method="consultarPagosBancoFichaTurismo">
+			<result type="tiles" name="inicio">turismo.inicio.pagobanco.fichaturismo</result>
+			<result name="lista">/turismo/lista.pagobanco.fichaturismo.jsp</result>
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="defaultStack" /> 
+			<interceptor-ref name="usuario-logeado" /> 
+		</action>  
+		
+			
+		<action name="cargapagosbancofichaturismo" class="proyecto.action.TurismoAction" method="cargarPagosPancoFichaTurismo">
+			<result type="tiles" name="success">turismo.inicio.pagobanco.fichaturismo</result>
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="defaultStack" /> 
+			<interceptor-ref name="usuario-logeado" /> 
+		</action>  
+		
+		
+		
+		
+		<action name="consultadetallepagofichaturismo" class="proyecto.action.TurismoAction"
+			method="consultarDetallePagoFichaturismo">
+			<result name="success">/turismo/detalle.pago.fichaturismo.jsp</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="defaultStack" />
+		</action>
+		
+		
+		<action name="validapagobancofichaturismo" class="proyecto.action.TurismoAction"
+		 method="validarPagoBancoFichaturismo">
+		     <result name="success" type="redirectAction">
+                 <param name="actionName">consultapagosfichaturismo</param>
+             </result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="usuario-logeado" />
+		</action>
+		
+		
+		
+		 <action name="validapagobancofichaturismoxconsolidar" class="proyecto.action.TurismoAction"
+		  method="validarPagoBancoFichaturismoxConsolidar">
+	    	<result type="json">
+            	<param name="root">datos</param>  
+            </result>
+            <interceptor-ref name="general" /> 
+			<interceptor-ref name="basicStack" /> 
+			<interceptor-ref name="defaultStack" />  
+		</action> 
+		
+		
+		<action name="consultatipoturismo" class="proyecto.action.TurismoAction" method="consultarTipoturismo">
+			<result name="success" >/turismo/lista.tipoturismo.jsp</result>
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+		</action>     
+		
+		<action name="listarFicha" class="proyecto.action.TurismoAction" method="listarFicha">
+			<result name="success" type="tiles">turismo.listar.ficha</result>
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" /> 
+		</action>     
+		
+		<action name="fichasAjax" class="proyecto.action.TurismoAction" method="fichasAjax">
+			<result name="success" type="dispatcher">/turismo/ajax.fichas.jsp</result>
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" /> 
+		</action>     
+		 
+		
+		<action name="consolidar" class="proyecto.action.TurismoAction" method="consolidar">
+			<result name="success" type="tiles">turismo.consolidar</result>
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />   
+		</action>       
+		
+		<!-- Agencia de Viaje -->
+		
+		
+		<action name="generafichaturismo" class="proyecto.action.TurismoAction"
+		 method="generarFichaTurismo">
+		    <result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="usuario-logeado" />
+		</action>
+		
+		
+		<action name="generaconsolidafichaturismo" class="proyecto.action.TurismoAction"
+		 method="generarConsolidarFichaTurismo">
+		    <result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="usuario-logeado" />
+		</action>
+		
+		
+<!--		<action name="guardaregnuevofichaturismo" class="proyecto.action.TurismoAction"-->
+<!--		 method="guardarRegistroNuevoFichaTurismo">-->
+<!--		    <result type="json">-->
+<!--				<param name="root">datos</param>-->
+<!--			</result>-->
+<!--			<interceptor-ref name="general" /> -->
+<!--			<interceptor-ref name="basicStack" />  -->
+<!--			<interceptor-ref name="usuario-logeado" />-->
+<!--		</action>-->
+		
+<!--		<action name="grabar" class="proyecto.action.TurismoAction"-->
+<!--			method="grabar">-->
+<!--			<result type="json">-->
+<!--				<param name="root">datos</param>-->
+<!--			</result>-->
+<!--			<interceptor-ref name="general" /> -->
+<!--			<interceptor-ref name="usuario-logeado" />-->
+<!--			<interceptor-ref name="defaultStack" />-->
+<!--		</action>-->
+		
+		<action name="ficha" class="proyecto.action.TurismoAction" method="ficha">
+			<result name="success" type="tiles">turismo.ficha</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="usuario-logeado" />
+		</action>
+		
+		<action name="consultadetalleficha" class="proyecto.action.TurismoAction" method="consultarDetalleFichaTurismo">
+			<result name="success" >/turismo/detalle.fichaturismo.jsp</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="usuario-logeado" />
+		</action>
+		
+	
+	
+	    
+	
+		<action name="accesofichaturismo" class="proyecto.action.TurismoAction"
+			method="accederFichaTurismo">
+			<result name="success">/turismo/registro.consolidado.fichaturismo.jsp</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="defaultStack" />
+		</action>
+		
+		
+		     
+		<action name="registro" class="proyecto.action.TurismoAction" method="registrar">
+			<result name="success" type="tiles" >turismo.registro</result>  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="basicStack" />   
+			<interceptor-ref name="usuario-logeado" />
+			
+		</action>
+		
+		<!--  
+		<action name="registro" class="proyecto.action.TurismoAction" method="registrar">
+			<result name="success" type="tiles" >turismo.registro</result>
+			<result name="input" type="redirectAction">
+				<param name="actionName">elegirArea</param>      
+			</result>    
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="basicStack" />   
+		</action>
+		  
+		 --> 
+		  
+		  <action name="initurismo" class="proyecto.action.TurismoAction" method="irInicioRegistroTurismo">
+			<result name="userarea" type="redirectAction">
+				<param name="actionName">menu</param>      
+			</result>   
+			<result name="admintotal" type="redirectAction">
+				<param name="actionName">elegirArea</param>  
+				   
+			</result>    
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="basicStack" />   
+		</action>
+		  
+		
+		  
+		  
+		  
+		<action name="elegirArea" class="proyecto.action.TurismoAction" method="elegirArea">
+			<result name="success" type="tiles" >turismo.elegir.anp</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+		</action>   
+		
+		<action name="agregarVisitantes" class="proyecto.action.TurismoAction" method="agregarVisitantes" >
+			<result name="success" type="tiles">turismo.agregar.visitantes</result> 
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />  
+		</action>   
+		 
+		<action name="agregarVisitantes" class="proyecto.action.TurismoAction" method="agregarVisitantes" >
+			<result name="success" type="tiles">turismo.agregar.visitantes</result> 
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />  
+		</action>   
+		
+		<action name="areas" class="proyecto.action.TurismoAction" method="areas" >
+			<result name="success" type="tiles">turismo.areas</result> 
+			<interceptor-ref name="general" /> 
+            <interceptor-ref name="usuario-logeado" />  
+		</action>   
+		
+		<action name="fichaPDF" class="proyecto.action.TurismoAction">
+			<result name="success" type="stream"> 
+				<param name="inputName">resultadoListaProyecto</param>
+				<param name="contentType"> application/octet-stream </param>
+				<param name="contentDisposition">attachment;filename=${nombreArchivo}</param>
+			</result>
+			<interceptor-ref name="general" />  
+			<interceptor-ref name="defaultStack" />
+		</action>
+		<!-- 
+		<action name="generateFichaPDF" class="proyecto.action.TurismoAction" method="generateFichaPDF">
+			<result name="success" type="stream"> 
+				<param name="inputName">pdfStream</param>  
+				<param name="contentDisposition">attachment;filename=${data}</param>  
+				<param name="contentType"> application/pdf </param>
+				<param name="bufferSize">2048</param>  
+			</result>
+			<interceptor-ref name="general" />  
+			<interceptor-ref name="defaultStack" />
+		</action>
+		 -->
+		 
+		<action name="generateFichaPDF" class="proyecto.action.TurismoAction" method="generarPdfFicha">
+		<result name="success" type="jasper" >
+            <param name="location">/jasper/FichaTurismo.jasper</param>
+            <param name="dataSource">fichaturismo</param>            
+            <param name="format">PDF</param>
+            <param name="contentType">application/pdf</param>
+            <param name="contentDisposition">attachment;filename="${nombrearchivo}.pdf"</param>
+            <param name="documentName">FichaTurismo</param>            
+            <param name="reportParameters">reportParams</param>            
+        </result>
+			<interceptor-ref name="basicStack" />
+		</action>
+		
+		<action name="regfichaturismo" class="proyecto.action.TurismoAction" 
+		method="irRegistroFichaTurismo">
+			<result name="success" type="tiles" >registro.fichaturismo</result>  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="basicStack" />   
+			<interceptor-ref name="usuario-logeado" />
+		</action>
+		
+		<action name="guardaregfichaturismo" class="proyecto.action.TurismoAction" 
+		method="guardarRegistroFichaTurismo">
+			<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="basicStack" />   
+		</action>
+		
+<!--		<action name="guardaregfichaturismo" class="proyecto.action.TurismoAction" -->
+<!--		method="guardarRegistroFichaTurismo">-->
+<!--			 <result name="listado" type="redirectAction">-->
+<!--                 <param name="actionName">consultafichaturismo</param>-->
+<!--            </result>-->
+<!--            <result name="registro" type="dispatcher">-->
+<!--                -->
+<!--            </result>-->
+<!--			<interceptor-ref name="usuario-logeado" />-->
+<!--			<interceptor-ref name="general" /> -->
+<!--			<interceptor-ref name="basicStack" />   -->
+<!--		</action>-->
+		
+		<action name="regvisitante" class="proyecto.action.TurismoAction" 
+		method="irRegistroVisitante">
+			<result name="success" >/turismo/registro.visitante.jsp</result>  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="basicStack" />   
+			<interceptor-ref name="usuario-logeado" />
+		</action>
+		
+		<action name="guardaregvisft" class="proyecto.action.TurismoAction"
+			method="guardarRegistroVisitanteFicha">
+			<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="defaultStack" />
+         </action>
+         
+         <action name="eliminalistvisitante" class="proyecto.action.TurismoAction"
+			method="eliminarListadoVisitantes">
+			<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="defaultStack" />
+         </action>
+         
+          <action name="detboletvisitante" class="proyecto.action.TurismoAction"
+			method="determinarBolejateVisitantes">
+			<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="defaultStack" />
+         </action>
+         <action name="listavisitantesxficha" class="proyecto.action.TurismoAction" 
+		method="listarVisitantesxFicha">
+			<result name="success" >/turismo/lista.visitante.jsp</result>  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="basicStack" />   
+			<interceptor-ref name="usuario-logeado" />
+		</action>
+		
+		<action name="consultadetallefichaturismo" class="proyecto.action.TurismoAction" 
+		method="consultarDetalleFichaTurismo">
+			<result name="success" type="tiles" >turismo.ficha</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="usuario-logeado" />
+		</action>
+		
+		<!-- OPERADORES -->
+		<action name="consultaoperadorturismo" class="proyecto.action.TurismoAction"
+			method="consultarOperadoresTurismo">
+			<result type="tiles" name="inicio">turismo.inicio.operadorturismo</result>
+			<result name="lista">/turismo/lista.operadorturismo.jsp</result>
+			<interceptor-ref name="basicStack" />
+			<interceptor-ref name="defaultStack" />
+			<interceptor-ref name="general" />
+			<interceptor-ref name="usuario-logeado" />			
+		</action>
+		
+		<action name="regopetur" class="proyecto.action.TurismoAction" 
+		method="irRegistroOperadorTurismo">
+			<result name="success" >/turismo/registro.operadorturismo.jsp</result>  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="basicStack" />   
+			<interceptor-ref name="usuario-logeado" />
+		</action>
+		<action name="guardaregopetur" class="proyecto.action.TurismoAction" method="guardarRegistroOperadorTurismo">
+		<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" /> 
+		</action>    
+		<action name="guardauseropetur" class="proyecto.action.TurismoAction" method="guardarUsuarioOperadorTurismo">
+		<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" /> 
+		</action>    
+		
+		<action name="ejecutaaccionlistoperador" class="proyecto.action.TurismoAction" 
+		method="ejecutarAccionListadoOperadores">
+		<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" /> 
+		</action>
+		
+		<action name="buscaanptur" class="proyecto.action.TurismoAction"
+			method="buscarAreaNaturalconTurismo">
+			<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="defaultStack" />
+      </action>
+      
+      <action name="regrestclaveopetur" class="proyecto.action.TurismoAction" 
+		method="irRegistroRestablecerClaveOperadorTurismo">
+			<result name="success" >/turismo/registro.restablecerclaveoperador.jsp</result>  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="basicStack" />   
+			<interceptor-ref name="usuario-logeado" />
+		</action>
+		
+		<action name="restclaveopetur" class="proyecto.action.TurismoAction"
+			method="restablecerClaveOperadorTurismo">
+			<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="defaultStack" />
+      </action>
+		
+      
+      <!-- GUIAS -->
+		<action name="consultaguiaturismo" class="proyecto.action.TurismoAction"
+			method="consultarGuiasTurismo">
+			<result type="tiles" name="inicio">turismo.inicio.guiaturismo</result>
+			<result name="lista">/turismo/lista.guiaturismo.jsp</result>
+			<interceptor-ref name="basicStack" />
+			<interceptor-ref name="defaultStack" />
+			<interceptor-ref name="general" />
+			<interceptor-ref name="usuario-logeado" />			
+		</action>
+		
+      <action name="regguiatur" class="proyecto.action.TurismoAction" 
+		method="irRegistroGuiaTurismo">
+			<result name="success" >/turismo/registro.guiaturismo.jsp</result>  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="basicStack" />   
+			<interceptor-ref name="usuario-logeado" />
+		</action>
+      
+		<action name="guardaregguiatur" class="proyecto.action.TurismoAction" method="guardarRegistroGuiaTurismo">
+		<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" /> 
+		</action>
+		
+		<action name="ejecutaaccionlistguia" class="proyecto.action.TurismoAction" method="ejecutarAccionListadoGuias">
+		<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" /> 
+		</action>
+		
+		 <action name="consultadetalleguiaturismo" class="proyecto.action.TurismoAction" 
+		method="consultarDetalleGuiaTurismo">
+			<result name="success" >/turismo/detalle.guia.turismo.jsp</result>  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="basicStack" />   
+			<interceptor-ref name="usuario-logeado" />
+		</action>
+		
+		
+	<!-- FICHAS -->
+	<action name="ejecutaaccionlistficha" class="proyecto.action.TurismoAction" 
+		method="ejecutarAccionListadoFichas">
+		<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" /> 
+		</action>
+		
+	<action name="consultaminfichaturismo" class="proyecto.action.TurismoAction" 
+	method="consultarMinimoFichaTurismo">
+		<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" /> 
+		</action>   
+		
+		
+		<action name="validapinc" class="proyecto.action.TurismoAction" 
+	method="validarPagoIncompleto">
+		<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="defaultStack" />
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" /> 
+		</action>   
+		    
+		  <action name="consolidarFicha" class="proyecto.action.TurismoAction" method="consolidarFicha">
+	    	 <result type="json">
+            	<param name="root">datos</param> 
+            </result>
+            <interceptor-ref name="basicStack" />  
+			<interceptor-ref name="defaultStack" />
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+		  </action>   
+		    
+		    
+		    <!-- FICHA CONSOLIDADA -->
+		    
+		  <action name="fichaturismocons" class="proyecto.action.TurismoAction"
+        method="irFichaTurismoConsolidada">
+	   <result name="registro" >/turismo/registro.consolidado.fichaturismo.jsp</result>
+       <result name="detalle" >/turismo/detalle.consolidado.fichaturismo.jsp</result>
+	   <interceptor-ref name="usuario-logeado"></interceptor-ref>
+	   <interceptor-ref name="defaultStack" />
+       </action>  
+		    
+		<action name="consultapagobancoxoperador" class="proyecto.action.TurismoAction" 
+		method="consultarPagosBancoxOperadorTurismo">
+		 <result name="success" >/turismo/lista.pagobanco.operador.jsp</result>
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" /> 
+		</action>
+		
+		 <action name="validamontopagobanco" class="proyecto.action.TurismoAction" 
+		 method="validarMontoPagoBanco">
+	    	 <result type="json">
+            	<param name="root">datos</param> 
+            </result>
+            <interceptor-ref name="basicStack" />  
+			<interceptor-ref name="defaultStack" />
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+		  </action> 
+		  
+		  
+		  <!-- JCEV 17/07/2012 -->
+		<action name="listNationBnk" class="proyecto.action.TurismoPagosAction" method="listarRegBnkNacion">
+		 	<result name="success" type="tiles" >lista.bnk.nacion</result>
+		 	<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="defaultStack" />
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+		</action>   	
+
+		<!-- Yonny 25-07-2012 -->
+		<action name="CategoriaANP" class="proyecto.action.TurismoPagosAction" method="listaCategoriaANP">
+		 	<result name="success">/turismo/lstcategoria.anp.jsp</result>
+		 	<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="defaultStack" />
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />		 	
+		</action>
+		
+		<!-- Yonny 25-07-2012 -->
+		<action name="listaareanatural" class="proyecto.action.TurismoPagosAction" method="listaAreaNatural">
+		 	<result name="success">/turismo/lista.areanatural.jsp</result>
+		 	<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="defaultStack" />
+			<interceptor-ref name="general" />
+			<interceptor-ref name="usuario-logeado" />		 	
+		</action>
+		
+		<!-- JCEV 25-07-2012 -->
+		<action name="listarutaturismo" class="proyecto.action.TurismoPagosAction" method="listaRutaTurismo">
+		 	<result name="success">/turismo/lista.anp.rutaturismo.jsp</result>
+		 	<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="defaultStack" />
+			<interceptor-ref name="general" />
+			<interceptor-ref name="usuario-logeado" />		 	
+		</action>
+	
+ 		<!-- JCEV 01/08/2012 -->
+		<action name="detalleBoletaje" class="proyecto.action.TurismoPagosAction" method="mostrarDetalletaBoletaje">
+		 	<result name="success" >/turismo/lista.detalle.boletaje.jsp</result>
+		 	<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="defaultStack" />
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+		</action>   	
+		  
+		    
+	</package>
+  
+</struts>
+

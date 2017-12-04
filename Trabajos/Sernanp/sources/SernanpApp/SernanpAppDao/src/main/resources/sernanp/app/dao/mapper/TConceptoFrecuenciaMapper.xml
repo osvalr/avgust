@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sernanp.app.dao.mapper.TConceptoFrecuenciaMapper" >
+  <resultMap id="BaseResultMap" type="sernanp.app.dao.domain.TConceptoFrecuencia" >
+    <id column="srl_id_frecuencia" property="srl_id_frecuencia" jdbcType="INTEGER" />
+    <result column="srl_id_concepto_planilla" property="srl_id_concepto_planilla" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    srl_id_frecuencia, srl_id_concepto_planilla
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TConceptoFrecuenciaExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from personal.t_concepto_frecuencia
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TConceptoFrecuenciaKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from personal.t_concepto_frecuencia
+    where srl_id_frecuencia = #{srl_id_frecuencia,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="sernanp.app.dao.domain.TConceptoFrecuenciaKey" >
+    delete from personal.t_concepto_frecuencia
+    where srl_id_frecuencia = #{srl_id_frecuencia,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sernanp.app.dao.domain.TConceptoFrecuenciaExample" >
+    delete from personal.t_concepto_frecuencia
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sernanp.app.dao.domain.TConceptoFrecuencia" >
+    insert into personal.t_concepto_frecuencia (srl_id_frecuencia, srl_id_concepto_planilla
+      )
+    values (#{srl_id_frecuencia,jdbcType=INTEGER}, #{srl_id_concepto_planilla,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="sernanp.app.dao.domain.TConceptoFrecuencia" >
+    insert into personal.t_concepto_frecuencia
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="srl_id_frecuencia != null" >
+        srl_id_frecuencia,
+      </if>
+      <if test="srl_id_concepto_planilla != null" >
+        srl_id_concepto_planilla,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="srl_id_frecuencia != null" >
+        #{srl_id_frecuencia,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_concepto_planilla != null" >
+        #{srl_id_concepto_planilla,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sernanp.app.dao.domain.TConceptoFrecuenciaExample" resultType="java.lang.Integer" >
+    select count(*) from personal.t_concepto_frecuencia
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update personal.t_concepto_frecuencia
+    <set >
+      <if test="record.srl_id_frecuencia != null" >
+        srl_id_frecuencia = #{record.srl_id_frecuencia,jdbcType=INTEGER},
+      </if>
+      <if test="record.srl_id_concepto_planilla != null" >
+        srl_id_concepto_planilla = #{record.srl_id_concepto_planilla,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update personal.t_concepto_frecuencia
+    set srl_id_frecuencia = #{record.srl_id_frecuencia,jdbcType=INTEGER},
+      srl_id_concepto_planilla = #{record.srl_id_concepto_planilla,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sernanp.app.dao.domain.TConceptoFrecuencia" >
+    update personal.t_concepto_frecuencia
+    <set >
+      <if test="srl_id_concepto_planilla != null" >
+        srl_id_concepto_planilla = #{srl_id_concepto_planilla,jdbcType=INTEGER},
+      </if>
+    </set>
+    where srl_id_frecuencia = #{srl_id_frecuencia,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sernanp.app.dao.domain.TConceptoFrecuencia" >
+    update personal.t_concepto_frecuencia
+    set srl_id_concepto_planilla = #{srl_id_concepto_planilla,jdbcType=INTEGER}
+    where srl_id_frecuencia = #{srl_id_frecuencia,jdbcType=INTEGER}
+  </update>
+  <select resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TConceptoFrecuenciaExample" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from personal.t_concepto_frecuencia
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

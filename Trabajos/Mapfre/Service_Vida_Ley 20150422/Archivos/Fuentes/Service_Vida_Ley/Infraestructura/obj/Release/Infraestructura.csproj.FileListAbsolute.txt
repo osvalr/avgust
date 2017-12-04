@@ -1,0 +1,5 @@
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\Infraestructura\bin\Release\Infraestructura.dll
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\Infraestructura\bin\Release\Infraestructura.pdb
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\Infraestructura\obj\Release\Infraestructura.csprojResolveAssemblyReference.cache
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\Infraestructura\obj\Release\Infraestructura.dll
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\Infraestructura\obj\Release\Infraestructura.pdb

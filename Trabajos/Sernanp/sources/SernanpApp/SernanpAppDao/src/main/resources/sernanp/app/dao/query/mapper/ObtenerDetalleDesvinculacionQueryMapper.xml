@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.ObtenerDetalleDesvinculacionQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.ObtenerDetalleDesvinculacionQuery" parameterType="sernanp.app.dao.query.domain.ObtenerDetalleDesvinculacionQueryCriteria"> 
+<![CDATA[
+
+	      
+	      
+	      		select 
+	      		
+					  ep.srl_id_estado_personal ,
+					  ep.idpersonal ,
+                      ep.var_motivo,
+					  ep.int_id_estado ,
+					  ep.int_id_tipificacion ,
+					  to_char(ep.dte_fecha_estado,'DD/MM/YYYY') as "dte_fecha_estado" ,
+					  to_char(pc.dte_fec_cese,'DD/MM/YYYY') as "dte_fec_cese"
+					       
+				from
+				      sernanp.t_estado_personal ep left join sernanp.personal ps
+                 	  on ep.idpersonal = ps.idpersonal left join sernanp.t_personal_contrato pc
+                 	  on ps.idpersonal = pc.idpersonal
+				where
+				
+				      ep.srl_id_estado_personal =  COALESCE(#{srl_id_estado_personal}, ep.srl_id_estado_personal)  
+                      LIMIT 1;
+                
+	      
+				
+		  
+	      
+]]>
+</select> 
+</mapper> 

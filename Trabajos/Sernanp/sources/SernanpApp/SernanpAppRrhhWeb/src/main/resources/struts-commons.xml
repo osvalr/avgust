@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>    
+
+           
+	<package name="commons" namespace="/" extends="principal">
+<!-- 	<package name="commons" namespace="/" extends="struts-default,json-default,jasperreports-default"> -->
+		
+	<action name="obtener-valores-tablatipo" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerValoresTablaTipo">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-valores-tablatipo-lic" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerValoresTablaTipoLic">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-departamentos-ubigeo" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerDepartamentosUbigeo">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-provincias-ubigeo" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerProvinciaUbigeo">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-distritos-ubigeo" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerDistritoUbigeo">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-valores-nivelestudio" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerValoresNivelEstudio">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-valores-pais" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerValoresPais">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-convocatorias" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerConvocatorias">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-codigos-postulacion" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerCodigosPostulacion">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-numero-convocatoria" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerNumeroConvocatoria">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-areas-organicas" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerAreasOrganicas">
+		<result type="json" />
+	</action>
+	
+	<action name="buscar-existencia-email" class="sernanp.rrhh.web.action.common.CommonAction" method="buscarExistenciaEmail">
+		<result type="json" />
+	</action>
+	
+	<action name="buscar-existencia-numeroruc" class="sernanp.rrhh.web.action.common.CommonAction" method="buscarExistenciaNumeroRuc">
+		<result type="json" />
+	</action>
+	
+	<action name="buscar-existencia-tipoNumero-docidentidad" class="sernanp.rrhh.web.action.common.CommonAction" method="buscarExistenciaTipoNumeroDocIdentidad">
+		<result type="json" />
+	</action>
+	
+	<action name="buscar-existencia-postulante-con-cod-postulacion" class="sernanp.rrhh.web.action.common.CommonAction" method="buscarExistenciaPostulanteConCodPostulacion">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-convocatorias-registradas" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerConvocatoriasRegistradas">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-info-vacantes" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerInfoVacantes">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-estado-personal" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerEstadoPersonal">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-unidad-operativa" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerUnidadOperativa">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-estados" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerEstados">
+		<result type="json" />
+	</action>
+	
+<!-- 	alanmar 1350 06082014 -->
+
+	<action name="obtener-valores-grupo-ocupacional" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerGrupoOcupacional">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-valores-regimen-pensionario" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerRegimenPensionario">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-valores-regimen-contractual" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerRegimenContractual">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-entidad-bancaria" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerEntidadBancaria">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-profesion" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerProfesion">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-area-natural" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerAreaNatural">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-tipo-profesion" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerTipoProfesion">
+		<result type="json" />
+	</action>	
+	
+<!--   fin alanmar		 -->
+
+<!-- Begin	Alanmar 10/04/2015 -->
+
+	<action name="listar-area-organica" class="sernanp.rrhh.web.action.common.CommonAction" method="listarAreaOrganica">
+		<result type="json" />
+	</action>
+	
+	<action name="listar-meta-presupuestaria" class="sernanp.rrhh.web.action.common.CommonAction" method="listarMetaPresupuestaria">
+		<result type="json" />
+	</action>	
+	
+	<action name="listar-fuente-financiamiento" class="sernanp.rrhh.web.action.common.CommonAction" method="listarFuenteFinanciamiento">
+		<result type="json" />
+	</action>	
+	
+	<action name="obtener-valores-tablatipo-por-nombre" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerValoresTablaTipoPorNombre">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-requerimiento-disponible" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerRequerimientoDisponible">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-meta-fuente-generica" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerMetaFuenteGenerica">
+	   <result type="json" />
+	</action>
+    
+    <action name="listar-factor-evaluacion" class="sernanp.rrhh.web.action.common.CommonAction" method="listarFactorEvaluacion">
+	   <result type="json" />
+	</action>
+	
+	<action name="detalle-requerimiento-plaza" class="sernanp.rrhh.web.action.common.CommonAction" method="detalleRequerimientoPlaza">
+	   <result type="json" />
+	</action>
+	
+	<action name="detalle-requerimiento-area-organica" class="sernanp.rrhh.web.action.common.CommonAction" method="detalleRequerimientoAreaOrganica">
+	   <result type="json" />
+	</action>
+	
+	<action name="obtener-estado-convocatoria" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerEstadoConvocatoria">
+	   <result type="json" />
+	</action>
+	
+	<action name="obtener-estado-plaza" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerEstadoPlaza">
+	   <result type="json" />
+	</action>
+
+<!-- 	<action name="obtener-sede-area-organica" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerSedexAreaOrganica"> -->
+<!-- 	   <result type="json" /> -->
+<!-- 	</action> -->
+	
+	<action name="listar-categoria-anp" class="sernanp.rrhh.web.action.common.CommonAction" method="listarCategoriaAnp">
+	   <result type="json" />
+	</action>
+	
+<!-- 	<action name="obtener-requerimiento-areanatural" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerRequerimientoxAreaNatural"> -->
+<!-- 	   <result type="json" /> -->
+<!-- 	</action> -->
+	
+<!-- 	<action name="obtener-areaorganica-areanatural" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerAreaOrganicaxAreaNatural"> -->
+<!-- 	   <result type="json" /> -->
+<!-- 	</action> -->
+		
+<!-- End Alanmar 10/04/2015 -->
+
+
+<!-- 	DGonzales 14/03/2015 -->
+
+	<action name="obtener-parametros-planilla" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerParametrosPlanilla">
+		<result type="json" />
+	</action>
+
+<!-- 	DGonzales 20/05/2015 -->
+
+	<action name="listar-categoria-area-natural" class="sernanp.rrhh.web.action.common.CommonAction" method="listarCategoriaAreaNatural">
+		<result type="json" />
+	</action>
+
+	<action name="listar-area-natural" class="sernanp.rrhh.web.action.common.CommonAction" method="listarAreaNatural">
+		<result type="json" />
+	</action>
+
+
+
+
+<!--   fin DGonzales		 -->
+
+<!-- Begin JRaffo 07/03/2015 -->
+  	<action name="obtener-valores-tablatipo-por-nombre" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerValoresTablaTipoPorNombre">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-valores-tablatipo-por-refer" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerValoresTablaTipoPorRefer">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-lista-afp" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerListaAfp">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-lista-concepto" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerListaConcepto">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-lista-personal" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerListaPersonal">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-lista-lanzamiento-convocatoria" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerListaLanzamientoConvocatoria">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-Lista-codpostulacion-por-lanzamiento" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerListaCodPostulacionPorLanzamiento">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-cargo" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerCargo">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-periodos-por-anio" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerPeriodosPorAnio">
+		<result type="json" />
+	</action>
+	
+	<action name="lista-beneficiarios-por-personal" class="sernanp.rrhh.web.action.common.CommonAction" method="listaBeneficiariosPorPersonal">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-concepto-planilla" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerConceptoPlanilla">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-anios-planilla" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerAniosPlanilla">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-lista-personal-planilla" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerListaPersonalPlanilla">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-lista-regimen-pensionario" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerListaRegimenPensionario">
+		<result type="json" />
+	</action>
+	
+	<action name="upload-file-common" class="sernanp.rrhh.web.action.common.FileUploadCommon" method="saveUpload">
+		<interceptor-ref name="fileUploadStack"></interceptor-ref> 
+    	<result type="json" />
+    </action>
+    
+    <action name="obtener-codigos-postulacion-sin-responsable" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerCodigosPostulacionSinResponsable">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-lista-factor-evaluacion-padre" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerListaFactorEvaluacionPadre">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-lista-etapa" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerListaEtapa">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-lista-sub-etapa" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerListaSubEtapa">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-lista-meta-presupuestaria" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerListaMetaPresupuestaria">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-lista-fuente-financiamiento" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerListaFuenteFinanciamiento">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-lista-generica-gasto" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerListaGenericaGasto">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-lista-clasificador" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerListaClasificador">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-lista-sub-etapa-por-etapa-por-plaza" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerListaSubEtapaPorEtapaPorPlaza">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-lista-conf-etapas" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerListaConfEtapas">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-estados-postulantes" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerEstadosPostulantes">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-fuentes-financiamiento" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerFuentesFinanciamiento">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-todos-anios-planilla" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerTodosAniosPlanilla">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-meta-por-periodo" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerMetaPorPeriodo">
+		<result type="json" />
+	</action>
+	
+	<action name="obtener-meta-por-area-anho" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerMetaPorAreaAnho">
+		<result type="json" />
+	</action>
+	
+<!-- End JRaffo 07/03/2015 --> 
+
+	<action name="listar-entidad-bancaria" class="sernanp.rrhh.web.action.persona.GestionarPersonalAction" method="listarEntidadBancaria"> 
+ 		<result name="success" type="json"/>
+	</action>
+
+ 	 <action name="listar-estudios" class="sernanp.rrhh.web.action.persona.GestionarPersonalAction" method="listarEstudios"> 
+ 		<result name="success" type="json"/>
+ 	 </action>
+ 	 
+ 	 <action name="obtener-area-actual-personal" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerAreaActualPersonal"> 
+ 		<result name="success" type="json"/>
+ 	 </action>
+ 	 
+ 	 <action name="obtener-lista-numero-convocatoria" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerListaNumeroConvocatoria"> 
+ 		<result name="success" type="json"/>
+ 	 </action>
+ 	 
+ 	 <!-- Begin Alanmar 08/07/2015 -->
+ 	 
+ 	 <action name="listar-menu-reportes" class="sernanp.rrhh.web.action.common.CommonAction" method="listarMenuReportes"> 
+ 		<result  type="json"/>
+ 	 </action>
+ 	 
+ 	<action name="obtener-nombres-personal" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerNombresPersonal"> 
+ 		<result  type="json"/>
+ 	 </action>
+ 	 
+ 	 <action name="obtener-descuento-concepto" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerDescuentoConcepto"> 
+ 		<result  type="json"/>
+ 	 </action>
+ 	 
+ 	 
+ 	 <!-- End Alanmar 09/07/2015 -->
+ 	 
+ 	 <action name="obtener-unidad-operativa-geografica" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerUnidadOperativaGeografica"> 
+ 		<result  type="json"/>
+ 	 </action>
+ 	 
+ 	 <action name="obtener-dependencia-sede-anp-geografica" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerDependenciaSedeAnpGeografica"> 
+ 		<result  type="json"/>
+ 	 </action>
+ 	 
+ 	 
+ 	 <!-- Begin DValdez 31/08/2015 -->
+  	<action name="obtener-valores-tablatipo-por-nombre" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerValoresTablaTipoPorNombre">
+		<result type="json" />
+	</action>
+	
+	
+	 <action name="obtener-dependencia-geografica" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerSedePrestaciónServicio"> 
+ 		<result  type="json"/>
+ 	 </action>
+	
+	 <action name="obtener-direccion-dependencia-prestacion-servicio" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerDireccionDependenciaPrestacionServicio"> 
+ 		<result  type="json"/>
+ 	 </action>
+ 	 
+	 <action name="obtener-sede-administrativa" class="sernanp.rrhh.web.action.common.CommonAction" method="obtenerSedeAdministrativa"> 
+ 		<result  type="json"/>
+ 	 </action> 	 
+ 	 
+
+	
+<!-- 	END -->
+ 	 
+ 	 <action name="buscar-postulante-query" class="sernanp.rrhh.web.action.common.CommonAction" method="buscarPostulante">
+		<result type="json" /> 
+	</action>
+ 	 
+	</package>
+  
+</struts>

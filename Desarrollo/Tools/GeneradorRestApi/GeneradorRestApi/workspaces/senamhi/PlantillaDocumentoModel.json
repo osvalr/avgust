@@ -1,0 +1,13 @@
+{
+	"nameCrud": "PlantillaDocumento",
+	"path": "plantillas-documentos",
+	"nameRepository": "TPlantillaDocumentoRepository",
+	"nameModelXml": "PlantillaDocumentoModel.xml",
+		"subModels": [
+		{
+			"nameRepository": "TPlantillaDocumentoArchivoRepository",
+			"nameCrud": "PlantillaDocumentoArchivo",
+			"nameSubModel": "PlantillaDocumentoArchivoModel"
+		}
+	]
+}

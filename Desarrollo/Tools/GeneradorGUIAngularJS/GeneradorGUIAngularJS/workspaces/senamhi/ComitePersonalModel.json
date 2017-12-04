@@ -1,0 +1,7 @@
+{
+	"titleCrud": "Comite Evaluador",
+	"nameCrud": "ComitePersonal",
+	"constUrlApi": "COMITE_EVALUACION_PERSONAL_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "ComitePersonalModel.xml"
+}

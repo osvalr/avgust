@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.acme.query.mybatis.mapper.CatalogoItemQueryMapper">
+
+<sql id="outs"> 
+<![CDATA[
+
+c.id_catalogo_item,
+c.id_catalogo,
+c.valor_item,
+c.descrip_item,
+c.valor_a,
+c.valor_b,
+c.valor_c,
+c.valor_d,
+c.valor_e,
+c.id_estado,
+(CASE
+    WHEN c.id_estado=1 THEN 'Activo'
+    ELSE 'Inactivo'
+END) descrip_estado,
+c.id_usuario_mod,
+c.id_usuario_reg,
+to_char(c.fecha_registro,'dd/mm/yyyy') fecha_registro,
+to_char(c.fecha_modificacion,'dd/mm/yyyy') fecha_modificacion
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+general.catalogo_item c
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+c.id_catalogo_item = coalesce(#{id_catalogo_item},c.id_catalogo_item)
+and c.id_catalogo = coalesce(#{id_catalogo},c.id_catalogo)
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${order_column} ${order_direction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.acme.query.mybatis.model.CatalogoItemQuery" parameterType="pe.com.acme.query.mybatis.model.CatalogoItemQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.acme.query.mybatis.model.CatalogoItemQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.acme.query.mybatis.model.CatalogoItemQuery" parameterType="pe.com.acme.query.mybatis.model.CatalogoItemQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.acme.query.mybatis.model.CatalogoItemQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.acme.query.mybatis.model.CatalogoItemQueryCriteria">
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

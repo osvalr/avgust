@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.focus.sakerk.repository.custom.mapper.ListaCongregacionLocalQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+			cl.id_congregacion_local ,
+			cl.id_congregacion_general ,
+			pj.razon_social,
+			pj.id_tipo_persona_juridica  
+			
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+			sakerk.congregacion_local cl
+			inner join 
+			general.persona_juridica pj
+			on cl.id_congregacion_local = pj.id_persona_juridica
+			
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+			cl.id_congregacion_general = COALESCE(#{id_congregacion_general  },cl.id_congregacion_general)
+			
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.focus.sakerk.repository.custom.model.ListaCongregacionLocalQuery" parameterType="pe.com.focus.sakerk.repository.custom.model.ListaCongregacionLocalQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.focus.sakerk.repository.custom.model.ListaCongregacionLocalQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.focus.sakerk.repository.custom.model.ListaCongregacionLocalQuery" parameterType="pe.com.focus.sakerk.repository.custom.model.ListaCongregacionLocalQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.focus.sakerk.repository.custom.model.ListaCongregacionLocalQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.focus.sakerk.repository.custom.model.ListaCongregacionLocalQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

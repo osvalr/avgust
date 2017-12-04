@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.acme.mybatis.query.mapper.ProductoQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+
+p.id_producto,
+p.cod_producto,
+p.id_categoria,
+cp.valor_a as descrip_categoria,
+p.nombre,
+p.descripcion,
+p.observacion,
+p.id_moneda,
+c.valor_a as descrip_moneda,
+p.precio,
+p.ruta_foto,
+
+p.id_user,
+concat(p1.ape_pater,' ',p1.ape_mater,', ',p1.nombres_completos) nom_user,
+DATE_FORMAT(p.fec_reg, '%d/%m/%Y') fec_reg,
+p.id_user_mod,
+concat(p2.ape_pater,' ',p2.ape_mater,', ',p2.nombres_completos) nom_user_mod,
+DATE_FORMAT(p.fec_mod, '%d/%m/%Y') fec_mod,
+
+p.id_estado,
+e.valor_a as descrip_estado
+
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+
+producto p
+inner join (select ci.valor_a,ci.valor_b from catalogo_item ci inner join catalogo c on ci.id_catalogo = c.id_catalogo where c.nombre_catalogo = 'Estado_Generico') e on cast(e.valor_b as SIGNED) = p.id_estado
+inner join (select ci.valor_a,ci.valor_b from catalogo_item ci inner join catalogo c on ci.id_catalogo = c.id_catalogo where c.nombre_catalogo = 'Categoria_Producto') cp on cast(cp.valor_b as SIGNED) = p.id_categoria
+inner join (select ci.valor_a,ci.valor_b from catalogo_item ci inner join catalogo c on ci.id_catalogo = c.id_catalogo where c.nombre_catalogo = 'Divisa') c on cast(c.valor_b as SIGNED) = p.id_moneda
+inner join persona p1 on p1.id_persona = p.id_user
+inner join persona p2 on p2.id_persona = p.id_user_mod
+
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+
+p.id_producto = ifnull(#{id_producto},p.id_producto) and
+p.cod_producto = ifnull(#{cod_producto},p.cod_producto) and
+p.id_categoria = ifnull(#{id_categoria},p.id_categoria) and
+p.nombre = ifnull(concat('%',#{nombre},'%'),p.nombre) and
+p.id_moneda = ifnull(#{id_moneda},p.id_moneda) AND
+p.id_estado = ifnull(#{id_estado},p.id_estado)
+
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${order_column} ${order_direction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="com.acme.mybatis.query.model.ProductoQuery" parameterType="com.acme.mybatis.query.model.ProductoQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="com.acme.mybatis.query.model.ProductoQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="com.acme.mybatis.query.model.ProductoQuery" parameterType="com.acme.mybatis.query.model.ProductoQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="com.acme.mybatis.query.model.ProductoQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="com.acme.mybatis.query.model.ProductoQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

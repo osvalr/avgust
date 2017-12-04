@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE generatorConfiguration  
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"  
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">  
+  
+<generatorConfiguration>  
+
+<!--   <classPathEntry location="/Users/JRaffo/.m2/repository/org/postgresql/postgresql/9.3-1101-jdbc3/postgresql-9.3-1101-jdbc3.jar" /> -->
+  <classPathEntry location="C:\Users\D\.m2\repository\org\postgresql\postgresql\9.3-1101-jdbc3\postgresql-9.3-1101-jdbc3.jar" />
+   
+  <context id="DB1" targetRuntime="MyBatis3"> 
+  
+    <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>
+    <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+    <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+    <plugin type="org.mybatis.generator.plugins.VirtualPrimaryKeyPlugin"/> 
+       
+    <commentGenerator>  
+      <property name="suppressAllComments" value="true"/>  
+    </commentGenerator>  
+     	
+    <jdbcConnection 
+        driverClass="org.postgresql.Driver"  
+        connectionURL="jdbc:postgresql://localhost:5432/sernanp"  
+        userId="postgres"  
+        password="postgres">  
+    </jdbcConnection>	
+  
+    <javaModelGenerator targetPackage="sernanp.app.dao.domain" targetProject="SernanpAppDao">  
+      <property name="enableSubPackages" value="false" />  
+    </javaModelGenerator>  
+  
+    <sqlMapGenerator targetPackage="sernanp.app.dao.mapper"  targetProject="SernanpAppDao/src/main/resources">  
+      <property name="enableSubPackages" value="false" />  
+    </sqlMapGenerator>  
+      
+    <!-- También podríamos indicar el tipo ANNOTATEDMAPPER or XMLMAPPER -->  
+    <javaClientGenerator type="XMLMAPPER" targetPackage="sernanp.app.dao.mapper"  targetProject="SernanpAppDao">  
+      <property name="enableSubPackages" value="false" />  
+    </javaClientGenerator>  
+  
+    <!-- Generamos el código fuente de todas las tablas evitando la generación varios métodos -->  
+  
+<!-- **************** PLANILLAS ******************-->
+ 
+<!-- 	<table tableName="t_afecto_concepto" schema="personal" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_afecto_concepto" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+
+<!-- 	<table tableName="t_afp" schema="personal" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_afp" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+    
+<!--     <table tableName="t_afp_comision" schema="personal" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_afp_comision" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+    
+<!--      <table tableName="t_anio_parametro_planilla" schema="personal" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_anio_parametro_planilla" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+    
+<!--     <table tableName="t_anio_periodo_planilla" schema="personal" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_anio_periodo_planilla" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+    
+<!--     <table tableName="t_anio_planilla" schema="personal" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_anio_planilla" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+    
+<!--      <table tableName="t_concepto_planilla" schema="personal" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_concepto_planilla" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+
+<!-- 	<table tableName="t_beneficiario_descuento_judicial" schema="personal" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_beneficiario_descuento_judicial" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+
+<!--      <table tableName="t_frecuencia" schema="personal" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_frecuencia" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+    
+<!--      <table tableName="t_frecuencia_concepto" schema="personal" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_frecuencia_concepto" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+    
+    
+<!--      <table tableName="t_nomina_anio_periodo_personal" schema="personal" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_nomina_anio_periodo_personal" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+    
+<!--     <table tableName="t_nomina_concepto" schema="personal" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_nomina_concepto" sqlStatement="JDBC" /> -->
+<!--     </table>  -->
+    
+<!--     <table tableName="t_parametro_planilla" schema="personal" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_parametro_planilla" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+    
+<!--     <table tableName="t_personal_concepto" schema="personal" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_personal_concepto" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+    
+<!--     <table tableName="personal" schema="sernanp" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="idpersonal" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+
+
+<!-- **************** SELECCIÓN DE PERSONAL ******************-->
+
+<!--  	<table tableName="t_configuracion_etapa" schema="personal" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_configuracion_etapa" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+    
+<!--      <table tableName="t_configuracion_evaluacion_personal" schema="personal" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_configuracion_evaluacion_personal" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+    
+<!--     <table tableName="t_configuracion_factor_evaluacion" schema="personal" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_configuracion_factor_evaluacion" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+    
+<!--     <table tableName="t_conv_area_org_archivo" schema="personal" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--     </table> -->
+    
+<!--     <table tableName="t_conv_area_org_etapa" schema="personal" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_conv_area_org_etapa" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+    
+<!--     <table tableName="t_conv_area_org_factor_eval" schema="personal" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_conv_area_org_factor_eval" sqlStatement="JDBC" /> -->
+<!--    </table> -->
+    
+<!--     <table tableName="t_conv_fecha_etapa_config" schema="personal" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_conv_fecha_etapa_config" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+    
+<!--     <table tableName="t_etapa_proceso_seleccion" schema="personal" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_etapa_proceso_seleccion" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+    
+<!--     <table tableName="t_factor_evaluacion" schema="personal" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_factor_evaluacion" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+    
+<!--      <table tableName="t_numero_telefono" schema="personal" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_numero_telefono" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+    
+<!--     <table tableName="t_postulante_capacitacion" schema="personal" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_postulante_capacitacion" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+        
+<!--     <table tableName="t_postulante_experiencia_laboral" schema="personal" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_postulante_experiencia_laboral" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+    
+<!--     <table tableName="t_postulante_formacion" schema="personal" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_postulante_formacion" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+    
+<!--     <table tableName="t_postulante_numero_telefono" schema="personal" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--     </table> -->
+    
+<!--     <table tableName="t_postulante_personal_archivo" schema="personal" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--     </table> -->
+    
+<!--      <table tableName="t_requerimiento_personal" schema="personal" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_requerimiento_personal" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+    
+<!--     <table tableName="t_requerimiento_personal_archivo" schema="personal" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--     </table> -->
+    
+<!--      <table tableName="t_subetapa_proceso_seleccion" schema="personal" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_subetapa_proceso_seleccion" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+    
+<!--     <table tableName="t_subetapa_proceso_seleccion_padre" schema="personal" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_subetapa_proceso_seleccion_depende" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+    
+<!--     <table tableName="t_postulante_personal" schema="sernanp" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--     </table> -->
+
+<!-- esquema sernanp -->
+ 	
+<!-- 	<table tableName="t_convocatoria" schema="sernanp" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_convocatoria" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+    
+<!--     <table tableName="t_convocatoria_area_org" schema="sernanp" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_conv_area_org" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+
+<!-- 	<table tableName="t_postulante_cnv_area_org" schema="sernanp" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_postulante_conv_area_org" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+
+<!--     <table tableName="tablatipo" schema="sernanp" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="idtablatipo" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+
+<!-- 	<table tableName="t_convocatoria_area_org_personal" schema="personal" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_conv_area_org_personal" sqlStatement="JDBC" />  -->
+<!--     </table> -->
+
+<!-- 	<table tableName="usuario" schema="sernanp" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="idusuario" sqlStatement="JDBC" /> -->
+<!--     </table> -->
+
+    
+
+<!--      <table tableName="t_fuente_financiamiento" schema="mpp" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_fuente_financiamiento" sqlStatement="JDBC" />  -->
+<!--      </table> -->
+    
+<!--     <table tableName="t_meta_fuente_generica" schema="mpp" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_meta_fuente_generica" sqlStatement="JDBC" /> -->
+<!--     </table>   -->
+    
+<!--     <table tableName="t_meta_presupuestaria" schema="mpp" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_meta_presupuestaria" sqlStatement="JDBC" /> -->
+<!--     </table>   -->
+
+<!--      <table tableName="t_clasificador" schema="mpp" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_clasificador" sqlStatement="JDBC" /> -->
+<!--     </table>   -->
+
+<!--     <table tableName="t_generica_gasto" schema="mpp" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_generica_gasto" sqlStatement="JDBC" />  -->
+<!--     </table>      -->
+
+<!-- 	<table tableName="t_unidad_medida_meta" schema="mpp" modelType="hierarchical">   -->
+<!--       <property name="useActualColumnNames" value="true"/>   -->
+<!--       <generatedKey column="srl_id_unidad_medida_meta" sqlStatement="JDBC" /> -->
+<!--     </table>     -->
+
+	<table tableName="t_personal_meta_fte_fto" schema="personal" modelType="hierarchical">  
+      <property name="useActualColumnNames" value="true"/>  
+     
+    </table>    
+
+<!-- end esquema sernanp -->    
+         
+
+
+    
+    
+  </context>  
+</generatorConfiguration>  

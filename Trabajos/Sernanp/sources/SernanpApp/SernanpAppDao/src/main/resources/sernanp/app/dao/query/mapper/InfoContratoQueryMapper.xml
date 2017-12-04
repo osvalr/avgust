@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.InfoContratoQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.InfoContratoQuery" parameterType="sernanp.app.dao.query.domain.InfoContratoQueryCriteria"> 
+<![CDATA[
+
+	      
+	      
+select 
+
+	pc.srl_id_contrato ,
+	(select a[2] || '-' || a[3] from (select regexp_split_to_array(pc.var_num_contrato, '-')) as dt(a)) as "var_num_contrato",
+	(select a[2] || '-' || a[3] from (select regexp_split_to_array(cnv.var_num_convocatoria, '-')) as dt(a)) as "var_num_convocatoria",
+	pc.num_sueldo ,
+	pc.srl_id_postulante_conv_area_org ,
+	CASE WHEN pcao.int_num_activacion = 2
+	THEN 'Segunda Convocatoria'
+	WHEN pcao.int_num_activacion = 3
+	THEN 'Tercera Convocatoria'  
+	else 'Convocatoria'
+	END as "descrip_num_activacion",
+	pcao.int_num_activacion,
+	pc.srl_id_resp_unid_oper,
+	pc.dte_fec_suscrip ,
+	pc.dte_fec_inicio ,
+	pc.dte_fec_termino ,
+	cg.var_nom_cargo,
+	p.idpersona ,
+	pn.idpersonanatural,
+	pc.srl_id_plantilla_documento_archivo,
+	pc.var_num_resolucion,
+	pc.srl_id_regimen_contractual,
+	tt.abrtablatipo as "des_tipo_trato",
+	COALESCE(
+			(	select 
+					CASE WHEN substring(ao.desarea from 1 for 6) = 'JANP -' 
+						THEN ('Jefatura ' || canp.descategoriaanp  || ' ' || an.desareanatural)
+					ELSE UPPER (ao.desarea)
+					END as "descrip_dependencia"
+				from sernanp.areaorganica aox 
+
+				left join sernanp.sede sd on aox.idsede = sd.idsede 
+				left join sernanp.areanatural an on sd.idareanatural = an.idareanatural 
+				left join sernanp.categoriaanp canp on an.idcategoriaanp = canp.idcategoriaanp
+				where COALESCE(aox.idarea,0)  = COALESCE(ao.idarea,COALESCE(aox.idarea,0))
+			)  || ' - '|| uo.nomunidad,
+
+(
+select 
+CASE WHEN substring(ao.desarea from 1 for 6) = 'JANP -' 
+	THEN ('Jefatura ' || canp.descategoriaanp  || ' ' || an.desareanatural)
+	else ao.desarea
+END as "descrip_dependencia"
+from sernanp.areaorganica aox left join sernanp.sede sd
+on aox.idsede = sd.idsede left join sernanp.areanatural an
+on sd.idareanatural = an.idareanatural left join sernanp.categoriaanp canp 
+on an.idcategoriaanp = canp.idcategoriaanp
+where COALESCE(aox.idarea,0)  = COALESCE(ao.idarea,COALESCE(aox.idarea,0))
+)
+
+	) as "nombre_dependencia",
+	pc.var_lugar_prestacion
+		--ADD 03-08-2015 DIRECCION Y UBIGEO
+	,COALESCE(pc.var_direccion_personal, 
+			pn.direccion  || ', ' 	|| COALESCE(
+			(SELECT u.nombre || ', ' || 
+			(SELECT ud.nombre FROM sernanp.ubigeo ud WHERE ud.coddpto = u.coddpto AND ud.codprov = u.codprov AND ud.coddist = '00' ) || ' - ' ||
+			(SELECT ud.nombre FROM sernanp.ubigeo ud WHERE ud.coddpto = u.coddpto AND ud.codprov = '00' AND ud.coddist = '00' ) 
+			FROM sernanp.ubigeo u 
+			WHERE u.idubigeo = pn.idubigeo
+			),'')
+	) as "var_direccion_personal"
+	
+
+
+from 
+	sernanp.t_personal_contrato pc left join sernanp.t_postulante_cnv_area_org pcao
+	on pc.srl_id_postulante_conv_area_org = pcao.srl_id_postulante_conv_area_org 
+	left join sernanp.t_convocatoria_area_org cao
+	on pcao.srl_id_conv_area_org = cao.srl_id_conv_area_org
+	left join sernanp.t_convocatoria cnv
+	on cao.srl_id_convocatoria = cnv.srl_id_convocatoria
+	left join sernanp.t_cargo cg
+	on pc.srl_id_cargo = cg.srl_id_cargo
+	left join sernanp.t_postulante_personal pp
+	on pcao.int_id_postulante = pp.int_id_postulante
+	left join sernanp.personanatural pn
+	on pn.idpersonanatural = pp.int_id_postulante
+	left join sernanp.persona p
+	on pn.idpersona = p.idpersona
+	left join sernanp.personal ppp
+	on pc.idpersonal = ppp.idpersonal
+	left join 
+	(
+	select det.var_cod_estado,det.var_nombre_estado from sernanp.t_detalle_estado_tabla det
+	where det.srl_id_estado_tabla = 2
+	) detx on detx.var_cod_estado = cast(pc.int_id_estado as char)
+	left join
+	(select tt.ordtablatipo,tt.abrtablatipo from sernanp.tablatipo tt where tt.idtabla = (select t.idtabla from sernanp.tabla t where t.destabla = 'Tipo Trato Persona')) tt
+	on pc.int_id_tipo_trato = tt.ordtablatipo
+	inner join sernanp.areaorganica ao
+	on cao.idarea = ao.idarea
+	inner join sernanp.sede s
+	on ao.idsede = s.idsede
+	left join sernanp.unidadoperativa uo on cao.idunidad = uo.idunidad
+where 
+	pc.srl_id_contrato_padre is null and
+	pc.int_id_estado <> 4 and
+	
+	pc.srl_id_contrato = #{srl_id_contrato}  
+	
+order by pc.dte_fec_suscrip desc;
+		  
+	      
+]]>
+</select> 
+</mapper> 

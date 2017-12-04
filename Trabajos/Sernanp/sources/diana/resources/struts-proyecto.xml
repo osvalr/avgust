@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	
+	 <constant name="struts.i18n.encoding" value="UTF-8"/>
+	
+	<package name="proyecto" namespace="/" extends="struts-default,json-default,jasperreports-default">
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+
+		<interceptors>
+			<interceptor name="general"
+				class="proyecto.interceptor.GeneralInterceptor" /> 
+			<interceptor name="usuario-logeado"
+				class="proyecto.interceptor.UsuarioLogeadoInterceptor" />
+			
+			<interceptor name="verificaActualizacionAprobacionFormulario"
+				class="proyecto.interceptor.ActualizacionAprobacionFormInterceptor" />			
+
+			<interceptor name="verificaExisteDocumento"
+				class="proyecto.interceptor.ValidarDocumentoInterceptor" />
+			
+			<interceptor name="verificaExisteDocumentoUpd"
+				class="proyecto.interceptor.ValidarDocumentoUpdInterceptor" />
+				
+				<interceptor name="validaExisteFichaRegistro"
+				class="proyecto.interceptor.ValidarExisteFichaRegistroInterceptor" />
+
+
+			<interceptor-stack name="sistema">
+				<interceptor-ref name="timer" /> 
+				<interceptor-ref name="logger" />
+				<interceptor-ref name="general" />
+				<interceptor-ref name="defaultStack" /> 
+			</interceptor-stack> 
+			 
+			<interceptor-stack name="rol-usuario"> 
+				<interceptor-ref name="basicStack" />    
+				<interceptor-ref name="usuario-logeado" />  
+			</interceptor-stack>
+
+		</interceptors>
+
+		<default-interceptor-ref name="sistema" />  
+
+		<global-results>
+			<result name="Login" type="redirect">/login.jsp</result>
+		    <result name="loginOperador" >/turismo/login.operador.jsp</result>
+		</global-results>
+
+        
+
+
+		<action name="Login" class="proyecto.action.LoginAction"
+			method="Logueo">
+			<result name="success" type="redirectAction">
+				Portada
+			</result>
+			<result name="portadaoperadorturismo" type="redirectAction">
+				turismo/listarAreaTurOpe
+			</result>
+			<result name="portadaregistro" type="redirectAction">
+				registro/listarAreaRegIng
+			</result>
+<!-- 			<result name="portadaregistro" type="redirectAction"> -->
+<!-- 				registro/inicioregistro -->
+<!-- 			</result> -->
+			<result name="portadasaddde" type="redirectAction">
+				saddde/iniciosaddde
+			</result>
+			<result name="portadaredcap" type="redirectAction">
+				redcap/inicioredcap
+			</result>
+			<result name="portadaconvoca" type="redirectAction">
+				convcain/inicioconvoca
+			</result>
+		   
+			<result name="errorOperador">/login.jsp</result>
+			<result name="errorPersonal">/turismo/login.operador.jsp</result>
+			<result name="errorRegistro">/registro/login.registro.jsp</result>
+			<result name="errorSaddde">/saddde/login.saddde.jsp</result>
+			<result name="errorRedcap">/redcap/login.redcap.jsp</result>
+			<result name="errorConvoca">/convcain/login.convcain.jsp</result>
+			
+			<interceptor-ref name="basicStack" />
+			<interceptor-ref name="defaultStack" />
+		</action>		
+
+         <action name="operadorturismo" class="proyecto.action.TurismoAction">
+			<result name="success" >/turismo/login.operador.jsp</result>
+			<interceptor-ref name="basicStack" />
+			<interceptor-ref name="defaultStack" />
+	     </action>
+	     
+	     <action name="solicitudregistro" class="proyecto.action.RegistroAction">
+			<result name="success" >/registro/login.registro.jsp</result>
+			<interceptor-ref name="basicStack" />
+			<interceptor-ref name="defaultStack" />
+	     </action>
+	     
+	     <action name="modulosad" class="proyecto.action.GeneralAction">
+			<result name="success" >/saddde/login.saddde.jsp</result>
+			<interceptor-ref name="basicStack" />
+			<interceptor-ref name="defaultStack" />
+	     </action>   
+         
+         <action name="redcapacitacion" class="proyecto.action.GeneralAction">
+			<result name="success" >/redcap/login.redcap.jsp</result>
+			<interceptor-ref name="basicStack" />
+			<interceptor-ref name="defaultStack" />
+	     </action>
+	     
+	     <action name="convocatorias" class="proyecto.action.GeneralAction">
+			<result name="success" >/convcain/login.convcain.jsp</result>
+			<interceptor-ref name="basicStack" />
+			<interceptor-ref name="defaultStack" />
+	     </action>
+           
+           
+          <action name="modificaClaveUsuario" class="proyecto.action.LoginAction"
+			method="modificarClaveUsuario">
+			<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="defaultStack" />
+			<interceptor-ref name="defaultStack" />
+		</action> 
+           
+		<!-- PRINCIPAL -->
+		<action name="modulo" class="proyecto.action.PortadaAction"  method="ingresarModulo">
+			<result name="inicioturismo" type="redirectAction">
+				<param name="actionName">/turismo/menu</param>
+			</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="usuario-logeado" />      
+		</action>   
+		
+		<action name="Portada" class="proyecto.action.PortadaAction">
+			<result name="success" type="tiles">portada</result>
+			<interceptor-ref name="usuario-logeado" /> 
+			<interceptor-ref name="basicStack" />
+			<interceptor-ref name="defaultStack" />
+		</action>
+
+		<action name="Salir" class="proyecto.action.SalirAction">
+			<result>/</result>
+			<interceptor-ref name="usuario-logeado" />
+		</action>
+		<action name="salirOperador" class="proyecto.action.SalirAction"
+			>
+			<result name="success" >/turismo/login.operador.jsp</result>
+			<interceptor-ref name="basicStack" />
+	     </action>
+	     
+	     <action name="salirRegistro" class="proyecto.action.SalirAction"
+			>
+			<result name="success" >/registro/login.registro.jsp</result>
+			<interceptor-ref name="basicStack" />
+	     </action>
+	     
+	     <action name="salirSaddde" class="proyecto.action.SalirAction"
+			>
+			<result name="success" >/saddde/login.saddde.jsp</result>
+			<interceptor-ref name="basicStack" />
+	     </action>
+	     
+	     <action name="salirRedcap" class="proyecto.action.SalirAction"
+			>
+			<result name="success" >/redcap/login.redcap.jsp</result>
+			<interceptor-ref name="basicStack" />
+	     </action>
+	     
+	     <action name="salirConvoca" class="proyecto.action.SalirAction"
+			>
+			<result name="success" >/convcain/login.convcain.jsp</result>
+			<interceptor-ref name="basicStack" />
+	     </action>
+		
+		<action name="sig" class="proyecto.action.SigAction" >
+		<!-- 
+			<result>/sig/index.jsp</result>  -->
+			<result name="success" type="redirect" >${redirectUrl}</result>
+			
+			<interceptor-ref name="usuario-logeado" />
+			<interceptor-ref name="basicStack" />
+		</action>
+		
+		<action name="estadisticas" class="proyecto.action.TurismoAction" method="estadisticas">
+			<result name="success" type="dispatcher">/turismo/estadisticas.area.jsp</result>
+			<interceptor-ref name="general" />       
+			<interceptor-ref name="usuario-logeado" />  
+			<interceptor-ref name="basicStack" />  
+			<interceptor-ref name="defaultStack" />
+		</action>		
+		
+		
+		<!-- Agregado para la intregación con el módulo de Inventario -->
+	<action name="seguridadSgmvemi" class="proyecto.action.SeguridadAction" method="seguridadSgmvemi">
+			<interceptor-ref name="general" />       
+			<interceptor-ref name="usuario-logeado" />			
+			<interceptor-ref name="basicStack" />
+			<interceptor-ref name="defaultStack" />
+		</action>
+		
+		<!-- Agregado para la intregación con el módulo SAD -->
+		<action name="seguridadSad" class="proyecto.action.SeguridadAction" method="seguridadSad">
+		<interceptor-ref name="general" />       
+			<interceptor-ref name="usuario-logeado" />
+		<interceptor-ref name="basicStack" />
+		<interceptor-ref name="defaultStack" />
+		</action>
+		
+		<!-- Agregado para la intregación con el módulo de Visitantes -->
+		<action name="seguridadVisitante" class="proyecto.action.SeguridadAction" method="seguridadVisit">
+		<interceptor-ref name="general" />       
+		<interceptor-ref name="usuario-logeado" />
+		<interceptor-ref name="basicStack" />
+		<interceptor-ref name="defaultStack" />
+		</action>
+		
+		<!-- Agregado para la intregación con el módulo de Convocatorias MachuPicchu -->
+		<action name="seguridadConvocatoria" class="proyecto.action.SeguridadAction" method="seguridadConvoc">
+		<interceptor-ref name="general" />       
+		<interceptor-ref name="usuario-logeado" />
+		<interceptor-ref name="basicStack" />
+		<interceptor-ref name="defaultStack" />
+		</action>
+		
+		<!-- Agregado para la intregación con el módulo de seguimiento de investigaciones -->
+		<action name="seguridadSeguimiento" class="proyecto.action.SeguridadAction" method="seguridadSeguimientoI">
+		<interceptor-ref name="general" />       
+		<interceptor-ref name="usuario-logeado" />
+		<interceptor-ref name="basicStack" />
+		<interceptor-ref name="defaultStack" />
+		</action>
+		
+		<!-- Agregado para la intregación con el módulo de seguimiento de Capacitacion -->
+		<action name="seguridadCapacitacion" class="proyecto.action.SeguridadAction" method="seguridadCapacitacion">
+		<interceptor-ref name="general" />       
+		<interceptor-ref name="usuario-logeado" />
+		<interceptor-ref name="basicStack" />
+		<interceptor-ref name="defaultStack" />
+		</action>
+		
+		<!-- Agregado para la intregación con el módulo de Personal -->
+		<action name="seguridadRrhh" class="proyecto.action.SeguridadAction" method="seguridadRRHH">
+		<interceptor-ref name="general" />       
+		<interceptor-ref name="usuario-logeado" />
+		<interceptor-ref name="basicStack" />
+		<interceptor-ref name="defaultStack" />
+		</action>
+		
+		<!-- Agregado para la intregación con el módulo de recaudaciones y visitantes -->
+		<action name="seguridadRecVisit" class="proyecto.action.SeguridadAction" method="seguridadRecaudaVisitas">
+		<interceptor-ref name="general" />       
+		<interceptor-ref name="usuario-logeado" />
+		<interceptor-ref name="basicStack" />
+		<interceptor-ref name="defaultStack" />
+		</action>
+		
+		<!-- Agregado para la intregación con el módulo de Manejo de Recursos -->
+        <action name="seguridadManejoRecursos" class="proyecto.action.SeguridadAction" method="seguridadManejoRecursos">
+        <interceptor-ref name="general" />
+        <interceptor-ref name="usuario-logeado" />
+        <interceptor-ref name="basicStack" />
+        <interceptor-ref name="defaultStack" />
+        </action>
+
+
+        <!-- 31-03-2015 DAVID -->
+        <!-- Agregado para la intregación con el módulo de VIATICOS -->
+
+        <action name="seguridadViaticos" class="proyecto.action.SeguridadAction" method="seguridadViaticos">
+        <interceptor-ref name="general" />
+        <interceptor-ref name="usuario-logeado" />
+        <interceptor-ref name="basicStack" />
+        <interceptor-ref name="defaultStack" />
+        </action>
+		
+	</package>
+
+</struts>
+

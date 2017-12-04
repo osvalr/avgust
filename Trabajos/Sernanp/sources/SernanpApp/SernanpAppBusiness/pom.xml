@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+    <groupId>sernanp.app</groupId>
+    <artifactId>SernanpApp</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  
+  <groupId>sernanp.app.business</groupId>
+  <artifactId>SernanpAppBusiness</artifactId>
+  <name>SernanpAppBusiness</name>
+  <url>http://maven.apache.org</url>
+    
+  <dependencies>
+  
+  		<!-- TestNG -->
+  		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>${testng.version}</version>
+			<scope>test</scope>
+		</dependency>
+  
+		<!-- Spring -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework</groupId> -->
+<!-- 			<artifactId>spring-core</artifactId> -->
+<!-- 			<version>${spring.version}</version> -->
+<!-- 		</dependency> -->
+
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework</groupId> -->
+<!-- 			<artifactId>spring-jdbc</artifactId> -->
+<!-- 			<version>${spring.version}</version> -->
+<!-- 		</dependency> -->
+
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework</groupId> -->
+<!-- 			<artifactId>spring-context</artifactId> -->
+<!-- 			<version>${spring.version}</version> -->
+<!-- 		</dependency> -->
+
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework</groupId> -->
+<!-- 			<artifactId>spring-beans</artifactId> -->
+<!-- 			<version>${spring.version}</version> -->
+<!-- 		</dependency> -->
+
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework</groupId> -->
+<!-- 			<artifactId>spring-test</artifactId> -->
+<!-- 			<version>${spring.version}</version> -->
+<!-- 		</dependency> -->
+
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>5.6.1</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>sernanp.app.dao</groupId>
+			<artifactId>SernanpAppDao</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+  </dependencies>
+</project>

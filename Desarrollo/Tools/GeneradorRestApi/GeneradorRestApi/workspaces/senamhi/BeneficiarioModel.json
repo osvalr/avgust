@@ -1,0 +1,6 @@
+{
+	"nameCrud": "Beneficiario",
+	"path": "beneficiarios",
+	"nameRepository": "TBeneficiarioRepository",
+	"nameModelXml": "BeneficiarioModel.xml"
+}

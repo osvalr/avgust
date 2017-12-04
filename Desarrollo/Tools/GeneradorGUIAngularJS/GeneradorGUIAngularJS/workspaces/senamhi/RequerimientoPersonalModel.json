@@ -1,0 +1,14 @@
+{
+	"titleCrud": "Requerimientos de Personal",
+	"nameCrud": "RequerimientoPersonal",
+	"constUrlApi": "REQUERIMIENTO_PERSONAL_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "RequerimientoPersonalModel.xml",
+	"subModels": [
+		{
+			"nameModel": "RequerimientoPersonalArchivoModel",
+			"nameCrud": "RequerimientoPersonalArchivo",
+			"autoIdentityPrimaryKey": true
+		}
+	]
+}

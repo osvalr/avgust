@@ -1,0 +1,7 @@
+{
+	"titleCrud": "Dependencias Organicas",
+	"nameCrud": "DependenciaOrganica",
+	"constUrlApi": "DEPENDENCIA_ORGANICA_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "DependenciaModel.xml"
+}

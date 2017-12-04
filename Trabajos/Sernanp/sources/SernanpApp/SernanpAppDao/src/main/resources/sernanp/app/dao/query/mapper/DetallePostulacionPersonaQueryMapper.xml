@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.DetallePostulacionPersonaQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.DetallePostulacionPersonaQuery" parameterType="sernanp.app.dao.query.domain.DetallePostulacionPersonaQueryCriteria"> 
+<![CDATA[
+
+				select
+				
+					p.idpersona ,
+					pn.idpersonanatural ,
+					pn.idtipodocumento ,
+					(select t.abrtablatipo from sernanp.tablatipo t where t.idtabla = 1 and t.idtablatipo = pn.idtipodocumento ) as "descrip_tipo_documento" ,
+					pn.numerodoc,
+					pn.ruc,
+					pn.nombre,
+					pn.apepat,
+					pn.apemat,
+					pn.idsexo ,
+					(select t.destablatipo from sernanp.tablatipo t where t.idtabla = 2 and t.idtablatipo = pn.idsexo ) as "descrip_sexo" ,
+					to_char(pn.fechanacimiento, 'DD/MM/YYYY') as "fechanacimiento",
+					ud.coddpto as "coddptoDir",
+					(select u.nombre from sernanp.ubigeo u where u.codprov = '00' and u.coddist = '00' and u.coddpto = ud.coddpto) as "descrip_departamento_dir",
+					ud.codprov as "codprovDir",
+					(select u.nombre from sernanp.ubigeo u where u.codprov = ud.codprov and u.coddist = '00' and u.coddpto = ud.coddpto) as "descrip_provincia_dir",
+					ud.idubigeo as "idubigeoDir",
+					(select u.nombre from sernanp.ubigeo u where u.codprov = ud.codprov and u.idubigeo = ud.idubigeo and u.coddpto = ud.coddpto) as "descrip_distrito_dir",
+					pn.direccion,
+					p.idpais ,
+					(select x.nompais from sernanp.pais x where x.idpais = p.idpais) as "descrip_pais",
+					un.coddpto as "coddptoNac",
+					(select u.nombre from sernanp.ubigeo u where u.codprov = '00' and u.coddist = '00' and u.coddpto = un.coddpto) as "descrip_departamento_nac",
+					un.codprov as "codprovNac",
+					(select u.nombre from sernanp.ubigeo u where u.codprov = un.codprov and u.coddist = '00' and u.coddpto = un.coddpto) as "descrip_provincia_nac",
+					un.idubigeo as "idubigeoNac" ,
+					(select u.nombre from sernanp.ubigeo u where u.codprov = un.codprov and u.idubigeo = un.idubigeo and u.coddpto = un.coddpto) as "descrip_distrito_nac",
+					pn.idestadocivil ,
+					(select t.destablatipo from sernanp.tablatipo t where t.idtabla = 3 and t.idtablatipo = pn.idestadocivil ) as "descrip_estado_civil" ,
+
+					pp.int_id_postulante,
+					pp.int_porta_lic_conducir ,
+					(CASE WHEN pp.int_porta_lic_conducir is null
+					THEN 'NO'
+					WHEN pp.int_porta_lic_conducir = 1
+					THEN 'SI'
+					WHEN pp.int_porta_lic_conducir = 0
+					THEN 'NO'
+					END) as "descrip_porta_lic_conducir",
+					pp.int_clase_lic ,
+					(select t.destablatipo from sernanp.tablatipo t where t.idtabla = 36 and t.codinttablatipo = 0 and t.idtablatipo = pp.int_clase_lic ) as "descrip_clase_lic" ,
+					pp.int_categoria_lic ,
+					(select t.destablatipo from sernanp.tablatipo t where t.idtabla = 36 and t.codinttablatipo = pp.int_clase_lic and t.idtablatipo = pp.int_categoria_lic ) as "descrip_categoria_lic" ,
+					pp.var_codigo_ciudad_telefono,
+					pp.var_telefono,
+					pp.var_celular,
+					pp.var_email_principal,
+					pp.srl_id_conv_area_org ,
+					pp.srl_id_convocatoria,
+					pp.int_orden_merito,
+					pp.int_num_activacion,
+					pp.int_id_estado,
+					pp.srl_id_postulante_conv_area_org,
+					
+					pp.var_codigo_ciudad_telefono2,
+					pp.var_telefono2,
+					pp.var_celular2,
+					
+					pp.var_codigo_ciudad_telefono3,
+					pp.var_telefono3,
+					pp.var_celular3
+				
+				from
+					sernanp.persona p inner join
+					sernanp.personanatural pn on p.idpersona = pn.idpersona left join
+					(
+
+							select
+								pp.int_id_postulante,
+								pp.int_porta_lic_conducir ,
+								pp.int_clase_lic ,
+								pp.int_categoria_lic ,
+								pp.var_codigo_ciudad_telefono,
+								pp.var_telefono,
+								pp.var_celular,
+								pp.var_email_principal,
+								
+								pp.var_codigo_ciudad_telefono2,
+								pp.var_telefono2,
+								pp.var_celular2,
+								
+								pp.var_codigo_ciudad_telefono3,
+								pp.var_telefono3,
+								pp.var_celular3,
+					
+								pcao.srl_id_conv_area_org ,
+								cnv.srl_id_convocatoria,
+								pcao.int_orden_merito,
+								pcao.int_num_activacion,
+								pcao.int_id_estado,
+								pp.int_id_ubigeo_nacimiento,
+								pcao.srl_id_postulante_conv_area_org
+							from
+								sernanp.t_postulante_personal pp  
+								left join sernanp.t_postulante_cnv_area_org pcao on pcao.int_id_postulante = pp.int_id_postulante and pcao.int_id_estado in (1,2)
+								left join sernanp.t_convocatoria_area_org cao on pcao.srl_id_conv_area_org = cao.srl_id_conv_area_org
+								left join sernanp.t_convocatoria cnv on cao.srl_id_convocatoria = cnv.srl_id_convocatoria
+								left join sernanp.areaorganica ao on cao.idarea = ao.idarea and cao.int_id_estado = 1
+
+					) pp on pn.idpersonanatural = pp.int_id_postulante left join
+					
+					(select 
+						u.idubigeo,
+						u.coddpto,
+						u.codprov,
+						u.coddist,
+						u.nombre 
+					from sernanp.ubigeo u) un on un.idubigeo = pp.int_id_ubigeo_nacimiento left join
+					(select 
+						u.idubigeo,
+						u.coddpto,
+						u.codprov,
+						u.coddist,
+						u.nombre 
+					from sernanp.ubigeo u) ud on ud.idubigeo = pn.idubigeo
+				
+				where
+				 
+					p.idpersona = COALESCE(#{idpersona}, p.idpersona)   and 
+					pn.idpersonanatural =  COALESCE(#{idpersonanatural}, pn.idpersonanatural)   and 
+					COALESCE(pn.idtipodocumento,0) =  COALESCE(#{idtipodocumento}, COALESCE(pn.idtipodocumento,0))   and 
+					COALESCE(pn.numerodoc,'') =  COALESCE(#{numerodoc}, COALESCE(pn.numerodoc,''))   and  
+					COALESCE(pn.ruc,'') =  COALESCE(#{ruc}, COALESCE(pn.ruc,'')) and
+					COALESCE(pp.int_id_estado,0) =  COALESCE(#{int_id_estado}, COALESCE(pp.int_id_estado,0)) and
+					COALESCE(pp.srl_id_postulante_conv_area_org,0) =  COALESCE(#{srl_id_postulante_conv_area_org}, COALESCE(pp.srl_id_postulante_conv_area_org,0))
+	      
+	      
+	      
+	      
+]]>
+</select> 
+</mapper> 

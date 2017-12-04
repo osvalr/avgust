@@ -1,0 +1,13 @@
+{
+	"nameCrud": "TipoPlanilla",
+	"path": "tipos-planilla",
+	"nameRepository": "TTipoPlanillaRepository",
+	"nameModelXml": "TipoPlanillaModel.xml",
+	"subModels": [
+		{
+			"nameRepository": "TPlanillaPeriodoRepository",
+			"nameCrud": "TipoPlanillaPeriodo",
+			"nameSubModel": "TipoPlanillaPeriodoModel"
+		}
+	]
+}

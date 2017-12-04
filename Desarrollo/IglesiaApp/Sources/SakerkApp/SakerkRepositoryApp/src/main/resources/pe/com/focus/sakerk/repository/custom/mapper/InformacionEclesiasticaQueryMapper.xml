@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.focus.sakerk.repository.custom.mapper.InformacionEclesiasticaQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+					ie.id_info_eclesiastica ,
+					ie.id_persona_natural ,
+					ie.id_congregacion ,
+					pj.razon_social,
+					to_char(ie.fecha_evento, 'DD/MM/YYYY') as "fecha_evento",
+					ie.id_tipo_evento ,
+					tee.descrip_tipo_evento_eclesiastico,
+					ie.id_estado ,
+					e.descrip_estado_generico as "descrip_estado",
+					to_char(ie.fecha_registro, 'DD/MM/YYYY HH24:MI:ss') as "fecha_registro"
+			
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+					sakerk.informacion_eclesiastica ie
+					inner join 
+					vw_estado_generico e
+					on ie.id_estado = e.id_estado_generico
+					inner join
+					general.persona_juridica pj
+					on ie.id_congregacion = pj.id_persona_juridica
+					inner join 
+					vw_tipo_evento_eclesiastico tee
+					on ie.id_tipo_evento = tee.id_tipo_evento_eclesiastico
+			
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+					ie.id_info_eclesiastica = COALESCE(#{id_info_eclesiastica  },ie.id_info_eclesiastica) and
+					ie.id_persona_natural = COALESCE(#{id_persona_natural  },ie.id_persona_natural)	
+			
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.focus.sakerk.repository.custom.model.InformacionEclesiasticaQuery" parameterType="pe.com.focus.sakerk.repository.custom.model.InformacionEclesiasticaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.focus.sakerk.repository.custom.model.InformacionEclesiasticaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.focus.sakerk.repository.custom.model.InformacionEclesiasticaQuery" parameterType="pe.com.focus.sakerk.repository.custom.model.InformacionEclesiasticaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.focus.sakerk.repository.custom.model.InformacionEclesiasticaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.focus.sakerk.repository.custom.model.InformacionEclesiasticaQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

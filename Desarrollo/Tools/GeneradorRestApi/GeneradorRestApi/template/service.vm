@@ -1,0 +1,17 @@
+${copy}
+
+/**
+* @author  Javier Raffo
+* @version 1.0
+* @since   ${datetimeCreate}
+*/
+
+package ${packageService};
+
+import ${packageModel}.${nameModel};
+import ${packageModel}.${nameModelCriteria};
+import ${packageMapper}.${nameModelMapper};
+import pe.gob.senamhi.util.CrudService;
+
+public interface ${nameCrud}Service extends CrudService<${nameModel},${nameModelCriteria},${nameModelMapper}> {
+}

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.GestionarConvocatoriaPlazaMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+ 
+       cao.srl_id_convocatoria,
+       cao.srl_id_conv_area_org,
+       cao.idarea,
+       cao.idunidad,
+       cao.var_codigo_postulacion,
+       cao.int_num_puestos,
+       caop.idpersonal,
+       pn.idpersonanatural,
+       (COALESCE(pn.nombre,null) || ' ' || COALESCE(pn.apepat,null) || ' ' || COALESCE(pn.apemat,null)) as "nombre_completo",
+       cao.srl_id_requerimiento_personal,
+       rp.var_lugar_prestacion,
+       cao.srl_id_configuracion_factor_evaluacion,
+       cfe.var_descrip_configuracion,
+       fe.int_id_tipo_factor,
+       fe.dec_peso,
+       fe.dec_puntaje_min,
+       fe.dec_puntaje_max,
+       cao.int_id_estado
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+       sernanp.t_convocatoria_area_org cao 
+       LEFT JOIN sernanp.t_convocatoria c ON cao.srl_id_convocatoria = c.srl_id_convocatoria
+       LEFT JOIN personal.t_convocatoria_area_org_personal caop ON cao.srl_id_conv_area_org = caop.srl_id_conv_area_org
+       LEFT JOIN sernanp.personal p ON caop.idpersonal = p.idpersonal
+       LEFT JOIN sernanp.personanatural pn ON p.idpersonanatural = pn.idpersonanatural
+       LEFT JOIN personal.t_requerimiento_personal rp ON cao.srl_id_requerimiento_personal = rp.srl_id_requerimiento_personal
+       LEFT JOIN personal.t_factor_evaluacion fe ON cao.srl_id_configuracion_factor_evaluacion = fe.srl_id_configuracion_factor_evaluacion
+       LEFT JOIN personal.t_configuracion_factor_evaluacion cfe ON cao.srl_id_configuracion_factor_evaluacion = cfe.srl_id_configuracion_factor_evaluacion
+ 
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+       cao.srl_id_convocatoria = COALESCE(#{srl_id_convocatoria},cao.srl_id_convocatoria)   
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.GestionarConvocatoriaPlaza" parameterType="sernanp.app.dao.query.domain.GestionarConvocatoriaPlazaCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.GestionarConvocatoriaPlaza" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.GestionarConvocatoriaPlaza" parameterType="sernanp.app.dao.query.domain.GestionarConvocatoriaPlazaCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.GestionarConvocatoriaPlaza" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.GestionarConvocatoriaPlazaCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

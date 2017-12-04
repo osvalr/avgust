@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.PostulantePostulacionQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+
+pcao.srl_id_postulante_conv_area_org ,
+pp.int_id_postulante ,
+
+cnv.srl_id_convocatoria,
+cnv.var_num_convocatoria,
+(select a[2] || '-' || a[3] from (select regexp_split_to_array(cnv.var_num_convocatoria, '-')) as dt(a)) as "format_num_convocatoria",
+
+
+
+cao.srl_id_conv_area_org,
+cao.var_codigo_postulacion,
+(select a[2] || '-' || a[3] from (select regexp_split_to_array(cnv.var_num_convocatoria, '-')) as dt(a)) || ' - ' ||cao.var_codigo_postulacion as "descrip_completa",
+
+
+pcao.int_num_activacion,
+pcao.int_orden_merito,
+
+pcao.int_id_estado,
+epcao.var_nombre_estado,
+to_char(pcao.tsp_fecha_registro, 'DD/MM/YYYY HH24:MI:ss') as "tsp_fecha_registro"
+
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+ 
+
+sernanp.t_postulante_personal pp  
+inner join sernanp.t_postulante_cnv_area_org pcao on pcao.int_id_postulante = pp.int_id_postulante
+inner join sernanp.t_convocatoria_area_org cao on pcao.srl_id_conv_area_org = cao.srl_id_conv_area_org
+inner join sernanp.t_convocatoria cnv on cao.srl_id_convocatoria = cnv.srl_id_convocatoria
+inner join sernanp.areaorganica ao on cao.idarea = ao.idarea
+inner join vw_estado_postulante_cnv_area_org epcao on pcao.int_id_estado = CAST (epcao.var_cod_estado AS INTEGER)
+
+left join sernanp.unidadoperativa uo on cao.idunidad = uo.idunidad
+left join sernanp.sede s on ao.idsede = s.idsede
+left join sernanp.areanatural an on an.idareanatural = s.idareanatural
+left join sernanp.categoriaanp canp on canp.idcategoriaanp = an.idcategoriaanp
+
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+ 
+
+pcao.srl_id_postulante_conv_area_org = COALESCE(#{srl_id_postulante_conv_area_org},pcao.srl_id_postulante_conv_area_org) and
+pp.int_id_postulante = COALESCE(#{int_id_postulante},COALESCE(pp.int_id_postulante,0))
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.PostulantePostulacionQuery" parameterType="sernanp.app.dao.query.domain.PostulantePostulacionQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.PostulantePostulacionQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.PostulantePostulacionQuery" parameterType="sernanp.app.dao.query.domain.PostulantePostulacionQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.PostulantePostulacionQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.PostulantePostulacionQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

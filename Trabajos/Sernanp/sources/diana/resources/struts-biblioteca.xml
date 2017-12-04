@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    
+    <constant name="struts.multipart.maxSize" value="10000000000" />
+      
+	<package name="biblioteca" namespace="/" extends="proyecto,json-default">
+
+    <result-types> 
+      <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" /> 
+    </result-types>
+       
+     <action name="consultaRecInf" class="proyecto.action.BibliotecaAction"
+			method="consultarRecursosInformacion">
+			<result type="tiles" name="inicio">inicioRecursoInformacion</result>
+			<result name="lista">/biblioteca/lista.recursoinformacion.jsp</result>
+			
+			<interceptor-ref name="defaultStack" />
+	</action>      
+        
+          
+          <action name="consultaDetalleRecInf" class="proyecto.action.BibliotecaAction"
+			method="consultarDetalleRecursoInformacion">
+			<result name="success">/biblioteca/detalle.recursoinformacion.jsp</result>
+			<interceptor-ref name="general" />
+			
+			 <interceptor-ref name="defaultStack" />
+		</action>
+          
+        <action name="registroRecInf" class="proyecto.action.BibliotecaAction"
+			method="irRegistroRecursoInformacion">
+			<result name="success" type="tiles">inicioRegistroRecursoInformacion</result>
+			<result name="registro"  >/biblioteca/registro.recursoinformacion.jsp</result>
+			<!--  
+			<result name="registro"   >/biblioteca/registro.recursoinformacion.jsp</result>
+			-->
+			<interceptor-ref name="general" />
+			<!--  
+			<interceptor-ref name="usuario-logeado" />
+			 -->
+			<interceptor-ref name="defaultStack" />
+		</action>     
+          
+	
+	
+	
+	
+	<action name="guardaRecInf" class="proyecto.action.BibliotecaAction"
+			method="guardarRegistroRecursoInformacion">
+				<result name="actualiza" type="redirectAction">
+				<param name="actionName">consultaRecInf</param>
+                </result>
+
+            
+			<result name="crea" type="redirectAction">
+				<param name="actionName">registroRecInf</param>
+            </result>
+            <result name="actualiza" type="redirectAction">
+				<param name="actionName">consultaRecInf</param>
+            </result>
+            <result name="registro" type="redirectAction">
+				<param name="actionName">registroRecInf</param>
+                <param name="fuente">2</param>
+                <param name="idrecursoinformacionparam">${idcodigo}</param>
+            </result>
+			<interceptor-ref name="general" />
+			<!--  
+			<interceptor-ref name="usuario-logeado" />
+			 -->
+			 <interceptor-ref name="defaultStack" />
+		</action> 
+	
+	<action name="getImagenPortada" class="proyecto.action.BibliotecaAction"
+			>
+      		<result name="success" type="stream">
+      		   <param name="inputName">imagenPortada</param>
+      		</result>
+			<interceptor-ref name="general" />
+			<!--  
+			<interceptor-ref name="usuario-logeado" />
+			 -->
+			 <interceptor-ref name="defaultStack" />
+		</action>
+	
+	<action name="cargaArchivoBiblioteca" class="proyecto.action.BibliotecaAction"
+			method="cargarArchivoBiblioteca">
+      		<result name="success">/biblioteca/imagen.portada.recursoinformacion.jsp</result>
+			<interceptor-ref name="general" />
+			<!--  
+			<interceptor-ref name="usuario-logeado" />
+			 -->
+			 <interceptor-ref name="defaultStack" />
+		</action>
+   
+    <action name="buscaEditorial" class="proyecto.action.BibliotecaAction"
+			method="buscarEditoriales">
+			<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="general" /> 
+			
+			<interceptor-ref name="defaultStack" />
+		</action>
+		
+	<action name="buscaTema" class="proyecto.action.BibliotecaAction"
+			method="buscarTemas">
+			<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="general" /> 
+			
+			<interceptor-ref name="defaultStack" />
+		</action>	
+		
+	<action name="buscaAutor" class="proyecto.action.BibliotecaAction"
+			method="buscarAutores">
+			<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="general" /> 
+			
+			<interceptor-ref name="defaultStack" />
+		</action>	
+     
+     <action name="buscaPersonalAprobacion" class="proyecto.action.BibliotecaAction"
+			method="buscarPersonalAprobacion">
+			<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="general" /> 
+			
+			<interceptor-ref name="defaultStack" />
+		</action>	
+		
+		<action name="guardaEditorial" class="proyecto.action.BibliotecaAction"
+			method="guardarRegistroEditorial">
+			<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="defaultStack" />
+		</action>
+        <action name="guardaAutor" class="proyecto.action.BibliotecaAction"
+			method="guardarRegistroAutor">
+			<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="defaultStack" />
+		</action>
+		<action name="guardaTema" class="proyecto.action.BibliotecaAction"
+			method="guardarRegistroTema">
+			<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="defaultStack" />
+		</action>
+		<action name="muestraArchivoRecInf" class="proyecto.action.BibliotecaAction">
+			<result name="success" type="stream">
+				<param name="inputName">archivoBiblioteca</param>
+				<param name="contentType"> application/octet-stream </param>
+				<param name="contentDisposition">attachment;filename="${nombrearchivo}"</param>
+			</result>
+		
+            <interceptor-ref name="general" /> 
+			
+			<interceptor-ref name="defaultStack" />
+		</action>
+		
+		<action name="obtieneFiltrosRecInf" class="proyecto.action.BibliotecaAction"
+			method="obtenerFiltrosRecursoInformacion">
+			<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="general" /> 
+			
+			<interceptor-ref name="defaultStack" />
+		</action>
+		
+		
+		
+		<action name="eliminaRecInf" class="proyecto.action.BibliotecaAction"
+			method="eliminarRegistroRecursoInformacion">
+			<result name="success" type="redirectAction">
+                 <param name="actionName">consultaRecInf</param>
+             </result>
+			<interceptor-ref name="general" />
+			
+			 <interceptor-ref name="defaultStack" />
+		</action>
+		
+		<action name="exportaRecInf" class="proyecto.action.BibliotecaAction">
+			<result name="success" type="stream">
+				<param name="inputName">resultadoListaRecursoInformacion</param>
+				<param name="contentType"> application/octet-stream </param>
+				<param name="contentDisposition">attachment;filename=${nombreArchivo}</param>
+			</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="defaultStack" />
+		</action>
+		
+		
+		<action name="muestraPdfDetRecInf" class="proyecto.action.BibliotecaAction">
+			<result name="success" type="stream">
+				<param name="inputName">resultadoRecursoInformacion</param>
+				<param name="contentType"> application/octet-stream </param>
+				<param name="contentDisposition">attachment;filename=${nombreArchivo}</param>
+			</result>
+			<interceptor-ref name="general" /> 
+			<interceptor-ref name="defaultStack" />
+		</action>
+		
+		
+	</package>
+
+</struts>

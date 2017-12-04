@@ -1,0 +1,6 @@
+{
+	"nameCrud": "PostulanteGanador",
+	"path": "postulante-ganador",
+	"nameRepository": "TPlazaPostulanteRepository",
+	"nameModelXml": "PostulanteGanadorModel.xml"
+}

@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pe.com.acme.domain.mybatis.mapper.MembInfoMapper" >
+  <resultMap id="BaseResultMap" type="pe.com.acme.domain.mybatis.model.MembInfo" >
+    <id column="memb_guid" property="memb_guid" jdbcType="INTEGER" />
+    <result column="memb___id" property="memb___id" jdbcType="VARCHAR" />
+    <result column="memb__pwd" property="memb__pwd" jdbcType="VARCHAR" />
+    <result column="memb_name" property="memb_name" jdbcType="VARCHAR" />
+    <result column="sno__numb" property="sno__numb" jdbcType="CHAR" />
+    <result column="post_code" property="post_code" jdbcType="CHAR" />
+    <result column="addr_info" property="addr_info" jdbcType="VARCHAR" />
+    <result column="addr_deta" property="addr_deta" jdbcType="VARCHAR" />
+    <result column="tel__numb" property="tel__numb" jdbcType="VARCHAR" />
+    <result column="phon_numb" property="phon_numb" jdbcType="VARCHAR" />
+    <result column="mail_addr" property="mail_addr" jdbcType="VARCHAR" />
+    <result column="fpas_ques" property="fpas_ques" jdbcType="VARCHAR" />
+    <result column="fpas_answ" property="fpas_answ" jdbcType="VARCHAR" />
+    <result column="job__code" property="job__code" jdbcType="CHAR" />
+    <result column="appl_days" property="appl_days" jdbcType="TIMESTAMP" />
+    <result column="modi_days" property="modi_days" jdbcType="TIMESTAMP" />
+    <result column="out__days" property="out__days" jdbcType="TIMESTAMP" />
+    <result column="true_days" property="true_days" jdbcType="TIMESTAMP" />
+    <result column="mail_chek" property="mail_chek" jdbcType="CHAR" />
+    <result column="bloc_code" property="bloc_code" jdbcType="CHAR" />
+    <result column="ctl1_code" property="ctl1_code" jdbcType="CHAR" />
+    <result column="cspoints" property="cspoints" jdbcType="INTEGER" />
+ 
+    <result column="Country" property="country" jdbcType="INTEGER" />
+    <result column="Gender" property="gender" jdbcType="INTEGER" />
+   
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    memb_guid, memb___id, memb__pwd, memb_name, sno__numb, post_code, addr_info, addr_deta, 
+    tel__numb, phon_numb, mail_addr, fpas_ques, fpas_answ, job__code, appl_days, modi_days, 
+    out__days, true_days, mail_chek, bloc_code, ctl1_code, cspoints, Country, Gender
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.acme.domain.mybatis.model.MembInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from dbo.MEMB_INFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="pe.com.acme.domain.mybatis.model.MembInfoKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from dbo.MEMB_INFO
+    where memb_guid = #{memb_guid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="pe.com.acme.domain.mybatis.model.MembInfoKey" >
+    delete from dbo.MEMB_INFO
+    where memb_guid = #{memb_guid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="pe.com.acme.domain.mybatis.model.MembInfoExample" >
+    delete from dbo.MEMB_INFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.acme.domain.mybatis.model.MembInfo" useGeneratedKeys="true" keyProperty="memb_guid" >
+    insert into dbo.MEMB_INFO (memb___id, memb__pwd, memb_name, 
+      sno__numb, post_code, addr_info, 
+      addr_deta, tel__numb, phon_numb, 
+      mail_addr, fpas_ques, fpas_answ, 
+      job__code, appl_days, modi_days, 
+      out__days, true_days, mail_chek, 
+      bloc_code, ctl1_code, cspoints, 
+      Country, Gender
+      )
+    values (#{memb___id,jdbcType=VARCHAR}, #{memb__pwd,jdbcType=VARCHAR}, #{memb_name,jdbcType=VARCHAR}, 
+      #{sno__numb,jdbcType=CHAR}, #{post_code,jdbcType=CHAR}, #{addr_info,jdbcType=VARCHAR}, 
+      #{addr_deta,jdbcType=VARCHAR}, #{tel__numb,jdbcType=VARCHAR}, #{phon_numb,jdbcType=VARCHAR}, 
+      #{mail_addr,jdbcType=VARCHAR}, #{fpas_ques,jdbcType=VARCHAR}, #{fpas_answ,jdbcType=VARCHAR}, 
+      #{job__code,jdbcType=CHAR}, #{appl_days,jdbcType=TIMESTAMP}, #{modi_days,jdbcType=TIMESTAMP}, 
+      #{out__days,jdbcType=TIMESTAMP}, #{true_days,jdbcType=TIMESTAMP}, #{mail_chek,jdbcType=CHAR}, 
+      #{bloc_code,jdbcType=CHAR}, #{ctl1_code,jdbcType=CHAR}, #{cspoints,jdbcType=INTEGER}, 
+      #{country,jdbcType=INTEGER}, #{gender,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.acme.domain.mybatis.model.MembInfo" useGeneratedKeys="true" keyProperty="memb_guid" >
+    insert into dbo.MEMB_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="memb___id != null" >
+        memb___id,
+      </if>
+      <if test="memb__pwd != null" >
+        memb__pwd,
+      </if>
+      <if test="memb_name != null" >
+        memb_name,
+      </if>
+      <if test="sno__numb != null" >
+        sno__numb,
+      </if>
+      <if test="post_code != null" >
+        post_code,
+      </if>
+      <if test="addr_info != null" >
+        addr_info,
+      </if>
+      <if test="addr_deta != null" >
+        addr_deta,
+      </if>
+      <if test="tel__numb != null" >
+        tel__numb,
+      </if>
+      <if test="phon_numb != null" >
+        phon_numb,
+      </if>
+      <if test="mail_addr != null" >
+        mail_addr,
+      </if>
+      <if test="fpas_ques != null" >
+        fpas_ques,
+      </if>
+      <if test="fpas_answ != null" >
+        fpas_answ,
+      </if>
+      <if test="job__code != null" >
+        job__code,
+      </if>
+      <if test="appl_days != null" >
+        appl_days,
+      </if>
+      <if test="modi_days != null" >
+        modi_days,
+      </if>
+      <if test="out__days != null" >
+        out__days,
+      </if>
+      <if test="true_days != null" >
+        true_days,
+      </if>
+      <if test="mail_chek != null" >
+        mail_chek,
+      </if>
+      <if test="bloc_code != null" >
+        bloc_code,
+      </if>
+      <if test="ctl1_code != null" >
+        ctl1_code,
+      </if>
+      <if test="cspoints != null" >
+        cspoints,
+      </if>
+      
+      <if test="country != null" >
+        Country,
+      </if>
+      <if test="gender != null" >
+        Gender
+      </if>
+      
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="memb___id != null" >
+        #{memb___id,jdbcType=VARCHAR},
+      </if>
+      <if test="memb__pwd != null" >
+        #{memb__pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="memb_name != null" >
+        #{memb_name,jdbcType=VARCHAR},
+      </if>
+      <if test="sno__numb != null" >
+        #{sno__numb,jdbcType=CHAR},
+      </if>
+      <if test="post_code != null" >
+        #{post_code,jdbcType=CHAR},
+      </if>
+      <if test="addr_info != null" >
+        #{addr_info,jdbcType=VARCHAR},
+      </if>
+      <if test="addr_deta != null" >
+        #{addr_deta,jdbcType=VARCHAR},
+      </if>
+      <if test="tel__numb != null" >
+        #{tel__numb,jdbcType=VARCHAR},
+      </if>
+      <if test="phon_numb != null" >
+        #{phon_numb,jdbcType=VARCHAR},
+      </if>
+      <if test="mail_addr != null" >
+        #{mail_addr,jdbcType=VARCHAR},
+      </if>
+      <if test="fpas_ques != null" >
+        #{fpas_ques,jdbcType=VARCHAR},
+      </if>
+      <if test="fpas_answ != null" >
+        #{fpas_answ,jdbcType=VARCHAR},
+      </if>
+      <if test="job__code != null" >
+        #{job__code,jdbcType=CHAR},
+      </if>
+      <if test="appl_days != null" >
+        #{appl_days,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modi_days != null" >
+        #{modi_days,jdbcType=TIMESTAMP},
+      </if>
+      <if test="out__days != null" >
+        #{out__days,jdbcType=TIMESTAMP},
+      </if>
+      <if test="true_days != null" >
+        #{true_days,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mail_chek != null" >
+        #{mail_chek,jdbcType=CHAR},
+      </if>
+      <if test="bloc_code != null" >
+        #{bloc_code,jdbcType=CHAR},
+      </if>
+      <if test="ctl1_code != null" >
+        #{ctl1_code,jdbcType=CHAR},
+      </if>
+      <if test="cspoints != null" >
+        #{cspoints,jdbcType=INTEGER},
+      </if>
+      
+      <if test="country != null" >
+        #{country,jdbcType=INTEGER},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=INTEGER}
+      </if>
+      
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.acme.domain.mybatis.model.MembInfoExample" resultType="java.lang.Integer" >
+    select count(*) from dbo.MEMB_INFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update dbo.MEMB_INFO
+    <set >
+      <if test="record.memb_guid != null" >
+        memb_guid = #{record.memb_guid,jdbcType=INTEGER},
+      </if>
+      <if test="record.memb___id != null" >
+        memb___id = #{record.memb___id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.memb__pwd != null" >
+        memb__pwd = #{record.memb__pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.memb_name != null" >
+        memb_name = #{record.memb_name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sno__numb != null" >
+        sno__numb = #{record.sno__numb,jdbcType=CHAR},
+      </if>
+      <if test="record.post_code != null" >
+        post_code = #{record.post_code,jdbcType=CHAR},
+      </if>
+      <if test="record.addr_info != null" >
+        addr_info = #{record.addr_info,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addr_deta != null" >
+        addr_deta = #{record.addr_deta,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tel__numb != null" >
+        tel__numb = #{record.tel__numb,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phon_numb != null" >
+        phon_numb = #{record.phon_numb,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mail_addr != null" >
+        mail_addr = #{record.mail_addr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fpas_ques != null" >
+        fpas_ques = #{record.fpas_ques,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fpas_answ != null" >
+        fpas_answ = #{record.fpas_answ,jdbcType=VARCHAR},
+      </if>
+      <if test="record.job__code != null" >
+        job__code = #{record.job__code,jdbcType=CHAR},
+      </if>
+      <if test="record.appl_days != null" >
+        appl_days = #{record.appl_days,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modi_days != null" >
+        modi_days = #{record.modi_days,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.out__days != null" >
+        out__days = #{record.out__days,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.true_days != null" >
+        true_days = #{record.true_days,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.mail_chek != null" >
+        mail_chek = #{record.mail_chek,jdbcType=CHAR},
+      </if>
+      <if test="record.bloc_code != null" >
+        bloc_code = #{record.bloc_code,jdbcType=CHAR},
+      </if>
+      <if test="record.ctl1_code != null" >
+        ctl1_code = #{record.ctl1_code,jdbcType=CHAR},
+      </if>
+      <if test="record.cspoints != null" >
+        cspoints = #{record.cspoints,jdbcType=INTEGER},
+      </if>
+      
+      <if test="record.country != null" >
+        Country = #{record.country,jdbcType=INTEGER},
+      </if>
+      <if test="record.gender != null" >
+        Gender = #{record.gender,jdbcType=INTEGER}
+      </if>
+      
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update dbo.MEMB_INFO
+    set memb_guid = #{record.memb_guid,jdbcType=INTEGER},
+      memb___id = #{record.memb___id,jdbcType=VARCHAR},
+      memb__pwd = #{record.memb__pwd,jdbcType=VARCHAR},
+      memb_name = #{record.memb_name,jdbcType=VARCHAR},
+      sno__numb = #{record.sno__numb,jdbcType=CHAR},
+      post_code = #{record.post_code,jdbcType=CHAR},
+      addr_info = #{record.addr_info,jdbcType=VARCHAR},
+      addr_deta = #{record.addr_deta,jdbcType=VARCHAR},
+      tel__numb = #{record.tel__numb,jdbcType=VARCHAR},
+      phon_numb = #{record.phon_numb,jdbcType=VARCHAR},
+      mail_addr = #{record.mail_addr,jdbcType=VARCHAR},
+      fpas_ques = #{record.fpas_ques,jdbcType=VARCHAR},
+      fpas_answ = #{record.fpas_answ,jdbcType=VARCHAR},
+      job__code = #{record.job__code,jdbcType=CHAR},
+      appl_days = #{record.appl_days,jdbcType=TIMESTAMP},
+      modi_days = #{record.modi_days,jdbcType=TIMESTAMP},
+      out__days = #{record.out__days,jdbcType=TIMESTAMP},
+      true_days = #{record.true_days,jdbcType=TIMESTAMP},
+      mail_chek = #{record.mail_chek,jdbcType=CHAR},
+      bloc_code = #{record.bloc_code,jdbcType=CHAR},
+      ctl1_code = #{record.ctl1_code,jdbcType=CHAR},
+      cspoints = #{record.cspoints,jdbcType=INTEGER},
+      
+      Country = #{record.country,jdbcType=INTEGER},
+      Gender = #{record.gender,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.acme.domain.mybatis.model.MembInfo" >
+    update dbo.MEMB_INFO
+    <set >
+      <if test="memb___id != null" >
+        memb___id = #{memb___id,jdbcType=VARCHAR},
+      </if>
+      <if test="memb__pwd != null" >
+        memb__pwd = #{memb__pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="memb_name != null" >
+        memb_name = #{memb_name,jdbcType=VARCHAR},
+      </if>
+      <if test="sno__numb != null" >
+        sno__numb = #{sno__numb,jdbcType=CHAR},
+      </if>
+      <if test="post_code != null" >
+        post_code = #{post_code,jdbcType=CHAR},
+      </if>
+      <if test="addr_info != null" >
+        addr_info = #{addr_info,jdbcType=VARCHAR},
+      </if>
+      <if test="addr_deta != null" >
+        addr_deta = #{addr_deta,jdbcType=VARCHAR},
+      </if>
+      <if test="tel__numb != null" >
+        tel__numb = #{tel__numb,jdbcType=VARCHAR},
+      </if>
+      <if test="phon_numb != null" >
+        phon_numb = #{phon_numb,jdbcType=VARCHAR},
+      </if>
+      <if test="mail_addr != null" >
+        mail_addr = #{mail_addr,jdbcType=VARCHAR},
+      </if>
+      <if test="fpas_ques != null" >
+        fpas_ques = #{fpas_ques,jdbcType=VARCHAR},
+      </if>
+      <if test="fpas_answ != null" >
+        fpas_answ = #{fpas_answ,jdbcType=VARCHAR},
+      </if>
+      <if test="job__code != null" >
+        job__code = #{job__code,jdbcType=CHAR},
+      </if>
+      <if test="appl_days != null" >
+        appl_days = #{appl_days,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modi_days != null" >
+        modi_days = #{modi_days,jdbcType=TIMESTAMP},
+      </if>
+      <if test="out__days != null" >
+        out__days = #{out__days,jdbcType=TIMESTAMP},
+      </if>
+      <if test="true_days != null" >
+        true_days = #{true_days,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mail_chek != null" >
+        mail_chek = #{mail_chek,jdbcType=CHAR},
+      </if>
+      <if test="bloc_code != null" >
+        bloc_code = #{bloc_code,jdbcType=CHAR},
+      </if>
+      <if test="ctl1_code != null" >
+        ctl1_code = #{ctl1_code,jdbcType=CHAR},
+      </if>
+      <if test="cspoints != null" >
+        cspoints = #{cspoints,jdbcType=INTEGER},
+      </if>
+      
+      <if test="country != null" >
+        Country = #{country,jdbcType=INTEGER},
+      </if>
+      <if test="gender != null" >
+        Gender = #{gender,jdbcType=INTEGER}
+      </if>
+      
+    </set>
+    where memb_guid = #{memb_guid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.acme.domain.mybatis.model.MembInfo" >
+    update dbo.MEMB_INFO
+    set memb___id = #{memb___id,jdbcType=VARCHAR},
+      memb__pwd = #{memb__pwd,jdbcType=VARCHAR},
+      memb_name = #{memb_name,jdbcType=VARCHAR},
+      sno__numb = #{sno__numb,jdbcType=CHAR},
+      post_code = #{post_code,jdbcType=CHAR},
+      addr_info = #{addr_info,jdbcType=VARCHAR},
+      addr_deta = #{addr_deta,jdbcType=VARCHAR},
+      tel__numb = #{tel__numb,jdbcType=VARCHAR},
+      phon_numb = #{phon_numb,jdbcType=VARCHAR},
+      mail_addr = #{mail_addr,jdbcType=VARCHAR},
+      fpas_ques = #{fpas_ques,jdbcType=VARCHAR},
+      fpas_answ = #{fpas_answ,jdbcType=VARCHAR},
+      job__code = #{job__code,jdbcType=CHAR},
+      appl_days = #{appl_days,jdbcType=TIMESTAMP},
+      modi_days = #{modi_days,jdbcType=TIMESTAMP},
+      out__days = #{out__days,jdbcType=TIMESTAMP},
+      true_days = #{true_days,jdbcType=TIMESTAMP},
+      mail_chek = #{mail_chek,jdbcType=CHAR},
+      bloc_code = #{bloc_code,jdbcType=CHAR},
+      ctl1_code = #{ctl1_code,jdbcType=CHAR},
+      cspoints = #{cspoints,jdbcType=INTEGER},
+      
+      Country = #{country,jdbcType=INTEGER},
+      Gender = #{gender,jdbcType=INTEGER}
+    where memb_guid = #{memb_guid,jdbcType=INTEGER}
+  </update>
+  <select resultMap="BaseResultMap" parameterType="pe.com.acme.domain.mybatis.model.MembInfoExample" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from dbo.MEMB_INFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

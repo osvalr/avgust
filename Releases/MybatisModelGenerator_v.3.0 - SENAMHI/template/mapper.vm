@@ -1,0 +1,26 @@
+${copy}
+
+/**
+* The ${modelDto.nameMapper} interface content the methods for run the SQL Query.
+*
+* @author  Javier Raffo
+* @version 1.0
+* @since   ${datetimeCreate}
+*/
+
+package ${modelDto.packageMapper};
+
+import java.util.List; 
+import java.util.Map; 
+import org.apache.ibatis.session.RowBounds; 
+import ${modelDto.namespaceModel};
+import ${modelDto.namespaceCriteria};
+
+public interface ${modelDto.nameMapper} { 
+   List<${modelDto.nameModel}> getListQueryByCriteria(${modelDto.nameCriteria} criteria);
+   List<${modelDto.nameModel}> getListQueryByMap(Map<String, Object> paramMap); 
+   List<${modelDto.nameModel}> getListQueryPaginationByCriteria(${modelDto.nameCriteria} criteria, RowBounds rowBounds); 
+   List<${modelDto.nameModel}> getListQueryPaginationByMap(Map<String, Object> paramMap, RowBounds rowBounds); 
+   int getCountRowsByCriteria(${modelDto.nameCriteria} criteria); 
+   int getCountRowsByMap(Map<String, Object> paramMap);
+} 

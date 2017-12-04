@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.ResultadoVacacionesQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.ResultadoVacacionesQuery" parameterType="sernanp.app.dao.query.domain.ResultadoVacacionesQueryCriteria"> 
+<![CDATA[
+
+	      
+	      
+	            SELECT
+	            
+	            sernanp.fn_genera_vacaciones_truncas_personal(#{idpersonal}) as "resultado";
+	            
+	            
+		  
+	      
+]]>
+</select> 
+</mapper> 

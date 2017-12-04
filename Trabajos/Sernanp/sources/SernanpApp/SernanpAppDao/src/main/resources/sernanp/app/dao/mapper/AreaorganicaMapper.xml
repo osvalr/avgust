@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sernanp.app.dao.mapper.AreaorganicaMapper" >
+  <resultMap id="BaseResultMap" type="sernanp.app.dao.domain.Areaorganica" >
+    <id column="idarea" property="idarea" jdbcType="INTEGER" />
+    <result column="codarea" property="codarea" jdbcType="CHAR" />
+    <result column="desarea" property="desarea" jdbcType="VARCHAR" />
+    <result column="idtipoarea" property="idtipoarea" jdbcType="INTEGER" />
+    <result column="telefonoareaorganica" property="telefonoareaorganica" jdbcType="INTEGER" />
+    <result column="direccionareaorganica" property="direccionareaorganica" jdbcType="VARCHAR" />
+    <result column="faxareaorganica" property="faxareaorganica" jdbcType="INTEGER" />
+    <result column="idsede" property="idsede" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    idarea, codarea, desarea, idtipoarea, telefonoareaorganica, direccionareaorganica, 
+    faxareaorganica, idsede
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.AreaorganicaExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sernanp.areaorganica
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.AreaorganicaKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from sernanp.areaorganica
+    where idarea = #{idarea,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="sernanp.app.dao.domain.AreaorganicaKey" >
+    delete from sernanp.areaorganica
+    where idarea = #{idarea,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sernanp.app.dao.domain.AreaorganicaExample" >
+    delete from sernanp.areaorganica
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sernanp.app.dao.domain.Areaorganica" useGeneratedKeys="true" keyProperty="idarea" >
+    insert into sernanp.areaorganica (codarea, desarea, idtipoarea, 
+      telefonoareaorganica, direccionareaorganica, 
+      faxareaorganica, idsede)
+    values (#{codarea,jdbcType=CHAR}, #{desarea,jdbcType=VARCHAR}, #{idtipoarea,jdbcType=INTEGER}, 
+      #{telefonoareaorganica,jdbcType=INTEGER}, #{direccionareaorganica,jdbcType=VARCHAR}, 
+      #{faxareaorganica,jdbcType=INTEGER}, #{idsede,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="sernanp.app.dao.domain.Areaorganica" useGeneratedKeys="true" keyProperty="idarea" >
+    insert into sernanp.areaorganica
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="codarea != null" >
+        codarea,
+      </if>
+      <if test="desarea != null" >
+        desarea,
+      </if>
+      <if test="idtipoarea != null" >
+        idtipoarea,
+      </if>
+      <if test="telefonoareaorganica != null" >
+        telefonoareaorganica,
+      </if>
+      <if test="direccionareaorganica != null" >
+        direccionareaorganica,
+      </if>
+      <if test="faxareaorganica != null" >
+        faxareaorganica,
+      </if>
+      <if test="idsede != null" >
+        idsede,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="codarea != null" >
+        #{codarea,jdbcType=CHAR},
+      </if>
+      <if test="desarea != null" >
+        #{desarea,jdbcType=VARCHAR},
+      </if>
+      <if test="idtipoarea != null" >
+        #{idtipoarea,jdbcType=INTEGER},
+      </if>
+      <if test="telefonoareaorganica != null" >
+        #{telefonoareaorganica,jdbcType=INTEGER},
+      </if>
+      <if test="direccionareaorganica != null" >
+        #{direccionareaorganica,jdbcType=VARCHAR},
+      </if>
+      <if test="faxareaorganica != null" >
+        #{faxareaorganica,jdbcType=INTEGER},
+      </if>
+      <if test="idsede != null" >
+        #{idsede,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sernanp.app.dao.domain.AreaorganicaExample" resultType="java.lang.Integer" >
+    select count(*) from sernanp.areaorganica
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sernanp.areaorganica
+    <set >
+      <if test="record.idarea != null" >
+        idarea = #{record.idarea,jdbcType=INTEGER},
+      </if>
+      <if test="record.codarea != null" >
+        codarea = #{record.codarea,jdbcType=CHAR},
+      </if>
+      <if test="record.desarea != null" >
+        desarea = #{record.desarea,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idtipoarea != null" >
+        idtipoarea = #{record.idtipoarea,jdbcType=INTEGER},
+      </if>
+      <if test="record.telefonoareaorganica != null" >
+        telefonoareaorganica = #{record.telefonoareaorganica,jdbcType=INTEGER},
+      </if>
+      <if test="record.direccionareaorganica != null" >
+        direccionareaorganica = #{record.direccionareaorganica,jdbcType=VARCHAR},
+      </if>
+      <if test="record.faxareaorganica != null" >
+        faxareaorganica = #{record.faxareaorganica,jdbcType=INTEGER},
+      </if>
+      <if test="record.idsede != null" >
+        idsede = #{record.idsede,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sernanp.areaorganica
+    set idarea = #{record.idarea,jdbcType=INTEGER},
+      codarea = #{record.codarea,jdbcType=CHAR},
+      desarea = #{record.desarea,jdbcType=VARCHAR},
+      idtipoarea = #{record.idtipoarea,jdbcType=INTEGER},
+      telefonoareaorganica = #{record.telefonoareaorganica,jdbcType=INTEGER},
+      direccionareaorganica = #{record.direccionareaorganica,jdbcType=VARCHAR},
+      faxareaorganica = #{record.faxareaorganica,jdbcType=INTEGER},
+      idsede = #{record.idsede,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sernanp.app.dao.domain.Areaorganica" >
+    update sernanp.areaorganica
+    <set >
+      <if test="codarea != null" >
+        codarea = #{codarea,jdbcType=CHAR},
+      </if>
+      <if test="desarea != null" >
+        desarea = #{desarea,jdbcType=VARCHAR},
+      </if>
+      <if test="idtipoarea != null" >
+        idtipoarea = #{idtipoarea,jdbcType=INTEGER},
+      </if>
+      <if test="telefonoareaorganica != null" >
+        telefonoareaorganica = #{telefonoareaorganica,jdbcType=INTEGER},
+      </if>
+      <if test="direccionareaorganica != null" >
+        direccionareaorganica = #{direccionareaorganica,jdbcType=VARCHAR},
+      </if>
+      <if test="faxareaorganica != null" >
+        faxareaorganica = #{faxareaorganica,jdbcType=INTEGER},
+      </if>
+      <if test="idsede != null" >
+        idsede = #{idsede,jdbcType=INTEGER},
+      </if>
+    </set>
+    where idarea = #{idarea,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sernanp.app.dao.domain.Areaorganica" >
+    update sernanp.areaorganica
+    set codarea = #{codarea,jdbcType=CHAR},
+      desarea = #{desarea,jdbcType=VARCHAR},
+      idtipoarea = #{idtipoarea,jdbcType=INTEGER},
+      telefonoareaorganica = #{telefonoareaorganica,jdbcType=INTEGER},
+      direccionareaorganica = #{direccionareaorganica,jdbcType=VARCHAR},
+      faxareaorganica = #{faxareaorganica,jdbcType=INTEGER},
+      idsede = #{idsede,jdbcType=INTEGER}
+    where idarea = #{idarea,jdbcType=INTEGER}
+  </update>
+</mapper>

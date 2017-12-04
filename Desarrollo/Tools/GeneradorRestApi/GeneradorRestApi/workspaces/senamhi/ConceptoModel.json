@@ -1,0 +1,18 @@
+{
+	"nameCrud": "Concepto",
+	"path": "conceptos",
+	"nameRepository": "TConceptoRepository",
+	"nameModelXml": "ConceptoModel.xml",
+		"subModels": [
+		{
+			"nameCrud": "ConceptoAfecto",
+			"nameSubModel": "ConceptoAfectoModel",
+			"nameRepository": "TConceptoAfectoRepository"
+		},
+		{
+			"nameCrud": "ConceptoFrecuencia",
+			"nameSubModel": "ConceptoFrecuenciaModel",
+			"nameRepository": "TConceptoFrecuenciaRepository"
+		}
+	]
+}

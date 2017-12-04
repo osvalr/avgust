@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sernanp.app.dao.mapper.TConvocatoriaAreaOrgMapper" >
+  <resultMap id="BaseResultMap" type="sernanp.app.dao.domain.TConvocatoriaAreaOrg" >
+    <id column="srl_id_conv_area_org" property="srl_id_conv_area_org" jdbcType="INTEGER" />
+    <result column="srl_id_convocatoria" property="srl_id_convocatoria" jdbcType="INTEGER" />
+    <result column="idarea" property="idarea" jdbcType="INTEGER" />
+    <result column="idunidad" property="idunidad" jdbcType="INTEGER" />
+    <result column="var_codigo_postulacion" property="var_codigo_postulacion" jdbcType="VARCHAR" />
+    <result column="int_num_puestos" property="int_num_puestos" jdbcType="INTEGER" />
+    <result column="int_id_estado" property="int_id_estado" jdbcType="INTEGER" />
+    <result column="int_num_activacion" property="int_num_activacion" jdbcType="INTEGER" />
+    <result column="tsp_fecha_registro" property="tsp_fecha_registro" jdbcType="TIMESTAMP" />
+    <result column="srl_id_requerimiento_personal" property="srl_id_requerimiento_personal" jdbcType="INTEGER" />
+    <result column="srl_id_configuracion_factor_evaluacion" property="srl_id_configuracion_factor_evaluacion" jdbcType="INTEGER" />
+    <result column="srl_id_configuracion_evaluacion_personal" property="srl_id_configuracion_evaluacion_personal" jdbcType="INTEGER" />
+    <result column="idpersonal" property="idpersonal" jdbcType="INTEGER" />
+    <result column="var_lugar_prestacion" property="var_lugar_prestacion" jdbcType="VARCHAR" />
+    <result column="dte_fecha_inicio_contrato" property="dte_fecha_inicio_contrato" jdbcType="DATE" />
+    <result column="dte_fecha_fin_contrato" property="dte_fecha_fin_contrato" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    srl_id_conv_area_org, srl_id_convocatoria, idarea, idunidad, var_codigo_postulacion, 
+    int_num_puestos, int_id_estado, int_num_activacion, tsp_fecha_registro, srl_id_requerimiento_personal, 
+    srl_id_configuracion_factor_evaluacion, srl_id_configuracion_evaluacion_personal, 
+    idpersonal, var_lugar_prestacion, dte_fecha_inicio_contrato, dte_fecha_fin_contrato
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TConvocatoriaAreaOrgExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sernanp.t_convocatoria_area_org
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TConvocatoriaAreaOrgKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from sernanp.t_convocatoria_area_org
+    where srl_id_conv_area_org = #{srl_id_conv_area_org,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="sernanp.app.dao.domain.TConvocatoriaAreaOrgKey" >
+    delete from sernanp.t_convocatoria_area_org
+    where srl_id_conv_area_org = #{srl_id_conv_area_org,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sernanp.app.dao.domain.TConvocatoriaAreaOrgExample" >
+    delete from sernanp.t_convocatoria_area_org
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sernanp.app.dao.domain.TConvocatoriaAreaOrg" useGeneratedKeys="true" keyProperty="srl_id_conv_area_org" >
+    insert into sernanp.t_convocatoria_area_org (srl_id_convocatoria, idarea, idunidad, 
+      var_codigo_postulacion, int_num_puestos, 
+      int_id_estado, int_num_activacion, tsp_fecha_registro, 
+      srl_id_requerimiento_personal, srl_id_configuracion_factor_evaluacion, 
+      srl_id_configuracion_evaluacion_personal, idpersonal, 
+      var_lugar_prestacion, dte_fecha_inicio_contrato, 
+      dte_fecha_fin_contrato)
+    values (#{srl_id_convocatoria,jdbcType=INTEGER}, #{idarea,jdbcType=INTEGER}, #{idunidad,jdbcType=INTEGER}, 
+      #{var_codigo_postulacion,jdbcType=VARCHAR}, #{int_num_puestos,jdbcType=INTEGER}, 
+      #{int_id_estado,jdbcType=INTEGER}, #{int_num_activacion,jdbcType=INTEGER}, #{tsp_fecha_registro,jdbcType=TIMESTAMP}, 
+      #{srl_id_requerimiento_personal,jdbcType=INTEGER}, #{srl_id_configuracion_factor_evaluacion,jdbcType=INTEGER}, 
+      #{srl_id_configuracion_evaluacion_personal,jdbcType=INTEGER}, #{idpersonal,jdbcType=INTEGER}, 
+      #{var_lugar_prestacion,jdbcType=VARCHAR}, #{dte_fecha_inicio_contrato,jdbcType=DATE}, 
+      #{dte_fecha_fin_contrato,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="sernanp.app.dao.domain.TConvocatoriaAreaOrg" useGeneratedKeys="true" keyProperty="srl_id_conv_area_org" >
+    insert into sernanp.t_convocatoria_area_org
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="srl_id_convocatoria != null" >
+        srl_id_convocatoria,
+      </if>
+      <if test="idarea != null" >
+        idarea,
+      </if>
+      <if test="idunidad != null" >
+        idunidad,
+      </if>
+      <if test="var_codigo_postulacion != null" >
+        var_codigo_postulacion,
+      </if>
+      <if test="int_num_puestos != null" >
+        int_num_puestos,
+      </if>
+      <if test="int_id_estado != null" >
+        int_id_estado,
+      </if>
+      <if test="int_num_activacion != null" >
+        int_num_activacion,
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        tsp_fecha_registro,
+      </if>
+      <if test="srl_id_requerimiento_personal != null" >
+        srl_id_requerimiento_personal,
+      </if>
+      <if test="srl_id_configuracion_factor_evaluacion != null" >
+        srl_id_configuracion_factor_evaluacion,
+      </if>
+      <if test="srl_id_configuracion_evaluacion_personal != null" >
+        srl_id_configuracion_evaluacion_personal,
+      </if>
+      <if test="idpersonal != null" >
+        idpersonal,
+      </if>
+      <if test="var_lugar_prestacion != null" >
+        var_lugar_prestacion,
+      </if>
+      <if test="dte_fecha_inicio_contrato != null" >
+        dte_fecha_inicio_contrato,
+      </if>
+      <if test="dte_fecha_fin_contrato != null" >
+        dte_fecha_fin_contrato,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="srl_id_convocatoria != null" >
+        #{srl_id_convocatoria,jdbcType=INTEGER},
+      </if>
+      <if test="idarea != null" >
+        #{idarea,jdbcType=INTEGER},
+      </if>
+      <if test="idunidad != null" >
+        #{idunidad,jdbcType=INTEGER},
+      </if>
+      <if test="var_codigo_postulacion != null" >
+        #{var_codigo_postulacion,jdbcType=VARCHAR},
+      </if>
+      <if test="int_num_puestos != null" >
+        #{int_num_puestos,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_estado != null" >
+        #{int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="int_num_activacion != null" >
+        #{int_num_activacion,jdbcType=INTEGER},
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+      <if test="srl_id_requerimiento_personal != null" >
+        #{srl_id_requerimiento_personal,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_configuracion_factor_evaluacion != null" >
+        #{srl_id_configuracion_factor_evaluacion,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_configuracion_evaluacion_personal != null" >
+        #{srl_id_configuracion_evaluacion_personal,jdbcType=INTEGER},
+      </if>
+      <if test="idpersonal != null" >
+        #{idpersonal,jdbcType=INTEGER},
+      </if>
+      <if test="var_lugar_prestacion != null" >
+        #{var_lugar_prestacion,jdbcType=VARCHAR},
+      </if>
+      <if test="dte_fecha_inicio_contrato != null" >
+        #{dte_fecha_inicio_contrato,jdbcType=DATE},
+      </if>
+      <if test="dte_fecha_fin_contrato != null" >
+        #{dte_fecha_fin_contrato,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sernanp.app.dao.domain.TConvocatoriaAreaOrgExample" resultType="java.lang.Integer" >
+    select count(*) from sernanp.t_convocatoria_area_org
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sernanp.t_convocatoria_area_org
+    <set >
+      <if test="record.srl_id_conv_area_org != null" >
+        srl_id_conv_area_org = #{record.srl_id_conv_area_org,jdbcType=INTEGER},
+      </if>
+      <if test="record.srl_id_convocatoria != null" >
+        srl_id_convocatoria = #{record.srl_id_convocatoria,jdbcType=INTEGER},
+      </if>
+      <if test="record.idarea != null" >
+        idarea = #{record.idarea,jdbcType=INTEGER},
+      </if>
+      <if test="record.idunidad != null" >
+        idunidad = #{record.idunidad,jdbcType=INTEGER},
+      </if>
+      <if test="record.var_codigo_postulacion != null" >
+        var_codigo_postulacion = #{record.var_codigo_postulacion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.int_num_puestos != null" >
+        int_num_puestos = #{record.int_num_puestos,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_id_estado != null" >
+        int_id_estado = #{record.int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_num_activacion != null" >
+        int_num_activacion = #{record.int_num_activacion,jdbcType=INTEGER},
+      </if>
+      <if test="record.tsp_fecha_registro != null" >
+        tsp_fecha_registro = #{record.tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.srl_id_requerimiento_personal != null" >
+        srl_id_requerimiento_personal = #{record.srl_id_requerimiento_personal,jdbcType=INTEGER},
+      </if>
+      <if test="record.srl_id_configuracion_factor_evaluacion != null" >
+        srl_id_configuracion_factor_evaluacion = #{record.srl_id_configuracion_factor_evaluacion,jdbcType=INTEGER},
+      </if>
+      <if test="record.srl_id_configuracion_evaluacion_personal != null" >
+        srl_id_configuracion_evaluacion_personal = #{record.srl_id_configuracion_evaluacion_personal,jdbcType=INTEGER},
+      </if>
+      <if test="record.idpersonal != null" >
+        idpersonal = #{record.idpersonal,jdbcType=INTEGER},
+      </if>
+      <if test="record.var_lugar_prestacion != null" >
+        var_lugar_prestacion = #{record.var_lugar_prestacion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dte_fecha_inicio_contrato != null" >
+        dte_fecha_inicio_contrato = #{record.dte_fecha_inicio_contrato,jdbcType=DATE},
+      </if>
+      <if test="record.dte_fecha_fin_contrato != null" >
+        dte_fecha_fin_contrato = #{record.dte_fecha_fin_contrato,jdbcType=DATE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sernanp.t_convocatoria_area_org
+    set srl_id_conv_area_org = #{record.srl_id_conv_area_org,jdbcType=INTEGER},
+      srl_id_convocatoria = #{record.srl_id_convocatoria,jdbcType=INTEGER},
+      idarea = #{record.idarea,jdbcType=INTEGER},
+      idunidad = #{record.idunidad,jdbcType=INTEGER},
+      var_codigo_postulacion = #{record.var_codigo_postulacion,jdbcType=VARCHAR},
+      int_num_puestos = #{record.int_num_puestos,jdbcType=INTEGER},
+      int_id_estado = #{record.int_id_estado,jdbcType=INTEGER},
+      int_num_activacion = #{record.int_num_activacion,jdbcType=INTEGER},
+      tsp_fecha_registro = #{record.tsp_fecha_registro,jdbcType=TIMESTAMP},
+      srl_id_requerimiento_personal = #{record.srl_id_requerimiento_personal,jdbcType=INTEGER},
+      srl_id_configuracion_factor_evaluacion = #{record.srl_id_configuracion_factor_evaluacion,jdbcType=INTEGER},
+      srl_id_configuracion_evaluacion_personal = #{record.srl_id_configuracion_evaluacion_personal,jdbcType=INTEGER},
+      idpersonal = #{record.idpersonal,jdbcType=INTEGER},
+      var_lugar_prestacion = #{record.var_lugar_prestacion,jdbcType=VARCHAR},
+      dte_fecha_inicio_contrato = #{record.dte_fecha_inicio_contrato,jdbcType=DATE},
+      dte_fecha_fin_contrato = #{record.dte_fecha_fin_contrato,jdbcType=DATE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sernanp.app.dao.domain.TConvocatoriaAreaOrg" >
+    update sernanp.t_convocatoria_area_org
+    <set >
+      <if test="srl_id_convocatoria != null" >
+        srl_id_convocatoria = #{srl_id_convocatoria,jdbcType=INTEGER},
+      </if>
+      <if test="idarea != null" >
+        idarea = #{idarea,jdbcType=INTEGER},
+      </if>
+      <if test="idunidad != null" >
+        idunidad = #{idunidad,jdbcType=INTEGER},
+      </if>
+      <if test="var_codigo_postulacion != null" >
+        var_codigo_postulacion = #{var_codigo_postulacion,jdbcType=VARCHAR},
+      </if>
+      <if test="int_num_puestos != null" >
+        int_num_puestos = #{int_num_puestos,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_estado != null" >
+        int_id_estado = #{int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="int_num_activacion != null" >
+        int_num_activacion = #{int_num_activacion,jdbcType=INTEGER},
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        tsp_fecha_registro = #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+      <if test="srl_id_requerimiento_personal != null" >
+        srl_id_requerimiento_personal = #{srl_id_requerimiento_personal,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_configuracion_factor_evaluacion != null" >
+        srl_id_configuracion_factor_evaluacion = #{srl_id_configuracion_factor_evaluacion,jdbcType=INTEGER},
+      </if>
+      <if test="srl_id_configuracion_evaluacion_personal != null" >
+        srl_id_configuracion_evaluacion_personal = #{srl_id_configuracion_evaluacion_personal,jdbcType=INTEGER},
+      </if>
+      <if test="idpersonal != null" >
+        idpersonal = #{idpersonal,jdbcType=INTEGER},
+      </if>
+      <if test="var_lugar_prestacion != null" >
+        var_lugar_prestacion = #{var_lugar_prestacion,jdbcType=VARCHAR},
+      </if>
+      <if test="dte_fecha_inicio_contrato != null" >
+        dte_fecha_inicio_contrato = #{dte_fecha_inicio_contrato,jdbcType=DATE},
+      </if>
+      <if test="dte_fecha_fin_contrato != null" >
+        dte_fecha_fin_contrato = #{dte_fecha_fin_contrato,jdbcType=DATE},
+      </if>
+    </set>
+    where srl_id_conv_area_org = #{srl_id_conv_area_org,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sernanp.app.dao.domain.TConvocatoriaAreaOrg" >
+    update sernanp.t_convocatoria_area_org
+    set srl_id_convocatoria = #{srl_id_convocatoria,jdbcType=INTEGER},
+      idarea = #{idarea,jdbcType=INTEGER},
+      idunidad = #{idunidad,jdbcType=INTEGER},
+      var_codigo_postulacion = #{var_codigo_postulacion,jdbcType=VARCHAR},
+      int_num_puestos = #{int_num_puestos,jdbcType=INTEGER},
+      int_id_estado = #{int_id_estado,jdbcType=INTEGER},
+      int_num_activacion = #{int_num_activacion,jdbcType=INTEGER},
+      tsp_fecha_registro = #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      srl_id_requerimiento_personal = #{srl_id_requerimiento_personal,jdbcType=INTEGER},
+      srl_id_configuracion_factor_evaluacion = #{srl_id_configuracion_factor_evaluacion,jdbcType=INTEGER},
+      srl_id_configuracion_evaluacion_personal = #{srl_id_configuracion_evaluacion_personal,jdbcType=INTEGER},
+      idpersonal = #{idpersonal,jdbcType=INTEGER},
+      var_lugar_prestacion = #{var_lugar_prestacion,jdbcType=VARCHAR},
+      dte_fecha_inicio_contrato = #{dte_fecha_inicio_contrato,jdbcType=DATE},
+      dte_fecha_fin_contrato = #{dte_fecha_fin_contrato,jdbcType=DATE}
+    where srl_id_conv_area_org = #{srl_id_conv_area_org,jdbcType=INTEGER}
+  </update>
+</mapper>

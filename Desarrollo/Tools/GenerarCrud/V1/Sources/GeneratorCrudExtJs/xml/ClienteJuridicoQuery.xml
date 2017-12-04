@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model xmlns="http://www.jrtotem.com.pe">
+    <name>ClienteJuridicoQuery</name>
+    <mainPath>/Users/JRaffo/Git/repototem/Sources/Erp/InaviModelsQuery</mainPath>
+    <modelPath>src/main/java/pe/com/acme/query/mybatis/model</modelPath>
+    <criteriaPath>src/main/java/pe/com/acme/query/mybatis/model</criteriaPath>
+    <mapperPath>src/main/java/pe/com/acme/query/mybatis/mapper</mapperPath>
+    <xmlMapperPath>src/main/resources/pe/com/acme/query/mybatis/mapper</xmlMapperPath>
+    <nameModel>ClienteJuridicoQuery</nameModel>
+    <nameCriteria>ClienteJuridicoQueryCriteria</nameCriteria>
+    <nameMapper>ClienteJuridicoQueryMapper</nameMapper>
+    <nameXmlMapper>ClienteJuridicoQueryMapper</nameXmlMapper>
+    <namespaceModel>pe.com.acme.query.mybatis.model.ClienteJuridicoQuery</namespaceModel>
+    <namespaceCriteria>pe.com.acme.query.mybatis.model.ClienteJuridicoQueryCriteria</namespaceCriteria>
+    <namespaceMapper>pe.com.acme.query.mybatis.mapper.ClienteJuridicoQueryMapper</namespaceMapper>
+    <namespaceXmlMapper>pe.com.acme.query.mybatis.mapper.ClienteJuridicoQueryMapper</namespaceXmlMapper>
+    <packageModel>pe.com.acme.query.mybatis.model</packageModel>
+    <packageCriteria>pe.com.acme.query.mybatis.model</packageCriteria>
+    <packageMapper>pe.com.acme.query.mybatis.mapper</packageMapper>
+    <packageXmlMapper>pe.com.acme.query.mybatis.mapper</packageXmlMapper>
+    <outputProperties>
+        <property>
+            <name>id_persona</name>
+            <dataType>integer</dataType>
+        </property>
+        <property>
+            <name>razon_social</name>
+            <dataType>string</dataType>
+        </property>
+        <property>
+            <name>num_tipo_doc</name>
+            <dataType>string</dataType>
+        </property>
+        <property>
+            <name>id_estado</name>
+            <dataType>integer</dataType>
+        </property>
+        <property>
+            <name>descrip_estado</name>
+            <dataType>string</dataType>
+        </property>
+        <property>
+            <name>fecha_registro</name>
+            <dataType>string</dataType>
+        </property>
+        <property>
+            <name>fecha_modificacion</name>
+            <dataType>string</dataType>
+        </property>
+        <property>
+            <name>id_usuario_reg</name>
+            <dataType>integer</dataType>
+        </property>
+        <property>
+            <name>id_usuario_mod</name>
+            <dataType>integer</dataType>
+        </property>
+    </outputProperties>
+    <inputProperties>
+
+        <property>
+            <name>id_persona</name>
+            <dataType>integer</dataType>
+        </property>
+
+        <property>
+            <name>razon_social</name>
+            <dataType>string</dataType>
+        </property>
+        
+        <property>
+            <name>num_tipo_doc</name>
+            <dataType>string</dataType>
+        </property>
+
+
+        <property>
+            <name>id_estado</name>
+            <dataType>integer</dataType>
+        </property>
+
+    </inputProperties>
+    <subModels/>
+</model>

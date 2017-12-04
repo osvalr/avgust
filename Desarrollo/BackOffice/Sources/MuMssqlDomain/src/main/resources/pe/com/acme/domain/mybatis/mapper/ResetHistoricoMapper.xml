@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pe.com.acme.domain.mybatis.mapper.ResetHistoricoMapper" >
+  <resultMap id="BaseResultMap" type="pe.com.acme.domain.mybatis.model.ResetHistorico" >
+    <id column="id_reset_historico" property="id_reset_historico" jdbcType="INTEGER" />
+    <result column="AccountID" property="accountID" jdbcType="VARCHAR" />
+    <result column="NameCharacter" property="nameCharacter" jdbcType="VARCHAR" />
+    <result column="fecha_registro" property="fecha_registro" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id_reset_historico, AccountID, NameCharacter, fecha_registro
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.acme.domain.mybatis.model.ResetHistoricoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from dbo.reset_historico
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="pe.com.acme.domain.mybatis.model.ResetHistoricoKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from dbo.reset_historico
+    where id_reset_historico = #{id_reset_historico,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="pe.com.acme.domain.mybatis.model.ResetHistoricoKey" >
+    delete from dbo.reset_historico
+    where id_reset_historico = #{id_reset_historico,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="pe.com.acme.domain.mybatis.model.ResetHistoricoExample" >
+    delete from dbo.reset_historico
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.acme.domain.mybatis.model.ResetHistorico" useGeneratedKeys="true" keyProperty="id_reset_historico" >
+    insert into dbo.reset_historico (AccountID, NameCharacter, fecha_registro
+      )
+    values (#{accountID,jdbcType=VARCHAR}, #{nameCharacter,jdbcType=VARCHAR}, #{fecha_registro,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.acme.domain.mybatis.model.ResetHistorico" useGeneratedKeys="true" keyProperty="id_reset_historico" >
+    insert into dbo.reset_historico
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="accountID != null" >
+        AccountID,
+      </if>
+      <if test="nameCharacter != null" >
+        NameCharacter,
+      </if>
+      <if test="fecha_registro != null" >
+        fecha_registro,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="accountID != null" >
+        #{accountID,jdbcType=VARCHAR},
+      </if>
+      <if test="nameCharacter != null" >
+        #{nameCharacter,jdbcType=VARCHAR},
+      </if>
+      <if test="fecha_registro != null" >
+        #{fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.acme.domain.mybatis.model.ResetHistoricoExample" resultType="java.lang.Integer" >
+    select count(*) from dbo.reset_historico
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update dbo.reset_historico
+    <set >
+      <if test="record.id_reset_historico != null" >
+        id_reset_historico = #{record.id_reset_historico,jdbcType=INTEGER},
+      </if>
+      <if test="record.accountID != null" >
+        AccountID = #{record.accountID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nameCharacter != null" >
+        NameCharacter = #{record.nameCharacter,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fecha_registro != null" >
+        fecha_registro = #{record.fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update dbo.reset_historico
+    set id_reset_historico = #{record.id_reset_historico,jdbcType=INTEGER},
+      AccountID = #{record.accountID,jdbcType=VARCHAR},
+      NameCharacter = #{record.nameCharacter,jdbcType=VARCHAR},
+      fecha_registro = #{record.fecha_registro,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.acme.domain.mybatis.model.ResetHistorico" >
+    update dbo.reset_historico
+    <set >
+      <if test="accountID != null" >
+        AccountID = #{accountID,jdbcType=VARCHAR},
+      </if>
+      <if test="nameCharacter != null" >
+        NameCharacter = #{nameCharacter,jdbcType=VARCHAR},
+      </if>
+      <if test="fecha_registro != null" >
+        fecha_registro = #{fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id_reset_historico = #{id_reset_historico,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.acme.domain.mybatis.model.ResetHistorico" >
+    update dbo.reset_historico
+    set AccountID = #{accountID,jdbcType=VARCHAR},
+      NameCharacter = #{nameCharacter,jdbcType=VARCHAR},
+      fecha_registro = #{fecha_registro,jdbcType=TIMESTAMP}
+    where id_reset_historico = #{id_reset_historico,jdbcType=INTEGER}
+  </update>
+  <select resultMap="BaseResultMap" parameterType="pe.com.acme.domain.mybatis.model.ResetHistoricoExample" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from dbo.reset_historico
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

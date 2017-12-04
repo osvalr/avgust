@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.AdendaPorContratoQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.AdendaPorContratoQuery" parameterType="sernanp.app.dao.query.domain.AdendaPorContratoQueryCriteria"> 
+<![CDATA[
+
+	      
+	      
+				select 
+				
+					pc.srl_id_contrato ,
+					pc.srl_id_contrato_padre ,
+					(select a[2] || '-' || a[3] from (select regexp_split_to_array(pc.var_num_contrato, '-')) as dt(a)) as "var_num_contrato",
+					(select a[2] || '-' || a[3] from (select regexp_split_to_array((select pcx.var_num_contrato from sernanp.t_personal_contrato pcx where pcx.srl_id_contrato = pc.srl_id_contrato_padre), '-')) as dt(a)) as "var_num_contrato_padre",
+					to_char(pc.dte_fec_suscrip, 'DD/MM/YYYY') as "dte_fec_suscrip",
+					to_char(pc.dte_fec_inicio, 'DD/MM/YYYY') as "dte_fec_inicio",
+					to_char(pc.dte_fec_termino, 'DD/MM/YYYY') as "dte_fec_termino",
+					to_char(pc.dte_fec_cese, 'DD/MM/YYYY') as "dte_fec_cese",
+					pc.int_id_estado ,
+					detx.var_nombre_estado,
+					(select pcx.srl_id_postulante_conv_area_org from sernanp.t_personal_contrato pcx where pcx.srl_id_contrato = pc.srl_id_contrato_padre) as "srl_id_postulante_conv_area_org"
+					--11-02-2015 DAVID
+					,CASE WHEN pc.srl_id_contrato = (SELECT lp.srl_id_contrato FROM sernanp.t_persona_natural_legajo lp WHERE lp.srl_id_contrato = pc.srl_id_contrato AND lp.int_id_estado = 1 ) THEN 
+						(SELECT lp.srl_id_persona_natural_legajo FROM sernanp.t_persona_natural_legajo lp WHERE lp.srl_id_contrato = pc.srl_id_contrato AND lp.int_id_estado = 1 )
+					ELSE 0
+					END AS "flag_digital_contrato"
+				
+				from 
+					sernanp.t_personal_contrato pc
+					left join 
+					(
+					select det.var_cod_estado,det.var_nombre_estado from sernanp.t_detalle_estado_tabla det
+					where det.srl_id_estado_tabla = 2
+					) detx on detx.var_cod_estado = cast(pc.int_id_estado as char)
+				where 
+				
+					COALESCE(pc.srl_id_contrato_padre,0) = COALESCE(#{srl_id_contrato_padre},COALESCE(pc.srl_id_contrato_padre,0)) and
+					pc.int_id_estado <> 4
+				order by pc.dte_fec_inicio desc;
+		  
+	      
+]]>
+</select> 
+</mapper> 

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.PersonalContratoNominaQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+
+p.idpersona,
+pn.idpersonanatural,
+ps.idpersonal,
+pc.srl_id_contrato,
+pc.srl_id_regimen_contractual,
+pc.num_sueldo,
+pc.dte_fec_inicio,
+coalesce(pc.dte_fec_cese,ad.dte_fec_cese) as dte_fec_cese,
+pc.int_id_estado
+
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+
+sernanp.persona p inner join sernanp.personanatural pn on p.idpersona=pn.idpersona
+inner join sernanp.personal ps on ps.idpersonanatural=pn.idpersonanatural
+left join sernanp.t_personal_contrato pc on ps.idpersonal=pc.idpersonal
+left join sernanp.t_personal_contrato ad on pc.srl_id_contrato = ad.srl_id_contrato_padre
+
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+
+pc.int_id_estado = 2 and
+--coalesce(ad.int_id_estado,2) = 2 and
+p.idpersona = coalesce(#{idpersona},p.idpersona) and
+pn.idpersonanatural = coalesce(#{idpersonanatural},pn.idpersonanatural) and
+ps.idpersonal = coalesce(#{idpersonal},ps.idpersonal) and
+pc.srl_id_regimen_contractual = coalesce(#{srl_id_regimen_contractual},pc.srl_id_regimen_contractual) and
+pc.dte_fec_inicio=(select MAX(dte_fec_inicio) from sernanp.t_personal_contrato where idpersonal=pc.idpersonal) and
+coalesce(ad.dte_fec_inicio,current_date) = coalesce((select MAX(dte_fec_inicio) from sernanp.t_personal_contrato where srl_id_contrato_padre = pc.srl_id_contrato),current_date)
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.PersonalContratoNominaQuery" parameterType="sernanp.app.dao.query.domain.PersonalContratoNominaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.PersonalContratoNominaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.PersonalContratoNominaQuery" parameterType="sernanp.app.dao.query.domain.PersonalContratoNominaQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.PersonalContratoNominaQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.PersonalContratoNominaQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

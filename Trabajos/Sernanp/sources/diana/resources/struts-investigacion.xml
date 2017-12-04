@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>  
+  
+	<package name="investigacion" namespace="/investigacion" extends="proyecto"> 
+		<!--  
+		<action name="registro" class="proyecto.action.InvestigacionAction" method="registro">
+			<result name="success" type="tiles">investigacion.registro</result>
+			<interceptor-ref name="usuario-logeado" /> 
+		</action>
+		-->  
+		<action name="esquema" class="proyecto.action.InvestigacionAction" method="esquema">
+			<result name="success" type="tiles">investigacion.esquema</result>
+			<interceptor-ref name="usuario-logeado" /> 
+		</action>       
+	</package>     
+</struts>       

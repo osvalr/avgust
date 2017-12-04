@@ -1,0 +1,7 @@
+{
+	"titleCrud": "Provincias",
+	"nameCrud": "UbigeoProvincia",
+	"constUrlApi": "UBIGEO_PROVINCIAS_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "UbigeoProvinciaModel.xml"
+}

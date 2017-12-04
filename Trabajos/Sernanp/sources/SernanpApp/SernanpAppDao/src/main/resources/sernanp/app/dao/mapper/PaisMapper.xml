@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sernanp.app.dao.mapper.PaisMapper" >
+  <resultMap id="BaseResultMap" type="sernanp.app.dao.domain.Pais" >
+    <id column="idpais" property="idpais" jdbcType="INTEGER" />
+    <result column="codpais" property="codpais" jdbcType="VARCHAR" />
+    <result column="nompais" property="nompais" jdbcType="VARCHAR" />
+    <result column="nacpais" property="nacpais" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    idpais, codpais, nompais, nacpais
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.PaisExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sernanp.pais
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.PaisKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from sernanp.pais
+    where idpais = #{idpais,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="sernanp.app.dao.domain.PaisKey" >
+    delete from sernanp.pais
+    where idpais = #{idpais,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sernanp.app.dao.domain.PaisExample" >
+    delete from sernanp.pais
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sernanp.app.dao.domain.Pais" useGeneratedKeys="true" keyProperty="idpais" >
+    insert into sernanp.pais (codpais, nompais, nacpais
+      )
+    values (#{codpais,jdbcType=VARCHAR}, #{nompais,jdbcType=VARCHAR}, #{nacpais,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="sernanp.app.dao.domain.Pais" useGeneratedKeys="true" keyProperty="idpais" >
+    insert into sernanp.pais
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="codpais != null" >
+        codpais,
+      </if>
+      <if test="nompais != null" >
+        nompais,
+      </if>
+      <if test="nacpais != null" >
+        nacpais,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="codpais != null" >
+        #{codpais,jdbcType=VARCHAR},
+      </if>
+      <if test="nompais != null" >
+        #{nompais,jdbcType=VARCHAR},
+      </if>
+      <if test="nacpais != null" >
+        #{nacpais,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sernanp.app.dao.domain.PaisExample" resultType="java.lang.Integer" >
+    select count(*) from sernanp.pais
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sernanp.pais
+    <set >
+      <if test="record.idpais != null" >
+        idpais = #{record.idpais,jdbcType=INTEGER},
+      </if>
+      <if test="record.codpais != null" >
+        codpais = #{record.codpais,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nompais != null" >
+        nompais = #{record.nompais,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nacpais != null" >
+        nacpais = #{record.nacpais,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sernanp.pais
+    set idpais = #{record.idpais,jdbcType=INTEGER},
+      codpais = #{record.codpais,jdbcType=VARCHAR},
+      nompais = #{record.nompais,jdbcType=VARCHAR},
+      nacpais = #{record.nacpais,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sernanp.app.dao.domain.Pais" >
+    update sernanp.pais
+    <set >
+      <if test="codpais != null" >
+        codpais = #{codpais,jdbcType=VARCHAR},
+      </if>
+      <if test="nompais != null" >
+        nompais = #{nompais,jdbcType=VARCHAR},
+      </if>
+      <if test="nacpais != null" >
+        nacpais = #{nacpais,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where idpais = #{idpais,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sernanp.app.dao.domain.Pais" >
+    update sernanp.pais
+    set codpais = #{codpais,jdbcType=VARCHAR},
+      nompais = #{nompais,jdbcType=VARCHAR},
+      nacpais = #{nacpais,jdbcType=VARCHAR}
+    where idpais = #{idpais,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sernanp.app.dao.mapper.TTipificacionMapper" >
+  <resultMap id="BaseResultMap" type="sernanp.app.dao.domain.TTipificacion" >
+    <id column="srl_id_tipificacion" property="srl_id_tipificacion" jdbcType="INTEGER" />
+    <result column="int_id_tipificacion" property="int_id_tipificacion" jdbcType="INTEGER" />
+    <result column="var_descripcion_tipificacion" property="var_descripcion_tipificacion" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim> 
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    srl_id_tipificacion, int_id_tipificacion, var_descripcion_tipificacion
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TTipificacionExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sernanp.t_tipificacion
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TTipificacionKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from sernanp.t_tipificacion
+    where srl_id_tipificacion = #{srl_id_tipificacion,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="sernanp.app.dao.domain.TTipificacionKey" >
+    delete from sernanp.t_tipificacion
+    where srl_id_tipificacion = #{srl_id_tipificacion,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sernanp.app.dao.domain.TTipificacionExample" >
+    delete from sernanp.t_tipificacion
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sernanp.app.dao.domain.TTipificacion" useGeneratedKeys="true" keyProperty="srl_id_tipificacion" >
+    insert into sernanp.t_tipificacion (int_id_tipificacion, var_descripcion_tipificacion
+      )
+    values (#{int_id_tipificacion,jdbcType=INTEGER}, #{var_descripcion_tipificacion,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="sernanp.app.dao.domain.TTipificacion" useGeneratedKeys="true" keyProperty="srl_id_tipificacion" >
+    insert into sernanp.t_tipificacion
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="int_id_tipificacion != null" >
+        int_id_tipificacion,
+      </if>
+      <if test="var_descripcion_tipificacion != null" >
+        var_descripcion_tipificacion,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="int_id_tipificacion != null" >
+        #{int_id_tipificacion,jdbcType=INTEGER},
+      </if>
+      <if test="var_descripcion_tipificacion != null" >
+        #{var_descripcion_tipificacion,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sernanp.app.dao.domain.TTipificacionExample" resultType="java.lang.Integer" >
+    select count(*) from sernanp.t_tipificacion
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sernanp.t_tipificacion
+    <set >
+      <if test="record.srl_id_tipificacion != null" >
+        srl_id_tipificacion = #{record.srl_id_tipificacion,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_id_tipificacion != null" >
+        int_id_tipificacion = #{record.int_id_tipificacion,jdbcType=INTEGER},
+      </if>
+      <if test="record.var_descripcion_tipificacion != null" >
+        var_descripcion_tipificacion = #{record.var_descripcion_tipificacion,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sernanp.t_tipificacion
+    set srl_id_tipificacion = #{record.srl_id_tipificacion,jdbcType=INTEGER},
+      int_id_tipificacion = #{record.int_id_tipificacion,jdbcType=INTEGER},
+      var_descripcion_tipificacion = #{record.var_descripcion_tipificacion,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sernanp.app.dao.domain.TTipificacion" >
+    update sernanp.t_tipificacion
+    <set >
+      <if test="int_id_tipificacion != null" >
+        int_id_tipificacion = #{int_id_tipificacion,jdbcType=INTEGER},
+      </if>
+      <if test="var_descripcion_tipificacion != null" >
+        var_descripcion_tipificacion = #{var_descripcion_tipificacion,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where srl_id_tipificacion = #{srl_id_tipificacion,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sernanp.app.dao.domain.TTipificacion" >
+    update sernanp.t_tipificacion
+    set int_id_tipificacion = #{int_id_tipificacion,jdbcType=INTEGER},
+      var_descripcion_tipificacion = #{var_descripcion_tipificacion,jdbcType=VARCHAR}
+    where srl_id_tipificacion = #{srl_id_tipificacion,jdbcType=INTEGER}
+  </update>
+</mapper>

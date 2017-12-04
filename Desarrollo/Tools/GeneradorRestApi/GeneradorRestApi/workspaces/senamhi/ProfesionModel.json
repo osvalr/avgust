@@ -1,0 +1,6 @@
+{
+	"nameCrud": "Profesion",
+	"path": "profesiones",
+	"nameRepository": "TPaisRepository",
+	"nameModelXml": "ProfesionModel.xml"
+}

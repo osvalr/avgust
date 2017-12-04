@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pe.com.jrtotem.app.generator.mybatis.mapper.InfoDbConnectionMapper" >
+  <resultMap id="BaseResultMap" type="pe.com.jrtotem.app.generator.mybatis.domain.InfoDbConnection" >
+    <id column="id_info_db_connection" property="id_info_db_connection" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="engine" property="engine" jdbcType="INTEGER" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="jdbc_class" property="jdbc_class" jdbcType="VARCHAR" />
+    <result column="name_user" property="name_user" jdbcType="VARCHAR" />
+    <result column="password_user" property="password_user" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="date_record" property="date_record" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id_info_db_connection, name, engine, url, jdbc_class, name_user, password_user, state, 
+    date_record
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.jrtotem.app.generator.mybatis.domain.InfoDbConnectionExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from info_db_connection
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="pe.com.jrtotem.app.generator.mybatis.domain.InfoDbConnectionKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from info_db_connection
+    where id_info_db_connection = #{id_info_db_connection,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="pe.com.jrtotem.app.generator.mybatis.domain.InfoDbConnectionKey" >
+    delete from info_db_connection
+    where id_info_db_connection = #{id_info_db_connection,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="pe.com.jrtotem.app.generator.mybatis.domain.InfoDbConnectionExample" >
+    delete from info_db_connection
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.jrtotem.app.generator.mybatis.domain.InfoDbConnection" useGeneratedKeys="true" keyProperty="id_info_db_connection" >
+    insert into info_db_connection (name, engine, url, 
+      jdbc_class, name_user, password_user, 
+      state, date_record)
+    values (#{name,jdbcType=VARCHAR}, #{engine,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, 
+      #{jdbc_class,jdbcType=VARCHAR}, #{name_user,jdbcType=VARCHAR}, #{password_user,jdbcType=VARCHAR}, 
+      #{state,jdbcType=INTEGER}, #{date_record,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.jrtotem.app.generator.mybatis.domain.InfoDbConnection" useGeneratedKeys="true" keyProperty="id_info_db_connection" >
+    insert into info_db_connection
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="engine != null" >
+        engine,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="jdbc_class != null" >
+        jdbc_class,
+      </if>
+      <if test="name_user != null" >
+        name_user,
+      </if>
+      <if test="password_user != null" >
+        password_user,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="date_record != null" >
+        date_record,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="engine != null" >
+        #{engine,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="jdbc_class != null" >
+        #{jdbc_class,jdbcType=VARCHAR},
+      </if>
+      <if test="name_user != null" >
+        #{name_user,jdbcType=VARCHAR},
+      </if>
+      <if test="password_user != null" >
+        #{password_user,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="date_record != null" >
+        #{date_record,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.jrtotem.app.generator.mybatis.domain.InfoDbConnectionExample" resultType="java.lang.Integer" >
+    select count(*) from info_db_connection
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update info_db_connection
+    <set >
+      <if test="record.id_info_db_connection != null" >
+        id_info_db_connection = #{record.id_info_db_connection,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.engine != null" >
+        engine = #{record.engine,jdbcType=INTEGER},
+      </if>
+      <if test="record.url != null" >
+        url = #{record.url,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jdbc_class != null" >
+        jdbc_class = #{record.jdbc_class,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name_user != null" >
+        name_user = #{record.name_user,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password_user != null" >
+        password_user = #{record.password_user,jdbcType=VARCHAR},
+      </if>
+      <if test="record.state != null" >
+        state = #{record.state,jdbcType=INTEGER},
+      </if>
+      <if test="record.date_record != null" >
+        date_record = #{record.date_record,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update info_db_connection
+    set id_info_db_connection = #{record.id_info_db_connection,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      engine = #{record.engine,jdbcType=INTEGER},
+      url = #{record.url,jdbcType=VARCHAR},
+      jdbc_class = #{record.jdbc_class,jdbcType=VARCHAR},
+      name_user = #{record.name_user,jdbcType=VARCHAR},
+      password_user = #{record.password_user,jdbcType=VARCHAR},
+      state = #{record.state,jdbcType=INTEGER},
+      date_record = #{record.date_record,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.jrtotem.app.generator.mybatis.domain.InfoDbConnection" >
+    update info_db_connection
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="engine != null" >
+        engine = #{engine,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="jdbc_class != null" >
+        jdbc_class = #{jdbc_class,jdbcType=VARCHAR},
+      </if>
+      <if test="name_user != null" >
+        name_user = #{name_user,jdbcType=VARCHAR},
+      </if>
+      <if test="password_user != null" >
+        password_user = #{password_user,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="date_record != null" >
+        date_record = #{date_record,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id_info_db_connection = #{id_info_db_connection,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.jrtotem.app.generator.mybatis.domain.InfoDbConnection" >
+    update info_db_connection
+    set name = #{name,jdbcType=VARCHAR},
+      engine = #{engine,jdbcType=INTEGER},
+      url = #{url,jdbcType=VARCHAR},
+      jdbc_class = #{jdbc_class,jdbcType=VARCHAR},
+      name_user = #{name_user,jdbcType=VARCHAR},
+      password_user = #{password_user,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
+      date_record = #{date_record,jdbcType=VARCHAR}
+    where id_info_db_connection = #{id_info_db_connection,jdbcType=INTEGER}
+  </update>
+</mapper>

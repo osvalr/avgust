@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sernanp.app.dao.mapper.UsuarioMapper" >
+  <resultMap id="BaseResultMap" type="sernanp.app.dao.domain.Usuario" >
+    <id column="idusuario" property="idusuario" jdbcType="INTEGER" />
+    <result column="usuario" property="usuario" jdbcType="VARCHAR" />
+    <result column="clave" property="clave" jdbcType="VARCHAR" />
+    <result column="estado" property="estado" jdbcType="INTEGER" />
+    <result column="idarea" property="idarea" jdbcType="INTEGER" />
+    <result column="idrol" property="idrol" jdbcType="INTEGER" />
+    <result column="idpersonal" property="idpersonal" jdbcType="INTEGER" />
+    <result column="loginfirst" property="loginfirst" jdbcType="INTEGER" />
+    <result column="idpersona" property="idpersona" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    idusuario, usuario, clave, estado, idarea, idrol, idpersonal, loginfirst, idpersona
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.UsuarioExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sernanp.usuario
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.UsuarioKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from sernanp.usuario
+    where idusuario = #{idusuario,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="sernanp.app.dao.domain.UsuarioKey" >
+    delete from sernanp.usuario
+    where idusuario = #{idusuario,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sernanp.app.dao.domain.UsuarioExample" >
+    delete from sernanp.usuario
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sernanp.app.dao.domain.Usuario" useGeneratedKeys="true" keyProperty="idusuario" >
+    insert into sernanp.usuario (usuario, clave, estado, 
+      idarea, idrol, idpersonal, 
+      loginfirst, idpersona)
+    values (#{usuario,jdbcType=VARCHAR}, #{clave,jdbcType=VARCHAR}, #{estado,jdbcType=INTEGER}, 
+      #{idarea,jdbcType=INTEGER}, #{idrol,jdbcType=INTEGER}, #{idpersonal,jdbcType=INTEGER}, 
+      #{loginfirst,jdbcType=INTEGER}, #{idpersona,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="sernanp.app.dao.domain.Usuario" useGeneratedKeys="true" keyProperty="idusuario" >
+    insert into sernanp.usuario
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="usuario != null" >
+        usuario,
+      </if>
+      <if test="clave != null" >
+        clave,
+      </if>
+      <if test="estado != null" >
+        estado,
+      </if>
+      <if test="idarea != null" >
+        idarea,
+      </if>
+      <if test="idrol != null" >
+        idrol,
+      </if>
+      <if test="idpersonal != null" >
+        idpersonal,
+      </if>
+      <if test="loginfirst != null" >
+        loginfirst,
+      </if>
+      <if test="idpersona != null" >
+        idpersona,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="usuario != null" >
+        #{usuario,jdbcType=VARCHAR},
+      </if>
+      <if test="clave != null" >
+        #{clave,jdbcType=VARCHAR},
+      </if>
+      <if test="estado != null" >
+        #{estado,jdbcType=INTEGER},
+      </if>
+      <if test="idarea != null" >
+        #{idarea,jdbcType=INTEGER},
+      </if>
+      <if test="idrol != null" >
+        #{idrol,jdbcType=INTEGER},
+      </if>
+      <if test="idpersonal != null" >
+        #{idpersonal,jdbcType=INTEGER},
+      </if>
+      <if test="loginfirst != null" >
+        #{loginfirst,jdbcType=INTEGER},
+      </if>
+      <if test="idpersona != null" >
+        #{idpersona,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sernanp.app.dao.domain.UsuarioExample" resultType="java.lang.Integer" >
+    select count(*) from sernanp.usuario
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sernanp.usuario
+    <set >
+      <if test="record.idusuario != null" >
+        idusuario = #{record.idusuario,jdbcType=INTEGER},
+      </if>
+      <if test="record.usuario != null" >
+        usuario = #{record.usuario,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clave != null" >
+        clave = #{record.clave,jdbcType=VARCHAR},
+      </if>
+      <if test="record.estado != null" >
+        estado = #{record.estado,jdbcType=INTEGER},
+      </if>
+      <if test="record.idarea != null" >
+        idarea = #{record.idarea,jdbcType=INTEGER},
+      </if>
+      <if test="record.idrol != null" >
+        idrol = #{record.idrol,jdbcType=INTEGER},
+      </if>
+      <if test="record.idpersonal != null" >
+        idpersonal = #{record.idpersonal,jdbcType=INTEGER},
+      </if>
+      <if test="record.loginfirst != null" >
+        loginfirst = #{record.loginfirst,jdbcType=INTEGER},
+      </if>
+      <if test="record.idpersona != null" >
+        idpersona = #{record.idpersona,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sernanp.usuario
+    set idusuario = #{record.idusuario,jdbcType=INTEGER},
+      usuario = #{record.usuario,jdbcType=VARCHAR},
+      clave = #{record.clave,jdbcType=VARCHAR},
+      estado = #{record.estado,jdbcType=INTEGER},
+      idarea = #{record.idarea,jdbcType=INTEGER},
+      idrol = #{record.idrol,jdbcType=INTEGER},
+      idpersonal = #{record.idpersonal,jdbcType=INTEGER},
+      loginfirst = #{record.loginfirst,jdbcType=INTEGER},
+      idpersona = #{record.idpersona,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sernanp.app.dao.domain.Usuario" >
+    update sernanp.usuario
+    <set >
+      <if test="usuario != null" >
+        usuario = #{usuario,jdbcType=VARCHAR},
+      </if>
+      <if test="clave != null" >
+        clave = #{clave,jdbcType=VARCHAR},
+      </if>
+      <if test="estado != null" >
+        estado = #{estado,jdbcType=INTEGER},
+      </if>
+      <if test="idarea != null" >
+        idarea = #{idarea,jdbcType=INTEGER},
+      </if>
+      <if test="idrol != null" >
+        idrol = #{idrol,jdbcType=INTEGER},
+      </if>
+      <if test="idpersonal != null" >
+        idpersonal = #{idpersonal,jdbcType=INTEGER},
+      </if>
+      <if test="loginfirst != null" >
+        loginfirst = #{loginfirst,jdbcType=INTEGER},
+      </if>
+      <if test="idpersona != null" >
+        idpersona = #{idpersona,jdbcType=INTEGER},
+      </if>
+    </set>
+    where idusuario = #{idusuario,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sernanp.app.dao.domain.Usuario" >
+    update sernanp.usuario
+    set usuario = #{usuario,jdbcType=VARCHAR},
+      clave = #{clave,jdbcType=VARCHAR},
+      estado = #{estado,jdbcType=INTEGER},
+      idarea = #{idarea,jdbcType=INTEGER},
+      idrol = #{idrol,jdbcType=INTEGER},
+      idpersonal = #{idpersonal,jdbcType=INTEGER},
+      loginfirst = #{loginfirst,jdbcType=INTEGER},
+      idpersona = #{idpersona,jdbcType=INTEGER}
+    where idusuario = #{idusuario,jdbcType=INTEGER}
+  </update>
+</mapper>

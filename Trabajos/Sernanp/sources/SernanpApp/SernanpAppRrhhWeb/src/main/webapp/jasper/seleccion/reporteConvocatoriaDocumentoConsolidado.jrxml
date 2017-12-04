@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteConvocatoriaDocumentoConsolidado" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fee50a97-7c4e-477b-a70c-657619a9ff40">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="453"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\GITHUB\\sernanp\\Consultoria_planillas_seleccion_personal\\Desarrollo\\SernanpApp\\SernanpAppRrhhWeb\\src\\main\\webapp\\jasper\\seleccion\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="NRO_CONVOCATORIA" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="var_experiencia_requerida" class="java.lang.String"/>
+	<field name="var_num_convocatoria" class="java.lang.String"/>
+	<field name="var_codigo_postulacion" class="java.lang.String"/>
+	<field name="var_numero_requerimiento" class="java.lang.String"/>
+	<field name="var_denominacion_requerimiento" class="java.lang.String"/>
+	<field name="desarea" class="java.lang.String"/>
+	<field name="var_competencias_requeridas" class="java.lang.String"/>
+	<field name="var_formacion_academica" class="java.lang.String"/>
+	<field name="var_cursos_especializacion" class="java.lang.String"/>
+	<field name="var_principales_funciones" class="java.lang.String"/>
+	<field name="var_requisitos_puesto" class="java.lang.String"/>
+	<field name="var_lugar_prestacion" class="java.lang.String"/>
+	<field name="int_cantidad_tiempo" class="java.lang.String"/>
+	<field name="int_id_tipo_unidad_tiempo" class="java.lang.String"/>
+	<field name="int_cantidad_requerida" class="java.lang.String"/>
+	<field name="dec_honorario_personal" class="java.lang.String"/>
+	<field name="var_nombre_etapa" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="705">
+			<staticText>
+				<reportElement positionType="Float" x="21" y="369" width="110" height="20" uuid="74fe9bf8-c7cb-4a55-80b0-d18979fc48ce"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[II.- Perfil del Puesto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="21" y="526" width="147" height="20" forecolor="#3366FF" uuid="e3cff7ac-f41b-4e39-93e5-b05fa9bf9689"/>
+				<text><![CDATA[III.- Características del Puesto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="21" y="546" width="169" height="20" uuid="c484cb9b-2d61-4242-8c3d-0ccb36c3e062"/>
+				<text><![CDATA[Principales funciones a desarrollar:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="21" y="566" width="503" height="20" uuid="3e8dfacb-158f-4ff8-b042-b67450057a6d"/>
+				<textElement markup="html">
+					<paragraph firstLineIndent="5" leftIndent="5" rightIndent="5" spacingBefore="1" spacingAfter="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{var_principales_funciones}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="21" y="586" width="319" height="20" uuid="edd2ef72-7b0e-4898-8219-58003b3390ca"/>
+				<text><![CDATA[IV.- Condiciones Esenciales del Contrato]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="21" y="606" width="169" height="20" uuid="00d5f911-c9d5-4808-9917-e3ea2e6dede4"/>
+				<text><![CDATA[Lugar de prestación del servicio]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="190" y="606" width="334" height="20" uuid="9db2eba3-94f4-4685-af0a-7e6993ef1eec"/>
+				<textFieldExpression><![CDATA[$F{var_lugar_prestacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="21" y="626" width="169" height="20" uuid="971af632-74bd-4466-91a4-dc76bb3840ea"/>
+				<text><![CDATA[Duración del Contrato]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="190" y="626" width="140" height="20" uuid="bb3d8694-cc47-43d8-afcc-778ef56ea89b"/>
+				<textFieldExpression><![CDATA[$F{int_cantidad_tiempo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="330" y="626" width="194" height="20" uuid="4303c10e-4025-49e3-bdd9-69310a77a991"/>
+				<textFieldExpression><![CDATA[$F{int_id_tipo_unidad_tiempo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="21" y="646" width="169" height="20" uuid="0d0e62f8-7259-4d24-89a7-a341e503aff7"/>
+				<text><![CDATA[Remuneración mensual]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="190" y="646" width="334" height="20" uuid="810226a2-b7eb-4b6d-8843-551e68c3d5c6"/>
+				<textFieldExpression><![CDATA[$F{dec_honorario_personal}+ "Nuevos Soles. Incluye los montos y afiliaciones de ley, así como toda deducción aplicable al trabajador."]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="table" positionType="Float" stretchType="RelativeToTallestObject" x="21" y="389" width="503" height="22" isRemoveLineWhenBlank="true" uuid="885cceae-cff3-440e-9fa9-3f7140e21f6e"/>
+				<textElement verticalAlignment="Middle" markup="html">
+					<paragraph lineSpacing="AtLeast" firstLineIndent="5" leftIndent="5" rightIndent="5" spacingBefore="1" spacingAfter="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Experiencia"+"</br>" +$F{var_experiencia_requerida}+"<br>"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="217" y="13" width="100" height="20" uuid="dce93695-ffa6-4361-8474-3fd86704ea03"/>
+				<text><![CDATA[SERNANP]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="72" y="33" width="376" height="20" uuid="831b531c-a86a-4913-ae11-bdcf62cda9eb"/>
+				<textFieldExpression><![CDATA["PROCESO DE SELECCIÓN PARA LA" + $F{var_num_convocatoria}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="21" y="53" width="503" height="20" uuid="8065e17e-c63d-4064-b778-9047569b7b62"/>
+				<textFieldExpression><![CDATA["Convocatoria para la Contratación" + $F{int_cantidad_requerida}+ $F{var_denominacion_requerimiento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="21" y="83" width="147" height="20" forecolor="#FF0000" uuid="ccaa9c52-71c1-4125-b4d9-611a8fd299d6"/>
+				<textElement verticalAlignment="Middle">
+					<font isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{var_codigo_postulacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="21" y="103" width="100" height="20" uuid="f5dcda2e-84ff-4621-a4ee-20008ac00650"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[I.- Generalidades]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="21" y="147" width="503" height="18" uuid="33d57db3-c9b3-42fc-bf8f-052ce2b76165"/>
+				<textElement verticalAlignment="Top">
+					<paragraph lineSpacing="Proportional" spacingBefore="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{var_denominacion_requerimiento}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="21" y="168" width="100" height="20" uuid="dbda0bdd-7a14-44bd-a025-c232358fe03f"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph lineSpacing="Proportional"/>
+				</textElement>
+				<text><![CDATA[2.- Área Solicitante:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="21" y="188" width="503" height="17" uuid="b9a924a2-7905-4b9a-bc27-196e9f556741"/>
+				<textElement verticalAlignment="Top">
+					<paragraph lineSpacing="Proportional"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{desarea}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="21" y="208" width="503" height="20" uuid="8ff53cf8-caf7-4164-b4d1-e01c8d71d8a9"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph lineSpacing="Proportional"/>
+				</textElement>
+				<text><![CDATA[3.- Dependencia encargada de realizar el proceso de contratación:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="21" y="228" width="503" height="20" uuid="c124a0b1-2955-437d-8524-73c27e143c14"/>
+				<textElement verticalAlignment="Top">
+					<paragraph lineSpacing="Proportional"/>
+				</textElement>
+				<text><![CDATA[La Unidad Operativa Funcional de Recursos Humanos del SERNANP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="21" y="271" width="503" height="93" uuid="be6e75a0-252d-46e3-8c92-616df91d63dc"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[ Decreto Legislativo N° 1057, que regula el Régimen Especial de Contratación Administrativa de Servicios (en adelante “régimen CAS”).
+ Reglamento del Decreto Legislativo N° 1057 que regula el Régimen Especial de Contratación Administrativa de Servicios, el Decreto Supremo Nº 075-2008-PCM, modificado por Decreto Supremo 065-2011-PCM,
+ Ley N° 29849, que establece la eliminación progresiva del Régimen Especial del Decreto Legislativo N° 1057 y otorga derechos laborales.
+ Las demás disposiciones que regulen el Contrato Administrativo de Servicios.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="21" y="126" width="147" height="21" uuid="36435b5e-1aca-4ec9-9054-6543b00b2d9c"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph lineSpacing="Proportional"/>
+				</textElement>
+				<text><![CDATA[1.- Objeto de la Convocatoria: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="21" y="251" width="110" height="20" uuid="523a92e2-f658-4809-950e-0f5da2b5f816"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[4.- Base legal]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="table" positionType="Float" stretchType="RelativeToTallestObject" x="21" y="411" width="503" height="20" uuid="afc0f724-b726-432c-bff5-318c75fdffda"/>
+				<textElement verticalAlignment="Middle" markup="html">
+					<paragraph lineSpacing="AtLeast" firstLineIndent="5" leftIndent="5" rightIndent="5" spacingBefore="1" spacingAfter="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Competencias"+"<br>"+$F{var_competencias_requeridas}+"<br>"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="table" positionType="Float" stretchType="RelativeToTallestObject" x="21" y="431" width="503" height="20" uuid="2e2a3544-50fa-4918-b114-1fcaf2a935cb"/>
+				<textElement verticalAlignment="Middle" markup="html">
+					<paragraph lineSpacing="AtLeast" firstLineIndent="5" leftIndent="5" rightIndent="5" spacingBefore="1" spacingAfter="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Formación Académica"+"<br>"+$F{var_formacion_academica}+"<br>"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="table" positionType="Float" stretchType="RelativeToTallestObject" x="21" y="451" width="503" height="20" uuid="8d0ed1e6-2065-4679-808f-2aa3ca5e2336"/>
+				<textElement verticalAlignment="Middle" markup="html">
+					<paragraph lineSpacing="AtLeast" firstLineIndent="5" leftIndent="5" rightIndent="5" spacingBefore="1" spacingAfter="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Requisitos para el puesto"+"<br>"+$F{var_requisitos_puesto}+"<br>"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

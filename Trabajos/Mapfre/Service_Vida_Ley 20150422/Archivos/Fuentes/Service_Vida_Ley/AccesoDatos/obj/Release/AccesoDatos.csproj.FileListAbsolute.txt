@@ -1,0 +1,60 @@
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\AccesoDatos\bin\Release\AccesoDatos.dll
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\AccesoDatos\bin\Release\AccesoDatos.pdb
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\AccesoDatos\bin\Release\Entidades.dll
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\AccesoDatos\bin\Release\Utilitarios.dll
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\AccesoDatos\bin\Release\UtilitarioJO.dll
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\AccesoDatos\bin\Release\Entidades.pdb
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\AccesoDatos\bin\Release\Utilitarios.pdb
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\AccesoDatos\obj\Release\AccesoDatos.csprojResolveAssemblyReference.cache
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\AccesoDatos\obj\Release\AccesoDatos.dll
+C:\MGUZMAN\SISTEMA DE FORMATOS\SolFormatos\AccesoDatos\obj\Release\AccesoDatos.pdb
+C:\MGUZMAN\AGRICOLA\SolAgricola\AccesoDatos\bin\Release\AccesoDatos.dll
+C:\MGUZMAN\AGRICOLA\SolAgricola\AccesoDatos\bin\Release\AccesoDatos.pdb
+C:\MGUZMAN\AGRICOLA\SolAgricola\AccesoDatos\bin\Release\Entidades.dll
+C:\MGUZMAN\AGRICOLA\SolAgricola\AccesoDatos\bin\Release\Utilitarios.dll
+C:\MGUZMAN\AGRICOLA\SolAgricola\AccesoDatos\bin\Release\UtilitarioJO.dll
+C:\MGUZMAN\AGRICOLA\SolAgricola\AccesoDatos\bin\Release\Entidades.pdb
+C:\MGUZMAN\AGRICOLA\SolAgricola\AccesoDatos\bin\Release\Utilitarios.pdb
+C:\MGUZMAN\AGRICOLA\SolAgricola\AccesoDatos\obj\Release\AccesoDatos.csprojResolveAssemblyReference.cache
+C:\MGUZMAN\AGRICOLA\SolAgricola\AccesoDatos\obj\Release\AccesoDatos.dll
+C:\MGUZMAN\AGRICOLA\SolAgricola\AccesoDatos\obj\Release\AccesoDatos.pdb
+C:\HROMAN\SolAgricola\AccesoDatos\bin\Release\AccesoDatos.dll
+C:\HROMAN\SolAgricola\AccesoDatos\bin\Release\AccesoDatos.pdb
+C:\HROMAN\SolAgricola\AccesoDatos\bin\Release\Entidades.dll
+C:\HROMAN\SolAgricola\AccesoDatos\bin\Release\Utilitarios.dll
+C:\HROMAN\SolAgricola\AccesoDatos\bin\Release\UtilitarioJO.dll
+C:\HROMAN\SolAgricola\AccesoDatos\bin\Release\Entidades.pdb
+C:\HROMAN\SolAgricola\AccesoDatos\bin\Release\Utilitarios.pdb
+C:\HROMAN\SolAgricola\AccesoDatos\obj\Release\AccesoDatos.csprojResolveAssemblyReference.cache
+C:\HROMAN\SolAgricola\AccesoDatos\obj\Release\AccesoDatos.dll
+C:\HROMAN\SolAgricola\AccesoDatos\obj\Release\AccesoDatos.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\AccesoDatos\bin\Release\AccesoDatos.dll
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\AccesoDatos\bin\Release\AccesoDatos.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\AccesoDatos\bin\Release\Entidades.dll
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\AccesoDatos\bin\Release\Utilitarios.dll
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\AccesoDatos\bin\Release\UtilitarioJO.dll
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\AccesoDatos\bin\Release\Entidades.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\AccesoDatos\bin\Release\Utilitarios.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\AccesoDatos\obj\Release\AccesoDatos.csprojResolveAssemblyReference.cache
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\AccesoDatos\obj\Release\AccesoDatos.dll
+C:\Users\nfire\Desktop\Aplicaciones\Web_GOT\Web_GOT\AccesoDatos\obj\Release\AccesoDatos.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\AccesoDatos\bin\Release\AccesoDatos.dll
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\AccesoDatos\bin\Release\AccesoDatos.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\AccesoDatos\bin\Release\Entidades.dll
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\AccesoDatos\bin\Release\Utilitarios.dll
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\AccesoDatos\bin\Release\UtilitarioJO.dll
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\AccesoDatos\bin\Release\Entidades.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\AccesoDatos\bin\Release\Utilitarios.pdb
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\AccesoDatos\obj\Release\AccesoDatos.csprojResolveAssemblyReference.cache
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\AccesoDatos\obj\Release\AccesoDatos.dll
+C:\Users\nfire\Desktop\Aplicaciones\Service_Vida_Ley\Service_Vida_Ley\AccesoDatos\obj\Release\AccesoDatos.pdb
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\AccesoDatos\bin\Release\AccesoDatos.dll
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\AccesoDatos\bin\Release\AccesoDatos.pdb
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\AccesoDatos\bin\Release\Entidades.dll
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\AccesoDatos\bin\Release\Utilitarios.dll
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\AccesoDatos\bin\Release\UtilitarioJO.dll
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\AccesoDatos\bin\Release\Entidades.pdb
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\AccesoDatos\bin\Release\Utilitarios.pdb
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\AccesoDatos\obj\Release\AccesoDatos.csprojResolveAssemblyReference.cache
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\AccesoDatos\obj\Release\AccesoDatos.dll
+D:\FTELLO\Proyecto de Vida Ley\FUENTES\20140120\Service_Vida_Ley\AccesoDatos\obj\Release\AccesoDatos.pdb

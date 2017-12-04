@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sernanp.app.dao.mapper.TPersonanaturalComposicionFamiliarMapper" >
+  <resultMap id="BaseResultMap" type="sernanp.app.dao.domain.TPersonanaturalComposicionFamiliar" >
+    <id column="srl_id_personanatural_composicion_familiar" property="srl_id_personanatural_composicion_familiar" jdbcType="INTEGER" />
+    <result column="idpersonanatural" property="idpersonanatural" jdbcType="INTEGER" />
+    <result column="var_datos_padre" property="var_datos_padre" jdbcType="VARCHAR" />
+    <result column="var_datos_madre" property="var_datos_madre" jdbcType="VARCHAR" />
+    <result column="var_datos_hijo" property="var_datos_hijo" jdbcType="VARCHAR" />
+    <result column="var_dni_hijo" property="var_dni_hijo" jdbcType="VARCHAR" />
+    <result column="dte_fecha_nacimiento_hijo" property="dte_fecha_nacimiento_hijo" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    srl_id_personanatural_composicion_familiar, idpersonanatural, var_datos_padre, var_datos_madre, 
+    var_datos_hijo, var_dni_hijo, dte_fecha_nacimiento_hijo
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TPersonanaturalComposicionFamiliarExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sernanp.t_personanatural_composicion_familiar
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TPersonanaturalComposicionFamiliarKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from sernanp.t_personanatural_composicion_familiar
+    where srl_id_personanatural_composicion_familiar = #{srl_id_personanatural_composicion_familiar,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="sernanp.app.dao.domain.TPersonanaturalComposicionFamiliarKey" >
+    delete from sernanp.t_personanatural_composicion_familiar
+    where srl_id_personanatural_composicion_familiar = #{srl_id_personanatural_composicion_familiar,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sernanp.app.dao.domain.TPersonanaturalComposicionFamiliarExample" >
+    delete from sernanp.t_personanatural_composicion_familiar
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sernanp.app.dao.domain.TPersonanaturalComposicionFamiliar" useGeneratedKeys="true" keyProperty="srl_id_personanatural_composicion_familiar" >
+    insert into sernanp.t_personanatural_composicion_familiar (idpersonanatural, var_datos_padre, 
+      var_datos_madre, var_datos_hijo, var_dni_hijo, 
+      dte_fecha_nacimiento_hijo)
+    values (#{idpersonanatural,jdbcType=INTEGER}, #{var_datos_padre,jdbcType=VARCHAR}, 
+      #{var_datos_madre,jdbcType=VARCHAR}, #{var_datos_hijo,jdbcType=VARCHAR}, #{var_dni_hijo,jdbcType=VARCHAR}, 
+      #{dte_fecha_nacimiento_hijo,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="sernanp.app.dao.domain.TPersonanaturalComposicionFamiliar" useGeneratedKeys="true" keyProperty="srl_id_personanatural_composicion_familiar" >
+    insert into sernanp.t_personanatural_composicion_familiar
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="idpersonanatural != null" >
+        idpersonanatural,
+      </if>
+      <if test="var_datos_padre != null" >
+        var_datos_padre,
+      </if>
+      <if test="var_datos_madre != null" >
+        var_datos_madre,
+      </if>
+      <if test="var_datos_hijo != null" >
+        var_datos_hijo,
+      </if>
+      <if test="var_dni_hijo != null" >
+        var_dni_hijo,
+      </if>
+      <if test="dte_fecha_nacimiento_hijo != null" >
+        dte_fecha_nacimiento_hijo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="idpersonanatural != null" >
+        #{idpersonanatural,jdbcType=INTEGER},
+      </if>
+      <if test="var_datos_padre != null" >
+        #{var_datos_padre,jdbcType=VARCHAR},
+      </if>
+      <if test="var_datos_madre != null" >
+        #{var_datos_madre,jdbcType=VARCHAR},
+      </if>
+      <if test="var_datos_hijo != null" >
+        #{var_datos_hijo,jdbcType=VARCHAR},
+      </if>
+      <if test="var_dni_hijo != null" >
+        #{var_dni_hijo,jdbcType=VARCHAR},
+      </if>
+      <if test="dte_fecha_nacimiento_hijo != null" >
+        #{dte_fecha_nacimiento_hijo,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sernanp.app.dao.domain.TPersonanaturalComposicionFamiliarExample" resultType="java.lang.Integer" >
+    select count(*) from sernanp.t_personanatural_composicion_familiar
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sernanp.t_personanatural_composicion_familiar
+    <set >
+      <if test="record.srl_id_personanatural_composicion_familiar != null" >
+        srl_id_personanatural_composicion_familiar = #{record.srl_id_personanatural_composicion_familiar,jdbcType=INTEGER},
+      </if>
+      <if test="record.idpersonanatural != null" >
+        idpersonanatural = #{record.idpersonanatural,jdbcType=INTEGER},
+      </if>
+      <if test="record.var_datos_padre != null" >
+        var_datos_padre = #{record.var_datos_padre,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_datos_madre != null" >
+        var_datos_madre = #{record.var_datos_madre,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_datos_hijo != null" >
+        var_datos_hijo = #{record.var_datos_hijo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_dni_hijo != null" >
+        var_dni_hijo = #{record.var_dni_hijo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dte_fecha_nacimiento_hijo != null" >
+        dte_fecha_nacimiento_hijo = #{record.dte_fecha_nacimiento_hijo,jdbcType=DATE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sernanp.t_personanatural_composicion_familiar
+    set srl_id_personanatural_composicion_familiar = #{record.srl_id_personanatural_composicion_familiar,jdbcType=INTEGER},
+      idpersonanatural = #{record.idpersonanatural,jdbcType=INTEGER},
+      var_datos_padre = #{record.var_datos_padre,jdbcType=VARCHAR},
+      var_datos_madre = #{record.var_datos_madre,jdbcType=VARCHAR},
+      var_datos_hijo = #{record.var_datos_hijo,jdbcType=VARCHAR},
+      var_dni_hijo = #{record.var_dni_hijo,jdbcType=VARCHAR},
+      dte_fecha_nacimiento_hijo = #{record.dte_fecha_nacimiento_hijo,jdbcType=DATE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sernanp.app.dao.domain.TPersonanaturalComposicionFamiliar" >
+    update sernanp.t_personanatural_composicion_familiar
+    <set >
+      <if test="idpersonanatural != null" >
+        idpersonanatural = #{idpersonanatural,jdbcType=INTEGER},
+      </if>
+      <if test="var_datos_padre != null" >
+        var_datos_padre = #{var_datos_padre,jdbcType=VARCHAR},
+      </if>
+      <if test="var_datos_madre != null" >
+        var_datos_madre = #{var_datos_madre,jdbcType=VARCHAR},
+      </if>
+      <if test="var_datos_hijo != null" >
+        var_datos_hijo = #{var_datos_hijo,jdbcType=VARCHAR},
+      </if>
+      <if test="var_dni_hijo != null" >
+        var_dni_hijo = #{var_dni_hijo,jdbcType=VARCHAR},
+      </if>
+      <if test="dte_fecha_nacimiento_hijo != null" >
+        dte_fecha_nacimiento_hijo = #{dte_fecha_nacimiento_hijo,jdbcType=DATE},
+      </if>
+    </set>
+    where srl_id_personanatural_composicion_familiar = #{srl_id_personanatural_composicion_familiar,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sernanp.app.dao.domain.TPersonanaturalComposicionFamiliar" >
+    update sernanp.t_personanatural_composicion_familiar
+    set idpersonanatural = #{idpersonanatural,jdbcType=INTEGER},
+      var_datos_padre = #{var_datos_padre,jdbcType=VARCHAR},
+      var_datos_madre = #{var_datos_madre,jdbcType=VARCHAR},
+      var_datos_hijo = #{var_datos_hijo,jdbcType=VARCHAR},
+      var_dni_hijo = #{var_dni_hijo,jdbcType=VARCHAR},
+      dte_fecha_nacimiento_hijo = #{dte_fecha_nacimiento_hijo,jdbcType=DATE}
+    where srl_id_personanatural_composicion_familiar = #{srl_id_personanatural_composicion_familiar,jdbcType=INTEGER}
+  </update>
+</mapper>

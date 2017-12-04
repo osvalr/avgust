@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sernanp.app.dao.mapper.TPostulantePersonalMapper" >
+  <resultMap id="BaseResultMap" type="sernanp.app.dao.domain.TPostulantePersonal" >
+    <id column="int_id_postulante" property="int_id_postulante" jdbcType="INTEGER" />
+    <result column="int_porta_lic_conducir" property="int_porta_lic_conducir" jdbcType="INTEGER" />
+    <result column="int_clase_lic" property="int_clase_lic" jdbcType="INTEGER" />
+    <result column="int_categoria_lic" property="int_categoria_lic" jdbcType="INTEGER" />
+    <result column="int_id_ubigeo_nacimiento" property="int_id_ubigeo_nacimiento" jdbcType="INTEGER" />
+    <result column="var_email_principal" property="var_email_principal" jdbcType="VARCHAR" />
+    <result column="var_email_secundario" property="var_email_secundario" jdbcType="VARCHAR" />
+    <result column="var_telefono" property="var_telefono" jdbcType="VARCHAR" />
+    <result column="var_codigo_ciudad_telefono" property="var_codigo_ciudad_telefono" jdbcType="VARCHAR" />
+    <result column="var_celular" property="var_celular" jdbcType="VARCHAR" />
+    <result column="var_codigo_ciudad_telefono2" property="var_codigo_ciudad_telefono2" jdbcType="VARCHAR" />
+    <result column="var_telefono2" property="var_telefono2" jdbcType="VARCHAR" />
+    <result column="var_celular2" property="var_celular2" jdbcType="VARCHAR" />
+    <result column="var_codigo_ciudad_telefono3" property="var_codigo_ciudad_telefono3" jdbcType="VARCHAR" />
+    <result column="var_telefono3" property="var_telefono3" jdbcType="VARCHAR" />
+    <result column="var_celular3" property="var_celular3" jdbcType="VARCHAR" />
+    <result column="var_resumen_profesional" property="var_resumen_profesional" jdbcType="VARCHAR" />
+    <result column="int_persona_discapacitada" property="int_persona_discapacitada" jdbcType="INTEGER" />
+    <result column="int_pertenece_ffaa" property="int_pertenece_ffaa" jdbcType="INTEGER" />
+    <result column="int_culmino_edu_prima" property="int_culmino_edu_prima" jdbcType="INTEGER" />
+    <result column="int_culmino_edu_secun" property="int_culmino_edu_secun" jdbcType="INTEGER" />
+    <result column="var_observacion_registro" property="var_observacion_registro" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    int_id_postulante, int_porta_lic_conducir, int_clase_lic, int_categoria_lic, int_id_ubigeo_nacimiento, 
+    var_email_principal, var_email_secundario, var_telefono, var_codigo_ciudad_telefono, 
+    var_celular, var_codigo_ciudad_telefono2, var_telefono2, var_celular2, var_codigo_ciudad_telefono3, 
+    var_telefono3, var_celular3, var_resumen_profesional, int_persona_discapacitada, 
+    int_pertenece_ffaa, int_culmino_edu_prima, int_culmino_edu_secun, var_observacion_registro
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TPostulantePersonalExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sernanp.t_postulante_personal
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TPostulantePersonalKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from sernanp.t_postulante_personal
+    where int_id_postulante = #{int_id_postulante,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="sernanp.app.dao.domain.TPostulantePersonalKey" >
+    delete from sernanp.t_postulante_personal
+    where int_id_postulante = #{int_id_postulante,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sernanp.app.dao.domain.TPostulantePersonalExample" >
+    delete from sernanp.t_postulante_personal
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sernanp.app.dao.domain.TPostulantePersonal" >
+    insert into sernanp.t_postulante_personal (int_id_postulante, int_porta_lic_conducir, 
+      int_clase_lic, int_categoria_lic, int_id_ubigeo_nacimiento, 
+      var_email_principal, var_email_secundario, 
+      var_telefono, var_codigo_ciudad_telefono, 
+      var_celular, var_codigo_ciudad_telefono2, 
+      var_telefono2, var_celular2, var_codigo_ciudad_telefono3, 
+      var_telefono3, var_celular3, var_resumen_profesional, 
+      int_persona_discapacitada, int_pertenece_ffaa, 
+      int_culmino_edu_prima, int_culmino_edu_secun, 
+      var_observacion_registro)
+    values (#{int_id_postulante,jdbcType=INTEGER}, #{int_porta_lic_conducir,jdbcType=INTEGER}, 
+      #{int_clase_lic,jdbcType=INTEGER}, #{int_categoria_lic,jdbcType=INTEGER}, #{int_id_ubigeo_nacimiento,jdbcType=INTEGER}, 
+      #{var_email_principal,jdbcType=VARCHAR}, #{var_email_secundario,jdbcType=VARCHAR}, 
+      #{var_telefono,jdbcType=VARCHAR}, #{var_codigo_ciudad_telefono,jdbcType=VARCHAR}, 
+      #{var_celular,jdbcType=VARCHAR}, #{var_codigo_ciudad_telefono2,jdbcType=VARCHAR}, 
+      #{var_telefono2,jdbcType=VARCHAR}, #{var_celular2,jdbcType=VARCHAR}, #{var_codigo_ciudad_telefono3,jdbcType=VARCHAR}, 
+      #{var_telefono3,jdbcType=VARCHAR}, #{var_celular3,jdbcType=VARCHAR}, #{var_resumen_profesional,jdbcType=VARCHAR}, 
+      #{int_persona_discapacitada,jdbcType=INTEGER}, #{int_pertenece_ffaa,jdbcType=INTEGER}, 
+      #{int_culmino_edu_prima,jdbcType=INTEGER}, #{int_culmino_edu_secun,jdbcType=INTEGER}, 
+      #{var_observacion_registro,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="sernanp.app.dao.domain.TPostulantePersonal" >
+    insert into sernanp.t_postulante_personal
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="int_id_postulante != null" >
+        int_id_postulante,
+      </if>
+      <if test="int_porta_lic_conducir != null" >
+        int_porta_lic_conducir,
+      </if>
+      <if test="int_clase_lic != null" >
+        int_clase_lic,
+      </if>
+      <if test="int_categoria_lic != null" >
+        int_categoria_lic,
+      </if>
+      <if test="int_id_ubigeo_nacimiento != null" >
+        int_id_ubigeo_nacimiento,
+      </if>
+      <if test="var_email_principal != null" >
+        var_email_principal,
+      </if>
+      <if test="var_email_secundario != null" >
+        var_email_secundario,
+      </if>
+      <if test="var_telefono != null" >
+        var_telefono,
+      </if>
+      <if test="var_codigo_ciudad_telefono != null" >
+        var_codigo_ciudad_telefono,
+      </if>
+      <if test="var_celular != null" >
+        var_celular,
+      </if>
+      <if test="var_codigo_ciudad_telefono2 != null" >
+        var_codigo_ciudad_telefono2,
+      </if>
+      <if test="var_telefono2 != null" >
+        var_telefono2,
+      </if>
+      <if test="var_celular2 != null" >
+        var_celular2,
+      </if>
+      <if test="var_codigo_ciudad_telefono3 != null" >
+        var_codigo_ciudad_telefono3,
+      </if>
+      <if test="var_telefono3 != null" >
+        var_telefono3,
+      </if>
+      <if test="var_celular3 != null" >
+        var_celular3,
+      </if>
+      <if test="var_resumen_profesional != null" >
+        var_resumen_profesional,
+      </if>
+      <if test="int_persona_discapacitada != null" >
+        int_persona_discapacitada,
+      </if>
+      <if test="int_pertenece_ffaa != null" >
+        int_pertenece_ffaa,
+      </if>
+      <if test="int_culmino_edu_prima != null" >
+        int_culmino_edu_prima,
+      </if>
+      <if test="int_culmino_edu_secun != null" >
+        int_culmino_edu_secun,
+      </if>
+      <if test="var_observacion_registro != null" >
+        var_observacion_registro,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="int_id_postulante != null" >
+        #{int_id_postulante,jdbcType=INTEGER},
+      </if>
+      <if test="int_porta_lic_conducir != null" >
+        #{int_porta_lic_conducir,jdbcType=INTEGER},
+      </if>
+      <if test="int_clase_lic != null" >
+        #{int_clase_lic,jdbcType=INTEGER},
+      </if>
+      <if test="int_categoria_lic != null" >
+        #{int_categoria_lic,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_ubigeo_nacimiento != null" >
+        #{int_id_ubigeo_nacimiento,jdbcType=INTEGER},
+      </if>
+      <if test="var_email_principal != null" >
+        #{var_email_principal,jdbcType=VARCHAR},
+      </if>
+      <if test="var_email_secundario != null" >
+        #{var_email_secundario,jdbcType=VARCHAR},
+      </if>
+      <if test="var_telefono != null" >
+        #{var_telefono,jdbcType=VARCHAR},
+      </if>
+      <if test="var_codigo_ciudad_telefono != null" >
+        #{var_codigo_ciudad_telefono,jdbcType=VARCHAR},
+      </if>
+      <if test="var_celular != null" >
+        #{var_celular,jdbcType=VARCHAR},
+      </if>
+      <if test="var_codigo_ciudad_telefono2 != null" >
+        #{var_codigo_ciudad_telefono2,jdbcType=VARCHAR},
+      </if>
+      <if test="var_telefono2 != null" >
+        #{var_telefono2,jdbcType=VARCHAR},
+      </if>
+      <if test="var_celular2 != null" >
+        #{var_celular2,jdbcType=VARCHAR},
+      </if>
+      <if test="var_codigo_ciudad_telefono3 != null" >
+        #{var_codigo_ciudad_telefono3,jdbcType=VARCHAR},
+      </if>
+      <if test="var_telefono3 != null" >
+        #{var_telefono3,jdbcType=VARCHAR},
+      </if>
+      <if test="var_celular3 != null" >
+        #{var_celular3,jdbcType=VARCHAR},
+      </if>
+      <if test="var_resumen_profesional != null" >
+        #{var_resumen_profesional,jdbcType=VARCHAR},
+      </if>
+      <if test="int_persona_discapacitada != null" >
+        #{int_persona_discapacitada,jdbcType=INTEGER},
+      </if>
+      <if test="int_pertenece_ffaa != null" >
+        #{int_pertenece_ffaa,jdbcType=INTEGER},
+      </if>
+      <if test="int_culmino_edu_prima != null" >
+        #{int_culmino_edu_prima,jdbcType=INTEGER},
+      </if>
+      <if test="int_culmino_edu_secun != null" >
+        #{int_culmino_edu_secun,jdbcType=INTEGER},
+      </if>
+      <if test="var_observacion_registro != null" >
+        #{var_observacion_registro,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sernanp.app.dao.domain.TPostulantePersonalExample" resultType="java.lang.Integer" >
+    select count(*) from sernanp.t_postulante_personal
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sernanp.t_postulante_personal
+    <set >
+      <if test="record.int_id_postulante != null" >
+        int_id_postulante = #{record.int_id_postulante,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_porta_lic_conducir != null" >
+        int_porta_lic_conducir = #{record.int_porta_lic_conducir,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_clase_lic != null" >
+        int_clase_lic = #{record.int_clase_lic,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_categoria_lic != null" >
+        int_categoria_lic = #{record.int_categoria_lic,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_id_ubigeo_nacimiento != null" >
+        int_id_ubigeo_nacimiento = #{record.int_id_ubigeo_nacimiento,jdbcType=INTEGER},
+      </if>
+      <if test="record.var_email_principal != null" >
+        var_email_principal = #{record.var_email_principal,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_email_secundario != null" >
+        var_email_secundario = #{record.var_email_secundario,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_telefono != null" >
+        var_telefono = #{record.var_telefono,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_codigo_ciudad_telefono != null" >
+        var_codigo_ciudad_telefono = #{record.var_codigo_ciudad_telefono,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_celular != null" >
+        var_celular = #{record.var_celular,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_codigo_ciudad_telefono2 != null" >
+        var_codigo_ciudad_telefono2 = #{record.var_codigo_ciudad_telefono2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_telefono2 != null" >
+        var_telefono2 = #{record.var_telefono2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_celular2 != null" >
+        var_celular2 = #{record.var_celular2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_codigo_ciudad_telefono3 != null" >
+        var_codigo_ciudad_telefono3 = #{record.var_codigo_ciudad_telefono3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_telefono3 != null" >
+        var_telefono3 = #{record.var_telefono3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_celular3 != null" >
+        var_celular3 = #{record.var_celular3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_resumen_profesional != null" >
+        var_resumen_profesional = #{record.var_resumen_profesional,jdbcType=VARCHAR},
+      </if>
+      <if test="record.int_persona_discapacitada != null" >
+        int_persona_discapacitada = #{record.int_persona_discapacitada,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_pertenece_ffaa != null" >
+        int_pertenece_ffaa = #{record.int_pertenece_ffaa,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_culmino_edu_prima != null" >
+        int_culmino_edu_prima = #{record.int_culmino_edu_prima,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_culmino_edu_secun != null" >
+        int_culmino_edu_secun = #{record.int_culmino_edu_secun,jdbcType=INTEGER},
+      </if>
+      <if test="record.var_observacion_registro != null" >
+        var_observacion_registro = #{record.var_observacion_registro,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sernanp.t_postulante_personal
+    set int_id_postulante = #{record.int_id_postulante,jdbcType=INTEGER},
+      int_porta_lic_conducir = #{record.int_porta_lic_conducir,jdbcType=INTEGER},
+      int_clase_lic = #{record.int_clase_lic,jdbcType=INTEGER},
+      int_categoria_lic = #{record.int_categoria_lic,jdbcType=INTEGER},
+      int_id_ubigeo_nacimiento = #{record.int_id_ubigeo_nacimiento,jdbcType=INTEGER},
+      var_email_principal = #{record.var_email_principal,jdbcType=VARCHAR},
+      var_email_secundario = #{record.var_email_secundario,jdbcType=VARCHAR},
+      var_telefono = #{record.var_telefono,jdbcType=VARCHAR},
+      var_codigo_ciudad_telefono = #{record.var_codigo_ciudad_telefono,jdbcType=VARCHAR},
+      var_celular = #{record.var_celular,jdbcType=VARCHAR},
+      var_codigo_ciudad_telefono2 = #{record.var_codigo_ciudad_telefono2,jdbcType=VARCHAR},
+      var_telefono2 = #{record.var_telefono2,jdbcType=VARCHAR},
+      var_celular2 = #{record.var_celular2,jdbcType=VARCHAR},
+      var_codigo_ciudad_telefono3 = #{record.var_codigo_ciudad_telefono3,jdbcType=VARCHAR},
+      var_telefono3 = #{record.var_telefono3,jdbcType=VARCHAR},
+      var_celular3 = #{record.var_celular3,jdbcType=VARCHAR},
+      var_resumen_profesional = #{record.var_resumen_profesional,jdbcType=VARCHAR},
+      int_persona_discapacitada = #{record.int_persona_discapacitada,jdbcType=INTEGER},
+      int_pertenece_ffaa = #{record.int_pertenece_ffaa,jdbcType=INTEGER},
+      int_culmino_edu_prima = #{record.int_culmino_edu_prima,jdbcType=INTEGER},
+      int_culmino_edu_secun = #{record.int_culmino_edu_secun,jdbcType=INTEGER},
+      var_observacion_registro = #{record.var_observacion_registro,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sernanp.app.dao.domain.TPostulantePersonal" >
+    update sernanp.t_postulante_personal
+    <set >
+      <if test="int_porta_lic_conducir != null" >
+        int_porta_lic_conducir = #{int_porta_lic_conducir,jdbcType=INTEGER},
+      </if>
+      <if test="int_clase_lic != null" >
+        int_clase_lic = #{int_clase_lic,jdbcType=INTEGER},
+      </if>
+      <if test="int_categoria_lic != null" >
+        int_categoria_lic = #{int_categoria_lic,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_ubigeo_nacimiento != null" >
+        int_id_ubigeo_nacimiento = #{int_id_ubigeo_nacimiento,jdbcType=INTEGER},
+      </if>
+      <if test="var_email_principal != null" >
+        var_email_principal = #{var_email_principal,jdbcType=VARCHAR},
+      </if>
+      <if test="var_email_secundario != null" >
+        var_email_secundario = #{var_email_secundario,jdbcType=VARCHAR},
+      </if>
+      <if test="var_telefono != null" >
+        var_telefono = #{var_telefono,jdbcType=VARCHAR},
+      </if>
+      <if test="var_codigo_ciudad_telefono != null" >
+        var_codigo_ciudad_telefono = #{var_codigo_ciudad_telefono,jdbcType=VARCHAR},
+      </if>
+      <if test="var_celular != null" >
+        var_celular = #{var_celular,jdbcType=VARCHAR},
+      </if>
+      <if test="var_codigo_ciudad_telefono2 != null" >
+        var_codigo_ciudad_telefono2 = #{var_codigo_ciudad_telefono2,jdbcType=VARCHAR},
+      </if>
+      <if test="var_telefono2 != null" >
+        var_telefono2 = #{var_telefono2,jdbcType=VARCHAR},
+      </if>
+      <if test="var_celular2 != null" >
+        var_celular2 = #{var_celular2,jdbcType=VARCHAR},
+      </if>
+      <if test="var_codigo_ciudad_telefono3 != null" >
+        var_codigo_ciudad_telefono3 = #{var_codigo_ciudad_telefono3,jdbcType=VARCHAR},
+      </if>
+      <if test="var_telefono3 != null" >
+        var_telefono3 = #{var_telefono3,jdbcType=VARCHAR},
+      </if>
+      <if test="var_celular3 != null" >
+        var_celular3 = #{var_celular3,jdbcType=VARCHAR},
+      </if>
+      <if test="var_resumen_profesional != null" >
+        var_resumen_profesional = #{var_resumen_profesional,jdbcType=VARCHAR},
+      </if>
+      <if test="int_persona_discapacitada != null" >
+        int_persona_discapacitada = #{int_persona_discapacitada,jdbcType=INTEGER},
+      </if>
+      <if test="int_pertenece_ffaa != null" >
+        int_pertenece_ffaa = #{int_pertenece_ffaa,jdbcType=INTEGER},
+      </if>
+      <if test="int_culmino_edu_prima != null" >
+        int_culmino_edu_prima = #{int_culmino_edu_prima,jdbcType=INTEGER},
+      </if>
+      <if test="int_culmino_edu_secun != null" >
+        int_culmino_edu_secun = #{int_culmino_edu_secun,jdbcType=INTEGER},
+      </if>
+      <if test="var_observacion_registro != null" >
+        var_observacion_registro = #{var_observacion_registro,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where int_id_postulante = #{int_id_postulante,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sernanp.app.dao.domain.TPostulantePersonal" >
+    update sernanp.t_postulante_personal
+    set int_porta_lic_conducir = #{int_porta_lic_conducir,jdbcType=INTEGER},
+      int_clase_lic = #{int_clase_lic,jdbcType=INTEGER},
+      int_categoria_lic = #{int_categoria_lic,jdbcType=INTEGER},
+      int_id_ubigeo_nacimiento = #{int_id_ubigeo_nacimiento,jdbcType=INTEGER},
+      var_email_principal = #{var_email_principal,jdbcType=VARCHAR},
+      var_email_secundario = #{var_email_secundario,jdbcType=VARCHAR},
+      var_telefono = #{var_telefono,jdbcType=VARCHAR},
+      var_codigo_ciudad_telefono = #{var_codigo_ciudad_telefono,jdbcType=VARCHAR},
+      var_celular = #{var_celular,jdbcType=VARCHAR},
+      var_codigo_ciudad_telefono2 = #{var_codigo_ciudad_telefono2,jdbcType=VARCHAR},
+      var_telefono2 = #{var_telefono2,jdbcType=VARCHAR},
+      var_celular2 = #{var_celular2,jdbcType=VARCHAR},
+      var_codigo_ciudad_telefono3 = #{var_codigo_ciudad_telefono3,jdbcType=VARCHAR},
+      var_telefono3 = #{var_telefono3,jdbcType=VARCHAR},
+      var_celular3 = #{var_celular3,jdbcType=VARCHAR},
+      var_resumen_profesional = #{var_resumen_profesional,jdbcType=VARCHAR},
+      int_persona_discapacitada = #{int_persona_discapacitada,jdbcType=INTEGER},
+      int_pertenece_ffaa = #{int_pertenece_ffaa,jdbcType=INTEGER},
+      int_culmino_edu_prima = #{int_culmino_edu_prima,jdbcType=INTEGER},
+      int_culmino_edu_secun = #{int_culmino_edu_secun,jdbcType=INTEGER},
+      var_observacion_registro = #{var_observacion_registro,jdbcType=VARCHAR}
+    where int_id_postulante = #{int_id_postulante,jdbcType=INTEGER}
+  </update>
+  <select resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TPostulantePersonalExample" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sernanp.t_postulante_personal
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

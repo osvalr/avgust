@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.focus.sakerk.repository.custom.mapper.NumeroTelefonicoQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+			nt.id_numero_telefonico ,
+			nt.id_persona ,
+			nt.numero_telefono,
+			nt.id_tipo_telefono ,
+			tt.descrip_tipo_telefono,
+			nt.id_empresa_operadora ,
+			pj.razon_social,
+			nt.id_estado ,
+			eg.descrip_estado_generico as "descrip_estado",
+			to_char(nt.fecha_registro, 'DD/MM/YYYY HH24:MI:ss') as "fecha_registro"
+			
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+				general.numero_telefonico nt 
+				inner join vw_tipo_telefono tt
+				on nt.id_tipo_telefono = tt.id_tipo_telefono
+				inner join general.persona_juridica pj
+				on nt.id_empresa_operadora = pj.id_persona_juridica
+				inner join vw_estado_generico eg
+				on nt.id_estado = eg.id_estado_generico
+			
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+				nt.id_numero_telefonico = COALESCE(#{id_numero_telefonico  },nt.id_numero_telefonico) and
+				nt.id_persona = COALESCE(#{id_persona  },nt.id_persona)
+			
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.focus.sakerk.repository.custom.model.NumeroTelefonicoQuery" parameterType="pe.com.focus.sakerk.repository.custom.model.NumeroTelefonicoQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.focus.sakerk.repository.custom.model.NumeroTelefonicoQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.focus.sakerk.repository.custom.model.NumeroTelefonicoQuery" parameterType="pe.com.focus.sakerk.repository.custom.model.NumeroTelefonicoQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.focus.sakerk.repository.custom.model.NumeroTelefonicoQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.focus.sakerk.repository.custom.model.NumeroTelefonicoQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

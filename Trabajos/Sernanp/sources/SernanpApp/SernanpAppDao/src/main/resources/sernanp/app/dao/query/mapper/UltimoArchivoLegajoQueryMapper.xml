@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.UltimoArchivoLegajoQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.UltimoArchivoLegajoQuery" parameterType="sernanp.app.dao.query.domain.UltimoArchivoLegajoQueryCriteria"> 
+<![CDATA[
+
+	      
+	      
+				select 
+				
+				a.srl_id_archivo ,
+				a.var_nombre_archivo,
+				a.var_tipo_archivo,
+				a.var_archivo_ruta_almacen,
+				a.num_size_archivo ,
+				a.tsp_fecha_registro 
+				
+				from sernanp.t_persona_natural_legajo pnl inner join sernanp.t_persona_natural_legajo_archivo pnla
+				on pnl.srl_id_persona_natural_legajo = pnla.srl_id_persona_natural_legajo inner join sernanp.t_archivo a
+				on pnla.srl_id_archivo = a.srl_id_archivo
+				where 
+				
+				pnl.srl_id_persona_natural_legajo = #{srl_id_persona_natural_legajo}   and
+				
+				a.tsp_fecha_registro = 
+				(
+				select max(a.tsp_fecha_registro) from sernanp.t_persona_natural_legajo pnl inner join sernanp.t_persona_natural_legajo_archivo pnla
+				on pnl.srl_id_persona_natural_legajo = pnla.srl_id_persona_natural_legajo inner join sernanp.t_archivo a
+				on pnla.srl_id_archivo = a.srl_id_archivo
+				where pnl.srl_id_persona_natural_legajo = #{srl_id_persona_natural_legajo}
+				)
+	      
+				
+		  
+	      
+]]>
+</select> 
+</mapper> 

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sernanp.app.dao.mapper.TSecuenciaNumeroMapper" >
+  <resultMap id="BaseResultMap" type="sernanp.app.dao.domain.TSecuenciaNumero" >
+    <id column="srl_id_sequencia_numero" property="srl_id_sequencia_numero" jdbcType="INTEGER" />
+    <result column="srl_id_secuencia" property="srl_id_secuencia" jdbcType="INTEGER" />
+    <result column="var_numero_secuencia" property="var_numero_secuencia" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    srl_id_sequencia_numero, srl_id_secuencia, var_numero_secuencia
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TSecuenciaNumeroExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sernanp.t_secuencia_numero
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TSecuenciaNumeroKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from sernanp.t_secuencia_numero
+    where srl_id_sequencia_numero = #{srl_id_sequencia_numero,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="sernanp.app.dao.domain.TSecuenciaNumeroKey" >
+    delete from sernanp.t_secuencia_numero
+    where srl_id_sequencia_numero = #{srl_id_sequencia_numero,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sernanp.app.dao.domain.TSecuenciaNumeroExample" >
+    delete from sernanp.t_secuencia_numero
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sernanp.app.dao.domain.TSecuenciaNumero" useGeneratedKeys="true" keyProperty="srl_id_sequencia_numero" >
+    insert into sernanp.t_secuencia_numero (srl_id_secuencia, var_numero_secuencia
+      )
+    values (#{srl_id_secuencia,jdbcType=INTEGER}, #{var_numero_secuencia,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="sernanp.app.dao.domain.TSecuenciaNumero" useGeneratedKeys="true" keyProperty="srl_id_sequencia_numero" >
+    insert into sernanp.t_secuencia_numero
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="srl_id_secuencia != null" >
+        srl_id_secuencia,
+      </if>
+      <if test="var_numero_secuencia != null" >
+        var_numero_secuencia,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="srl_id_secuencia != null" >
+        #{srl_id_secuencia,jdbcType=INTEGER},
+      </if>
+      <if test="var_numero_secuencia != null" >
+        #{var_numero_secuencia,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sernanp.app.dao.domain.TSecuenciaNumeroExample" resultType="java.lang.Integer" >
+    select count(*) from sernanp.t_secuencia_numero
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sernanp.t_secuencia_numero
+    <set >
+      <if test="record.srl_id_sequencia_numero != null" >
+        srl_id_sequencia_numero = #{record.srl_id_sequencia_numero,jdbcType=INTEGER},
+      </if>
+      <if test="record.srl_id_secuencia != null" >
+        srl_id_secuencia = #{record.srl_id_secuencia,jdbcType=INTEGER},
+      </if>
+      <if test="record.var_numero_secuencia != null" >
+        var_numero_secuencia = #{record.var_numero_secuencia,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sernanp.t_secuencia_numero
+    set srl_id_sequencia_numero = #{record.srl_id_sequencia_numero,jdbcType=INTEGER},
+      srl_id_secuencia = #{record.srl_id_secuencia,jdbcType=INTEGER},
+      var_numero_secuencia = #{record.var_numero_secuencia,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sernanp.app.dao.domain.TSecuenciaNumero" >
+    update sernanp.t_secuencia_numero
+    <set >
+      <if test="srl_id_secuencia != null" >
+        srl_id_secuencia = #{srl_id_secuencia,jdbcType=INTEGER},
+      </if>
+      <if test="var_numero_secuencia != null" >
+        var_numero_secuencia = #{var_numero_secuencia,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where srl_id_sequencia_numero = #{srl_id_sequencia_numero,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sernanp.app.dao.domain.TSecuenciaNumero" >
+    update sernanp.t_secuencia_numero
+    set srl_id_secuencia = #{srl_id_secuencia,jdbcType=INTEGER},
+      var_numero_secuencia = #{var_numero_secuencia,jdbcType=VARCHAR}
+    where srl_id_sequencia_numero = #{srl_id_sequencia_numero,jdbcType=INTEGER}
+  </update>
+</mapper>

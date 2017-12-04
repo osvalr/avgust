@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="false" />
+    
+    <constant name="struts.objectFactory" value="spring"/> 
+   
+<!--     <constant name="struts.custom.i18n.resources" value="sernanp.visit.resources" /> -->
+        
+    <!-- Add packages here -->
+
+	<include file="struts-principal.xml"/>
+	<include file="struts-general.xml"/>
+	<include file="struts-seguridad.xml"/>
+	
+	<include file="struts-jasperreport.xml"/>
+	
+	<include file="struts-personal.xml"/>
+	<include file="struts-commons.xml"/>
+	
+	<!-- Start JRaffo 23/01/2015 -->
+	<include file="struts-principal-extjs.xml"/>
+	<include file="struts-personal-extjs.xml"/>
+	<!-- End JRaffo 23/01/2015 -->
+	
+	<!-- Start Alanmar 05/02/2015 -->
+	<include file="struts-planillas-extjs.xml"/>
+	<include file="struts-seleccion-personal-extjs.xml" />
+<!-- 	<include file="struts-test-extjs.xml" /> -->
+	<!-- End Alanmar 05/02/2015 -->
+	
+	<constant name="struts.multipart.maxSize" value="20971520" />
+	<constant name="struts.json.dateformat" value="dd/mm/yyyy"/>
+	
+</struts>
+ 

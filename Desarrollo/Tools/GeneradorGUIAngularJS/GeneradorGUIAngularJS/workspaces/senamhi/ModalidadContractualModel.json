@@ -1,0 +1,7 @@
+{
+	"titleCrud": "Madalidades Contractuales",
+	"nameCrud": "ModalidadContractual",
+	"constUrlApi": "MODALIDAD_CONTRACTUAL_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "ModalidadContractualModel.xml"
+}

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.ObtenerDesvinculacionQueryMapper"> 
+
+<select id="getListQuery" resultType="sernanp.app.dao.query.domain.ObtenerDesvinculacionQuery" parameterType="sernanp.app.dao.query.domain.ObtenerDesvinculacionQueryCriteria"> 
+<![CDATA[
+
+	       select 
+				 	ep.srl_id_estado_personal,
+				 	pl.idpersonal ,
+               		t.var_descripcion_tipificacion,
+				    ep.var_motivo,
+				    ep.int_id_estado,
+    			    CASE WHEN ep.int_id_estado = 0 THEN 'ACTIVO' 
+				         WHEN ep.int_id_estado = 1 THEN 'INACTIVO' 
+			        END as "des_estado_desvinculacion",
+				    to_char(ep.dte_fecha_estado, 'DD/MM/YYYY') as "dte_fecha_estado",
+				    CASE WHEN ep.dte_fecha_estado = (select max(ep.dte_fecha_estado) from sernanp.t_estado_personal ep where ep.idpersonal = #{idpersonal}) THEN 1 
+				         ELSE 0
+		   	        END as "ultima_desvinculacion",
+                    to_char(pc.dte_fec_cese,'DD/MM/YYYY') as "dte_fec_cese"
+                                 
+		 FROM 
+				
+				   sernanp.personal pl inner join sernanp.personanatural pn  
+                   on pl.idpersonanatural = pn.idpersonanatural inner join sernanp.t_personal_contrato pc 
+                   on pl.idpersonal = pc.idpersonal inner join sernanp.t_estado_personal ep
+                   on pl.idpersonal = ep.idpersonal inner join sernanp.t_tipificacion t 
+                   on ep.int_id_tipificacion = t.int_id_tipificacion 
+                 
+		 WHERE
+		 		--ADD 17-09-2015 DAVID
+		 		ep.int_id_estado = 1 and
+		 		--END 
+				  pl.idpersonal =  COALESCE(#{idpersonal}, pl.idpersonal) and
+				  pc.dte_fec_cese = (select 
+
+									max(pc.dte_fec_cese)
+
+								   from 
+										sernanp.t_personal_contrato pc left join sernanp.t_postulante_cnv_area_org pcao
+										on pc.srl_id_postulante_conv_area_org = pcao.srl_id_postulante_conv_area_org 
+										left join sernanp.t_postulante_personal pp
+										on pcao.int_id_postulante = pp.int_id_postulante
+										left join sernanp.personanatural pn
+										on pn.idpersonanatural = pp.int_id_postulante
+										left join sernanp.persona p
+										on pn.idpersona = p.idpersona
+										left join sernanp.personal ppp
+										on pc.idpersonal = ppp.idpersonal
+								   where 
+									   COALESCE(ppp.idpersonal,0) = COALESCE(#{idpersonal},COALESCE(ppp.idpersonal,0)) 
+						)
+				--ADD 17-09-2015 DAVID
+		 		ORDER BY ep.dte_fecha_estado DESC  ;
+		 		--END 
+					
+          		-- COMMENT 17-09-2015 DAVID
+          		--LIMIT 1;
+          		--END
+                 		
+            
+				
+		  
+	      
+]]>
+</select> 
+</mapper> 

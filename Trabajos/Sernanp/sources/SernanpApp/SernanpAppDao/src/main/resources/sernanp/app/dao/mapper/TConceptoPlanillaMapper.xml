@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sernanp.app.dao.mapper.TConceptoPlanillaMapper" >
+  <resultMap id="BaseResultMap" type="sernanp.app.dao.domain.TConceptoPlanilla" >
+    <id column="srl_id_concepto_planilla" property="srl_id_concepto_planilla" jdbcType="INTEGER" />
+    <result column="var_cod_concepto" property="var_cod_concepto" jdbcType="VARCHAR" />
+    <result column="var_descrip_concepto" property="var_descrip_concepto" jdbcType="VARCHAR" />
+    <result column="var_descrip_corto_concepto" property="var_descrip_corto_concepto" jdbcType="VARCHAR" />
+    <result column="var_cod_pdt_concepto" property="var_cod_pdt_concepto" jdbcType="VARCHAR" />
+    <result column="var_cod_mef_concepto" property="var_cod_mef_concepto" jdbcType="VARCHAR" />
+    <result column="var_cod_siaf_concepto" property="var_cod_siaf_concepto" jdbcType="VARCHAR" />
+    <result column="int_id_tipo_concepto" property="int_id_tipo_concepto" jdbcType="INTEGER" />
+    <result column="int_id_sub_tipo_concepto" property="int_id_sub_tipo_concepto" jdbcType="INTEGER" />
+    <result column="int_requiere_frecuencia_concepto" property="int_requiere_frecuencia_concepto" jdbcType="INTEGER" />
+    <result column="dec_monto_concepto" property="dec_monto_concepto" jdbcType="NUMERIC" />
+    <result column="int_id_tipo_monto_concepto" property="int_id_tipo_monto_concepto" jdbcType="INTEGER" />
+    <result column="int_id_estado" property="int_id_estado" jdbcType="INTEGER" />
+    <result column="tsp_fecha_registro" property="tsp_fecha_registro" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    srl_id_concepto_planilla, var_cod_concepto, var_descrip_concepto, var_descrip_corto_concepto, 
+    var_cod_pdt_concepto, var_cod_mef_concepto, var_cod_siaf_concepto, int_id_tipo_concepto, 
+    int_id_sub_tipo_concepto, int_requiere_frecuencia_concepto, dec_monto_concepto, int_id_tipo_monto_concepto, 
+    int_id_estado, tsp_fecha_registro
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TConceptoPlanillaExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from personal.t_concepto_planilla
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="sernanp.app.dao.domain.TConceptoPlanillaKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from personal.t_concepto_planilla
+    where srl_id_concepto_planilla = #{srl_id_concepto_planilla,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="sernanp.app.dao.domain.TConceptoPlanillaKey" >
+    delete from personal.t_concepto_planilla
+    where srl_id_concepto_planilla = #{srl_id_concepto_planilla,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sernanp.app.dao.domain.TConceptoPlanillaExample" >
+    delete from personal.t_concepto_planilla
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sernanp.app.dao.domain.TConceptoPlanilla" useGeneratedKeys="true" keyProperty="srl_id_concepto_planilla" >
+    insert into personal.t_concepto_planilla (var_cod_concepto, var_descrip_concepto, 
+      var_descrip_corto_concepto, var_cod_pdt_concepto, 
+      var_cod_mef_concepto, var_cod_siaf_concepto, 
+      int_id_tipo_concepto, int_id_sub_tipo_concepto, 
+      int_requiere_frecuencia_concepto, dec_monto_concepto, 
+      int_id_tipo_monto_concepto, int_id_estado, 
+      tsp_fecha_registro)
+    values (#{var_cod_concepto,jdbcType=VARCHAR}, #{var_descrip_concepto,jdbcType=VARCHAR}, 
+      #{var_descrip_corto_concepto,jdbcType=VARCHAR}, #{var_cod_pdt_concepto,jdbcType=VARCHAR}, 
+      #{var_cod_mef_concepto,jdbcType=VARCHAR}, #{var_cod_siaf_concepto,jdbcType=VARCHAR}, 
+      #{int_id_tipo_concepto,jdbcType=INTEGER}, #{int_id_sub_tipo_concepto,jdbcType=INTEGER}, 
+      #{int_requiere_frecuencia_concepto,jdbcType=INTEGER}, #{dec_monto_concepto,jdbcType=NUMERIC}, 
+      #{int_id_tipo_monto_concepto,jdbcType=INTEGER}, #{int_id_estado,jdbcType=INTEGER}, 
+      #{tsp_fecha_registro,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="sernanp.app.dao.domain.TConceptoPlanilla" useGeneratedKeys="true" keyProperty="srl_id_concepto_planilla" >
+    insert into personal.t_concepto_planilla
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="var_cod_concepto != null" >
+        var_cod_concepto,
+      </if>
+      <if test="var_descrip_concepto != null" >
+        var_descrip_concepto,
+      </if>
+      <if test="var_descrip_corto_concepto != null" >
+        var_descrip_corto_concepto,
+      </if>
+      <if test="var_cod_pdt_concepto != null" >
+        var_cod_pdt_concepto,
+      </if>
+      <if test="var_cod_mef_concepto != null" >
+        var_cod_mef_concepto,
+      </if>
+      <if test="var_cod_siaf_concepto != null" >
+        var_cod_siaf_concepto,
+      </if>
+      <if test="int_id_tipo_concepto != null" >
+        int_id_tipo_concepto,
+      </if>
+      <if test="int_id_sub_tipo_concepto != null" >
+        int_id_sub_tipo_concepto,
+      </if>
+      <if test="int_requiere_frecuencia_concepto != null" >
+        int_requiere_frecuencia_concepto,
+      </if>
+      <if test="dec_monto_concepto != null" >
+        dec_monto_concepto,
+      </if>
+      <if test="int_id_tipo_monto_concepto != null" >
+        int_id_tipo_monto_concepto,
+      </if>
+      <if test="int_id_estado != null" >
+        int_id_estado,
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        tsp_fecha_registro,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="var_cod_concepto != null" >
+        #{var_cod_concepto,jdbcType=VARCHAR},
+      </if>
+      <if test="var_descrip_concepto != null" >
+        #{var_descrip_concepto,jdbcType=VARCHAR},
+      </if>
+      <if test="var_descrip_corto_concepto != null" >
+        #{var_descrip_corto_concepto,jdbcType=VARCHAR},
+      </if>
+      <if test="var_cod_pdt_concepto != null" >
+        #{var_cod_pdt_concepto,jdbcType=VARCHAR},
+      </if>
+      <if test="var_cod_mef_concepto != null" >
+        #{var_cod_mef_concepto,jdbcType=VARCHAR},
+      </if>
+      <if test="var_cod_siaf_concepto != null" >
+        #{var_cod_siaf_concepto,jdbcType=VARCHAR},
+      </if>
+      <if test="int_id_tipo_concepto != null" >
+        #{int_id_tipo_concepto,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_sub_tipo_concepto != null" >
+        #{int_id_sub_tipo_concepto,jdbcType=INTEGER},
+      </if>
+      <if test="int_requiere_frecuencia_concepto != null" >
+        #{int_requiere_frecuencia_concepto,jdbcType=INTEGER},
+      </if>
+      <if test="dec_monto_concepto != null" >
+        #{dec_monto_concepto,jdbcType=NUMERIC},
+      </if>
+      <if test="int_id_tipo_monto_concepto != null" >
+        #{int_id_tipo_monto_concepto,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_estado != null" >
+        #{int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sernanp.app.dao.domain.TConceptoPlanillaExample" resultType="java.lang.Integer" >
+    select count(*) from personal.t_concepto_planilla
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update personal.t_concepto_planilla
+    <set >
+      <if test="record.srl_id_concepto_planilla != null" >
+        srl_id_concepto_planilla = #{record.srl_id_concepto_planilla,jdbcType=INTEGER},
+      </if>
+      <if test="record.var_cod_concepto != null" >
+        var_cod_concepto = #{record.var_cod_concepto,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_descrip_concepto != null" >
+        var_descrip_concepto = #{record.var_descrip_concepto,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_descrip_corto_concepto != null" >
+        var_descrip_corto_concepto = #{record.var_descrip_corto_concepto,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_cod_pdt_concepto != null" >
+        var_cod_pdt_concepto = #{record.var_cod_pdt_concepto,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_cod_mef_concepto != null" >
+        var_cod_mef_concepto = #{record.var_cod_mef_concepto,jdbcType=VARCHAR},
+      </if>
+      <if test="record.var_cod_siaf_concepto != null" >
+        var_cod_siaf_concepto = #{record.var_cod_siaf_concepto,jdbcType=VARCHAR},
+      </if>
+      <if test="record.int_id_tipo_concepto != null" >
+        int_id_tipo_concepto = #{record.int_id_tipo_concepto,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_id_sub_tipo_concepto != null" >
+        int_id_sub_tipo_concepto = #{record.int_id_sub_tipo_concepto,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_requiere_frecuencia_concepto != null" >
+        int_requiere_frecuencia_concepto = #{record.int_requiere_frecuencia_concepto,jdbcType=INTEGER},
+      </if>
+      <if test="record.dec_monto_concepto != null" >
+        dec_monto_concepto = #{record.dec_monto_concepto,jdbcType=NUMERIC},
+      </if>
+      <if test="record.int_id_tipo_monto_concepto != null" >
+        int_id_tipo_monto_concepto = #{record.int_id_tipo_monto_concepto,jdbcType=INTEGER},
+      </if>
+      <if test="record.int_id_estado != null" >
+        int_id_estado = #{record.int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="record.tsp_fecha_registro != null" >
+        tsp_fecha_registro = #{record.tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update personal.t_concepto_planilla
+    set srl_id_concepto_planilla = #{record.srl_id_concepto_planilla,jdbcType=INTEGER},
+      var_cod_concepto = #{record.var_cod_concepto,jdbcType=VARCHAR},
+      var_descrip_concepto = #{record.var_descrip_concepto,jdbcType=VARCHAR},
+      var_descrip_corto_concepto = #{record.var_descrip_corto_concepto,jdbcType=VARCHAR},
+      var_cod_pdt_concepto = #{record.var_cod_pdt_concepto,jdbcType=VARCHAR},
+      var_cod_mef_concepto = #{record.var_cod_mef_concepto,jdbcType=VARCHAR},
+      var_cod_siaf_concepto = #{record.var_cod_siaf_concepto,jdbcType=VARCHAR},
+      int_id_tipo_concepto = #{record.int_id_tipo_concepto,jdbcType=INTEGER},
+      int_id_sub_tipo_concepto = #{record.int_id_sub_tipo_concepto,jdbcType=INTEGER},
+      int_requiere_frecuencia_concepto = #{record.int_requiere_frecuencia_concepto,jdbcType=INTEGER},
+      dec_monto_concepto = #{record.dec_monto_concepto,jdbcType=NUMERIC},
+      int_id_tipo_monto_concepto = #{record.int_id_tipo_monto_concepto,jdbcType=INTEGER},
+      int_id_estado = #{record.int_id_estado,jdbcType=INTEGER},
+      tsp_fecha_registro = #{record.tsp_fecha_registro,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sernanp.app.dao.domain.TConceptoPlanilla" >
+    update personal.t_concepto_planilla
+    <set >
+      <if test="var_cod_concepto != null" >
+        var_cod_concepto = #{var_cod_concepto,jdbcType=VARCHAR},
+      </if>
+      <if test="var_descrip_concepto != null" >
+        var_descrip_concepto = #{var_descrip_concepto,jdbcType=VARCHAR},
+      </if>
+      <if test="var_descrip_corto_concepto != null" >
+        var_descrip_corto_concepto = #{var_descrip_corto_concepto,jdbcType=VARCHAR},
+      </if>
+      <if test="var_cod_pdt_concepto != null" >
+        var_cod_pdt_concepto = #{var_cod_pdt_concepto,jdbcType=VARCHAR},
+      </if>
+      <if test="var_cod_mef_concepto != null" >
+        var_cod_mef_concepto = #{var_cod_mef_concepto,jdbcType=VARCHAR},
+      </if>
+      <if test="var_cod_siaf_concepto != null" >
+        var_cod_siaf_concepto = #{var_cod_siaf_concepto,jdbcType=VARCHAR},
+      </if>
+      <if test="int_id_tipo_concepto != null" >
+        int_id_tipo_concepto = #{int_id_tipo_concepto,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_sub_tipo_concepto != null" >
+        int_id_sub_tipo_concepto = #{int_id_sub_tipo_concepto,jdbcType=INTEGER},
+      </if>
+      <if test="int_requiere_frecuencia_concepto != null" >
+        int_requiere_frecuencia_concepto = #{int_requiere_frecuencia_concepto,jdbcType=INTEGER},
+      </if>
+      <if test="dec_monto_concepto != null" >
+        dec_monto_concepto = #{dec_monto_concepto,jdbcType=NUMERIC},
+      </if>
+      <if test="int_id_tipo_monto_concepto != null" >
+        int_id_tipo_monto_concepto = #{int_id_tipo_monto_concepto,jdbcType=INTEGER},
+      </if>
+      <if test="int_id_estado != null" >
+        int_id_estado = #{int_id_estado,jdbcType=INTEGER},
+      </if>
+      <if test="tsp_fecha_registro != null" >
+        tsp_fecha_registro = #{tsp_fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where srl_id_concepto_planilla = #{srl_id_concepto_planilla,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sernanp.app.dao.domain.TConceptoPlanilla" >
+    update personal.t_concepto_planilla
+    set var_cod_concepto = #{var_cod_concepto,jdbcType=VARCHAR},
+      var_descrip_concepto = #{var_descrip_concepto,jdbcType=VARCHAR},
+      var_descrip_corto_concepto = #{var_descrip_corto_concepto,jdbcType=VARCHAR},
+      var_cod_pdt_concepto = #{var_cod_pdt_concepto,jdbcType=VARCHAR},
+      var_cod_mef_concepto = #{var_cod_mef_concepto,jdbcType=VARCHAR},
+      var_cod_siaf_concepto = #{var_cod_siaf_concepto,jdbcType=VARCHAR},
+      int_id_tipo_concepto = #{int_id_tipo_concepto,jdbcType=INTEGER},
+      int_id_sub_tipo_concepto = #{int_id_sub_tipo_concepto,jdbcType=INTEGER},
+      int_requiere_frecuencia_concepto = #{int_requiere_frecuencia_concepto,jdbcType=INTEGER},
+      dec_monto_concepto = #{dec_monto_concepto,jdbcType=NUMERIC},
+      int_id_tipo_monto_concepto = #{int_id_tipo_monto_concepto,jdbcType=INTEGER},
+      int_id_estado = #{int_id_estado,jdbcType=INTEGER},
+      tsp_fecha_registro = #{tsp_fecha_registro,jdbcType=TIMESTAMP}
+    where srl_id_concepto_planilla = #{srl_id_concepto_planilla,jdbcType=INTEGER}
+  </update>
+</mapper>

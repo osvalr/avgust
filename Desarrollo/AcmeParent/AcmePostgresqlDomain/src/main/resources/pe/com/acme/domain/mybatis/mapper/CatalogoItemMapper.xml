@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pe.com.acme.domain.mybatis.mapper.CatalogoItemMapper" >
+  <resultMap id="BaseResultMap" type="pe.com.acme.domain.mybatis.model.CatalogoItem" >
+    <id column="id_catalogo_item" property="id_catalogo_item" jdbcType="INTEGER" />
+    <result column="id_catalogo" property="id_catalogo" jdbcType="INTEGER" />
+    <result column="valor_item" property="valor_item" jdbcType="SMALLINT" />
+    <result column="descrip_item" property="descrip_item" jdbcType="VARCHAR" />
+    <result column="valor_a" property="valor_a" jdbcType="VARCHAR" />
+    <result column="valor_b" property="valor_b" jdbcType="VARCHAR" />
+    <result column="valor_c" property="valor_c" jdbcType="VARCHAR" />
+    <result column="valor_d" property="valor_d" jdbcType="VARCHAR" />
+    <result column="valor_e" property="valor_e" jdbcType="VARCHAR" />
+    <result column="id_estado" property="id_estado" jdbcType="SMALLINT" />
+    <result column="id_usuario_reg" property="id_usuario_reg" jdbcType="INTEGER" />
+    <result column="fecha_registro" property="fecha_registro" jdbcType="TIMESTAMP" />
+    <result column="id_usuario_mod" property="id_usuario_mod" jdbcType="INTEGER" />
+    <result column="fecha_modificacion" property="fecha_modificacion" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id_catalogo_item, id_catalogo, valor_item, descrip_item, valor_a, valor_b, valor_c, 
+    valor_d, valor_e, id_estado, id_usuario_reg, fecha_registro, id_usuario_mod, fecha_modificacion
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.acme.domain.mybatis.model.CatalogoItemExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from general.catalogo_item
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="pe.com.acme.domain.mybatis.model.CatalogoItemKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from general.catalogo_item
+    where id_catalogo_item = #{id_catalogo_item,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="pe.com.acme.domain.mybatis.model.CatalogoItemKey" >
+    delete from general.catalogo_item
+    where id_catalogo_item = #{id_catalogo_item,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="pe.com.acme.domain.mybatis.model.CatalogoItemExample" >
+    delete from general.catalogo_item
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.acme.domain.mybatis.model.CatalogoItem" useGeneratedKeys="true" keyProperty="id_catalogo_item" >
+    insert into general.catalogo_item (id_catalogo, valor_item, descrip_item, 
+      valor_a, valor_b, valor_c, 
+      valor_d, valor_e, id_estado, 
+      id_usuario_reg, fecha_registro, id_usuario_mod, 
+      fecha_modificacion)
+    values (#{id_catalogo,jdbcType=INTEGER}, #{valor_item,jdbcType=SMALLINT}, #{descrip_item,jdbcType=VARCHAR}, 
+      #{valor_a,jdbcType=VARCHAR}, #{valor_b,jdbcType=VARCHAR}, #{valor_c,jdbcType=VARCHAR}, 
+      #{valor_d,jdbcType=VARCHAR}, #{valor_e,jdbcType=VARCHAR}, #{id_estado,jdbcType=SMALLINT}, 
+      #{id_usuario_reg,jdbcType=INTEGER}, #{fecha_registro,jdbcType=TIMESTAMP}, #{id_usuario_mod,jdbcType=INTEGER}, 
+      #{fecha_modificacion,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.acme.domain.mybatis.model.CatalogoItem" useGeneratedKeys="true" keyProperty="id_catalogo_item" >
+    insert into general.catalogo_item
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id_catalogo != null" >
+        id_catalogo,
+      </if>
+      <if test="valor_item != null" >
+        valor_item,
+      </if>
+      <if test="descrip_item != null" >
+        descrip_item,
+      </if>
+      <if test="valor_a != null" >
+        valor_a,
+      </if>
+      <if test="valor_b != null" >
+        valor_b,
+      </if>
+      <if test="valor_c != null" >
+        valor_c,
+      </if>
+      <if test="valor_d != null" >
+        valor_d,
+      </if>
+      <if test="valor_e != null" >
+        valor_e,
+      </if>
+      <if test="id_estado != null" >
+        id_estado,
+      </if>
+      <if test="id_usuario_reg != null" >
+        id_usuario_reg,
+      </if>
+      <if test="fecha_registro != null" >
+        fecha_registro,
+      </if>
+      <if test="id_usuario_mod != null" >
+        id_usuario_mod,
+      </if>
+      <if test="fecha_modificacion != null" >
+        fecha_modificacion,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id_catalogo != null" >
+        #{id_catalogo,jdbcType=INTEGER},
+      </if>
+      <if test="valor_item != null" >
+        #{valor_item,jdbcType=SMALLINT},
+      </if>
+      <if test="descrip_item != null" >
+        #{descrip_item,jdbcType=VARCHAR},
+      </if>
+      <if test="valor_a != null" >
+        #{valor_a,jdbcType=VARCHAR},
+      </if>
+      <if test="valor_b != null" >
+        #{valor_b,jdbcType=VARCHAR},
+      </if>
+      <if test="valor_c != null" >
+        #{valor_c,jdbcType=VARCHAR},
+      </if>
+      <if test="valor_d != null" >
+        #{valor_d,jdbcType=VARCHAR},
+      </if>
+      <if test="valor_e != null" >
+        #{valor_e,jdbcType=VARCHAR},
+      </if>
+      <if test="id_estado != null" >
+        #{id_estado,jdbcType=SMALLINT},
+      </if>
+      <if test="id_usuario_reg != null" >
+        #{id_usuario_reg,jdbcType=INTEGER},
+      </if>
+      <if test="fecha_registro != null" >
+        #{fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+      <if test="id_usuario_mod != null" >
+        #{id_usuario_mod,jdbcType=INTEGER},
+      </if>
+      <if test="fecha_modificacion != null" >
+        #{fecha_modificacion,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.acme.domain.mybatis.model.CatalogoItemExample" resultType="java.lang.Integer" >
+    select count(*) from general.catalogo_item
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update general.catalogo_item
+    <set >
+      <if test="record.id_catalogo_item != null" >
+        id_catalogo_item = #{record.id_catalogo_item,jdbcType=INTEGER},
+      </if>
+      <if test="record.id_catalogo != null" >
+        id_catalogo = #{record.id_catalogo,jdbcType=INTEGER},
+      </if>
+      <if test="record.valor_item != null" >
+        valor_item = #{record.valor_item,jdbcType=SMALLINT},
+      </if>
+      <if test="record.descrip_item != null" >
+        descrip_item = #{record.descrip_item,jdbcType=VARCHAR},
+      </if>
+      <if test="record.valor_a != null" >
+        valor_a = #{record.valor_a,jdbcType=VARCHAR},
+      </if>
+      <if test="record.valor_b != null" >
+        valor_b = #{record.valor_b,jdbcType=VARCHAR},
+      </if>
+      <if test="record.valor_c != null" >
+        valor_c = #{record.valor_c,jdbcType=VARCHAR},
+      </if>
+      <if test="record.valor_d != null" >
+        valor_d = #{record.valor_d,jdbcType=VARCHAR},
+      </if>
+      <if test="record.valor_e != null" >
+        valor_e = #{record.valor_e,jdbcType=VARCHAR},
+      </if>
+      <if test="record.id_estado != null" >
+        id_estado = #{record.id_estado,jdbcType=SMALLINT},
+      </if>
+      <if test="record.id_usuario_reg != null" >
+        id_usuario_reg = #{record.id_usuario_reg,jdbcType=INTEGER},
+      </if>
+      <if test="record.fecha_registro != null" >
+        fecha_registro = #{record.fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.id_usuario_mod != null" >
+        id_usuario_mod = #{record.id_usuario_mod,jdbcType=INTEGER},
+      </if>
+      <if test="record.fecha_modificacion != null" >
+        fecha_modificacion = #{record.fecha_modificacion,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update general.catalogo_item
+    set id_catalogo_item = #{record.id_catalogo_item,jdbcType=INTEGER},
+      id_catalogo = #{record.id_catalogo,jdbcType=INTEGER},
+      valor_item = #{record.valor_item,jdbcType=SMALLINT},
+      descrip_item = #{record.descrip_item,jdbcType=VARCHAR},
+      valor_a = #{record.valor_a,jdbcType=VARCHAR},
+      valor_b = #{record.valor_b,jdbcType=VARCHAR},
+      valor_c = #{record.valor_c,jdbcType=VARCHAR},
+      valor_d = #{record.valor_d,jdbcType=VARCHAR},
+      valor_e = #{record.valor_e,jdbcType=VARCHAR},
+      id_estado = #{record.id_estado,jdbcType=SMALLINT},
+      id_usuario_reg = #{record.id_usuario_reg,jdbcType=INTEGER},
+      fecha_registro = #{record.fecha_registro,jdbcType=TIMESTAMP},
+      id_usuario_mod = #{record.id_usuario_mod,jdbcType=INTEGER},
+      fecha_modificacion = #{record.fecha_modificacion,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.acme.domain.mybatis.model.CatalogoItem" >
+    update general.catalogo_item
+    <set >
+      <if test="id_catalogo != null" >
+        id_catalogo = #{id_catalogo,jdbcType=INTEGER},
+      </if>
+      <if test="valor_item != null" >
+        valor_item = #{valor_item,jdbcType=SMALLINT},
+      </if>
+      <if test="descrip_item != null" >
+        descrip_item = #{descrip_item,jdbcType=VARCHAR},
+      </if>
+      <if test="valor_a != null" >
+        valor_a = #{valor_a,jdbcType=VARCHAR},
+      </if>
+      <if test="valor_b != null" >
+        valor_b = #{valor_b,jdbcType=VARCHAR},
+      </if>
+      <if test="valor_c != null" >
+        valor_c = #{valor_c,jdbcType=VARCHAR},
+      </if>
+      <if test="valor_d != null" >
+        valor_d = #{valor_d,jdbcType=VARCHAR},
+      </if>
+      <if test="valor_e != null" >
+        valor_e = #{valor_e,jdbcType=VARCHAR},
+      </if>
+      <if test="id_estado != null" >
+        id_estado = #{id_estado,jdbcType=SMALLINT},
+      </if>
+      <if test="id_usuario_reg != null" >
+        id_usuario_reg = #{id_usuario_reg,jdbcType=INTEGER},
+      </if>
+      <if test="fecha_registro != null" >
+        fecha_registro = #{fecha_registro,jdbcType=TIMESTAMP},
+      </if>
+      <if test="id_usuario_mod != null" >
+        id_usuario_mod = #{id_usuario_mod,jdbcType=INTEGER},
+      </if>
+      <if test="fecha_modificacion != null" >
+        fecha_modificacion = #{fecha_modificacion,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id_catalogo_item = #{id_catalogo_item,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.acme.domain.mybatis.model.CatalogoItem" >
+    update general.catalogo_item
+    set id_catalogo = #{id_catalogo,jdbcType=INTEGER},
+      valor_item = #{valor_item,jdbcType=SMALLINT},
+      descrip_item = #{descrip_item,jdbcType=VARCHAR},
+      valor_a = #{valor_a,jdbcType=VARCHAR},
+      valor_b = #{valor_b,jdbcType=VARCHAR},
+      valor_c = #{valor_c,jdbcType=VARCHAR},
+      valor_d = #{valor_d,jdbcType=VARCHAR},
+      valor_e = #{valor_e,jdbcType=VARCHAR},
+      id_estado = #{id_estado,jdbcType=SMALLINT},
+      id_usuario_reg = #{id_usuario_reg,jdbcType=INTEGER},
+      fecha_registro = #{fecha_registro,jdbcType=TIMESTAMP},
+      id_usuario_mod = #{id_usuario_mod,jdbcType=INTEGER},
+      fecha_modificacion = #{fecha_modificacion,jdbcType=TIMESTAMP}
+    where id_catalogo_item = #{id_catalogo_item,jdbcType=INTEGER}
+  </update>
+  <select resultMap="BaseResultMap" parameterType="pe.com.acme.domain.mybatis.model.CatalogoItemExample" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from general.catalogo_item
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

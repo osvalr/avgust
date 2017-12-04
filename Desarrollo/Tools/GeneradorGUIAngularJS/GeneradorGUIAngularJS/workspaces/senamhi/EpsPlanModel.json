@@ -1,0 +1,14 @@
+{
+	"titleCrud": "Eps Plan",
+	"nameCrud": "EpsPlan",
+	"constUrlApi": "EPS_PLAN_SERVICE_API",
+	"autoIdentityPrimaryKey": true,
+	"nameModelXml": "EpsPlanModel.xml",
+	"subModels": [
+		{
+			"nameModel": "EpsPlanTarifaModel",
+			"nameCrud": "EpsPlanTarifa",
+			"autoIdentityPrimaryKey": true
+		}
+	]
+}

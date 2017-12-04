@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.ReporteResumenNominaPagoFFMP_CASQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+ 	
+	 cp.var_descrip_concepto,
+	 ms.destablatipo as descrip_periodo,
+ 	 napp.c_fte_fto,
+ 	 napp.c_meta,
+ 	 ap.int_anio,
+	 SUM(nc.dec_monto_calculado) as dec_monto_calculado,
+	 (
+	   select 
+	      SUM(xnc.dec_monto_calculado)
+	   from personal.t_nomina_concepto xnc
+		INNER JOIN personal.t_concepto_planilla xcp ON xnc.srl_id_concepto_planilla = xcp.srl_id_concepto_planilla
+		INNER JOIN personal.t_nomina_anio_periodo_personal xnapp ON xnc.srl_id_nomina_anio_periodo_personal = xnapp.srl_id_nomina_anio_periodo_personal
+		INNER JOIN personal.t_anio_periodo_planilla xapp ON xapp.srl_id_anio_periodo_planilla = xnapp.srl_id_anio_periodo_planilla
+		INNER JOIN personal.t_anio_planilla xap ON xap.srl_id_anio_planilla = xapp.srl_id_anio_planilla
+	   where xcp.var_descrip_concepto = 'OBLIGACIONES DEL EMPLEADOR' and
+	         xapp.int_id_periodo_mes = app.int_id_periodo_mes and
+	         xap.int_anio = ap.int_anio and
+	         xnapp.srl_id_regimen_contractual = napp.srl_id_regimen_contractual and
+	         xnapp.c_meta = napp.c_meta and
+	         xnapp.c_fte_fto = napp.c_fte_fto
+          
+	         )as obligaciones
+	
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+ personal.t_nomina_concepto nc 
+	  INNER JOIN personal.t_concepto_planilla cp ON nc.srl_id_concepto_planilla = cp.srl_id_concepto_planilla
+	  INNER JOIN personal.t_nomina_anio_periodo_personal napp ON nc.srl_id_nomina_anio_periodo_personal = napp.srl_id_nomina_anio_periodo_personal
+	  INNER JOIN personal.t_anio_periodo_planilla app ON app.srl_id_anio_periodo_planilla = napp.srl_id_anio_periodo_planilla
+	  INNER JOIN personal.t_anio_planilla ap ON ap.srl_id_anio_planilla = app.srl_id_anio_planilla
+	  inner join sernanp.vw_meses ms on ms.codinttablatipo = app.int_id_periodo_mes	  	   
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+ 
+	app.int_id_periodo_mes = COALESCE(#{int_id_periodo_mes},app.int_id_periodo_mes) AND 
+	ap.int_anio = COALESCE(#{int_anio},ap.int_anio) AND 
+	napp.srl_id_regimen_contractual= COALESCE(#{srl_id_regimen_contractual},napp.srl_id_regimen_contractual) AND
+	(cp.var_descrip_concepto != 'OBLIGACIONES DEL EMPLEADOR') AND
+	napp.c_meta IN (${c_meta}) AND
+	napp.c_fte_fto = COALESCE(#{c_fte_fto}, napp.c_fte_fto) AND
+    cp.int_id_tipo_concepto IN (1,3)    
+        
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+
+GROUP BY 
+	napp.c_meta,
+	napp.c_fte_fto,
+	cp.var_descrip_concepto,
+	ms.destablatipo,
+	ap.int_anio,
+	app.int_id_periodo_mes,
+	napp.srl_id_regimen_contractual
+	
+order by 
+ c_fte_fto,
+ c_meta,
+ var_descrip_concepto desc
+ 
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.ReporteResumenNominaPagoFFMP_CASQuery" parameterType="sernanp.app.dao.query.domain.ReporteResumenNominaPagoFFMP_CASQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.ReporteResumenNominaPagoFFMP_CASQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.ReporteResumenNominaPagoFFMP_CASQuery" parameterType="sernanp.app.dao.query.domain.ReporteResumenNominaPagoFFMP_CASQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.ReporteResumenNominaPagoFFMP_CASQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.ReporteResumenNominaPagoFFMP_CASQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

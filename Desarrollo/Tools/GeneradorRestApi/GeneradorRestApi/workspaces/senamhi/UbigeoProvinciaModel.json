@@ -1,0 +1,6 @@
+{
+	"nameCrud": "UbigeoProvincia",
+	"path": "ubigeo-provincias",
+	"nameRepository": "TUbigeoProvinciaRepository",
+	"nameModelXml": "UbigeoProvinciaModel.xml"
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.FnGeneraDescuentoPersonalQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+ 
+sernanp.fn_genera_descuento_personal_planilla( #{dte_fecha_inicio},#{dte_fecha_fin},#{int_anho},#{int_mes},-1,#{srl_id_regimen_contractual},-1,#{idpersonal},'sernanp.t_personal_descuento_tmp' ) as result
+
+
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.FnGeneraDescuentoPersonalQuery" parameterType="sernanp.app.dao.query.domain.FnGeneraDescuentoPersonalQueryCriteria"> 
+select 
+<include refid="outs" /> 
+
+</select> 
+
+</mapper> 

@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.RptEmitirDetalleNominaxMesxRCQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+*
+]]>
+</sql> 
+
+<sql id="from">   
+<![CDATA[
+
+(
+
+SELECT
+	(select extract (day from (select date_trunc('month',#{fecha_mes}::date) +'1month' ::interval -'1sec' ::interval))):: INT AS dias ,
+	napp.idpersonal,
+	(COALESCE(pn.apepat,'')||' '||COALESCE(pn.apemat,'')||' '||COALESCE(pn.nombre,'')) as "nombre_completo",	
+	pn.numerodoc,
+	pn.ruc,
+	napp.srl_id_regimen_contractual,
+	rc.var_descripcion_regimen_contractual,
+	ap.int_anio,
+	ms.destablatipo as descrip_periodo,
+	idpa.int_id_tipo_concepto,
+	UPPER(vtiidp.destablatipo) as descrip_tipo_concepto,
+	nc.srl_id_concepto_planilla,
+	idpa.var_descrip_corto_concepto,
+	napp.c_fte_fto,
+	napp.c_meta,
+	napp.c_fte_fto ||'-'|| napp.c_meta||'-'|| TRIM(napp.var_ubicacion_fisica) AS fte_fto_meta_ubicacion,
+	--(napp.c_fte_fto ||'-'|| napp.c_meta||'-'|| (COALESCE(ca.descategoriaanp,'')|| ' ' || COALESCE(an.desareanatural,''))) as fte_fto_meta_ubicacion,
+	nc.dec_monto_calculado,
+	napp.dec_total_ingresos,
+	napp.dec_total_descuentos,
+	napp.dec_total_aportes,
+	(napp.dec_total_ingresos - napp.dec_total_descuentos) neto_pagar,	
+	ss.var_num_operacion,
+	c.var_nom_cargo,
+	pc.var_nivel_regimen_contractual,
+	napp.var_ubicacion_fisica AS ubicacion
+		
+
+FROM
+
+personal.t_nomina_anio_periodo_personal napp
+inner join personal.t_anio_periodo_planilla app on napp.srl_id_anio_periodo_planilla = app.srl_id_anio_periodo_planilla
+inner join personal.t_anio_planilla ap on app.srl_id_anio_planilla = ap.srl_id_anio_planilla
+inner join sernanp.vw_meses ms on ms.codinttablatipo = app.int_id_periodo_mes
+inner join sernanp.t_regimen_contractual rc on napp.srl_id_regimen_contractual=rc.srl_id_regimen_contractual
+inner join sernanp.personal ps on napp.idpersonal = ps.idpersonal
+inner join sernanp.personanatural pn on ps.idpersonanatural=pn.idpersonanatural
+left join personal.t_anio_meta am on napp.c_meta = am.cod_meta and ap.srl_id_anio_planilla = am.srl_id_anio_planilla
+left join sernanp.t_personal_contrato pc on napp.srl_id_contrato=pc.srl_id_contrato
+left join sernanp.t_personal_contrato ad on pc.srl_id_contrato = ad.srl_id_contrato_padre
+left join personal.t_nomina_concepto nc ON napp.srl_id_nomina_anio_periodo_personal = nc.srl_id_nomina_anio_periodo_personal
+left join personal.t_concepto_planilla idpa ON (idpa.srl_id_concepto_planilla = nc.srl_id_concepto_planilla)
+left join sernanp.vw_estado_generico veg ON (nc.int_id_estado = veg.codinttablatipo)
+left join sernanp.vw_concepto_planilla vtiidp ON (idpa.int_id_tipo_concepto = vtiidp.codinttablatipo)
+left join sernanp.vw_sub_tipo_concepto_planilla vstiidp ON (idpa.int_id_sub_tipo_concepto = vstiidp.codinttablatipo)
+left join sernanp.t_cargo c on pc.srl_id_cargo = c.srl_id_cargo
+left join sernanp.sede s on pc.srl_id_sede_pres = s.idsede
+left join sernanp.areanatural an on s.idareanatural = an.idareanatural
+left join sernanp.categoriaanp ca on an.idcategoriaanp = ca.idcategoriaanp
+left join sernanp.areaorganica ao on pc.idarea = ao.idarea
+left join (
+             select 
+                   x.idpersonal,
+                   x.var_num_operacion, 
+                   x.dte_fecha_presentacion 
+             from 
+                   personal.t_suspension_cuarta_categoria x
+            ) as ss on (ss.idpersonal = napp.idpersonal and
+                       to_char(ss.dte_fecha_presentacion,'YYYY') = cast(ap.int_anio as character varying)
+                       )
+WHERE
+
+COALESCE(ps.idpersonal,0) = COALESCE(null,COALESCE(ps.idpersonal,0)) and
+COALESCE(napp.srl_id_regimen_contractual,0) = COALESCE(#{srl_id_regimen_contractual},COALESCE(napp.srl_id_regimen_contractual,0)) and
+ap.int_anio = COALESCE(#{int_anio},ap.int_anio) and
+app.int_id_periodo_mes = COALESCE(#{int_id_periodo_mes},app.int_id_periodo_mes) and
+
+
+(
+(idpa.int_id_tipo_concepto = 2 and
+idpa.int_id_sub_tipo_concepto <> 6) OR
+(idpa.int_id_tipo_concepto = 1 ) 
+) and
+coalesce(pc.dte_fec_inicio, CURRENT_DATE) = coalesce((select MAX(dte_fec_inicio) from sernanp.t_personal_contrato where idpersonal=pc.idpersonal), CURRENT_DATE) and
+coalesce(to_char(ad.dte_fec_inicio,'DD/MM/YYYY'),'') = coalesce(to_char((select MAX(dte_fec_inicio) from sernanp.t_personal_contrato where srl_id_contrato_padre = pc.srl_id_contrato),'DD/MM/YYYY'),coalesce(to_char(ad.dte_fec_inicio,'DD/MM/YYYY'),''))
+
+--AND napp.c_fte_fto = '00' and napp.c_meta = '156'
+
+GROUP BY
+        napp.srl_id_nomina_anio_periodo_personal,
+	napp.idpersonal,
+	pn.apepat,
+	pn.apemat,
+	pn.nombre,
+	pn.numerodoc,
+	pn.ruc,
+	rc.var_descripcion_regimen_contractual,
+	ap.int_anio,
+	ms.destablatipo,
+	idpa.int_id_tipo_concepto,
+	vtiidp.destablatipo,
+	idpa.int_id_sub_tipo_concepto,
+	vstiidp.destablatipo,
+	nc.srl_id_concepto_planilla,
+	idpa.var_descrip_corto_concepto,
+	nc.dec_monto_calculado,
+	ps.idpersonal,
+	napp.c_fte_fto,
+	napp.c_meta,
+	ss.var_num_operacion,
+	pc.var_nivel_regimen_contractual,
+	c.var_nom_cargo,
+	ca.descategoriaanp,
+	an.desareanatural,
+	napp.var_ubicacion_fisica
+	
+--ORDER BY c_fte_fto, c_meta
+
+UNION ALL
+
+	(SELECT 
+
+	(select extract (day from (select date_trunc('month',#{fecha_mes}::date) +'1month' ::interval -'1sec' ::interval))):: INT AS dias , 
+	NULL, NULL, NULL, NULL, 
+	napp.srl_id_regimen_contractual,
+	NULL,
+	ap.int_anio,
+	ms.destablatipo as descrip_periodo,	
+	idpa.int_id_tipo_concepto,
+	UPPER(vtiidp.destablatipo) as descrip_tipo_concepto,
+	NULL,
+	idpa.var_descrip_corto_concepto,
+	napp.c_fte_fto 	,
+	napp.c_meta,
+	(napp.c_fte_fto ||'-'|| napp.c_meta||'-'|| napp.var_ubicacion_fisica) as fte_fto_meta_ubicacion,
+	--napp.var_ubicacion_fisica,
+	--(napp.c_fte_fto ||'-'|| napp.c_meta||'-'|| (COALESCE(ca.descategoriaanp,'')|| ' ' || COALESCE(an.desareanatural,''))) as fte_fto_meta_ubicacion,	
+	(COALESCE(SUM(nc.dec_monto_calculado),0.00) )AS DESCUENTO_X_CONCEPTO,	
+	
+	(COALESCE((
+	
+		SELECT SUM(dec_total_ingresos) as total_ingresos		       
+		 FROM personal.t_nomina_anio_periodo_personal napp1
+		INNER JOIN sernanp.t_personal_contrato pc1 on napp1.srl_id_contrato=pc1.srl_id_contrato	
+		inner join  personal.t_anio_periodo_planilla app1 on napp1.srl_id_anio_periodo_planilla = app1.srl_id_anio_periodo_planilla
+		inner join personal.t_anio_planilla ap1 on app1.srl_id_anio_planilla = ap1.srl_id_anio_planilla	
+		WHERE   napp1.c_fte_fto = napp.c_fte_fto and napp1.c_meta = napp.c_meta
+			AND napp1.srl_id_regimen_contractual = napp.srl_id_regimen_contractual
+			AND ap1.int_anio = ap.int_anio
+			AND app1.int_id_periodo_mes = app.int_id_periodo_mes
+			AND napp1.var_ubicacion_fisica = napp.var_ubicacion_fisica
+
+		GROUP BY napp1.c_fte_fto ,napp1.c_meta, TRIM(napp1.var_ubicacion_fisica)		
+		
+			), 0.00)) AS DECT_TOTAL_INGRESOS
+			
+		,
+	(COALESCE((
+		SELECT 
+		       SUM(dec_total_descuentos) as total_descuentos		       
+		  FROM personal.t_nomina_anio_periodo_personal napp1
+		INNER JOIN sernanp.t_personal_contrato pc1 on napp1.srl_id_contrato=pc1.srl_id_contrato
+		inner join  personal.t_anio_periodo_planilla app1 on napp1.srl_id_anio_periodo_planilla = app1.srl_id_anio_periodo_planilla
+		inner join personal.t_anio_planilla ap1 on app1.srl_id_anio_planilla = ap1.srl_id_anio_planilla	
+		WHERE   napp1.c_fte_fto = napp.c_fte_fto and napp1.c_meta = napp.c_meta
+			AND napp1.srl_id_regimen_contractual = napp.srl_id_regimen_contractual
+			AND ap1.int_anio = ap.int_anio
+			AND app1.int_id_periodo_mes = app.int_id_periodo_mes
+			AND napp1.var_ubicacion_fisica = napp.var_ubicacion_fisica
+
+		GROUP BY napp1.c_fte_fto ,napp1.c_meta, TRIM(napp1.var_ubicacion_fisica)
+			),0.00)) AS DECT_TOTAL_DESCUENTOS
+		,
+	(COALESCE((
+		SELECT SUM(dec_total_aportes) as total_aportes				       
+		  FROM personal.t_nomina_anio_periodo_personal napp1
+
+		INNER JOIN sernanp.t_personal_contrato pc1 on napp1.srl_id_contrato=pc1.srl_id_contrato
+		inner join  personal.t_anio_periodo_planilla app1 on napp1.srl_id_anio_periodo_planilla = app1.srl_id_anio_periodo_planilla
+		inner join personal.t_anio_planilla ap1 on app1.srl_id_anio_planilla = ap1.srl_id_anio_planilla	
+		WHERE   napp1.c_fte_fto = napp.c_fte_fto and napp1.c_meta = napp.c_meta
+			AND napp1.srl_id_regimen_contractual = napp.srl_id_regimen_contractual
+			AND ap1.int_anio = ap.int_anio
+			AND app1.int_id_periodo_mes = app.int_id_periodo_mes
+			AND napp1.var_ubicacion_fisica = napp.var_ubicacion_fisica
+
+		GROUP BY napp1.c_fte_fto ,napp1.c_meta, TRIM(napp1.var_ubicacion_fisica)
+			),0.00)) AS DECT_TOTAL_APORTES
+		,
+	(COALESCE((
+		SELECT SUM(dec_total_neto) as total_netot_pagar		       
+		  FROM personal.t_nomina_anio_periodo_personal napp1
+		INNER JOIN sernanp.t_personal_contrato pc1 on napp1.srl_id_contrato=pc1.srl_id_contrato
+		inner join  personal.t_anio_periodo_planilla app1 on napp1.srl_id_anio_periodo_planilla = app1.srl_id_anio_periodo_planilla
+		inner join personal.t_anio_planilla ap1 on app1.srl_id_anio_planilla = ap1.srl_id_anio_planilla	
+		WHERE   napp1.c_fte_fto = napp.c_fte_fto and napp1.c_meta = napp.c_meta
+			AND napp1.srl_id_regimen_contractual = napp.srl_id_regimen_contractual
+			AND ap1.int_anio = ap.int_anio
+			AND app1.int_id_periodo_mes = app.int_id_periodo_mes
+			AND napp1.var_ubicacion_fisica = napp.var_ubicacion_fisica
+
+		GROUP BY napp1.c_fte_fto ,napp1.c_meta, TRIM(napp1.var_ubicacion_fisica)
+			),0.00)) AS NETO_PAGAR,
+		NULL,NULL,NULL,napp.var_ubicacion_fisica
+	
+	
+			
+
+FROM
+
+personal.t_nomina_anio_periodo_personal napp
+inner join personal.t_anio_periodo_planilla app on napp.srl_id_anio_periodo_planilla = app.srl_id_anio_periodo_planilla
+inner join personal.t_anio_planilla ap on app.srl_id_anio_planilla = ap.srl_id_anio_planilla
+inner join sernanp.vw_meses ms on ms.codinttablatipo = app.int_id_periodo_mes
+inner join sernanp.t_regimen_contractual rc on napp.srl_id_regimen_contractual=rc.srl_id_regimen_contractual
+inner join sernanp.personal ps on napp.idpersonal = ps.idpersonal
+inner join sernanp.personanatural pn on ps.idpersonanatural=pn.idpersonanatural
+left join personal.t_anio_meta am on napp.c_meta = am.cod_meta and ap.srl_id_anio_planilla = am.srl_id_anio_planilla
+left join sernanp.t_personal_contrato pc on napp.srl_id_contrato=pc.srl_id_contrato
+left join sernanp.t_personal_contrato ad on pc.srl_id_contrato = ad.srl_id_contrato_padre
+left join personal.t_nomina_concepto nc ON napp.srl_id_nomina_anio_periodo_personal = nc.srl_id_nomina_anio_periodo_personal
+left join personal.t_concepto_planilla idpa ON (idpa.srl_id_concepto_planilla = nc.srl_id_concepto_planilla)
+left join sernanp.vw_estado_generico veg ON (nc.int_id_estado = veg.codinttablatipo)
+left join sernanp.vw_concepto_planilla vtiidp ON (idpa.int_id_tipo_concepto = vtiidp.codinttablatipo)
+left join sernanp.vw_sub_tipo_concepto_planilla vstiidp ON (idpa.int_id_sub_tipo_concepto = vstiidp.codinttablatipo)
+/* QUIT FOR DAVID 21-07-2015
+left join sernanp.t_cargo c on pc.srl_id_cargo = c.srl_id_cargo
+left join sernanp.sede s on pc.srl_id_sede_pres = s.idsede
+left join sernanp.areanatural an on s.idareanatural = an.idareanatural
+left join sernanp.categoriaanp ca on an.idcategoriaanp = ca.idcategoriaanp
+left join sernanp.areaorganica ao on pc.idarea = ao.idarea
+*/
+
+WHERE
+
+COALESCE(ps.idpersonal,0) = COALESCE(null,COALESCE(ps.idpersonal,0)) and
+COALESCE(napp.srl_id_regimen_contractual,0) = COALESCE(#{srl_id_regimen_contractual},COALESCE(napp.srl_id_regimen_contractual,0)) and
+ap.int_anio = COALESCE(#{int_anio},ap.int_anio) and
+app.int_id_periodo_mes = COALESCE(#{int_id_periodo_mes},app.int_id_periodo_mes) and
+(
+--(idpa.int_id_tipo_concepto = 2 and
+idpa.int_id_sub_tipo_concepto <> 6
+--) OR(idpa.int_id_tipo_concepto = 1 ) 
+) and
+coalesce(pc.dte_fec_inicio, CURRENT_DATE) = coalesce((select MAX(dte_fec_inicio) from sernanp.t_personal_contrato where idpersonal=pc.idpersonal), CURRENT_DATE) and
+coalesce(to_char(ad.dte_fec_inicio,'DD/MM/YYYY'),'') = coalesce(to_char((select MAX(dte_fec_inicio) from sernanp.t_personal_contrato where srl_id_contrato_padre = pc.srl_id_contrato),'DD/MM/YYYY'),coalesce(to_char(ad.dte_fec_inicio,'DD/MM/YYYY'),''))
+
+--AND napp.c_fte_fto = '00' and napp.c_meta = '156'
+
+
+GROUP BY
+	idpa.int_id_tipo_concepto,
+	idpa.var_descrip_corto_concepto,
+	vtiidp.destablatipo,
+	--napp.dec_total_ingresos,
+	--(napp.c_fte_fto ||'-'|| napp.c_meta||'-'|| (COALESCE(ca.descategoriaanp,'')|| ' ' || COALESCE(an.desareanatural,'')))
+	napp.c_fte_fto 
+	,napp.c_meta
+	,napp.srl_id_anio_periodo_planilla
+	,napp.srl_id_regimen_contractual
+	/* QUIT FOR DAVID 21-07-2015
+	,an.idareanatural
+	,ca.idcategoriaanp
+	*/
+	,napp.var_ubicacion_fisica
+	,ap.int_anio
+	,app.int_id_periodo_mes,
+	napp.var_ubicacion_fisica
+	,ms.destablatipo
+
+) 
+) AS xyz
+--WHERE xyz.c_fte_fto = '00' and xyz.c_meta = '090'
+ORDER BY xyz.fte_fto_meta_ubicacion, xyz.numerodoc, xyz.int_id_tipo_concepto, xyz.var_descrip_corto_concepto
+--(napp.c_fte_fto ||'-'|| napp.c_meta||'-'|| (COALESCE(ca.descategoriaanp,'')|| ' ' || COALESCE(an.desareanatural,'')))
+
+
+ 
+
+]]>
+</sql> 
+
+
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.RptEmitirDetalleNominaxMesxRCQuery" parameterType="sernanp.app.dao.query.domain.RptEmitirDetalleNominaxMesxRCQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.RptEmitirDetalleNominaxMesxRCQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.RptEmitirDetalleNominaxMesxRCQuery" parameterType="sernanp.app.dao.query.domain.RptEmitirDetalleNominaxMesxRCQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.RptEmitirDetalleNominaxMesxRCQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.RptEmitirDetalleNominaxMesxRCQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+
+</select> 
+
+</mapper> 

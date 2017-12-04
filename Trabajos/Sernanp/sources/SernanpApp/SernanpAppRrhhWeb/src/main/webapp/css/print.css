@@ -1,0 +1,5 @@
+#session,
+#print,#menu,select{display:none}
+table{border:1px solid #000 !important;width:100% !important;}
+#content{clear:both;}
+*{color:#000 !important;}

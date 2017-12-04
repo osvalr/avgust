@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteVacantesPlazas" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="da03bb35-1723-496b-a0a6-96eb61fcc987">
+	<property name="ireport.zoom" value="1.948717100000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#A9A9A9">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="f0450c95-cb2f-4694-8ef2-84cf66db6e4f"/>
+	<field name="var_denominacion_requerimiento" class="java.lang.String"/>
+	<field name="int_cantidad_requerida" class="java.lang.Integer"/>
+	<field name="ultimo_lanzamiento_convocatoria" class="java.lang.String"/>
+	<field name="ultimo_lanzamiento_cod_postulacion" class="java.lang.String"/>
+	<field name="lanzamientos_convocatoria" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="104">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="22" y="50" width="510" height="35" uuid="56846407-e7dc-4a35-b97e-d1c7576757e6"/>
+				<textElement markup="html">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Servicio Nacional de Áreas Naturales Protegidas por el Estado<br><br>"
++"SERNANP"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="22" y="84" width="510" height="20" uuid="a4db65a0-fe38-411f-832a-5e99e319e6f5"/>
+				<textElement>
+					<font fontName="DejaVu Sans" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lanzamientos_convocatoria}.equals( 1 ) ? "":"SEGUNDA CONVOCATORIA"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="50" splitType="Stretch">
+			<staticText>
+				<reportElement x="22" y="25" width="86" height="25" uuid="8b64f5c7-392a-43ee-9def-123dbbdb95cf"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+					<paragraph spacingBefore="3"/>
+				</textElement>
+				<text><![CDATA[INSTITUCIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="108" y="25" width="140" height="25" uuid="647c232d-cd88-4895-8965-bad7a3cba087"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+					<paragraph spacingBefore="3"/>
+				</textElement>
+				<text><![CDATA[VACANTE O PLAZA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="248" y="25" width="115" height="25" uuid="e65a0ed2-432f-457f-bb79-78789bde0fd3"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+					<paragraph spacingBefore="3"/>
+				</textElement>
+				<text><![CDATA[DESCRIPCIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="363" y="25" width="169" height="25" uuid="173240a3-0dc7-467f-9be2-3fdfd84149fb"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+					<paragraph spacingBefore="3"/>
+				</textElement>
+				<text><![CDATA[OBSERVACIONES]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="90" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="22" y="0" width="86" height="90" uuid="d9770044-4479-4943-a93f-7b3c66927197"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement markup="none">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Servicio Nacional de Áreas Naturales Protegidas por el Estado - (SERNANP)"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="108" y="0" width="140" height="90" uuid="faf5fa21-cb27-4a8b-9404-7bf8a7d18144"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<font fontName="DejaVu Sans" size="8"/>
+					<paragraph leftIndent="3" rightIndent="3" spacingBefore="3" spacingAfter="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{var_denominacion_requerimiento}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="248" y="0" width="115" height="90" uuid="c6e9665a-c493-435c-8a87-77693e088b93"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement markup="html">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Mayor Información en el portal institucional: <u>www.sernanp.gob.pe</u>"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="363" y="0" width="169" height="90" uuid="2184a1c4-f294-4a5a-8d56-503a0b055175"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Justified" markup="html">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lanzamientos_convocatoria}.equals( 1 ) ?
+"Los requisitos y competencias de los postulantes a los puestos convocados podrán ser revisados en el portal institucional al publicarse la convocatoria que se iniciará a partir de 10 días hábiles posteriores a esta publicación."
+:
+$F{ultimo_lanzamiento_convocatoria} + "<br>"+"<br>"+
+$F{ultimo_lanzamiento_cod_postulacion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.ConceptoPlanillaPorPeriodoProyeccionQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+
+	DISTINCT
+	ap.int_anio,
+	app.int_id_periodo_mes,
+	cp.int_id_tipo_concepto,
+	cp.srl_id_concepto_planilla,
+	cp.var_descrip_concepto
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+personal.t_nomina_anio_periodo_personal napp
+INNER JOIN personal.t_nomina_concepto nc ON napp.srl_id_nomina_anio_periodo_personal = nc.srl_id_nomina_anio_periodo_personal
+inner join personal.t_concepto_planilla cp ON nc.srl_id_concepto_planilla = cp.srl_id_concepto_planilla
+INNER JOIN personal.t_anio_periodo_planilla app ON napp.srl_id_anio_periodo_planilla = app.srl_id_anio_periodo_planilla
+INNER JOIN personal.t_anio_planilla ap ON app.srl_id_anio_planilla = ap.srl_id_anio_planilla
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+    COALESCE(napp.srl_id_regimen_contractual,0) = COALESCE(#{srl_id_regimen_contractual},COALESCE(napp.srl_id_regimen_contractual,0)) and
+	ap.int_anio = COALESCE (#{int_anio}, ap.int_anio) AND 
+	app.int_id_periodo_mes = COALESCE(#{int_id_periodo_mes}, app.int_id_periodo_mes) and
+(
+(cp.int_id_tipo_concepto = 1) or
+(cp.int_id_tipo_concepto = 3)
+)
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+
+ORDER BY
+cp.int_id_tipo_concepto asc
+
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.ConceptoPlanillaPorPeriodoProyeccionQuery" parameterType="sernanp.app.dao.query.domain.ConceptoPlanillaPorPeriodoProyeccionQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.ConceptoPlanillaPorPeriodoProyeccionQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.ConceptoPlanillaPorPeriodoProyeccionQuery" parameterType="sernanp.app.dao.query.domain.ConceptoPlanillaPorPeriodoProyeccionQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.ConceptoPlanillaPorPeriodoProyeccionQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.ConceptoPlanillaPorPeriodoProyeccionQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

@@ -1,0 +1,7 @@
+#in Class Names
+
+(Set<)(.+)(>)(.+) (HashSet)(<*.+>)(\(0\))
+
+List<\2\3\4 ArrayList\6()
+
+#in Methods

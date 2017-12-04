@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.kapcom.tambos.lima.common.model.mapper.ProductQueryMapper">
+
+<sql id="outs"> 
+<![CDATA[
+
+t.NOM_PRODUC,
+t.PRE_PRODUC,
+t.COD_PRODUC,
+t.COD_MARCA,
+t.MARCA_PRODUC,
+t.TLISP_ID,
+t.PRECIO_PRODUC,
+t.DESCRI_PRODUC
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+TAMBOS.VIS_PRODUCTOS_WS t
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+1=1
+and t.COD_PRODUC = nvl(#{cod_produc,jdbcType=VARCHAR},t.COD_PRODUC)
+and UPPER(t.NOM_PRODUC) like nvl('%'|| UPPER(#{nom_produc,jdbcType=VARCHAR}) ||'%',UPPER(t.NOM_PRODUC))
+and t.COD_MARCA = nvl(#{cod_marca,jdbcType=VARCHAR},t.COD_MARCA)
+and UPPER(t.MARCA_PRODUC) like nvl('%'|| UPPER(#{marca_produc,jdbcType=VARCHAR}) ||'%',UPPER(t.MARCA_PRODUC))
+and t.TLISP_ID = nvl(#{tlisp_id,jdbcType=VARCHAR},t.TLISP_ID)
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${order_column} ${order_direction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.kapcom.tambos.lima.common.model.bean.ProductQuery" parameterType="pe.com.kapcom.tambos.lima.common.model.bean.ProductQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.kapcom.tambos.lima.common.model.bean.ProductQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.kapcom.tambos.lima.common.model.bean.ProductQuery" parameterType="pe.com.kapcom.tambos.lima.common.model.bean.ProductQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.kapcom.tambos.lima.common.model.bean.ProductQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.kapcom.tambos.lima.common.model.bean.ProductQueryCriteria">
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

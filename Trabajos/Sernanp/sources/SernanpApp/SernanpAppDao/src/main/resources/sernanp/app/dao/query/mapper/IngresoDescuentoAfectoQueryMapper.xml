@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="sernanp.app.dao.query.mapper.IngresoDescuentoAfectoQueryMapper"> 
+
+<sql id="outs"> 
+<![CDATA[
+ 
+
+
+aid.srl_id_afecto_ingreso_descuento,
+aid.srl_id_ingreso_descuento_planilla,
+idpa.int_id_tipo_ingreso_descuento,
+vtiidp.destablatipo as descrip_tipo_ingreso_descuento,
+idpa.int_id_subtipo_ingreso_descuento,
+vstiidp.destablatipo as descrip_subtipo_ingreso_descuento,
+aid.srl_id_ingreso_descuento_planilla_afecto,
+idpa.var_cod_ingreso_descuento,
+idpa.var_descrip_corto_ingreso_descuento,
+aid.int_id_estado,
+veg.destablatipo as descrip_estado,
+to_char(aid.tsp_fecha_registro, 'dd/mm/yyyy') AS tsp_fecha_registro
+
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+sernanp.t_afecto_ingreso_descuento aid 
+INNER JOIN sernanp.t_ingreso_descuento_planilla idpa ON (idpa.srl_id_ingreso_descuento_planilla = aid.srl_id_ingreso_descuento_planilla_afecto)
+INNER JOIN sernanp.vw_estado_generico veg ON (idpa.int_id_estado = veg.codinttablatipo)
+INNER JOIN sernanp.vw_ingreso_descuento_planilla vtiidp ON (idpa.int_id_tipo_ingreso_descuento = vtiidp.codinttablatipo)
+INNER JOIN sernanp.vw_sub_tipo_ingreso_descuento_planilla vstiidp ON (idpa.int_id_subtipo_ingreso_descuento = vstiidp.codinttablatipo)
+
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+aid.srl_id_afecto_ingreso_descuento = COALESCE(#{srl_id_afecto_ingreso_descuento},aid.srl_id_afecto_ingreso_descuento) and
+aid.srl_id_ingreso_descuento_planilla = COALESCE(#{srl_id_ingreso_descuento_planilla},aid.srl_id_ingreso_descuento_planilla)
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${orderColumn} ${orderDirecction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="sernanp.app.dao.query.domain.IngresoDescuentoAfectoQuery" parameterType="sernanp.app.dao.query.domain.IngresoDescuentoAfectoQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="sernanp.app.dao.query.domain.IngresoDescuentoAfectoQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="sernanp.app.dao.query.domain.IngresoDescuentoAfectoQuery" parameterType="sernanp.app.dao.query.domain.IngresoDescuentoAfectoQueryCriteria"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="sernanp.app.dao.query.domain.IngresoDescuentoAfectoQuery" parameterType="java.util.Map"> 
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="sernanp.app.dao.query.domain.IngresoDescuentoAfectoQueryCriteria"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

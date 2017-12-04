@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ResumenPlanillaFuenteMeta" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="39f9c79b-5928-453d-a62e-2a3dc098f538">
+	<property name="ireport.zoom" value="1.3310000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.export.xls.detect.cell.type" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.white.page.background" value="false"/>
+	<property name="net.sf.jasperreports.export.xls.remove.empty.space.between.columns" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.remove.empty.space.between.rows" value="true"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#D9C3C3">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFE6E6">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="b8c5b12d-c743-49b6-bbf7-1e98ea40ca84"/>
+	<field name="c_fte_fto" class="java.lang.String"/>
+	<field name="c_meta" class="java.lang.String"/>
+	<field name="numero_trabajadores" class="java.lang.Integer"/>
+	<field name="ingresos" class="java.lang.Double"/>
+	<field name="obligaciones" class="java.lang.Double"/>
+	<field name="descrip_periodo" class="java.lang.String"/>
+	<field name="srl_id_regimen_contractual" class="java.lang.Integer"/>
+	<field name="int_anio" class="java.lang.Integer"/>
+	<variable name="total_obligaciones" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{obligaciones}]]></variableExpression>
+	</variable>
+	<variable name="total_ingresos" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{ingresos}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="65" splitType="Stretch">
+			<staticText>
+				<reportElement x="421" y="0" width="53" height="11" uuid="5eb317f1-fd6d-4fbf-acce-3dee7c3d6e86"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="6"/>
+				</textElement>
+				<text><![CDATA[FECHA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="421" y="23" width="53" height="16" uuid="e7c5a327-450e-4985-915f-4093f27a32b5"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="DejaVu Sans" size="6"/>
+				</textElement>
+				<text><![CDATA[PAGINA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="421" y="11" width="53" height="12" uuid="d2f83e0f-de34-4c85-8447-7abb38ecf7f0"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="6"/>
+				</textElement>
+				<text><![CDATA[HORA:]]></text>
+			</staticText>
+			<textField pattern="h.mm.ss a">
+				<reportElement x="474" y="11" width="81" height="12" uuid="021a9cd1-c05b-4e91-9fce-1ab209273eea"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement isPrintRepeatedValues="false" x="474" y="23" width="81" height="16" uuid="86affece-daa0-4906-a905-93c6d4df10d4"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="DejaVu Sans" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="421" height="39" uuid="766653bc-7817-4da7-ac98-bc5c832f4496"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{srl_id_regimen_contractual} == 1 ? "RESUMEN DE PLANILLA POR FUENTE Y META DEL PERSONAL<br>" + "PERSONAL CONTRATADO PLAZO INDETERMINADO D.L. 728" :
+($F{srl_id_regimen_contractual} == 3 ? "RESUMEN DE PLANILLA POR FUENTE Y META DEL PERSONAL<br>" + "REGIMEN ESPECIAL DE CONTRATACIÓN ADMINISTRATIVA DE SERVICIOS - RECAS" :
+"PERSONAL CONTRATADO")]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="474" y="0" width="81" height="11" uuid="0b935335-70a8-45fa-8ee1-7a672c5bf758"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="39" width="555" height="16" uuid="8bf1a7f6-fcd2-4db0-864e-8779a068da35"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="DejaVu Sans" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descrip_periodo}+ " DEL " + $F{int_anio}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="37" splitType="Stretch">
+			<staticText>
+				<reportElement style="table_TD" mode="Transparent" x="0" y="17" width="100" height="20" uuid="876458b9-5bda-4303-bd7c-80660418f420"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[FTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_TD" x="100" y="17" width="100" height="20" uuid="74fa1ca7-be7d-40ba-869d-ed6fb8aa324c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[META]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_TD" x="200" y="17" width="100" height="20" uuid="974e0312-6a33-429d-9cd7-8b6a633ba6b0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Nº TRABAJ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_TD" x="300" y="17" width="121" height="20" uuid="054b08ee-a539-4504-a727-9248e4dde4b3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[INGRESOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_TD" x="421" y="17" width="134" height="20" uuid="5866bac0-f44e-4814-a0d7-a3bbb66999ca"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[OBLIGACIONES]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement style="table_TD" x="0" y="0" width="100" height="15" uuid="91e4280f-bdf6-445a-96fd-80c9ac5b1986"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{c_fte_fto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="100" y="0" width="100" height="15" uuid="4d72b2f5-a6dd-4894-874f-544961e598e0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{c_meta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="200" y="0" width="100" height="15" uuid="fede5d8b-f7a9-4fe5-bb2d-1318fad897ce"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+					<paragraph lineSpacing="Single" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numero_trabajadores}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement style="table_TD" x="300" y="0" width="121" height="15" uuid="d58c5ad9-ec9a-414c-97a5-388c5fb557ca"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+					<paragraph lineSpacing="Single" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ingresos} == null ? 0 : $F{ingresos}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement style="table_TD" x="421" y="0" width="134" height="15" uuid="fd6d0a7c-c4d7-464e-a9d2-383e945955c1"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+					<paragraph lineSpacing="Single" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{obligaciones} == null ? 0 : $F{obligaciones}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="50">
+			<textField pattern="#,##0.00">
+				<reportElement style="table_TD" x="300" y="0" width="121" height="15" uuid="b857c3ca-85ad-4eba-940c-6b17421ccad6"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{total_ingresos}== null ? 0 : $V{total_ingresos}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement style="table_TD" x="421" y="0" width="134" height="15" uuid="0b23db4a-6d27-42e0-abfc-95affe97336c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{total_obligaciones} == null ? 0 : $V{total_obligaciones}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="table_TD" x="0" y="0" width="300" height="15" uuid="290347e5-c4fd-4c21-b175-823639c850b0"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

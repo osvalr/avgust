@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 13/10/2010 11:46:12 AM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="proyecto.vo.Proyecto" table="proyecto" catalog="dde">
+        <id name="idproyecto" type="java.lang.Integer">
+            <column name="idproyecto" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tipoproyecto" class="proyecto.vo.Tipoproyecto" fetch="select">
+            <column name="idtipoproyecto" not-null="true" />
+        </many-to-one>
+        <property name="nombreproyecto" type="string">
+            <column name="nombreproyecto" length="65535" />
+        </property>
+        <property name="objetivoproyecto" type="string">
+            <column name="objetivoproyecto" length="65535" />
+        </property>
+        <property name="areaespecificaproyecto" type="string">
+            <column name="areaespecificaproyecto" length="65535" />
+        </property>
+        <property name="periodoproyecto" type="string">
+            <column name="periodoproyecto" length="250" />
+        </property>
+        <property name="anioinicioproyecto" type="java.lang.Integer">
+            <column name="anioinicioproyecto" />
+        </property>
+        <property name="aniofinproyecto" type="java.lang.Integer">
+            <column name="aniofinproyecto" />
+        </property>
+        <property name="observacionproyecto" type="string">
+            <column name="observacionproyecto" length="65535" />
+        </property>
+        <property name="compromisoproyecto" type="string">
+            <column name="compromisoproyecto" length="65535" />
+        </property>
+        <property name="estadoproyecto" type="string">
+            <column name="estadoproyecto" length="45" />
+        </property>
+        <!--  
+        <set name="ejecutors" table="proyectoejecutor" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="idproyecto" not-null="true" />
+            </key>
+            <many-to-many entity-name="proyecto.vo.Ejecutor">
+                <column name="idejecutor" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="fuentefinanciamientos" table="proyectoftefto" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="idproyecto" not-null="true" />
+            </key>
+            <many-to-many entity-name="proyecto.vo.Fuentefinanciamiento">
+                <column name="idftefto" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="areanaturals" table="areanaturalproyecto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idproyecto" not-null="true" />
+            </key>
+            <many-to-many entity-name="proyecto.vo.Areanatural">
+                <column name="idareaNatural" not-null="true" />
+            </many-to-many>
+        </set>
+        -->
+    </class>
+</hibernate-mapping>

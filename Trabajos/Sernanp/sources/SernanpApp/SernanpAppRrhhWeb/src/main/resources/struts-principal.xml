@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!DOCTYPE
+ struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd"
+	>
+<struts>
+	<package name="principal" namespace="/" extends="struts-default,json-default,jasperreports-default">
+	
+
+	
+		<result-types>
+			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"/>
+		</result-types>
+		<interceptors>
+
+			<interceptor name="general" class="sernanp.rrhh.interceptor.GeneralInterceptor"/>
+			<interceptor name="usuario-logeado" class="sernanp.rrhh.interceptor.UsuarioLogeadoInterceptor"/>
+			<interceptor-stack name="fileUploadStack">
+				<interceptor-ref name="exception"/>
+				<interceptor-ref name="alias"/>
+				<interceptor-ref name="servletConfig"/>
+				<interceptor-ref name="prepare"/>
+				<interceptor-ref name="i18n"/>
+				<interceptor-ref name="chain"/>
+				<interceptor-ref name="debugging"/>
+				<interceptor-ref name="profiling"/>
+				<interceptor-ref name="scopedModelDriven"/>
+				<interceptor-ref name="modelDriven"/>
+				<interceptor-ref name="fileUpload">
+					<param name="maximumSize">15000000</param>
+					<!--
+ 					<param name="allowedTypes">application/octet-stream</param> 
+					-->
+					<!--
+ 					<param name="allowedTypes">text/plain</param>					 
+					-->
+					<!--
+ 					<param name="allowedTypes">application/vnd.ms-excel</param>					 
+					-->
+					<!--
+ 					<param name="allowedTypes">application/ms-excel,application/vnd.ms-excel</param> 
+					-->
+					<!--
+ 					<param name="allowedTypes">application/pdf</param> 
+					-->
+				</interceptor-ref>
+				<interceptor-ref name="checkbox"/>
+				<interceptor-ref name="staticParams"/>
+				<interceptor-ref name="actionMappingParams"/>
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*,^struts\..*</param>
+				</interceptor-ref>
+				<interceptor-ref name="conversionError"/>
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+			</interceptor-stack>
+<!-- 			<interceptor name="verificalicenciasvacacionesInsertMarcaciones" class="sernanp.rrhh.interceptor.PersonalLicenciasVacacionesMarcacionesInterceptor"/> -->
+			<interceptor name="EliminaLicenciasVacaciones" class="sernanp.rrhh.interceptor.PersonalEliminaLicenciasVacacionesInterceptor"/>
+			<interceptor name="verificalicenciasvacacionesInsert" class="sernanp.rrhh.interceptor.PersonalLicenciasVacacionesInterceptor"/>
+			<interceptor name="verificaPeriodoDescuento" class="sernanp.rrhh.interceptor.PersonalPapeletaInterceptor"/>
+		</interceptors>
+		
+		<global-results>
+			<result name="Login" type="redirect">../diana</result>
+		</global-results>
+		
+
+		
+		<action name="listadoPersonalRrhh" class="sernanp.rrhh.action.PersonalAction" method="listadopersonal">
+			<result name="success" type="tiles">listado.personal</result>
+			
+ 			<interceptor-ref name="general" />			
+ 			<interceptor-ref name="usuario-logeado" />			
+ 			<interceptor-ref name="basicStack" /> 			 
+			
+		</action>
+		<action name="listadoPersonalRrhhAjax" class="sernanp.rrhh.action.PersonalAction" method="listadopersonal">
+			<result name="success">/paginas/listado.personal.ajax.jsp</result>
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="basicStack"/>
+		</action>
+		<action name="generaDescuentos" class="sernanp.rrhh.action.PersonalAction" method="personalGeneraDescuentoTMP">
+			<!--
+ 		<result name="success" type="tiles">listado.personal.tardanza</result> 
+			-->
+			<!--
+ 		<result name="success">/paginas/msgexcel.success.jsp</result> 
+			-->
+			<!--
+ 		<result name="error">/paginas/msgexcel.error.jsp</result> 
+			-->
+			<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="defaultStack"/>
+		</action>
+		<action name="validaDescuentos" class="sernanp.rrhh.action.PersonalAction" method="personalGeneraDescuento">
+			<result type="json">
+				<param name="root">datos</param>
+			</result>
+
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="defaultStack"/>
+		</action>
+		<action name="descuentosPersonalRrhh" class="sernanp.rrhh.action.PersonalAction" method="listapersonalDescuentoView">
+			<result name="success" type="tiles">listado.personal.descuento</result>
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="basicStack"/>
+		</action>
+		<action name="descuentosPersonalRrhhajax" class="sernanp.rrhh.action.PersonalAction" method="listapersonalDescuento">
+			<result name="success">/paginas/listado.personal.descuento.ajax.jsp</result>
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="defaultStack"/>
+		</action>
+		<action name="inasistenciaspermisosPersonal" class="sernanp.rrhh.action.PersonalAction" method="listaInasistenciasxidPersonal">
+			<result name="success">/paginas/lista.personal.inasistencias.permisos.jsp</result>
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="defaultStack"/>
+		</action>
+		<action name="filtropersonal" class="sernanp.rrhh.action.PersonalAction" method="listafiltros">
+			<result name="success">/paginas/form.filtro.personal.jsp</result>
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="defaultStack"/>
+		</action>
+		<action name="editarpersonal" class="sernanp.rrhh.action.PersonalAction" method="editar">
+			<result name="success">/paginas/form.edicion.jsp</result>
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="defaultStack"/>
+		</action>
+		<action name="actualizarpersonal" class="sernanp.rrhh.action.PersonalAction" method="actualizar">
+			<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="defaultStack"/>
+		</action>
+		<action name="eliminarpersonal" class="sernanp.rrhh.action.PersonalAction" method="eliminar">
+			<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="defaultStack"/>
+		</action>
+		<action name="totalpersonal" class="sernanp.rrhh.action.PersonalAction" method="obentertotalpersonalxanp">
+			<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="defaultStack"/>
+		</action>
+		<action name="formularioupload" class="sernanp.rrhh.action.UploadMarcacionesRelojAction">
+			<result name="success">/paginas/upload.form.jsp</result>
+		</action>
+		<action name="frmuploadTxtRelog" class="sernanp.rrhh.action.UploadMarcacionesRelojAction" method="uploadTxt">
+			<result name="success">/paginas/msgexcel.success.jsp</result>
+			<result name="error">/paginas/msgexcel.error.jsp</result>
+			<result name="input">/paginas/msgexcel.errorArchivo.jsp</result>
+			<interceptor-ref name="fileUploadStack"/>
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="defaultStack"/>
+		</action>
+<!-- 		<action name="frmuploadPersonalExcel" class="sernanp.rrhh.action.UploadPersonalExcelAction" method="uploadExcel"> -->
+		<action name="frmuploadPersonalExcel" class="sernanp.rrhh.action.UploadPersonalExcelAction" method="uploadExcelMarcacionesANPs">		
+			<result name="success">/paginas/msgexcel.success.jsp</result>
+			<result name="error">/paginas/msgexcel.error.jsp</result>
+			<result name="input">/paginas/msgexcel.errorArchivo.jsp</result>
+			<interceptor-ref name="fileUploadStack"/>
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="defaultStack"/>
+		</action>
+		<action name="filtromarcaciones" class="sernanp.rrhh.action.PersonalAction" method="obtenermarcacionesxtrabajador">
+
+			<result name="ESCRITURA">/paginas/listado.marcaciones.jsp</result>
+			<result name="LECTURA">/paginas/listado.marcaciones.only.lectura.jsp</result>
+<!-- 			<result name="existeLicenciaVacacionesInsertMarcaciones">/paginas/message.tiene.licencias.vacaciones.jsp</result> -->
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="basicStack"/>
+			<interceptor-ref name="defaultStack"/>
+<!-- 			<interceptor-ref name="verificalicenciasvacacionesInsertMarcaciones"/> -->
+		</action>
+		<action name="registromarcaciones" class="sernanp.rrhh.action.PersonalAction" method="obtenermarcacionesxtrabajador">
+			<!--
+ 			<result name="RegMarcacion" >/paginas/form.registro.marcaciones.jsp</result>			 
+			-->
+			<result name="ESCRITURA">/paginas/listado.marcaciones.jsp</result>
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="basicStack"/>
+			<interceptor-ref name="defaultStack"/>
+		</action>
+		<action name="filtromarcacionesajax" class="sernanp.rrhh.action.PersonalAction" method="obtenermarcacionesxtrabajador">
+			<result name="isajax">/paginas/listado.marcaciones.ajax.jsp</result>
+			<!--
+ 	    	<result name="success" >/paginas/listado.marcaciones.jsp</result> 
+			-->
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="defaultStack"/>
+		</action>
+
+		<action name="insertarMarcacionPersonal" class="sernanp.rrhh.action.PersonalAction" method="grabarMarcacionManual">
+			<result name="success">/paginas/msg.insert.success.jsp</result>
+			<result name="error">/paginas/msg.insert.error.jsp</result>
+			<result name="periodoCerrado">/paginas/message.periodo.cerrado.jsp</result>
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="verificaPeriodoDescuento"/>
+		</action>
+		<action name="editarmarcacion" class="sernanp.rrhh.action.PersonalAction">
+			<result name="EditMarcacion">/paginas/form.edicion.marcacion.jsp</result>
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="basicStack"/>
+			<interceptor-ref name="defaultStack"/>
+		</action>
+		<action name="actualizararMarcacionPersonal" class="sernanp.rrhh.action.PersonalAction" method="actualizarMarcacionManual">
+			<result type="json">
+				<param name="root">datos</param>
+			</result>
+<!-- 			<result name="periodoCerrado">/paginas/message.periodo.cerrado.jsp</result> -->
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="defaultStack"/>
+<!-- 			<interceptor-ref name="verificaPeriodoDescuento"/> -->
+			
+		</action>
+		<action name="papeletaxidP" class="sernanp.rrhh.action.PersonalAction" method="papeletaxidP">
+			<result name="success">/paginas/listado.papeletas.personal.jsp</result>
+			<result name="isajax">/paginas/listado.papeletas.personal.ajax.jsp</result>
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="basicStack"/>
+			<interceptor-ref name="defaultStack"/>
+		</action>
+		
+		<action name="eliminarMarcacion" class="sernanp.rrhh.action.PersonalAction"  method="eliminarMarcacion">
+			<result name="success">/paginas/msg.insert.success.jsp</result>
+			<result name="error">/paginas/msg.insert.error.jsp</result>
+			<result name="periodoCerrado">/paginas/message.periodo.cerrado.jsp</result>
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="verificaPeriodoDescuento"/>		
+		</action>
+		
+		<action name="eliminarPapeleta" class="sernanp.rrhh.action.PersonalAction"  method="eliminarPapeleta">
+			<result name="success">/paginas/msg.insert.success.jsp</result>
+			<result name="error">/paginas/msg.insert.error.jsp</result>
+			<result name="periodoCerrado">/paginas/message.periodo.cerrado.jsp</result>
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="verificaPeriodoDescuento"/>		
+		</action>
+		
+				
+		
+		
+		<!-- 		ROL Y PROGRAMACION DE VACACIONES -->
+		<action name="listarVacacionesProyecto" class="sernanp.rrhh.action.PersonalAction" method="listarPeriodoVacaciones">
+			<result name="success" type="tiles">listado.personal.vaciones</result>
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="basicStack"/>
+		</action>
+		<action name="listapersonalVacacionesajax" class="sernanp.rrhh.action.PersonalAction" method="listarVacaciones">
+			<result name="success">/paginas/listado.personal.vaciones.ajax.jsp</result>
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="defaultStack"/>
+		</action>
+		<action name="vacacionesPersonal" class="sernanp.rrhh.action.PersonalAction" method="listaVacacionesxidPersonal">
+			<result name="success">/paginas/listado.vacaciones.jsp</result>
+			<result name="ajax">/paginas/listado.vacaciones_x_personal_y_periodo.jsp</result>
+			<!--
+ 			<result name="UpdateFechaInicioProgVac">/paginas/form.inicio.programacion.vacaciones.jsp</result> 
+			-->
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="defaultStack"/>
+		</action>
+		<action name="vacacionesPendientesxidPersonal" class="sernanp.rrhh.action.PersonalAction" method="vacacionesPendientesxidPersonal">
+			<result name="success">/paginas/listado.vacaciones.pendientes.jsp</result>
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="defaultStack"/>
+		</action>
+		<action name="insertarVacacionesPersonal" class="sernanp.rrhh.action.PersonalAction" method="insertarVacacionesPersonal">
+			<result name="success">/paginas/msg.insert.success.jsp</result>
+			<result name="error">/paginas/msg.insert.error.jsp</result>
+			<result name="existeLicenciaVacaciones">/paginas/message.tiene.licencias_vacaciones.jsp</result>
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="verificalicenciasvacacionesInsert"/>
+		</action>
+		<action name="editarVacacionesPersonal" class="sernanp.rrhh.action.PersonalAction" method="editarVacacionesPersonal">
+			<result name="success">/paginas/form.edicion.vacaciones.jsp</result>
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="defaultStack"/>
+		</action>
+		
+		<action name="eliminarVacacionesProgramadas" class="sernanp.rrhh.action.PersonalAction"  method="eliminarVacacionesProgramada">
+			<result name="success">/paginas/msg.insert.success.jsp</result>
+			<result name="eliminarPeriodoDescuentoCerrado">/paginas/message.periodo.cerrado.jsp</result>
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="defaultStack"/>		
+			<interceptor-ref name="EliminaLicenciasVacaciones"/>		
+		</action>
+		
+		<action name="updateVacacionesPersonal" class="sernanp.rrhh.action.PersonalAction" method="updateVacacionesPersonal">
+			<!--
+ 				<result name="input">/paginas/listado.vacaciones.jsp</result> 
+			-->
+			<result name="success">/paginas/msg.insert.success.jsp</result>
+			<result name="error">/paginas/msg.insert.error.jsp</result>
+			<result name="existeLicenciaVacaciones">/paginas/message.tiene.licencias_vacaciones.jsp</result>
+			<!--
+ 				<result type="json"> 
+			-->
+			<!--
+ 					<param name="root">datos</param> 
+			-->
+			<!--
+ 				</result>			 
+			-->
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="verificalicenciasvacacionesInsert"/>
+		</action>
+	
+		<action name="cantdiasentre2fechas" class="sernanp.rrhh.action.PersonalAction" method="cantdiasentre2fechas">
+			<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="defaultStack"/>
+		</action>
+		<!-- LICENCIAS -->
+		<action name="licenciasPersonal" class="sernanp.rrhh.action.PersonalAction" method="listaLicenciasxidPersonal">
+<!-- 			<result name="input">/paginas/listado.licencias.jsp</result> -->
+			<result name="success">/paginas/listado.licencias.jsp</result>
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="defaultStack"/>
+		</action>
+		<action name="insertarLicenciasPersonal" class="sernanp.rrhh.action.PersonalAction" method="insertarLicenciasPersonal">
+			<result name="success">/paginas/msg.insert.success.jsp</result>
+			<result name="error">/paginas/msg.insert.error.jsp</result>
+			<result name="existeLicenciaVacaciones">/paginas/message.tiene.licencias_vacaciones.jsp</result>
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="verificalicenciasvacacionesInsert"/>
+		</action>
+		<action name="cerrarLicenciasPersonal" class="sernanp.rrhh.action.PersonalAction" method="cerrarLicenciasPersonal">
+			<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="defaultStack"/>
+		</action>
+		
+		<action name="eliminarLicencias" class="sernanp.rrhh.action.PersonalAction"  method="eliminarLicencias">
+			<result name="success">/paginas/msg.insert.success.jsp</result>
+			<result name="eliminarPeriodoDescuentoCerrado">/paginas/message.periodo.cerrado.jsp</result>
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="defaultStack"/>		 
+			<interceptor-ref name="EliminaLicenciasVacaciones"/>
+		
+		</action>
+		
+		
+		<action name="listarANPs" class="sernanp.rrhh.action.PersonalAction" method="listAnpsxidCategoria" >
+			<result type="json">
+				<param name="root">datos</param>
+			</result>
+			<interceptor-ref name="general" />
+		</action>
+		
+		
+		
+<!-- REPORTES -->
+		<action name="viewOptionsReporte" class="sernanp.rrhh.action.PersonalAction" method="viewOptionsReporte">
+			<result name="success">/paginas/opcion.reportes.jsp</result>
+			
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="defaultStack"/>		 
+			
+			<interceptor-ref name="general" />		
+		</action>
+
+<!-- MANTENIMIENTO -->
+	
+
+		<action name="listarAniosdiasnolaborables" class="sernanp.rrhh.action.DiasNolaborablesAction" method="listarAniosdiasnolaborables">
+		
+			<result name ="success">/paginas/listado.diasnolaborables.jsp</result>
+			
+			<interceptor-ref name="general"/>
+			<interceptor-ref name="usuario-logeado"/>
+			<interceptor-ref name="defaultStack"/>		 
+			
+			<interceptor-ref name="general" />	
+		</action>
+
+
+		<action name="buscarDiasNoLaborablesxPeriodo" class="sernanp.rrhh.action.DiasNolaborablesAction" method="buscarDiasNoLaborablesxPeriodo">
+			<result name="success" type="json"/>
+		</action>
+
+
+
+		<action name="grabarDiasNoLaborables"  class="sernanp.rrhh.action.DiasNolaborablesAction" method="grabarDiasNoLaborables">
+			<result name="success" type="json"/>
+		</action>
+		
+		<action name="eliminarDiasNoLaborables"  class="sernanp.rrhh.action.DiasNolaborablesAction" method="eliminarDiasNoLaborables">
+			<result name="success" type="json"/>
+		</action>
+		
+<!-- 		FIN MANTENIMIENTO -->
+
+		<action name="listarLicencias" class="sernanp.rrhh.action.LicenciasPersonalAction"  method="listarLicencias">
+			
+			<result name="success" type="json"/>
+		
+		</action>
+		
+
+	</package>
+</struts>

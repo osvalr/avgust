@@ -1,0 +1,187 @@
+/**
+* Copyright «©» ${anho}, FOCUS CONSULTORES ASOCIADOS SAC. All rights reserved.
+*
+* This file is part of ${nameApp}.
+*
+* ${nameApp} is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* ${nameApp} is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with ${nameApp}.  If not, see <http://www.gnu.org/licenses/>.
+*/	 
+
+/**
+* GENERATOR CRUD EXT JS 5            
+* BY FOCUS CONSULTORES ASOCIADOS SAC  
+* DATE CREATE : ${datetimeCreate}
+* VERSION : 1.0 
+*/
+
+Ext.define('MyApp.controller.${name}.MainController', {
+    extend: 'Ext.app.Controller',
+
+    stores: ['${name}.MainStore'],
+
+    models: ['${name}.MainModel'],
+
+    views: ['${name}.Edit', '${name}.List'],
+
+    refs: [
+    	{
+            ref: '${name}Panel',
+            selector: 'panel'
+        },
+        {
+            ref: '${name}List',
+            selector: '${name}List'
+        }
+    ],
+
+    init: function() {
+        this.control({
+            '${name}List dataview': {
+                itemdblclick: this.editRecord
+            },
+            '${name}List button[action=add]': {
+            	click: this.editRecord
+            },
+            '${name}List button[action=delete]': {
+                click: this.deleteRecord
+            },
+            '${name}Edit button[action=save]': {
+                click: this.updateRecord
+            },
+            '${name}List button[action=filter]': {
+                click: this.refreshGrid
+            },
+            '${name}List button[action=clearFilter]': {
+                click: this.resetForm
+            },
+            '${name}List combobox': {
+                change: this.refreshGrid
+            },
+            '${name}List textfield': {
+            	specialkey: this.onKeyEnter
+            }
+        });
+    },
+
+    editRecord: function(grid, record) {
+        var edit = Ext.create('MyApp.view.${name}.Edit').show();
+        var form = edit.down('form');
+        if(record.data){
+        	edit.down('form').loadRecord(record);
+        	edit.setTitle('Editar');
+        	
+#foreach( $e in $subModels )
+        	var detail${e.nameModelAlter} = Ext.getCmp('detail${e.nameModelAlter}');
+        	var ${e.joinProperty} = form.getForm().findField('${e.joinProperty}');
+        	
+#end
+			${callStoresLoad}
+			
+        }else{
+        	edit.setTitle('Agregar');
+#foreach( $e in $subModels )
+        	var detail${e.nameModelAlter} = Ext.getCmp('detail${e.nameModelAlter}');
+#end
+			${callStoresLoadEmpty}
+        }
+    },
+    
+    updateRecord: function(button) {
+    	
+        var win = button.up('window');
+        var form = win.down('form');
+        var record = form.getRecord();
+        var values = form.getValues();
+        var store = Ext.getStore('${name}.MainStore');
+        
+        if (form.isValid()) {
+	        Ext.Msg.confirm('Confirmar','¿Estás Seguro de GRABAR el Registro?',function (btn) {
+	            
+	            if (btn == 'yes') {
+	        		if (values.${idProperty} > 0){
+	        			record.set(values);
+	        		} else{
+	        			record = Ext.create('MyApp.model.${name}.MainModel');
+	        			record.set(values);
+	        			store.add(record);
+	        		}
+	                
+	        		store.sync({
+	        	        success: function (batch, eOpts) {
+				        	var form = Ext.getCmp('form_filter_${name}');
+				            var values = form.getValues();
+				        	store.load({params:values});
+				        	win.close();
+	        	        },
+	        	        failure: function (batch, eOpts) {
+							store.rejectChanges();
+	        	        }
+	        	    });
+	            }
+	        });
+		}
+
+    },
+    
+    deleteRecord: function(button) {
+    	
+    	var grid = this.get${name}List();
+    	var record = grid.getSelectionModel().getSelection(); 
+    	var store = Ext.getStore('${name}.MainStore');
+    	
+    	if(record.length > 0){
+	        Ext.Msg.confirm('Confirmar','¿Estás Seguro de ELIMINAR el Registro?',function (btn) {
+	                if (btn == 'yes') {
+	             	   store.remove(record);
+						store.sync({
+					        success: function (batch, eOpts) {
+					        	var form = Ext.getCmp('form_filter_${name}');
+					            var values = form.getValues();
+					        	store.load({params:values});
+					        }
+					    });
+	                }
+	        });
+    	}
+
+    },
+    refreshGrid: function() {
+
+    	var store = Ext.getStore('${name}.MainStore');
+        var form = Ext.getCmp('form_filter_${name}');
+        var values = form.getValues();
+
+    	store.load({params:values});
+
+    },
+    resetForm: function() {
+    	
+    	var store = Ext.getStore('${name}.MainStore');
+        var form = Ext.getCmp('form_filter_${name}');
+        form.reset();
+        var values = form.getValues();
+
+    	store.load({params:values});
+
+    },
+    onKeyEnter: function(field, event, options) {
+        if (event.getKey() == event.ENTER) {
+        	var store = Ext.getStore('${name}.MainStore');
+            var form = Ext.getCmp('form_filter_${name}');
+            var values = form.getValues();
+
+        	store.load({params:values});
+        }
+    }
+    
+});
