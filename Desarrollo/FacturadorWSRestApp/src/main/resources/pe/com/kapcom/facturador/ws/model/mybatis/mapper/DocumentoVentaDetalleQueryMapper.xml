@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.kapcom.facturador.ws.model.mybatis.mapper.DocumentoVentaDetalleQueryMapper">
+
+<sql id="outs"> 
+<![CDATA[
+
+*
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+vis_sunat_documentos t
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+1=1
+and t.ventas_key between nvl(#{numero_doc_inicio,jdbcType=VARCHAR},t.ventas_key) and nvl(#{numero_doc_final,jdbcType=VARCHAR},nvl(#{numero_doc_inicio,jdbcType=VARCHAR},t.ventas_key))
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${order_column} ${order_direction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.kapcom.facturador.ws.model.mybatis.bean.DocumentoVentaDetalleQuery" parameterType="pe.com.kapcom.facturador.ws.model.mybatis.bean.DocumentoVentaDetalleQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.kapcom.facturador.ws.model.mybatis.bean.DocumentoVentaDetalleQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.kapcom.facturador.ws.model.mybatis.bean.DocumentoVentaDetalleQuery" parameterType="pe.com.kapcom.facturador.ws.model.mybatis.bean.DocumentoVentaDetalleQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.kapcom.facturador.ws.model.mybatis.bean.DocumentoVentaDetalleQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.kapcom.facturador.ws.model.mybatis.bean.DocumentoVentaDetalleQueryCriteria">
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

@@ -31,7 +31,8 @@ public class ProductQuery extends BaseModel implements java.io.Serializable {
 	private java.lang.String marca_produc; 
 	private java.lang.String tlisp_id; 
 	private java.math.BigDecimal precio_produc; 
-	private java.lang.String descri_produc; 
+	private java.lang.String descri_produc;
+	private String url_img_producto;
 
 
 	public java.lang.String getNom_produc() { 
@@ -81,7 +82,13 @@ public class ProductQuery extends BaseModel implements java.io.Serializable {
 	} 
 	public void setDescri_produc(java.lang.String descri_produc) { 
 	  this.descri_produc = descri_produc; 
-	} 
+	}
 
+    public String getUrl_img_producto() {
+        return url_img_producto;
+    }
 
-} 
+    public void setUrl_img_producto(String url_img_producto) {
+        this.url_img_producto = url_img_producto;
+    }
+}

@@ -12,7 +12,8 @@ t.COD_MARCA,
 t.MARCA_PRODUC,
 t.TLISP_ID,
 t.PRECIO_PRODUC,
-t.DESCRI_PRODUC
+t.DESCRI_PRODUC,
+'http://grupovallenorte.com.pe/imagenes-productos/'|| t.COD_PRODUC ||'.jpg' url_img_producto
 
 ]]>
 </sql> 

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.4.3.final using JasperReports Library version 6.4.3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="documento_venta_final" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="c65c96bd-5dff-4b27-a2c9-0a2f7fdd4b8f">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="ORACLE TOTAL"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<parameter name="pathSubReport" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select * from vis_sunat_documentos t
+where t.ventas_key = '100100017702']]>
+	</queryString>
+	<field name="ventas_key" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ventas_key"/>
+	</field>
+	<field name="ventasDetalle_1" class="java.lang.Object"/>
+	<field name="ventasDetalle_2" class="java.lang.Object"/>
+	<detail>
+		<band height="600">
+			<subreport>
+				<reportElement x="0" y="0" width="200" height="200" uuid="6afb830b-55ce-4e5a-b62b-1d9dd2a5d0fd"/>
+				<dataSourceExpression><![CDATA[$F{ventasDetalle_1}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{pathSubReport}]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="0" y="400" width="200" height="200" uuid="91132a06-b46d-4aa2-ad76-4574ce213dea"/>
+				<dataSourceExpression><![CDATA[$F{ventasDetalle_2}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{pathSubReport}]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>
