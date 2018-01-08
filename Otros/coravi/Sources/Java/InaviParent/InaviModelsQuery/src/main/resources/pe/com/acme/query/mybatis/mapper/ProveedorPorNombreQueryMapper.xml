@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.acme.query.mybatis.mapper.ProveedorPorNombreQueryMapper">
+
+<sql id="outs"> 
+<![CDATA[
+
+*
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+(
+select 
+
+p.id_persona id_proveedor,
+p.razon_social nombre_proveedor
+
+from 
+general.persona p
+inner join general.persona_tipo pt on p.id_persona = pt.id_persona
+
+where
+ 
+p.id_estado = 1
+and pt.id_sub_tipo_persona = 3
+) x
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+upper(x.nombre_proveedor) like coalesce('%' || upper(null) || '%', upper(x.nombre_proveedor))
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${order_column} ${order_direction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.acme.query.mybatis.model.ProveedorPorNombreQuery" parameterType="pe.com.acme.query.mybatis.model.ProveedorPorNombreQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.acme.query.mybatis.model.ProveedorPorNombreQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.acme.query.mybatis.model.ProveedorPorNombreQuery" parameterType="pe.com.acme.query.mybatis.model.ProveedorPorNombreQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.acme.query.mybatis.model.ProveedorPorNombreQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.acme.query.mybatis.model.ProveedorPorNombreQueryCriteria">
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

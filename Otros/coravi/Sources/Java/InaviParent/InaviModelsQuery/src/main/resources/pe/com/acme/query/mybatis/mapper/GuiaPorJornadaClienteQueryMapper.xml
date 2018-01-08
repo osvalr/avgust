@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.acme.query.mybatis.mapper.GuiaPorJornadaClienteQueryMapper">
+
+<sql id="outs"> 
+<![CDATA[
+
+g.id_guia,
+g.id_cliente,
+j.fecha_jornada,
+g.id_estado
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+inavi.guia g 
+INNER JOIN inavi.jornada j on g.num_dia = j.num_dia and g.num_mes = j.num_dia and g.num_anio = j.num_anio
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+g.id_cliente = coalesce(#{id_cliente},g.id_cliente)
+and to_char(j.fecha_jornada,'dd/mm/yyyy') = coalesce(#{fecha_jornada},to_char(j.fecha_jornada,'dd/mm/yyyy'))
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${order_column} ${order_direction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.acme.query.mybatis.model.GuiaPorJornadaClienteQuery" parameterType="pe.com.acme.query.mybatis.model.GuiaPorJornadaClienteQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.acme.query.mybatis.model.GuiaPorJornadaClienteQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.acme.query.mybatis.model.GuiaPorJornadaClienteQuery" parameterType="pe.com.acme.query.mybatis.model.GuiaPorJornadaClienteQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.acme.query.mybatis.model.GuiaPorJornadaClienteQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.acme.query.mybatis.model.GuiaPorJornadaClienteQueryCriteria">
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

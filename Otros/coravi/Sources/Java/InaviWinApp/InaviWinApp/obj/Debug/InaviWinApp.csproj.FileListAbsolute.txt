@@ -1,0 +1,28 @@
+c:\users\jraffo\documents\visual studio 2015\Projects\InaviWinApp\InaviWinApp\bin\Debug\InaviWinApp.exe.config
+c:\users\jraffo\documents\visual studio 2015\Projects\InaviWinApp\InaviWinApp\bin\Debug\InaviWinApp.exe
+c:\users\jraffo\documents\visual studio 2015\Projects\InaviWinApp\InaviWinApp\bin\Debug\InaviWinApp.pdb
+c:\users\jraffo\documents\visual studio 2015\Projects\InaviWinApp\InaviWinApp\obj\Debug\InaviWinApp.csprojResolveAssemblyReference.cache
+c:\users\jraffo\documents\visual studio 2015\Projects\InaviWinApp\InaviWinApp\obj\Debug\InaviWinApp.Properties.Resources.resources
+c:\users\jraffo\documents\visual studio 2015\Projects\InaviWinApp\InaviWinApp\obj\Debug\InaviWinApp.csproj.GenerateResource.Cache
+c:\users\jraffo\documents\visual studio 2015\Projects\InaviWinApp\InaviWinApp\obj\Debug\InaviWinApp.exe
+c:\users\jraffo\documents\visual studio 2015\Projects\InaviWinApp\InaviWinApp\obj\Debug\InaviWinApp.pdb
+c:\users\jraffo\documents\visual studio 2015\Projects\InaviWinApp\InaviWinApp\bin\Debug\Npgsql.dll
+c:\users\jraffo\documents\visual studio 2015\Projects\InaviWinApp\InaviWinApp\bin\Debug\Npgsql.xml
+c:\users\jraffo\documents\visual studio 2015\Projects\InaviWinApp\InaviWinApp\obj\Debug\InaviWinApp.Form1.resources
+c:\users\jraffo\documents\visual studio 2015\Projects\InaviWinApp\InaviWinApp\bin\Debug\sql\clientes.sql
+c:\users\jraffo\documents\visual studio 2015\Projects\InaviWinApp\InaviWinApp\bin\Debug\sql\guias.sql
+c:\users\jraffo\documents\visual studio 2015\Projects\InaviWinApp\InaviWinApp\bin\Debug\sql\detalle_guia.sql
+C:\Git\inavi\Development\Sources\InaviWinApp\InaviWinApp\bin\Debug\InaviWinApp.exe.config
+C:\Git\inavi\Development\Sources\InaviWinApp\InaviWinApp\obj\Debug\InaviWinApp.exe
+C:\Git\inavi\Development\Sources\InaviWinApp\InaviWinApp\obj\Debug\InaviWinApp.pdb
+C:\Git\inavi\Development\Sources\InaviWinApp\InaviWinApp\bin\Debug\sql\detalle_guia.sql
+C:\Git\inavi\Development\Sources\InaviWinApp\InaviWinApp\bin\Debug\sql\guias.sql
+C:\Git\inavi\Development\Sources\InaviWinApp\InaviWinApp\bin\Debug\sql\clientes.sql
+C:\Git\inavi\Development\Sources\InaviWinApp\InaviWinApp\bin\Debug\InaviWinApp.exe
+C:\Git\inavi\Development\Sources\InaviWinApp\InaviWinApp\bin\Debug\InaviWinApp.pdb
+C:\Git\inavi\Development\Sources\InaviWinApp\InaviWinApp\bin\Debug\Npgsql.dll
+C:\Git\inavi\Development\Sources\InaviWinApp\InaviWinApp\bin\Debug\Npgsql.xml
+C:\Git\inavi\Development\Sources\InaviWinApp\InaviWinApp\obj\Debug\InaviWinApp.csprojResolveAssemblyReference.cache
+C:\Git\inavi\Development\Sources\InaviWinApp\InaviWinApp\obj\Debug\InaviWinApp.Form1.resources
+C:\Git\inavi\Development\Sources\InaviWinApp\InaviWinApp\obj\Debug\InaviWinApp.Properties.Resources.resources
+C:\Git\inavi\Development\Sources\InaviWinApp\InaviWinApp\obj\Debug\InaviWinApp.csproj.GenerateResource.Cache

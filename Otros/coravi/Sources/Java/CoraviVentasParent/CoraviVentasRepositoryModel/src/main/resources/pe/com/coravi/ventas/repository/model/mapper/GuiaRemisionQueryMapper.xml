@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.coravi.ventas.repository.model.mapper.GuiaRemisionQueryMapper">
+
+<sql id="outs"> 
+<![CDATA[
+
+g.id_guia_remision,
+g.id_comprobante_pago,
+g.serie_docu_guia,
+g.correlativo_docu_guia,
+g.num_docu_guia,
+to_char(g.fecha_inicio_traslado,'dd/mm/yyyy') fecha_inicio_traslado,
+g.id_destinatario,
+(CASE WHEN pt.id_tipo_persona = 2 THEN c.razon_social
+     ELSE coalesce(c.nombres,'') || ' ' || coalesce(c.ape_pater,'') || ' ' || coalesce(c.ape_mater,'')
+END) nombres_destinatario,
+g.id_motivo_traslado,
+mt.descrip_item as descrip_motivo_traslado,
+g.direccion_partida,
+
+g.codigo_departamento_partida,
+up.nombre_departamento nombre_departamento_partida,
+
+g.codigo_provincia_partida,
+up.nombre_provincia nombre_provincia_partida,
+
+g.codigo_distrito_partida,
+up.nombre_distrito nombre_distrito_partida,
+
+g.direccion_llegada,
+
+g.codigo_departamento_partida,
+up.nombre_departamento nombre_departamento_partida,
+
+g.codigo_provincia_llegada,
+up.nombre_provincia nombre_provincia_partida,
+
+g.codigo_distrito_partida,
+up.nombre_distrito nombre_distrito_partida,
+g.id_estado,
+eg.descrip_item as descrip_estado,
+to_char(g.fecha_registro,'dd/mm/yyyy') fecha_registro,
+to_char(g.fecha_modificacion,'dd/mm/yyyy') fecha_modificacion,
+g.id_usuario_reg,
+g.id_usuario_mod
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+facturacion.guia_remision g
+inner join general.persona c on g.id_destinatario = c.id_persona
+inner join general.persona_tipo pt on g.id_destinatario = pt.id_persona
+inner join general.ubigeo up on up.codigo_ubigeo = (g.codigo_departamento_partida || g.codigo_provincia_partida || g.codigo_distrito_partida)
+inner join general.ubigeo ull on ull.codigo_ubigeo = (g.codigo_departamento_llegada || g.codigo_provincia_llegada || g.codigo_distrito_llegada)
+INNER join general.vw_catalogo mt on g.id_motivo_traslado = mt.valor_item and mt.nombre_catalogo = 'motivo_traslado'
+INNER join general.vw_catalogo eg on g.id_estado = eg.valor_item and eg.nombre_catalogo = 'estado_generico'
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+g.id_guia_remision = coalesce(#{id_guia_remision},g.id_guia_remision)
+and g.id_comprobante_pago = coalesce(#{id_comprobante_pago},g.id_comprobante_pago)
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${order_column} ${order_direction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.coravi.ventas.repository.model.dto.GuiaRemisionQuery" parameterType="pe.com.coravi.ventas.repository.model.dto.GuiaRemisionQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.coravi.ventas.repository.model.dto.GuiaRemisionQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.coravi.ventas.repository.model.dto.GuiaRemisionQuery" parameterType="pe.com.coravi.ventas.repository.model.dto.GuiaRemisionQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.coravi.ventas.repository.model.dto.GuiaRemisionQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.coravi.ventas.repository.model.dto.GuiaRemisionQueryCriteria">
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

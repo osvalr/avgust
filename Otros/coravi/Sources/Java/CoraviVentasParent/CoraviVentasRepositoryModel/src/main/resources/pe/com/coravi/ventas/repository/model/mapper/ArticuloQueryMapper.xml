@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.coravi.ventas.repository.model.mapper.ArticuloQueryMapper">
+
+<sql id="outs"> 
+<![CDATA[
+
+a.id_articulo,
+a.codigo_articulo,
+a.nombre_articulo,
+a.id_estado,
+eg.descrip_item as descrip_estado,
+a.fecha_registro,
+a.fecha_modificacion,
+a.id_usuario_reg,
+a.id_usuario_mod
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+general.articulo a
+INNER join general.vw_catalogo eg on a.id_estado = eg.valor_item and eg.nombre_catalogo = 'estado_generico'
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+1=1
+and a.id_articulo = coalesce(#{id_articulo},a.id_articulo)
+and a.nombre_articulo = coalesce('%' || #{nombre_articulo} || '%',a.nombre_articulo)
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${order_column} ${order_direction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.coravi.ventas.repository.model.dto.ArticuloQuery" parameterType="pe.com.coravi.ventas.repository.model.dto.ArticuloQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.coravi.ventas.repository.model.dto.ArticuloQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.coravi.ventas.repository.model.dto.ArticuloQuery" parameterType="pe.com.coravi.ventas.repository.model.dto.ArticuloQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.coravi.ventas.repository.model.dto.ArticuloQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.coravi.ventas.repository.model.dto.ArticuloQueryCriteria">
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

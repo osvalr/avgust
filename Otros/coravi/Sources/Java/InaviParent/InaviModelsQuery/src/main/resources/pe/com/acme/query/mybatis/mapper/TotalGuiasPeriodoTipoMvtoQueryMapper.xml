@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.acme.query.mybatis.mapper.TotalGuiasPeriodoTipoMvtoQueryMapper">
+
+<sql id="outs"> 
+<![CDATA[
+
+g.cant_aves_bruto,
+g.cant_aves_bruto_revendido,
+g.cant_aves_devolucion,
+(g.cant_aves_devolucion - g.cant_aves_bruto_revendido) total_aves_devolucion,
+(g.cant_aves_bruto - (g.cant_aves_devolucion - g.cant_aves_bruto_revendido)) total_aves_vendidas,
+g.total_peso_bruto,
+g.total_peso_bruto_revendido,
+g.total_peso_tara,
+g.total_peso_devolucion,
+((g.total_peso_tara + g.total_peso_devolucion) - g.total_peso_bruto_revendido) total_tara_recalculo,
+(g.total_peso_bruto - ((g.total_peso_tara + g.total_peso_devolucion) - g.total_peso_bruto_revendido)) total_peso_neto,
+g.total_importe
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+(
+select
+
+g.num_anio,
+g.num_mes,
+g.num_dia,
+g.id_tipo_mvto_guia,
+
+sum((select sum(gp.num_aves) from inavi.guia_peso gp where gp.id_guia = g.id_guia and gp.id_tipo_peso = 1)) cant_aves_bruto,
+sum((select coalesce(sum(gp.num_aves),0) from inavi.guia_peso gp where gp.id_guia = g.id_guia and gp.id_tipo_peso = 1 and gp.flag_devolucion = 1)) cant_aves_bruto_revendido,
+sum((select coalesce(sum(gp.num_aves),0) from inavi.guia_peso gp where gp.id_guia = g.id_guia and gp.id_tipo_peso in (2,3))) cant_aves_devolucion,
+
+sum((select coalesce(sum(gp.peso_obtenido),0) from inavi.guia_peso gp where gp.id_guia = g.id_guia and gp.id_tipo_peso = 1)) total_peso_bruto,
+sum((select coalesce(sum(gp.peso_obtenido),0) from inavi.guia_peso gp where gp.id_guia = g.id_guia and gp.id_tipo_peso = 1 and gp.flag_devolucion = 1)) total_peso_bruto_revendido,
+
+sum(g.total_peso_tara) total_peso_tara,
+sum(g.total_peso_devolucion) total_peso_devolucion,
+sum(g.total_importe) total_importe
+
+from
+
+inavi.guia g
+
+group by 
+g.num_anio,
+g.num_mes,
+g.num_dia,
+g.id_tipo_mvto_guia
+) g
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+g.num_anio = #{num_anio}
+and g.num_mes = #{num_mes}
+and g.num_dia = #{num_dia}
+
+and g.id_tipo_mvto_guia = #{id_tipo_mvto_guia}
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${order_column} ${order_direction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.acme.query.mybatis.model.TotalGuiasPeriodoTipoMvtoQuery" parameterType="pe.com.acme.query.mybatis.model.TotalGuiasPeriodoTipoMvtoQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.acme.query.mybatis.model.TotalGuiasPeriodoTipoMvtoQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.acme.query.mybatis.model.TotalGuiasPeriodoTipoMvtoQuery" parameterType="pe.com.acme.query.mybatis.model.TotalGuiasPeriodoTipoMvtoQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.acme.query.mybatis.model.TotalGuiasPeriodoTipoMvtoQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.acme.query.mybatis.model.TotalGuiasPeriodoTipoMvtoQueryCriteria">
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

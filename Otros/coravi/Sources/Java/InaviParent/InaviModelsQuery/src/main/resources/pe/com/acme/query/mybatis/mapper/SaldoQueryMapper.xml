@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.acme.query.mybatis.mapper.SaldoQueryMapper">
+
+<sql id="outs"> 
+<![CDATA[
+
+*
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+(
+select 
+
+s.id_saldo,
+s.id_cliente,
+(CASE WHEN pt.id_tipo_persona = 2 THEN c.razon_social
+     ELSE c.ape_pater || ' ' || c.ape_mater || ', ' ||c.nombres
+END) nombre_cliente,
+id_cobrador,
+(cb.ape_pater || ' ' || cb.ape_mater || ', ' ||cb.nombres) nombre_cobrador,
+s.id_tipo_concepto,
+tcs.descrip_item descrip_tipo_concepto,
+s.id_tipo_mvto_saldo,
+tms.descrip_item descrip_tipo_mvto_saldo,
+s.monto_recibido,
+
+to_char(s.fecha_ingreso,'dd')::int num_dia,
+to_char(s.fecha_ingreso,'mm')::int num_mes,
+to_char(s.fecha_ingreso,'yyyy')::int num_anio,
+
+to_char(s.fecha_ingreso,'dd/mm/yyyy') fecha_ingreso,
+
+s.id_estado,
+eg.descrip_item as descrip_estado,
+to_char(s.fecha_registro,'dd/mm/yyyy') fecha_registro,
+to_char(s.fecha_modificacion,'dd/mm/yyyy') fecha_modificacion,
+s.id_usuario_reg,
+s.id_usuario_mod
+
+from
+
+inavi.saldo s
+inner join general.persona c on s.id_cliente = c.id_persona
+inner join general.persona_tipo pt on s.id_cliente = pt.id_persona and pt.id_tipo_persona  in (1,2) and pt.id_sub_tipo_persona = 1
+inner join general.persona cb on s.id_cobrador = cb.id_persona 
+inner join general.persona_tipo ptc on s.id_cobrador = ptc.id_persona and pt.id_tipo_persona  = 1 and pt.id_sub_tipo_persona = 2
+INNER join general.vw_catalogo eg on s.id_estado = eg.valor_item and eg.nombre_catalogo = 'estado_generico'
+INNER join general.vw_catalogo tcs on s.id_tipo_concepto = tcs.valor_item and tcs.nombre_catalogo = 'tipo_concepto_saldo'
+INNER join general.vw_catalogo tms on s.id_tipo_mvto_saldo = tms.valor_item and tms.nombre_catalogo = 'tipo_mvto_saldo'
+
+) x
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+x.id_saldo = coalesce(null,x.id_saldo)
+and upper(x.nombre_cliente) = coalesce('%' || upper(null) || '%',upper(x.nombre_cliente))
+and upper(x.nombre_cobrador) = coalesce('%' || upper(null) || '%',upper(x.nombre_cobrador))
+and x.id_tipo_concepto = coalesce(null,x.id_tipo_concepto)
+and x.id_tipo_mvto_saldo = coalesce(null,x.id_tipo_mvto_saldo)
+and x.num_dia = coalesce(null,x.num_dia)
+and x.num_mes = coalesce(null,x.num_mes)
+and x.num_anio = coalesce(null,x.num_anio)
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${order_column} ${order_direction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.acme.query.mybatis.model.SaldoQuery" parameterType="pe.com.acme.query.mybatis.model.SaldoQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.acme.query.mybatis.model.SaldoQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.acme.query.mybatis.model.SaldoQuery" parameterType="pe.com.acme.query.mybatis.model.SaldoQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.acme.query.mybatis.model.SaldoQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.acme.query.mybatis.model.SaldoQueryCriteria">
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

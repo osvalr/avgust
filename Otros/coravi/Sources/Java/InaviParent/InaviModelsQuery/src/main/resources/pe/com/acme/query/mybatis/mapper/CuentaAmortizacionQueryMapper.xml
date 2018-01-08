@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.acme.query.mybatis.mapper.CuentaAmortizacionQueryMapper">
+
+<sql id="outs"> 
+<![CDATA[
+
+g.id_cuenta_amortizacion,
+g.id_cuenta_x_cobrar,
+g.monto_amortizado,
+to_char(g.fecha_saldo,'dd/mm/yyyy') fecha_saldo,
+g.id_estado,
+eg.descrip_item as descrip_estado,
+to_char(g.fecha_registro,'dd/mm/yyyy') fecha_registro,
+to_char(g.fecha_modificacion,'dd/mm/yyyy') fecha_modificacion,
+g.id_usuario_reg,
+g.id_usuario_mod
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+inavi.cuenta_amortizacion g
+INNER join general.vw_catalogo eg on g.id_estado = eg.valor_item and eg.nombre_catalogo = 'estado_generico'
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+g.id_cuenta_amortizacion = coalesce(#{id_cuenta_amortizacion},g.id_cuenta_amortizacion)
+and g.id_cuenta_x_cobrar = coalesce(#{id_cuenta_x_cobrar},g.id_cuenta_x_cobrar)
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${order_column} ${order_direction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.acme.query.mybatis.model.CuentaAmortizacionQuery" parameterType="pe.com.acme.query.mybatis.model.CuentaAmortizacionQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.acme.query.mybatis.model.CuentaAmortizacionQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.acme.query.mybatis.model.CuentaAmortizacionQuery" parameterType="pe.com.acme.query.mybatis.model.CuentaAmortizacionQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.acme.query.mybatis.model.CuentaAmortizacionQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.acme.query.mybatis.model.CuentaAmortizacionQueryCriteria">
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

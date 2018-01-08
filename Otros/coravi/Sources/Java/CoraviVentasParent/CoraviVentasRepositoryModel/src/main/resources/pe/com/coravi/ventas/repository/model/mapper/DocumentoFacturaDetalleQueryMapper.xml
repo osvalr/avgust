@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.coravi.ventas.repository.model.mapper.DocumentoFacturaDetalleQueryMapper">
+
+<sql id="outs"> 
+<![CDATA[
+
+d.id_comprobante_item,
+d.id_comprobante_pago,
+d.id_unidad_medida,
+null as descrip_unidad_medida,
+d.id_articulo,
+a.nombre_articulo,
+d.cantidad_articulo,
+d.peso_articulo,
+d.precio_unitario,
+d.importe_total,
+
+d.id_estado,
+eg.descrip_item as descrip_estado,
+to_char(d.fecha_registro,'dd/mm/yyyy') fecha_registro,
+to_char(d.fecha_modificacion,'dd/mm/yyyy') fecha_modificacion,
+d.id_usuario_reg,
+d.id_usuario_mod
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+ventas.comprobante_item d
+inner join general.articulo a on d.id_articulo = a.id_articulo
+INNER join general.vw_catalogo eg on d.id_estado = eg.valor_item and eg.nombre_catalogo = 'estado_generico'
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+d.id_comprobante_item = coalesce(#{id_comprobante_item},d.id_comprobante_item)
+and d.id_comprobante_pago = coalesce(#{id_comprobante_pago},d.id_comprobante_pago)
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${order_column} ${order_direction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.coravi.ventas.repository.model.dto.DocumentoFacturaDetalleQuery" parameterType="pe.com.coravi.ventas.repository.model.dto.DocumentoFacturaDetalleQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.coravi.ventas.repository.model.dto.DocumentoFacturaDetalleQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.coravi.ventas.repository.model.dto.DocumentoFacturaDetalleQuery" parameterType="pe.com.coravi.ventas.repository.model.dto.DocumentoFacturaDetalleQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.coravi.ventas.repository.model.dto.DocumentoFacturaDetalleQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.coravi.ventas.repository.model.dto.DocumentoFacturaDetalleQueryCriteria">
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.acme.query.mybatis.mapper.ResumenCompraVentaReportQueryMapper">
+
+<sql id="outs"> 
+<![CDATA[
+
+*
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+(
+select
+
+g.id_guia,
+g.id_tipo_mvto_guia,
+tmg.descrip_item descrip_tipo_mvto_guia,
+to_char(j.fecha_jornada,'dd/mm/yyyy') fecha_jornada,
+g.id_tipo_producto,
+tp.descrip_item descrip_tipo_producto,
+g.id_cliente,
+(CASE WHEN pt.id_tipo_persona = 2 THEN c.razon_social
+     ELSE coalesce(c.nombres,'')  || ' ' ||coalesce(c.ape_pater,'') || ' ' || coalesce(c.ape_mater,'') 
+END) persona,
+(select coalesce(sum(gp.num_aves),0) from inavi.guia_peso gp where gp.id_guia = g.id_guia and gp.id_tipo_peso = 1) cant_aves_bruto,
+(select coalesce(sum(gp.num_aves),0) from inavi.guia_peso gp where gp.id_guia = g.id_guia and gp.id_tipo_peso = 1 and gp.flag_devolucion = 1) cant_aves_bruto_revendido,
+(select coalesce(sum(gp.num_aves),0) from inavi.guia_peso gp where gp.id_guia = g.id_guia and gp.id_tipo_peso in (2,3)) cant_aves_devolucion,
+((select coalesce(sum(gp.num_aves),0) from inavi.guia_peso gp where gp.id_guia = g.id_guia and gp.id_tipo_peso = 1) - (select coalesce(sum(gp.num_aves),0) from inavi.guia_peso gp where gp.id_guia = g.id_guia and gp.id_tipo_peso in (2,3))) total_aves,
+(select coalesce(sum(gp.peso_obtenido),0) from inavi.guia_peso gp where gp.id_guia = g.id_guia and gp.id_tipo_peso = 1) total_peso_bruto,
+(select coalesce(sum(gp.peso_obtenido),0) from inavi.guia_peso gp where gp.id_guia = g.id_guia and gp.id_tipo_peso = 1 and gp.flag_devolucion = 1) total_peso_bruto_revendido,
+g.total_peso_tara,
+g.total_peso_devolucion,
+g.total_peso_neto,
+g.precio_aplicado,
+g.total_importe
+
+from
+
+inavi.guia g
+inner join inavi.jornada j on g.num_anio = j.num_anio and g.num_mes = j.num_mes and g.num_dia = j.num_dia
+inner join general.persona c on g.id_cliente = c.id_persona
+inner join general.persona_tipo pt on g.id_cliente = pt.id_persona
+INNER join general.vw_catalogo eg on g.id_estado = eg.valor_item and eg.nombre_catalogo = 'estado_guia_venta'
+INNER join general.vw_catalogo tp on g.id_tipo_producto = tp.valor_item and tp.nombre_catalogo = 'tipo_producto'
+INNER join general.vw_catalogo tmg on g.id_tipo_mvto_guia = tmg.valor_item and tmg.nombre_catalogo = 'tipo_mvto_guia'
+
+union 
+
+select 
+
+g.id_guia,
+g.id_tipo_mvto_guia,
+tmg.descrip_item descrip_tipo_mvto_guia,
+to_char(j.fecha_jornada,'dd/mm/yyyy') fecha_jornada,
+g.id_tipo_producto,
+tp.descrip_item descrip_tipo_producto,
+g.id_proveedor,
+c.razon_social persona,
+(select coalesce(sum(gp.num_aves),0) from inavi.guia_peso gp where gp.id_guia = g.id_guia and gp.id_tipo_peso = 1) cant_aves_bruto,
+(select coalesce(sum(gp.num_aves),0) from inavi.guia_peso gp where gp.id_guia = g.id_guia and gp.id_tipo_peso = 1 and gp.flag_devolucion = 1) cant_aves_bruto_revendido,
+(select coalesce(sum(gp.num_aves),0) from inavi.guia_peso gp where gp.id_guia = g.id_guia and gp.id_tipo_peso in (2,3)) cant_aves_devolucion,
+((select coalesce(sum(gp.num_aves),0) from inavi.guia_peso gp where gp.id_guia = g.id_guia and gp.id_tipo_peso = 1) - (select coalesce(sum(gp.num_aves),0) from inavi.guia_peso gp where gp.id_guia = g.id_guia and gp.id_tipo_peso in (2,3))) total_aves,
+
+(select coalesce(sum(gp.peso_obtenido),0) from inavi.guia_peso gp where gp.id_guia = g.id_guia and gp.id_tipo_peso = 1) total_peso_bruto,
+(select coalesce(sum(gp.peso_obtenido),0) from inavi.guia_peso gp where gp.id_guia = g.id_guia and gp.id_tipo_peso = 1 and gp.flag_devolucion = 1) total_peso_bruto_revendido,
+g.total_peso_tara,
+g.total_peso_devolucion,
+g.total_peso_neto,
+g.precio_aplicado,
+g.total_importe
+
+from inavi.guia g
+inner join inavi.jornada j on g.num_anio = j.num_anio and g.num_mes = j.num_mes and g.num_dia = j.num_dia
+inner join general.persona c on g.id_proveedor = c.id_persona
+INNER join general.vw_catalogo eg on g.id_estado = eg.valor_item and eg.nombre_catalogo = 'estado_generico'
+INNER join general.vw_catalogo tp on g.id_tipo_producto = tp.valor_item and tp.nombre_catalogo = 'tipo_producto'
+INNER join general.vw_catalogo tmg on g.id_tipo_mvto_guia = tmg.valor_item and tmg.nombre_catalogo = 'tipo_mvto_guia'
+) x
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+x.fecha_jornada = #{fecha_jornada}
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER By x.id_tipo_mvto_guia asc, x.persona
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.acme.query.mybatis.model.ResumenCompraVentaReportQuery" parameterType="pe.com.acme.query.mybatis.model.ResumenCompraVentaReportQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.acme.query.mybatis.model.ResumenCompraVentaReportQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.acme.query.mybatis.model.ResumenCompraVentaReportQuery" parameterType="pe.com.acme.query.mybatis.model.ResumenCompraVentaReportQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.acme.query.mybatis.model.ResumenCompraVentaReportQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.acme.query.mybatis.model.ResumenCompraVentaReportQueryCriteria">
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

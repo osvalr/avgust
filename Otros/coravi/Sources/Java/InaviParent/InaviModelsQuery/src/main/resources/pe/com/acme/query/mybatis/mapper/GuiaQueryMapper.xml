@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.acme.query.mybatis.mapper.GuiaQueryMapper">
+
+<sql id="outs"> 
+<![CDATA[
+
+*
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+(
+select 
+
+g.id_guia,
+g.num_anio,
+g.num_mes,
+g.num_dia,
+(j.num_dia || '-'|| j.num_mes || '-' || j.num_anio) cod_jornada, 
+to_char(j.fecha_jornada,'dd/mm/yyyy') fecha_jornada,
+g.id_tipo_producto,
+tp.descrip_item descrip_tipo_producto,
+g.id_cliente,
+(CASE WHEN pt.id_tipo_persona = 2 THEN c.razon_social
+     ELSE coalesce(c.nombres,'')  || ' ' ||coalesce(c.ape_pater,'') || ' ' || coalesce(c.ape_mater,'')
+END) nombre_cliente,
+g.total_peso_bruto,
+g.total_peso_tara,
+g.total_peso_devolucion,
+g.total_peso_neto,
+g.precio_aplicado,
+g.total_importe,
+coalesce((select sum(gs.monto_amortizado) from inavi.guia_saldo gs where gs.id_guia = g.id_guia),0) total_amortizado,
+(g.total_importe - coalesce((select sum(gs.monto_amortizado) from inavi.guia_saldo gs where gs.id_guia = g.id_guia),0)) total_deuda,
+g.id_estado,
+eg.descrip_item as descrip_estado,
+to_char(g.fecha_registro,'dd/mm/yyyy') fecha_registro,
+to_char(g.fecha_modificacion,'dd/mm/yyyy') fecha_modificacion,
+g.id_usuario_reg,
+g.id_usuario_mod
+
+from inavi.guia g
+inner join inavi.jornada j on g.num_anio = j.num_anio and g.num_mes = j.num_mes and g.num_dia = j.num_dia
+inner join general.persona c on g.id_cliente = c.id_persona
+inner join general.persona_tipo pt on g.id_cliente = pt.id_persona
+INNER join general.vw_catalogo eg on g.id_estado = eg.valor_item and eg.nombre_catalogo = 'estado_guia_venta'
+INNER join general.vw_catalogo tp on g.id_tipo_producto = tp.valor_item and tp.nombre_catalogo = 'tipo_producto'
+)
+g
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+g.id_guia = coalesce(#{id_guia},g.id_guia)
+and g.num_anio = coalesce(#{num_anio},g.num_anio)
+and g.num_mes = coalesce(#{num_mes},g.num_mes)
+and g.num_dia = coalesce(#{num_dia},g.num_dia)
+and g.id_tipo_producto = coalesce(#{id_tipo_producto},g.id_tipo_producto)
+and upper(g.nombre_cliente) like coalesce('%' || upper(#{nombre_cliente}) || '%',upper(g.nombre_cliente))
+and g.id_estado  = coalesce(#{id_estado},g.id_estado)
+and g.id_cliente = coalesce(#{id_cliente},g.id_cliente)
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${order_column} ${order_direction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.acme.query.mybatis.model.GuiaQuery" parameterType="pe.com.acme.query.mybatis.model.GuiaQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.acme.query.mybatis.model.GuiaQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.acme.query.mybatis.model.GuiaQuery" parameterType="pe.com.acme.query.mybatis.model.GuiaQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.acme.query.mybatis.model.GuiaQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.acme.query.mybatis.model.GuiaQueryCriteria">
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

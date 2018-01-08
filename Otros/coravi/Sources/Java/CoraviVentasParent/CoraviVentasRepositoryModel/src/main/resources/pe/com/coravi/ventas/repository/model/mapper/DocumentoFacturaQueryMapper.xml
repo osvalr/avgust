@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.coravi.ventas.repository.model.mapper.DocumentoFacturaQueryMapper">
+
+<sql id="outs"> 
+<![CDATA[
+
+*
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+(
+select 
+
+d.id_comprobante_pago,
+d.id_tipo_comprobante_pago,
+to_char(d.fecha_emision,'dd/mm/yyyy') fecha_emision,
+
+extract(year from d.fecha_emision) anio_emision,
+extract(month from d.fecha_emision) mes_emision,
+extract(day from d.fecha_emision) dia_emision,
+
+to_char(d.fecha_cancelado,'dd/mm/yyyy') fecha_cancelado,
+d.serie_docu_comprobante,
+d.correlativo_docu_cdp,
+d.num_docu_comprobante,
+d.id_cliente,
+(CASE WHEN pt.id_tipo_persona = 2 THEN c.razon_social
+     ELSE coalesce(c.nombres,'') || ' ' || coalesce(c.ape_pater,'') || ' ' || coalesce(c.ape_mater,'')
+END) nombres_cliente,
+c.direccion_cliente,
+c.id_tipo_doc id_tipo_doc_cliente,
+tdi.descrip_item descrip_tipo_doc_cliente,
+c.num_tipo_doc num_tipo_doc_cliente,
+d.sub_total_venta,
+d.valor_igv_venta,
+d.importe_total,
+d.flag_percepcion,
+CASE WHEN d.flag_percepcion=1 THEN 'Si'
+            ELSE 'No'
+       END descrip_flag_percepcion,
+d.porcentaje_percepcion,
+d.monto_percepcion,
+
+d.id_estado,
+eg.descrip_item as descrip_estado,
+to_char(d.fecha_registro,'dd/mm/yyyy') fecha_registro,
+to_char(d.fecha_modificacion,'dd/mm/yyyy') fecha_modificacion,
+d.id_usuario_reg,
+d.id_usuario_mod
+
+from facturacion.comprobante_pago d
+inner join general.persona c on d.id_cliente = c.id_persona
+inner join general.persona_tipo pt on d.id_cliente = pt.id_persona
+INNER join general.vw_catalogo eg on d.id_estado = eg.valor_item and eg.nombre_catalogo = 'estado_documento_venta'
+inner join general.vw_catalogo tdi on c.id_tipo_doc = tdi.valor_item and tdi.nombre_catalogo = 'tipo_documento_identidad'
+)
+d
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+1=1
+and d.id_tipo_comprobante_pago = 1
+and d.id_comprobante_pago = coalesce(#{id_comprobante_pago},d.id_comprobante_pago)
+and d.anio_emision = coalesce(#{anio_emision},d.anio_emision)
+and d.mes_emision = coalesce(#{mes_emision},d.mes_emision)
+and d.dia_emision = coalesce(#{dia_emision},d.dia_emision)
+and d.num_docu_comprobante = coalesce(#{num_docu_comprobante},d.num_docu_comprobante)
+and d.nombres_cliente like coalesce('%' || #{nombres_cliente} || '%', d.nombres_cliente)
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${order_column} ${order_direction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.coravi.ventas.repository.model.dto.DocumentoFacturaQuery" parameterType="pe.com.coravi.ventas.repository.model.dto.DocumentoFacturaQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.coravi.ventas.repository.model.dto.DocumentoFacturaQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.coravi.ventas.repository.model.dto.DocumentoFacturaQuery" parameterType="pe.com.coravi.ventas.repository.model.dto.DocumentoFacturaQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.coravi.ventas.repository.model.dto.DocumentoFacturaQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.coravi.ventas.repository.model.dto.DocumentoFacturaQueryCriteria">
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

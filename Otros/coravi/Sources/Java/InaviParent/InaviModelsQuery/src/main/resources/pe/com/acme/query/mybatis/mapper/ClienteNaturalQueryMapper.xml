@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.acme.query.mybatis.mapper.ClienteNaturalQueryMapper">
+
+<sql id="outs"> 
+<![CDATA[
+
+p.id_persona,
+p.nombres,
+p.ape_pater,
+p.ape_mater,
+(coalesce(p.nombres,'') || ' ' || coalesce(p.ape_pater,'') || ' ' || coalesce(p.ape_mater,'')) nombres_completos,
+p.id_tipo_doc,
+v1.descrip_item descrip_tipo_doc,
+p.num_tipo_doc,
+to_char(p.fecha_nacimiento,'dd/mm/yyyy') fecha_nacimiento,
+p.email,
+pt.id_estado,
+v.descrip_item as descrip_estado,
+to_char(p.fecha_registro,'dd/mm/yyyy') fecha_registro,
+to_char(p.fecha_modificacion,'dd/mm/yyyy') fecha_modificacion,
+p.id_usuario_reg,
+p.id_usuario_mod
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+general.persona p
+inner join general.persona_tipo pt on p.id_persona = pt.id_persona
+INNER join general.vw_catalogo v on pt.id_estado = v.valor_item and v.nombre_catalogo = 'estado_generico'
+left join general.vw_catalogo v1 on p.id_tipo_doc = v1.valor_item and v1.nombre_catalogo = 'tipo_documento_identidad'
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+p.id_persona = coalesce(#{id_persona},p.id_persona)
+and upper((coalesce(p.ape_pater,'') || ' ' || coalesce(p.ape_mater,'') || ' ' || coalesce(p.nombres,''))) like coalesce('%'|| upper(#{nombres_completos}) || '%',upper((coalesce(p.ape_pater,'') || ' ' || coalesce(p.ape_mater,'') || ' ' || coalesce(p.nombres,''))))
+and coalesce(p.id_tipo_doc,0) = coalesce(#{id_tipo_doc},coalesce(p.id_tipo_doc,0))
+and coalesce(p.num_tipo_doc,'') = coalesce(#{num_tipo_doc},coalesce(p.num_tipo_doc,''))
+and pt.id_estado = coalesce(#{id_estado},pt.id_estado)
+and pt.id_sub_tipo_persona = 1
+and pt.id_tipo_persona = 1
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${order_column} ${order_direction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.acme.query.mybatis.model.ClienteNaturalQuery" parameterType="pe.com.acme.query.mybatis.model.ClienteNaturalQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.acme.query.mybatis.model.ClienteNaturalQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.acme.query.mybatis.model.ClienteNaturalQuery" parameterType="pe.com.acme.query.mybatis.model.ClienteNaturalQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.acme.query.mybatis.model.ClienteNaturalQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.acme.query.mybatis.model.ClienteNaturalQueryCriteria">
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

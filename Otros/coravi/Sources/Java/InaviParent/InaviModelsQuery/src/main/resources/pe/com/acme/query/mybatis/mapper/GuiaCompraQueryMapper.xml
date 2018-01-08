@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.acme.query.mybatis.mapper.GuiaCompraQueryMapper">
+
+<sql id="outs"> 
+<![CDATA[
+
+*
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+(
+select 
+
+g.id_guia,
+g.num_anio,
+g.num_mes,
+g.num_dia,
+g.id_tipo_guia,
+tg.descrip_item descrip_tipo_guia,
+g.id_guia_referencia,
+(j.num_dia || '-'|| j.num_mes || '-' || j.num_anio) cod_jornada, 
+to_char(j.fecha_jornada,'dd/mm/yyyy') fecha_jornada,
+g.id_tipo_producto,
+tp.descrip_item descrip_tipo_producto,
+g.id_proveedor,
+c.razon_social nombre_proveedor,
+g.total_peso_bruto,
+g.total_peso_tara,
+g.total_peso_devolucion,
+g.total_peso_neto,
+g.precio_aplicado,
+g.total_importe,
+g.id_estado,
+eg.descrip_item as descrip_estado,
+to_char(g.fecha_registro,'dd/mm/yyyy') fecha_registro,
+to_char(g.fecha_modificacion,'dd/mm/yyyy') fecha_modificacion,
+g.id_usuario_reg,
+g.id_usuario_mod
+
+from inavi.guia g
+inner join inavi.jornada j on g.num_anio = j.num_anio and g.num_mes = j.num_mes and g.num_dia = j.num_dia
+inner join general.persona c on g.id_proveedor = c.id_persona
+INNER join general.vw_catalogo eg on g.id_estado = eg.valor_item and eg.nombre_catalogo = 'estado_generico'
+INNER join general.vw_catalogo tp on g.id_tipo_producto = tp.valor_item and tp.nombre_catalogo = 'tipo_producto'
+INNER join general.vw_catalogo tg on g.id_tipo_guia = tg.valor_item and tg.nombre_catalogo = 'tipo_guia'
+)
+g
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+g.id_guia = coalesce(#{id_guia},g.id_guia)
+and g.num_anio = coalesce(#{num_anio},g.num_anio)
+and g.num_mes = coalesce(#{num_mes},g.num_mes)
+and g.num_dia = coalesce(#{num_dia},g.num_dia)
+and g.id_tipo_producto = coalesce(#{id_tipo_producto},g.id_tipo_producto)
+and upper(g.nombre_proveedor) like coalesce('%' || upper(#{nombre_proveedor}) || '%',upper(g.nombre_proveedor))
+and g.id_estado  = coalesce(#{id_estado},g.id_estado)
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${order_column} ${order_direction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.acme.query.mybatis.model.GuiaCompraQuery" parameterType="pe.com.acme.query.mybatis.model.GuiaCompraQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.acme.query.mybatis.model.GuiaCompraQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.acme.query.mybatis.model.GuiaCompraQuery" parameterType="pe.com.acme.query.mybatis.model.GuiaCompraQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.acme.query.mybatis.model.GuiaCompraQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.acme.query.mybatis.model.GuiaCompraQueryCriteria">
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

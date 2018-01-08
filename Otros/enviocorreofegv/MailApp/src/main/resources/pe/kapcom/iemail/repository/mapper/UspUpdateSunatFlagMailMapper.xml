@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.kapcom.iemail.repository.mapper.UspUpdateSunatFlagMailMapper">
+
+<select id="executeCallable" statementType="CALLABLE" parameterType="pe.kapcom.iemail.repository.dto.UspUpdateSunatFlagMail">
+
+	{call AGA.p_updsunatFlagMail
+		(
+			#{p_tipdoc,jdbcType=VARCHAR},
+			#{p_nrodoc,jdbcType=VARCHAR},
+			#{p_status,jdbcType=VARCHAR}
+		)
+	}
+
+</select> 
+
+</mapper>

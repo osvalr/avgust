@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.coravi.ventas.repository.model.mapper.GuiaRemisionDetalleQueryMapper">
+
+<sql id="outs"> 
+<![CDATA[
+
+d.id_guia_remision_item,
+d.id_guia_remision,
+d.id_articulo,
+a.nombre_articulo,
+d.cantidad_articulo,
+d.id_unidad_medida,
+um.descrip_item as descrip_unidad_medida,
+d.peso_total,
+
+d.id_estado,
+eg.descrip_item as descrip_estado,
+to_char(d.fecha_registro,'dd/mm/yyyy') fecha_registro,
+to_char(d.fecha_modificacion,'dd/mm/yyyy') fecha_modificacion,
+d.id_usuario_reg,
+d.id_usuario_mod
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+facturacion.guia_remision_item d
+inner join facturacion.articulo a on d.id_articulo = a.id_articulo
+INNER join general.vw_catalogo eg on d.id_estado = eg.valor_item and eg.nombre_catalogo = 'estado_generico'
+INNER join general.vw_catalogo um on d.id_unidad_medida = um.valor_item and um.nombre_catalogo = 'unidad_medida'
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+d.id_guia_remision_item = coalesce(#{id_guia_remision_item},d.id_guia_remision_item)
+and d.id_guia_remision = coalesce(#{id_guia_remision},d.id_guia_remision)
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${order_column} ${order_direction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.coravi.ventas.repository.model.dto.GuiaRemisionDetalleQuery" parameterType="pe.com.coravi.ventas.repository.model.dto.GuiaRemisionDetalleQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.coravi.ventas.repository.model.dto.GuiaRemisionDetalleQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.coravi.ventas.repository.model.dto.GuiaRemisionDetalleQuery" parameterType="pe.com.coravi.ventas.repository.model.dto.GuiaRemisionDetalleQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.coravi.ventas.repository.model.dto.GuiaRemisionDetalleQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.coravi.ventas.repository.model.dto.GuiaRemisionDetalleQueryCriteria">
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

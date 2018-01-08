@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.acme.query.mybatis.mapper.ResumenPagosPorFechaQueryMapper">
+
+<sql id="outs"> 
+<![CDATA[
+
+r.id_cliente,
+r.nombres_completos,
+to_char(r.fecha_jornada,'dd/mm/yyyy') fecha_jornada,
+r.total_peso_neto,
+r.total_importe,
+r.monto_amortizado
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+(
+
+select 
+
+q.id_cliente,
+q.nombres_completos,
+(to_date('${fechaCorte}','dd/mm/yyyy') - INTERVAL '1 day') as fecha_jornada,
+null total_peso_neto,
+sum(q.total_importe) as total_importe,
+sum(q.monto_amortizado) as monto_amortizado
+
+from
+
+vw_resumen_pagos q
+where q.fecha_jornada < #{fecha_inicio}
+and q.id_cliente = coalesce(#{id_cliente},q.id_cliente)
+group by q.id_cliente,q.nombres_completos
+
+union
+
+select 
+
+x.id_cliente,
+x.nombres_completos,
+x.fecha_jornada,
+x.total_peso_neto,
+x.total_importe,
+x.monto_amortizado
+
+from
+
+vw_resumen_pagos x
+
+where 
+x.fecha_jornada between coalesce(#{fecha_inicio},current_date) and coalesce(#{fecha_fin},current_date)
+and x.id_cliente = coalesce(#{id_cliente},x.id_cliente)
+
+) r
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+1=1
+order by r.nombres_completos,r.fecha_jornada asc
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.acme.query.mybatis.model.ResumenPagosPorFechaQuery" parameterType="pe.com.acme.query.mybatis.model.ResumenPagosPorFechaQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.acme.query.mybatis.model.ResumenPagosPorFechaQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.acme.query.mybatis.model.ResumenPagosPorFechaQuery" parameterType="pe.com.acme.query.mybatis.model.ResumenPagosPorFechaQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.acme.query.mybatis.model.ResumenPagosPorFechaQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.acme.query.mybatis.model.ResumenPagosPorFechaQueryCriteria">
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

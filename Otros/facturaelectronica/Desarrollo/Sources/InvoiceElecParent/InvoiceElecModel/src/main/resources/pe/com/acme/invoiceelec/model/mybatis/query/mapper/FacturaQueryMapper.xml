@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.acme.invoiceelec.model.mybatis.query.mapper.FacturaQueryMapper">
+
+<sql id="outs"> 
+<![CDATA[
+
+*
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+(
+select 
+
+f.*,
+fe.estado_doc,
+fe.RUTA_DOC_ELEC,
+fe.RUTA_COD_BARRAS,
+fe.RUTA_COD_BARRAS_MATRIX,
+fe.TIP_DOC_ELECT,
+fe.NUMF_SERIE,
+fe.NUMF_CORREL,
+fe.num_doc_elect
+
+from 
+VIS_VTAS_ELECT_CAB f left join VENT_ELECT fe on f.EMP_ID = fe.EMP_ID and f.VENTAS_KEY = fe.DOCUM_KEY
+
+)f
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+F.TIPODOCUMENTO = '10'
+and f.FECHAEMISANIO = nvl(#{fechaemisanio, jdbcType=INTEGER},f.FECHAEMISANIO)
+and f.FECHAEMISMES = nvl(#{fechaemismes, jdbcType=INTEGER},f.FECHAEMISMES)
+and f.FECHAEMISDIA = nvl(#{fechaemisdia, jdbcType=INTEGER},f.FECHAEMISDIA)
+and nvl(f.estado_doc,-1) in (-1,4)
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${order_column} ${order_direction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.acme.invoiceelec.model.mybatis.query.dto.FacturaQuery" parameterType="pe.com.acme.invoiceelec.model.mybatis.query.dto.FacturaQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.acme.invoiceelec.model.mybatis.query.dto.FacturaQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.acme.invoiceelec.model.mybatis.query.dto.FacturaQuery" parameterType="pe.com.acme.invoiceelec.model.mybatis.query.dto.FacturaQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.acme.invoiceelec.model.mybatis.query.dto.FacturaQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.acme.invoiceelec.model.mybatis.query.dto.FacturaQueryCriteria">
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

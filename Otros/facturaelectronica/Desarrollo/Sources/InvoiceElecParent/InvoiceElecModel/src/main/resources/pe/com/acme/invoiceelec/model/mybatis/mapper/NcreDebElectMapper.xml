@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pe.com.acme.invoiceelec.model.mybatis.mapper.NcreDebElectMapper" >
+  <resultMap id="BaseResultMap" type="pe.com.acme.invoiceelec.model.mybatis.domain.NcreDebElect" >
+    <id column="EMP_ID" property="empId" jdbcType="VARCHAR" />
+    <id column="NCRE_KEY" property="ncreKey" jdbcType="VARCHAR" />
+    <id column="NUMF_SERIE" property="numfSerie" jdbcType="VARCHAR" />
+    <id column="NUMF_CORREL" property="numfCorrel" jdbcType="DECIMAL" />
+    <result column="ESTADO_DOC" property="estadoDoc" jdbcType="VARCHAR" />
+    <result column="RUTA_DOC_ELEC" property="rutaDocElec" jdbcType="VARCHAR" />
+    <result column="RUTA_COD_BARRAS" property="rutaCodBarras" jdbcType="VARCHAR" />
+    <result column="NUMF_USUADD" property="numfUsuadd" jdbcType="VARCHAR" />
+    <result column="NUMF_FECADD" property="numfFecadd" jdbcType="TIMESTAMP" />
+    <result column="NUMF_USUMOD" property="numfUsumod" jdbcType="VARCHAR" />
+    <result column="NUMF_FECMOD" property="numfFecmod" jdbcType="TIMESTAMP" />
+    <result column="RUTA_COD_BARRAS_MATRIX" property="rutaCodBarrasMatrix" jdbcType="VARCHAR" />
+    <result column="TIP_DOC_ELECT" property="tipDocElect" jdbcType="VARCHAR" />
+    <result column="NUM_DOC_ELECT" property="numDocElect" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    EMP_ID, NCRE_KEY, NUMF_SERIE, NUMF_CORREL, ESTADO_DOC, RUTA_DOC_ELEC, RUTA_COD_BARRAS, 
+    NUMF_USUADD, NUMF_FECADD, NUMF_USUMOD, NUMF_FECMOD, RUTA_COD_BARRAS_MATRIX, TIP_DOC_ELECT, 
+    NUM_DOC_ELECT
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.acme.invoiceelec.model.mybatis.domain.NcreDebElectExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TAMBOS.VENT_ELECT
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="pe.com.acme.invoiceelec.model.mybatis.domain.NcreDebElectKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from TAMBOS.VENT_ELECT
+    where EMP_ID = #{empId,jdbcType=VARCHAR}
+      and NCRE_KEY = #{ncreKey,jdbcType=VARCHAR}
+      and NUMF_SERIE = #{numfSerie,jdbcType=VARCHAR}
+      and NUMF_CORREL = #{numfCorrel,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="pe.com.acme.invoiceelec.model.mybatis.domain.NcreDebElectKey" >
+    delete from TAMBOS.VENT_ELECT
+    where EMP_ID = #{empId,jdbcType=VARCHAR}
+      and NCRE_KEY = #{ncreKey,jdbcType=VARCHAR}
+      and NUMF_SERIE = #{numfSerie,jdbcType=VARCHAR}
+      and NUMF_CORREL = #{numfCorrel,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="pe.com.acme.invoiceelec.model.mybatis.domain.NcreDebElectExample" >
+    delete from TAMBOS.VENT_ELECT
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.acme.invoiceelec.model.mybatis.domain.NcreDebElect" >
+    insert into TAMBOS.VENT_ELECT (EMP_ID, NCRE_KEY, NUMF_SERIE, 
+      NUMF_CORREL, ESTADO_DOC, RUTA_DOC_ELEC, 
+      RUTA_COD_BARRAS, NUMF_USUADD, NUMF_FECADD, 
+      NUMF_USUMOD, NUMF_FECMOD, RUTA_COD_BARRAS_MATRIX, 
+      TIP_DOC_ELECT, NUM_DOC_ELECT)
+    values (#{empId,jdbcType=VARCHAR}, #{ncreKey,jdbcType=VARCHAR}, #{numfSerie,jdbcType=VARCHAR}, 
+      #{numfCorrel,jdbcType=DECIMAL}, #{estadoDoc,jdbcType=VARCHAR}, #{rutaDocElec,jdbcType=VARCHAR}, 
+      #{rutaCodBarras,jdbcType=VARCHAR}, #{numfUsuadd,jdbcType=VARCHAR}, #{numfFecadd,jdbcType=TIMESTAMP}, 
+      #{numfUsumod,jdbcType=VARCHAR}, #{numfFecmod,jdbcType=TIMESTAMP}, #{rutaCodBarrasMatrix,jdbcType=VARCHAR}, 
+      #{tipDocElect,jdbcType=VARCHAR}, #{numDocElect,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.acme.invoiceelec.model.mybatis.domain.NcreDebElect" >
+    insert into TAMBOS.VENT_ELECT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="empId != null" >
+        EMP_ID,
+      </if>
+      <if test="ncreKey != null" >
+        NCRE_KEY,
+      </if>
+      <if test="numfSerie != null" >
+        NUMF_SERIE,
+      </if>
+      <if test="numfCorrel != null" >
+        NUMF_CORREL,
+      </if>
+      <if test="estadoDoc != null" >
+        ESTADO_DOC,
+      </if>
+      <if test="rutaDocElec != null" >
+        RUTA_DOC_ELEC,
+      </if>
+      <if test="rutaCodBarras != null" >
+        RUTA_COD_BARRAS,
+      </if>
+      <if test="numfUsuadd != null" >
+        NUMF_USUADD,
+      </if>
+      <if test="numfFecadd != null" >
+        NUMF_FECADD,
+      </if>
+      <if test="numfUsumod != null" >
+        NUMF_USUMOD,
+      </if>
+      <if test="numfFecmod != null" >
+        NUMF_FECMOD,
+      </if>
+      <if test="rutaCodBarrasMatrix != null" >
+        RUTA_COD_BARRAS_MATRIX,
+      </if>
+      <if test="tipDocElect != null" >
+        TIP_DOC_ELECT,
+      </if>
+      <if test="numDocElect != null" >
+        NUM_DOC_ELECT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="empId != null" >
+        #{empId,jdbcType=VARCHAR},
+      </if>
+      <if test="ncreKey != null" >
+        #{ncreKey,jdbcType=VARCHAR},
+      </if>
+      <if test="numfSerie != null" >
+        #{numfSerie,jdbcType=VARCHAR},
+      </if>
+      <if test="numfCorrel != null" >
+        #{numfCorrel,jdbcType=DECIMAL},
+      </if>
+      <if test="estadoDoc != null" >
+        #{estadoDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="rutaDocElec != null" >
+        #{rutaDocElec,jdbcType=VARCHAR},
+      </if>
+      <if test="rutaCodBarras != null" >
+        #{rutaCodBarras,jdbcType=VARCHAR},
+      </if>
+      <if test="numfUsuadd != null" >
+        #{numfUsuadd,jdbcType=VARCHAR},
+      </if>
+      <if test="numfFecadd != null" >
+        #{numfFecadd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="numfUsumod != null" >
+        #{numfUsumod,jdbcType=VARCHAR},
+      </if>
+      <if test="numfFecmod != null" >
+        #{numfFecmod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rutaCodBarrasMatrix != null" >
+        #{rutaCodBarrasMatrix,jdbcType=VARCHAR},
+      </if>
+      <if test="tipDocElect != null" >
+        #{tipDocElect,jdbcType=VARCHAR},
+      </if>
+      <if test="numDocElect != null" >
+        #{numDocElect,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.acme.invoiceelec.model.mybatis.domain.NcreDebElectExample" resultType="java.lang.Integer" >
+    select count(*) from TAMBOS.VENT_ELECT
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update TAMBOS.VENT_ELECT
+    <set >
+      <if test="record.empId != null" >
+        EMP_ID = #{record.empId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ncreKey != null" >
+        NCRE_KEY = #{record.ncreKey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.numfSerie != null" >
+        NUMF_SERIE = #{record.numfSerie,jdbcType=VARCHAR},
+      </if>
+      <if test="record.numfCorrel != null" >
+        NUMF_CORREL = #{record.numfCorrel,jdbcType=DECIMAL},
+      </if>
+      <if test="record.estadoDoc != null" >
+        ESTADO_DOC = #{record.estadoDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rutaDocElec != null" >
+        RUTA_DOC_ELEC = #{record.rutaDocElec,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rutaCodBarras != null" >
+        RUTA_COD_BARRAS = #{record.rutaCodBarras,jdbcType=VARCHAR},
+      </if>
+      <if test="record.numfUsuadd != null" >
+        NUMF_USUADD = #{record.numfUsuadd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.numfFecadd != null" >
+        NUMF_FECADD = #{record.numfFecadd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.numfUsumod != null" >
+        NUMF_USUMOD = #{record.numfUsumod,jdbcType=VARCHAR},
+      </if>
+      <if test="record.numfFecmod != null" >
+        NUMF_FECMOD = #{record.numfFecmod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rutaCodBarrasMatrix != null" >
+        RUTA_COD_BARRAS_MATRIX = #{record.rutaCodBarrasMatrix,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tipDocElect != null" >
+        TIP_DOC_ELECT = #{record.tipDocElect,jdbcType=VARCHAR},
+      </if>
+      <if test="record.numDocElect != null" >
+        NUM_DOC_ELECT = #{record.numDocElect,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update TAMBOS.VENT_ELECT
+    set EMP_ID = #{record.empId,jdbcType=VARCHAR},
+      NCRE_KEY = #{record.ncreKey,jdbcType=VARCHAR},
+      NUMF_SERIE = #{record.numfSerie,jdbcType=VARCHAR},
+      NUMF_CORREL = #{record.numfCorrel,jdbcType=DECIMAL},
+      ESTADO_DOC = #{record.estadoDoc,jdbcType=VARCHAR},
+      RUTA_DOC_ELEC = #{record.rutaDocElec,jdbcType=VARCHAR},
+      RUTA_COD_BARRAS = #{record.rutaCodBarras,jdbcType=VARCHAR},
+      NUMF_USUADD = #{record.numfUsuadd,jdbcType=VARCHAR},
+      NUMF_FECADD = #{record.numfFecadd,jdbcType=TIMESTAMP},
+      NUMF_USUMOD = #{record.numfUsumod,jdbcType=VARCHAR},
+      NUMF_FECMOD = #{record.numfFecmod,jdbcType=TIMESTAMP},
+      RUTA_COD_BARRAS_MATRIX = #{record.rutaCodBarrasMatrix,jdbcType=VARCHAR},
+      TIP_DOC_ELECT = #{record.tipDocElect,jdbcType=VARCHAR},
+      NUM_DOC_ELECT = #{record.numDocElect,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.acme.invoiceelec.model.mybatis.domain.NcreDebElect" >
+    update TAMBOS.VENT_ELECT
+    <set >
+      <if test="estadoDoc != null" >
+        ESTADO_DOC = #{estadoDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="rutaDocElec != null" >
+        RUTA_DOC_ELEC = #{rutaDocElec,jdbcType=VARCHAR},
+      </if>
+      <if test="rutaCodBarras != null" >
+        RUTA_COD_BARRAS = #{rutaCodBarras,jdbcType=VARCHAR},
+      </if>
+      <if test="numfUsuadd != null" >
+        NUMF_USUADD = #{numfUsuadd,jdbcType=VARCHAR},
+      </if>
+      <if test="numfFecadd != null" >
+        NUMF_FECADD = #{numfFecadd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="numfUsumod != null" >
+        NUMF_USUMOD = #{numfUsumod,jdbcType=VARCHAR},
+      </if>
+      <if test="numfFecmod != null" >
+        NUMF_FECMOD = #{numfFecmod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rutaCodBarrasMatrix != null" >
+        RUTA_COD_BARRAS_MATRIX = #{rutaCodBarrasMatrix,jdbcType=VARCHAR},
+      </if>
+      <if test="tipDocElect != null" >
+        TIP_DOC_ELECT = #{tipDocElect,jdbcType=VARCHAR},
+      </if>
+      <if test="numDocElect != null" >
+        NUM_DOC_ELECT = #{numDocElect,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where EMP_ID = #{empId,jdbcType=VARCHAR}
+      and NCRE_KEY = #{ncreKey,jdbcType=VARCHAR}
+      and NUMF_SERIE = #{numfSerie,jdbcType=VARCHAR}
+      and NUMF_CORREL = #{numfCorrel,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.acme.invoiceelec.model.mybatis.domain.NcreDebElect" >
+    update TAMBOS.VENT_ELECT
+    set ESTADO_DOC = #{estadoDoc,jdbcType=VARCHAR},
+      RUTA_DOC_ELEC = #{rutaDocElec,jdbcType=VARCHAR},
+      RUTA_COD_BARRAS = #{rutaCodBarras,jdbcType=VARCHAR},
+      NUMF_USUADD = #{numfUsuadd,jdbcType=VARCHAR},
+      NUMF_FECADD = #{numfFecadd,jdbcType=TIMESTAMP},
+      NUMF_USUMOD = #{numfUsumod,jdbcType=VARCHAR},
+      NUMF_FECMOD = #{numfFecmod,jdbcType=TIMESTAMP},
+      RUTA_COD_BARRAS_MATRIX = #{rutaCodBarrasMatrix,jdbcType=VARCHAR},
+      TIP_DOC_ELECT = #{tipDocElect,jdbcType=VARCHAR},
+      NUM_DOC_ELECT = #{numDocElect,jdbcType=VARCHAR}
+    where EMP_ID = #{empId,jdbcType=VARCHAR}
+      and NCRE_KEY = #{ncreKey,jdbcType=VARCHAR}
+      and NUMF_SERIE = #{numfSerie,jdbcType=VARCHAR}
+      and NUMF_CORREL = #{numfCorrel,jdbcType=DECIMAL}
+  </update>
+  <select resultMap="BaseResultMap" parameterType="pe.com.acme.invoiceelec.model.mybatis.domain.NcreDebElectExample" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TAMBOS.VENT_ELECT
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

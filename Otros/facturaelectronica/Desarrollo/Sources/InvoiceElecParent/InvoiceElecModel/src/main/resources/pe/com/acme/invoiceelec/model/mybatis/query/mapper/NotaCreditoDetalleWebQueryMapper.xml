@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.acme.invoiceelec.model.mybatis.query.mapper.NotaCreditoDetalleWebQueryMapper">
+
+<sql id="outs"> 
+<![CDATA[
+
+d.NCRE_KEY,
+ROWNUM numeroOrdenItem,
+d.codProducto,
+d.descripcionItem,
+d.unidadMedidaItem,
+d.cantidadItem,
+round(d.valorUnitarioItem,2) valorUnitarioItem,
+round(d.montoValorRefUnitario,2) montoValorRefUnitario,
+round(d.precioVenta,2) precioVenta,
+round(d.montoIgv,2) montoIgv,
+round(d.montoIsc,2)montoIsc,
+round(d.valorVenta,2) valorVenta
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+VIS_NCREDITO_ELECT_DET d
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+d.NCRE_KEY = #{ncre_key}
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${order_column} ${order_direction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.acme.invoiceelec.model.mybatis.query.dto.NotaCreditoDetalleWebQuery" parameterType="pe.com.acme.invoiceelec.model.mybatis.query.dto.NotaCreditoDetalleWebQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.acme.invoiceelec.model.mybatis.query.dto.NotaCreditoDetalleWebQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.acme.invoiceelec.model.mybatis.query.dto.NotaCreditoDetalleWebQuery" parameterType="pe.com.acme.invoiceelec.model.mybatis.query.dto.NotaCreditoDetalleWebQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.acme.invoiceelec.model.mybatis.query.dto.NotaCreditoDetalleWebQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.acme.invoiceelec.model.mybatis.query.dto.NotaCreditoDetalleWebQueryCriteria">
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.acme.query.mybatis.mapper.GuiaPesoQueryMapper">
+
+<sql id="outs"> 
+<![CDATA[
+
+g.id_guia_peso,
+g.id_guia,
+g.flag_devolucion,
+g.id_tipo_peso,
+tpg.descrip_item descrip_tipo_peso,
+
+g.num_jabas,
+g.num_aves,
+g.peso_obtenido,
+
+g.id_estado,
+eg.descrip_item as descrip_estado,
+to_char(g.fecha_registro,'dd/mm/yyyy') fecha_registro,
+to_char(g.fecha_modificacion,'dd/mm/yyyy') fecha_modificacion,
+g.id_usuario_reg,
+g.id_usuario_mod
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+inavi.guia_peso g
+INNER join general.vw_catalogo eg on g.id_estado = eg.valor_item and eg.nombre_catalogo = 'estado_generico'
+INNER join general.vw_catalogo tpg on g.id_tipo_peso = tpg.valor_item and tpg.nombre_catalogo = 'tipo_peso_guia'
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+g.id_guia_peso = coalesce(#{id_guia_peso},g.id_guia_peso)
+and g.id_guia = coalesce(#{id_guia},g.id_guia)
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY g.id_guia_peso
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.acme.query.mybatis.model.GuiaPesoQuery" parameterType="pe.com.acme.query.mybatis.model.GuiaPesoQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.acme.query.mybatis.model.GuiaPesoQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.acme.query.mybatis.model.GuiaPesoQuery" parameterType="pe.com.acme.query.mybatis.model.GuiaPesoQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.acme.query.mybatis.model.GuiaPesoQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.acme.query.mybatis.model.GuiaPesoQueryCriteria">
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

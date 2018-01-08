@@ -1,0 +1,672 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
+<!-- 2016-07-28T04:30:07 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ResumenCompraVentaReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="86cb6ab6-59c1-47e9-970e-3302272a5477">
+	<parameter name="fecha_generacion" class="java.lang.String">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<parameter name="fecha_jornada" class="java.lang.String"/>
+	<parameter name="ganancia" class="java.lang.Double"/>
+	<parameter name="pesoPromedioCompra" class="java.lang.Double"/>
+	<parameter name="pesoPromedioVenta" class="java.lang.Double"/>
+	<parameter name="merma" class="java.lang.Double"/>
+	<parameter name="total_aves_vendidas" class="java.lang.Integer"/>
+	<parameter name="total_peso_neto" class="java.lang.Double"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="id_tipo_mvto_guia" class="java.lang.Integer"/>
+	<field name="descrip_tipo_mvto_guia" class="java.lang.String"/>
+	<field name="fecha_jornada" class="java.lang.String"/>
+	<field name="descrip_tipo_producto" class="java.lang.String"/>
+	<field name="persona" class="java.lang.String"/>
+	<field name="total_peso_bruto" class="java.lang.Double"/>
+	<field name="total_peso_tara" class="java.lang.Double"/>
+	<field name="total_peso_devolucion" class="java.lang.Double"/>
+	<field name="total_peso_neto" class="java.lang.Double"/>
+	<field name="precio_aplicado" class="java.lang.Double"/>
+	<field name="total_importe" class="java.lang.Double"/>
+	<field name="total_aves" class="java.lang.Integer"/>
+	<field name="cant_aves_bruto" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cant_aves_devolucion" class="java.lang.Integer"/>
+	<field name="cant_aves_bruto_revendido" class="java.lang.Integer"/>
+	<field name="total_peso_bruto_revendido" class="java.lang.Double"/>
+	<variable name="sub_total_aves" class="java.lang.Integer" resetType="Group" resetGroup="tipo_mvto" calculation="Sum">
+		<variableExpression><![CDATA[$F{total_aves}]]></variableExpression>
+	</variable>
+	<variable name="sub_total_peso_bruto" class="java.lang.Double" resetType="Group" resetGroup="tipo_mvto" calculation="Sum">
+		<variableExpression><![CDATA[$F{total_peso_bruto}]]></variableExpression>
+	</variable>
+	<variable name="sub_total_peso_tara" class="java.lang.Double" resetType="Group" resetGroup="tipo_mvto" calculation="Sum">
+		<variableExpression><![CDATA[$F{total_peso_tara}]]></variableExpression>
+	</variable>
+	<variable name="sub_total_peso_devo" class="java.lang.Double" resetType="Group" resetGroup="tipo_mvto" calculation="Sum">
+		<variableExpression><![CDATA[$F{total_peso_devolucion}]]></variableExpression>
+	</variable>
+	<variable name="sub_total_neto" class="java.lang.Double" resetType="Group" resetGroup="tipo_mvto" calculation="Sum">
+		<variableExpression><![CDATA[$F{total_peso_neto}]]></variableExpression>
+	</variable>
+	<variable name="sub_total_importe" class="java.lang.Double" resetType="Group" resetGroup="tipo_mvto" calculation="Sum">
+		<variableExpression><![CDATA[$F{total_importe}]]></variableExpression>
+	</variable>
+	<variable name="peso_promedio" class="java.lang.Double" resetType="Group" resetGroup="tipo_mvto">
+		<variableExpression><![CDATA[$V{sub_total_neto}.doubleValue() / $V{sub_total_aves_venta}.doubleValue()]]></variableExpression>
+	</variable>
+	<variable name="sub_total_aves_venta" class="java.lang.Integer" resetType="Group" resetGroup="tipo_mvto" calculation="Sum">
+		<variableExpression><![CDATA[$F{cant_aves_bruto}]]></variableExpression>
+	</variable>
+	<variable name="sub_total_aves_devo" class="java.lang.Integer" resetType="Group" resetGroup="tipo_mvto" calculation="Sum">
+		<variableExpression><![CDATA[$F{cant_aves_devolucion}]]></variableExpression>
+	</variable>
+	<variable name="sub_total_aves_reventa" class="java.lang.Integer" resetType="Group" resetGroup="tipo_mvto" calculation="Sum">
+		<variableExpression><![CDATA[$F{cant_aves_bruto_revendido}]]></variableExpression>
+	</variable>
+	<variable name="sub_total_peso_bruto_reventa" class="java.lang.Double" resetType="Group" resetGroup="tipo_mvto" calculation="Sum">
+		<variableExpression><![CDATA[$F{total_peso_bruto_revendido}]]></variableExpression>
+	</variable>
+	<variable name="precio_promedio" class="java.lang.Double" resetType="Group" resetGroup="tipo_mvto" calculation="Average">
+		<variableExpression><![CDATA[$F{precio_aplicado}]]></variableExpression>
+	</variable>
+	<group name="tipo_mvto" isReprintHeaderOnEachPage="true">
+		<groupExpression><![CDATA[$F{id_tipo_mvto_guia}]]></groupExpression>
+		<groupHeader>
+			<band height="71">
+				<staticText>
+					<reportElement x="240" y="41" width="53" height="30" uuid="80175665-5cef-4db3-a9e4-6567f8c83e1a">
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[P.Bruto]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="333" y="41" width="40" height="30" uuid="083f10de-641b-4862-961f-2067e5c53b21">
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[P.Tara]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="373" y="41" width="40" height="30" uuid="9faa1c02-7cc5-404d-9fe0-40f9178cf313">
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[P.Devo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="413" y="41" width="40" height="30" uuid="88d7c276-462a-40da-a19d-0ddcdf8de7a1">
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[P.Neto]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="453" y="41" width="44" height="30" uuid="367ddc1f-1077-4a0f-ba79-8011cd827983">
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Precio]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="497" y="41" width="57" height="30" uuid="4ba802d7-fcfa-45f2-878c-4c5cfde2fecc">
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Importe]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="0" y="10" width="100" height="30" uuid="c58b42ae-a4ff-43bd-927b-80ede439adbe"/>
+					<textElement>
+						<font size="11" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{descrip_tipo_mvto_guia}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="206" y="41" width="34" height="30" uuid="fd19a35a-048f-44b1-ac9a-cb2d9f1c5e61"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Total Aves]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="0" y="41" width="104" height="30" uuid="7d6b0c03-f793-46d0-ae30-861b8b21cf69">
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="8"/>
+						<paragraph leftIndent="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{id_tipo_mvto_guia}.intValue() == 1 ?"Proveedor":"Cliente"]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="104" y="41" width="34" height="30" uuid="cd13e462-21d6-4d92-b60f-9ecdf2a569ba"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Aves Venta]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="138" y="41" width="34" height="30" uuid="8dc9143c-fa94-42ca-9c1c-e78048811faa">
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Aves Devo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="172" y="41" width="34" height="30" uuid="f542fc46-fec4-4a2c-a5f9-f8e42614428d">
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Aves Reventa]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="293" y="41" width="40" height="30" uuid="d109ff82-16a9-48c5-858b-140666c2357d">
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[P. Bruto Reventa]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="43">
+				<staticText>
+					<reportElement x="0" y="0" width="104" height="30" uuid="2df61e91-dacc-4ff6-846a-2262b25c1086"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Totales:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="206" y="0" width="34" height="30" uuid="1f359b8b-951e-41bb-be40-41a77670feab"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sub_total_aves}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00#;#,##0.00#-">
+					<reportElement x="240" y="0" width="53" height="30" uuid="1ea4861c-1d61-4617-a662-72432448937b"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sub_total_peso_bruto}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00#;#,##0.00#-">
+					<reportElement x="333" y="0" width="40" height="30" uuid="2c47a302-6757-45fd-9be3-06723aae01f7"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sub_total_peso_tara}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00#;#,##0.00#-">
+					<reportElement x="373" y="0" width="40" height="30" uuid="ec5e103e-7f2d-4cbd-a05c-0e84e8714680"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sub_total_peso_devo}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00#;#,##0.00#-">
+					<reportElement x="413" y="0" width="40" height="30" uuid="c82966e8-47ad-47c0-9946-17f8322452dc"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sub_total_neto}]]></textFieldExpression>
+				</textField>
+				<textField pattern="S/ #,##0.00;S/ -#,##0.00">
+					<reportElement x="497" y="0" width="57" height="30" uuid="0f82f4e9-af95-4112-9b35-4c4044934092"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sub_total_importe}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="104" y="0" width="34" height="30" uuid="19bd9485-34e1-4023-8616-5fd9790c36b3"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sub_total_aves_venta}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="138" y="0" width="34" height="30" uuid="4e60156f-72e2-4c3c-b5c1-6747f019bec4"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sub_total_aves_devo}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="172" y="0" width="34" height="30" uuid="595e41cf-dcea-4d7a-acc8-2e45cd9f5ab3"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sub_total_aves_reventa}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00#;#,##0.00#-">
+					<reportElement x="293" y="0" width="40" height="30" uuid="2cc24f7e-8acb-4dec-87d1-815031449732"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sub_total_peso_bruto_reventa}]]></textFieldExpression>
+				</textField>
+				<textField pattern="S/ #,##0.00;S/ -#,##0.00">
+					<reportElement x="453" y="0" width="44" height="30" uuid="f20b26a2-e0b0-4891-b214-23f40a6f3203"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{precio_promedio}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="120" splitType="Stretch">
+			<staticText>
+				<reportElement x="5" y="5" width="190" height="50" uuid="7d75623a-e016-4e7c-a37f-41f31d2dac49"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INVERSIONES AVICOLA LA IQUEÑA S.A.C. "INAVI"
+RUC 20534269308
+Av. Maurtua Nro. 230 Ica, Ica, Ica]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="460" y="15" width="100" height="30" uuid="6b39d1b3-8589-4c69-b19a-5679b99a441a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fecha_generacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="57" y="80" width="440" height="30" uuid="43dcac7f-9dda-4744-ad22-4a527a87c142"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+					<paragraph lineSpacingSize="1.0"/>
+				</textElement>
+				<text><![CDATA[RESUMEN DE COMPRA Y VENTA]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="64" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="20" width="46" height="30" uuid="d854d32c-12cb-4721-9cf5-be15d013d411"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="49" y="20" width="220" height="30" uuid="aa0e3634-01e2-4e6c-9cf5-d67c64e430c5"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fecha_jornada}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="14" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="104" height="30" uuid="771557a1-dbff-406f-a316-28d9c46285bb"/>
+				<box>
+					<leftPen lineWidth="0.5" lineStyle="Dotted"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{persona}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="0" width="53" height="30" uuid="5712b9e6-8a83-4b6e-b594-bc665c186985">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5" lineStyle="Dotted"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_peso_bruto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="333" y="0" width="40" height="30" uuid="366c3045-6335-4a89-801b-4b3cc685bfc9"/>
+				<box>
+					<leftPen lineWidth="0.5" lineStyle="Dotted"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_peso_tara}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="373" y="0" width="40" height="30" uuid="78965383-9a5a-425e-9c14-1750bc149b8e"/>
+				<box>
+					<leftPen lineWidth="0.5" lineStyle="Dotted"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_peso_devolucion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="413" y="0" width="40" height="30" uuid="b0630a7f-5c12-4ce0-95cf-a204837de7b0"/>
+				<box>
+					<leftPen lineWidth="0.5" lineStyle="Dotted"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_peso_neto}]]></textFieldExpression>
+			</textField>
+			<textField pattern="S/ #,##0.00;S/ -#,##0.00">
+				<reportElement x="453" y="0" width="44" height="30" uuid="42c6c1e0-d491-4308-a14d-b1e00846fd16"/>
+				<box>
+					<leftPen lineWidth="0.5" lineStyle="Dotted"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{precio_aplicado}]]></textFieldExpression>
+			</textField>
+			<textField pattern="S/ #,##0.00;S/ -#,##0.00">
+				<reportElement x="497" y="0" width="57" height="30" uuid="3352d4b1-25aa-4caa-b1a5-a5523b689418"/>
+				<box>
+					<leftPen lineWidth="0.5" lineStyle="Dotted"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_importe}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="206" y="0" width="34" height="30" uuid="9a65bc27-b931-41e4-a0d4-97c64f0db546"/>
+				<box>
+					<leftPen lineWidth="0.5" lineStyle="Dotted"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_aves}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="104" y="0" width="34" height="30" uuid="50fdd0d5-7e30-4c26-8b4f-9fae67fd891e"/>
+				<box>
+					<leftPen lineWidth="0.5" lineStyle="Dotted"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cant_aves_bruto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="138" y="0" width="34" height="30" uuid="a9de69b6-723c-4574-a722-b93db6c8bc9c"/>
+				<box>
+					<leftPen lineWidth="0.5" lineStyle="Dotted"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cant_aves_devolucion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="172" y="0" width="34" height="30" uuid="1f727506-0cb8-41d2-92a1-5055e0d2506a">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5" lineStyle="Dotted"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cant_aves_bruto_revendido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="293" y="0" width="40" height="30" uuid="8f034121-64db-40e0-9701-1f517ad3a1ac"/>
+				<box>
+					<leftPen lineWidth="0.5" lineStyle="Dotted"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_peso_bruto_revendido}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="38" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="53" splitType="Stretch">
+			<textField>
+				<reportElement x="180" y="14" width="100" height="30" uuid="ebe208aa-c779-4e1d-bb08-2f6f6bad292e"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="280" y="14" width="100" height="30" uuid="23c3a2dd-9776-4637-8a50-2366a0c06495"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="475" y="14" width="100" height="30" uuid="661916ea-bc5f-4a90-a026-2b264df2f94e"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="215" splitType="Stretch">
+			<staticText>
+				<reportElement x="321" y="30" width="134" height="30" uuid="744f8da9-3538-4d92-9346-d02265ba1075"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Peso promedio Venta:]]></text>
+			</staticText>
+			<textField pattern="#,##0.0000;#,##0.0000-">
+				<reportElement x="455" y="30" width="100" height="30" uuid="fc42c7da-9ebe-4b4e-b70f-496b9c86cf97"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{pesoPromedioVenta}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0000;#,##0.0000-">
+				<reportElement x="455" y="60" width="100" height="30" uuid="614ae33f-381a-48af-96c1-bc53a14ede4e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{merma}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="321" y="120" width="134" height="30" uuid="4789f22a-d468-4579-9235-6f3b02c16239"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Total aves vendidas:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="321" y="150" width="134" height="30" uuid="0f4c7454-8c22-4a6f-a8bd-7478b0323a16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Total Peso neto vendido:]]></text>
+			</staticText>
+			<textField pattern="S/ #,##0.00;S/ -#,##0.00">
+				<reportElement x="455" y="90" width="100" height="30" uuid="1359acc3-a6f8-4a02-9c58-b909f2aa9f80"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ganancia}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0000;#,##0.0000-">
+				<reportElement x="455" y="0" width="100" height="30" uuid="19aaddda-16d7-4254-85aa-94312fae6e94"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{pesoPromedioCompra}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="321" y="0" width="134" height="30" uuid="852760fb-9894-4a6c-9b30-2441629c143c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Peso promedio Compra:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="321" y="60" width="134" height="30" uuid="dce03d6f-3e17-43ce-aa17-88c16937fa53"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Merma:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="321" y="90" width="134" height="30" uuid="43411f35-acc1-4b01-9a4e-7b92a4f54368"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Ganancia:]]></text>
+			</staticText>
+			<textField pattern="#,##0.00##;#,##0.00##-">
+				<reportElement x="455" y="120" width="100" height="30" uuid="2970f58f-7e48-4c6e-b00f-fd4db458fb57"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{total_aves_vendidas}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00##;#,##0.00##-">
+				<reportElement x="455" y="150" width="100" height="30" uuid="668db587-7a24-429e-b5f4-156db686c6d6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{total_peso_neto}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

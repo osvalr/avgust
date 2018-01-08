@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>pe.com.acme.invoicelec.model</groupId>
+  <artifactId>InvoiceElecModel</artifactId>
+  <version>1.0</version>
+  <packaging>jar</packaging>
+
+  <name>InvoiceElecModel</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <spring.version>4.1.7.RELEASE</spring.version>
+    <mybatis.version>3.3.1</mybatis.version>
+    <mybatis.spring.version>1.2.4</mybatis.spring.version>
+    <jdk.version>1.7</jdk.version>
+    <spring.version>4.1.7.RELEASE</spring.version>
+    <testng.version>6.8.7</testng.version>
+
+  </properties>
+
+  <dependencies>
+    <!-- Spring --> 
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-core</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-beans</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-orm</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>${testng.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- MyBatis -->
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis</artifactId>
+      <version>${mybatis.version}</version>
+    </dependency>
+
+    <!-- MyBatis + Spring plugins -->
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis-spring</artifactId>
+      <version>${mybatis.spring.version}</version>
+    </dependency>
+
+<!-- 	<dependency> -->
+<!-- 		<groupId>org.postgresql</groupId> -->
+<!-- 		<artifactId>postgresql</artifactId> -->
+<!-- 		<version>9.4.1207.jre7</version> -->
+<!-- 	</dependency> -->
+
+<!-- 	<dependency> -->
+<!-- 	  <groupId>com.helger</groupId> -->
+<!-- 	  <artifactId>ph-ubl20</artifactId> -->
+<!-- 	  <version>4.5.0</version> -->
+<!-- 	</dependency> -->
+
+    <dependency>
+      <groupId>pe.com.acme.util</groupId>
+      <artifactId>AcmeUtil</artifactId>
+      <version>1.0</version>
+    </dependency>
+
+	<dependency>
+		<groupId>com.oracle</groupId>
+		<artifactId>ojdbc6</artifactId>
+		<version>11.2.0</version>
+	</dependency>
+
+  </dependencies>
+  
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
+        <configuration>
+          <source>${jdk.version}</source>
+          <target>${jdk.version}</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  
+</project>

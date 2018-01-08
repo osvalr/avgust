@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="pe.com.coravi.domain.hibernate_CoraviDomainHibernate_jar_1.0PU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>pe.com.coravi.domain.hibernate.domain.SerieNumeroDoc</class>
+    <class>pe.com.coravi.domain.hibernate.domain.Persona</class>
+    <class>pe.com.coravi.domain.hibernate.domain.ComprobanteItem</class>
+    <class>pe.com.coravi.domain.hibernate.domain.PersonaTipo</class>
+    <class>pe.com.coravi.domain.hibernate.domain.GuiaPeso</class>
+    <class>pe.com.coravi.domain.hibernate.domain.RolAplicacion</class>
+    <class>pe.com.coravi.domain.hibernate.domain.LogInHistorico</class>
+    <class>pe.com.coravi.domain.hibernate.domain.GuiaRemision</class>
+    <class>pe.com.coravi.domain.hibernate.domain.Perfil</class>
+    <class>pe.com.coravi.domain.hibernate.domain.CuentaXCobrar</class>
+    <class>pe.com.coravi.domain.hibernate.domain.GuiaSaldo</class>
+    <class>pe.com.coravi.domain.hibernate.domain.GuiaRemisionItem</class>
+    <class>pe.com.coravi.domain.hibernate.domain.MonedaCambio</class>
+    <class>pe.com.coravi.domain.hibernate.domain.Funcionalidad</class>
+    <class>pe.com.coravi.domain.hibernate.domain.Guia</class>
+    <class>pe.com.coravi.domain.hibernate.domain.Jornada</class>
+    <class>pe.com.coravi.domain.hibernate.domain.CatalogoItem</class>
+    <class>pe.com.coravi.domain.hibernate.domain.PerfilAplicacion</class>
+    <class>pe.com.coravi.domain.hibernate.domain.UsuarioRol</class>
+    <class>pe.com.coravi.domain.hibernate.domain.Usuario</class>
+    <class>pe.com.coravi.domain.hibernate.domain.Catalogo</class>
+    <class>pe.com.coravi.domain.hibernate.domain.ComprobantePago</class>
+    <class>pe.com.coravi.domain.hibernate.domain.UsuarioPerfil</class>
+    <class>pe.com.coravi.domain.hibernate.domain.CuentaAmortizacion</class>
+    <class>pe.com.coravi.domain.hibernate.domain.FuncionalidadRol</class>
+    <class>pe.com.coravi.domain.hibernate.domain.Moneda</class>
+    <class>pe.com.coravi.domain.hibernate.domain.Articulo</class>
+    <class>pe.com.coravi.domain.hibernate.domain.Aplicacion</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/bd_acme"/>
+      <property name="javax.persistence.jdbc.user" value="postgres"/>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="1234"/>
+    </properties>
+  </persistence-unit>
+</persistence>

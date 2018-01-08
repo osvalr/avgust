@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.acme.query.mybatis.mapper.CuentaXCobrarQueryMapper">
+
+<sql id="outs"> 
+<![CDATA[
+
+c.id_cuenta_x_cobrar,
+c.id_cliente,
+(coalesce(p.ape_pater,'') || ' ' || coalesce(p.ape_mater,'') || ' ' || coalesce(p.nombres,'')) nombres_completos,
+c.descrip_glosa,
+to_char(c.fecha_cuenta,'dd/mm/yyyy') fecha_cuenta,
+c.monto_deuda,
+coalesce((select sum(ca.monto_amortizado) from inavi.cuenta_amortizacion ca where ca.id_cuenta_x_cobrar = c.id_cuenta_x_cobrar),0) total_amortizado,
+(c.monto_deuda - coalesce((select sum(ca.monto_amortizado) from inavi.cuenta_amortizacion ca where ca.id_cuenta_x_cobrar = c.id_cuenta_x_cobrar),0)) total_deuda,
+c.id_estado,
+eg.descrip_item as descrip_estado,
+to_char(c.fecha_registro,'dd/mm/yyyy') fecha_registro,
+to_char(c.fecha_modificacion,'dd/mm/yyyy') fecha_modificacion,
+c.id_usuario_reg,
+c.id_usuario_mod
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+inavi.cuenta_x_cobrar c
+inner join general.persona p on c.id_cliente = p.id_persona
+INNER join general.vw_catalogo eg on c.id_estado = eg.valor_item and eg.nombre_catalogo = 'estado_guia_venta'
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+c.id_cuenta_x_cobrar = coalesce(#{id_cuenta_x_cobrar},c.id_cuenta_x_cobrar)
+and (coalesce(p.ape_pater,'') || ' ' || coalesce(p.ape_mater,'') || ' ' || coalesce(p.nombres,'')) like coalesce('%' || #{nombre_cliente} || '%',(coalesce(p.ape_pater,'') || ' ' || coalesce(p.ape_mater,'') || ' ' || coalesce(p.nombres,'')))
+and c.id_estado = coalesce(#{id_estado},c.id_estado)
+and c.id_cliente = coalesce(#{id_cliente},c.id_cliente)
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${order_column} ${order_direction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.acme.query.mybatis.model.CuentaXCobrarQuery" parameterType="pe.com.acme.query.mybatis.model.CuentaXCobrarQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.acme.query.mybatis.model.CuentaXCobrarQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.acme.query.mybatis.model.CuentaXCobrarQuery" parameterType="pe.com.acme.query.mybatis.model.CuentaXCobrarQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.acme.query.mybatis.model.CuentaXCobrarQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.acme.query.mybatis.model.CuentaXCobrarQueryCriteria">
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="pe.com.acme.invoiceelec.model.mybatis.query.mapper.NotaCreditoWebQueryMapper">
+
+<sql id="outs"> 
+<![CDATA[
+
+f.NCRE_KEY,
+f.fechaemision,
+f.numeroDocumentoUsuario,
+f.tipoDocumentoUsuario,
+f.razonSocialUsuario,
+round(f.montoTotalOpg,2) montoTotalOpg,
+round(f.montoTotalOpi,2) montoTotalOpi,
+round(f.montoTotalOpex,2) montoTotalOpex,
+round(f.sumIgv,2) sumIgv,
+round(f.sumOtrosCargos,2) sumOtrosCargos,
+round(f.montoTotalDscto,2) montoTotalDscto,
+round(f.montoTotalNotaCredito,2) montoTotalNotaCredito,
+f.monedaDocumentoElectronico,
+f.estado_doc,
+decode(f.estado_doc,'1','GENERADO','2','EN PROCESO','3','ACEPTADO','4','RECHAZADO','NO GENERADO') descrip_estado_doc,
+f.RUTA_DOC_ELEC,
+f.RUTA_COD_BARRAS,
+f.RUTA_COD_BARRAS_MATRIX,
+f.TIP_DOC_ELECT,
+f.NUMF_SERIE,
+f.NUMF_CORREL,
+f.num_doc_elect
+
+]]>
+</sql> 
+
+<sql id="from"> 
+<![CDATA[
+
+(
+select 
+
+f.*,
+fe.estado_doc,
+fe.RUTA_DOC_ELEC,
+fe.RUTA_COD_BARRAS,
+fe.RUTA_COD_BARRAS_MATRIX,
+fe.TIP_DOC_ELECT,
+fe.NUMF_SERIE,
+fe.NUMF_CORREL,
+fe.num_doc_elect
+
+from 
+VIS_NCREDITO_ELECT_CAB f left join N_CRE_DEB_ELECT fe on f.EMP_ID = fe.EMP_ID and f.NCRE_KEY = fe.NCRE_KEY
+
+)f
+
+]]>
+</sql> 
+
+<sql id="inputs"> 
+<![CDATA[
+
+f.FECHAEMISANIO = nvl(#{fechaemisanio, jdbcType=INTEGER},f.FECHAEMISANIO)
+and f.FECHAEMISMES = nvl(#{fechaemismes, jdbcType=INTEGER},f.FECHAEMISMES)
+and f.FECHAEMISDIA = nvl(#{fechaemisdia, jdbcType=INTEGER},f.FECHAEMISDIA)
+and nvl(f.TIPODOCUMENTOUSUARIO,'0') = nvl(#{tipodocumentousuario, jdbcType=VARCHAR},nvl(f.TIPODOCUMENTOUSUARIO,'0'))
+and nvl(f.NUMERODOCUMENTOUSUARIO,'0') = nvl(#{numerodocumentousuario, jdbcType=VARCHAR},nvl(f.NUMERODOCUMENTOUSUARIO,'0'))
+and f.NUMERODOCUMENTO = nvl(#{numerodocumento, jdbcType=INTEGER},f.NUMERODOCUMENTO)
+and nvl(f.NUMF_CORREL,0) = nvl(#{numf_correl, jdbcType=INTEGER},nvl(f.NUMF_CORREL,0))
+
+]]>
+</sql> 
+
+<sql id="order"> 
+<![CDATA[
+ORDER BY ${order_column} ${order_direction}
+]]>
+</sql> 
+
+<select id="getListQueryByCriteria" resultType="pe.com.acme.invoiceelec.model.mybatis.query.dto.NotaCreditoWebQuery" parameterType="pe.com.acme.invoiceelec.model.mybatis.query.dto.NotaCreditoWebQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryByMap" resultType="pe.com.acme.invoiceelec.model.mybatis.query.dto.NotaCreditoWebQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByCriteria" resultType="pe.com.acme.invoiceelec.model.mybatis.query.dto.NotaCreditoWebQuery" parameterType="pe.com.acme.invoiceelec.model.mybatis.query.dto.NotaCreditoWebQueryCriteria">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getListQueryPaginationByMap" resultType="pe.com.acme.invoiceelec.model.mybatis.query.dto.NotaCreditoWebQuery" parameterType="java.util.Map">
+select 
+<include refid="outs" /> 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+<include refid="order" /> 
+</select> 
+
+<select id="getCountRowsByCriteria" resultType="java.lang.Integer" parameterType="pe.com.acme.invoiceelec.model.mybatis.query.dto.NotaCreditoWebQueryCriteria">
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+<select id="getCountRowsByMap" resultType="java.lang.Integer" parameterType="java.util.Map"> 
+select 
+count(*) 
+from 
+<include refid="from" /> 
+where 
+<include refid="inputs" /> 
+</select> 
+
+</mapper> 

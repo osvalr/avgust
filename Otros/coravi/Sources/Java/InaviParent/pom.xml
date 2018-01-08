@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>pe.com.acme.inavi</groupId>
+    <artifactId>InaviParent</artifactId>
+    <version>1.0</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>InaviBusiness</module>
+        <module>InaviExtJsDev</module>
+        <module>InaviExtJsWebApp</module>
+        <module>InaviModelsQuery</module>
+        <module>InaviWSRestApp</module>
+    </modules>
+
+</project>
