@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+	<context:annotation-config/>
+	<context:component-scan base-package = "pe.kapcom.iemail.service"/>
+
+	<!-- Configuración del datasource -->
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="ignoreUnresolvablePlaceholders" value="true"/>
+		<property name="locations">
+			<list>
+				<value>classpath:database.properties</value>
+				<value>classpath:app.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<!--<property name="host" value="smtp.gmail.com" />-->
+		<!--<property name="port" value="587" />-->
+		<!--<property name="username" value="raffo8924" />-->
+		<!--<property name="password" value="Suplemento89" />-->
+
+		<property name="host" value="${host}" />
+		<property name="port" value="${port}" />
+		<property name="username" value="${username}" />
+		<property name="password" value="${password}" />
+
+		<property name="javaMailProperties">
+		<props>
+			<prop key="mail.smtp.auth">false</prop>
+			<prop key="mail.transport.protocol">smtp</prop>
+			<prop key="mail.debug">true</prop>
+			<!--<prop key="mail.smtp.starttls.enable">true</prop>-->
+		</props>
+		</property>
+	</bean>
+
+	<bean id="mailService" class="pe.kapcom.iemail.service.MailService">
+		<property name="mailSender" ref="mailSender" />
+		<property name="simpleMailMessage" ref="customMailMessage" />
+	</bean>
+
+	<bean id="customMailMessage"
+		  class="org.springframework.mail.SimpleMailMessage">
+
+		<property name="from" value="${username}" />
+		<property name="to" value="nherrera@grupovallenorte.com.pe" />
+		<!--<property name="to" value="raffo8924@gmail.com" />-->
+		<property name="subject" value="%s: %s (Tambos - Lima)" />
+
+		<property name="text">
+<value>
+	<![CDATA[
+Estimado/a cliente: %s,
+
+RUC/DNI: %s,
+
+Su  %s %s con fecha de emisión %s ya está disponible  y puede consultarla en la siguiente dirección, ingresando con su usuario y clave (haga clic en el enlace o copie la dirección en su navegador):
+
+http://www.tambosperu.com.pe
+
+Adjuntamos en este mensaje la versión PDF y XML.
+
+TAMBOS LIMA SAC,
+Servicio de Atención al Cliente.
+
+Para contactar con nosotros:
+Email: ${username}
+		]]>
+</value>
+		</property>
+	</bean>
+
+	<!-- Config Domain Modules -->
+	<import resource="spring-database-config.xml"/>
+
+</beans>

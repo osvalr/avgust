@@ -1,0 +1,1935 @@
+2018-01-11 22:26:49 INFO  App:26 - ============ INICIANDO APLICACION ============
+2018-01-11 22:26:49 INFO  App:27 - ============ CARGANDO CONTEXTO SPRING ============
+2018-01-11 22:26:49 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1c4af82c: startup date [Thu Jan 11 22:26:49 PET 2018]; root of context hierarchy
+2018-01-11 22:26:49 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/applicationContext.xml]
+2018-01-11 22:26:49 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/spring-database-config.xml]
+2018-01-11 22:26:50 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [database.properties]
+2018-01-11 22:26:50 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+2018-01-11 22:26:50 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2018-01-11 22:26:50 INFO  App:29 - ============ OBTENIENDO INSTANCIA DE MAIL SERVICE ============
+2018-01-11 22:26:50 INFO  App:31 - ============ OBTENIENDO INSTANCIA DE CUSTOMER SERVICE IMPL ============
+2018-01-11 22:26:50 INFO  App:32 - ============ OBTENIENDO REGISTROS PENDIENTES PARA EL ENVIO DE DOCUMENTOS ELECTRONICOS ============
+2018-01-11 22:26:56 INFO  App:35 - ============ CANTIDAD DE REGISTROS PENDIENTES: 5 ============
+2018-01-11 22:26:56 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:26:56 INFO  MailService:57 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:26:56 INFO  MailService:87 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:26:56 INFO  MailService:88 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:26:56 ERROR App:50 - http://190.40.57.153:8081/aga/jaen/PDFF/F0150001669
+java.io.FileNotFoundException: http://190.40.57.153:8081/aga/jaen/PDFF/F0150001669
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1836)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1441)
+	at java.net.URL.openStream(URL.java:1045)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:93)
+	at pe.kapcom.iemail.App.main(App.java:42)
+2018-01-11 22:26:56 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 22:26:56 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:26:56 INFO  MailService:57 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:26:56 INFO  MailService:87 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:26:56 INFO  MailService:88 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:26:56 ERROR App:50 - http://190.40.57.153:8081/aga/jaen/PDFF/F0150001670
+java.io.FileNotFoundException: http://190.40.57.153:8081/aga/jaen/PDFF/F0150001670
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1836)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1441)
+	at java.net.URL.openStream(URL.java:1045)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:93)
+	at pe.kapcom.iemail.App.main(App.java:42)
+2018-01-11 22:26:56 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 22:26:56 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:26:56 INFO  MailService:57 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:26:56 INFO  MailService:87 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:26:56 INFO  MailService:88 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:26:56 ERROR App:50 - http://190.40.57.153:8081/aga/jaen/PDFF/F0150001671
+java.io.FileNotFoundException: http://190.40.57.153:8081/aga/jaen/PDFF/F0150001671
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1836)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1441)
+	at java.net.URL.openStream(URL.java:1045)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:93)
+	at pe.kapcom.iemail.App.main(App.java:42)
+2018-01-11 22:26:56 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 22:26:56 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:26:56 INFO  MailService:57 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:26:56 INFO  MailService:87 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:26:56 INFO  MailService:88 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:26:56 ERROR App:50 - http://190.40.57.153:8081/aga/jaen/PDFF/F0150001672
+java.io.FileNotFoundException: http://190.40.57.153:8081/aga/jaen/PDFF/F0150001672
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1836)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1441)
+	at java.net.URL.openStream(URL.java:1045)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:93)
+	at pe.kapcom.iemail.App.main(App.java:42)
+2018-01-11 22:26:56 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 22:26:56 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:26:56 INFO  MailService:57 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:26:56 INFO  MailService:87 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:26:56 INFO  MailService:88 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:26:57 ERROR App:50 - http://190.40.57.153:8081/aga/jaen/PDFF/F0150001673
+java.io.FileNotFoundException: http://190.40.57.153:8081/aga/jaen/PDFF/F0150001673
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1836)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1441)
+	at java.net.URL.openStream(URL.java:1045)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:93)
+	at pe.kapcom.iemail.App.main(App.java:42)
+2018-01-11 22:26:57 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 22:26:57 INFO  MailService:123 - ============ INICIO ENVIO DE CORREO LOG ============
+2018-01-11 22:26:57 INFO  MailService:130 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:28:58 INFO  App:26 - ============ INICIANDO APLICACION ============
+2018-01-11 22:28:58 INFO  App:27 - ============ CARGANDO CONTEXTO SPRING ============
+2018-01-11 22:28:59 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1c4af82c: startup date [Thu Jan 11 22:28:59 PET 2018]; root of context hierarchy
+2018-01-11 22:28:59 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/applicationContext.xml]
+2018-01-11 22:28:59 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/spring-database-config.xml]
+2018-01-11 22:28:59 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [database.properties]
+2018-01-11 22:28:59 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+2018-01-11 22:28:59 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2018-01-11 22:28:59 INFO  App:29 - ============ OBTENIENDO INSTANCIA DE MAIL SERVICE ============
+2018-01-11 22:28:59 INFO  App:31 - ============ OBTENIENDO INSTANCIA DE CUSTOMER SERVICE IMPL ============
+2018-01-11 22:28:59 INFO  App:32 - ============ OBTENIENDO REGISTROS PENDIENTES PARA EL ENVIO DE DOCUMENTOS ELECTRONICOS ============
+2018-01-11 22:29:01 INFO  App:35 - ============ CANTIDAD DE REGISTROS PENDIENTES: 5 ============
+2018-01-11 22:29:01 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:29:01 INFO  MailService:57 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:29:01 INFO  MailService:87 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:29:01 INFO  MailService:88 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:29:01 INFO  MailService:99 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 22:29:01 INFO  MailService:101 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:29:32 INFO  App:26 - ============ INICIANDO APLICACION ============
+2018-01-11 22:29:32 INFO  App:27 - ============ CARGANDO CONTEXTO SPRING ============
+2018-01-11 22:29:32 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1c4af82c: startup date [Thu Jan 11 22:29:32 PET 2018]; root of context hierarchy
+2018-01-11 22:29:32 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/applicationContext.xml]
+2018-01-11 22:29:32 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/spring-database-config.xml]
+2018-01-11 22:29:32 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [database.properties]
+2018-01-11 22:29:32 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+2018-01-11 22:29:32 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2018-01-11 22:29:33 INFO  App:29 - ============ OBTENIENDO INSTANCIA DE MAIL SERVICE ============
+2018-01-11 22:29:33 INFO  App:31 - ============ OBTENIENDO INSTANCIA DE CUSTOMER SERVICE IMPL ============
+2018-01-11 22:29:33 INFO  App:32 - ============ OBTENIENDO REGISTROS PENDIENTES PARA EL ENVIO DE DOCUMENTOS ELECTRONICOS ============
+2018-01-11 22:29:37 INFO  App:35 - ============ CANTIDAD DE REGISTROS PENDIENTES: 5 ============
+2018-01-11 22:29:37 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:29:37 INFO  MailService:57 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:29:37 INFO  MailService:87 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:29:37 INFO  MailService:88 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:29:38 INFO  MailService:99 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 22:29:38 INFO  MailService:101 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:30:53 ERROR App:50 - Operation timed out
+java.net.ConnectException: Operation timed out
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at sun.net.ftp.impl.FtpClient.doConnect(FtpClient.java:957)
+	at sun.net.ftp.impl.FtpClient.tryConnect(FtpClient.java:917)
+	at sun.net.ftp.impl.FtpClient.connect(FtpClient.java:1012)
+	at sun.net.ftp.impl.FtpClient.connect(FtpClient.java:998)
+	at sun.net.www.protocol.ftp.FtpURLConnection.connect(FtpURLConnection.java:294)
+	at sun.net.www.protocol.ftp.FtpURLConnection.getInputStream(FtpURLConnection.java:393)
+	at java.net.URL.openStream(URL.java:1045)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:107)
+	at pe.kapcom.iemail.App.main(App.java:42)
+2018-01-11 22:30:53 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 22:30:53 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:30:53 INFO  MailService:57 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:30:53 INFO  MailService:87 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:30:53 INFO  MailService:88 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:30:53 INFO  MailService:99 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 22:30:53 INFO  MailService:101 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:32:09 ERROR App:50 - Operation timed out
+java.net.ConnectException: Operation timed out
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at sun.net.ftp.impl.FtpClient.doConnect(FtpClient.java:957)
+	at sun.net.ftp.impl.FtpClient.tryConnect(FtpClient.java:917)
+	at sun.net.ftp.impl.FtpClient.connect(FtpClient.java:1012)
+	at sun.net.ftp.impl.FtpClient.connect(FtpClient.java:998)
+	at sun.net.www.protocol.ftp.FtpURLConnection.connect(FtpURLConnection.java:294)
+	at sun.net.www.protocol.ftp.FtpURLConnection.getInputStream(FtpURLConnection.java:393)
+	at java.net.URL.openStream(URL.java:1045)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:107)
+	at pe.kapcom.iemail.App.main(App.java:42)
+2018-01-11 22:32:09 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 22:32:09 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:32:09 INFO  MailService:57 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:32:09 INFO  MailService:87 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:32:09 INFO  MailService:88 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:32:09 INFO  MailService:99 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 22:32:09 INFO  MailService:101 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:33:24 ERROR App:50 - Operation timed out
+java.net.ConnectException: Operation timed out
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at sun.net.ftp.impl.FtpClient.doConnect(FtpClient.java:957)
+	at sun.net.ftp.impl.FtpClient.tryConnect(FtpClient.java:917)
+	at sun.net.ftp.impl.FtpClient.connect(FtpClient.java:1012)
+	at sun.net.ftp.impl.FtpClient.connect(FtpClient.java:998)
+	at sun.net.www.protocol.ftp.FtpURLConnection.connect(FtpURLConnection.java:294)
+	at sun.net.www.protocol.ftp.FtpURLConnection.getInputStream(FtpURLConnection.java:393)
+	at java.net.URL.openStream(URL.java:1045)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:107)
+	at pe.kapcom.iemail.App.main(App.java:42)
+2018-01-11 22:33:24 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 22:33:24 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:33:24 INFO  MailService:57 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:33:24 INFO  MailService:87 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:33:24 INFO  MailService:88 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:33:24 INFO  MailService:99 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 22:33:24 INFO  MailService:101 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:34:39 ERROR App:50 - Operation timed out
+java.net.ConnectException: Operation timed out
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at sun.net.ftp.impl.FtpClient.doConnect(FtpClient.java:957)
+	at sun.net.ftp.impl.FtpClient.tryConnect(FtpClient.java:917)
+	at sun.net.ftp.impl.FtpClient.connect(FtpClient.java:1012)
+	at sun.net.ftp.impl.FtpClient.connect(FtpClient.java:998)
+	at sun.net.www.protocol.ftp.FtpURLConnection.connect(FtpURLConnection.java:294)
+	at sun.net.www.protocol.ftp.FtpURLConnection.getInputStream(FtpURLConnection.java:393)
+	at java.net.URL.openStream(URL.java:1045)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:107)
+	at pe.kapcom.iemail.App.main(App.java:42)
+2018-01-11 22:34:39 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 22:34:39 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:34:39 INFO  MailService:57 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:34:39 INFO  MailService:87 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:34:39 INFO  MailService:88 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:34:40 INFO  MailService:99 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 22:34:40 INFO  MailService:101 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:35:56 ERROR App:50 - Operation timed out
+java.net.ConnectException: Operation timed out
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at sun.net.ftp.impl.FtpClient.doConnect(FtpClient.java:957)
+	at sun.net.ftp.impl.FtpClient.tryConnect(FtpClient.java:917)
+	at sun.net.ftp.impl.FtpClient.connect(FtpClient.java:1012)
+	at sun.net.ftp.impl.FtpClient.connect(FtpClient.java:998)
+	at sun.net.www.protocol.ftp.FtpURLConnection.connect(FtpURLConnection.java:294)
+	at sun.net.www.protocol.ftp.FtpURLConnection.getInputStream(FtpURLConnection.java:393)
+	at java.net.URL.openStream(URL.java:1045)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:107)
+	at pe.kapcom.iemail.App.main(App.java:42)
+2018-01-11 22:35:56 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 22:35:56 INFO  MailService:123 - ============ INICIO ENVIO DE CORREO LOG ============
+2018-01-11 22:35:56 INFO  MailService:130 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:40:24 INFO  App:26 - ============ INICIANDO APLICACION ============
+2018-01-11 22:40:24 INFO  App:27 - ============ CARGANDO CONTEXTO SPRING ============
+2018-01-11 22:40:24 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@6ddf90b0: startup date [Thu Jan 11 22:40:24 PET 2018]; root of context hierarchy
+2018-01-11 22:40:24 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/applicationContext.xml]
+2018-01-11 22:40:24 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/spring-database-config.xml]
+2018-01-11 22:40:25 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [database.properties]
+2018-01-11 22:40:25 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+2018-01-11 22:40:25 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2018-01-11 22:40:25 INFO  App:29 - ============ OBTENIENDO INSTANCIA DE MAIL SERVICE ============
+2018-01-11 22:40:25 INFO  App:31 - ============ OBTENIENDO INSTANCIA DE CUSTOMER SERVICE IMPL ============
+2018-01-11 22:40:25 INFO  App:32 - ============ OBTENIENDO REGISTROS PENDIENTES PARA EL ENVIO DE DOCUMENTOS ELECTRONICOS ============
+2018-01-11 22:40:26 INFO  App:35 - ============ CANTIDAD DE REGISTROS PENDIENTES: 5 ============
+2018-01-11 22:40:26 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:40:26 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:40:26 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:40:26 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:40:26 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 22:40:26 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:41:07 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:41:43 ERROR App:50 - Mail server connection failed; nested exception is javax.mail.MessagingException: Could not convert socket to TLS;
+  nested exception is:
+	javax.net.ssl.SSLHandshakeException: Remote host closed connection during handshake. Failed messages: javax.mail.MessagingException: Could not convert socket to TLS;
+  nested exception is:
+	javax.net.ssl.SSLHandshakeException: Remote host closed connection during handshake
+org.springframework.mail.MailSendException: Mail server connection failed; nested exception is javax.mail.MessagingException: Could not convert socket to TLS;
+  nested exception is:
+	javax.net.ssl.SSLHandshakeException: Remote host closed connection during handshake. Failed messages: javax.mail.MessagingException: Could not convert socket to TLS;
+  nested exception is:
+	javax.net.ssl.SSLHandshakeException: Remote host closed connection during handshake; message exception details (1) are:
+Failed message 1:
+javax.mail.MessagingException: Could not convert socket to TLS;
+  nested exception is:
+	javax.net.ssl.SSLHandshakeException: Remote host closed connection during handshake
+	at com.sun.mail.smtp.SMTPTransport.startTLS(SMTPTransport.java:1907)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:666)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.net.ssl.SSLHandshakeException: Remote host closed connection during handshake
+	at sun.security.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:992)
+	at sun.security.ssl.SSLSocketImpl.performInitialHandshake(SSLSocketImpl.java:1375)
+	at sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:1403)
+	at sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:1387)
+	at com.sun.mail.util.SocketFetcher.configureSSLSocket(SocketFetcher.java:549)
+	at com.sun.mail.util.SocketFetcher.startTLS(SocketFetcher.java:486)
+	at com.sun.mail.smtp.SMTPTransport.startTLS(SMTPTransport.java:1902)
+	... 8 more
+Caused by: java.io.EOFException: SSL peer shut down incorrectly
+	at sun.security.ssl.InputRecord.read(InputRecord.java:505)
+	at sun.security.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:973)
+	... 14 more
+2018-01-11 22:41:43 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 22:41:43 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:41:43 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:41:43 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:41:43 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:41:43 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 22:41:43 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:41:46 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:41:48 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials v82sm2756886vkv.16 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials v82sm2756886vkv.16 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials v82sm2756886vkv.16 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 22:41:48 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 22:41:48 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:41:48 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:41:48 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:41:48 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:41:48 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 22:41:48 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:42:07 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:42:08 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials w7sm136027vkb.40 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials w7sm136027vkb.40 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials w7sm136027vkb.40 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 22:42:08 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 22:42:08 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:42:08 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:42:08 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:42:08 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:42:08 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 22:42:08 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:45:15 INFO  App:26 - ============ INICIANDO APLICACION ============
+2018-01-11 22:45:15 INFO  App:27 - ============ CARGANDO CONTEXTO SPRING ============
+2018-01-11 22:45:15 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@6ddf90b0: startup date [Thu Jan 11 22:45:15 PET 2018]; root of context hierarchy
+2018-01-11 22:45:15 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/applicationContext.xml]
+2018-01-11 22:45:15 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/spring-database-config.xml]
+2018-01-11 22:45:15 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [database.properties]
+2018-01-11 22:45:15 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+2018-01-11 22:45:16 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2018-01-11 22:45:16 INFO  App:29 - ============ OBTENIENDO INSTANCIA DE MAIL SERVICE ============
+2018-01-11 22:45:16 INFO  App:31 - ============ OBTENIENDO INSTANCIA DE CUSTOMER SERVICE IMPL ============
+2018-01-11 22:45:16 INFO  App:32 - ============ OBTENIENDO REGISTROS PENDIENTES PARA EL ENVIO DE DOCUMENTOS ELECTRONICOS ============
+2018-01-11 22:45:17 INFO  App:35 - ============ CANTIDAD DE REGISTROS PENDIENTES: 5 ============
+2018-01-11 22:45:17 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:45:17 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:45:17 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:45:17 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:45:17 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 22:45:17 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:45:18 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:45:20 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials y19sm7373700uay.55 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials y19sm7373700uay.55 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials y19sm7373700uay.55 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 22:45:20 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 22:45:20 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:45:20 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:45:20 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:45:20 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:45:21 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 22:45:21 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:45:22 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:45:23 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials u16sm2625559vke.52 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials u16sm2625559vke.52 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials u16sm2625559vke.52 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 22:45:23 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 22:45:23 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:45:23 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:45:23 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:45:23 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:45:23 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 22:45:23 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:45:24 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:45:26 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials n75sm4467538vke.33 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials n75sm4467538vke.33 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials n75sm4467538vke.33 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 22:45:26 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 22:45:26 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:45:26 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:45:26 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:45:26 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:45:26 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 22:45:26 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:45:27 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:45:28 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials i6sm5164120uaa.7 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials i6sm5164120uaa.7 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials i6sm5164120uaa.7 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 22:45:28 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 22:45:28 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:45:28 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:45:28 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:45:28 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:45:28 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 22:45:28 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:45:29 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:45:30 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials u15sm10499240uaf.43 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials u15sm10499240uaf.43 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials u15sm10499240uaf.43 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 22:45:30 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 22:45:30 INFO  MailService:126 - ============ INICIO ENVIO DE CORREO LOG ============
+2018-01-11 22:45:30 INFO  MailService:133 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:46:18 INFO  App:26 - ============ INICIANDO APLICACION ============
+2018-01-11 22:46:18 INFO  App:27 - ============ CARGANDO CONTEXTO SPRING ============
+2018-01-11 22:46:18 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@6ddf90b0: startup date [Thu Jan 11 22:46:18 PET 2018]; root of context hierarchy
+2018-01-11 22:46:18 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/applicationContext.xml]
+2018-01-11 22:46:19 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/spring-database-config.xml]
+2018-01-11 22:46:19 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [database.properties]
+2018-01-11 22:46:19 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+2018-01-11 22:46:19 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2018-01-11 22:46:19 INFO  App:29 - ============ OBTENIENDO INSTANCIA DE MAIL SERVICE ============
+2018-01-11 22:46:19 INFO  App:31 - ============ OBTENIENDO INSTANCIA DE CUSTOMER SERVICE IMPL ============
+2018-01-11 22:46:19 INFO  App:32 - ============ OBTENIENDO REGISTROS PENDIENTES PARA EL ENVIO DE DOCUMENTOS ELECTRONICOS ============
+2018-01-11 22:46:23 INFO  App:35 - ============ CANTIDAD DE REGISTROS PENDIENTES: 5 ============
+2018-01-11 22:46:23 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:46:23 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:46:23 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:46:23 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:46:23 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 22:46:23 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:46:24 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:46:26 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials n75sm4467755vke.33 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials n75sm4467755vke.33 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials n75sm4467755vke.33 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 22:46:26 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 22:46:26 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:46:26 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:46:26 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:46:26 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:46:26 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 22:46:26 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:46:27 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:46:28 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials m14sm1416733vka.27 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials m14sm1416733vka.27 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials m14sm1416733vka.27 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 22:46:28 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 22:46:28 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:46:28 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:46:28 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:46:28 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:46:28 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 22:46:28 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:46:29 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:46:30 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials o186sm1062364vkf.22 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials o186sm1062364vkf.22 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials o186sm1062364vkf.22 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 22:46:30 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 22:46:30 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:46:30 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:46:30 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:46:30 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:46:30 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 22:46:30 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:46:31 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:46:32 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials k59sm2737326uak.15 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials k59sm2737326uak.15 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials k59sm2737326uak.15 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 22:46:32 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 22:46:32 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:46:32 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:46:32 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:46:32 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:46:32 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 22:46:32 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:46:33 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:46:34 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials g23sm3418030vke.3 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials g23sm3418030vke.3 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials g23sm3418030vke.3 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 22:46:34 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 22:46:34 INFO  MailService:126 - ============ INICIO ENVIO DE CORREO LOG ============
+2018-01-11 22:46:34 INFO  MailService:133 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:52:34 INFO  App:26 - ============ INICIANDO APLICACION ============
+2018-01-11 22:52:34 INFO  App:27 - ============ CARGANDO CONTEXTO SPRING ============
+2018-01-11 22:52:34 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@6ddf90b0: startup date [Thu Jan 11 22:52:34 PET 2018]; root of context hierarchy
+2018-01-11 22:52:34 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/applicationContext.xml]
+2018-01-11 22:52:34 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/spring-database-config.xml]
+2018-01-11 22:52:34 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [database.properties]
+2018-01-11 22:52:34 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+2018-01-11 22:52:35 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2018-01-11 22:52:35 INFO  App:29 - ============ OBTENIENDO INSTANCIA DE MAIL SERVICE ============
+2018-01-11 22:52:35 INFO  App:31 - ============ OBTENIENDO INSTANCIA DE CUSTOMER SERVICE IMPL ============
+2018-01-11 22:52:35 INFO  App:32 - ============ OBTENIENDO REGISTROS PENDIENTES PARA EL ENVIO DE DOCUMENTOS ELECTRONICOS ============
+2018-01-11 22:52:36 INFO  App:35 - ============ CANTIDAD DE REGISTROS PENDIENTES: 5 ============
+2018-01-11 22:52:36 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:52:36 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:52:36 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:52:36 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:52:36 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 22:52:36 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:52:38 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:52:39 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials p15sm943387uap.46 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials p15sm943387uap.46 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials p15sm943387uap.46 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 22:52:39 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 22:52:39 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:52:39 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:52:39 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:52:39 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:52:39 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 22:52:39 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:52:40 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:52:41 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials f123sm3400977vke.43 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials f123sm3400977vke.43 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials f123sm3400977vke.43 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 22:52:41 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 22:52:41 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:52:41 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:52:41 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:52:41 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:52:41 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 22:52:41 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:52:42 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:52:43 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials e62sm4255174vka.9 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials e62sm4255174vka.9 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials e62sm4255174vka.9 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 22:52:43 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 22:52:43 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:52:43 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:52:43 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:52:43 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:52:43 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 22:52:43 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:52:44 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:53:41 INFO  App:26 - ============ INICIANDO APLICACION ============
+2018-01-11 22:53:41 INFO  App:27 - ============ CARGANDO CONTEXTO SPRING ============
+2018-01-11 22:53:41 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@6ddf90b0: startup date [Thu Jan 11 22:53:41 PET 2018]; root of context hierarchy
+2018-01-11 22:53:41 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/applicationContext.xml]
+2018-01-11 22:53:41 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/spring-database-config.xml]
+2018-01-11 22:53:41 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [database.properties]
+2018-01-11 22:53:41 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+2018-01-11 22:53:42 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2018-01-11 22:53:42 INFO  App:29 - ============ OBTENIENDO INSTANCIA DE MAIL SERVICE ============
+2018-01-11 22:53:42 INFO  App:31 - ============ OBTENIENDO INSTANCIA DE CUSTOMER SERVICE IMPL ============
+2018-01-11 22:53:42 INFO  App:32 - ============ OBTENIENDO REGISTROS PENDIENTES PARA EL ENVIO DE DOCUMENTOS ELECTRONICOS ============
+2018-01-11 22:53:45 INFO  App:35 - ============ CANTIDAD DE REGISTROS PENDIENTES: 5 ============
+2018-01-11 22:53:45 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:53:45 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:53:45 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:53:45 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:53:45 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 22:53:45 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:53:46 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:53:47 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d184sm3219051vka.42 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d184sm3219051vka.42 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d184sm3219051vka.42 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 22:53:47 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 22:53:47 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:53:47 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:53:47 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:53:47 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:53:48 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 22:53:48 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:53:51 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:53:52 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials b37sm1116137uae.26 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials b37sm1116137uae.26 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials b37sm1116137uae.26 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 22:53:52 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 22:53:52 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:53:52 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:53:52 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:53:52 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:53:52 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 22:53:52 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:53:54 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:53:55 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials r7sm3230723uar.12 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials r7sm3230723uar.12 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials r7sm3230723uar.12 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 22:53:55 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 22:53:55 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:53:55 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:53:55 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:53:55 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:53:55 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 22:53:55 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:53:56 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:53:57 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials v20sm1656557uaj.18 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials v20sm1656557uaj.18 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials v20sm1656557uaj.18 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 22:53:57 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 22:53:57 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:53:57 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:53:57 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:53:57 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:53:57 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 22:53:57 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:53:58 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:53:59 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials k39sm4956359uad.2 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials k39sm4956359uad.2 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials k39sm4956359uad.2 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 22:53:59 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 22:53:59 INFO  MailService:126 - ============ INICIO ENVIO DE CORREO LOG ============
+2018-01-11 22:53:59 INFO  MailService:133 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:56:05 INFO  App:26 - ============ INICIANDO APLICACION ============
+2018-01-11 22:56:05 INFO  App:27 - ============ CARGANDO CONTEXTO SPRING ============
+2018-01-11 22:56:06 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@6ddf90b0: startup date [Thu Jan 11 22:56:06 PET 2018]; root of context hierarchy
+2018-01-11 22:56:06 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/applicationContext.xml]
+2018-01-11 22:56:06 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/spring-database-config.xml]
+2018-01-11 22:56:06 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [database.properties]
+2018-01-11 22:56:06 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+2018-01-11 22:56:06 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2018-01-11 22:56:07 INFO  App:29 - ============ OBTENIENDO INSTANCIA DE MAIL SERVICE ============
+2018-01-11 22:56:07 INFO  App:31 - ============ OBTENIENDO INSTANCIA DE CUSTOMER SERVICE IMPL ============
+2018-01-11 22:56:07 INFO  App:32 - ============ OBTENIENDO REGISTROS PENDIENTES PARA EL ENVIO DE DOCUMENTOS ELECTRONICOS ============
+2018-01-11 22:56:08 INFO  App:35 - ============ CANTIDAD DE REGISTROS PENDIENTES: 5 ============
+2018-01-11 22:56:08 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:56:08 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:56:08 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:56:08 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:56:08 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 22:56:08 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:56:09 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:56:11 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials a1sm4234821uad.52 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials a1sm4234821uad.52 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials a1sm4234821uad.52 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 22:56:11 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 22:56:11 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:56:11 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:56:11 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:56:11 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:56:11 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 22:56:11 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:56:12 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:56:13 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d35sm8067985uag.14 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d35sm8067985uag.14 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d35sm8067985uag.14 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 22:56:13 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 22:56:13 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:56:13 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:56:13 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:56:13 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:56:13 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 22:56:13 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:56:14 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:56:15 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials i6sm5188769uaa.7 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials i6sm5188769uaa.7 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials i6sm5188769uaa.7 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 22:56:15 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 22:56:15 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:56:15 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:56:15 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:56:15 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:56:15 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 22:56:15 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 22:59:56 INFO  App:26 - ============ INICIANDO APLICACION ============
+2018-01-11 22:59:56 INFO  App:27 - ============ CARGANDO CONTEXTO SPRING ============
+2018-01-11 22:59:56 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@6ddf90b0: startup date [Thu Jan 11 22:59:56 PET 2018]; root of context hierarchy
+2018-01-11 22:59:56 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/applicationContext.xml]
+2018-01-11 22:59:56 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/spring-database-config.xml]
+2018-01-11 22:59:56 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [database.properties]
+2018-01-11 22:59:56 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+2018-01-11 22:59:56 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2018-01-11 22:59:57 INFO  App:29 - ============ OBTENIENDO INSTANCIA DE MAIL SERVICE ============
+2018-01-11 22:59:57 INFO  App:31 - ============ OBTENIENDO INSTANCIA DE CUSTOMER SERVICE IMPL ============
+2018-01-11 22:59:57 INFO  App:32 - ============ OBTENIENDO REGISTROS PENDIENTES PARA EL ENVIO DE DOCUMENTOS ELECTRONICOS ============
+2018-01-11 22:59:58 INFO  App:35 - ============ CANTIDAD DE REGISTROS PENDIENTES: 5 ============
+2018-01-11 22:59:58 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 22:59:58 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 22:59:58 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 22:59:58 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 22:59:59 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 22:59:59 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:00:00 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:00:01 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 195sm7626943vkv.34 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 195sm7626943vkv.34 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 195sm7626943vkv.34 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 23:00:01 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 23:00:01 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 23:00:01 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 23:00:01 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 23:00:01 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 23:00:02 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 23:00:02 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:00:02 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:00:04 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d26sm14366494uaa.34 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d26sm14366494uaa.34 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d26sm14366494uaa.34 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 23:00:04 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 23:00:04 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 23:00:04 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 23:00:04 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 23:00:04 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 23:00:04 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 23:00:04 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:00:04 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:00:53 INFO  App:26 - ============ INICIANDO APLICACION ============
+2018-01-11 23:00:53 INFO  App:27 - ============ CARGANDO CONTEXTO SPRING ============
+2018-01-11 23:00:53 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@6ddf90b0: startup date [Thu Jan 11 23:00:53 PET 2018]; root of context hierarchy
+2018-01-11 23:00:53 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/applicationContext.xml]
+2018-01-11 23:00:54 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/spring-database-config.xml]
+2018-01-11 23:00:54 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [database.properties]
+2018-01-11 23:00:54 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+2018-01-11 23:00:54 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2018-01-11 23:00:54 INFO  App:29 - ============ OBTENIENDO INSTANCIA DE MAIL SERVICE ============
+2018-01-11 23:00:54 INFO  App:31 - ============ OBTENIENDO INSTANCIA DE CUSTOMER SERVICE IMPL ============
+2018-01-11 23:00:54 INFO  App:32 - ============ OBTENIENDO REGISTROS PENDIENTES PARA EL ENVIO DE DOCUMENTOS ELECTRONICOS ============
+2018-01-11 23:00:56 INFO  App:35 - ============ CANTIDAD DE REGISTROS PENDIENTES: 5 ============
+2018-01-11 23:00:56 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 23:00:56 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 23:00:56 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 23:00:56 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 23:00:56 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 23:00:56 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:00:57 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:00:58 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials i4sm173302vki.55 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials i4sm173302vki.55 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials i4sm173302vki.55 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 23:00:58 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 23:00:58 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 23:00:58 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 23:00:58 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 23:00:58 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 23:00:59 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 23:00:59 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:01:00 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:01:01 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials i4sm173433vki.55 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials i4sm173433vki.55 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials i4sm173433vki.55 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 23:01:01 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 23:01:01 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 23:01:01 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 23:01:01 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 23:01:01 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 23:01:01 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 23:01:01 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:01:02 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:01:03 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials i4sm173526vki.55 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials i4sm173526vki.55 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials i4sm173526vki.55 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 23:01:03 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 23:01:03 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 23:01:03 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 23:01:03 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 23:01:03 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 23:01:03 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 23:01:03 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:01:04 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:01:05 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials i4sm173627vki.55 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials i4sm173627vki.55 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials i4sm173627vki.55 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 23:01:05 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 23:01:05 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 23:01:05 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 23:01:05 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 23:01:05 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 23:01:05 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 23:01:05 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:01:07 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:01:08 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials g9sm1400472uag.30 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials g9sm1400472uag.30 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials g9sm1400472uag.30 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 23:01:08 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 23:01:08 INFO  MailService:126 - ============ INICIO ENVIO DE CORREO LOG ============
+2018-01-11 23:01:08 INFO  MailService:133 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 23:02:36 INFO  App:26 - ============ INICIANDO APLICACION ============
+2018-01-11 23:02:36 INFO  App:27 - ============ CARGANDO CONTEXTO SPRING ============
+2018-01-11 23:02:36 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@6ddf90b0: startup date [Thu Jan 11 23:02:36 PET 2018]; root of context hierarchy
+2018-01-11 23:02:36 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/applicationContext.xml]
+2018-01-11 23:02:37 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/spring-database-config.xml]
+2018-01-11 23:02:37 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [database.properties]
+2018-01-11 23:02:37 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+2018-01-11 23:02:37 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2018-01-11 23:02:37 INFO  App:29 - ============ OBTENIENDO INSTANCIA DE MAIL SERVICE ============
+2018-01-11 23:02:37 INFO  App:31 - ============ OBTENIENDO INSTANCIA DE CUSTOMER SERVICE IMPL ============
+2018-01-11 23:02:37 INFO  App:32 - ============ OBTENIENDO REGISTROS PENDIENTES PARA EL ENVIO DE DOCUMENTOS ELECTRONICOS ============
+2018-01-11 23:02:39 INFO  App:35 - ============ CANTIDAD DE REGISTROS PENDIENTES: 5 ============
+2018-01-11 23:02:39 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 23:02:39 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 23:02:39 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 23:02:39 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 23:02:39 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 23:02:39 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:02:40 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:02:43 INFO  MailService:119 - ============ FIN ENVIO DE CORREO ============
+2018-01-11 23:02:43 INFO  App:44 - ============ GRABANDO FLAG DE ENVIO EN BD ============
+2018-01-11 23:02:50 INFO  App:46 - ============ FIN DE GRABACION DEL FLAG EN BD ============
+2018-01-11 23:02:50 INFO  App:47 - ============ ENVIO FINALIZADO ============
+2018-01-11 23:02:50 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 23:02:50 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 23:02:50 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 23:02:50 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 23:02:50 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 23:02:50 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:02:51 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:02:54 INFO  MailService:119 - ============ FIN ENVIO DE CORREO ============
+2018-01-11 23:02:54 INFO  App:44 - ============ GRABANDO FLAG DE ENVIO EN BD ============
+2018-01-11 23:02:55 INFO  App:46 - ============ FIN DE GRABACION DEL FLAG EN BD ============
+2018-01-11 23:02:55 INFO  App:47 - ============ ENVIO FINALIZADO ============
+2018-01-11 23:02:55 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 23:02:55 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 23:02:55 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 23:02:55 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 23:02:55 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 23:02:55 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:02:57 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:03:01 INFO  MailService:119 - ============ FIN ENVIO DE CORREO ============
+2018-01-11 23:03:01 INFO  App:44 - ============ GRABANDO FLAG DE ENVIO EN BD ============
+2018-01-11 23:03:02 INFO  App:46 - ============ FIN DE GRABACION DEL FLAG EN BD ============
+2018-01-11 23:03:02 INFO  App:47 - ============ ENVIO FINALIZADO ============
+2018-01-11 23:03:02 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 23:03:02 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 23:03:02 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 23:03:02 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 23:03:03 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 23:03:03 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:03:04 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:03:06 INFO  MailService:119 - ============ FIN ENVIO DE CORREO ============
+2018-01-11 23:03:06 INFO  App:44 - ============ GRABANDO FLAG DE ENVIO EN BD ============
+2018-01-11 23:03:07 INFO  App:46 - ============ FIN DE GRABACION DEL FLAG EN BD ============
+2018-01-11 23:03:07 INFO  App:47 - ============ ENVIO FINALIZADO ============
+2018-01-11 23:03:07 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 23:03:07 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 23:03:07 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 23:03:07 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 23:03:07 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 23:03:07 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:03:08 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:03:11 INFO  MailService:119 - ============ FIN ENVIO DE CORREO ============
+2018-01-11 23:03:11 INFO  App:44 - ============ GRABANDO FLAG DE ENVIO EN BD ============
+2018-01-11 23:03:14 INFO  App:46 - ============ FIN DE GRABACION DEL FLAG EN BD ============
+2018-01-11 23:03:14 INFO  App:47 - ============ ENVIO FINALIZADO ============
+2018-01-11 23:03:14 INFO  MailService:126 - ============ INICIO ENVIO DE CORREO LOG ============
+2018-01-11 23:03:14 INFO  MailService:133 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 23:06:22 INFO  App:26 - ============ INICIANDO APLICACION ============
+2018-01-11 23:06:22 INFO  App:27 - ============ CARGANDO CONTEXTO SPRING ============
+2018-01-11 23:06:22 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@6ddf90b0: startup date [Thu Jan 11 23:06:22 PET 2018]; root of context hierarchy
+2018-01-11 23:06:22 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/applicationContext.xml]
+2018-01-11 23:06:38 INFO  App:26 - ============ INICIANDO APLICACION ============
+2018-01-11 23:06:38 INFO  App:27 - ============ CARGANDO CONTEXTO SPRING ============
+2018-01-11 23:06:38 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@6ddf90b0: startup date [Thu Jan 11 23:06:38 PET 2018]; root of context hierarchy
+2018-01-11 23:06:38 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/applicationContext.xml]
+2018-01-11 23:06:39 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/spring-database-config.xml]
+2018-01-11 23:06:39 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [database.properties]
+2018-01-11 23:06:39 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+2018-01-11 23:06:39 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2018-01-11 23:06:40 INFO  App:29 - ============ OBTENIENDO INSTANCIA DE MAIL SERVICE ============
+2018-01-11 23:06:40 INFO  App:31 - ============ OBTENIENDO INSTANCIA DE CUSTOMER SERVICE IMPL ============
+2018-01-11 23:06:40 INFO  App:32 - ============ OBTENIENDO REGISTROS PENDIENTES PARA EL ENVIO DE DOCUMENTOS ELECTRONICOS ============
+2018-01-11 23:06:43 INFO  App:35 - ============ CANTIDAD DE REGISTROS PENDIENTES: 5 ============
+2018-01-11 23:06:43 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 23:06:43 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 23:06:43 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 23:06:43 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 23:06:43 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 23:06:43 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:06:44 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:06:46 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials g25sm3294756ual.23 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials g25sm3294756ual.23 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials g25sm3294756ual.23 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 23:06:46 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 23:06:46 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 23:06:46 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 23:06:46 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 23:06:46 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 23:06:46 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 23:06:46 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:06:47 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:06:48 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials v15sm7463675uae.39 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials v15sm7463675uae.39 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials v15sm7463675uae.39 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 23:06:48 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 23:06:48 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 23:06:48 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 23:06:48 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 23:06:48 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 23:06:48 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 23:06:48 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:06:49 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:06:50 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials c7sm1370327uab.22 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials c7sm1370327uab.22 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials c7sm1370327uab.22 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 23:06:50 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 23:06:50 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 23:06:50 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 23:06:50 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 23:06:50 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 23:06:50 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 23:06:50 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:06:51 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:06:52 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 93sm4037973vkd.23 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 93sm4037973vkd.23 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 93sm4037973vkd.23 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 23:06:52 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 23:06:52 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 23:06:52 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 23:06:52 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 23:06:52 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 23:06:52 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 23:06:52 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:06:53 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:06:54 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials l84sm4896919vke.25 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials l84sm4896919vke.25 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials l84sm4896919vke.25 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 23:06:54 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 23:06:54 INFO  MailService:126 - ============ INICIO ENVIO DE CORREO LOG ============
+2018-01-11 23:06:54 INFO  MailService:133 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 23:07:17 INFO  App:26 - ============ INICIANDO APLICACION ============
+2018-01-11 23:07:17 INFO  App:27 - ============ CARGANDO CONTEXTO SPRING ============
+2018-01-11 23:07:17 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@6ddf90b0: startup date [Thu Jan 11 23:07:17 PET 2018]; root of context hierarchy
+2018-01-11 23:07:17 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/applicationContext.xml]
+2018-01-11 23:07:18 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/spring-database-config.xml]
+2018-01-11 23:07:18 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [database.properties]
+2018-01-11 23:07:18 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+2018-01-11 23:07:18 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2018-01-11 23:07:18 INFO  App:29 - ============ OBTENIENDO INSTANCIA DE MAIL SERVICE ============
+2018-01-11 23:07:18 INFO  App:31 - ============ OBTENIENDO INSTANCIA DE CUSTOMER SERVICE IMPL ============
+2018-01-11 23:07:18 INFO  App:32 - ============ OBTENIENDO REGISTROS PENDIENTES PARA EL ENVIO DE DOCUMENTOS ELECTRONICOS ============
+2018-01-11 23:07:19 INFO  App:35 - ============ CANTIDAD DE REGISTROS PENDIENTES: 5 ============
+2018-01-11 23:07:19 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 23:07:19 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 23:07:19 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 23:07:19 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 23:07:20 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 23:07:20 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:07:20 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:07:22 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials j33sm1485610uaj.5 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials j33sm1485610uaj.5 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials j33sm1485610uaj.5 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 23:07:22 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 23:07:22 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 23:07:22 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 23:07:22 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 23:07:22 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 23:07:22 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 23:07:22 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:07:23 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:07:24 ERROR App:50 - Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials k39sm4959529uad.2 - gsmtp
+
+org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials k39sm4959529uad.2 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:424)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:345)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:340)
+	at pe.kapcom.iemail.service.MailService.sendMail(MailService.java:118)
+	at pe.kapcom.iemail.App.main(App.java:42)
+Caused by: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials k39sm4959529uad.2 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:826)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:761)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:685)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:421)
+	... 4 more
+2018-01-11 23:07:24 INFO  App:51 - ============ ERROR ENVIANDO CORREO!!! ============
+2018-01-11 23:07:24 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 23:07:24 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 23:07:24 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 23:07:24 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 23:07:24 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 23:07:24 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:07:25 INFO  App:26 - ============ INICIANDO APLICACION ============
+2018-01-11 23:07:25 INFO  App:27 - ============ CARGANDO CONTEXTO SPRING ============
+2018-01-11 23:07:25 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@6ddf90b0: startup date [Thu Jan 11 23:07:25 PET 2018]; root of context hierarchy
+2018-01-11 23:07:25 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/applicationContext.xml]
+2018-01-11 23:07:25 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/spring-database-config.xml]
+2018-01-11 23:07:26 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [database.properties]
+2018-01-11 23:07:26 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+2018-01-11 23:07:26 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2018-01-11 23:07:26 INFO  App:29 - ============ OBTENIENDO INSTANCIA DE MAIL SERVICE ============
+2018-01-11 23:07:26 INFO  App:31 - ============ OBTENIENDO INSTANCIA DE CUSTOMER SERVICE IMPL ============
+2018-01-11 23:07:26 INFO  App:32 - ============ OBTENIENDO REGISTROS PENDIENTES PARA EL ENVIO DE DOCUMENTOS ELECTRONICOS ============
+2018-01-11 23:07:27 INFO  App:35 - ============ CANTIDAD DE REGISTROS PENDIENTES: 5 ============
+2018-01-11 23:07:27 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 23:07:27 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 23:07:27 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 23:07:27 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 23:07:28 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 23:07:28 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:07:28 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:07:31 INFO  MailService:119 - ============ FIN ENVIO DE CORREO ============
+2018-01-11 23:07:31 INFO  App:44 - ============ GRABANDO FLAG DE ENVIO EN BD ============
+2018-01-11 23:07:32 INFO  App:46 - ============ FIN DE GRABACION DEL FLAG EN BD ============
+2018-01-11 23:07:32 INFO  App:47 - ============ ENVIO FINALIZADO ============
+2018-01-11 23:07:32 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 23:07:32 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 23:07:32 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 23:07:32 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 23:07:32 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 23:07:32 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:07:33 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:07:36 INFO  MailService:119 - ============ FIN ENVIO DE CORREO ============
+2018-01-11 23:07:36 INFO  App:44 - ============ GRABANDO FLAG DE ENVIO EN BD ============
+2018-01-11 23:07:37 INFO  App:46 - ============ FIN DE GRABACION DEL FLAG EN BD ============
+2018-01-11 23:07:37 INFO  App:47 - ============ ENVIO FINALIZADO ============
+2018-01-11 23:07:37 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 23:07:37 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 23:07:37 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 23:07:37 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 23:07:37 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 23:07:37 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:07:38 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:07:40 INFO  MailService:119 - ============ FIN ENVIO DE CORREO ============
+2018-01-11 23:07:40 INFO  App:44 - ============ GRABANDO FLAG DE ENVIO EN BD ============
+2018-01-11 23:07:42 INFO  App:46 - ============ FIN DE GRABACION DEL FLAG EN BD ============
+2018-01-11 23:07:42 INFO  App:47 - ============ ENVIO FINALIZADO ============
+2018-01-11 23:07:42 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 23:07:42 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 23:07:42 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 23:07:42 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 23:07:42 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 23:07:42 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:07:43 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:07:45 INFO  MailService:119 - ============ FIN ENVIO DE CORREO ============
+2018-01-11 23:07:45 INFO  App:44 - ============ GRABANDO FLAG DE ENVIO EN BD ============
+2018-01-11 23:07:48 INFO  App:46 - ============ FIN DE GRABACION DEL FLAG EN BD ============
+2018-01-11 23:07:48 INFO  App:47 - ============ ENVIO FINALIZADO ============
+2018-01-11 23:07:48 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-11 23:07:48 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-11 23:07:48 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 23:07:48 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-11 23:07:48 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-11 23:07:48 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:07:49 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-11 23:07:52 INFO  MailService:119 - ============ FIN ENVIO DE CORREO ============
+2018-01-11 23:07:52 INFO  App:44 - ============ GRABANDO FLAG DE ENVIO EN BD ============
+2018-01-11 23:07:53 INFO  App:46 - ============ FIN DE GRABACION DEL FLAG EN BD ============
+2018-01-11 23:07:53 INFO  App:47 - ============ ENVIO FINALIZADO ============
+2018-01-11 23:07:53 INFO  MailService:126 - ============ INICIO ENVIO DE CORREO LOG ============
+2018-01-11 23:07:53 INFO  MailService:133 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-11 23:07:55 INFO  MailService:135 - ============ FIN ENVIO DE CORREO LOG ============
+2018-01-11 23:07:55 INFO  App:58 - ============ FIN DEL PROCESO DE ENVIO DE CORREOS ============
+2018-01-12 00:06:57 INFO  App:26 - ============ INICIANDO APLICACION ============
+2018-01-12 00:06:57 INFO  App:27 - ============ CARGANDO CONTEXTO SPRING ============
+2018-01-12 00:06:57 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@6ddf90b0: startup date [Fri Jan 12 00:06:57 PET 2018]; root of context hierarchy
+2018-01-12 00:06:57 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/applicationContext.xml]
+2018-01-12 00:06:57 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/spring-database-config.xml]
+2018-01-12 00:06:57 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [database.properties]
+2018-01-12 00:06:57 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+2018-01-12 00:06:58 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2018-01-12 00:06:58 INFO  App:29 - ============ OBTENIENDO INSTANCIA DE MAIL SERVICE ============
+2018-01-12 00:06:58 INFO  App:31 - ============ OBTENIENDO INSTANCIA DE CUSTOMER SERVICE IMPL ============
+2018-01-12 00:06:58 INFO  App:32 - ============ OBTENIENDO REGISTROS PENDIENTES PARA EL ENVIO DE DOCUMENTOS ELECTRONICOS ============
+2018-01-12 00:07:00 INFO  App:35 - ============ CANTIDAD DE REGISTROS PENDIENTES: 22 ============
+2018-01-12 00:07:00 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-12 00:07:00 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-12 00:07:00 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-12 00:07:00 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-12 00:07:11 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-12 00:07:11 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-12 00:07:11 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-12 00:07:17 INFO  MailService:119 - ============ FIN ENVIO DE CORREO ============
+2018-01-12 00:07:17 INFO  App:44 - ============ GRABANDO FLAG DE ENVIO EN BD ============
+2018-01-12 00:07:23 INFO  App:46 - ============ FIN DE GRABACION DEL FLAG EN BD ============
+2018-01-12 00:07:23 INFO  App:47 - ============ ENVIO FINALIZADO ============
+2018-01-12 00:07:23 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-12 00:07:23 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-12 00:07:23 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-12 00:07:23 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-12 00:07:35 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-12 00:07:35 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-12 00:07:36 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-12 00:07:41 INFO  MailService:119 - ============ FIN ENVIO DE CORREO ============
+2018-01-12 00:07:41 INFO  App:44 - ============ GRABANDO FLAG DE ENVIO EN BD ============
+2018-01-12 00:07:42 INFO  App:46 - ============ FIN DE GRABACION DEL FLAG EN BD ============
+2018-01-12 00:07:42 INFO  App:47 - ============ ENVIO FINALIZADO ============
+2018-01-12 00:07:42 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-12 00:07:42 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-12 00:07:42 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-12 00:07:42 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-12 00:07:54 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-12 00:07:54 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-12 00:07:54 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-12 00:07:58 INFO  MailService:119 - ============ FIN ENVIO DE CORREO ============
+2018-01-12 00:07:58 INFO  App:44 - ============ GRABANDO FLAG DE ENVIO EN BD ============
+2018-01-12 00:07:59 INFO  App:46 - ============ FIN DE GRABACION DEL FLAG EN BD ============
+2018-01-12 00:07:59 INFO  App:47 - ============ ENVIO FINALIZADO ============
+2018-01-12 00:07:59 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-12 00:07:59 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-12 00:07:59 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-12 00:07:59 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-12 00:08:10 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-12 00:08:10 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-12 00:08:11 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-12 00:08:14 INFO  MailService:119 - ============ FIN ENVIO DE CORREO ============
+2018-01-12 00:08:14 INFO  App:44 - ============ GRABANDO FLAG DE ENVIO EN BD ============
+2018-01-12 00:08:15 INFO  App:46 - ============ FIN DE GRABACION DEL FLAG EN BD ============
+2018-01-12 00:08:15 INFO  App:47 - ============ ENVIO FINALIZADO ============
+2018-01-12 00:08:15 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-12 00:08:15 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-12 00:08:15 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-12 00:08:15 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-12 00:08:27 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-12 00:08:27 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-12 00:08:28 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-12 00:08:33 INFO  MailService:119 - ============ FIN ENVIO DE CORREO ============
+2018-01-12 00:08:33 INFO  App:44 - ============ GRABANDO FLAG DE ENVIO EN BD ============
+2018-01-12 00:08:34 INFO  App:46 - ============ FIN DE GRABACION DEL FLAG EN BD ============
+2018-01-12 00:08:34 INFO  App:47 - ============ ENVIO FINALIZADO ============
+2018-01-12 00:08:34 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-12 00:08:34 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-12 00:08:34 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-12 00:08:34 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-12 00:08:45 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-12 00:08:45 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-12 00:08:46 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-12 00:08:49 INFO  MailService:119 - ============ FIN ENVIO DE CORREO ============
+2018-01-12 00:08:49 INFO  App:44 - ============ GRABANDO FLAG DE ENVIO EN BD ============
+2018-01-12 00:08:50 INFO  App:46 - ============ FIN DE GRABACION DEL FLAG EN BD ============
+2018-01-12 00:08:50 INFO  App:47 - ============ ENVIO FINALIZADO ============
+2018-01-12 00:08:50 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-12 00:08:50 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-12 00:08:50 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-12 00:08:50 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-12 00:09:01 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-12 00:09:01 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-12 00:09:02 INFO  MailService:117 - ============ FIN ADJUNTANDO FICHERO ZIP ============
+2018-01-12 00:09:07 INFO  MailService:119 - ============ FIN ENVIO DE CORREO ============
+2018-01-12 00:09:07 INFO  App:44 - ============ GRABANDO FLAG DE ENVIO EN BD ============
+2018-01-12 00:09:09 INFO  App:46 - ============ FIN DE GRABACION DEL FLAG EN BD ============
+2018-01-12 00:09:09 INFO  App:47 - ============ ENVIO FINALIZADO ============
+2018-01-12 00:09:09 INFO  App:39 - ============ INICIANDO ENVIO DE CORREO PARA CLIENTE: CENCOSUD RETAIL PERU S.A. ============
+2018-01-12 00:09:09 INFO  MailService:60 - ============ INICIO ENVIO DE CORREO ============
+2018-01-12 00:09:09 INFO  MailService:90 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-12 00:09:09 INFO  MailService:91 - ============ ADJUNTANDO PDF ============
+2018-01-12 00:09:20 INFO  MailService:102 - ============ FIN ADJUNTANDO PDF ============
+2018-01-12 00:09:20 INFO  MailService:104 - ============ ADJUNTANDO FICHERO ZIP ============
+2018-01-16 11:44:55 INFO  App:21 - ============ INICIANDO APLICACION ============
+2018-01-16 11:44:55 INFO  App:22 - ============ CARGANDO CONTEXTO SPRING ============
+2018-01-16 11:44:55 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@6ddf90b0: startup date [Tue Jan 16 11:44:55 PET 2018]; root of context hierarchy
+2018-01-16 11:44:56 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/applicationContext.xml]
+2018-01-16 11:44:56 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/spring-database-config.xml]
+2018-01-16 11:44:56 WARN  ClassPathMapperScanner:166 - No MyBatis mapper was found in '[pe.kapcom.iemail.repository.mapper]' package. Please check your configuration.
+2018-01-16 11:44:56 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [database.properties]
+2018-01-16 11:44:56 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+2018-01-16 11:44:56 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2018-01-16 11:44:56 INFO  App:24 - ============ OBTENIENDO INSTANCIA DE MAIL SERVICE ============
+2018-01-16 11:45:00 INFO  MailService:27 - ============ INICIO ENVIO DE CORREO ============
+2018-01-16 11:45:07 INFO  MailService:45 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-16 11:46:10 INFO  MailService:67 - ============ INICIO ENVIO DE CORREO LOG ============
+2018-01-16 11:46:10 INFO  MailService:74 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-16 11:48:12 INFO  App:21 - ============ INICIANDO APLICACION ============
+2018-01-16 11:48:12 INFO  App:22 - ============ CARGANDO CONTEXTO SPRING ============
+2018-01-16 11:48:12 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@6ddf90b0: startup date [Tue Jan 16 11:48:12 PET 2018]; root of context hierarchy
+2018-01-16 11:48:12 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/applicationContext.xml]
+2018-01-16 11:48:13 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/spring-database-config.xml]
+2018-01-16 11:48:13 WARN  ClassPathMapperScanner:166 - No MyBatis mapper was found in '[pe.kapcom.iemail.repository.mapper]' package. Please check your configuration.
+2018-01-16 11:48:13 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [database.properties]
+2018-01-16 11:48:13 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+2018-01-16 11:48:13 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2018-01-16 11:48:13 INFO  App:24 - ============ OBTENIENDO INSTANCIA DE MAIL SERVICE ============
+2018-01-16 11:48:15 INFO  MailService:27 - ============ INICIO ENVIO DE CORREO ============
+2018-01-16 11:48:19 INFO  MailService:45 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-16 11:49:13 INFO  App:51 - ============ FIN DEL PROCESO DE ENVIO DE CORREOS ============
+2018-01-16 11:51:17 INFO  App:21 - ============ INICIANDO APLICACION ============
+2018-01-16 11:51:17 INFO  App:22 - ============ CARGANDO CONTEXTO SPRING ============
+2018-01-16 11:51:17 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@6ddf90b0: startup date [Tue Jan 16 11:51:17 PET 2018]; root of context hierarchy
+2018-01-16 11:51:17 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/applicationContext.xml]
+2018-01-16 11:51:18 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/spring-database-config.xml]
+2018-01-16 11:51:18 WARN  ClassPathMapperScanner:166 - No MyBatis mapper was found in '[pe.kapcom.iemail.repository.mapper]' package. Please check your configuration.
+2018-01-16 11:51:18 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [database.properties]
+2018-01-16 11:51:18 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+2018-01-16 11:51:18 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2018-01-16 11:51:18 INFO  App:24 - ============ OBTENIENDO INSTANCIA DE MAIL SERVICE ============
+2018-01-16 11:51:20 INFO  MailService:27 - ============ INICIO ENVIO DE CORREO ============
+2018-01-16 11:51:20 INFO  MailService:45 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-16 11:51:21 INFO  App:51 - ============ FIN DEL PROCESO DE ENVIO DE CORREOS ============
+2018-01-16 11:51:35 INFO  App:21 - ============ INICIANDO APLICACION ============
+2018-01-16 11:51:35 INFO  App:22 - ============ CARGANDO CONTEXTO SPRING ============
+2018-01-16 11:51:35 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@6ddf90b0: startup date [Tue Jan 16 11:51:35 PET 2018]; root of context hierarchy
+2018-01-16 11:51:35 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/applicationContext.xml]
+2018-01-16 11:51:35 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/spring-database-config.xml]
+2018-01-16 11:51:35 WARN  ClassPathMapperScanner:166 - No MyBatis mapper was found in '[pe.kapcom.iemail.repository.mapper]' package. Please check your configuration.
+2018-01-16 11:51:35 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [database.properties]
+2018-01-16 11:51:35 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+2018-01-16 11:51:36 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2018-01-16 11:51:36 INFO  App:24 - ============ OBTENIENDO INSTANCIA DE MAIL SERVICE ============
+2018-01-16 11:51:38 INFO  MailService:27 - ============ INICIO ENVIO DE CORREO ============
+2018-01-16 11:51:38 INFO  MailService:45 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-16 11:51:38 INFO  App:51 - ============ FIN DEL PROCESO DE ENVIO DE CORREOS ============
+2018-01-16 11:55:01 INFO  App:21 - ============ INICIANDO APLICACION ============
+2018-01-16 11:55:01 INFO  App:22 - ============ CARGANDO CONTEXTO SPRING ============
+2018-01-16 11:55:02 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@6ddf90b0: startup date [Tue Jan 16 11:55:02 PET 2018]; root of context hierarchy
+2018-01-16 11:55:02 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/applicationContext.xml]
+2018-01-16 11:55:02 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/spring-database-config.xml]
+2018-01-16 11:55:02 WARN  ClassPathMapperScanner:166 - No MyBatis mapper was found in '[pe.kapcom.iemail.repository.mapper]' package. Please check your configuration.
+2018-01-16 11:55:02 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [database.properties]
+2018-01-16 11:55:02 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+2018-01-16 11:55:02 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2018-01-16 11:55:02 INFO  App:24 - ============ OBTENIENDO INSTANCIA DE MAIL SERVICE ============
+2018-01-16 11:55:05 INFO  MailService:27 - ============ INICIO ENVIO DE CORREO ============
+2018-01-16 11:55:05 INFO  MailService:45 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-16 11:55:05 INFO  App:51 - ============ FIN DEL PROCESO DE ENVIO DE CORREOS ============
+2018-01-16 11:55:47 INFO  App:21 - ============ INICIANDO APLICACION ============
+2018-01-16 11:55:47 INFO  App:22 - ============ CARGANDO CONTEXTO SPRING ============
+2018-01-16 11:55:47 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1c4af82c: startup date [Tue Jan 16 11:55:47 PET 2018]; root of context hierarchy
+2018-01-16 11:55:47 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/applicationContext.xml]
+2018-01-16 11:55:47 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/spring-database-config.xml]
+2018-01-16 11:55:47 WARN  ClassPathMapperScanner:166 - No MyBatis mapper was found in '[pe.kapcom.iemail.repository.mapper]' package. Please check your configuration.
+2018-01-16 11:55:47 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [database.properties]
+2018-01-16 11:55:47 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+2018-01-16 11:55:48 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2018-01-16 11:55:48 INFO  App:24 - ============ OBTENIENDO INSTANCIA DE MAIL SERVICE ============
+2018-01-16 11:55:48 INFO  MailService:27 - ============ INICIO ENVIO DE CORREO ============
+2018-01-16 11:55:48 INFO  MailService:45 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-16 11:55:48 INFO  App:51 - ============ FIN DEL PROCESO DE ENVIO DE CORREOS ============
+2018-01-16 11:56:05 INFO  App:21 - ============ INICIANDO APLICACION ============
+2018-01-16 11:56:05 INFO  App:22 - ============ CARGANDO CONTEXTO SPRING ============
+2018-01-16 11:56:05 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1c4af82c: startup date [Tue Jan 16 11:56:05 PET 2018]; root of context hierarchy
+2018-01-16 11:56:05 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/applicationContext.xml]
+2018-01-16 11:56:05 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/spring-database-config.xml]
+2018-01-16 11:56:05 WARN  ClassPathMapperScanner:166 - No MyBatis mapper was found in '[pe.kapcom.iemail.repository.mapper]' package. Please check your configuration.
+2018-01-16 11:56:05 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [database.properties]
+2018-01-16 11:56:05 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+2018-01-16 11:56:05 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2018-01-16 11:56:05 INFO  App:24 - ============ OBTENIENDO INSTANCIA DE MAIL SERVICE ============
+2018-01-16 11:56:05 INFO  MailService:27 - ============ INICIO ENVIO DE CORREO ============
+2018-01-16 11:56:05 INFO  MailService:45 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-16 11:56:06 INFO  App:51 - ============ FIN DEL PROCESO DE ENVIO DE CORREOS ============
+2018-01-16 11:57:26 INFO  App:21 - ============ INICIANDO APLICACION ============
+2018-01-16 11:57:26 INFO  App:22 - ============ CARGANDO CONTEXTO SPRING ============
+2018-01-16 11:57:26 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1c4af82c: startup date [Tue Jan 16 11:57:26 PET 2018]; root of context hierarchy
+2018-01-16 11:57:26 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/applicationContext.xml]
+2018-01-16 11:57:26 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/spring-database-config.xml]
+2018-01-16 11:57:26 WARN  ClassPathMapperScanner:166 - No MyBatis mapper was found in '[pe.kapcom.iemail.repository.mapper]' package. Please check your configuration.
+2018-01-16 11:57:26 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [database.properties]
+2018-01-16 11:57:26 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+2018-01-16 11:57:27 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2018-01-16 11:57:27 INFO  App:24 - ============ OBTENIENDO INSTANCIA DE MAIL SERVICE ============
+2018-01-16 11:57:27 INFO  MailService:27 - ============ INICIO ENVIO DE CORREO ============
+2018-01-16 11:57:27 INFO  MailService:45 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-16 11:57:27 INFO  App:51 - ============ FIN DEL PROCESO DE ENVIO DE CORREOS ============
+2018-01-16 12:02:06 INFO  App:21 - ============ INICIANDO APLICACION ============
+2018-01-16 12:02:06 INFO  App:22 - ============ CARGANDO CONTEXTO SPRING ============
+2018-01-16 12:02:06 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1c4af82c: startup date [Tue Jan 16 12:02:06 PET 2018]; root of context hierarchy
+2018-01-16 12:02:06 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/applicationContext.xml]
+2018-01-16 12:02:06 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/spring-database-config.xml]
+2018-01-16 12:02:07 WARN  ClassPathMapperScanner:166 - No MyBatis mapper was found in '[pe.kapcom.iemail.repository.mapper]' package. Please check your configuration.
+2018-01-16 12:02:07 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [database.properties]
+2018-01-16 12:02:07 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+2018-01-16 12:02:07 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2018-01-16 12:02:07 INFO  App:24 - ============ OBTENIENDO INSTANCIA DE MAIL SERVICE ============
+2018-01-16 12:02:07 INFO  MailService:27 - ============ INICIO ENVIO DE CORREO ============
+2018-01-16 12:02:07 INFO  MailService:45 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-16 12:02:08 INFO  MailService:60 - ============ FIN ENVIO DE CORREO ============
+2018-01-16 12:02:08 INFO  App:51 - ============ FIN DEL PROCESO DE ENVIO DE CORREOS ============
+2018-01-16 12:02:49 INFO  App:21 - ============ INICIANDO APLICACION ============
+2018-01-16 12:02:49 INFO  App:22 - ============ CARGANDO CONTEXTO SPRING ============
+2018-01-16 12:02:49 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1c4af82c: startup date [Tue Jan 16 12:02:49 PET 2018]; root of context hierarchy
+2018-01-16 12:02:49 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/applicationContext.xml]
+2018-01-16 12:02:49 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/spring-database-config.xml]
+2018-01-16 12:02:50 WARN  ClassPathMapperScanner:166 - No MyBatis mapper was found in '[pe.kapcom.iemail.repository.mapper]' package. Please check your configuration.
+2018-01-16 12:02:50 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [database.properties]
+2018-01-16 12:02:50 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+2018-01-16 12:02:50 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2018-01-16 12:02:50 INFO  App:24 - ============ OBTENIENDO INSTANCIA DE MAIL SERVICE ============
+2018-01-16 12:02:50 INFO  MailService:27 - ============ INICIO ENVIO DE CORREO ============
+2018-01-16 12:02:50 INFO  MailService:45 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-16 12:02:50 INFO  MailService:60 - ============ FIN ENVIO DE CORREO ============
+2018-01-16 12:02:50 INFO  App:51 - ============ FIN DEL PROCESO DE ENVIO DE CORREOS ============
+2018-01-16 12:05:49 INFO  App:21 - ============ INICIANDO APLICACION ============
+2018-01-16 12:05:49 INFO  App:22 - ============ CARGANDO CONTEXTO SPRING ============
+2018-01-16 12:05:49 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1c4af82c: startup date [Tue Jan 16 12:05:49 PET 2018]; root of context hierarchy
+2018-01-16 12:05:49 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/applicationContext.xml]
+2018-01-16 12:05:50 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/spring-database-config.xml]
+2018-01-16 12:05:50 WARN  ClassPathMapperScanner:166 - No MyBatis mapper was found in '[pe.kapcom.iemail.repository.mapper]' package. Please check your configuration.
+2018-01-16 12:05:50 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [database.properties]
+2018-01-16 12:05:50 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+2018-01-16 12:05:50 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2018-01-16 12:05:50 INFO  App:24 - ============ OBTENIENDO INSTANCIA DE MAIL SERVICE ============
+2018-01-16 12:05:50 INFO  MailService:27 - ============ INICIO ENVIO DE CORREO ============
+2018-01-16 12:05:50 INFO  MailService:45 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-16 12:05:52 INFO  MailService:60 - ============ FIN ENVIO DE CORREO ============
+2018-01-16 12:05:52 INFO  App:51 - ============ FIN DEL PROCESO DE ENVIO DE CORREOS ============
+2018-01-16 12:06:21 INFO  App:21 - ============ INICIANDO APLICACION ============
+2018-01-16 12:06:21 INFO  App:22 - ============ CARGANDO CONTEXTO SPRING ============
+2018-01-16 12:06:21 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1c4af82c: startup date [Tue Jan 16 12:06:21 PET 2018]; root of context hierarchy
+2018-01-16 12:06:21 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/applicationContext.xml]
+2018-01-16 12:06:22 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/spring-database-config.xml]
+2018-01-16 12:06:22 WARN  ClassPathMapperScanner:166 - No MyBatis mapper was found in '[pe.kapcom.iemail.repository.mapper]' package. Please check your configuration.
+2018-01-16 12:06:22 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [database.properties]
+2018-01-16 12:06:22 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+2018-01-16 12:06:22 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2018-01-16 12:06:22 INFO  App:24 - ============ OBTENIENDO INSTANCIA DE MAIL SERVICE ============
+2018-01-16 12:06:22 INFO  MailService:27 - ============ INICIO ENVIO DE CORREO ============
+2018-01-16 12:06:22 INFO  MailService:46 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-16 12:06:22 INFO  MailService:61 - ============ FIN ENVIO DE CORREO ============
+2018-01-16 12:06:22 INFO  App:51 - ============ FIN DEL PROCESO DE ENVIO DE CORREOS ============
+2018-01-16 12:12:56 INFO  App:21 - ============ INICIANDO APLICACION ============
+2018-01-16 12:12:56 INFO  App:22 - ============ CARGANDO CONTEXTO SPRING ============
+2018-01-16 12:12:56 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1c4af82c: startup date [Tue Jan 16 12:12:56 PET 2018]; root of context hierarchy
+2018-01-16 12:12:56 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/applicationContext.xml]
+2018-01-16 12:12:56 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/spring-database-config.xml]
+2018-01-16 12:12:56 WARN  ClassPathMapperScanner:166 - No MyBatis mapper was found in '[pe.kapcom.iemail.repository.mapper]' package. Please check your configuration.
+2018-01-16 12:12:56 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [database.properties]
+2018-01-16 12:12:56 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+2018-01-16 12:12:57 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2018-01-16 12:12:57 INFO  App:24 - ============ OBTENIENDO INSTANCIA DE MAIL SERVICE ============
+2018-01-16 12:12:57 INFO  MailService:29 - ============ INICIO ENVIO DE CORREO ============
+2018-01-16 12:12:57 INFO  MailService:48 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-16 12:12:57 INFO  MailService:55 - ============ FIN ADJUNTANDO PDF ============
+2018-01-16 12:12:59 INFO  MailService:58 - ============ FIN ENVIO DE CORREO ============
+2018-01-16 12:12:59 INFO  App:51 - ============ FIN DEL PROCESO DE ENVIO DE CORREOS ============
+2018-01-16 12:13:54 INFO  App:21 - ============ INICIANDO APLICACION ============
+2018-01-16 12:13:54 INFO  App:22 - ============ CARGANDO CONTEXTO SPRING ============
+2018-01-16 12:13:54 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1c4af82c: startup date [Tue Jan 16 12:13:54 PET 2018]; root of context hierarchy
+2018-01-16 12:13:54 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/applicationContext.xml]
+2018-01-16 12:13:54 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [spring/spring-database-config.xml]
+2018-01-16 12:13:54 WARN  ClassPathMapperScanner:166 - No MyBatis mapper was found in '[pe.kapcom.iemail.repository.mapper]' package. Please check your configuration.
+2018-01-16 12:13:54 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [database.properties]
+2018-01-16 12:13:54 INFO  PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [app.properties]
+2018-01-16 12:13:54 INFO  DriverManagerDataSource:133 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+2018-01-16 12:13:55 INFO  App:24 - ============ OBTENIENDO INSTANCIA DE MAIL SERVICE ============
+2018-01-16 12:13:55 INFO  MailService:29 - ============ INICIO ENVIO DE CORREO ============
+2018-01-16 12:13:55 INFO  MailService:48 - ============ INFORMACION INICIAL COMPLETADA ============
+2018-01-16 12:13:55 INFO  MailService:55 - ============ FIN ADJUNTANDO PDF ============
+2018-01-16 12:13:55 INFO  MailService:58 - ============ FIN ENVIO DE CORREO ============
+2018-01-16 12:13:55 INFO  App:51 - ============ FIN DEL PROCESO DE ENVIO DE CORREOS ============

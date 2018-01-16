@@ -17,11 +17,12 @@
 
 package pe.com.acme.invoiceelec.model.mybatis.query.mapper;
 
-import java.util.List; 
-import java.util.Map; 
-import org.apache.ibatis.session.RowBounds; 
+import org.apache.ibatis.session.RowBounds;
 import pe.com.acme.invoiceelec.model.mybatis.query.dto.BoletaDetalleQuery;
 import pe.com.acme.invoiceelec.model.mybatis.query.dto.BoletaDetalleQueryCriteria;
+
+import java.util.List;
+import java.util.Map;
 
 public interface BoletaDetalleQueryMapper { 
    List<BoletaDetalleQuery> getListQueryByCriteria(BoletaDetalleQueryCriteria criteria);

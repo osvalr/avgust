@@ -45,6 +45,9 @@ public class MailService {
 	@Value("${ftp.user}")
 	private String ftpUser;
 
+    @Value("${ftp.ip}")
+    private String ftpIp;
+
 	@Value("${ftp.password}")
 	private String ftpPassword;
 
@@ -102,7 +105,7 @@ public class MailService {
 			//Adjuntar Fichero XML
 			{
 				URL url = null;
-					String ftpPath = customerMailQuery.getRuta().replace("ftp://","ftp://"+ftpUser+":"+ftpPassword+"@");
+					String ftpPath = "ftp://"+ftpUser+":"+ftpPassword+"@"+ftpIp + customerMailQuery.getRuta();
 					url = new URL(ftpPath);
 					InputStream in = url.openStream();
 					Files.copy(in, Paths.get(temp + "/"+customerMailQuery.getNro_doc()+".zip"), StandardCopyOption.REPLACE_EXISTING);

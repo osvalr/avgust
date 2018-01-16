@@ -71,11 +71,7 @@ import pe.com.acme.invoiceelec.business.service.GestionarBoletaService;
 import pe.com.acme.invoiceelec.model.mybatis.domain.VentElect;
 import pe.com.acme.invoiceelec.model.mybatis.domain.VentElectExample;
 import pe.com.acme.invoiceelec.model.mybatis.mapper.VentElectMapper;
-import pe.com.acme.invoiceelec.model.mybatis.query.dto.BoletaDetalleQuery;
-import pe.com.acme.invoiceelec.model.mybatis.query.dto.BoletaDetalleQueryCriteria;
-import pe.com.acme.invoiceelec.model.mybatis.query.dto.BoletaQuery;
-import pe.com.acme.invoiceelec.model.mybatis.query.dto.BoletaWebQuery;
-import pe.com.acme.invoiceelec.model.mybatis.query.dto.BoletaWebQueryCriteria;
+import pe.com.acme.invoiceelec.model.mybatis.query.dto.*;
 import pe.com.acme.invoiceelec.model.mybatis.query.mapper.BoletaDetalleQueryMapper;
 import pe.com.acme.invoiceelec.model.mybatis.query.mapper.BoletaWebQueryMapper;
 import pe.com.acme.util.MybatisRepositoryHelper;
@@ -777,5 +773,13 @@ public class GestionarBoletaServiceImpl extends MybatisRepositoryHelper implemen
 		int count = this.selectCountByQuery(BoletaWebQueryMapper.class, criteria);
 		return count;
 	}
-	
+
+    @Override
+    public GeneratedDocInfoDto generarResumen(BoletaAnuladaQuery boletaAnuladaQuery) throws Exception {
+        SummaryDocuments invoiceType = new InvoiceType();
+        GeneratedDocInfoDto generatedDocInfo = this.setMain(boletaQuery, invoiceType);
+
+        return generatedDocInfo;
+    }
+
 }

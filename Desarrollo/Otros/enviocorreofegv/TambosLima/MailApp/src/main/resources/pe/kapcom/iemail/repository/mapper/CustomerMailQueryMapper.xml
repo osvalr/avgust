@@ -21,7 +21,7 @@ vis_sunat_lstdocpencabMail x
 <sql id="inputs"> 
 <![CDATA[
 
-rownum <= 5
+1=1
 
 ]]>
 </sql> 
